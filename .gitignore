@@ -1,2 +1,5 @@
 # Configuración personal de Claude Code (no versionar)
 .claude/settings.local.json
+
+# Temporales locales de Go
+.tmp/
