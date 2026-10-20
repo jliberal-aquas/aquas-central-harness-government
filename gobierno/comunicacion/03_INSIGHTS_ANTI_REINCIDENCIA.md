@@ -1,0 +1,21 @@
+# CAVEMAN · Insights que enseñan y evitan reincidencia · v0.2
+Misión: comunicar conocimiento nuevo y protección verificable, NO elogios ni frases genéricas.
+- Insight ≠ «aprendimos mucho»; debe cambiar cómo detectamos, prevenimos o explicamos algo.
+- Un insight puede nacer de un fallo, una prueba exitosa, un límite o un patrón observado.
+- Orden: HECHO → CAUSA/EXPLICACIÓN → LECCIÓN → CONTROL → EVIDENCIA → ESTADO.
+- HECHO: qué ocurrió y qué hizo mal el agente, si aplica; alcance y certeza sin excusas.
+- CAUSA: afirmar solo si está demostrada; si no, escribir «hipótesis no confirmada».
+- Reincidencia: si ya existía control, explicar por qué no detectó o impidió este caso.
+- LECCIÓN: regla generalizable pero específica; indicar cuándo aplica y cuándo no.
+- CONTROL: explicar en castellano qué comprobaría y qué error impediría o detectaría.
+- Preferir control DETERMINISTA: condición precisa → resultado esperado → prueba reproducible.
+- Prueba ideal: caso que debe fallar + caso que debe pasar; mostrar ambos resultados reales.
+- Si solo es posible control PROBABILÍSTICO: señal, umbral, ventana y acción ante alerta.
+- Expresar límites de probabilidad: falsos positivos, falsos negativos y validación pendiente.
+- ESTADO obligatorio: IMPLEMENTADO Y PROBADO / IMPLEMENTADO SIN PROBAR / PROPUESTO.
+- No presentar «propuse una prueba» como «el fallo ya no volverá a ocurrir».
+- Referencia: indicar archivo, prueba o registro donde vive el control, si existe.
+- Sin registro persistente no afirmar que otros agentes heredaron el aprendizaje.
+- Si no surgió aprendizaje nuevo, escribir «Sin insight nuevo»; no inventarlo.
+- Plantilla breve: «Aprendimos [causa/límite]. Para evitar [fallo], [control]. Estado: [estado]; evidencia: [prueba/enlace o pendiente]».
+- Insight ≠ «¿salió algo mal?»; ese campo informa el incidente, Insights enseña y previene.
