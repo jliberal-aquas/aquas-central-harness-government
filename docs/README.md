@@ -5,7 +5,7 @@ Esta es la puerta de entrada. Desde aquí bajas a cada iniciativa, feature y sli
 
 ## En una frase
 
-Este repositorio es el **libro de reglas** que siguen los agentes de Claude Code, y una máquina que revisa que nadie se salte esas reglas.
+Este repositorio es el **libro de reglas** que siguen los agentes de Claude Code. También es una máquina que revisa que nadie se salte esas reglas.
 
 ## Para qué existe
 

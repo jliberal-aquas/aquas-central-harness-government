@@ -4,7 +4,7 @@ Iniciativa que ordena **cada pedido** del humano: desde la frase escrita en el c
 
 ## En una frase
 
-Cada cosa que pides se anota, se parte en pedacitos que se pueden probar, y no se da por terminada hasta que una máquina lo comprueba.
+Cada cosa que pides se anota y se parte en pedacitos que se pueden probar. No se da por terminada hasta que una máquina lo comprueba.
 
 ## Para qué existe
 
@@ -32,7 +32,7 @@ Piensa en **construir una casa**.
 - La **feature** es una habitación: «la cocina».
 - El **slice** es una tarea que se puede revisar sola: «instalar el fregadero y comprobar que no gotea».
 - La **prueba en rojo** es abrir el grifo antes de instalar: no sale agua. La **prueba en verde** es abrirlo después: sale agua y no gotea.
-- El **sello** es el inspector que, al cerrar la cocina, revisa si la tubería nueva afectó al baño de al lado.
+- El **sello** es el inspector. Al cerrar la cocina, revisa si la tubería nueva afectó al baño de al lado.
 
 Límite de la analogía: en software, un cambio pequeño puede tocar lugares muy lejanos. Por eso el sello revisa con una lista generada por programa, no a ojo.
 

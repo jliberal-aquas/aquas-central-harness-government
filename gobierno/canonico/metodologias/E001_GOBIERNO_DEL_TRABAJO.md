@@ -1,5 +1,5 @@
 # E001 · Gobierno del trabajo · v0.1 · BORRADOR RATIFICADO
-Origen: especificación SS-GOV-EFS v0.1.0 podada con el humano (2026-10-20). Estado: decisiones cerradas; implementado F001/S001 (gate de wiki en `internal/wiki/`).
+Origen: especificación SS-GOV-EFS v0.1.0 podada con el humano (2026-10-20). Estado: decisiones cerradas; implementado F001/S001 (gate de wiki en `internal/wiki/`) y legibilidad de S002.
 No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`) + resumen Caveman en orquestador.
 
 ## Decisiones ratificadas
@@ -53,7 +53,7 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Diagramas por nivel: inicio y E = flujo alto nivel; F = proceso + estados; S = datos o secuencia.
 - Ejemplos encadenados: un ejemplo hilo por iniciativa; hijo declara `continúa: EJ-<padre>` y enlaza ancla existente.
 - Gate falla si: falta página de entidad · falta sección · falta diagrama del tipo exigido · enlace roto · página inalcanzable desde inicio · ejemplo sin `continúa` válido · término técnico fuera de glosario · legibilidad bajo piso.
-- Legibilidad: índice Szigriszt-Pazos/INFLESZ ≥ «bastante fácil» + oraciones ≤ 20 palabras (fórmula PROBABLE; verificar antes de implementar).
+- Legibilidad: P = 206,835 − 62,3·sílabas/palabras − palabras/oraciones (Szigriszt-Pazos) ≥ 65 (INFLESZ «bastante fácil») por página + oraciones ≤ 20 palabras. Mide prosa; excluye código, tablas, títulos y Navegación. Fuentes en `internal/wiki/legibilidad.go`.
 - Wiki es para humano: extensa permitida; Caveman no aplica. Claridad del ejemplo = criterio humano.
 
 ## Vistas y diagramas en chat

@@ -3,7 +3,7 @@
 // Árbol: docs/README.md (inicio) → docs/E001/README.md → docs/E001/F001/README.md → docs/E001/F001/S001.md.
 // Cada página: secciones fijas en orden, diagrama Mermaid según nivel, ejemplo con ancla EJ-<id>
 // encadenado al padre («continúa:»), navegación ↑ Subir / Abajo, enlaces y anclas válidos,
-// y alcanzable desde el inicio.
+// alcanzable desde el inicio, y prosa legible (legibilidad.go).
 package wiki
 
 import (
@@ -70,6 +70,7 @@ type pagina struct {
 	secciones      []seccion
 	anclas         map[string]bool
 	enlaces        []enlace
+	prosa          []string // líneas medibles por legibilidad; "" = corte de párrafo
 }
 
 // Verificar devuelve los problemas de la wiki bajo raiz/docs; vacío = gate OK.
@@ -119,6 +120,7 @@ func Verificar(raiz string) ([]string, error) {
 		problemas = append(problemas, revisarEjemplo(pg, paginas)...)
 		problemas = append(problemas, revisarNavegacion(pg, hijos[rel])...)
 		problemas = append(problemas, revisarEnlaces(raiz, pg, anclas)...)
+		problemas = append(problemas, revisarLegibilidad(pg)...)
 	}
 	problemas = append(problemas, revisarAlcance(paginas, orden)...)
 	return problemas, nil
@@ -171,6 +173,7 @@ func analizar(raiz string, pg *pagina) error {
 			continue
 		}
 		if strings.HasPrefix(t, "```") || strings.HasPrefix(t, "~~~") {
+			pg.prosa = append(pg.prosa, "")
 			cerca = t[:3]
 			mermaid = strings.TrimSpace(strings.Trim(t, "`~")) == "mermaid"
 			primera = true
@@ -190,6 +193,9 @@ func analizar(raiz string, pg *pagina) error {
 			if len(m[1]) == 2 {
 				pg.secciones = append(pg.secciones, seccion{titulo: m[2]})
 				actual = len(pg.secciones) - 1
+			}
+			pg.prosa = append(pg.prosa, "")
+			if len(m[1]) == 2 {
 				continue
 			}
 		}
@@ -204,6 +210,11 @@ func analizar(raiz string, pg *pagina) error {
 				pg.secciones[actual].contenido = true
 				pg.secciones[actual].lineas = append(pg.secciones[actual].lineas, limpia)
 			}
+		}
+		if reTitulo.MatchString(t) || titulo == secNav || strings.HasPrefix(t, "|") || strings.HasPrefix(t, "continúa:") {
+			pg.prosa = append(pg.prosa, "")
+		} else {
+			pg.prosa = append(pg.prosa, limpia)
 		}
 		for _, e := range reEnlace.FindAllStringSubmatch(limpia, -1) {
 			pg.enlaces = append(pg.enlaces, enlace{seccion: titulo, linea: limpia, destino: e[1]})
