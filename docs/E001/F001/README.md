@@ -8,7 +8,7 @@ Si construimos algo y no lo explicamos con dibujos y ejemplos, la máquina no no
 
 ## Para qué existe
 
-**El problema.** La documentación casi siempre se queda atrás. El agente programa, prueba y hace commit, pero olvida explicar. Pedirle «documenta» no basta: es una promesa, no un control.
+**El problema.** La documentación casi siempre se queda atrás. El [agente](../../glosario.md#agente) programa, prueba y hace commit, pero olvida explicar. Pedirle «documenta» no basta: es una promesa, no un control.
 
 **La solución.** Un gate revisa la wiki en cada `aquas verificar`, y por tanto en cada commit. Exige:
 
@@ -61,7 +61,7 @@ Slices de esta feature:
 |---|---|---|
 | [S001 Esqueleto + gate](S001.md) | Estructura, secciones, diagramas, ejemplos, enlaces | Hecho |
 | [S002 Glosario + legibilidad](S002.md) | Términos técnicos definidos y frases cortas | Hecho |
-| S003 Documentar lo existente | Constitución, compilador y comunicación | Pendiente |
+| [S003 Documentar lo existente](S003.md) | Páginas de referencia en `docs/ref/` | Hecho |
 
 ## Ejemplo de punta a punta
 
@@ -101,3 +101,4 @@ Para agregar documentación de algo nuevo:
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S001 · Esqueleto + gate](S001.md)
 - Abajo: [S002 · Glosario + legibilidad](S002.md)
+- Abajo: [S003 · Documentar lo existente](S003.md)

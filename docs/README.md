@@ -5,7 +5,7 @@ Esta es la puerta de entrada. Desde aquí bajas a cada [iniciativa](glosario.md#
 
 ## En una frase
 
-Este repositorio es el **libro de reglas** que siguen los agentes de Claude Code. También es una máquina que revisa que nadie se salte esas reglas.
+Este repositorio es el **libro de reglas** que siguen los [agentes](glosario.md#agente) de Claude Code. También es una máquina que revisa que nadie se salte esas reglas.
 
 ## Para qué existe
 
@@ -66,7 +66,7 @@ flowchart TD
 Para entender el repositorio, léelo en este orden:
 
 1. Lee esta página completa.
-2. Abre la [constitución](../gobierno/canonico/constitucion.md). Son nueve principios cortos.
+2. Lee la [constitución explicada](ref/constitucion.md). Son nueve principios cortos.
 3. Baja a la iniciativa [E001 Gobierno del trabajo](E001/README.md). Ahí está cómo se organiza cada pedido.
 4. Sigue bajando por las features y los slices. Cada página continúa el ejemplo de su página de arriba.
 
@@ -95,3 +95,6 @@ Mapa rápido del repositorio:
 
 - Abajo: [E001 · Gobierno del trabajo](E001/README.md)
 - Glosario: [palabras técnicas](glosario.md)
+- Referencia: [Constitución](ref/constitucion.md)
+- Referencia: [Compilador](ref/compilador.md)
+- Referencia: [Comunicación agente → humano](ref/comunicacion.md)

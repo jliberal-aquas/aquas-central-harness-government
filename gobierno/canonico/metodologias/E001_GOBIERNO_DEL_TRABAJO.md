@@ -1,5 +1,5 @@
 # E001 · Gobierno del trabajo · v0.1 · BORRADOR RATIFICADO
-Origen: especificación SS-GOV-EFS v0.1.0 podada con el humano (2026-10-20). Estado: decisiones cerradas; implementado F001/S001 (gate de wiki en `internal/wiki/`) y F001/S002 (legibilidad + glosario).
+Origen: especificación SS-GOV-EFS v0.1.0 podada con el humano (2026-10-20). Estado: decisiones cerradas; implementado F001/S001 (gate de wiki en `internal/wiki/`) F001/S002 (legibilidad + glosario) y F001/S003 (referencia `docs/ref/`).
 No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`) + resumen Caveman en orquestador.
 
 ## Decisiones ratificadas
@@ -48,7 +48,7 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 
 ## Wiki pedagógica (gate en `aquas verificar`)
 - Visor: VS Code (Markdown + Mermaid dibujado). Chat no dibuja Mermaid → en chat diagramas ASCII.
-- Árbol: `docs/README.md` (inicio: qué es el repo, constitución explicada, mapa) → `docs/E001/README.md` → `F001/README.md` → `S001.md`; `docs/glosario.md`.
+- Árbol: `docs/README.md` (inicio: qué es el repo, constitución explicada, mapa) → `docs/E001/README.md` → `F001/README.md` → `S001.md`; `docs/glosario.md`; referencia de lo existente: `docs/ref/<nombre>.md` (8 secciones, ancla `EJ-REF-<nombre>`, ≥1 Mermaid, sin continúa, enlazada desde inicio).
 - Secciones fijas por página: En una frase (niño de 5 años) · Para qué existe (problema → solución) · Analogía (con límites) · Diagrama · Ejemplo de punta a punta · Paso a paso · Cómo se usa · Abajo / ↑ Subir.
 - Diagramas por nivel: inicio y E = flujo alto nivel; F = proceso + estados; S = datos o secuencia.
 - Ejemplos encadenados: un ejemplo hilo por iniciativa; hijo declara `continúa: EJ-<padre>` y enlaza ancla existente.

@@ -2,6 +2,14 @@
 
 Palabras técnicas de esta wiki, explicadas en simple. Cada página enlaza aquí la primera vez que usa una de ellas.
 
+## agente
+
+Un programa de IA que recibe un pedido y trabaja con herramientas: lee, escribe y ejecuta.
+
+Variantes: agentes
+
+Ejemplo: el orquestador es el agente que habla contigo.
+
 ## ancla
 
 Una marca invisible dentro de una página. Un enlace puede saltar justo a ese punto.
@@ -37,6 +45,14 @@ Ejemplo: «E001/F001/S002: el gate mide la legibilidad de la wiki» es un commit
 El programa que lee los archivos canónicos y escribe los archivos generados, como `CLAUDE.md`.
 
 Ejemplo: `go run ./cmd/aquas compilar` ejecuta el compilador.
+
+## derivado
+
+Un archivo que nadie escribe a mano. El compilador lo genera desde los canónicos.
+
+Variantes: derivados, derivada, derivadas
+
+Ejemplo: `CLAUDE.md` es derivado; sale de `gobierno/canonico/constitucion.md`.
 
 ## feature
 
@@ -133,6 +149,14 @@ Una tarea pequeña que se prueba y se entrega sola. Es la parte más chica de un
 Variantes: slices
 
 Ejemplo: S001 Esqueleto + gate es un slice de la feature F001.
+
+## token
+
+La unidad con que una IA mide el texto que lee y escribe. Cada token cuesta tiempo y dinero.
+
+Variantes: tokens
+
+Ejemplo: `CLAUDE.md` se carga en cada sesión, así que cada palabra de más gasta tokens siempre.
 
 ## wiki
 

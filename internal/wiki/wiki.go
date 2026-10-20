@@ -4,6 +4,8 @@
 // Cada página: secciones fijas en orden, diagrama Mermaid según nivel, ejemplo con ancla EJ-<id>
 // encadenado al padre («continúa:»), navegación ↑ Subir / Abajo, enlaces y anclas válidos,
 // alcanzable desde el inicio, prosa legible (legibilidad.go) y términos enlazados al glosario (glosario.go).
+// Referencia (S003): docs/ref/<nombre>.md documenta lo existente; ancla EJ-REF-<nombre>, cualquier diagrama
+// Mermaid, ↑ Subir al inicio, enlazada desde el inicio; sin «continúa:».
 package wiki
 
 import (
@@ -41,12 +43,14 @@ const (
 	nF
 	nS
 	nGlosario
+	nRef
 )
 
 var (
 	reE       = regexp.MustCompile(`^docs/(E\d{3})/README\.md$`)
 	reF       = regexp.MustCompile(`^docs/(E\d{3})/(F\d{3})/README\.md$`)
 	reS       = regexp.MustCompile(`^docs/(E\d{3})/(F\d{3})/(S\d{3})\.md$`)
+	reRef     = regexp.MustCompile(`^docs/ref/([a-z0-9-]+)\.md$`)
 	reEnlace  = regexp.MustCompile(`!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)`)
 	reCodigo  = regexp.MustCompile("`[^`]*`")
 	reTitulo  = regexp.MustCompile(`^(#{1,6})\s+(.*?)\s*#*\s*$`)
@@ -92,7 +96,7 @@ func Verificar(raiz string) ([]string, error) {
 		rel := relativa(raiz, p)
 		pg := clasificar(rel)
 		if pg == nil {
-			problemas = append(problemas, rel+": fuera del árbol (válidas: docs/README.md, docs/glosario.md, docs/E000/README.md, docs/E000/F000/README.md, docs/E000/F000/S000.md)")
+			problemas = append(problemas, rel+": fuera del árbol (válidas: docs/README.md, docs/glosario.md, docs/E000/README.md, docs/E000/F000/README.md, docs/E000/F000/S000.md, docs/ref/nombre-en-minusculas.md)")
 			return nil
 		}
 		if err := analizar(raiz, pg); err != nil {
@@ -153,6 +157,9 @@ func clasificar(rel string) *pagina {
 	}
 	if rel == glosario {
 		return &pagina{rel: rel, nivel: nGlosario}
+	}
+	if m := reRef.FindStringSubmatch(rel); m != nil {
+		return &pagina{rel: rel, nivel: nRef, padre: inicio, ej: "EJ-REF-" + m[1]}
 	}
 	if m := reE.FindStringSubmatch(rel); m != nil {
 		return &pagina{rel: rel, nivel: nE, padre: inicio, ej: "EJ-" + m[1]}
@@ -309,6 +316,12 @@ func revisarDiagramas(pg *pagina) []string {
 		return false
 	}
 	var ps []string
+	if pg.nivel == nRef {
+		if len(s.diagramas) == 0 {
+			ps = append(ps, pg.rel+": falta diagrama Mermaid en «Diagrama» (cualquier tipo)")
+		}
+		return ps
+	}
 	if pg.nivel != nS && !tiene("flowchart", "graph") {
 		ps = append(ps, pg.rel+": falta diagrama flowchart en «Diagrama» (flujo del nivel)")
 	}

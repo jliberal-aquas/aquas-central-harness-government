@@ -10,7 +10,7 @@ Cada cosa que pides se anota y se parte en pedacitos que se pueden probar. No se
 
 **El problema.** Sin orden, pasan cuatro cosas malas:
 
-- El agente entiende otra cosa y nadie lo nota hasta el final.
+- El [agente](../glosario.md#agente) entiende otra cosa y nadie lo nota hasta el final.
 - Un cambio rompe algo en otro lado y nadie revisa los alrededores.
 - La documentación queda vieja, porque nadie obliga a actualizarla.
 - No queda rastro de qué pediste y qué se acordó.
