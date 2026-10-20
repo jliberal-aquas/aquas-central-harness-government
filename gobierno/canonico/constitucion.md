@@ -20,6 +20,7 @@
 - Canónicos: `gobierno/canonico/**`. Únicos archivos editables de gobierno.
 - Config: `gobierno/config/agentes.json` (agentes) y `gobierno/config/documentos.json` (documentos como este).
 - Compilados: `CLAUDE.md`, `.claude/agents/*.md`. Llevan marca «GENERADO»; NO editar a mano.
+- Presupuesto: `max_caracteres` obligatorio por salida en config; gate falla si se excede.
 - Sello: `gobierno/config/sellos.json` guarda SHA-256 de cada fuente y cada salida.
 - Compilar: `go run ./cmd/aquas compilar`. Verificar (gate): `go run ./cmd/aquas verificar`.
 - Disparadores: hook PostToolUse de Claude Code (recompila al editar) + git pre-commit (bloquea si hay desfase).

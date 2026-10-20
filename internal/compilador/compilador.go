@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"unicode/utf8"
 )
 
 const (
@@ -31,11 +32,13 @@ type Agente struct {
 	Cuerpo       string   `json:"cuerpo"`
 	Reglas       []string `json:"reglas"`
 	Comunicacion []string `json:"comunicacion"`
+	Max          int      `json:"max_caracteres"` // presupuesto de contexto, obligatorio
 }
 
 type Documento struct {
 	Salida  string   `json:"salida"`
 	Fuentes []string `json:"fuentes"`
+	Max     int      `json:"max_caracteres"` // presupuesto de contexto, obligatorio
 }
 
 // Salida es un archivo derivado calculado en memoria.
@@ -43,6 +46,7 @@ type Salida struct {
 	Ruta      string
 	Contenido []byte
 	Fuentes   []string // canónicos + config que la determinan
+	Max       int      // presupuesto en caracteres (runas)
 }
 
 type Sello struct {
@@ -81,8 +85,8 @@ func Planificar(raiz string) ([]Salida, error) {
 
 	var salidas []Salida
 	for _, d := range docs.Documentos {
-		if d.Salida == "" || len(d.Fuentes) == 0 {
-			return nil, fmt.Errorf("%s: documento sin salida o sin fuentes", RutaDocumentos)
+		if d.Salida == "" || len(d.Fuentes) == 0 || d.Max <= 0 {
+			return nil, fmt.Errorf("%s: documento requiere salida, fuentes y max_caracteres > 0", RutaDocumentos)
 		}
 		partes, err := leerCanonicos(raiz, d.Fuentes)
 		if err != nil {
@@ -93,6 +97,7 @@ func Planificar(raiz string) ([]Salida, error) {
 			Ruta:      d.Salida,
 			Contenido: []byte(contenido),
 			Fuentes:   append([]string{RutaDocumentos}, d.Fuentes...),
+			Max:       d.Max,
 		})
 	}
 
@@ -108,8 +113,8 @@ func Planificar(raiz string) ([]Salida, error) {
 }
 
 func compilarAgente(raiz string, a Agente) (Salida, error) {
-	if a.Name == "" || a.Description == "" || a.Model == "" || a.Cuerpo == "" {
-		return Salida{}, fmt.Errorf("%s: agente %q requiere name, description, model y cuerpo", RutaAgentes, a.Name)
+	if a.Name == "" || a.Description == "" || a.Model == "" || a.Cuerpo == "" || a.Max <= 0 {
+		return Salida{}, fmt.Errorf("%s: agente %q requiere name, description, model, cuerpo y max_caracteres > 0", RutaAgentes, a.Name)
 	}
 	fuentes := append([]string{a.Cuerpo}, a.Reglas...)
 	fuentes = append(fuentes, a.Comunicacion...)
@@ -134,6 +139,7 @@ func compilarAgente(raiz string, a Agente) (Salida, error) {
 		Ruta:      path.Join(DirAgentes, a.Name+".md"),
 		Contenido: []byte(b.String()),
 		Fuentes:   append([]string{RutaAgentes}, fuentes...),
+		Max:       a.Max,
 	}, nil
 }
 
@@ -190,6 +196,9 @@ func Verificar(raiz string) ([]string, error) {
 			problemas = append(problemas, s.Ruta+": no existe")
 		case !bytes.Equal(normalizar(actual), s.Contenido):
 			problemas = append(problemas, s.Ruta+": desfasado o editado a mano")
+		}
+		if n := utf8.RuneCount(s.Contenido); n > s.Max {
+			problemas = append(problemas, fmt.Sprintf("%s: excede presupuesto (%d > %d caracteres)", s.Ruta, n, s.Max))
 		}
 	}
 	nuevo, err := sellar(raiz, salidas)

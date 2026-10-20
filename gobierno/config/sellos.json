@@ -1,21 +1,21 @@
 {
   "salidas": {
     ".claude/agents/orchestrator.md": {
-      "sha256": "faba423b840528928a180372b67291422fa4ff7925bd9b18d47a295b3efe6d6d",
+      "sha256": "5ff47cec9acd4b7e5bf30aa23a21d3a3082ef53c159eab224ed11828fb93901c",
       "fuentes": {
-        "gobierno/canonico/agentes/orquestador.md": "a3d148afe2e90e31f484b8b4b32545bbe10a0cccf52a0b011ac33aeb4d394cb0",
-        "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md": "400562b273bbc565194db6386478610765970e2fbfff4ccb69168df3f91391e0",
-        "gobierno/canonico/comunicacion/02_PEDAGOGIA_CHAT.md": "5473aa196887f3b7497c085b2ded8a74c815f97c6a34a950afec7aad67602e94",
-        "gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md": "25297eb7b6d7f0364f47e4176ef60f60a5d6d27b98fea49a4fa5a5c6a12fe02c",
-        "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1697bced7e39550fd41672710aad0f1c2acf196877852a264526d265325fea8e",
-        "gobierno/config/agentes.json": "f4e8165dccdaec041656315fcc7546e309e2e359404c2daf28a7882649dd5baf"
+        "gobierno/canonico/agentes/orquestador.md": "13c321eebb897abd687aa3eeba1d48eef8e4d39fc1459daf7a4c3debea5e823f",
+        "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md": "4555289159ad70feca5e42337c87b9dbd37682863f979276d25b2aab0b5a9e46",
+        "gobierno/canonico/comunicacion/02_PEDAGOGIA_CHAT.md": "04793b3914f29bedb875fcd43dc154a893d3e8535c0a5274cd9ff4be19c7eca6",
+        "gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md": "a1f498624ced9d2f222f78bfd7d4a143420fb377d833d41d43312e8c4c9994b3",
+        "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
+        "gobierno/config/agentes.json": "395c902f864e2dc55bdec050488556f4c03268bd945162c4031c4e2a75255fd4"
       }
     },
     "CLAUDE.md": {
-      "sha256": "d6d759bea8e91f299ffe6d09f885de0eaf7d15e4fc040461092d4c54fefb1530",
+      "sha256": "58e6938c1fb15f3015d40c9352b9b00bba400e23654be47d9effed14810c0b97",
       "fuentes": {
-        "gobierno/canonico/constitucion.md": "b92807d96634bd66ecce645cdf39d59f42b382d0c42c80ae85ca5c72f02d89bb",
-        "gobierno/config/documentos.json": "393aca936a55ba4512216460cdd525e1870fb09c6214d15296b073d55cd0d0b6"
+        "gobierno/canonico/constitucion.md": "2fe51298c992f6201593703db0c0d76189358371a7529d6f8c83941251e47816",
+        "gobierno/config/documentos.json": "bba281d0a0220ebf3db4e34ec957cc9d60fbfa833616876176f80d94ae9a24fe"
       }
     }
   }

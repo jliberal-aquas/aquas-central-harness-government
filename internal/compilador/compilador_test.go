@@ -12,10 +12,10 @@ func repoMinimo(t *testing.T) string {
 	t.Helper()
 	raiz := t.TempDir()
 	archivos := map[string]string{
-		RutaDocumentos: `{"documentos":[{"salida":"CLAUDE.md","fuentes":["gobierno/canonico/constitucion.md"]}]}`,
+		RutaDocumentos: `{"documentos":[{"salida":"CLAUDE.md","fuentes":["gobierno/canonico/constitucion.md"],"max_caracteres":10000}]}`,
 		RutaAgentes: `{"agentes":[{"name":"orchestrator","description":"Orquesta: <todo> & más","model":"claude-opus-5-5","effort":"high",
 			"cuerpo":"gobierno/canonico/agentes/orq.md","reglas":["gobierno/canonico/reglas/r1.md"],
-			"comunicacion":["gobierno/canonico/comunicacion/c1.md"]}]}`,
+			"comunicacion":["gobierno/canonico/comunicacion/c1.md"],"max_caracteres":10000}]}`,
 		"gobierno/canonico/constitucion.md":    "# Constitución\r\n- regla A\r\n",
 		"gobierno/canonico/agentes/orq.md":     "# Orquestador\n",
 		"gobierno/canonico/reglas/r1.md":       "# Regla 1\n",
@@ -134,5 +134,47 @@ func TestCompilarEsIdempotente(t *testing.T) {
 	}
 	if len(inf.Escritos) != 0 {
 		t.Errorf("segunda compilación reescribió %v; debía ser no-op", inf.Escritos)
+	}
+}
+
+// fijarPresupuesto reescribe la config de agentes con otro max_caracteres ("" = omitido).
+func fijarPresupuesto(t *testing.T, raiz, campo string) {
+	t.Helper()
+	cfg := `{"agentes":[{"name":"orchestrator","description":"d","model":"m",
+		"cuerpo":"gobierno/canonico/agentes/orq.md"` + campo + `}]}`
+	if err := escribir(raiz, RutaAgentes, []byte(cfg)); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestPresupuestoExcedidoFallaGate(t *testing.T) {
+	raiz := repoMinimo(t)
+	fijarPresupuesto(t, raiz, `,"max_caracteres":20`)
+	if _, err := Compilar(raiz); err != nil {
+		t.Fatal(err)
+	}
+	problemas, err := Verificar(raiz)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(problemas) != 1 || !strings.Contains(problemas[0], "excede presupuesto") {
+		t.Fatalf("se esperaba 1 problema de presupuesto, hubo: %v", problemas)
+	}
+}
+
+func TestPresupuestoDentroPasaGate(t *testing.T) {
+	raiz := repoMinimo(t)
+	fijarPresupuesto(t, raiz, `,"max_caracteres":5000`)
+	if _, err := Compilar(raiz); err != nil {
+		t.Fatal(err)
+	}
+	verificarSinProblemas(t, raiz)
+}
+
+func TestSinPresupuestoSeRechaza(t *testing.T) {
+	raiz := repoMinimo(t)
+	fijarPresupuesto(t, raiz, "")
+	if _, err := Planificar(raiz); err == nil || !strings.Contains(err.Error(), "max_caracteres") {
+		t.Fatalf("se esperaba error por falta de max_caracteres, hubo: %v", err)
 	}
 }

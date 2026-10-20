@@ -4,7 +4,8 @@
       "salida": "CLAUDE.md",
       "fuentes": [
         "gobierno/canonico/constitucion.md"
-      ]
+      ],
+      "max_caracteres": 2700
     }
   ]
 }
