@@ -1,9 +1,9 @@
 {
   "salidas": {
     ".claude/agents/orchestrator.md": {
-      "sha256": "967fa092744af73bfd020eb7b0654e76e13b90166d553eef3de058d395e97415",
+      "sha256": "faba423b840528928a180372b67291422fa4ff7925bd9b18d47a295b3efe6d6d",
       "fuentes": {
-        "gobierno/canonico/agentes/orquestador.md": "75f6efbb69796e0b63da9395236d6652c3eda26ee8f641b95d48879419d29c54",
+        "gobierno/canonico/agentes/orquestador.md": "a3d148afe2e90e31f484b8b4b32545bbe10a0cccf52a0b011ac33aeb4d394cb0",
         "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md": "400562b273bbc565194db6386478610765970e2fbfff4ccb69168df3f91391e0",
         "gobierno/canonico/comunicacion/02_PEDAGOGIA_CHAT.md": "5473aa196887f3b7497c085b2ded8a74c815f97c6a34a950afec7aad67602e94",
         "gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md": "25297eb7b6d7f0364f47e4176ef60f60a5d6d27b98fea49a4fa5a5c6a12fe02c",
@@ -12,9 +12,9 @@
       }
     },
     "CLAUDE.md": {
-      "sha256": "c0be290c51abd2f8755690bbb04a5a4ecc8a1fbc6cbd8270e5ae5a26c60e79dd",
+      "sha256": "d6d759bea8e91f299ffe6d09f885de0eaf7d15e4fc040461092d4c54fefb1530",
       "fuentes": {
-        "gobierno/canonico/constitucion.md": "5b6777ea18cf7da54c2c90fc35abfbcb8d14e7330c322fe2b402f2a140295693",
+        "gobierno/canonico/constitucion.md": "b92807d96634bd66ecce645cdf39d59f42b382d0c42c80ae85ca5c72f02d89bb",
         "gobierno/config/documentos.json": "393aca936a55ba4512216460cdd525e1870fb09c6214d15296b073d55cd0d0b6"
       }
     }

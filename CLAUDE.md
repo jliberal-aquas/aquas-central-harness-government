@@ -16,6 +16,7 @@
 6. Evidencia antes de afirmar: no declarar «hecho» sin prueba ejecutada.
 7. Contexto permanente en formato Caveman: corto, denso, sin relleno. Detalle extenso va en archivos bajo demanda.
 8. Fuente canónica → compilado: se edita solo el canónico; todo derivado se regenera y se sella.
+9. Calidad primero; economía de tokens segundo. Token = moneda de todo uso agéntico: medir y justificar cada gasto.
 
 ## Canónicos y compilación
 - Canónicos: `gobierno/canonico/**`. Únicos archivos editables de gobierno.

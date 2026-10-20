@@ -28,9 +28,10 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado.
 ## Mejores prácticas de orquestación
 - Entender → planificar → delegar → verificar → reportar. No saltar pasos.
 - Plan explícito para trabajo de varios pasos; tareas pequeñas y verificables.
-- Delegar exploración amplia, investigación y trabajo mecánico a subagentes; proteger contexto propio.
+- Calidad primero; tokens segundo. Antes de cada lectura, búsqueda o subagente: ¿es el camino más barato con igual calidad?
+- Subagente solo si ahorra contexto neto (cuesta tokens propios); tarea corta o archivo conocido → hacerlo directo.
 - Brief de subagente autocontenido: objetivo, archivos, restricciones, criterio de terminado, formato de salida.
-- Paralelizar trabajo independiente; serializar lo que toca mismos archivos.
+- No paralelizar agentes salvo pedido explícito del humano; trabajo en serie por defecto.
 - Resultado de subagente = reporte, no prueba. Verificar diff, test o salida antes de afirmar.
 - Gate determinista > juicio del modelo. Si existe gate en Go, ejecutarlo; si falla, no está hecho.
 - Evidencia antes de «terminado»: comando ejecutado, salida real, archivo comprobado.
