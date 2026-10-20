@@ -1,0 +1,4 @@
+#!/bin/sh
+# Gate aquas: bloquea el commit si algún derivado o sello está desfasado.
+mkdir -p ./.tmp
+GOTMPDIR="$PWD/.tmp" TMP="$PWD/.tmp" TEMP="$PWD/.tmp" exec go run ./cmd/aquas verificar
