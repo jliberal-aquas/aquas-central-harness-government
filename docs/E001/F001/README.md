@@ -1,6 +1,6 @@
 # F001 · Wiki + gate
 
-Feature que obliga a explicar todo el repositorio en esta wiki. Un gate en Go bloquea el commit si la wiki está incompleta.
+[Feature](../../glosario.md#feature) que obliga a explicar todo el repositorio en esta [wiki](../../glosario.md#wiki). Un [gate](../../glosario.md#gate) en [Go](../../glosario.md#go) bloquea el [commit](../../glosario.md#commit) si la wiki está incompleta.
 
 ## En una frase
 
@@ -12,12 +12,13 @@ Si construimos algo y no lo explicamos con dibujos y ejemplos, la máquina no no
 
 **La solución.** Un gate revisa la wiki en cada `aquas verificar`, y por tanto en cada commit. Exige:
 
-- cada página en su ruta fija: inicio, iniciativa, feature o slice;
+- cada página en su ruta fija: inicio, [iniciativa](../../glosario.md#iniciativa), feature o [slice](../../glosario.md#slice);
 - las mismas ocho secciones en el mismo orden;
 - el diagrama que corresponde a cada nivel;
 - un ejemplo que continúa el ejemplo de la página de arriba;
 - enlaces que funcionan y páginas a las que se llega desde el inicio;
-- prosa fácil de leer: índice 65 o más y oraciones de 20 palabras como máximo.
+- prosa fácil de leer: índice 65 o más y oraciones de 20 palabras como máximo;
+- cada término técnico enlazado a su entrada del glosario la primera vez que aparece.
 
 ## Analogía
 
@@ -59,7 +60,7 @@ Slices de esta feature:
 | Slice | Qué entrega | Estado |
 |---|---|---|
 | [S001 Esqueleto + gate](S001.md) | Estructura, secciones, diagramas, ejemplos, enlaces | Hecho |
-| [S002 Glosario + legibilidad](S002.md) | Términos técnicos definidos y frases cortas | En curso: legibilidad hecha, glosario por decidir |
+| [S002 Glosario + legibilidad](S002.md) | Términos técnicos definidos y frases cortas | Hecho |
 | S003 Documentar lo existente | Constitución, compilador y comunicación | Pendiente |
 
 ## Ejemplo de punta a punta
@@ -85,7 +86,7 @@ Para agregar documentación de algo nuevo:
 2. Crea su página en la ruta fija. Ejemplo: `docs/E001/F002/README.md`.
 3. Escribe las ocho secciones en orden.
 4. Agrega el diagrama del nivel.
-5. En el ejemplo, pon el ancla propia y la línea `continúa:` hacia la página de arriba.
+5. En el ejemplo, pon el [ancla](../../glosario.md#ancla) propia y la línea `continúa:` hacia la página de arriba.
 6. Enlaza la página nueva desde la «Navegación» de su página padre.
 7. Ejecuta `go run ./cmd/aquas verificar` y corrige hasta ver «GATE OK».
 
@@ -93,7 +94,7 @@ Para agregar documentación de algo nuevo:
 
 - Leer: abre `docs/README.md` en VS Code y pulsa Ctrl+Shift+V.
 - Revisar: `go run ./cmd/aquas verificar`. Cada problema sale como `archivo: problema`.
-- El pre-commit ejecuta lo mismo; no hace falta acordarse.
+- El [pre-commit](../../glosario.md#pre-commit) ejecuta lo mismo; no hace falta acordarse.
 
 ## Navegación
 

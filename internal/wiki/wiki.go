@@ -3,7 +3,7 @@
 // Árbol: docs/README.md (inicio) → docs/E001/README.md → docs/E001/F001/README.md → docs/E001/F001/S001.md.
 // Cada página: secciones fijas en orden, diagrama Mermaid según nivel, ejemplo con ancla EJ-<id>
 // encadenado al padre («continúa:»), navegación ↑ Subir / Abajo, enlaces y anclas válidos,
-// alcanzable desde el inicio, y prosa legible (legibilidad.go).
+// alcanzable desde el inicio, prosa legible (legibilidad.go) y términos enlazados al glosario (glosario.go).
 package wiki
 
 import (
@@ -40,6 +40,7 @@ const (
 	nE
 	nF
 	nS
+	nGlosario
 )
 
 var (
@@ -79,6 +80,9 @@ func Verificar(raiz string) ([]string, error) {
 		return []string{"falta docs/README.md (inicio de la wiki)"}, nil
 	}
 	var problemas []string
+	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(glosario))); errors.Is(err, fs.ErrNotExist) {
+		problemas = append(problemas, "falta "+glosario+" (glosario de términos técnicos)")
+	}
 	paginas := map[string]*pagina{}
 	var orden []string
 	err := filepath.WalkDir(filepath.Join(raiz, "docs"), func(p string, d fs.DirEntry, err error) error {
@@ -88,7 +92,7 @@ func Verificar(raiz string) ([]string, error) {
 		rel := relativa(raiz, p)
 		pg := clasificar(rel)
 		if pg == nil {
-			problemas = append(problemas, rel+": fuera del árbol (válidas: docs/README.md, docs/E000/README.md, docs/E000/F000/README.md, docs/E000/F000/S000.md)")
+			problemas = append(problemas, rel+": fuera del árbol (válidas: docs/README.md, docs/glosario.md, docs/E000/README.md, docs/E000/F000/README.md, docs/E000/F000/S000.md)")
 			return nil
 		}
 		if err := analizar(raiz, pg); err != nil {
@@ -113,14 +117,25 @@ func Verificar(raiz string) ([]string, error) {
 			hijos[pg.padre] = append(hijos[pg.padre], rel)
 		}
 	}
+	var ts []termino
+	if g := paginas[glosario]; g != nil {
+		ts = terminos(g)
+	}
 	for _, rel := range orden {
 		pg := paginas[rel]
+		if pg.nivel == nGlosario {
+			problemas = append(problemas, revisarGlosario(pg)...)
+			problemas = append(problemas, revisarEnlaces(raiz, pg, anclas)...)
+			problemas = append(problemas, revisarLegibilidad(pg)...)
+			continue
+		}
 		problemas = append(problemas, revisarSecciones(pg)...)
 		problemas = append(problemas, revisarDiagramas(pg)...)
 		problemas = append(problemas, revisarEjemplo(pg, paginas)...)
 		problemas = append(problemas, revisarNavegacion(pg, hijos[rel])...)
 		problemas = append(problemas, revisarEnlaces(raiz, pg, anclas)...)
 		problemas = append(problemas, revisarLegibilidad(pg)...)
+		problemas = append(problemas, revisarTerminos(pg, ts)...)
 	}
 	problemas = append(problemas, revisarAlcance(paginas, orden)...)
 	return problemas, nil
@@ -135,6 +150,9 @@ func relativa(raiz, p string) string {
 func clasificar(rel string) *pagina {
 	if rel == inicio {
 		return &pagina{rel: rel, nivel: nInicio, ej: "EJ-INICIO"}
+	}
+	if rel == glosario {
+		return &pagina{rel: rel, nivel: nGlosario}
 	}
 	if m := reE.FindStringSubmatch(rel); m != nil {
 		return &pagina{rel: rel, nivel: nE, padre: inicio, ej: "EJ-" + m[1]}

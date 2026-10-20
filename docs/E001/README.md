@@ -1,6 +1,6 @@
 # E001 · Gobierno del trabajo
 
-Iniciativa que ordena **cada pedido** del humano: desde la frase escrita en el chat hasta el commit verificado.
+[Iniciativa](../glosario.md#iniciativa) que ordena **cada pedido** del humano: desde la frase escrita en el chat hasta el [commit](../glosario.md#commit) verificado.
 
 ## En una frase
 
@@ -15,12 +15,12 @@ Cada cosa que pides se anota y se parte en pedacitos que se pueden probar. No se
 - La documentación queda vieja, porque nadie obliga a actualizarla.
 - No queda rastro de qué pediste y qué se acordó.
 
-**La solución.** Un camino fijo para cada pedido, con controles que ejecuta Go:
+**La solución.** Un camino fijo para cada pedido, con controles que ejecuta [Go](../glosario.md#go):
 
 - Se guarda tu texto literal y lo que se acordó contigo.
-- El trabajo se parte en tres tamaños: iniciativa → feature → slice.
-- Cada slice nace con una prueba en rojo y termina con la misma prueba en verde.
-- Al cerrar, un **sello** obliga a revisar todo lo que el cambio pudo afectar.
+- El trabajo se parte en tres tamaños: iniciativa → [feature](../glosario.md#feature) → [slice](../glosario.md#slice).
+- Cada slice nace con una [prueba en rojo](../glosario.md#prueba-en-rojo) y termina con la misma [prueba en verde](../glosario.md#prueba-en-verde).
+- Al cerrar, un **[sello](../glosario.md#sello)** obliga a revisar todo lo que el cambio pudo afectar.
 
 No hay aprobaciones formales. Tu única tarea es responder cuando el agente tiene una duda real.
 
@@ -69,17 +69,17 @@ Estado actual de sus features:
 
 <a id="EJ-E001"></a>
 
-**Situación.** Jesús escribe: «quiero que la wiki avise si un enlace está roto».
+**Situación.** Jesús escribe: «quiero que la [wiki](../glosario.md#wiki) avise si un enlace está roto».
 
 1. **Auditoría.** Se guarda su frase tal cual. *(Pendiente: llega con F002.)*
-2. **Refinado.** El agente no tiene dudas: «enlace roto» significa un enlace a un archivo o ancla que no existe.
+2. **Refinado.** El agente no tiene dudas: «enlace roto» significa un enlace a un archivo o [ancla](../glosario.md#ancla) que no existe.
 3. **Clasificación.** Es trabajo. Pertenece a la iniciativa E001, porque trata de cómo se gobierna el trabajo.
-4. **Feature.** Encaja en F001 Wiki + gate.
+4. **Feature.** Encaja en F001 Wiki + [gate](../glosario.md#gate).
 5. **Slice.** Se vuelve E001/F001/S001: «el gate revisa estructura, enlaces, diagramas y ejemplos».
 6. **Rojo.** Se escribe una prueba con una página que enlaza a `no-existe.md`. La prueba exige el error «enlace roto». Sin código nuevo, la prueba falla.
 7. **Verde.** Se programa el gate. La misma prueba ahora pasa.
 8. **Sello.** Se revisa lo afectado: la constitución menciona el gate, el mapa del repositorio y esta wiki.
-9. **Cierre.** Commit con el porqué. El pre-commit vuelve a ejecutar el gate.
+9. **Cierre.** Commit con el porqué. El [pre-commit](../glosario.md#pre-commit) vuelve a ejecutar el gate.
 
 Las páginas de abajo continúan este mismo ejemplo con más detalle.
 

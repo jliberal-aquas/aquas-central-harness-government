@@ -64,7 +64,8 @@ func wikiValida(t *testing.T) string {
 	t.Helper()
 	raiz := t.TempDir()
 	escribir(t, raiz, tInicio, tPagina("EJ-INICIO", "", mermaid("flowchart LR"),
-		"- Abajo: [E001](E001/README.md)"))
+		"- Abajo: [E001](E001/README.md)\n- Glosario: [Glosario](glosario.md)"))
+	escribir(t, raiz, "docs/glosario.md", "# Glosario\n\nPalabras técnicas.\n\n## zeta\n\nUna letra.\n\nEjemplo: la zeta va al final.\n")
 	escribir(t, raiz, tE001, tPagina("EJ-E001", "", mermaid("flowchart TD"),
 		"- ↑ Subir: [Inicio](../README.md)\n- Abajo: [F001](F001/README.md)"))
 	escribir(t, raiz, tF001, tPagina("EJ-E001-F001", "continúa: [EJ-E001](../README.md#EJ-E001)\n\n",
