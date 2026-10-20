@@ -27,8 +27,9 @@
 - Clon nuevo: activar pre-commit con `git config core.hooksPath .githooks`.
 
 ## Mapa del repo
-- `cmd/aquas/` → CLI del harness. `internal/compilador/` → compilador y sellado.
+- `cmd/aquas/` → CLI del harness. `internal/compilador/` → compilador y sellado. `internal/wiki/` → gate wiki.
+- `docs/` → wiki para humanos; gate la exige.
 - `.claude/settings.json` → fija `orchestrator` como agente por defecto y registra hooks.
 - `gobierno/canonico/agentes/` → cuerpo de cada agente. `gobierno/canonico/reglas/` → reglas enlazables.
 - `gobierno/canonico/comunicacion/` → reglas agente → humano; solo las carga el orquestador.
-- Futuro: `metodologias/`, `plantillas/` (scaffolding de proyectos), más gates.
+- `metodologias/` = specs. Futuro: `plantillas/`, más gates.

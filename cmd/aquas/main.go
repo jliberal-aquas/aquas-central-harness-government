@@ -1,7 +1,7 @@
 // Comando aquas: harness de gobierno para proyectos Claude Code.
 //
 //	aquas compilar   regenera derivados y sello desde los canónicos
-//	aquas verificar  gate: falla (exit 1) si algún derivado o sello está desfasado
+//	aquas verificar  gate: falla (exit 1) si algún derivado o sello está desfasado o la wiki docs/ incumple
 //	aquas hook       modo hook PostToolUse de Claude Code (lee JSON por stdin)
 package main
 
@@ -14,6 +14,7 @@ import (
 	"strings"
 
 	"github.com/jliberal/aquas-harness-governance/internal/compilador"
+	"github.com/jliberal/aquas-harness-governance/internal/wiki"
 )
 
 func main() {
@@ -33,19 +34,25 @@ func main() {
 		}
 		reportar(os.Stdout, inf)
 	case "verificar":
-		problemas, err := compilador.Verificar(raiz)
+		derivados, err := compilador.Verificar(raiz)
 		if err != nil {
 			fallar(1, err)
 		}
-		if len(problemas) > 0 {
-			fmt.Fprintln(os.Stderr, "GATE FALLIDO · derivados desfasados:")
-			for _, p := range problemas {
-				fmt.Fprintln(os.Stderr, "  - "+p)
-			}
-			fmt.Fprintln(os.Stderr, "Corrige con: go run ./cmd/aquas compilar")
+		docs, err := wiki.Verificar(raiz)
+		if err != nil {
+			fallar(1, err)
+		}
+		if len(derivados) > 0 {
+			listar("GATE FALLIDO · derivados desfasados:", derivados)
+			fmt.Fprintln(os.Stderr, "Desfase → go run ./cmd/aquas compilar · presupuesto → recortar canónico")
+		}
+		if len(docs) > 0 {
+			listar("GATE FALLIDO · wiki docs/ incompleta:", docs)
+		}
+		if len(derivados)+len(docs) > 0 {
 			os.Exit(1)
 		}
-		fmt.Println("GATE OK · derivados y sello al día")
+		fmt.Println("GATE OK · derivados, sello y wiki al día")
 	case "hook":
 		hook(raiz)
 	default:
@@ -95,6 +102,13 @@ func reportar(w io.Writer, inf compilador.Informe) {
 	}
 	fmt.Fprintln(w, "Recompilado · fuentes cambiadas: "+lista(inf.FuentesCambiadas))
 	fmt.Fprintln(w, "Escritos: "+lista(inf.Escritos))
+}
+
+func listar(titulo string, problemas []string) {
+	fmt.Fprintln(os.Stderr, titulo)
+	for _, p := range problemas {
+		fmt.Fprintln(os.Stderr, "  - "+p)
+	}
 }
 
 func lista(xs []string) string {
