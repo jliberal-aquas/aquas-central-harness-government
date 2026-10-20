@@ -1,0 +1,19 @@
+{
+  "agentes": [
+    {
+      "name": "orchestrator",
+      "description": "Orquestador por defecto del hilo principal. Único agente que conversa con el humano. Asesora, refina pedidos, planifica, delega en subagentes y verifica con evidencia.",
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "cuerpo": "gobierno/canonico/agentes/orquestador.md",
+      "reglas": [
+        "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md"
+      ],
+      "comunicacion": [
+        "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md",
+        "gobierno/canonico/comunicacion/02_PEDAGOGIA_CHAT.md",
+        "gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md"
+      ]
+    }
+  ]
+}

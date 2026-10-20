@@ -1,0 +1,10 @@
+{
+  "documentos": [
+    {
+      "salida": "CLAUDE.md",
+      "fuentes": [
+        "gobierno/canonico/constitucion.md"
+      ]
+    }
+  ]
+}
