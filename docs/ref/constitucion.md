@@ -21,7 +21,7 @@ Qué contiene:
 | Canónicos y compilación | Qué archivos se editan, cuáles se generan y cómo se sellan |
 | Mapa del repo | Qué guarda cada carpeta |
 
-Tiene un tope: 2.700 caracteres. Es texto que el agente carga siempre, y cada carácter cuesta.
+Tiene un tope: 5.000 caracteres. Es texto que el agente carga siempre. El tope solo frena un desborde extremo; no obliga a recortar.
 
 ## Analogía
 
@@ -39,7 +39,7 @@ Cómo llega la constitución a cada sesión.
 
 ```mermaid
 flowchart LR
-    C["gobierno/canonico/<br/>constitucion.md"] --> D["gobierno/config/<br/>documentos.json<br/>tope 2.700"]
+    C["gobierno/canonico/<br/>constitucion.md"] --> D["gobierno/config/<br/>documentos.json<br/>tope 5.000"]
     D --> K["Compilador<br/>aquas compilar"]
     K --> M["CLAUDE.md<br/>marca GENERADO"]
     M --> S["Claude Code lo carga<br/>al abrir la sesión"]
@@ -53,9 +53,9 @@ flowchart LR
 
 **Situación.** Alguien quiere agregar una regla nueva a la constitución.
 
-1. Hoy `CLAUDE.md` mide 2.696 caracteres. El tope es 2.700. Quedan solo cuatro.
-2. Si la regla se agrega tal cual, el gate falla: «excede presupuesto».
-3. La salida correcta es recortar otra frase o mover el detalle a un archivo aparte.
+1. Hoy `CLAUDE.md` mide 2.845 caracteres. El tope es 5.000.
+2. Si una regla nueva lo pasara, el gate falla: «excede presupuesto».
+3. La salida correcta es subir el tope. Recortar la regla hasta perder sentido no vale: lo decidió Jesús el 2026-10-21.
 4. Otro caso: alguien corrige `CLAUDE.md` a mano para ir rápido.
 5. El gate responde: `CLAUDE.md: desfasado o editado a mano`. Lo probamos de verdad al escribir esta página.
 6. Se deshace la edición, se cambia el canónico y se ejecuta el [compilador](../glosario.md#compilador). El [commit](../glosario.md#commit) entra.

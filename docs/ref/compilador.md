@@ -16,8 +16,8 @@ Qué genera hoy:
 
 | Archivo derivado | Sale de | Tope |
 |---|---|---|
-| `CLAUDE.md` | `gobierno/canonico/constitucion.md` | 2.700 caracteres |
-| `.claude/agents/orchestrator.md` | cuerpo del orquestador, regla de vigencia y tres reglas de comunicación | 11.500 caracteres |
+| `CLAUDE.md` | `gobierno/canonico/constitucion.md` | 5.000 caracteres |
+| `.claude/agents/orchestrator.md` | cuerpo del orquestador, regla de vigencia y tres reglas de comunicación | 20.000 caracteres |
 
 Tres órdenes:
 
