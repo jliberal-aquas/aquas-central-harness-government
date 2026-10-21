@@ -127,7 +127,7 @@ flowchart TD
 | ↳ F003 Hooks globales | Ganchos en `~/.claude/hooks/` que rigen todo proyecto; solo registrados, no gobernados aquí | Inventario |
 | ↳ F004 Vueltas de pruebas y gate | Estudiar por qué pruebas y gate gastan el 28 % de las llamadas | Pendiente |
 | ↳ [F005](E000/F005/README.md) Calidad de las pruebas | Pruebas que fallan cuando se rompe su regla | En curso |
-| ↳↳ [S001](E000/F005/S001.md) | Pruebas del compilador que miden la causa | Hecho |
+| ↳↳ [S001](E000/F005/S001.md) · [S002](E000/F005/S002.md) | Pruebas del compilador y bloqueos con su motivo | Hecho |
 | [E001](E001/README.md) Gobierno del trabajo | Camino fijo para cada pedido | En curso |
 | ↳ [F001](E001/F001/README.md) Wiki + gate | Esta wiki y el gate que la exige | Hecho |
 | ↳↳ [S001](E001/F001/S001.md) · [S002](E001/F001/S002.md) · [S003](E001/F001/S003.md) | Esqueleto, legibilidad y glosario, referencia | Hecho |

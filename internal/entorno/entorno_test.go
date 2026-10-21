@@ -48,8 +48,9 @@ func TestValidarRaizDistintaBloquea(t *testing.T) {
 func TestValidarArchivoRotoBloquea(t *testing.T) {
 	raiz := t.TempDir()
 	escribirEntorno(t, raiz, `{roto`)
-	if m := Validar(raiz); m == "" {
-		t.Fatal("entorno ilegible debe bloquear")
+	// E000/F005/S002: bloquea porque el archivo está roto, y dice cómo regenerarlo.
+	if m := Validar(raiz); !strings.Contains(m, RutaEntorno+" ilegible") || !strings.Contains(m, "aquas iniciar") {
+		t.Fatalf("entorno ilegible debe bloquear por ilegible y pedir `aquas iniciar`; obtuve %q", m)
 	}
 }
 
@@ -97,7 +98,9 @@ func TestSettingsLinuxSinPowerShell(t *testing.T) {
 }
 
 func TestSettingsSOSinConfigFalla(t *testing.T) {
-	if _, err := generarSettings([]byte(plantillaPrueba), "plan9"); err == nil {
-		t.Fatal("SO sin entrada en por_so debe fallar, no inventar shell")
+	// E000/F005/S002: el error nombra el SO que no tiene configuración.
+	_, err := generarSettings([]byte(plantillaPrueba), "plan9")
+	if err == nil || !strings.Contains(err.Error(), `sin shell declarado para el SO "plan9"`) {
+		t.Fatalf("SO sin entrada en por_so debe fallar nombrando el SO, no inventar shell; dio %v", err)
 	}
 }

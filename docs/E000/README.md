@@ -103,6 +103,7 @@ flowchart LR
     F2 --> T2["S002 tope de caracteres"]
     E --> F5["F005 Calidad de las pruebas<br/>En curso"]
     F5 --> U1["S001 pruebas del compilador"]
+    F5 --> U2["S002 bloqueos con su motivo"]
 ```
 
 Decisiones de Jesús:

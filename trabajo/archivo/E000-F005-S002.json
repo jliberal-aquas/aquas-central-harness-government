@@ -1,0 +1,48 @@
+{
+  "id": "E000/F005/S002",
+  "tipo": "slice",
+  "titulo": "Bloqueos de guardia y entorno con su motivo",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-21: slices de calidad de pruebas; cinco D que solo miran si hubo bloqueo",
+  "padre": "E000/F005",
+  "bloqueado_por": [],
+  "secuencia": 41,
+  "pruebas": [
+    {
+      "prueba": "./internal/entorno:TestValidarArchivoRotoBloquea",
+      "intencion": "el bloqueo dice que el archivo de entorno está roto"
+    },
+    {
+      "prueba": "./internal/entorno:TestSettingsSOSinConfigFalla",
+      "intencion": "el error nombra el sistema operativo que no tiene configuración"
+    },
+    {
+      "prueba": "./internal/guardia:TestBashConCwdFuera",
+      "intencion": "bloquea porque el directorio de trabajo está fuera del repo"
+    },
+    {
+      "prueba": "./internal/guardia:TestEntradaHook",
+      "intencion": "cada entrada del hook bloquea o pasa por el motivo esperado"
+    },
+    {
+      "prueba": "./internal/guardia:TestSinConfigTodoFueraBloqueado",
+      "intencion": "sin config de permitidos, bloquea por ruta fuera del repo y no por otra causa"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T14:47:01Z",
+    "head": "1b47fc10ebbffe95ce4928ece42339f9dcf704fb",
+    "resultado": {
+      "./internal/entorno:TestSettingsSOSinConfigFalla": "entorno_test.go:104: SO sin entrada en por_so debe fallar nombrando el SO, no inventar shell; dio gobierno/config/claude_settings.json: plantilla incompleta",
+      "./internal/entorno:TestValidarArchivoRotoBloquea": "entorno_test.go:53: entorno ilegible debe bloquear por ilegible y pedir `aquas iniciar`; obtuve \"gobierno/config/entorno.local.json: entorno no válido (true) → corre `go run ./cmd/aquas iniciar` en la raíz del repo\"",
+      "./internal/guardia:TestBashConCwdFuera": "guardia_test.go:100: con cwd fuera del repo, escribir relativo debe fallar por a.txt; obtuve \"cwd fuera del repositorio (regla de oro: solo se escribe dentro del repositorio)\"",
+      "./internal/guardia:TestEntradaHook": "guardia_test.go:118: {\"tool_name\":\"NotebookEdit\",\"tool_input\":{\"notebook_path\":\"../n.ipynb\"}}: se esperaba \"bloqueada: ../n.ipynb\"; motivo \"guardia: entrada del hook ilegible; se bloquea por seguridad (regla de oro: solo se escribe dentro del repositorio)\"",
+      "./internal/guardia:TestSinConfigTodoFueraBloqueado": "permitidos_test.go:61: sin lista de permitidos, fuera debe fallar nombrando D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestSinConfigTodoFueraBloqueado2202022961\\001\\cache\\x; obtuve \"escritura fuera del repositorio bloqueada: (ruta absoluta) (regla de oro: solo se escribe dentro del repositorio: D:\\\\Agents Factory\\\\claude-code-scaffolding\\\\.tmp\\\\TestSinConfigTodoFueraBloqueado2202022961\\\\001\\\\repo)\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T14:47:16Z",
+    "head": "1b47fc10ebbffe95ce4928ece42339f9dcf704fb"
+  }
+}

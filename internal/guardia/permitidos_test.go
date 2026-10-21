@@ -55,8 +55,10 @@ func TestNoPermitidoSigueBloqueado(t *testing.T) {
 
 func TestSinConfigTodoFueraBloqueado(t *testing.T) {
 	raiz := raizPrueba(t)
-	if m := RevisarArchivo(raiz, filepath.Join(filepath.Dir(raiz), "cache", "x")); m == "" {
-		t.Fatal("sin lista de permitidos, fuera debe fallar")
+	// E000/F005/S002: bloquea por ruta fuera, y nombra la ruta.
+	p := filepath.Join(filepath.Dir(raiz), "cache", "x")
+	if m := RevisarArchivo(raiz, p); !strings.Contains(m, "escritura fuera del repositorio bloqueada: "+p) {
+		t.Fatalf("sin lista de permitidos, fuera debe fallar nombrando %s; obtuve %q", p, m)
 	}
 }
 

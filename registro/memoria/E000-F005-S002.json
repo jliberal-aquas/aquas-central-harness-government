@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F005",
+    "slice": "S002",
+    "tarea": "E000/F005/S002 hecho: 5 pruebas con su motivo, rojo por mutación y verde"
+  },
+  "siguiente": "E000/F005/S003 aserciones aisladas, cuando Jesús diga",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "240f6f611c682b5891343bae14c76f786781a43ec92485935a794fdb7cb392f1",
+  "actualizado": "2026-10-21T14:48:06Z",
+  "sello": "3ce0b24d624559d50d48a7238fc365da1db6bbcdcd1e6ed68a858e3ee360d5af"
+}

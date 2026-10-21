@@ -95,28 +95,27 @@ func TestBashFueraFalla(t *testing.T) {
 
 func TestBashConCwdFuera(t *testing.T) {
 	raiz := raizPrueba(t)
-	if m := RevisarBash(raiz, filepath.Dir(raiz), `echo x > a.txt`); m == "" {
-		t.Fatal("con cwd fuera del repo, escribir relativo debe fallar")
+	// E000/F005/S002: bloquea por el destino relativo al cwd de fuera, no por otra causa.
+	if m := RevisarBash(raiz, filepath.Dir(raiz), `echo x > a.txt`); !strings.Contains(m, "escritura fuera del repositorio bloqueada: a.txt") {
+		t.Fatalf("con cwd fuera del repo, escribir relativo debe fallar por a.txt; obtuve %q", m)
 	}
 }
 
 func TestEntradaHook(t *testing.T) {
 	raiz := raizPrueba(t)
-	casos := []struct {
-		json  string
-		falla bool
-	}{
-		{`{"tool_name":"Write","tool_input":{"file_path":"docs/a.md"}}`, false},
-		{`{"tool_name":"Edit","tool_input":{"file_path":"../a.md"}}`, true},
-		{`{"tool_name":"NotebookEdit","tool_input":{"notebook_path":"../n.ipynb"}}`, true},
-		{`{"tool_name":"Bash","tool_input":{"command":"echo x > ~/a"}}`, true},
-		{`{"tool_name":"Read","tool_input":{"file_path":"C:/fuera.md"}}`, false}, // leer no es escribir
-		{`no es json`, true},
+	// E000/F005/S002: cada caso que falla lo hace por su motivo (espera), no por cualquiera.
+	casos := []struct{ json, espera string }{
+		{`{"tool_name":"Write","tool_input":{"file_path":"docs/a.md"}}`, ""},
+		{`{"tool_name":"Edit","tool_input":{"file_path":"../a.md"}}`, "bloqueada: ../a.md"},
+		{`{"tool_name":"NotebookEdit","tool_input":{"notebook_path":"../n.ipynb"}}`, "bloqueada: ../n.ipynb"},
+		{`{"tool_name":"Bash","tool_input":{"command":"echo x > ~/a"}}`, "bloqueada: ~/a"},
+		{`{"tool_name":"Read","tool_input":{"file_path":"C:/fuera.md"}}`, ""}, // leer no es escribir
+		{`no es json`, "entrada del hook ilegible"},
 	}
 	for _, c := range casos {
 		m := Revisar(raiz, []byte(c.json))
-		if (m != "") != c.falla {
-			t.Errorf("%s: falla=%v esperado, motivo %q", c.json, c.falla, m)
+		if c.espera == "" && m != "" || c.espera != "" && !strings.Contains(m, c.espera) {
+			t.Errorf("%s: se esperaba %q; motivo %q", c.json, c.espera, m)
 		}
 	}
 }
