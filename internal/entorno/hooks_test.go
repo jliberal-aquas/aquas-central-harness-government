@@ -50,3 +50,20 @@ func TestSettingsRealTraeHooksDeMemoria(t *testing.T) {
 		}
 	}
 }
+
+// E001/F006/S002: el cierre de worker y auditor lo revisa un hook SubagentStop.
+func TestSettingsRealTraeHookDeCierreDeAgente(t *testing.T) {
+	fuente, err := os.ReadFile(filepath.Join("..", "..", filepath.FromSlash(RutaPlantilla)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	b, err := generarSettings(fuente, "windows")
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, quiero := range []string{`"SubagentStop"`, `"matcher": "worker-sonnet|worker-haiku|auditor"`, `cierre-agente`} {
+		if !strings.Contains(string(b), quiero) {
+			t.Errorf("la plantilla real debe declarar %s", quiero)
+		}
+	}
+}

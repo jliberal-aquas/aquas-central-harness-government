@@ -133,7 +133,7 @@ flowchart TD
 | ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
 | ↳ F003 Bibliotecario | Herramienta propia: lee rutas o busca y entrega solo lo útil | Pendiente |
 | ↳ [F006](E001/F006/README.md) Workers y auditor | Agentes baratos que ejecutan y un auditor que revisa | Hecha |
-| ↳↳ [S001](E001/F006/S001.md) | Tres agentes y sus herramientas | Hecho |
+| ↳↳ [S001](E001/F006/S001.md) · [S002](E001/F006/S002.md) | Tres agentes y sus herramientas; comunicación entre agentes | Hecho |
 
 El orden de las pendientes es el orden de ejecución.
 

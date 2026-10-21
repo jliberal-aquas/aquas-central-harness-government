@@ -1,38 +1,42 @@
 {
   "salidas": {
     ".claude/agents/auditor.md": {
-      "sha256": "5139de08176340f3e06de12ac6968585d485f3b07fba1461ddea431aa2f4a79a",
+      "sha256": "1619d6c9ca05f44025a92850f8ebef41ed1ea8f61b34de159d44a3675d4f2087",
       "fuentes": {
-        "gobierno/canonico/agentes/auditor.md": "7583651f21b56f2f03a68b25b5e3634791647147c7a38a5cef04cbe39213205d",
+        "gobierno/canonico/agentes/auditor.md": "0a41c41553881326712c1bc7993b524065eaf22b87c69bbcc602e67eec2c6c50",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/config/agentes.json": "8a2f331530d5aa77f782236ba79d12cc785b18b20686ca6404721944810f86ca"
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "a0fbc09fcb442d0a69705cb35c6b3379ee079b70c5ee085d8864e7b11b3bccfd",
+        "gobierno/config/agentes.json": "7b625b6f57367a32c262003b3e137efccc591ba9a45c2c60348611c222d65eb3"
       }
     },
     ".claude/agents/orchestrator.md": {
-      "sha256": "f4a85eff94e4284eaacead97cfa35e41dde740647dde7d43820573df87dad30e",
+      "sha256": "3525ff3b1db1c1fabdef73f193ee72dec5a716b33d6eaa7ccf254b734c738775",
       "fuentes": {
-        "gobierno/canonico/agentes/orquestador.md": "df4d0fc7723925f782f584d2a4ee983beaf8c47a07c2484f00e2f52937bbc766",
+        "gobierno/canonico/agentes/orquestador.md": "b834a6e8c4e89d07857e5347046a071e2a67df1403c2ef1edee2ce3106901257",
         "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md": "4555289159ad70feca5e42337c87b9dbd37682863f979276d25b2aab0b5a9e46",
         "gobierno/canonico/comunicacion/02_PEDAGOGIA_CHAT.md": "04793b3914f29bedb875fcd43dc154a893d3e8535c0a5274cd9ff4be19c7eca6",
         "gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md": "a1f498624ced9d2f222f78bfd7d4a143420fb377d833d41d43312e8c4c9994b3",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/config/agentes.json": "8a2f331530d5aa77f782236ba79d12cc785b18b20686ca6404721944810f86ca"
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "a0fbc09fcb442d0a69705cb35c6b3379ee079b70c5ee085d8864e7b11b3bccfd",
+        "gobierno/config/agentes.json": "7b625b6f57367a32c262003b3e137efccc591ba9a45c2c60348611c222d65eb3"
       }
     },
     ".claude/agents/worker-haiku.md": {
-      "sha256": "9f8b853549fd77bc9690258852d98821d9a28f6f5f2801ab44922a202c4bea08",
+      "sha256": "70e99c7b8f27575f0ac40ac70b20676bd4dea90bcf9aa765443b4daa87f11032",
       "fuentes": {
-        "gobierno/canonico/agentes/worker.md": "c339e90b94c5cf2410898b8bb99d525e50622e23ca0a8eca92cdf1f6ab06a0e6",
+        "gobierno/canonico/agentes/worker.md": "0e474cc138a377b11fd5516a1703ef1045a07ddad9cdc4c89e62109126e434ec",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/config/agentes.json": "8a2f331530d5aa77f782236ba79d12cc785b18b20686ca6404721944810f86ca"
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "a0fbc09fcb442d0a69705cb35c6b3379ee079b70c5ee085d8864e7b11b3bccfd",
+        "gobierno/config/agentes.json": "7b625b6f57367a32c262003b3e137efccc591ba9a45c2c60348611c222d65eb3"
       }
     },
     ".claude/agents/worker-sonnet.md": {
-      "sha256": "388d0470d4bfeef693b1da1d95d223f0f5f34968a436fa96d2d521d8e04e135b",
+      "sha256": "03997917bfc05fe4e0cf399176ab00f16e002bd5fa69ee47ec18636edb961bac",
       "fuentes": {
-        "gobierno/canonico/agentes/worker.md": "c339e90b94c5cf2410898b8bb99d525e50622e23ca0a8eca92cdf1f6ab06a0e6",
+        "gobierno/canonico/agentes/worker.md": "0e474cc138a377b11fd5516a1703ef1045a07ddad9cdc4c89e62109126e434ec",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/config/agentes.json": "8a2f331530d5aa77f782236ba79d12cc785b18b20686ca6404721944810f86ca"
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "a0fbc09fcb442d0a69705cb35c6b3379ee079b70c5ee085d8864e7b11b3bccfd",
+        "gobierno/config/agentes.json": "7b625b6f57367a32c262003b3e137efccc591ba9a45c2c60348611c222d65eb3"
       }
     },
     "CLAUDE.md": {

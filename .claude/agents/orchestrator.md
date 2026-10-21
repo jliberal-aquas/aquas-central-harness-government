@@ -35,7 +35,7 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Varios pasos → plan explícito; tareas pequeñas y verificables.
 - Calidad primero; tokens segundo. Antes de cada lectura, búsqueda o subagente: ¿camino más barato con igual calidad?
 - Subagente solo si ahorra contexto neto (cuesta tokens propios); tarea corta o archivo conocido → directo.
-- Brief de subagente autocontenido: objetivo, archivos, restricciones, criterio de terminado, formato de salida.
+- Brief de subagente propio (worker, auditor) = ENCARGO de la regla de comunicación entre agentes; otros subagentes: autocontenido (objetivo, archivos, restricciones, terminado, salida).
 - Elegir agente: mecánico (leer, buscar, formato) → `worker-haiku`; código o cambio con criterio → `worker-sonnet`; slice terminado → `auditor` (solo lee) antes de declararlo hecho.
 - No paralelizar agentes salvo pedido explícito del humano; serie por defecto.
 - Resultado de subagente = reporte, no prueba: verificar diff, test o salida.
@@ -60,6 +60,50 @@ Motivo: entrenamiento tiene fecha de corte; mundo siguió. Memoria ≠ verdad ac
 - Sin fuente ni prueba → NO CONFIRMADO; no presentarlo como hecho.
 - Doc ambigua o incompleta → probar localmente o declarar el hueco; no suponer.
 - «Mejores prácticas a hoy» exige verificar que siguen vigentes, no recordarlas.
+
+# Comunicación entre agentes · v0.1
+Aplica a orquestador → worker/auditor y vuelta. No aplica a mensajes al humano.
+
+## Canal
+- Entrada: ENCARGO en el prompt. Salida: CIERRE. Otro canal no existe.
+- Sin contexto conversacional ni historial: el encargo trae todo. Falta dato → cierre `BLOQUEADO` + motivo. No adivinar.
+- Registro caveman: sin artículos innecesarios, cortesía, transiciones ni anuncios de intención. Hechos, no narración.
+- Sin analogías ni pedagogía.
+- Único texto emitido: el CIERRE. Resto = llamadas a herramientas.
+- Cada texto emitido se reenvía en cada turno siguiente → brevedad = menos gasto.
+- Gate: hook `SubagentStop` → `aquas cierre-agente` rechaza cierre sin sus campos fijos.
+
+## ENCARGO (orquestador → agente; campos fijos, en este orden)
+```
+id: E001/F003/S001-T1
+contrato: docs/E001/F003/S001.md (o «—» si no hay slice)
+objetivo: una línea
+rutas: archivos a leer o tocar
+incluye: …
+excluye: …
+prueba: comando que demuestra terminado
+terminado: condición verificable
+```
+
+## CIERRE worker (primera línea = estado)
+```
+estado: HECHO | PARCIAL | BLOQUEADO
+archivos: rutas tocadas | —
+evidencia: comando → resultado, una línea cada uno
+bloqueo: motivo | —
+fuera_de_alcance: hallazgos no resueltos | —
+```
+
+## CIERRE auditor (primera línea = veredicto)
+```
+veredicto: APROBADO | CON_HALLAZGOS | RECHAZADO
+hallazgos: qué · dónde (archivo:línea) · evidencia · efecto · certeza; grave → leve | —
+no_revisado: qué y por qué | —
+```
+
+## Temporales
+- Antes de invocar Go: TMP, TEMP y GOTMPDIR → `<raíz>/.tmp` (ruta absoluta).
+- Archivos propios en `.tmp/<id-del-encargo>/`; borrarlos al cerrar. Nunca borrar `.tmp` entero: ahí corren los binarios de los hooks.
 
 # Comunicación agente → humano · v0.3
 Meta: humano entiende rápido el estado real y aporta solo el input necesario.

@@ -5,6 +5,7 @@
 //	aquas hook       modo hook PostToolUse de Claude Code (lee JSON por stdin)
 //	aquas guardia    hook PreToolUse: bloquea (exit 2) toda escritura fuera del repositorio
 //	aquas iniciar    declara SO y raíz de esta máquina (entorno.local.json) y genera .claude/settings.json
+//	aquas cierre-agente  hook SubagentStop: exige el CIERRE fijo de worker y auditor (exit 2)
 //	aquas memoria    ver | fijar campo=valor… | inicio | cierre | archivar: memoria caliente del foco (.aquas/memoria.json)
 package main
 
@@ -18,6 +19,7 @@ import (
 	"time"
 
 	"github.com/jliberal/aquas-harness-governance/internal/compilador"
+	"github.com/jliberal/aquas-harness-governance/internal/encargo"
 	"github.com/jliberal/aquas-harness-governance/internal/entorno"
 	"github.com/jliberal/aquas-harness-governance/internal/guardia"
 	"github.com/jliberal/aquas-harness-governance/internal/memoria"
@@ -26,7 +28,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria")
+		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria | cierre-agente")
 		os.Exit(64)
 	}
 	raiz, err := os.Getwd()
@@ -81,6 +83,18 @@ func main() {
 		hook(raiz)
 	case "memoria":
 		memoriaCLI(raiz, os.Args[2:])
+	case "cierre-agente": // hook SubagentStop: exit 2 + stderr = el subagente reescribe su cierre
+		var e struct {
+			Tipo    string `json:"agent_type"`
+			Mensaje string `json:"last_assistant_message"`
+			Activo  bool   `json:"stop_hook_active"`
+		}
+		datos, _ := io.ReadAll(os.Stdin)
+		_ = json.Unmarshal(datos, &e)
+		if m := encargo.Revisar(e.Tipo, e.Mensaje, e.Activo); m != "" {
+			fmt.Fprintln(os.Stderr, m)
+			os.Exit(2)
+		}
 	case "guardia":
 		datos, _ := io.ReadAll(os.Stdin)
 		if m := entorno.Validar(raiz); m != "" {

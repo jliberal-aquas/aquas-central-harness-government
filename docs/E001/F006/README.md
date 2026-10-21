@@ -64,6 +64,7 @@ Slices de esta feature:
 | Slice | Qué entrega | Estado |
 |---|---|---|
 | [S001 Tres agentes y sus herramientas](S001.md) | Los tres agentes compilados; el auditor sin herramientas de edición | Hecho |
+| [S002 Comunicación entre agentes](S002.md) | Encargo y cierre con campos fijos; un hook rechaza el cierre incompleto | Hecho |
 
 ## Ejemplo de punta a punta
 
@@ -82,6 +83,7 @@ En la [iniciativa](../../glosario.md#iniciativa), el pedido de Jesús llegó a s
 ## Paso a paso
 
 1. S001: campo de herramientas en el [compilador](../../glosario.md#compilador), los tres cuerpos y su config.
+2. S002: encargo y cierre fijos, y el [hook](../../glosario.md#hook) que los exige.
 
 ## Cómo se usa
 
@@ -95,7 +97,7 @@ Estado: hecha.
 
 Objetivo: delegar en el modelo justo para cada tarea y revisar antes de declarar algo hecho.
 
-Por qué un solo slice: el cambio es pequeño. Un campo nuevo en el compilador y tres archivos de configuración.
+Por qué dos slices: primero los agentes existen; después se fija cómo se hablan. Cada parte se prueba sola.
 
 Decisiones de Jesús (2026-10-21):
 
@@ -105,7 +107,7 @@ Decisiones de Jesús (2026-10-21):
 
 ```mermaid
 flowchart LR
-    S1["S001 tres agentes<br/>Hecho"]
+    S1["S001 tres agentes<br/>Hecho"] --> S2["S002 comunicación<br/>Hecho"]
 ```
 
 Prueba integral de la feature: `TestAgentesRealesWorkersYAuditor` revisa la configuración real.
@@ -116,3 +118,4 @@ Límite: el auditor tiene Bash para correr pruebas, y Bash puede escribir. Su cu
 
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S001 · Tres agentes y sus herramientas](S001.md)
+- Abajo: [S002 · Comunicación entre agentes](S002.md)

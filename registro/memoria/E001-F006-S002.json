@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F006",
+    "slice": "S002",
+    "tarea": "S002 hecho: comunicación entre agentes + hook SubagentStop probado en vivo (rechazo y reescritura)"
+  },
+  "siguiente": "P1 2.º: F003 Bibliotecario, contrato de S001 y pruebas en rojo",
+  "pendientes": [
+    "limpiar .tmp/aq.exe, .tmp/m1, .tmp/sin-entorno, .tmp/t4"
+  ],
+  "decisiones": [],
+  "huella_git": "cf74c81e163e35bf1537264817e2ab030fddbe35eb7168a2e548d9cb7fe73f09",
+  "actualizado": "2026-10-21T09:39:06Z",
+  "sello": "d42e4d339356c3bd3f112d4d9bc581780cc562a416cf62b7bed1a8da834985b1"
+}

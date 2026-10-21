@@ -4,7 +4,8 @@
     {"evento": "PreToolUse", "herramientas": ["Write", "Edit", "MultiEdit", "NotebookEdit"], "con_shell": true, "orden": "guardia"},
     {"evento": "PostToolUse", "herramientas": ["Edit", "Write"], "orden": "hook"},
     {"evento": "SessionStart", "matcher": "startup|resume|clear|compact", "orden": "memoria inicio"},
-    {"evento": "Stop", "orden": "memoria cierre"}
+    {"evento": "Stop", "orden": "memoria cierre"},
+    {"evento": "SubagentStop", "matcher": "worker-sonnet|worker-haiku|auditor", "orden": "cierre-agente"}
   ],
   "por_so": {
     "windows": {"shell": "bash", "herramientas_shell": ["Bash", "PowerShell"]},

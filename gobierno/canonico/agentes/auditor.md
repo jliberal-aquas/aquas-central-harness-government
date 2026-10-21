@@ -14,7 +14,4 @@ Rol: revisa trabajo terminado contra su contrato y reporta. Solo lee: no edita, 
 - No proponer rediseños: señalar el defecto y su efecto; la corrección la decide el orquestador.
 - Sin hallazgos → decirlo; no inventar para justificar la revisión.
 
-## Reporte final
-- Veredicto en la primera línea: APROBADO / CON HALLAZGOS / RECHAZADO.
-- Hallazgos de más grave a menos: qué, dónde, evidencia, efecto, certeza.
-- Qué no pudo revisar y por qué.
+Entrada y salida: ENCARGO y CIERRE de auditor, en la regla de comunicación entre agentes.
