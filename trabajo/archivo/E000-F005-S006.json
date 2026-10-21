@@ -1,0 +1,78 @@
+{
+  "id": "E000/F005/S006",
+  "tipo": "slice",
+  "titulo": "Rojo de los slices viejos sin evidencia",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "terminar F005, que está a medias, antes de lo siguiente (decisión humana 2026-10-21)",
+  "padre": "E000/F005",
+  "bloqueado_por": [],
+  "secuencia": 45,
+  "pruebas": [
+    {
+      "prueba": "./internal/compilador:TestCambioEnCanonicoRecompilaAgente",
+      "intencion": "editar un canónico cambia el agente compilado"
+    },
+    {
+      "prueba": "./internal/compilador:TestCompilarGeneraAgenteYDocumento",
+      "intencion": "compilar genera el agente y el documento desde sus canónicos"
+    },
+    {
+      "prueba": "./internal/compilador:TestPresupuestoDentroPasaGate",
+      "intencion": "una salida dentro de max_caracteres pasa el gate"
+    },
+    {
+      "prueba": "./internal/compilador:TestPresupuestoExcedidoFallaGate",
+      "intencion": "una salida que excede max_caracteres falla el gate"
+    },
+    {
+      "prueba": "./internal/compilador:TestSinPresupuestoSeRechaza",
+      "intencion": "una salida sin max_caracteres se rechaza"
+    },
+    {
+      "prueba": "./internal/guardia:TestConfigInvalida",
+      "intencion": "una config de permitidos inválida se rechaza con su motivo"
+    },
+    {
+      "prueba": "./internal/guardia:TestNoPermitidoSigueBloqueado",
+      "intencion": "una ruta fuera y no permitida sigue bloqueada"
+    },
+    {
+      "prueba": "./internal/guardia:TestPermitidoFueraPasa",
+      "intencion": "una ruta fuera pero permitida pasa"
+    },
+    {
+      "prueba": "./internal/wiki:TestFallasRef",
+      "intencion": "una página de referencia mal armada falla el gate wiki"
+    },
+    {
+      "prueba": "./internal/wiki:TestRefAceptaCualquierDiagrama",
+      "intencion": "la página de referencia acepta cualquier tipo de diagrama"
+    },
+    {
+      "prueba": "./internal/wiki:TestRefValidaPasa",
+      "intencion": "una página de referencia bien armada pasa"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T18:04:45Z",
+    "head": "063e998b22804cb179a6df00ebbbf522d5b77909",
+    "resultado": {
+      "./internal/compilador:TestCambioEnCanonicoRecompilaAgente": "compilador_test.go:97: fuentes cambiadas = [], se esperaba solo gobierno/canonico/comunicacion/c1.md",
+      "./internal/compilador:TestCompilarGeneraAgenteYDocumento": "compilador_test.go:67: agente no contiene \"effort: high\\n\":",
+      "./internal/compilador:TestPresupuestoDentroPasaGate": "compilador_test.go:195: se esperaba gate OK, problemas: [.claude/agents/orchestrator.md: excede presupuesto (187 \u003e 5000 caracteres)]",
+      "./internal/compilador:TestPresupuestoExcedidoFallaGate": "compilador_test.go:185: se esperaba 1 problema de presupuesto, hubo: []",
+      "./internal/compilador:TestSinPresupuestoSeRechaza": "compilador_test.go:202: se esperaba error por falta de max_caracteres, hubo: \u003cnil\u003e",
+      "./internal/guardia:TestConfigInvalida": "",
+      "./internal/guardia:TestNoPermitidoSigueBloqueado": "permitidos_test.go:51: D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestNoPermitidoSigueBloqueado1279514200\\001\\cache-gemelo\\x no está en la lista; debe fallar: \"\"",
+      "./internal/guardia:TestPermitidoFueraPasa": "permitidos_test.go:33: ruta permitida debe pasar: escritura fuera del repositorio bloqueada: D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestPermitidoFueraPasa1642023705\\001\\cache\\x.bin (regla de oro: solo se escribe dentro del repositorio: D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestPermitidoFueraPasa1642023705\\001\\repo)",
+      "./internal/wiki:TestFallasRef": "",
+      "./internal/wiki:TestRefAceptaCualquierDiagrama": "ref_test.go:31: referencia con sequenceDiagram debe pasar: [\"docs/ref/constitucion.md: falta diagrama Mermaid en «Diagrama» (cualquier tipo)\"]",
+      "./internal/wiki:TestRefValidaPasa": "ref_test.go:23: página de referencia válida debe pasar: [\"docs/ref/constitucion.md: falta diagrama Mermaid en «Diagrama» (cualquier tipo)\"]"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T18:04:55Z",
+    "head": "063e998b22804cb179a6df00ebbbf522d5b77909"
+  }
+}

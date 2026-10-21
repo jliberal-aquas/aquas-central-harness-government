@@ -2,7 +2,7 @@
   "id": "E000/F005",
   "tipo": "feature",
   "titulo": "Calidad de las pruebas",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "humano 2026-10-21: 15 de 92 pruebas débiles o vacías; 11 de 14 mutaciones sobreviven; va tras S003 para usar el rojo nuevo",
   "padre": "E000",
@@ -15,5 +15,16 @@
       "prueba": "./cmd/aquas:TestVerificarDePuntaAPunta",
       "intencion": "prueba integral: el gate real frena un derivado editado y una wiki rota"
     }
-  ]
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T18:06:32Z",
+    "head": "063e998b22804cb179a6df00ebbbf522d5b77909",
+    "resultado": {
+      "./cmd/aquas:TestVerificarDePuntaAPunta": "punta_test.go:81: derivado editado: exit 1 y lo nombra; dio {out:GATE OK · derivados, sello, wiki, backlog y guardia al día"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T18:06:34Z",
+    "head": "063e998b22804cb179a6df00ebbbf522d5b77909"
+  }
 }

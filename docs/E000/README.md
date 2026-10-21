@@ -127,7 +127,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go run ./cmd/aquas verif
 | [F002](F002/README.md) | Compilador y sello | Hecho |
 | F003 | Hooks globales (inventario) | Planeado |
 | F004 | Vueltas de pruebas y gate | Planeado |
-| [F005](F005/README.md) | Calidad de las pruebas | En curso |
+| [F005](F005/README.md) | Calidad de las pruebas | Hecho |
 
 <!-- /GENERADO -->
 

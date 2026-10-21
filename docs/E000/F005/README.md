@@ -72,7 +72,7 @@ Slices de esta feature:
 | [S003 Aserciones aisladas](S003.md) | Seis pruebas que pasaban por otra entrada |
 | [S004 Cableado de punta a punta](S004.md) | `verificar`, `guardia` y hooks reales |
 | [S005 Carpetas protegidas](S005.md) | Una sola fuente para sus rutas |
-| S006 Rojo de slices viejos | Rojo de cuatro slices sin evidencia |
+| [S006 Rojo de slices viejos](S006.md) | Rojo de cuatro slices sin evidencia |
 
 ## Ejemplo de punta a punta
 
@@ -105,7 +105,7 @@ En la [iniciativa](../../glosario.md#iniciativa), el [compilador](../../glosario
 
 **Objetivo.** Ninguna prueba del repo pasa en verde con la regla que vigila rota.
 
-Prueba integral: `TestVerificarDePuntaAPunta`, en S004. Corre el binario real sobre la config real. Un [derivado](../../glosario.md#derivado) editado o una [wiki](../../glosario.md#wiki) rota dan exit 1.
+Prueba integral: `TestVerificarDePuntaAPunta`, en S004. Corre el binario real sobre la config real. Su rojo se vio el 2026-10-21, con la primera mutación de S004. Un [derivado](../../glosario.md#derivado) editado o una [wiki](../../glosario.md#wiki) rota dan exit 1.
 
 ## Navegación
 
@@ -118,7 +118,7 @@ Prueba integral: `TestVerificarDePuntaAPunta`, en S004. Corre el binario real so
 | [S003](S003.md) | Aserciones que no se cumplen por otra entrada | Hecho |
 | [S004](S004.md) | Cableado del CLI probado de punta a punta | Hecho |
 | [S005](S005.md) | Una sola fuente para las carpetas protegidas | Hecho |
-| S006 | Rojo de los slices viejos sin evidencia | Planeado |
+| [S006](S006.md) | Rojo de los slices viejos sin evidencia | Hecho |
 
 <!-- /GENERADO -->
 
