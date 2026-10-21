@@ -51,6 +51,7 @@ Estado de sus features:
 | Feature | Qué hace | Estado |
 |---|---|---|
 | [F001 Guardia del repo](F001/README.md) | Impide escribir fuera del repositorio | Hecho |
+| [F002 Compilador y sello](F002/README.md) | Genera, sella y pone tope a los archivos de reglas | Hecho |
 
 ## Ejemplo de punta a punta
 
@@ -87,7 +88,7 @@ Qué hace el [agente](../glosario.md#agente) con un fallo del gobierno:
 
 **Resultado esperado.** El gobierno de este repositorio se arregla con el mismo rigor que el resto: prueba, commit y página.
 
-**Resultado logrado.** Una feature terminada, con cuatro slices.
+**Resultado logrado.** Dos features terminadas, con seis slices en total.
 
 ```mermaid
 flowchart LR
@@ -96,12 +97,16 @@ flowchart LR
     F1 --> S2["S002 lista de permitidos"]
     F1 --> S3["S003 hooks en Windows"]
     F1 --> S4["S004 entorno declarado"]
+    E --> F2["F002 Compilador y sello<br/>Hecho"]
+    F2 --> T1["S001 compilar y sellar"]
+    F2 --> T2["S002 tope de caracteres"]
 ```
 
 Decisiones de Jesús:
 
 - E000 es solo para este repositorio central (2026-10-20).
 - Un fallo se arregla antes de continuar, aunque cambie el orden del trabajo (2026-10-20).
+- Las pruebas del [compilador](../glosario.md#compilador), anteriores al método, viven en E000/F002 (2026-10-20).
 
 Prueba integral de la iniciativa: `go test ./...` más `go run ./cmd/aquas verificar`. Las dos pasaron en el commit `2c418d1`.
 
@@ -109,3 +114,4 @@ Prueba integral de la iniciativa: `go test ./...` más `go run ./cmd/aquas verif
 
 - ↑ Subir: [Inicio de la wiki](../README.md)
 - Abajo: [F001 · Guardia del repo](F001/README.md)
+- Abajo: [F002 · Compilador y sello](F002/README.md)
