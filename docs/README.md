@@ -93,6 +93,7 @@ Mapa rápido del repositorio:
 
 ## Navegación
 
+- Abajo: [E000 · Mantenimiento del gobierno](E000/README.md)
 - Abajo: [E001 · Gobierno del trabajo](E001/README.md)
 - Glosario: [palabras técnicas](glosario.md)
 - Referencia: [Constitución](ref/constitucion.md)
