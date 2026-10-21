@@ -2,7 +2,9 @@
   "agent": "orchestrator",
   "hooks": [
     {"evento": "PreToolUse", "herramientas": ["Write", "Edit", "MultiEdit", "NotebookEdit"], "con_shell": true, "orden": "guardia"},
-    {"evento": "PostToolUse", "herramientas": ["Edit", "Write"], "orden": "hook"}
+    {"evento": "PostToolUse", "herramientas": ["Edit", "Write"], "orden": "hook"},
+    {"evento": "SessionStart", "matcher": "startup|resume|clear|compact", "orden": "memoria inicio"},
+    {"evento": "Stop", "orden": "memoria cierre"}
   ],
   "por_so": {
     "windows": {"shell": "bash", "herramientas_shell": ["Bash", "PowerShell"]},

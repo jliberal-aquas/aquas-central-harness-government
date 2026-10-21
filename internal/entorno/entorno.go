@@ -103,6 +103,7 @@ type plantilla struct {
 	Hooks []struct {
 		Evento       string   `json:"evento"`
 		Herramientas []string `json:"herramientas"`
+		Matcher      string   `json:"matcher"` // eventos sin herramienta (SessionStart)
 		ConShell     bool     `json:"con_shell"`
 		Orden        string   `json:"orden"`
 	} `json:"hooks"`
@@ -119,7 +120,7 @@ type hookCmd struct {
 }
 
 type grupo struct {
-	Matcher string    `json:"matcher"`
+	Matcher string    `json:"matcher,omitempty"`
 	Hooks   []hookCmd `json:"hooks"`
 }
 
@@ -147,8 +148,12 @@ func generarSettings(fuente []byte, so string) ([]byte, error) {
 		if h.ConShell {
 			herr = append(herr, cfg.HerramientasShell...)
 		}
+		matcher := strings.Join(herr, "|")
+		if h.Matcher != "" {
+			matcher = h.Matcher
+		}
 		s.Hooks[h.Evento] = append(s.Hooks[h.Evento], grupo{
-			Matcher: strings.Join(herr, "|"),
+			Matcher: matcher,
 			Hooks: []hookCmd{{
 				Type:    "command",
 				Command: `sh "${CLAUDE_PROJECT_DIR}/.claude/hooks/aquas.sh" ` + h.Orden,

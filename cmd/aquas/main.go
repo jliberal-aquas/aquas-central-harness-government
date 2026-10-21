@@ -5,7 +5,7 @@
 //	aquas hook       modo hook PostToolUse de Claude Code (lee JSON por stdin)
 //	aquas guardia    hook PreToolUse: bloquea (exit 2) toda escritura fuera del repositorio
 //	aquas iniciar    declara SO y raíz de esta máquina (entorno.local.json) y genera .claude/settings.json
-//	aquas memoria    ver | fijar campo=valor…: memoria caliente del foco (.aquas/memoria.json)
+//	aquas memoria    ver | fijar campo=valor… | inicio | cierre: memoria caliente del foco (.aquas/memoria.json)
 package main
 
 import (
@@ -176,8 +176,25 @@ func fallar(codigo int, err error) {
 
 // memoriaCLI: `ver` imprime la memoria; `fijar campo=valor…` la actualiza y la sella.
 func memoriaCLI(raiz string, args []string) {
+	switch {
+	case len(args) == 0:
+	case args[0] == "inicio": // hook SessionStart: stdout entra al contexto; nunca bloquea
+		fmt.Print(memoria.Inicio(raiz))
+		return
+	case args[0] == "cierre": // hook Stop: exit 2 + stderr = seguir trabajando
+		var e struct {
+			Activo bool `json:"stop_hook_active"`
+		}
+		datos, _ := io.ReadAll(os.Stdin)
+		_ = json.Unmarshal(datos, &e)
+		if m := memoria.Cierre(raiz, e.Activo); m != "" {
+			fmt.Fprintln(os.Stderr, m)
+			os.Exit(2)
+		}
+		return
+	}
 	if len(args) == 0 || (args[0] != "ver" && args[0] != "fijar") {
-		fallar(64, fmt.Errorf("uso: aquas memoria ver | fijar campo=valor…"))
+		fallar(64, fmt.Errorf("uso: aquas memoria ver | fijar campo=valor… | inicio | cierre"))
 	}
 	var m memoria.Memoria
 	var err error

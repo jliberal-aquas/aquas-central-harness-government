@@ -125,8 +125,8 @@ flowchart TD
 | ↳↳ [S001](E001/F001/S001.md) · [S002](E001/F001/S002.md) · [S003](E001/F001/S003.md) | Esqueleto, legibilidad y glosario, referencia | Hecho |
 | ↳↳ [S004](E001/F001/S004.md) | Contrato, evidencia y migas | Hecho |
 | ↳ [F005](E001/F005/README.md) Memoria caliente | El agente no pierde el foco entre sesiones | En curso |
-| ↳↳ [S001](E001/F005/S001.md) | Archivo, sello y guardia | Hecho |
-| ↳↳ S002 · S003 | Hooks de inicio y cierre; archivo y arranque en frío | Pendiente |
+| ↳↳ [S001](E001/F005/S001.md) · [S002](E001/F005/S002.md) | Archivo, sello y guardia; hooks de inicio y cierre | Hecho |
+| ↳↳ S003 | Archivo al cerrar el slice y arranque en frío | Pendiente |
 | ↳ F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | Pendiente |
 | ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
 | ↳ F003 Bibliotecario | Búsqueda determinista de archivos y usos | Pendiente |

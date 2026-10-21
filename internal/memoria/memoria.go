@@ -13,6 +13,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -42,6 +43,7 @@ type Memoria struct {
 	Siguiente   string   `json:"siguiente"`
 	Pendientes  []string `json:"pendientes"`
 	Decisiones  []string `json:"decisiones"`
+	HuellaGit   string   `json:"huella_git"`
 	Actualizado string   `json:"actualizado"`
 	Sello       string   `json:"sello"`
 }
@@ -99,11 +101,16 @@ func Fijar(raiz string, pares []string, ahora time.Time) (Memoria, error) {
 	if l, ok := listas["decision"]; ok {
 		m.Decisiones = l
 	}
+	m.HuellaGit = HuellaGit(raiz)
 	m.Actualizado = ahora.UTC().Format(time.RFC3339)
 	m.Sello = ""
 	m.Sello = huella(m)
 	return m, escribir(raiz, m)
 }
+
+// reSello: línea del sello tal como la escribe codificar. El sello cubre los bytes escritos
+// (con el sello vacío), no la estructura actual: un campo nuevo no rompe una memoria vieja.
+var reSello = regexp.MustCompile(`(?m)^(\s*)"sello": "([0-9a-f]*)"`)
 
 // Leer carga la memoria y comprueba su sello.
 func Leer(raiz string) (Memoria, error) {
@@ -120,12 +127,14 @@ func Leer(raiz string) (Memoria, error) {
 	if err := d.Decode(&m); err != nil {
 		return Memoria{}, fmt.Errorf("%w (%v)", ErrSelloRoto, err)
 	}
-	sello := m.Sello
-	m.Sello = ""
-	if sello == "" || huella(m) != sello {
+	sello := reSello.FindSubmatch(b)
+	if sello == nil || len(sello[2]) == 0 {
 		return Memoria{}, ErrSelloRoto
 	}
-	m.Sello = sello
+	sinSello := reSello.ReplaceAll(b, []byte(`$1"sello": ""`))
+	if h := sha256.Sum256(sinSello); hex.EncodeToString(h[:]) != string(sello[2]) {
+		return Memoria{}, ErrSelloRoto
+	}
 	return m, nil
 }
 
@@ -211,4 +220,76 @@ func escribir(raiz string, m Memoria) error {
 		return err
 	}
 	return os.Rename(tmp, p)
+}
+
+// --- S002: huella de Git y hooks ---
+
+// HuellaGit resume el estado del repo: HEAD + cada ruta de `git status` con el contenido de su
+// archivo. Excluye .aquas/. Si raiz no es la raíz de un repo propio, devuelve "".
+func HuellaGit(raiz string) string {
+	top, err := exec.Command("git", "-C", raiz, "rev-parse", "--show-toplevel").Output()
+	if err != nil || !mismaCarpeta(strings.TrimSpace(string(top)), raiz) {
+		return ""
+	}
+	head, _ := exec.Command("git", "-C", raiz, "rev-parse", "HEAD").Output() // sin commits: vacío
+	st, err := exec.Command("git", "-C", raiz, "status", "--porcelain=v1", "-z", "--untracked-files=all",
+		"--", ".", ":(exclude).aquas").Output()
+	if err != nil {
+		return ""
+	}
+	h := sha256.New()
+	h.Write(head)
+	for _, e := range strings.Split(string(st), "\x00") {
+		if len(e) < 4 {
+			continue
+		}
+		h.Write([]byte(e + "\x00"))
+		if c, err := os.ReadFile(filepath.Join(raiz, filepath.FromSlash(e[3:]))); err == nil {
+			s := sha256.Sum256(c)
+			h.Write(s[:])
+		}
+	}
+	return hex.EncodeToString(h.Sum(nil))
+}
+
+func mismaCarpeta(a, b string) bool {
+	ia, err1 := os.Stat(filepath.FromSlash(a))
+	ib, err2 := os.Stat(b)
+	return err1 == nil && err2 == nil && os.SameFile(ia, ib)
+}
+
+// Cierre decide el hook Stop: "" deja cerrar el turno; si no, el motivo para seguir.
+func Cierre(raiz string, stopHookActive bool) string {
+	if stopHookActive {
+		return "" // ya se pidió una vez: no bloquear en bucle
+	}
+	m, err := Leer(raiz)
+	switch {
+	case errors.Is(err, ErrSinMemoria):
+		return ""
+	case errors.Is(err, ErrSelloRoto):
+		return "aquas memoria cierre: " + err.Error() + ". No la rehagas: avisa al humano para que revise " + Ruta + "."
+	case err != nil:
+		return "aquas memoria cierre: " + err.Error()
+	}
+	if m.Foco == (Foco{}) {
+		return ""
+	}
+	if HuellaGit(raiz) != m.HuellaGit {
+		return "memoria caliente vieja: el repo cambió desde la última actualización (" + m.Actualizado +
+			"). Antes de cerrar, actualiza foco, tarea y siguiente con: aquas memoria fijar tarea=… siguiente=…"
+	}
+	return ""
+}
+
+// Inicio: texto que el hook SessionStart agrega al contexto. Nunca bloquea.
+func Inicio(raiz string) string {
+	m, err := Leer(raiz)
+	switch {
+	case errors.Is(err, ErrSelloRoto):
+		return "AVISO: " + err.Error() + ". No confíes en su contenido; avisa al humano.\n"
+	case err != nil:
+		return "aquas: " + err.Error() + "\n"
+	}
+	return Texto(m)
 }

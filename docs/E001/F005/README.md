@@ -62,7 +62,7 @@ Slices de esta feature:
 | Slice | Qué entrega | Estado |
 |---|---|---|
 | [S001 Archivo, sello y guardia](S001.md) | Memoria con campos fijos que solo escribe `aquas` | Hecho |
-| S002 Hooks de inicio y cierre | Se muestra al empezar y se exige al cerrar | Pendiente |
+| [S002 Hooks de inicio y cierre](S002.md) | Se muestra al empezar y se exige al cerrar | Hecho |
 | S003 Archivo y arranque en frío | Se archiva al cerrar el slice; prueba de sesión nueva | Pendiente |
 
 ## Ejemplo de punta a punta
@@ -92,7 +92,7 @@ En la [iniciativa](../../glosario.md#iniciativa), el pedido de Jesús avanzó ha
 
 ## Contrato y evidencia
 
-Estado: en curso. S001 hecho; S002 y S003 pendientes.
+Estado: en curso. S001 y S002 hechos; S003 pendiente.
 
 Objetivo: el agente recupera su foco tras compactar o abrir sesión, sin depender del resumen del chat.
 
@@ -107,7 +107,7 @@ Decisiones de Jesús (2026-10-20):
 
 ```mermaid
 flowchart LR
-    S1["S001 archivo<br/>Hecho"] --> S2["S002 hooks<br/>Pendiente"]
+    S1["S001 archivo<br/>Hecho"] --> S2["S002 hooks<br/>Hecho"]
     S2 --> S3["S003 archivo al cierre<br/>Pendiente"]
 ```
 
@@ -117,3 +117,4 @@ Prueba integral de la feature: todavía no existe. Llega con S003, la prueba de 
 
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S001 · Archivo, sello y guardia](S001.md)
+- Abajo: [S002 · Hooks de inicio y cierre](S002.md)
