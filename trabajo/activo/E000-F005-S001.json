@@ -1,0 +1,25 @@
+{
+  "id": "E000/F005/S001",
+  "tipo": "slice",
+  "titulo": "Pruebas del compilador que miden la causa",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-21: slices de calidad de pruebas; una V y dos D del informe",
+  "padre": "E000/F005",
+  "bloqueado_por": [],
+  "secuencia": 40,
+  "pruebas": [
+    {
+      "prueba": "./internal/compilador:TestFuenteFueraDeCanonicoSeRechaza",
+      "intencion": "con la config completa, una fuente fuera de gobierno/canonico se rechaza por esa regla y no por otra"
+    },
+    {
+      "prueba": "./internal/compilador:TestEdicionManualDeDerivadoFallaGate",
+      "intencion": "el gate nombra al CLAUDE.md editado como causa, no basta cualquier problema"
+    },
+    {
+      "prueba": "./internal/compilador:TestCompilarEsIdempotente",
+      "intencion": "la primera compilación escribe los derivados y la segunda no reescribe nada"
+    }
+  ]
+}

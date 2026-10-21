@@ -1,0 +1,17 @@
+{
+  "id": "E001/F002/S008",
+  "tipo": "slice",
+  "titulo": "siguiente avisa features sin slices",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-21: siguiente solo mira slices y escondió E000/F005 (P1) tras un slice P2",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 46,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSiguienteAvisaFeatureSinSlices",
+      "intencion": "una feature libre sin slices y más prioritaria que el primer slice libre sale como aviso de crear sus slices"
+    }
+  ]
+}

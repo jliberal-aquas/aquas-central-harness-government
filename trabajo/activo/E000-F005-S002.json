@@ -1,0 +1,33 @@
+{
+  "id": "E000/F005/S002",
+  "tipo": "slice",
+  "titulo": "Bloqueos de guardia y entorno con su motivo",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-21: slices de calidad de pruebas; cinco D que solo miran si hubo bloqueo",
+  "padre": "E000/F005",
+  "bloqueado_por": [],
+  "secuencia": 41,
+  "pruebas": [
+    {
+      "prueba": "./internal/entorno:TestValidarArchivoRotoBloquea",
+      "intencion": "el bloqueo dice que el archivo de entorno está roto"
+    },
+    {
+      "prueba": "./internal/entorno:TestSettingsSOSinConfigFalla",
+      "intencion": "el error nombra el sistema operativo que no tiene configuración"
+    },
+    {
+      "prueba": "./internal/guardia:TestBashConCwdFuera",
+      "intencion": "bloquea porque el directorio de trabajo está fuera del repo"
+    },
+    {
+      "prueba": "./internal/guardia:TestEntradaHook",
+      "intencion": "cada entrada del hook bloquea o pasa por el motivo esperado"
+    },
+    {
+      "prueba": "./internal/guardia:TestSinConfigTodoFueraBloqueado",
+      "intencion": "sin config de permitidos, bloquea por ruta fuera del repo y no por otra causa"
+    }
+  ]
+}
