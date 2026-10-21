@@ -1,5 +1,7 @@
 # E001 · Gobierno del trabajo
 
+[Inicio](../README.md) › E001
+
 [Iniciativa](../glosario.md#iniciativa) que ordena **cada pedido** del humano: desde la frase escrita en el chat hasta el [commit](../glosario.md#commit) verificado.
 
 ## En una frase
@@ -106,6 +108,31 @@ Hoy funciona así:
 - La especificación completa vive en [E001_GOBIERNO_DEL_TRABAJO.md](../../gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md).
 
 Cuando llegue F002 habrá comandos como `aquas backlog siguiente` y `aquas slice rojo`. Todavía no existen.
+
+## Contrato y evidencia
+
+**Resultado esperado.** Cada pedido sigue el mismo camino: texto guardado, slice con prueba en rojo y verde, sello y commit.
+
+**Resultado logrado.** Solo la primera feature, la wiki con su gate. La auditoría, el [backlog](../glosario.md#backlog) y el sello todavía no existen.
+
+```mermaid
+flowchart LR
+    E["E001"] --> F1["F001 Wiki + gate<br/>En curso"]
+    E --> F2["F002 Turnos, backlog y sello<br/>Pendiente"]
+    E --> F3["F003 Bibliotecario<br/>Pendiente"]
+    E --> F4["F004 Defectos<br/>Pendiente"]
+    E --> F5["F005 Memoria caliente<br/>Pendiente"]
+```
+
+Decisiones de Jesús (2026-10-20):
+
+- No hay aprobaciones formales. La única puerta humana es la ronda de preguntas.
+- Un solo slice activo por repositorio, sin agentes en paralelo salvo pedido.
+- El backlog se guarda en JSON, un archivo por elemento, versionado en git.
+- Un pedido urgente o que protege el repo pausa el slice activo y entra por E000.
+- El método se llama Aquas-driven development y evoluciona sin parar.
+
+Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita seguir un pedido de punta a punta.
 
 ## Navegación
 

@@ -1,5 +1,7 @@
 # F001 · Wiki + gate
 
+[Inicio](../../README.md) › [E001](../README.md) › F001
+
 [Feature](../../glosario.md#feature) que obliga a explicar todo el repositorio en esta [wiki](../../glosario.md#wiki). Un [gate](../../glosario.md#gate) en [Go](../../glosario.md#go) bloquea el [commit](../../glosario.md#commit) si la wiki está incompleta.
 
 ## En una frase
@@ -62,6 +64,7 @@ Slices de esta feature:
 | [S001 Esqueleto + gate](S001.md) | Estructura, secciones, diagramas, ejemplos, enlaces | Hecho |
 | [S002 Glosario + legibilidad](S002.md) | Términos técnicos definidos y frases cortas | Hecho |
 | [S003 Documentar lo existente](S003.md) | Páginas de referencia en `docs/ref/` | Hecho |
+| [S004 Contrato y evidencia](S004.md) | Sección 9, migas y pruebas con dueño | En curso |
 
 ## Ejemplo de punta a punta
 
@@ -97,12 +100,39 @@ Para agregar documentación de algo nuevo:
 - El [pre-commit](../../glosario.md#pre-commit) ejecuta lo mismo; no hace falta acordarse.
 - Límite: el gate revisa el tipo de cada diagrama, no si está bien escrito. Un diagrama roto pasa. Míralo en la vista previa antes de guardar.
 
-Prueba integral de la feature:
 
-- Se escribió una página nueva siguiendo solo esta wiki, con errores típicos de alguien que llega.
-- El pre-commit la frenó con ocho avisos. Con esos avisos bastó una ronda de arreglos para llegar a «GATE OK».
-- Se rompieron a propósito un ancla y una sección de S001. El gate detectó las dos.
-- Se rompió a propósito un diagrama. El gate lo dejó pasar: es el límite de arriba.
+## Contrato y evidencia
+
+**Objetivo.** La wiki siempre completa, navegable y fácil de leer, y un gate que lo exige en cada commit.
+
+**Por qué esos slices.** S001 da la estructura que todo lo demás usa. S002 mide si se lee fácil. S003 documenta lo que ya existía, para no dejar piezas sin explicar. S004 agrega el contrato y la evidencia de cada página.
+
+Decisiones de Jesús:
+
+- La wiki es para humanos: puede ser extensa y no usa Caveman.
+- El manual de `docs/ref/` explica cómo funciona algo; las páginas E, F y S son contrato y evidencia (2026-10-20).
+- Cada prueba del repo la nombra algún slice (2026-10-20).
+
+**Prueba integral.**
+
+- Escenario: se escribió una página nueva siguiendo solo esta wiki, con errores típicos de quien llega.
+- Resultado: el pre-commit la frenó con ocho avisos y bastó una ronda de arreglos.
+- También: se rompieron a propósito un ancla y una sección de S001, y el gate detectó las dos. Un diagrama roto pasó: es el límite conocido.
+- Commit: `cdf1567`.
+
+```mermaid
+flowchart LR
+    P["Página nueva con errores"] --> A["8 avisos del pre-commit"]
+    A --> R["Una ronda de arreglos"]
+    R --> OK["GATE OK"]
+```
+
+| Slice | Estado |
+|---|---|
+| S001 Esqueleto + gate | Hecho |
+| S002 Glosario + legibilidad | Hecho |
+| S003 Documentar lo existente | Hecho |
+| S004 Contrato y evidencia | En curso |
 
 ## Navegación
 
@@ -110,3 +140,4 @@ Prueba integral de la feature:
 - Abajo: [S001 · Esqueleto + gate](S001.md)
 - Abajo: [S002 · Glosario + legibilidad](S002.md)
 - Abajo: [S003 · Documentar lo existente](S003.md)
+- Abajo: [S004 · Contrato y evidencia](S004.md)
