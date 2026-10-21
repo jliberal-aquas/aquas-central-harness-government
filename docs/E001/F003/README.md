@@ -28,7 +28,7 @@ Piensa en el **mostrador de una biblioteca**.
 - El bibliotecario te trae fotocopias solo de esas páginas.
 - Al final te dice cuántas páginas te ahorraste.
 
-Límite de la analogía: el bibliotecario de verdad sabe dónde buscar un tema. Este, por ahora, solo trae lo que le nombras. Buscar llega en S002.
+Límite de la analogía: el bibliotecario de verdad sabe dónde buscar un tema. Este solo trae lo que le nombras; para buscar, el agente usa Grep.
 
 ## Diagrama
 
@@ -59,7 +59,7 @@ stateDiagram-v2
 | Slice | Qué entrega | Estado |
 |---|---|---|
 | [S001 Leer un lote de rutas](S001.md) | Varias rutas y rangos en una llamada, con tope y cuenta | Hecho |
-| S002 Buscar | Expresión regular sobre rutas; responde archivo y línea | Pendiente |
+| S002 Buscar | Expresión regular sobre rutas | Descartado: no ahorra vueltas |
 | S003 Esquema | Firmas de Go y títulos de Markdown | Pendiente |
 | S004 Relaciones | Quién usa qué, conectado al sello | Pendiente |
 
@@ -79,7 +79,7 @@ En la [iniciativa](../../glosario.md#iniciativa), el pedido de Jesús llegó al 
 ## Paso a paso
 
 1. S001: leer un lote de rutas, con rangos, tope y cuenta.
-2. S002: buscar por expresión regular.
+2. S002: buscar por expresión regular (descartado).
 3. S003: esquema de Go y [Markdown](../../glosario.md#markdown), semilla del plugin.
 4. S004: relaciones entre código y conexión con el [sello](../../glosario.md#sello).
 
@@ -91,7 +91,7 @@ En la [iniciativa](../../glosario.md#iniciativa), el pedido de Jesús llegó al 
 
 ## Contrato y evidencia
 
-Estado: en curso. S001 hecho; S002 a S004 pendientes.
+Estado: en curso. S001 hecho; S002 descartado; S003 y S004 pendientes.
 
 Objetivo: que leer el repo cueste lo mínimo, medido en caracteres.
 
@@ -103,15 +103,15 @@ Decisiones de Jesús (2026-10-21):
 - Comando por Bash con el pedido en JSON.
 - El esquema va en S003.
 - El ahorro se prueba comparando caracteres con la lectura completa.
+- S002 se descarta: la telemetría mostró rachas de buscar y leer de 3 vueltas como máximo.
 
 ```mermaid
 flowchart LR
-    S1["S001 leer<br/>Hecho"] --> S2["S002 buscar<br/>Pendiente"]
-    S2 --> S3["S003 esquema<br/>Pendiente"]
+    S1["S001 leer<br/>Hecho"] --> S3["S003 esquema<br/>Pendiente"]
     S3 --> S4["S004 relaciones<br/>Pendiente"]
 ```
 
-Prueba integral de la feature: todavía no existe. Llega cuando haya algo que integrar, con S002.
+Prueba integral de la feature: todavía no existe. Llega cuando haya algo que integrar, con S003.
 
 ## Navegación
 
