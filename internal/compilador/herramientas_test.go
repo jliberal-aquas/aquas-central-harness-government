@@ -56,6 +56,11 @@ func TestAgentesRealesWorkersYAuditor(t *testing.T) {
 			t.Errorf("%s no habla con el humano: no carga reglas de comunicación", nombre)
 		}
 	}
+	for _, w := range []string{"worker-sonnet", "worker-haiku"} {
+		if a := por[w]; a.Cuerpo != "gobierno/canonico/agentes/worker.md" || len(a.Tools) > 0 {
+			t.Errorf("%s: cuerpo compartido worker.md y todas las herramientas; tiene %q %v", w, a.Cuerpo, a.Tools)
+		}
+	}
 	au := por["auditor"]
 	if au.Effort != "high" {
 		t.Errorf("auditor: effort %q, se esperaba high", au.Effort)
