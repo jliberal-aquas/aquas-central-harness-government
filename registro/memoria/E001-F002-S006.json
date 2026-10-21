@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S006",
+    "tarea": "S006 Propuesta con diagrama: verde y sello marcado, cerrando"
+  },
+  "siguiente": "lo que diga aquas backlog siguiente",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "46d630a26d518657084cb8bb803551785a0457afdc559d4d08261bf371a13859",
+  "actualizado": "2026-10-21T20:51:20Z",
+  "sello": "2a79d38f4fdccda5cab821b8181228cd826d706c63975bc30f001f13e7f4f9e8"
+}

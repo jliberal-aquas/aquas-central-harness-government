@@ -27,6 +27,7 @@ import (
 	"github.com/jliberal/aquas-harness-governance/internal/entorno"
 	"github.com/jliberal/aquas-harness-governance/internal/guardia"
 	"github.com/jliberal/aquas-harness-governance/internal/memoria"
+	"github.com/jliberal/aquas-harness-governance/internal/propuesta"
 	"github.com/jliberal/aquas-harness-governance/internal/turno"
 	"github.com/jliberal/aquas-harness-governance/internal/wiki"
 )
@@ -99,6 +100,18 @@ func main() {
 		hook(raiz)
 	case "turno": // hooks UserPromptSubmit y Stop: nunca bloquean; fallo = exit 1 + stderr
 		turnoCLI(raiz, os.Args[2:])
+	case "propuesta": // hook Stop (E001/F002/S006): PROPUESTA sin diagrama → exit 2 + stderr = el agente lo agrega
+		var e struct {
+			Respuesta string `json:"last_assistant_message"`
+		}
+		datos, _ := io.ReadAll(os.Stdin)
+		if err := json.Unmarshal(datos, &e); err != nil {
+			fallar(1, fmt.Errorf("propuesta: entrada del hook ilegible: %w", err))
+		}
+		if m := propuesta.Revisar(e.Respuesta); m != "" {
+			fmt.Fprintln(os.Stderr, m)
+			os.Exit(2)
+		}
 	case "memoria":
 		memoriaCLI(raiz, os.Args[2:])
 	case "backlog":

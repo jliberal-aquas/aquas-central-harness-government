@@ -65,7 +65,7 @@ Slices de esta feature:
 | [S002 Backlog en JSON](S002.md) | Fichas en JSON, cinco comandos, guardia y migración |
 | [S003 Rojo y verde](S003.md) | El slice no cierra sin prueba en rojo y luego en verde |
 | [S004 Sello ](S004.md) | Lista de lo que hay que revisar al cerrar un slice |
-| S006 Propuesta con diagrama | Un hook exige diagrama en cada propuesta |
+| [S006 Propuesta con diagrama ](S006.md) | Un hook exige diagrama en cada propuesta |
 | S008 `siguiente` ve features | Avisa de features libres sin slices |
 | [S009 Cerrar exige memoria archivada](S009.md) | Ningún slice cierra con su memoria sin archivar |
 | S007 Alcance del slice | Solo se tocan archivos dentro del alcance del slice |
@@ -140,7 +140,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | [S003](S003.md) | Rojo y verde del slice | Hecho |
 | [S004](S004.md) | Sello de cierre | Hecho |
 | S005 | aquas ver | Cancelado |
-| S006 | Propuesta con diagrama | Planeado |
+| [S006](S006.md) | Propuesta con diagrama | Hecho |
 | S007 | Archivos solo dentro del alcance del slice | Planeado |
 | S008 | siguiente avisa features sin slices | Planeado |
 | [S009](S009.md) | Cerrar exige memoria archivada | Hecho |

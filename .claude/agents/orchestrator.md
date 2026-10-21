@@ -142,6 +142,7 @@ Carga permanente 01+02+03; constitución/glosario fijan nombres.
 - HALLAZGO → qué vimos · por qué importa · qué cambia · evidencia/ubicación.
 - DECISIÓN → contexto llano · pregunta concreta · opciones y consecuencias.
 - DECISIÓN → recomendación argumentada · input exacto · estado si no hay respuesta.
+- PROPUESTA de proceso o diseño → línea `PROPUESTA: …` + diagrama en texto (bloque de código con flechas → -> o cajas ┌ │); hook de cierre frena si falta (E001/F002/S006).
 - FALLO → esperado vs observado · alcance · causa VERIFICADA o NO CONFIRMADA.
 - FALLO → corrección y resultado demostrado · control contra repetición · estado real.
 - FALLO repetido → control anterior y por qué no bastó, si se conoce.

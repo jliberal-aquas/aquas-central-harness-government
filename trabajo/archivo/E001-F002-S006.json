@@ -1,0 +1,190 @@
+{
+  "id": "E001/F002/S006",
+  "tipo": "slice",
+  "titulo": "Propuesta con diagrama",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "siguiente de F002; alcance aprobado por el humano 2026-10-21",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 24,
+  "pruebas": [
+    {
+      "prueba": "./internal/propuesta:TestPropuestaSinDiagramaFrena",
+      "intencion": "una línea PROPUESTA sin diagrama después frena el cierre y nombra la propuesta"
+    },
+    {
+      "prueba": "./internal/propuesta:TestPropuestaConDiagramaPasa",
+      "intencion": "con un bloque de código con flechas o cajas pasa"
+    },
+    {
+      "prueba": "./internal/propuesta:TestBloqueSinFlechasNoEsDiagrama",
+      "intencion": "un bloque sin flechas ni cajas, o una flecha en prosa, no es diagrama"
+    },
+    {
+      "prueba": "./internal/propuesta:TestSinMarcaPasa",
+      "intencion": "sin línea PROPUESTA el mensaje pasa, aunque nombre la palabra"
+    },
+    {
+      "prueba": "./internal/propuesta:TestPlantillaTraeHookDePropuesta",
+      "intencion": "la plantilla real trae el hook en el cierre"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T19:58:35Z",
+    "head": "00c8a3ab2483be461d12ee19e7e37c10492791d0",
+    "resultado": {
+      "./internal/propuesta:TestBloqueSinFlechasNoEsDiagrama": "propuesta_test.go:45: un bloque sin flechas ni cajas no es diagrama; dio \"x\"",
+      "./internal/propuesta:TestPlantillaTraeHookDePropuesta": "propuesta_test.go:83: falta {evento: Stop, orden: propuesta} en la plantilla; hay [{Evento:PreToolUse Orden:guardia} {Evento:PostToolUse Orden:hook} {Evento:SessionStart Orden:memoria inicio} {Evento:UserPromptSubmit Orden:turno abrir} {Evento:Stop Orden:turno cerrar} {Evento:Stop Orden:memoria cierre} {Evento:SubagentStop Orden:cierre-agente}]",
+      "./internal/propuesta:TestPropuestaConDiagramaPasa": "propuesta_test.go:37: con diagrama \"┌───┐\\n│ x │\\n└───┘\" pasa; dio \"x\"",
+      "./internal/propuesta:TestPropuestaSinDiagramaFrena": "propuesta_test.go:29: la segunda propuesta sin diagrama frena; dio \"x\"",
+      "./internal/propuesta:TestSinMarcaPasa": "propuesta_test.go:61: sin línea PROPUESTA: pasa; \"\" dio \"x\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T20:50:27Z",
+    "head": "00c8a3ab2483be461d12ee19e7e37c10492791d0"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S006.md",
+      "marca": "actualizado",
+      "motivo": "página nueva del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "S006 enlazado; bloque generado al día"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con este slice"
+    },
+    {
+      "clave": "nombra:CLAUDE.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "plantilla con un hook más; ruta y formato iguales"
+    },
+    {
+      "clave": "nombra:CLAUDE.md\u003egobierno/config/sellos.json",
+      "marca": "sin_cambio",
+      "motivo": "sello del compilador regenerado; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "plantilla con un hook más; ruta y formato iguales"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/README.md\u003e.claude/agents/orchestrator.md",
+      "marca": "sin_cambio",
+      "motivo": "derivado recompilado con la regla nueva; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/S001.md\u003e.claude/agents/orchestrator.md",
+      "marca": "sin_cambio",
+      "motivo": "derivado recompilado con la regla nueva; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta como ejemplo o en pruebas; no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "plantilla con un hook más; ruta y formato iguales"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "plantilla con un hook más; ruta y formato iguales"
+    },
+    {
+      "clave": "nombra:docs/README.md\u003e.claude/agents/orchestrator.md",
+      "marca": "sin_cambio",
+      "motivo": "derivado recompilado con la regla nueva; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003egobierno/config/sellos.json",
+      "marca": "sin_cambio",
+      "motivo": "sello del compilador regenerado; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003e.claude/agents/orchestrator.md",
+      "marca": "sin_cambio",
+      "motivo": "derivado recompilado con la regla nueva; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "habla del compilador, no del hook nuevo"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/config/sellos.json",
+      "marca": "sin_cambio",
+      "motivo": "sello del compilador regenerado; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:docs/ref/comunicacion.md\u003egobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md",
+      "marca": "sin_cambio",
+      "motivo": "enlaza las reglas; la regla nueva vive en ese archivo"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "plantilla con un hook más; ruta y formato iguales"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/constitucion.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "plantilla con un hook más; ruta y formato iguales"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/constitucion.md\u003egobierno/config/sellos.json",
+      "marca": "sin_cambio",
+      "motivo": "sello del compilador regenerado; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md",
+      "marca": "sin_cambio",
+      "motivo": "enlaza las reglas; la regla nueva vive en ese archivo"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta como ejemplo o en pruebas; no cambia"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador.go\u003egobierno/config/sellos.json",
+      "marca": "sin_cambio",
+      "motivo": "sello del compilador regenerado; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003e.claude/agents/orchestrator.md",
+      "marca": "sin_cambio",
+      "motivo": "derivado recompilado con la regla nueva; ruta y uso iguales"
+    },
+    {
+      "clave": "nombra:internal/entorno/entorno.go\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "plantilla con un hook más; ruta y formato iguales"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta como ejemplo o en pruebas; no cambia"
+    }
+  ]
+}
