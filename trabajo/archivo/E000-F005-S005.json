@@ -1,0 +1,28 @@
+{
+  "id": "E000/F005/S005",
+  "tipo": "slice",
+  "titulo": "Una sola fuente para las carpetas protegidas",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "terminar F005, que está a medias, antes de lo siguiente (decisión humana 2026-10-21)",
+  "padre": "E000/F005",
+  "bloqueado_por": [],
+  "secuencia": 44,
+  "pruebas": [
+    {
+      "prueba": "./internal/guardia:TestCarpetasProtegidasSalenDeSusPaquetes",
+      "intencion": "la guardia protege las rutas de backlog y memoria tomadas de esos paquetes"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T17:58:00Z",
+    "head": "fa4a1ce7eaeb45dacab67ea7fe7700d990d221b1",
+    "resultado": {
+      "./internal/guardia:TestCarpetasProtegidasSalenDeSusPaquetes": "carpetas_test.go:28: Bash hacia fichas/archivo/x.json: se esperaba \"backlog: \"; motivo \"\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T17:58:55Z",
+    "head": "fa4a1ce7eaeb45dacab67ea7fe7700d990d221b1"
+  }
+}

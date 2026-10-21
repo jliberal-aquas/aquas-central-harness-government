@@ -12,6 +12,11 @@
 package guardia
 
 import (
+	"path"
+
+	"github.com/jliberal/aquas-harness-governance/internal/backlog"
+	mem "github.com/jliberal/aquas-harness-governance/internal/memoria"
+
 	"encoding/json"
 	"fmt"
 	"os"
@@ -66,19 +71,22 @@ func RevisarArchivo(raiz, p string) string {
 	if !dentro(raiz, abs) && !permitido(raiz, abs) {
 		return fmt.Sprintf("escritura fuera del repositorio bloqueada: %s (%s: %s)", p, regla, raiz)
 	}
-	return memoria(raiz, abs, p)
+	return protegida(raiz, abs, p)
 }
 
-// memoria: .aquas/ guarda la memoria caliente (solo `aquas memoria fijar`) y registro/memoria/ su
-// archivo por slice (solo `aquas memoria archivar`) (E001/F005).
-func memoria(raiz, abs, p string) string {
-	if dentro(filepath.Join(raiz, ".aquas"), abs) {
+// protegida: carpetas que solo escribe `aquas` (E001/F005, E001/F002). Las rutas salen de los
+// paquetes que las usan (E000/F005/S005): si uno mueve su carpeta, la guardia protege la nueva.
+// La memoria caliente vive en la carpeta de mem.Ruta; su archivo por slice en mem.Archivo;
+// las fichas en la carpeta común de backlog.Activo y backlog.Archivo.
+func protegida(raiz, abs, p string) string {
+	en := func(rel string) bool { return dentro(filepath.Join(raiz, filepath.FromSlash(rel)), abs) }
+	if en(path.Dir(mem.Ruta)) {
 		return fmt.Sprintf("memoria caliente: %s solo se escribe con `aquas memoria fijar campo=valor`", p)
 	}
-	if dentro(filepath.Join(raiz, "registro", "memoria"), abs) {
+	if en(mem.Archivo) {
 		return fmt.Sprintf("archivo de memoria: %s solo se escribe con `aquas memoria archivar` al cerrar el slice", p)
 	}
-	if dentro(filepath.Join(raiz, "trabajo"), abs) {
+	if en(path.Dir(backlog.Activo)) || en(path.Dir(backlog.Archivo)) {
 		return fmt.Sprintf("backlog: %s solo se escribe con `aquas backlog nuevo|prioridad|estado|pruebas|rojo|verde`", p)
 	}
 	return ""
@@ -456,7 +464,7 @@ func revisarDestino(raiz, cwd string, cwdOK bool, vars map[string]string, d stri
 	if !dentro(raiz, abs) && !permitido(raiz, abs) {
 		return fmt.Sprintf("escritura fuera del repositorio bloqueada: %s (%s: %s)", e, regla, raiz)
 	}
-	return memoria(raiz, abs, e)
+	return protegida(raiz, abs, e)
 }
 
 var reVar = regexp.MustCompile("\x00([^\x00]*)\x00")

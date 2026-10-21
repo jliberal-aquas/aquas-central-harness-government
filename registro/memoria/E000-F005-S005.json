@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F005",
+    "slice": "S005",
+    "tarea": "E000/F005/S005 verde; cerrando"
+  },
+  "siguiente": "E000/F005/S006 rojo de los slices viejos",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "03aa0bc4ae31d688199c575b2e610bd7aa82b7a893014c8918141ffcda3bbed1",
+  "actualizado": "2026-10-21T17:59:42Z",
+  "sello": "888c162d94027aaa3258fd8014db7d5d5cbb0899ca2c6ac4c87538a843c8a15d"
+}
