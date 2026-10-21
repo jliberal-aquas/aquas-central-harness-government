@@ -66,6 +66,14 @@ func RevisarArchivo(raiz, p string) string {
 	if !dentro(raiz, abs) && !permitido(raiz, abs) {
 		return fmt.Sprintf("escritura fuera del repositorio bloqueada: %s (%s: %s)", p, regla, raiz)
 	}
+	return memoria(raiz, abs, p)
+}
+
+// memoria: .aquas/ guarda la memoria caliente; solo la escribe `aquas memoria fijar` (E001/F005).
+func memoria(raiz, abs, p string) string {
+	if dentro(filepath.Join(raiz, ".aquas"), abs) {
+		return fmt.Sprintf("memoria caliente: %s solo se escribe con `aquas memoria fijar campo=valor`", p)
+	}
 	return ""
 }
 
@@ -441,7 +449,7 @@ func revisarDestino(raiz, cwd string, cwdOK bool, vars map[string]string, d stri
 	if !dentro(raiz, abs) && !permitido(raiz, abs) {
 		return fmt.Sprintf("escritura fuera del repositorio bloqueada: %s (%s: %s)", e, regla, raiz)
 	}
-	return ""
+	return memoria(raiz, abs, e)
 }
 
 var reVar = regexp.MustCompile("\x00([^\x00]*)\x00")

@@ -5,6 +5,7 @@
 //	aquas hook       modo hook PostToolUse de Claude Code (lee JSON por stdin)
 //	aquas guardia    hook PreToolUse: bloquea (exit 2) toda escritura fuera del repositorio
 //	aquas iniciar    declara SO y raíz de esta máquina (entorno.local.json) y genera .claude/settings.json
+//	aquas memoria    ver | fijar campo=valor…: memoria caliente del foco (.aquas/memoria.json)
 package main
 
 import (
@@ -14,16 +15,18 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/jliberal/aquas-harness-governance/internal/compilador"
 	"github.com/jliberal/aquas-harness-governance/internal/entorno"
 	"github.com/jliberal/aquas-harness-governance/internal/guardia"
+	"github.com/jliberal/aquas-harness-governance/internal/memoria"
 	"github.com/jliberal/aquas-harness-governance/internal/wiki"
 )
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia")
+		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria")
 		os.Exit(64)
 	}
 	raiz, err := os.Getwd()
@@ -76,6 +79,8 @@ func main() {
 		fmt.Println("GATE OK · derivados, sello, wiki y guardia al día")
 	case "hook":
 		hook(raiz)
+	case "memoria":
+		memoriaCLI(raiz, os.Args[2:])
 	case "guardia":
 		datos, _ := io.ReadAll(os.Stdin)
 		if m := entorno.Validar(raiz); m != "" {
@@ -167,4 +172,25 @@ func lista(xs []string) string {
 func fallar(codigo int, err error) {
 	fmt.Fprintln(os.Stderr, "aquas:", err)
 	os.Exit(codigo)
+}
+
+// memoriaCLI: `ver` imprime la memoria; `fijar campo=valor…` la actualiza y la sella.
+func memoriaCLI(raiz string, args []string) {
+	if len(args) == 0 || (args[0] != "ver" && args[0] != "fijar") {
+		fallar(64, fmt.Errorf("uso: aquas memoria ver | fijar campo=valor…"))
+	}
+	var m memoria.Memoria
+	var err error
+	if args[0] == "fijar" {
+		if len(args) == 1 {
+			fallar(64, fmt.Errorf("fijar sin campos: aquas memoria fijar tarea=… siguiente=…"))
+		}
+		m, err = memoria.Fijar(raiz, args[1:], time.Now())
+	} else {
+		m, err = memoria.Leer(raiz)
+	}
+	if err != nil {
+		fallar(1, err)
+	}
+	fmt.Print(memoria.Texto(m))
 }

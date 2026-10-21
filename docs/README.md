@@ -107,7 +107,7 @@ flowchart TD
     E0 --> E0F1["F001 Guardia del repo<br/>Hecho"]
     E0 --> E0F2["F002 Compilador y sello<br/>Hecho"]
     E1 --> E1F1["F001 Wiki + gate<br/>Hecho"]
-    E1 --> E1F5["F005 Memoria caliente<br/>Siguiente"]
+    E1 --> E1F5["F005 Memoria caliente<br/>En curso"]
     E1 --> E1F2["F002 Turnos, backlog y sello<br/>Pendiente"]
     E1 --> E1F4["F004 Defectos<br/>Pendiente"]
     E1 --> E1F3["F003 Bibliotecario<br/>Pendiente"]
@@ -124,7 +124,9 @@ flowchart TD
 | ↳ [F001](E001/F001/README.md) Wiki + gate | Esta wiki y el gate que la exige | Hecho |
 | ↳↳ [S001](E001/F001/S001.md) · [S002](E001/F001/S002.md) · [S003](E001/F001/S003.md) | Esqueleto, legibilidad y glosario, referencia | Hecho |
 | ↳↳ [S004](E001/F001/S004.md) | Contrato, evidencia y migas | Hecho |
-| ↳ F005 Memoria caliente | El agente no pierde el foco entre sesiones | Siguiente |
+| ↳ [F005](E001/F005/README.md) Memoria caliente | El agente no pierde el foco entre sesiones | En curso |
+| ↳↳ [S001](E001/F005/S001.md) | Archivo, sello y guardia | Hecho |
+| ↳↳ S002 · S003 | Hooks de inicio y cierre; archivo y arranque en frío | Pendiente |
 | ↳ F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | Pendiente |
 | ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
 | ↳ F003 Bibliotecario | Búsqueda determinista de archivos y usos | Pendiente |

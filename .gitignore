@@ -7,3 +7,6 @@ gobierno/config/entorno.local.json
 
 # Temporales locales de Go
 .tmp/
+
+# Memoria caliente (E001/F005): local; solo se versiona su archivo en registro/memoria/
+.aquas/
