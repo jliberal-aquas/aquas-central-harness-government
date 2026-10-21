@@ -19,6 +19,8 @@ Tres ideas sostienen todo:
 2. **La máquina revisa.** Lo que se puede comprobar con un programa, lo comprueba un programa (un *[gate](glosario.md#gate)*).
 3. **Se explica para humanos.** Esta [wiki](glosario.md#wiki) cuenta cada pieza con ejemplos y dibujos.
 
+El método de trabajo se llama **Aquas-driven development**. No depende de un comité ni de documentos largos. Cada slice tiene un contrato mínimo y un gate lo vigila. Está en evolución constante.
+
 ## Analogía
 
 Piensa en una **cocina de restaurante**.
@@ -79,6 +81,7 @@ Comandos principales, desde la raíz del repositorio:
 | Regenerar archivos derivados y sello | `go run ./cmd/aquas compilar` |
 | Revisar que todo esté en orden | `go run ./cmd/aquas verificar` |
 | Activar el gate en un clon nuevo | `git config core.hooksPath .githooks` |
+| Declarar sistema y carpeta en un clon nuevo | `go run ./cmd/aquas iniciar` |
 
 Mapa rápido del repositorio:
 
@@ -89,7 +92,44 @@ Mapa rápido del repositorio:
 | `cmd/aquas/` | La herramienta de línea de comandos. |
 | `internal/compilador/` | El compilador y el sellado. |
 | `internal/wiki/` | El gate de esta wiki. |
+| `internal/guardia/` | La guardia: nada se escribe fuera del repo. |
+| `internal/entorno/` | Sistema y carpeta declarados; ajustes generados. |
 | `docs/` | Esta wiki. |
+
+## Mapa del trabajo
+
+Todo lo hecho y lo planeado, con su estado. Hoy se escribe a mano. Cuando llegue el [backlog](glosario.md#backlog) en JSON, lo generará `aquas`.
+
+```mermaid
+flowchart TD
+    R["Inicio"] --> E0["E000 Mantenimiento del gobierno"]
+    R --> E1["E001 Gobierno del trabajo<br/>En curso"]
+    E0 --> E0F1["F001 Guardia del repo<br/>Hecho"]
+    E0 --> E0F2["F002 Compilador y sello<br/>Hecho"]
+    E1 --> E1F1["F001 Wiki + gate<br/>En curso"]
+    E1 --> E1F5["F005 Memoria caliente<br/>Siguiente"]
+    E1 --> E1F2["F002 Turnos, backlog y sello<br/>Pendiente"]
+    E1 --> E1F4["F004 Defectos<br/>Pendiente"]
+    E1 --> E1F3["F003 Bibliotecario<br/>Pendiente"]
+```
+
+| Elemento | Qué entrega | Estado |
+|---|---|---|
+| [E000](E000/README.md) Mantenimiento del gobierno | Arreglos y controles de este repositorio | Permanente |
+| ↳ [F001](E000/F001/README.md) Guardia del repo | Nada se escribe fuera del repositorio | Hecho |
+| ↳↳ [S001](E000/F001/S001.md) · [S002](E000/F001/S002.md) · [S003](E000/F001/S003.md) · [S004](E000/F001/S004.md) | Guardia, permitidos, hooks en Windows, entorno declarado | Hecho |
+| ↳ [F002](E000/F002/README.md) Compilador y sello | Archivos generados, sellados y con tope | Hecho |
+| ↳↳ [S001](E000/F002/S001.md) · [S002](E000/F002/S002.md) | Compilar y sellar, tope de caracteres | Hecho |
+| [E001](E001/README.md) Gobierno del trabajo | Camino fijo para cada pedido | En curso |
+| ↳ [F001](E001/F001/README.md) Wiki + gate | Esta wiki y el gate que la exige | En curso |
+| ↳↳ [S001](E001/F001/S001.md) · [S002](E001/F001/S002.md) · [S003](E001/F001/S003.md) | Esqueleto, legibilidad y glosario, referencia | Hecho |
+| ↳↳ [S004](E001/F001/S004.md) | Contrato, evidencia y migas | En curso |
+| ↳ F005 Memoria caliente | El agente no pierde el foco entre sesiones | Siguiente |
+| ↳ F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | Pendiente |
+| ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
+| ↳ F003 Bibliotecario | Búsqueda determinista de archivos y usos | Pendiente |
+
+El orden de las pendientes es el orden de ejecución.
 
 ## Navegación
 
