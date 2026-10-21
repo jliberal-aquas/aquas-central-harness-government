@@ -276,7 +276,7 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 		return err
 	case !hay:
 		if f, archivada, _ := backlog.Ver(raiz, id); archivada {
-			return fmt.Errorf("%s ya está archivado (%s): vacía el slice de la memoria con `aquas memoria archivar` o `aquas memoria fijar slice=`", id, f.Estado)
+			return fmt.Errorf("%s ya está archivado (%s): la memoria se archiva antes de cerrar (memoria fijar → memoria archivar → backlog estado CERRADO). Si la memoria sigue fresca, `aquas memoria archivar`; si no, vacía el slice con `aquas memoria fijar slice=` (queda sin archivo de memoria)", id, f.Estado)
 		}
 		return fmt.Errorf("ningún slice en curso en el backlog: la memoria no fija %s (aquas backlog estado %s EN_CURSO)", id, id)
 	case cur != id:
