@@ -2,7 +2,7 @@
   "id": "E001/F002/S003",
   "tipo": "slice",
   "titulo": "Rojo y verde del slice",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "humano 2026-10-21: protege que ningún slice cierre sin pruebas",
   "padre": "E001/F002",

@@ -63,7 +63,7 @@ Slices de esta feature:
 |---|---|---|
 | S001 Auditoría | Guardar cada pedido tal cual, con su respuesta | Pendiente |
 | [S002 Backlog en JSON](S002.md) | Fichas en JSON, cinco comandos, guardia y migración | Hecho |
-| [S003 Rojo y verde](S003.md) | El slice no cierra sin prueba en rojo y luego en verde | En curso |
+| [S003 Rojo y verde](S003.md) | El slice no cierra sin prueba en rojo y luego en verde | Hecho |
 | S004 Sello | Lista de lo que hay que revisar al cerrar un slice | Pendiente |
 | S005 `aquas ver` | Mapas de la wiki generados desde el backlog | Pendiente |
 | S006 Propuesta con diagrama | Un hook exige diagrama en cada propuesta | Pendiente |
@@ -98,7 +98,7 @@ En la iniciativa, el pedido de Jesús ya es trabajo. Ahora hay que ubicarlo en l
 
 ## Contrato y evidencia
 
-Estado: en curso. S002 hecho; S003 en curso; el resto pendiente.
+Estado: en curso. S002 y S003 hechos; el resto pendiente.
 
 Objetivo: que el orden y el estado del trabajo los guarde un programa, no el agente.
 
@@ -108,7 +108,7 @@ Orden: S002 va primero por prioridad. Jesús la fijó en P1 el 2026-10-21.
 
 ```mermaid
 flowchart LR
-    S2["S002 backlog<br/>Hecho"] --> S3["S003 rojo y verde<br/>En curso"]
+    S2["S002 backlog<br/>Hecho"] --> S3["S003 rojo y verde<br/>Hecho"]
     S3 --> S4["S004 sello<br/>Pendiente"]
     S1["S001 auditoría<br/>Pendiente"]
 ```
