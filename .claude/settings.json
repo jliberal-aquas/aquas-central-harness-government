@@ -8,8 +8,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh",
-            "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/aquas.sh", "guardia"]
+            "command": "sh \"${CLAUDE_PROJECT_DIR}/.claude/hooks/aquas.sh\" guardia",
+            "shell": "bash"
           }
         ]
       }
@@ -20,8 +20,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh",
-            "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/aquas.sh", "hook"]
+            "command": "sh \"${CLAUDE_PROJECT_DIR}/.claude/hooks/aquas.sh\" hook",
+            "shell": "bash"
           }
         ]
       }
