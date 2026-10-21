@@ -15,6 +15,43 @@
         "gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md"
       ],
       "max_caracteres": 20000
+    },
+    {
+      "name": "worker-sonnet",
+      "description": "Worker en Sonnet: ejecuta un encargo cerrado del orquestador (escribir código, cambios con criterio). No habla con el humano; reporta con evidencia.",
+      "model": "sonnet",
+      "cuerpo": "gobierno/canonico/agentes/worker.md",
+      "reglas": [
+        "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md"
+      ],
+      "max_caracteres": 8000
+    },
+    {
+      "name": "worker-haiku",
+      "description": "Worker en Haiku: ejecuta un encargo cerrado y mecánico del orquestador (leer, buscar, dar formato). No habla con el humano; reporta con evidencia.",
+      "model": "haiku",
+      "cuerpo": "gobierno/canonico/agentes/worker.md",
+      "reglas": [
+        "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md"
+      ],
+      "max_caracteres": 8000
+    },
+    {
+      "name": "auditor",
+      "description": "Auditor en Opus: revisa trabajo terminado contra su contrato, corre pruebas y gate, y reporta hallazgos con evidencia. Solo lee; no edita.",
+      "model": "opus",
+      "effort": "high",
+      "tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "cuerpo": "gobierno/canonico/agentes/auditor.md",
+      "reglas": [
+        "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md"
+      ],
+      "max_caracteres": 8000
     }
   ]
 }

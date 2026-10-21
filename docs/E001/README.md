@@ -65,6 +65,7 @@ Estado actual de sus features:
 |---|---|---|
 | [F001 Wiki + gate](F001/README.md) | Obliga a documentar con esta wiki | Hecho |
 | [F005 Memoria caliente](F005/README.md) | El agente no pierde el foco entre sesiones | Hecha |
+| [F006 Workers y auditor](F006/README.md) | Agentes baratos que ejecutan y un auditor que revisa | Hecha |
 | F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo/verde, sello | Pendiente |
 | F004 Defectos y reincidencia | Registra fallos y avisa si se repiten | Pendiente |
 | F003 Bibliotecario | Busca archivos y usos de código de forma determinista | Pendiente |
@@ -124,6 +125,7 @@ flowchart LR
     E --> F3["F003 Bibliotecario<br/>Pendiente"]
     E --> F4["F004 Defectos<br/>Pendiente"]
     E --> F5["F005 Memoria caliente<br/>Hecha"]
+    E --> F6["F006 Workers y auditor<br/>Hecha"]
 ```
 
 Decisiones de Jesús (2026-10-20):
@@ -141,3 +143,4 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 - ↑ Subir: [Inicio de la wiki](../README.md)
 - Abajo: [F001 · Wiki + gate](F001/README.md)
 - Abajo: [F005 · Memoria caliente](F005/README.md)
+- Abajo: [F006 · Workers y auditor](F006/README.md)

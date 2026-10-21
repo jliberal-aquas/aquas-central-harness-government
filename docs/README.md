@@ -112,7 +112,7 @@ flowchart TD
     E1 --> E1F2["F002 Turnos, backlog y sello<br/>Pendiente"]
     E1 --> E1F4["F004 Defectos<br/>Pendiente"]
     E1 --> E1F3["F003 Bibliotecario<br/>Pendiente"]
-    E1 --> E1F6["F006 Workers y auditor<br/>Pendiente"]
+    E1 --> E1F6["F006 Workers y auditor<br/>Hecha"]
 ```
 
 | Elemento | Qué entrega | Estado |
@@ -132,7 +132,8 @@ flowchart TD
 | ↳ F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | Pendiente |
 | ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
 | ↳ F003 Bibliotecario | Herramienta propia: lee rutas o busca y entrega solo lo útil | Pendiente |
-| ↳ F006 Workers y auditor | Agentes baratos que ejecutan y un auditor que revisa | Pendiente |
+| ↳ [F006](E001/F006/README.md) Workers y auditor | Agentes baratos que ejecutan y un auditor que revisa | Hecha |
+| ↳↳ [S001](E001/F006/S001.md) | Tres agentes y sus herramientas | Hecho |
 
 El orden de las pendientes es el orden de ejecución.
 

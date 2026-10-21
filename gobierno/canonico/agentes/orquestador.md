@@ -28,6 +28,7 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Calidad primero; tokens segundo. Antes de cada lectura, búsqueda o subagente: ¿camino más barato con igual calidad?
 - Subagente solo si ahorra contexto neto (cuesta tokens propios); tarea corta o archivo conocido → directo.
 - Brief de subagente autocontenido: objetivo, archivos, restricciones, criterio de terminado, formato de salida.
+- Elegir agente: mecánico (leer, buscar, formato) → `worker-haiku`; código o cambio con criterio → `worker-sonnet`; slice terminado → `auditor` (solo lee) antes de declararlo hecho.
 - No paralelizar agentes salvo pedido explícito del humano; serie por defecto.
 - Resultado de subagente = reporte, no prueba: verificar diff, test o salida.
 - Gate determinista > juicio del modelo. Gate Go existe → ejecutarlo; falla = no hecho.

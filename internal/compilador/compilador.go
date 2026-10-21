@@ -29,6 +29,7 @@ type Agente struct {
 	Description  string   `json:"description"`
 	Model        string   `json:"model"`
 	Effort       string   `json:"effort"`
+	Tools        []string `json:"tools"` // vacío = hereda todas (E001/F006)
 	Cuerpo       string   `json:"cuerpo"`
 	Reglas       []string `json:"reglas"`
 	Comunicacion []string `json:"comunicacion"`
@@ -130,6 +131,9 @@ func compilarAgente(raiz string, a Agente) (Salida, error) {
 	b.WriteString("model: " + a.Model + "\n")
 	if a.Effort != "" {
 		b.WriteString("effort: " + a.Effort + "\n")
+	}
+	if len(a.Tools) > 0 {
+		b.WriteString("tools: " + strings.Join(a.Tools, ", ") + "\n")
 	}
 	b.WriteString("---\n")
 	b.WriteString(marca(RutaAgentes) + "\n\n")
