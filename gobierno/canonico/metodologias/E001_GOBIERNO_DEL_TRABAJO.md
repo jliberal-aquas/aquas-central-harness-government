@@ -69,7 +69,14 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
   - F: objetivo · por qué esos slices · decisiones · prueba integral (escenario, resultado, commit) · slices con estado.
   - S: contrato · cada prueba por nombre + qué demuestra + rojo visto · commits · decisiones.
 - Trazabilidad de pruebas (gate): toda prueba nombrada en un slice existe en código; toda `func Test…` del repo la nombra algún slice.
-- Inicio: mapa de todo E/F/S (hecho y planeado, con estado). Cada página E/F/S: migas «Inicio › E › F › S». Escritos a mano hasta F002; luego `aquas` los genera desde backlog JSON (bloque GENERADO).
+- Navegación por niveles (decisión humana 2026-10-21; reemplaza «inicio = mapa de todo E/F/S»): cada página explica completo SU nivel y solo enlaza a sus hijos directos; el mapa entero no cabe en una página porque crece.
+  - Inicio: qué hace el repo en su totalidad, constitución, flujo actual del repo, cada iniciativa explicada + enlace. Sin features ni slices.
+  - E: detalle completo de la iniciativa (diagramas, ejemplo, pruebas, contrato) + sus features, cada una con qué hace y enlace.
+  - F: detalle completo de la feature + sus slices, cada uno con qué hace y enlace.
+  - S: hoja; detalle completo del slice + sus pruebas con qué demuestran y rojo/verde.
+  - Hijo cambia → padre se actualiza solo: lista de hijos y su estado (inicio, E, F) y pruebas (S) = bloque GENERADO por `aquas` desde las fichas `trabajo/`; gate falla si falta o está desfasado. Prosa y diagramas explicativos = criterio humano.
+  - Página nace cuando su ficha arranca (EN_CURSO o CERRADO); gate falla si falta. Antes: fila sin enlace en el padre.
+- Cada página E/F/S: migas «Inicio › E › F › S».
 - E000 usa el mismo árbol: E000 → F → S.
 
 ## Vistas y diagramas en chat

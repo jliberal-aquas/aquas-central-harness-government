@@ -4,7 +4,7 @@
   "titulo": "Cableado del CLI probado de punta a punta",
   "estado": "BORRADOR",
   "prioridad": "P1",
-  "motivo": "humano 2026-10-21: slices de calidad de pruebas; verificar, guardia y hooks reales sin prueba; mutaciones M5 M6 M8 M9 M13 sobreviven",
+  "motivo": "después de E001/F002/S010 (decisión humana 2026-10-21)",
   "padre": "E000/F005",
   "bloqueado_por": [],
   "secuencia": 43,
