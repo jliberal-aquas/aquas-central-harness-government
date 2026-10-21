@@ -95,6 +95,14 @@ Para agregar documentación de algo nuevo:
 - Leer: abre `docs/README.md` en VS Code y pulsa Ctrl+Shift+V.
 - Revisar: `go run ./cmd/aquas verificar`. Cada problema sale como `archivo: problema`.
 - El [pre-commit](../../glosario.md#pre-commit) ejecuta lo mismo; no hace falta acordarse.
+- Límite: el gate revisa el tipo de cada diagrama, no si está bien escrito. Un diagrama roto pasa. Míralo en la vista previa antes de guardar.
+
+Prueba integral de la feature:
+
+- Se escribió una página nueva siguiendo solo esta wiki, con errores típicos de alguien que llega.
+- El pre-commit la frenó con ocho avisos. Con esos avisos bastó una ronda de arreglos para llegar a «GATE OK».
+- Se rompieron a propósito un ancla y una sección de S001. El gate detectó las dos.
+- Se rompió a propósito un diagrama. El gate lo dejó pasar: es el límite de arriba.
 
 ## Navegación
 

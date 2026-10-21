@@ -1,5 +1,5 @@
 # E001 · Gobierno del trabajo · v0.1 · BORRADOR RATIFICADO
-Origen: especificación SS-GOV-EFS v0.1.0 podada con el humano (2026-10-20). Estado: decisiones cerradas; implementado F001/S001 (gate de wiki en `internal/wiki/`) F001/S002 (legibilidad + glosario) y F001/S003 (referencia `docs/ref/`).
+Origen: especificación SS-GOV-EFS v0.1.0 podada con el humano (2026-10-20). Estado: decisiones cerradas; implementado F001/S001 (gate de wiki en `internal/wiki/`), F001/S002 (legibilidad + glosario) y F001/S003 (referencia `docs/ref/`); F001 con prueba integral.
 No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`) + resumen Caveman en orquestador.
 
 ## Decisiones ratificadas
