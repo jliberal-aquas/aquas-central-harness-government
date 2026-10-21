@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"unicode/utf8"
@@ -60,11 +61,16 @@ func TestLeerRango(t *testing.T) {
 
 func TestLeerErroresPorRutaNoFrenanElLote(t *testing.T) {
 	raiz := repo(t)
-	txt, _, _ := Leer(raiz, Pedido{Rutas: []string{"no-existe.go", "../fuera.x", filepath.Join(raiz, "a.go"), "a.go:5-2", "a.go"}})
+	abs := filepath.Join(raiz, "a.go")
+	txt, _, _ := Leer(raiz, Pedido{Rutas: []string{"no-existe.go", "../fuera.x", abs, "a.go:5-2", "a.go"}})
+	// E000/F005/S003: cada ruta tiene su propia línea; la absoluta se comprueba con su nombre.
+	if n := strings.Count(txt, "== ") - strings.Count(txt, "== devueltos "); n != 5 {
+		t.Errorf("cinco rutas, cinco encabezados (sin contar el resumen); hubo %d:\n%s", n, txt)
+	}
 	for _, w := range []string{
 		"== no-existe.go · error: no existe",
 		"== ../fuera.x · error: fuera del repo",
-		"· error: fuera del repo", // ruta absoluta: solo relativas al repo
+		"== " + abs + " · error: fuera del repo", // ruta absoluta: solo relativas al repo
 		"== a.go:5-2 · error: rango inválido",
 		"== a.go · 1-3 de 3",
 	} {
@@ -72,6 +78,23 @@ func TestLeerErroresPorRutaNoFrenanElLote(t *testing.T) {
 			t.Errorf("falta %q en:\n%s", w, txt)
 		}
 	}
+}
+
+// archivoIlegible: ruta relativa que el SO no deja leer, con un error distinto de «no existe».
+// Windows: «<» hace inválido el nombre. Otros SO: archivo sin permisos.
+func archivoIlegible(t *testing.T, raiz string) string {
+	t.Helper()
+	if runtime.GOOS == "windows" {
+		return "x<y.txt"
+	}
+	p := filepath.Join(raiz, "secreto.txt")
+	if err := os.WriteFile(p, []byte("s"), 0o000); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.ReadFile(p); err == nil {
+		t.Skip("este usuario lee archivos sin permiso (root): no hay archivo ilegible")
+	}
+	return "secreto.txt"
 }
 
 // Hallazgos del auditor (2026-10-21): archivo vacío, carpeta y misma ruta con otra grafía.
@@ -85,6 +108,12 @@ func TestLeerCasosBorde(t *testing.T) {
 	}
 	if strings.Contains(txt, raiz) {
 		t.Errorf("los errores no muestran la ruta absoluta de la máquina:\n%s", txt)
+	}
+	// E000/F005/S003: un archivo que el SO no deja leer llega a «no se pudo leer», sin la ruta absoluta.
+	ilegible := archivoIlegible(t, raiz)
+	txt, _, _ = Leer(raiz, Pedido{Rutas: []string{ilegible}})
+	if !strings.HasPrefix(txt, "== "+ilegible+" · error: no se pudo leer\n== devueltos ") || strings.Contains(txt, raiz) {
+		t.Errorf("archivo ilegible: una línea con «no se pudo leer» y sin ruta absoluta; dio:\n%s", txt)
 	}
 	if completos != utf8.RuneCountInString("package a\n\nfunc A() {}\n") {
 		t.Errorf("a.go pedido tres veces, con otra grafía, cuenta una sola vez en completos: %d", completos)

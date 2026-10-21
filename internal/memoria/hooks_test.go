@@ -76,8 +76,14 @@ func TestHuellaFueraDeGitVacia(t *testing.T) {
 func TestFijarGuardaLaHuella(t *testing.T) {
 	raiz := repoGit(t)
 	m := fijar(t, raiz, "iniciativa=E001")
-	if m.HuellaGit == "" || m.HuellaGit != HuellaGit(raiz) {
-		t.Fatalf("fijar debe guardar la huella actual: %q vs %q", m.HuellaGit, HuellaGit(raiz))
+	// E000/F005/S003: valor calculado aparte. Repo limpio (.aquas excluida) → huella = sha256(salida de rev-parse HEAD).
+	head, err := exec.Command("git", "-C", raiz, "rev-parse", "HEAD").Output()
+	if err != nil {
+		t.Fatal(err)
+	}
+	suma := sha256.Sum256(head)
+	if quiere := hex.EncodeToString(suma[:]); m.HuellaGit != quiere {
+		t.Fatalf("fijar debe guardar la huella del estado de git: %q; se esperaba %q", m.HuellaGit, quiere)
 	}
 }
 

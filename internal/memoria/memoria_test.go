@@ -118,7 +118,7 @@ func TestVerMuestraFocoYRutas(t *testing.T) {
 	m := fijar(t, raiz, "iniciativa=E001", "feature=F005", "slice=S001", "tarea=x", "siguiente=y", "pendiente=p1")
 	txt := Texto(m)
 	for _, s := range []string{"E001 › F005 › S001", "tarea: x", "siguiente: y", "- p1",
-		"docs/E001/F005/S001.md", Backlog, "aquas memoria fijar"} {
+		"docs/E001/F005/S001.md", "backlog: trabajo/activo", "aquas memoria fijar"} { // E000/F005/S003: literal, no la constante
 		if !strings.Contains(txt, s) {
 			t.Errorf("ver debe mostrar %q; dio:\n%s", s, txt)
 		}

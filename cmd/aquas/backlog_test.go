@@ -17,17 +17,33 @@ func TestBacklogCLI(t *testing.T) {
 			t.Fatalf("backlog %v: se esperaba exit 0 con %q; dio %+v", args, want, s)
 		}
 	}
+	// E000/F005/S003: cada paso se comprueba leyendo la ficha en disco, no solo la salida.
+	campo := func(rel, k, quiere string) {
+		t.Helper()
+		if v := strings.Trim(string(fichaEnDisco(t, raiz, rel)[k]), `"`); v != quiere {
+			t.Errorf("%s: %s = %q; se esperaba %q", rel, k, v, quiere)
+		}
+	}
+	const s2 = "trabajo/activo/E001-F002-S002.json"
 	paso("E001", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=raíz", "prueba=./p:TestA=a")
+	campo("trabajo/activo/E001.json", "titulo", "Gobierno")
 	paso("E001/F002", "nuevo", "id=E001/F002", "titulo=Backlog", "prioridad=P1", "motivo=orden", "prueba=./p:TestA=a")
+	campo("trabajo/activo/E001-F002.json", "padre", "E001")
 	paso("E001/F002/S002", "nuevo", "id=E001/F002/S002", "titulo=Backlog en JSON", "prioridad=P2", "motivo=m", "prueba=./p:TestA=a")
-	paso("E001/F002/S002", "siguiente")
+	campo(s2, "estado", "BORRADOR")
+	campo(s2, "prioridad", "P2")
+	paso("E001/F002/S002 ·", "siguiente")
 	paso("P0", "prioridad", "E001/F002/S002", "P0", "motivo=urgente")
+	campo(s2, "prioridad", "P0")
+	campo(s2, "motivo", "urgente")
 	paso("EN_CURSO", "estado", "E001/F002/S002", "EN_CURSO")
+	campo(s2, "estado", "EN_CURSO")
 	paso("E001/F002/S002", "ver")
 	paso("urgente", "ver", "E001/F002/S002")
 	paso("archivada", "estado", "E001/F002/S002", "CANCELADO") // CERRADO exige rojo y verde: TestCerrarSliceDePuntaAPunta
-	if _, err := os.Stat(filepath.Join(raiz, "trabajo", "archivo", "E001-F002-S002.json")); err != nil {
-		t.Fatalf("la ficha cerrada vive en trabajo/archivo/: %v", err)
+	campo("trabajo/archivo/E001-F002-S002.json", "estado", "CANCELADO")
+	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(s2))); !os.IsNotExist(err) {
+		t.Errorf("la ficha archivada ya no está en trabajo/activo/: %v", err)
 	}
 	if s := aquas(t, raiz, "", "backlog", "siguiente"); s.codigo != 0 || !strings.Contains(s.out, "nada") {
 		t.Fatalf("sin slices pendientes: exit 0 y lo dice; dio %+v", s)

@@ -104,6 +104,7 @@ flowchart LR
     E --> F5["F005 Calidad de las pruebas<br/>En curso"]
     F5 --> U1["S001 pruebas del compilador"]
     F5 --> U2["S002 bloqueos con su motivo"]
+    F5 --> U3["S003 aserciones aisladas"]
 ```
 
 Decisiones de Jesús:

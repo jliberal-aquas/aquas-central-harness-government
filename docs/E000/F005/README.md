@@ -69,7 +69,7 @@ Slices de esta feature:
 |---|---|---|
 | [S001 Pruebas del compilador](S001.md) | Tres pruebas que miden la causa | Hecho |
 | [S002 Bloqueos con su motivo](S002.md) | Cinco pruebas de guardia y entorno | Hecho |
-| S003 Aserciones aisladas | Seis pruebas que hoy pasan por otra entrada | Pendiente |
+| [S003 Aserciones aisladas](S003.md) | Seis pruebas que pasaban por otra entrada | Hecho |
 | S004 Cableado de punta a punta | `verificar`, `guardia` y hooks reales | Pendiente |
 | S005 Carpetas protegidas | Una sola fuente para sus rutas | Pendiente |
 | S006 Rojo de slices viejos | Rojo de cuatro slices sin evidencia | Pendiente |
@@ -112,3 +112,4 @@ Prueba integral: `TestVerificarDePuntaAPunta`, en S004. Aún no existe.
 - ↑ Subir: [E000 · Mantenimiento del gobierno](../README.md)
 - Abajo: [S001 · Pruebas del compilador](S001.md)
 - Abajo: [S002 · Bloqueos con su motivo](S002.md)
+- Abajo: [S003 · Aserciones aisladas](S003.md)

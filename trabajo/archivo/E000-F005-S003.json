@@ -1,0 +1,53 @@
+{
+  "id": "E000/F005/S003",
+  "tipo": "slice",
+  "titulo": "Aserciones que no se cumplen por otra entrada",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-21: slices de calidad de pruebas; seis D con constantes leídas o textos compartidos",
+  "padre": "E000/F005",
+  "bloqueado_por": [],
+  "secuencia": 42,
+  "pruebas": [
+    {
+      "prueba": "./internal/memoria:TestVerMuestraFocoYRutas",
+      "intencion": "la ruta del backlog se compara con un literal, no con la constante del código"
+    },
+    {
+      "prueba": "./internal/biblioteca:TestLeerErroresPorRutaNoFrenanElLote",
+      "intencion": "cada ruta del lote se comprueba aparte, también la absoluta"
+    },
+    {
+      "prueba": "./internal/biblioteca:TestLeerCasosBorde",
+      "intencion": "un archivo ilegible da no se pudo leer sin mostrar la ruta absoluta"
+    },
+    {
+      "prueba": "./internal/backlog:TestValidarDetectaFichasMalas",
+      "intencion": "cada ficha mala da su propio problema, incluido un padre incoherente con tipo correcto"
+    },
+    {
+      "prueba": "./cmd/aquas:TestBacklogCLI",
+      "intencion": "cada paso del CLI se comprueba leyendo la ficha, no solo el código de salida"
+    },
+    {
+      "prueba": "./internal/memoria:TestFijarGuardaLaHuella",
+      "intencion": "la huella guardada se compara con un valor calculado aparte"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T15:21:56Z",
+    "head": "b7c88ee5d5a9c3cf6db402a8fb0d4fc5ab93760b",
+    "resultado": {
+      "./cmd/aquas:TestBacklogCLI": "backlog_test.go:40: trabajo/activo/E001-F002-S002.json: estado = \"BORRADOR\"; se esperaba \"EN_CURSO\"",
+      "./internal/backlog:TestValidarDetectaFichasMalas": "backlog_test.go:284: Validar debe señalar trabajo/activo/E001-F013.json con \"tipo o padre no cuadran con el id (feature, \\\"E001\\\")\"; dio:",
+      "./internal/biblioteca:TestLeerCasosBorde": "biblioteca_test.go:116: archivo ilegible: una línea con «no se pudo leer» y sin ruta absoluta; dio:",
+      "./internal/biblioteca:TestLeerErroresPorRutaNoFrenanElLote": "biblioteca_test.go:78: falta \"== D:\\\\Agents Factory\\\\claude-code-scaffolding\\\\.tmp\\\\TestLeerErroresPorRutaNoFrenanElLote4129012568\\\\001\\\\a.go · error: fuera del repo\" en:",
+      "./internal/memoria:TestFijarGuardaLaHuella": "hooks_test.go:86: fijar debe guardar la huella del estado de git: \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"; se esperaba \"e2cad07c256c0b36369975666371b586ee433d2b9b2899339346fed9aa15e64d\"",
+      "./internal/memoria:TestVerMuestraFocoYRutas": "memoria_test.go:123: ver debe mostrar \"backlog: trabajo/activo\"; dio:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T15:22:14Z",
+    "head": "b7c88ee5d5a9c3cf6db402a8fb0d4fc5ab93760b"
+  }
+}

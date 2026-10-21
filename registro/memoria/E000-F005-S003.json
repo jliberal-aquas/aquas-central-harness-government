@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F005",
+    "slice": "S003",
+    "tarea": "E000/F005/S003 hecho: 6 aserciones aisladas, rojo por mutación y verde"
+  },
+  "siguiente": "E000/F005/S004 cableado del CLI de punta a punta, cuando Jesús diga",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "efd6f9dc2595249dbfb20be0a78e21b271b2e51133d40f3069bb8ee20bf4410e",
+  "actualizado": "2026-10-21T15:23:21Z",
+  "sello": "bbdffaf039962c533d4cb703fb361bbe5c2a0d2f67a98666f4926e897c36c7f5"
+}

@@ -254,23 +254,38 @@ func TestValidarDetectaFichasMalas(t *testing.T) {
 	escribir(Activo+"/E001-F010.json", `{"id":"E001/F010","tipo":"feature","titulo":"T","estado":"LISTO","prioridad":"P1","motivo":"m","padre":"E001","bloqueado_por":[]}`)
 	escribir(Activo+"/E001-F011.json", `{"id":"E001/F011","tipo":"feature","titulo":"T","estado":"LISTO","prioridad":"P1","motivo":"m","padre":"E001","bloqueado_por":null,"secuencia":24}`)
 	escribir(Activo+"/E001-F012.json", `{"id":"E001/F012","tipo":"feature","titulo":"T","estado":"LISTO","prioridad":"P1","motivo":"m","padre":"E001","bloqueado_por":[],"secuencia":25} {}`)
-	p := strings.Join(Validar(raiz), "\n")
-	for _, w := range []string{
-		"roto.json",          // JSON roto
-		"color",              // campo extra
-		"E001-F004.json",     // nombre no cuadra con id
-		"E001-F005.json",     // cerrada en activo
-		"E002",               // padre perdido
-		"E001-F006.json",     // no terminal en archivo
-		"tipo",               // tipo no cuadra con id
-		"secuencia 1 repite", // secuencia repetida
-		"id E001 repite",     // mismo id en activo y archivo
-		`id "E1" inválido`,
-		"bloqueado_por E005 no existe",
-		"falta el campo secuencia",
-		"null",
-		"texto después",
+	// E000/F005/S003: padre incoherente con tipo correcto (existe, pero no es el del id).
+	escribir(Activo+"/E001-F013.json", `{"id":"E001/F013","tipo":"feature","titulo":"T","estado":"LISTO","prioridad":"P1","motivo":"m","padre":"E001/F002","bloqueado_por":[],"secuencia":26}`)
+	// E000/F005/S003: cada ficha mala da su propio problema, en su propia línea («archivo: motivo»).
+	problemas := Validar(raiz)
+	A, R := Activo+"/", Archivo+"/"
+	for _, c := range []struct{ archivo, motivo string }{
+		{A + "roto.json", ""},
+		{A + "E001-F003.json", "color"},
+		{A + "E001-F004.json", "el nombre no cuadra con el id E001/F007"},
+		{A + "E001-F005.json", "CERRADO"},
+		{A + "E002-F001.json", "padre E002 no existe"},
+		{R + "E001-F006.json", "LISTO"},
+		{A + "E001-F008.json", `tipo o padre no cuadran con el id (feature, "E001")`},
+		{A + "E001-F013.json", `tipo o padre no cuadran con el id (feature, "E001")`},
+		{A + "x.json", `id "E1" inválido`},
+		{A + "E001-F009.json", "bloqueado_por E005 no existe"},
+		{A + "E001-F010.json", "falta el campo secuencia"},
+		{A + "E001-F011.json", "null"},
+		{A + "E001-F012.json", "texto después"},
 	} {
+		hay := false
+		for _, l := range problemas {
+			if strings.HasPrefix(l, c.archivo+": ") && strings.Contains(l, c.motivo) {
+				hay = true
+			}
+		}
+		if !hay {
+			t.Errorf("Validar debe señalar %s con %q; dio:\n%s", c.archivo, c.motivo, strings.Join(problemas, "\n"))
+		}
+	}
+	p := strings.Join(problemas, "\n")
+	for _, w := range []string{"secuencia 1 repite", "id E001 repite"} {
 		if !strings.Contains(p, w) {
 			t.Errorf("Validar debe señalar %q; dio:\n%s", w, p)
 		}
