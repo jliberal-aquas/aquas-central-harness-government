@@ -47,6 +47,13 @@ func main() {
 		}
 		reportar(os.Stdout, inf)
 		compilarSettings(os.Stdout)
+		docs, err := wiki.Generar(raiz) // E001/F002/S010: hijos de cada página desde las fichas
+		if err != nil {
+			fallar(1, err)
+		}
+		for _, d := range docs {
+			fmt.Println("Escrito: " + d)
+		}
 	case "iniciar":
 		e, err := entorno.Iniciar(raiz)
 		if err != nil {

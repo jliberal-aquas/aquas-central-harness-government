@@ -111,6 +111,15 @@ flowchart LR
 
 ## Navegación
 
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [S001](S001.md) | Compilar y sellar | Hecho |
+| [S002](S002.md) | Tope de caracteres | Hecho |
+
+<!-- /GENERADO -->
+
 - ↑ Subir: [E000 · Mantenimiento del gobierno](../README.md)
 - Abajo: [S001 · Compilar y sellar](S001.md)
 - Abajo: [S002 · Tope de caracteres](S002.md)

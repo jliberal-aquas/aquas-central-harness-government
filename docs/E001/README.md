@@ -61,14 +61,14 @@ flowchart TD
 
 Estado actual de sus features:
 
-| Feature | Qué hace | Estado |
-|---|---|---|
-| [F001 Wiki + gate](F001/README.md) | Obliga a documentar con esta wiki | Hecho |
-| [F005 Memoria caliente](F005/README.md) | El agente no pierde el foco entre sesiones | Hecha |
-| [F006 Workers y auditor](F006/README.md) | Agentes baratos que ejecutan y un auditor que revisa | Hecha |
-| [F002 Turnos, backlog y sello](F002/README.md) | Auditoría, backlog en JSON, rojo/verde, sello | En curso |
-| F004 Defectos y reincidencia | Registra fallos y avisa si se repiten | Pendiente |
-| [F003 Bibliotecario](F003/README.md) | Lee el repo pidiendo solo lo útil | Hecha |
+| Feature | Qué hace |
+|---|---|
+| [F001 Wiki + gate](F001/README.md) | Obliga a documentar con esta wiki |
+| [F005 Memoria caliente](F005/README.md) | El agente no pierde el foco entre sesiones |
+| [F006 Workers y auditor](F006/README.md) | Agentes baratos que ejecutan y un auditor que revisa |
+| [F002 Turnos, backlog y sello](F002/README.md) | Auditoría, backlog en JSON, rojo/verde, sello |
+| F004 Defectos y reincidencia | Registra fallos y avisa si se repiten |
+| [F003 Bibliotecario](F003/README.md) | Lee el repo pidiendo solo lo útil |
 
 ## Ejemplo de punta a punta
 
@@ -120,12 +120,12 @@ Desde F002/S002 existe `aquas backlog siguiente`, que dice qué toca. Desde S003
 
 ```mermaid
 flowchart LR
-    E["E001"] --> F1["F001 Wiki + gate<br/>Hecho"]
-    E --> F2["F002 Turnos, backlog y sello<br/>En curso"]
-    E --> F3["F003 Bibliotecario<br/>Hecha"]
-    E --> F4["F004 Defectos<br/>Pendiente"]
-    E --> F5["F005 Memoria caliente<br/>Hecha"]
-    E --> F6["F006 Workers y auditor<br/>Hecha"]
+    E["E001"] --> F1["F001 Wiki + gate"]
+    E --> F2["F002 Turnos, backlog y sello"]
+    E --> F3["F003 Bibliotecario"]
+    E --> F4["F004 Defectos"]
+    E --> F5["F005 Memoria caliente"]
+    E --> F6["F006 Workers y auditor"]
 ```
 
 Decisiones de Jesús (2026-10-20):
@@ -139,6 +139,19 @@ Decisiones de Jesús (2026-10-20):
 Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita seguir un pedido de punta a punta.
 
 ## Navegación
+
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [F001](F001/README.md) | Wiki + gate | Hecho |
+| [F002](F002/README.md) | Turnos, backlog y sello | En curso |
+| [F003](F003/README.md) | Bibliotecario | Hecho |
+| F004 | Defectos y reincidencia | Planeado |
+| [F005](F005/README.md) | Memoria caliente | Hecho |
+| [F006](F006/README.md) | Workers y auditor | Hecho |
+
+<!-- /GENERADO -->
 
 - ↑ Subir: [Inicio de la wiki](../README.md)
 - Abajo: [F001 · Wiki + gate](F001/README.md)

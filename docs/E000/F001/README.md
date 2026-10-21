@@ -122,6 +122,17 @@ Límite que sigue abierto: la guardia no ve programas que escriben por su cuenta
 
 ## Navegación
 
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [S001](S001.md) | Regla de oro 5: nada fuera del repo | Hecho |
+| [S002](S002.md) | Lista de permitidos | Hecho |
+| [S003](S003.md) | Hooks en Windows | Hecho |
+| [S004](S004.md) | Entorno declarado | Hecho |
+
+<!-- /GENERADO -->
+
 - ↑ Subir: [E000 · Mantenimiento del gobierno](../README.md)
 - Abajo: [S001 · Regla de oro 5](S001.md)
 - Abajo: [S002 · Lista de permitidos](S002.md)

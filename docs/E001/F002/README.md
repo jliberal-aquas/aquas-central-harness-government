@@ -59,16 +59,17 @@ stateDiagram-v2
 
 Slices de esta feature:
 
-| Slice | Qué entrega | Estado |
-|---|---|---|
-| S001 Auditoría | Guardar cada pedido tal cual, con su respuesta | Pendiente |
-| [S002 Backlog en JSON](S002.md) | Fichas en JSON, cinco comandos, guardia y migración | Hecho |
-| [S003 Rojo y verde](S003.md) | El slice no cierra sin prueba en rojo y luego en verde | Hecho |
-| S004 Sello | Lista de lo que hay que revisar al cerrar un slice | Pendiente |
-| S005 `aquas ver` | Mapas de la wiki generados desde el backlog | Pendiente |
-| S006 Propuesta con diagrama | Un hook exige diagrama en cada propuesta | Pendiente |
-| S008 `siguiente` ve features | Avisa de features libres sin slices | Pendiente |
-| [S009 Cerrar exige memoria archivada](S009.md) | Ningún slice cierra con su memoria sin archivar | Hecho |
+| Slice | Qué entrega |
+|---|---|
+| S001 Auditoría | Guardar cada pedido tal cual, con su respuesta |
+| [S002 Backlog en JSON](S002.md) | Fichas en JSON, cinco comandos, guardia y migración |
+| [S003 Rojo y verde](S003.md) | El slice no cierra sin prueba en rojo y luego en verde |
+| S004 Sello | Lista de lo que hay que revisar al cerrar un slice |
+| S006 Propuesta con diagrama | Un hook exige diagrama en cada propuesta |
+| S008 `siguiente` ve features | Avisa de features libres sin slices |
+| [S009 Cerrar exige memoria archivada](S009.md) | Ningún slice cierra con su memoria sin archivar |
+| S007 Alcance del slice | Solo se tocan archivos dentro del alcance del slice |
+| [S010 Wiki por niveles](S010.md) | Cada página lista sus hijos directos, generados desde las fichas |
 
 ## Ejemplo de punta a punta
 
@@ -89,8 +90,12 @@ En la iniciativa, el pedido de Jesús ya es trabajo. Ahora hay que ubicarlo en l
 2. S002: backlog en JSON y sus comandos.
 3. S003: rojo y verde del slice.
 4. S004: [sello](../../glosario.md#sello) de cierre.
-5. S005: `aquas ver`.
+5. S005: cancelado; lo reemplaza S010.
 6. S006: propuesta con diagrama.
+7. S007: archivos solo dentro del alcance del slice.
+8. S008: `siguiente` avisa de features sin slices.
+9. S009: cerrar exige memoria archivada.
+10. S010: [wiki](../../glosario.md#wiki) por niveles, generada desde las fichas.
 
 ## Cómo se usa
 
@@ -100,25 +105,48 @@ En la iniciativa, el pedido de Jesús ya es trabajo. Ahora hay que ubicarlo en l
 
 ## Contrato y evidencia
 
-Estado: en curso. S002, S003 y S009 hechos; el resto pendiente.
+Estado: en curso. El estado de cada slice está en la tabla de Navegación, generada desde las fichas.
 
 Objetivo: que el orden y el estado del trabajo los guarde un programa, no el agente.
 
-Por qué seis slices: cada uno se usa solo. El backlog sirve sin auditoría, y el rojo y verde sirve sin sello.
+Por qué varios slices: cada uno se usa solo. El backlog sirve sin auditoría, y el rojo y verde sirve sin sello.
 
 Orden: S002 va primero por prioridad. Jesús la fijó en P1 el 2026-10-21.
 
+Dependencias entre slices. El estado no va aquí: está en la tabla generada de Navegación.
+
 ```mermaid
 flowchart LR
-    S2["S002 backlog<br/>Hecho"] --> S3["S003 rojo y verde<br/>Hecho"]
-    S3 --> S4["S004 sello<br/>Pendiente"]
-    S3 --> S9["S009 cierre con memoria archivada<br/>Hecho"]
-    S1["S001 auditoría<br/>Pendiente"]
+    S2["S002 backlog"] --> S3["S003 rojo y verde"]
+    S3 --> S4["S004 sello"]
+    S3 --> S9["S009 cierre con memoria archivada"]
+    S2 --> S8["S008 siguiente ve features"]
+    S2 --> S10["S010 wiki por niveles"]
+    S1["S001 auditoría"]
+    S6["S006 propuesta con diagrama"]
+    S7["S007 alcance del slice"]
 ```
 
 Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/rojo_test.go`. Un slice nace con su prueba, ve su rojo y su verde, y se archiva. Hoy pasa en verde.
 
 ## Navegación
+
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| S001 | Auditoría de turnos | Planeado |
+| [S002](S002.md) | Backlog en JSON | Hecho |
+| [S003](S003.md) | Rojo y verde del slice | Hecho |
+| S004 | Sello de cierre | Planeado |
+| S005 | aquas ver | Cancelado |
+| S006 | Propuesta con diagrama | Planeado |
+| S007 | Archivos solo dentro del alcance del slice | Planeado |
+| S008 | siguiente avisa features sin slices | Planeado |
+| [S009](S009.md) | Cerrar exige memoria archivada | Hecho |
+| [S010](S010.md) | Wiki por niveles generada desde las fichas | Hecho |
+
+<!-- /GENERADO -->
 
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S002 · Backlog en JSON](S002.md)

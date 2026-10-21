@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S010",
+    "tarea": "E001/F002/S010 verde; cerrando"
+  },
+  "siguiente": "E000/F005/S004 cableado del CLI de punta a punta",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "3ef78784672101639f42a71be01ab4a6d2aa5be463951c0f8cacfcfd4a6c062b",
+  "actualizado": "2026-10-21T16:29:46Z",
+  "sello": "a6ae0f0ef73c7875f09e5ea3b4fd6b323a28315e9175052d4ea30f64b618920b"
+}

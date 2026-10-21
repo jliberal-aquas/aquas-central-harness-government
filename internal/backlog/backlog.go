@@ -82,6 +82,22 @@ func todas(raiz string) (act, arc map[string]Ficha, err error) {
 	return act, arc, nil
 }
 
+// Todas: las fichas de activo y archivo, ordenadas por id. Para quien solo lee (wiki, E001/F002/S010).
+func Todas(raiz string) ([]Ficha, error) {
+	act, arc, err := todas(raiz)
+	if err != nil {
+		return nil, err
+	}
+	fs := make([]Ficha, 0, len(act)+len(arc))
+	for _, m := range []map[string]Ficha{act, arc} {
+		for _, f := range m {
+			fs = append(fs, f)
+		}
+	}
+	sort.Slice(fs, func(i, j int) bool { return fs[i].ID < fs[j].ID })
+	return fs, nil
+}
+
 func leer(ruta string) (Ficha, error) {
 	b, err := os.ReadFile(ruta)
 	if err != nil {

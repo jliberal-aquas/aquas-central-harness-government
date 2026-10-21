@@ -115,6 +115,16 @@ Prueba integral de la feature: `TestArranqueEnFrio`, en `cmd/aquas/arranque_test
 
 ## Navegación
 
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [S001](S001.md) | Archivo, sello y guardia | Hecho |
+| [S002](S002.md) | Hooks de inicio y cierre | Hecho |
+| [S003](S003.md) | Archivo y arranque en frío | Hecho |
+
+<!-- /GENERADO -->
+
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S001 · Archivo, sello y guardia](S001.md)
 - Abajo: [S002 · Hooks de inicio y cierre](S002.md)

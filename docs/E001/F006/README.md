@@ -116,6 +116,15 @@ Límite: el auditor tiene Bash para correr pruebas, y Bash puede escribir. Su cu
 
 ## Navegación
 
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [S001](S001.md) | Tres agentes y sus herramientas | Hecho |
+| [S002](S002.md) | Comunicación entre agentes | Hecho |
+
+<!-- /GENERADO -->
+
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S001 · Tres agentes y sus herramientas](S001.md)
 - Abajo: [S002 · Comunicación entre agentes](S002.md)

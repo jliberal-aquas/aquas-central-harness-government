@@ -138,6 +138,17 @@ flowchart LR
 
 ## Navegación
 
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [S001](S001.md) | Esqueleto y gate de estructura | Hecho |
+| [S002](S002.md) | Glosario y legibilidad | Hecho |
+| [S003](S003.md) | Referencia de lo existente | Hecho |
+| [S004](S004.md) | Contrato, evidencia y migas | Hecho |
+
+<!-- /GENERADO -->
+
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S001 · Esqueleto + gate](S001.md)
 - Abajo: [S002 · Glosario + legibilidad](S002.md)

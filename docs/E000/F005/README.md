@@ -109,6 +109,19 @@ Prueba integral: `TestVerificarDePuntaAPunta`, en S004. Aún no existe.
 
 ## Navegación
 
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [S001](S001.md) | Pruebas del compilador que miden la causa | Hecho |
+| [S002](S002.md) | Bloqueos de guardia y entorno con su motivo | Hecho |
+| [S003](S003.md) | Aserciones que no se cumplen por otra entrada | Hecho |
+| S004 | Cableado del CLI probado de punta a punta | Planeado |
+| S005 | Una sola fuente para las carpetas protegidas | Planeado |
+| S006 | Rojo de los slices viejos sin evidencia | Planeado |
+
+<!-- /GENERADO -->
+
 - ↑ Subir: [E000 · Mantenimiento del gobierno](../README.md)
 - Abajo: [S001 · Pruebas del compilador](S001.md)
 - Abajo: [S002 · Bloqueos con su motivo](S002.md)

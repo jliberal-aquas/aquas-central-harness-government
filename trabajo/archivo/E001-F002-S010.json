@@ -1,0 +1,48 @@
+{
+  "id": "E001/F002/S010",
+  "tipo": "slice",
+  "titulo": "Wiki por niveles generada desde las fichas",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "la wiki se desfasa hacia arriba; decisión humana 2026-10-21, antes de E000/F005/S004",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 48,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestHijosGeneradosDesdeFichas",
+      "intencion": "inicio, E y F listan solo hijos directos con estado; S lista sus pruebas con rojo/verde"
+    },
+    {
+      "prueba": "./internal/wiki:TestHijosDesfasadosFallan",
+      "intencion": "bloque GENERADO ausente o distinto de las fichas hace fallar el gate"
+    },
+    {
+      "prueba": "./internal/wiki:TestInicioMuestraSoloIniciativas",
+      "intencion": "el inicio no enlaza features ni slices"
+    },
+    {
+      "prueba": "./internal/wiki:TestEntidadArrancadaSinPagina",
+      "intencion": "ficha EN_CURSO o CERRADO sin página hace fallar el gate; BORRADOR no"
+    },
+    {
+      "prueba": "./cmd/aquas:TestCompilarRegeneraHijos",
+      "intencion": "aquas compilar reescribe el bloque tras cambiar una ficha"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T16:26:05Z",
+    "head": "363b2fc002d03651d0f8c49793db884133e013ee",
+    "resultado": {
+      "./cmd/aquas:TestCompilarRegeneraHijos": "hijos_test.go:59: compilar escribe el inicio y lo informa; dio {out:Recompilado · fuentes cambiadas: —",
+      "./internal/wiki:TestEntidadArrancadaSinPagina": "hijos_test.go:197: se esperaba problema con \"docs/E001/F002/README.md: falta la página de E001/F002 (ficha EN_CURSO)\"; hubo: [\"x/x_test.go: prueba sin slice dueño: TestA (nómbrala en «Contrato y evidencia» de su slice)\" \"x/x_test.go: prueba sin slice dueño: TestB (nómbrala en «Contrato y evidencia» de su slice)\"]",
+      "./internal/wiki:TestHijosDesfasadosFallan": "hijos_test.go:149: BLOQUEADO se muestra «Bloqueado»:",
+      "./internal/wiki:TestHijosGeneradosDesdeFichas": "hijos_test.go:101: tras generar, gate OK; problemas: [\"x/x_test.go: prueba sin slice dueño: TestA (nómbrala en «Contrato y evidencia» de su slice)\" \"x/x_test.go: prueba sin slice dueño: TestB (nómbrala en «Contrato y evidencia» de su slice)\"]",
+      "./internal/wiki:TestInicioMuestraSoloIniciativas": "hijos_test.go:171: se esperaba problema con \"docs/README.md: enlace salta niveles → docs/E001/F001/README.md (cada página enlaza solo hasta sus hijos directos)\"; hubo: [\"x/x_test.go: prueba sin slice dueño: TestA (nómbrala en «Contrato y evidencia» de su slice)\" \"x/x_test.go: prueba sin slice dueño: TestB (nómbrala en «Contrato y evidencia» de su slice)\"]"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T16:29:32Z",
+    "head": "363b2fc002d03651d0f8c49793db884133e013ee"
+  }
+}

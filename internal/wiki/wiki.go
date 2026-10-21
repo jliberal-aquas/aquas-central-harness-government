@@ -150,6 +150,11 @@ func Verificar(raiz string) ([]string, error) {
 		return nil, err
 	}
 	problemas = append(problemas, traza...)
+	hijosPs, err := revisarHijos(raiz, paginas, orden)
+	if err != nil {
+		return nil, err
+	}
+	problemas = append(problemas, hijosPs...)
 	return problemas, nil
 }
 
@@ -253,7 +258,7 @@ func analizar(raiz string, pg *pagina) error {
 				pg.secciones[actual].lineas = append(pg.secciones[actual].lineas, limpia)
 			}
 		}
-		if reTitulo.MatchString(t) || titulo == secNav || strings.HasPrefix(t, "|") || strings.HasPrefix(t, "continúa:") {
+		if reTitulo.MatchString(t) || titulo == secNav || strings.HasPrefix(t, "|") || strings.HasPrefix(t, "continúa:") || strings.HasPrefix(t, "<!--") {
 			pg.prosa = append(pg.prosa, "")
 		} else {
 			pg.prosa = append(pg.prosa, limpia)

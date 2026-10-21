@@ -1,6 +1,6 @@
 # Wiki de aquas-harness-governance
 
-Esta es la puerta de entrada. Desde aquí bajas a cada [iniciativa](glosario.md#iniciativa), [feature](glosario.md#feature) y [slice](glosario.md#slice).
+Esta es la puerta de entrada. Desde aquí bajas a cada [iniciativa](glosario.md#iniciativa). Cada iniciativa te lleva a sus [features](glosario.md#feature), y cada feature a sus [slices](glosario.md#slice).
 Ábrela en VS Code con la vista previa de [Markdown](glosario.md#markdown) (Ctrl+Shift+V) para ver los diagramas dibujados.
 
 ## En una frase
@@ -34,19 +34,25 @@ Límite de la analogía: un inspector humano puede tener un mal día. El gate no
 
 ## Diagrama
 
-Así viaja una regla desde que se escribe hasta que queda guardada en git.
+Así viaja un pedido hoy, desde que lo haces hasta que queda guardado en git.
 
 ```mermaid
 flowchart TD
-    H["Humano pide un cambio"] --> O["Orquestador refina el pedido"]
-    O --> C["Edita un archivo canónico<br/>gobierno/canonico/"]
-    C --> K["Compilador en Go<br/>regenera CLAUDE.md y agentes"]
-    K --> S["Sello SHA-256<br/>gobierno/config/sellos.json"]
-    S --> G{"Gate<br/>aquas verificar"}
-    G -- "todo en orden" --> OK["Commit guardado en git"]
+    H["Humano pide algo"] --> O["Orquestador refina el pedido"]
+    O --> B["Ficha en el backlog<br/>aquas backlog nuevo"]
+    B --> R["Prueba en rojo<br/>aquas backlog rojo"]
+    R --> C["Código o canónico"]
+    C --> V["Prueba en verde<br/>aquas backlog verde"]
+    V --> K["aquas compilar<br/>derivados, sello y tablas de la wiki"]
+    K --> G{"Gate<br/>aquas verificar"}
+    G -- "todo en orden" --> M["Memoria archivada<br/>y slice cerrado"]
+    M --> OK["Commit guardado en git"]
     G -- "algo falla" --> X["Commit bloqueado<br/>con la lista de problemas"]
     X --> C
+    W["Guardia: nada se escribe<br/>fuera del repositorio"] -.-> C
 ```
+
+Cada paso lo hace o lo revisa un programa. El agente no tiene que acordarse.
 
 ## Ejemplo de punta a punta
 
@@ -96,59 +102,28 @@ Mapa rápido del repositorio:
 | `internal/entorno/` | Sistema y carpeta declarados; ajustes generados. |
 | `docs/` | Esta wiki. |
 
-## Mapa del trabajo
+## Las iniciativas
 
-Todo lo hecho y lo planeado, con su estado. Hoy se escribe a mano. El estado vigente está en las fichas del [backlog](glosario.md#backlog): `aquas backlog ver`. Generar este mapa desde ellas llega en S005.
+Hoy el repositorio tiene dos iniciativas. Cada una tiene su página, con sus features, diagramas y pruebas.
 
-```mermaid
-flowchart TD
-    R["Inicio"] --> E0["E000 Mantenimiento del gobierno"]
-    R --> E1["E001 Gobierno del trabajo<br/>En curso"]
-    E0 --> E0F1["F001 Guardia del repo<br/>Hecho"]
-    E0 --> E0F2["F002 Compilador y sello<br/>Hecho"]
-    E0 --> E0F3["F003 Hooks globales<br/>Inventario"]
-    E0 --> E0F4["F004 Vueltas de pruebas<br/>Pendiente"]
-    E0 --> E0F5["F005 Calidad de las pruebas<br/>En curso"]
-    E1 --> E1F1["F001 Wiki + gate<br/>Hecho"]
-    E1 --> E1F5["F005 Memoria caliente<br/>Hecha"]
-    E1 --> E1F2["F002 Turnos, backlog y sello<br/>En curso"]
-    E1 --> E1F4["F004 Defectos<br/>Pendiente"]
-    E1 --> E1F3["F003 Bibliotecario<br/>Hecha"]
-    E1 --> E1F6["F006 Workers y auditor<br/>Hecha"]
-```
+- **[E000 · Mantenimiento del gobierno](E000/README.md).** Arregla y vigila este mismo repositorio. Aquí están la guardia, el compilador y la calidad de las pruebas.
+- **[E001 · Gobierno del trabajo](E001/README.md).** Define el camino fijo de cada pedido. Aquí están esta wiki, el [backlog](glosario.md#backlog), la memoria del agente y los workers.
 
-| Elemento | Qué entrega | Estado |
-|---|---|---|
-| [E000](E000/README.md) Mantenimiento del gobierno | Arreglos y controles de este repositorio | Permanente |
-| ↳ [F001](E000/F001/README.md) Guardia del repo | Nada se escribe fuera del repositorio | Hecho |
-| ↳↳ [S001](E000/F001/S001.md) · [S002](E000/F001/S002.md) · [S003](E000/F001/S003.md) · [S004](E000/F001/S004.md) | Guardia, permitidos, hooks en Windows, entorno declarado | Hecho |
-| ↳ [F002](E000/F002/README.md) Compilador y sello | Archivos generados, sellados y con tope | Hecho |
-| ↳↳ [S001](E000/F002/S001.md) · [S002](E000/F002/S002.md) | Compilar y sellar, tope de caracteres | Hecho |
-| ↳ F003 Hooks globales | Ganchos en `~/.claude/hooks/` que rigen todo proyecto; solo registrados, no gobernados aquí | Inventario |
-| ↳ F004 Vueltas de pruebas y gate | Estudiar por qué pruebas y gate gastan el 28 % de las llamadas | Pendiente |
-| ↳ [F005](E000/F005/README.md) Calidad de las pruebas | Pruebas que fallan cuando se rompe su regla | En curso |
-| ↳↳ [S001](E000/F005/S001.md) · [S002](E000/F005/S002.md) · [S003](E000/F005/S003.md) | Pruebas del compilador, bloqueos con su motivo, aserciones aisladas | Hecho |
-| [E001](E001/README.md) Gobierno del trabajo | Camino fijo para cada pedido | En curso |
-| ↳ [F001](E001/F001/README.md) Wiki + gate | Esta wiki y el gate que la exige | Hecho |
-| ↳↳ [S001](E001/F001/S001.md) · [S002](E001/F001/S002.md) · [S003](E001/F001/S003.md) | Esqueleto, legibilidad y glosario, referencia | Hecho |
-| ↳↳ [S004](E001/F001/S004.md) | Contrato, evidencia y migas | Hecho |
-| ↳ [F005](E001/F005/README.md) Memoria caliente | El agente no pierde el foco entre sesiones | Hecha |
-| ↳↳ [S001](E001/F005/S001.md) · [S002](E001/F005/S002.md) · [S003](E001/F005/S003.md) | Archivo, sello y guardia; hooks; archivo y arranque en frío | Hecho |
-| ↳ [F002](E001/F002/README.md) Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | En curso |
-| ↳↳ [S002](E001/F002/S002.md) | Backlog en JSON | Hecho |
-| ↳↳ [S003](E001/F002/S003.md) · [S009](E001/F002/S009.md) | Rojo y verde; cerrar exige memoria archivada | Hecho |
-| ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
-| ↳ [F003](E001/F003/README.md) Bibliotecario | Herramienta propia: lee un lote de rutas y entrega solo lo útil | Hecha |
-| ↳↳ [S001](E001/F003/S001.md) | Leer un lote de rutas | Hecho |
-| ↳ [F006](E001/F006/README.md) Workers y auditor | Agentes baratos que ejecutan y un auditor que revisa | Hecha |
-| ↳↳ [S001](E001/F006/S001.md) · [S002](E001/F006/S002.md) | Tres agentes y sus herramientas; comunicación entre agentes | Hecho |
+El estado de cada iniciativa está en la tabla de Navegación. La genera `aquas compilar` desde las fichas; nadie la escribe a mano. Si una ficha cambia y la tabla no, el [gate](glosario.md#gate) bloquea el commit.
 
-El orden de ejecución no es el de esta tabla: lo dice `aquas backlog siguiente`.
+El orden de ejecución lo dice `aquas backlog siguiente`.
 
 ## Navegación
 
-- Abajo: [E000 · Mantenimiento del gobierno](E000/README.md)
-- Abajo: [E001 · Gobierno del trabajo](E001/README.md)
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [E000](E000/README.md) | Mantenimiento del gobierno | En curso |
+| [E001](E001/README.md) | Gobierno del trabajo | En curso |
+
+<!-- /GENERADO -->
+
 - Glosario: [palabras técnicas](glosario.md)
 - Referencia: [Constitución](ref/constitucion.md)
 - Referencia: [Compilador](ref/compilador.md)

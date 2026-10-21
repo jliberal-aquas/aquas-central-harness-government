@@ -46,13 +46,15 @@ flowchart TD
     V --> C["Commit con el porqué"]
 ```
 
-Estado de sus features:
+Sus features:
 
-| Feature | Qué hace | Estado |
-|---|---|---|
-| [F001 Guardia del repo](F001/README.md) | Impide escribir fuera del repositorio | Hecho |
-| [F002 Compilador y sello](F002/README.md) | Genera, sella y pone tope a los archivos de reglas | Hecho |
-| [F005 Calidad de las pruebas](F005/README.md) | Pruebas que fallan cuando se rompe su regla | En curso |
+| Feature | Qué hace |
+|---|---|
+| [F001 Guardia del repo](F001/README.md) | Impide escribir fuera del repositorio |
+| [F002 Compilador y sello](F002/README.md) | Genera, sella y pone tope a los archivos de reglas |
+| [F005 Calidad de las pruebas](F005/README.md) | Pruebas que fallan cuando se rompe su regla |
+| F003 Hooks globales | Inventario de los ganchos de `~/.claude/hooks/` que rigen todo proyecto |
+| F004 Vueltas de pruebas y gate | Estudiar por qué pruebas y gate gastan tantas llamadas |
 
 ## Ejemplo de punta a punta
 
@@ -89,19 +91,19 @@ Qué hace el [agente](../glosario.md#agente) con un fallo del gobierno:
 
 **Resultado esperado.** El gobierno de este repositorio se arregla con el mismo rigor que el resto: prueba, commit y página.
 
-**Resultado logrado.** Dos features terminadas, con seis slices en total.
+**Resultado logrado.** El estado de cada feature está en la tabla de Navegación, generada desde las fichas.
 
 ```mermaid
 flowchart LR
-    E["E000"] --> F1["F001 Guardia del repo<br/>Hecho"]
+    E["E000"] --> F1["F001 Guardia del repo"]
     F1 --> S1["S001 regla de oro 5"]
     F1 --> S2["S002 lista de permitidos"]
     F1 --> S3["S003 hooks en Windows"]
     F1 --> S4["S004 entorno declarado"]
-    E --> F2["F002 Compilador y sello<br/>Hecho"]
+    E --> F2["F002 Compilador y sello"]
     F2 --> T1["S001 compilar y sellar"]
     F2 --> T2["S002 tope de caracteres"]
-    E --> F5["F005 Calidad de las pruebas<br/>En curso"]
+    E --> F5["F005 Calidad de las pruebas"]
     F5 --> U1["S001 pruebas del compilador"]
     F5 --> U2["S002 bloqueos con su motivo"]
     F5 --> U3["S003 aserciones aisladas"]
@@ -116,6 +118,18 @@ Decisiones de Jesús:
 Prueba integral de la iniciativa: `go test ./...` más `go run ./cmd/aquas verificar`. Las dos pasaron en el commit `2c418d1`.
 
 ## Navegación
+
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [F001](F001/README.md) | Guardia del repo | Hecho |
+| [F002](F002/README.md) | Compilador y sello | Hecho |
+| F003 | Hooks globales (inventario) | Planeado |
+| F004 | Vueltas de pruebas y gate | Planeado |
+| [F005](F005/README.md) | Calidad de las pruebas | En curso |
+
+<!-- /GENERADO -->
 
 - ↑ Subir: [Inicio de la wiki](../README.md)
 - Abajo: [F001 · Guardia del repo](F001/README.md)
