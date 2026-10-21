@@ -9,5 +9,11 @@
   "bloqueado_por": [
     "E001/F002/S003"
   ],
-  "secuencia": 39
+  "secuencia": 39,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestVerificarDePuntaAPunta",
+      "intencion": "prueba integral: el gate real frena un derivado editado y una wiki rota"
+    }
+  ]
 }

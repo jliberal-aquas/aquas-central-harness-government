@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F005",
+    "slice": "S004",
+    "tarea": "E000/F005/S004 verde; cerrando"
+  },
+  "siguiente": "E000/F005/S005 carpetas protegidas desde una sola fuente",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "d717bf6864683de95237aacbc9304982f1a6dcdf982b935391cf5be67f086d46",
+  "actualizado": "2026-10-21T17:32:56Z",
+  "sello": "aac1279cea41bed6095710746cd9471c6eb0ae110b0b04e18201f000887b622e"
+}

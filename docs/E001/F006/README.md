@@ -61,10 +61,10 @@ stateDiagram-v2
 
 Slices de esta feature:
 
-| Slice | Qué entrega | Estado |
-|---|---|---|
-| [S001 Tres agentes y sus herramientas](S001.md) | Los tres agentes compilados; el auditor sin herramientas de edición | Hecho |
-| [S002 Comunicación entre agentes](S002.md) | Encargo y cierre con campos fijos; un hook rechaza el cierre incompleto | Hecho |
+| Slice | Qué entrega |
+|---|---|
+| [S001 Tres agentes y sus herramientas](S001.md) | Los tres agentes compilados; el auditor sin herramientas de edición |
+| [S002 Comunicación entre agentes](S002.md) | Encargo y cierre con campos fijos; un hook rechaza el cierre incompleto |
 
 ## Ejemplo de punta a punta
 

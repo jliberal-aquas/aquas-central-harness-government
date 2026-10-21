@@ -56,10 +56,10 @@ stateDiagram-v2
 
 Slices de esta feature:
 
-| Slice | Qué entrega | Estado |
-|---|---|---|
-| [S001 Compilar y sellar](S001.md) | Archivos generados con sello SHA-256 | Hecho |
-| [S002 Tope de caracteres](S002.md) | Tope obligatorio por archivo generado | Hecho |
+| Slice | Qué entrega |
+|---|---|
+| [S001 Compilar y sellar](S001.md) | Archivos generados con sello SHA-256 |
+| [S002 Tope de caracteres](S002.md) | Tope obligatorio por archivo generado |
 
 ## Ejemplo de punta a punta
 

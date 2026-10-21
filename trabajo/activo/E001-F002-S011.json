@@ -1,0 +1,21 @@
+{
+  "id": "E001/F002/S011",
+  "tipo": "slice",
+  "titulo": "La ficha dice qué hace",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "las tablas de hijos aún llevan la descripción a mano; decisión humana 2026-10-21, después de E000/F005/S004",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 49,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestFichaGuardaQueHace",
+      "intencion": "nuevo exige que_hace y lo guarda; ficha vieja sin campo sigue legible"
+    },
+    {
+      "prueba": "./internal/wiki:TestHijosMuestranQueHace",
+      "intencion": "la tabla generada muestra que_hace de cada hijo"
+    }
+  ]
+}

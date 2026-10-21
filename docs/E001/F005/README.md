@@ -59,11 +59,11 @@ stateDiagram-v2
 
 Slices de esta feature:
 
-| Slice | Qué entrega | Estado |
-|---|---|---|
-| [S001 Archivo, sello y guardia](S001.md) | Memoria con campos fijos que solo escribe `aquas` | Hecho |
-| [S002 Hooks de inicio y cierre](S002.md) | Se muestra al empezar y se exige al cerrar | Hecho |
-| [S003 Archivo y arranque en frío](S003.md) | Se archiva al cerrar el slice; prueba de sesión nueva | Hecho |
+| Slice | Qué entrega |
+|---|---|
+| [S001 Archivo, sello y guardia](S001.md) | Memoria con campos fijos que solo escribe `aquas` |
+| [S002 Hooks de inicio y cierre](S002.md) | Se muestra al empezar y se exige al cerrar |
+| [S003 Archivo y arranque en frío](S003.md) | Se archiva al cerrar el slice; prueba de sesión nueva |
 
 ## Ejemplo de punta a punta
 

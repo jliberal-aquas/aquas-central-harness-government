@@ -56,12 +56,12 @@ stateDiagram-v2
 
 [Slices](../../glosario.md#slice) de esta feature:
 
-| Slice | Qué entrega | Estado |
-|---|---|---|
-| [S001 Leer un lote de rutas](S001.md) | Varias rutas y rangos en una llamada, con tope y cuenta | Hecho |
-| S002 Buscar | Expresión regular sobre rutas | Descartado: no ahorra vueltas |
-| S003 Esquema | Firmas de Go y títulos de Markdown | Aplazado |
-| S004 Relaciones | Quién usa qué, conectado al sello | Aplazado |
+| Slice | Qué entrega |
+|---|---|
+| [S001 Leer un lote de rutas](S001.md) | Varias rutas y rangos en una llamada, con tope y cuenta |
+| S002 Buscar | Expresión regular sobre rutas |
+| S003 Esquema | Firmas de Go y títulos de Markdown |
+| S004 Relaciones | Quién usa qué, conectado al sello |
 
 ## Ejemplo de punta a punta
 

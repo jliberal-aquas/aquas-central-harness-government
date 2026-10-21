@@ -61,12 +61,12 @@ stateDiagram-v2
 
 Slices de esta feature:
 
-| Slice | Qué entrega | Estado |
-|---|---|---|
-| [S001 Esqueleto + gate](S001.md) | Estructura, secciones, diagramas, ejemplos, enlaces | Hecho |
-| [S002 Glosario + legibilidad](S002.md) | Términos técnicos definidos y frases cortas | Hecho |
-| [S003 Documentar lo existente](S003.md) | Páginas de referencia en `docs/ref/` | Hecho |
-| [S004 Contrato y evidencia](S004.md) | Sección 9, migas y pruebas con dueño | Hecho |
+| Slice | Qué entrega |
+|---|---|
+| [S001 Esqueleto + gate](S001.md) | Estructura, secciones, diagramas, ejemplos, enlaces |
+| [S002 Glosario + legibilidad](S002.md) | Términos técnicos definidos y frases cortas |
+| [S003 Documentar lo existente](S003.md) | Páginas de referencia en `docs/ref/` |
+| [S004 Contrato y evidencia](S004.md) | Sección 9, migas y pruebas con dueño |
 
 ## Ejemplo de punta a punta
 
@@ -129,12 +129,12 @@ flowchart LR
     R --> OK["GATE OK"]
 ```
 
-| Slice | Estado |
-|---|---|
-| S001 Esqueleto + gate | Hecho |
-| S002 Glosario + legibilidad | Hecho |
-| S003 Documentar lo existente | Hecho |
-| S004 Contrato y evidencia | Hecho |
+| Slice |
+|---|
+| S001 Esqueleto + gate |
+| S002 Glosario + legibilidad |
+| S003 Documentar lo existente |
+| S004 Contrato y evidencia |
 
 ## Navegación
 

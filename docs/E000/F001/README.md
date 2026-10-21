@@ -59,12 +59,12 @@ stateDiagram-v2
 
 Slices de esta feature:
 
-| Slice | Qué entrega | Estado |
-|---|---|---|
-| [S001 Regla de oro 5](S001.md) | La guardia y su hook | Hecho |
-| [S002 Lista de permitidos](S002.md) | Carpetas de fuera con motivo | Hecho |
-| [S003 Hooks en Windows](S003.md) | El hook arranca con Git Bash | Hecho |
-| [S004 Entorno declarado](S004.md) | Sistema y raíz en config; ajustes generados | Hecho |
+| Slice | Qué entrega |
+|---|---|
+| [S001 Regla de oro 5](S001.md) | La guardia y su hook |
+| [S002 Lista de permitidos](S002.md) | Carpetas de fuera con motivo |
+| [S003 Hooks en Windows](S003.md) | El hook arranca con Git Bash |
+| [S004 Entorno declarado](S004.md) | Sistema y raíz en config; ajustes generados |
 
 ## Ejemplo de punta a punta
 

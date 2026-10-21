@@ -1,0 +1,43 @@
+{
+  "id": "E000/F005/S004",
+  "tipo": "slice",
+  "titulo": "Cableado del CLI probado de punta a punta",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "después de E001/F002/S010 (decisión humana 2026-10-21)",
+  "padre": "E000/F005",
+  "bloqueado_por": [],
+  "secuencia": 43,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestVerificarDePuntaAPunta",
+      "intencion": "aquas verificar da exit 0 en un repo sano y exit 1 con un derivado editado"
+    },
+    {
+      "prueba": "./cmd/aquas:TestGuardiaCLIBloquea",
+      "intencion": "aquas guardia sale con exit 2 ante una escritura fuera del repo"
+    },
+    {
+      "prueba": "./cmd/aquas:TestGuardiaCLISinEntornoBloquea",
+      "intencion": "sin entorno válido, aquas guardia bloquea todo"
+    },
+    {
+      "prueba": "./internal/entorno:TestSettingsRealTraeGuardiaYHook",
+      "intencion": "la plantilla real trae el hook PreToolUse de guardia y el PostToolUse de recompilar"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T17:31:23Z",
+    "head": "d48d4c67e1fcca609406d20632f297d8234973a1",
+    "resultado": {
+      "./cmd/aquas:TestGuardiaCLIBloquea": "punta_test.go:100: escritura fuera: exit 2 con la ruta en el motivo; dio {out: err:aquas guardia: escritura fuera del repositorio bloqueada: ../fuera.txt (regla de oro: solo se escribe dentro del repositorio: D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestGuardiaCLIBloquea2696301258\\001)",
+      "./cmd/aquas:TestGuardiaCLISinEntornoBloquea": "punta_test.go:119: sin entorno: hasta lo de dentro se bloquea (exit 2) y dice cómo arreglarlo; dio {out: err: codigo:0}",
+      "./cmd/aquas:TestVerificarDePuntaAPunta": "punta_test.go:81: derivado editado: exit 1 y lo nombra; dio {out:GATE OK · derivados, sello, wiki, backlog y guardia al día",
+      "./internal/entorno:TestSettingsRealTraeGuardiaYHook": "hooks_test.go:87: linux: falta PreToolUse con matcher \"Write|Edit|MultiEdit|NotebookEdit|Bash\" y orden \"guardia\"; hay [{Matcher:Write|Edit|MultiEdit|NotebookEdit Hooks:[{Command:sh \"${CLAUDE_PROJECT_DIR}/.claude/hooks/aquas.sh\" guardia}]}]"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T17:31:45Z",
+    "head": "d48d4c67e1fcca609406d20632f297d8234973a1"
+  }
+}

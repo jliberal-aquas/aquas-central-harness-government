@@ -65,14 +65,14 @@ stateDiagram-v2
 
 Slices de esta feature:
 
-| Slice | Qué entrega | Estado |
-|---|---|---|
-| [S001 Pruebas del compilador](S001.md) | Tres pruebas que miden la causa | Hecho |
-| [S002 Bloqueos con su motivo](S002.md) | Cinco pruebas de guardia y entorno | Hecho |
-| [S003 Aserciones aisladas](S003.md) | Seis pruebas que pasaban por otra entrada | Hecho |
-| S004 Cableado de punta a punta | `verificar`, `guardia` y hooks reales | Pendiente |
-| S005 Carpetas protegidas | Una sola fuente para sus rutas | Pendiente |
-| S006 Rojo de slices viejos | Rojo de cuatro slices sin evidencia | Pendiente |
+| Slice | Qué entrega |
+|---|---|
+| [S001 Pruebas del compilador](S001.md) | Tres pruebas que miden la causa |
+| [S002 Bloqueos con su motivo](S002.md) | Cinco pruebas de guardia y entorno |
+| [S003 Aserciones aisladas](S003.md) | Seis pruebas que pasaban por otra entrada |
+| [S004 Cableado de punta a punta](S004.md) | `verificar`, `guardia` y hooks reales |
+| S005 Carpetas protegidas | Una sola fuente para sus rutas |
+| S006 Rojo de slices viejos | Rojo de cuatro slices sin evidencia |
 
 ## Ejemplo de punta a punta
 
@@ -105,7 +105,7 @@ En la [iniciativa](../../glosario.md#iniciativa), el [compilador](../../glosario
 
 **Objetivo.** Ninguna prueba del repo pasa en verde con la regla que vigila rota.
 
-Prueba integral: `TestVerificarDePuntaAPunta`, en S004. Aún no existe.
+Prueba integral: `TestVerificarDePuntaAPunta`, en S004. Corre el binario real sobre la config real. Un [derivado](../../glosario.md#derivado) editado o una [wiki](../../glosario.md#wiki) rota dan exit 1.
 
 ## Navegación
 
@@ -116,7 +116,7 @@ Prueba integral: `TestVerificarDePuntaAPunta`, en S004. Aún no existe.
 | [S001](S001.md) | Pruebas del compilador que miden la causa | Hecho |
 | [S002](S002.md) | Bloqueos de guardia y entorno con su motivo | Hecho |
 | [S003](S003.md) | Aserciones que no se cumplen por otra entrada | Hecho |
-| S004 | Cableado del CLI probado de punta a punta | Planeado |
+| [S004](S004.md) | Cableado del CLI probado de punta a punta | Hecho |
 | S005 | Una sola fuente para las carpetas protegidas | Planeado |
 | S006 | Rojo de los slices viejos sin evidencia | Planeado |
 
