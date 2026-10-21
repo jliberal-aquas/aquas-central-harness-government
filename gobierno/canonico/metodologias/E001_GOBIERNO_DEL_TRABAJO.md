@@ -11,6 +11,9 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - `E000 Mantenimiento`: iniciativa permanente para cambios pequeños; contrato mínimo autogenerado.
 - Contexto del agente en Caveman; explicación extensa en wiki con pedagogía acordada.
 - Calidad primero; tokens segundo.
+- Nombre: Aquas-driven development. No es spec-driven: contrato mínimo vigilado por gate, no comité.
+- Interrupción (2026-10-20): pedido nuevo con slice activo → clasificar antes de ejecutar. No es trabajo → responder. Trabajo urgente o que protege repo → slice activo PAUSADO (registrado) → slice E000 (contrato mínimo, rojo, verde, commit) → reanudar. Resto → backlog con prioridad; slice sigue.
+- Defectos por repo (cada repo, su gobierno; nadie escribe en otros). Ver F004.
 
 ## Flujo de un turno
 1. Hook `UserPromptSubmit` → Go guarda literal en auditoría (sin pasar por agente).
@@ -55,14 +58,25 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Gate falla si: falta página de entidad · falta sección · falta diagrama del tipo exigido · enlace roto · página inalcanzable desde inicio · ejemplo sin `continúa` válido · término del glosario sin enlace en su primera aparición por página (`docs/glosario.md`: `## término` + definición + `Ejemplo:` + `Variantes:` opcional) · legibilidad bajo piso.
 - Legibilidad: P = 206,835 − 62,3·sílabas/palabras − palabras/oraciones (Szigriszt-Pazos) ≥ 65 (INFLESZ «bastante fácil») por página + oraciones ≤ 20 palabras. Mide prosa; excluye código, tablas, títulos y Navegación. Fuentes en `internal/wiki/legibilidad.go`.
 - Wiki es para humano: extensa permitida; Caveman no aplica. Claridad del ejemplo = criterio humano.
+- Manual ≠ contrato: `docs/ref/` explica cómo funciona lo existente; páginas E/F/S son contrato + evidencia de lo hecho y por hacer.
+- Sección 9 «Contrato y evidencia» (antes de Navegación) en E/F/S, con diagramas, explicación y ejemplo como el resto:
+  - E: resultado esperado · resultado logrado · decisiones · features con estado · prueba integral.
+  - F: objetivo · por qué esos slices · decisiones · prueba integral (escenario, resultado, commit) · slices con estado.
+  - S: contrato · cada prueba por nombre + qué demuestra + rojo visto · commits · decisiones.
+- Trazabilidad de pruebas (gate): toda prueba nombrada en un slice existe en código; toda `func Test…` del repo la nombra algún slice.
+- Inicio: mapa de todo E/F/S (hecho y planeado, con estado). Cada página E/F/S: migas «Inicio › E › F › S». Escritos a mano hasta F002; luego `aquas` los genera desde backlog JSON (bloque GENERADO).
+- E000 usa el mismo árbol: E000 → F → S.
 
 ## Vistas y diagramas en chat
 - `aquas ver`: Go genera Mermaid del estado (árbol de backlog, slice, lista de sello) desde JSON; agente no los dibuja.
 - Propuesta de proceso/diseño en chat → diagrama ASCII. Hook de cierre: bloque PROPUESTA sin bloque de código → falla. Límite: depende de que el agente marque PROPUESTA.
 
-## Features y slices iniciales
+## Features y slices (backlog provisional hasta F002/S002; orden de ejecución = orden de lista)
+- E000 Mantenimiento · F001 Guardia del repo: S001 regla de oro 5 (hecho, 6756b1d) · S002 lista de permitidos (hecho, 9e94e35). Pendiente registrarlos en wiki (E001/F001/S004) y backlog (F002/S002).
+- E001/F001/S004 contrato y evidencia en la wiki: sección 9, trazabilidad de pruebas, mapa, migas, E000 documentado, estado de F001 corregido, nombre de la metodología. SIGUIENTE.
 - F001 Wiki + gate: S001 esqueleto + gate de estructura, enlaces, diagramas, ejemplos · S002 glosario + legibilidad · S003 documentar lo existente (constitución, compilador, comunicación).
 - F002 Turnos, backlog y sello: S001 auditoría (hooks) · S002 backlog JSON + CLI + prioridad + archivo · S003 slice rojo/verde + bloqueo · S004 sello · S005 `aquas ver` · S006 hook PROPUESTA → diagrama.
+- F004 Defectos y reincidencia: registro `D000001` por repo con firma estable (agente elige existente o justifica nueva; elección = probabilística) · campos cortos: qué, causa, arreglo, cómo me cercioro, ocurrencias [turnos] · hook Stop frena si «¿Salió algo mal?» ≠ «No» sin defecto registrado · ocurrencias ≥ umbral (config, 3) → `aquas` crea slice E000 P1. Semilla: D000001 `hook-exit-go-run` (go run convierte exit 2 en 1), ocurrencias previas declaradas por humano: muchas.
 - F003 Bibliotecario: S001 leer lista de rutas · S002 buscar por regex · S003 plugin Go (referencias y usos) · S004 conectar usos al sello. Se explora a fondo al llegar.
 
 ## Podado (fuera de alcance)
