@@ -106,6 +106,7 @@ flowchart TD
     R --> E1["E001 Gobierno del trabajo<br/>En curso"]
     E0 --> E0F1["F001 Guardia del repo<br/>Hecho"]
     E0 --> E0F2["F002 Compilador y sello<br/>Hecho"]
+    E0 --> E0F3["F003 Hooks globales<br/>Inventario"]
     E1 --> E1F1["F001 Wiki + gate<br/>Hecho"]
     E1 --> E1F5["F005 Memoria caliente<br/>Hecha"]
     E1 --> E1F2["F002 Turnos, backlog y sello<br/>Pendiente"]
@@ -120,6 +121,7 @@ flowchart TD
 | ↳↳ [S001](E000/F001/S001.md) · [S002](E000/F001/S002.md) · [S003](E000/F001/S003.md) · [S004](E000/F001/S004.md) | Guardia, permitidos, hooks en Windows, entorno declarado | Hecho |
 | ↳ [F002](E000/F002/README.md) Compilador y sello | Archivos generados, sellados y con tope | Hecho |
 | ↳↳ [S001](E000/F002/S001.md) · [S002](E000/F002/S002.md) | Compilar y sellar, tope de caracteres | Hecho |
+| ↳ F003 Hooks globales | Ganchos en `~/.claude/hooks/` que rigen todo proyecto; solo registrados, no gobernados aquí | Inventario |
 | [E001](E001/README.md) Gobierno del trabajo | Camino fijo para cada pedido | En curso |
 | ↳ [F001](E001/F001/README.md) Wiki + gate | Esta wiki y el gate que la exige | Hecho |
 | ↳↳ [S001](E001/F001/S001.md) · [S002](E001/F001/S002.md) · [S003](E001/F001/S003.md) | Esqueleto, legibilidad y glosario, referencia | Hecho |
@@ -128,7 +130,7 @@ flowchart TD
 | ↳↳ [S001](E001/F005/S001.md) · [S002](E001/F005/S002.md) · [S003](E001/F005/S003.md) | Archivo, sello y guardia; hooks; archivo y arranque en frío | Hecho |
 | ↳ F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | Pendiente |
 | ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
-| ↳ F003 Bibliotecario | Búsqueda determinista de archivos y usos | Pendiente |
+| ↳ F003 Bibliotecario | Herramienta propia: lee rutas o busca y entrega solo lo útil | Pendiente |
 
 El orden de las pendientes es el orden de ejecución.
 
