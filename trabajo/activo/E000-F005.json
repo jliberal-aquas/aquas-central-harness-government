@@ -1,0 +1,13 @@
+{
+  "id": "E000/F005",
+  "tipo": "feature",
+  "titulo": "Calidad de las pruebas",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-21: 15 de 92 pruebas débiles o vacías; 11 de 14 mutaciones sobreviven; va tras S003 para usar el rojo nuevo",
+  "padre": "E000",
+  "bloqueado_por": [
+    "E001/F002/S003"
+  ],
+  "secuencia": 39
+}

@@ -42,10 +42,12 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Worker no se declara terminado; Go cierra solo con rojo→verde registrados + sello completo.
 - Feature: prueba integral propia, roja al crear. Cierra = todos sus slices cerrados + integral verde.
 - Reserva de slice activo: archivo de bloqueo; segundo `slice iniciar` falla.
+- Decisiones humanas 2026-10-21 para S003 (constitución de la metodología): un solo slice en curso (EN_CURSO o VERIFICANDO); solo la ficha del slice activo cambia de estado (prioridad sí, en cualquiera); la memoria caliente rechaza un foco distinto del slice en curso del backlog. Contrato de prueba en la ficha del slice: `prueba` (comando), `rojo` y `verde` (registros); CERRADO exige rojo y luego verde. Rojo (corregido por el humano 2026-10-21 tras el informe de calidad): `go test -json` y CADA prueba nombrada en la ficha falla por sí misma; fallo de compilación u otra prueba no cuenta. Motivo: 15 de 92 pruebas no protegían lo que decían (una fallaba por otra causa) y 11 de 14 mutaciones sobrevivieron.
+- Directriz humana 2026-10-21: al crear iniciativa, feature o slice se escriben las pruebas de lo que el humano espera de esa etapa (integral en E y F, del slice en S), y su ficha guarda rojo y verde. Objetivo: ante un fallo futuro, saber qué prueba falló o cuál faltó. Git guarda la historia de cada ficha.
 
 ## Sello (motor de impacto mínimo)
 - Al cerrar slice, Go arma lista obligatoria de revisión: iniciativa, feature, slices hermanos, páginas wiki enlazadas.
-- F003 agrega usos en código (bibliotecario). Hasta entonces: punto de conexión vacío.
+- Mapa de relaciones (decisión humana 2026-10-21; absorbe F003/S004): dos niveles. Archivo: todo archivo del repo que nombra un archivo tocado por el slice. Trabajo: iniciativas, features y slices que comparten esos archivos o datos (no solo el árbol padre/hermanos). Caso que lo motivó: S002 movió el backlog a `trabajo/` y `internal/memoria/memoria.go` siguió apuntando al canónico; nada lo detectó.
 - Cierre bloqueado hasta que cada ítem tenga `sin cambio` o `actualizado` + motivo de una línea.
 - Go entrega solo líneas relevantes, no archivos completos (economía de tokens).
 

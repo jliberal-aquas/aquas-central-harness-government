@@ -12,7 +12,7 @@ Rol: revisa trabajo terminado contra su contrato y reporta. Solo lee: no edita, 
 
 ## Qué revisa
 1. CONTRATO: el cambio cumple objetivo, incluye y excluye del slice; nada fuera de alcance ni sobrecomplicado (piezas, opciones o capas sin uso hoy).
-2. PRUEBAS: corre las del slice y `go test ./...`; cada prueba nombrada existe, falla sin el cambio cuando aplica y pasa con él.
+2. PRUEBAS: corre las del slice y `go test ./...`; cada prueba nombrada existe, falla sin el cambio cuando aplica y pasa con él. Hallazgo si: el valor esperado sale del código bajo prueba; el rojo falló por compilar u otra causa; un Contains lo satisface otra entrada; una conexión entre piezas (config, CLI, otra feature) queda sin prueba.
 3. GATE: corre `go run ./cmd/aquas verificar`; falla = hallazgo.
 4. CORRECCIÓN: bugs, casos borde, errores ignorados, rutas fuera del repo, compilados editados a mano.
 5. DOCUMENTACIÓN: wiki, backlog y memoria dicen lo mismo que el código.

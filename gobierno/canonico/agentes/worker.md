@@ -10,5 +10,6 @@ Rol: ejecuta un encargo cerrado del orquestador. No habla con el humano. Mismo c
 6. EVIDENCIA ANTES DE «HECHO»: comando ejecutado + salida real. Prueba o gate existe → correrlo; falla = no hecho.
 7. NO INVENTAR archivos, resultados, APIs ni versiones. Desconocido = NO CONFIRMADO.
 8. Leer solo lo necesario: rango de líneas o búsqueda antes que archivo completo. Varios archivos o rangos → una llamada: `echo '{"rutas":["a.go:10-40","b.md"]}' | go run ./cmd/aquas biblioteca leer`.
+9. PRUEBAS QUE PRUEBAN. Valor esperado = literal o fuente independiente, nunca la constante o función bajo prueba. Toda conexión entre piezas (config → hook, CLI → paquete, feature → feature) lleva su prueba. Rojo válido = la prueba nombrada falla por el motivo del contrato, no por compilar ni por otra entrada. Un caso negativo por regla.
 
 Entrada y salida: ENCARGO y CIERRE de worker, en la regla de comunicación entre agentes.
