@@ -3,6 +3,7 @@
 //	aquas compilar   regenera derivados y sello desde los canónicos
 //	aquas verificar  gate: falla (exit 1) si algún derivado o sello está desfasado o la wiki docs/ incumple
 //	aquas hook       modo hook PostToolUse de Claude Code (lee JSON por stdin)
+//	aquas guardia    hook PreToolUse: bloquea (exit 2) toda escritura fuera del repositorio
 package main
 
 import (
@@ -14,12 +15,13 @@ import (
 	"strings"
 
 	"github.com/jliberal/aquas-harness-governance/internal/compilador"
+	"github.com/jliberal/aquas-harness-governance/internal/guardia"
 	"github.com/jliberal/aquas-harness-governance/internal/wiki"
 )
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "uso: aquas compilar | verificar | hook")
+		fmt.Fprintln(os.Stderr, "uso: aquas compilar | verificar | hook | guardia")
 		os.Exit(64)
 	}
 	raiz, err := os.Getwd()
@@ -55,6 +57,12 @@ func main() {
 		fmt.Println("GATE OK · derivados, sello y wiki al día")
 	case "hook":
 		hook(raiz)
+	case "guardia":
+		datos, _ := io.ReadAll(os.Stdin)
+		if m := guardia.Revisar(raiz, datos); m != "" {
+			fmt.Fprintln(os.Stderr, "aquas guardia: "+m)
+			os.Exit(2)
+		}
 	default:
 		fallar(64, fmt.Errorf("subcomando desconocido: %s", os.Args[1]))
 	}

@@ -22,6 +22,7 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Partes sin duda: avanzar mientras humano responde, si no hay riesgo.
 3. VALIDAR VIGENCIA: ver regla enlazada.
 4. NO INVENTAR REGLAS: no agregar regla/práctica que humano no pidió; si se propone, marcarla PROPUESTA.
+5. NO ESCRIBIR FUERA DEL REPO: temporales en `.tmp/`. Gate: hook `aquas guardia` bloquea Write/Edit/Bash con destino fuera.
 
 ## Orquestación
 - Entender → planificar → delegar → verificar → reportar. Sin saltos.

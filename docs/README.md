@@ -98,3 +98,4 @@ Mapa rápido del repositorio:
 - Referencia: [Constitución](ref/constitucion.md)
 - Referencia: [Compilador](ref/compilador.md)
 - Referencia: [Comunicación agente → humano](ref/comunicacion.md)
+- Referencia: [Guardia: nada se escribe fuera del repo](ref/guardia.md)
