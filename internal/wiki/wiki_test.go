@@ -41,15 +41,39 @@ func tSeccion(titulo, cuerpo string) string { return "## " + titulo + "\n\n" + c
 
 func mermaid(tipo string) string { return "```mermaid\n" + tipo + "\n    A --> B\n```\n" }
 
+// tMigas y tContrato derivan del id del ejemplo: solo las páginas E/F/S los llevan.
+func tMigas(ej string) string {
+	ids := strings.Split(strings.TrimPrefix(ej, "EJ-"), "-")
+	if !strings.HasPrefix(ej, "EJ-E") {
+		return ""
+	}
+	sube := []string{"../README.md", "../../README.md", "../../README.md"}[len(ids)-1]
+	m := "[Inicio](" + sube + ")"
+	switch len(ids) {
+	case 2:
+		m += " › [" + ids[0] + "](../README.md)"
+	case 3:
+		m += " › [" + ids[0] + "](../README.md) › [" + ids[1] + "](README.md)"
+	}
+	return m + " › " + ids[len(ids)-1] + "\n\n"
+}
+
+func tContrato(ej string) string {
+	if !strings.HasPrefix(ej, "EJ-E") {
+		return ""
+	}
+	return tSeccion("Contrato y evidencia", "Lo prometido y su prueba.")
+}
+
 func tPagina(ej, continua, diagrama, nav string) string {
-	return "# Título\n\n" +
+	return "# Título\n\n" + tMigas(ej) +
 		tSeccion("En una frase", "Algo simple.") +
 		tSeccion("Para qué existe", "Problema → solución.") +
 		tSeccion("Analogía", "Como un mapa.") +
 		tSeccion("Diagrama", diagrama) +
 		tSeccion("Ejemplo de punta a punta", `<a id="`+ej+`"></a>`+"\n\n"+continua+"Texto del ejemplo.") +
 		tSeccion("Paso a paso", "1. Uno.") +
-		tSeccion("Cómo se usa", "Se lee.") +
+		tSeccion("Cómo se usa", "Se lee.") + tContrato(ej) +
 		tSeccion("Navegación", nav)
 }
 

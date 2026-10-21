@@ -1,5 +1,5 @@
 # E001 · Gobierno del trabajo · v0.1 · BORRADOR RATIFICADO
-Origen: especificación SS-GOV-EFS v0.1.0 podada con el humano (2026-10-20). Estado: decisiones cerradas; implementado F001/S001 (gate de wiki en `internal/wiki/`), F001/S002 (legibilidad + glosario) y F001/S003 (referencia `docs/ref/`); F001 con prueba integral, reabierta por S004 (en curso).
+Origen: especificación SS-GOV-EFS v0.1.0 podada con el humano (2026-10-20). Estado: decisiones cerradas; implementado F001/S001 (gate de wiki en `internal/wiki/`), F001/S002 (legibilidad + glosario) y F001/S003 (referencia `docs/ref/`), F001/S004 (sección 9, migas y trazabilidad de pruebas en `internal/wiki/contrato.go`); F001 hecha.
 No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`) + resumen Caveman en orquestador.
 
 ## Decisiones ratificadas
@@ -73,14 +73,14 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 
 ## Features y slices (backlog provisional hasta F002/S002; orden de ejecución = orden de lista)
 - E000 Mantenimiento · F001 Guardia del repo: S001 regla de oro 5 (hecho, 6756b1d) · S002 lista de permitidos (hecho, 9e94e35) · S003 hooks no arrancaban en Windows: `args` lanza `sh` sin shell y el PATH no lo trae → `shell: bash` (hecho, bae7091). Wiki: hecha (docs/E000/). Backlog: pendiente (F002/S002). S004 entorno declarado (hecho; decisiones humanas 2026-10-20: archivo local no versionado, bloquea si falta o no coincide, settings.json compilado entero y no versionado): config declara sistema operativo y raíz del repo · `settings.json` se compila desde esa config con el shell del SO · la guardia valida su raíz contra la declarada (hoy la toma de `os.Getwd()`) · incluye el hueco de PowerShell (matcher no la cubre). Va antes de E001/F001/S004. F002 Compilador y sello (a posteriori, wiki hecha): S001 compilar y sellar (hecho, d2b7f3d) · S002 tope de caracteres (hecho, 458614f).
-- E001/F001/S004 contrato y evidencia en la wiki. SIGUIENTE. Tareas en este orden (contenido primero, gate al final para no bloquear el pre-commit):
+- E001/F001/S004 contrato y evidencia en la wiki. HECHO. F005 = SIGUIENTE. Tareas en este orden (contenido primero, gate al final para no bloquear el pre-commit):
   - T3 páginas E000 → F001 Guardia → S001–S004, ya con sección 9 y migas (hecho).
   - T4 sección 9 + migas en E001, F001, S001–S004; cada prueba existente nombrada por su slice dueño (hecho; las 8 pruebas de internal/compilador, anteriores al método, pasan a E000/F002 por decisión humana 2026-10-20).
   - T5 inicio: mapa completo + nombre de la metodología + estado de F001 corregido (hecho).
-  - T1+T2 gate: sección 9, migas y trazabilidad de pruebas (rojo → verde); un solo commit con las páginas ya en regla.
+  - T1+T2 gate: sección 9, migas y trazabilidad de pruebas (rojo → verde); un solo commit con las páginas ya en regla (hecho).
 - F005 Memoria caliente (pedido humano 2026-10-20; va después de E001/F001/S004; alcance mínimo aprobado; no se versiona en Git, solo su archivo al cerrar slice): el agente no pierde el estado del foco entre turnos, compactación o sesión nueva. Contiene foco (E/F/S y tarea), rutas a iniciativa, épica, feature, slice y backlog, y todo lo que no carga solo en contexto. Se archiva al cerrar el slice. Referencia de diseño: constitución HMP v1.0.0 del humano, solo como idea; no se importa.
 - Idea futura (sin slice; pensar más adelante): `aquas` crea repos hijos copiando la versión sellada del gobierno; cambio en el central deja hijos desactualizados → `aquas gobierno update` o similar.
-- F001 Wiki + gate: S001 esqueleto + gate de estructura, enlaces, diagramas, ejemplos · S002 glosario + legibilidad · S003 documentar lo existente (constitución, compilador, comunicación) · S004 contrato y evidencia (en curso, arriba).
+- F001 Wiki + gate: S001 esqueleto + gate de estructura, enlaces, diagramas, ejemplos · S002 glosario + legibilidad · S003 documentar lo existente (constitución, compilador, comunicación) · S004 contrato y evidencia (hecho, arriba).
 - F002 Turnos, backlog y sello: S001 auditoría (hooks) · S002 backlog JSON + CLI + prioridad + archivo · S003 slice rojo/verde + bloqueo · S004 sello · S005 `aquas ver` · S006 hook PROPUESTA → diagrama.
 - F004 Defectos y reincidencia: registro `D000001` por repo con firma estable (agente elige existente o justifica nueva; elección = probabilística) · campos cortos: qué, causa, arreglo, cómo me cercioro, ocurrencias [turnos] · hook Stop frena si «¿Salió algo mal?» ≠ «No» sin defecto registrado · ocurrencias ≥ umbral (config, 3) → `aquas` crea slice E000 P1. Semilla: D000001 `hook-exit-go-run` (go run convierte exit 2 en 1), ocurrencias previas declaradas por humano: muchas.
 - F003 Bibliotecario: S001 leer lista de rutas · S002 buscar por regex · S003 plugin Go (referencias y usos) · S004 conectar usos al sello. Se explora a fondo al llegar.

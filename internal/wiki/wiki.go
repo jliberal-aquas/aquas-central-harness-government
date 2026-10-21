@@ -76,6 +76,8 @@ type pagina struct {
 	anclas         map[string]bool
 	enlaces        []enlace
 	prosa          []string // líneas medibles por legibilidad; "" = corte de párrafo
+	migas          string   // primera línea no vacía bajo el título H1
+	pruebas        []string // pruebas nombradas en «Contrato y evidencia»
 }
 
 // Verificar devuelve los problemas de la wiki bajo raiz/docs; vacío = gate OK.
@@ -134,6 +136,7 @@ func Verificar(raiz string) ([]string, error) {
 			continue
 		}
 		problemas = append(problemas, revisarSecciones(pg)...)
+		problemas = append(problemas, revisarMigas(pg)...)
 		problemas = append(problemas, revisarDiagramas(pg)...)
 		problemas = append(problemas, revisarEjemplo(pg, paginas)...)
 		problemas = append(problemas, revisarNavegacion(pg, hijos[rel])...)
@@ -142,6 +145,11 @@ func Verificar(raiz string) ([]string, error) {
 		problemas = append(problemas, revisarTerminos(pg, ts)...)
 	}
 	problemas = append(problemas, revisarAlcance(paginas, orden)...)
+	traza, err := revisarTrazabilidad(raiz, paginas, orden)
+	if err != nil {
+		return nil, err
+	}
+	problemas = append(problemas, traza...)
 	return problemas, nil
 }
 
@@ -183,6 +191,7 @@ func analizar(raiz string, pg *pagina) error {
 	slugs := map[string]int{}
 	actual := -1
 	cerca, mermaid, primera := "", false, false
+	vistaPrimera := false
 	for _, l := range strings.Split(strings.ReplaceAll(string(b), "\r\n", "\n"), "\n") {
 		t := strings.TrimSpace(l)
 		if cerca != "" { // dentro de bloque de código
@@ -226,6 +235,14 @@ func analizar(raiz string, pg *pagina) error {
 		}
 		for _, a := range reAncla.FindAllStringSubmatch(t, -1) {
 			pg.anclas[a[1]] = true
+		}
+		if actual < 0 && t != "" && !reTitulo.MatchString(t) && !vistaPrimera {
+			pg.migas, vistaPrimera = t, true
+		}
+		if actual >= 0 && pg.secciones[actual].titulo == secContrato {
+			for _, m := range rePruebaNombrada.FindAllStringSubmatch(t, -1) {
+				pg.pruebas = append(pg.pruebas, m[1])
+			}
 		}
 		limpia := reCodigo.ReplaceAllString(t, "")
 		titulo := ""
@@ -274,7 +291,8 @@ func (pg *pagina) seccion(titulo string) *seccion {
 func revisarSecciones(pg *pagina) []string {
 	var ps []string
 	ultimo, desorden := -1, false
-	for _, req := range Secciones {
+	orden := seccionesDe(pg.nivel)
+	for _, req := range orden {
 		idx := -1
 		for i, s := range pg.secciones {
 			if s.titulo == req {
@@ -295,7 +313,7 @@ func revisarSecciones(pg *pagina) []string {
 		ultimo = idx
 	}
 	if desorden {
-		ps = append(ps, fmt.Sprintf("%s: secciones fuera de orden (orden fijo: %s)", pg.rel, strings.Join(Secciones, " · ")))
+		ps = append(ps, fmt.Sprintf("%s: secciones fuera de orden (orden fijo: %s)", pg.rel, strings.Join(orden, " · ")))
 	}
 	return ps
 }

@@ -15,12 +15,14 @@ Si construimos algo y no lo explicamos con dibujos y ejemplos, la máquina no no
 **La solución.** Un gate revisa la wiki en cada `aquas verificar`, y por tanto en cada commit. Exige:
 
 - cada página en su ruta fija: inicio, [iniciativa](../../glosario.md#iniciativa), feature o [slice](../../glosario.md#slice);
-- las mismas ocho secciones en el mismo orden;
+- las mismas ocho secciones en el mismo orden, más una en E, F y S;
 - el diagrama que corresponde a cada nivel;
 - un ejemplo que continúa el ejemplo de la página de arriba;
 - enlaces que funcionan y páginas a las que se llega desde el inicio;
 - prosa fácil de leer: índice 65 o más y oraciones de 20 palabras como máximo;
-- cada término técnico enlazado a su entrada del glosario la primera vez que aparece.
+- cada término técnico enlazado a su entrada del glosario la primera vez que aparece;
+- en iniciativas, features y slices: migas y la sección «Contrato y evidencia»;
+- cada prueba del repo nombrada por su slice, y cada prueba nombrada existente en el código.
 
 ## Analogía
 
@@ -64,7 +66,7 @@ Slices de esta feature:
 | [S001 Esqueleto + gate](S001.md) | Estructura, secciones, diagramas, ejemplos, enlaces | Hecho |
 | [S002 Glosario + legibilidad](S002.md) | Términos técnicos definidos y frases cortas | Hecho |
 | [S003 Documentar lo existente](S003.md) | Páginas de referencia en `docs/ref/` | Hecho |
-| [S004 Contrato y evidencia](S004.md) | Sección 9, migas y pruebas con dueño | En curso |
+| [S004 Contrato y evidencia](S004.md) | Sección 9, migas y pruebas con dueño | Hecho |
 
 ## Ejemplo de punta a punta
 
@@ -132,7 +134,7 @@ flowchart LR
 | S001 Esqueleto + gate | Hecho |
 | S002 Glosario + legibilidad | Hecho |
 | S003 Documentar lo existente | Hecho |
-| S004 Contrato y evidencia | En curso |
+| S004 Contrato y evidencia | Hecho |
 
 ## Navegación
 

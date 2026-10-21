@@ -63,7 +63,7 @@ Estado actual de sus features:
 
 | Feature | Qué hace | Estado |
 |---|---|---|
-| [F001 Wiki + gate](F001/README.md) | Obliga a documentar con esta wiki | En curso |
+| [F001 Wiki + gate](F001/README.md) | Obliga a documentar con esta wiki | Hecho |
 | F005 Memoria caliente | El agente no pierde el foco entre sesiones | Siguiente |
 | F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo/verde, sello | Pendiente |
 | F004 Defectos y reincidencia | Registra fallos y avisa si se repiten | Pendiente |
@@ -115,11 +115,11 @@ Cuando llegue F002 habrá comandos como `aquas backlog siguiente` y `aquas slice
 
 **Resultado esperado.** Cada pedido sigue el mismo camino: texto guardado, slice con prueba en rojo y verde, sello y commit.
 
-**Resultado logrado.** Solo la primera feature, la wiki con su gate. La auditoría, el [backlog](../glosario.md#backlog) y el sello todavía no existen.
+**Resultado logrado.** La primera feature, la wiki con su gate, está hecha. La auditoría, el [backlog](../glosario.md#backlog) y el sello todavía no existen.
 
 ```mermaid
 flowchart LR
-    E["E001"] --> F1["F001 Wiki + gate<br/>En curso"]
+    E["E001"] --> F1["F001 Wiki + gate<br/>Hecho"]
     E --> F2["F002 Turnos, backlog y sello<br/>Pendiente"]
     E --> F3["F003 Bibliotecario<br/>Pendiente"]
     E --> F4["F004 Defectos<br/>Pendiente"]
