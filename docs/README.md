@@ -136,7 +136,7 @@ flowchart TD
 | ↳↳ [S001](E001/F005/S001.md) · [S002](E001/F005/S002.md) · [S003](E001/F005/S003.md) | Archivo, sello y guardia; hooks; archivo y arranque en frío | Hecho |
 | ↳ [F002](E001/F002/README.md) Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | En curso |
 | ↳↳ [S002](E001/F002/S002.md) | Backlog en JSON | Hecho |
-| ↳↳ [S003](E001/F002/S003.md) | Rojo y verde | Hecho |
+| ↳↳ [S003](E001/F002/S003.md) · [S009](E001/F002/S009.md) | Rojo y verde; cerrar exige memoria archivada | Hecho |
 | ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
 | ↳ [F003](E001/F003/README.md) Bibliotecario | Herramienta propia: lee un lote de rutas y entrega solo lo útil | Hecha |
 | ↳↳ [S001](E001/F003/S001.md) | Leer un lote de rutas | Hecho |

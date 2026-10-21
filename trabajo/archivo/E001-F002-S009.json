@@ -1,0 +1,28 @@
+{
+  "id": "E001/F002/S009",
+  "tipo": "slice",
+  "titulo": "Cerrar exige memoria archivada",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-21: cerrar E000/F005/S001 antes de archivar su memoria trabó fijar y archivar; se bloquea el cierre",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 47,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestCerrarExigeMemoriaArchivada",
+      "intencion": "con la memoria apuntando al slice sin archivar, CERRADO se niega y dice cómo archivar; archivada, o con otro foco, o al cancelar, no se bloquea por memoria"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T15:02:07Z",
+    "head": "9a19fe36a207bcc30fed0a9eaeb6792758353169",
+    "resultado": {
+      "./cmd/aquas:TestCerrarExigeMemoriaArchivada": "cierre_test.go:38: memoria sin archivar: CERRADO da exit 1, nombra el slice y pide archivar; dio {out: err:aquas: E001/F002/S003 no cierra sin rojo: aquas backlog rojo E001/F002/S003"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T15:02:30Z",
+    "head": "9a19fe36a207bcc30fed0a9eaeb6792758353169"
+  }
+}

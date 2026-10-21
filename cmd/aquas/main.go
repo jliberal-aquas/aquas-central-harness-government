@@ -12,6 +12,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -264,6 +265,27 @@ func memoriaCLI(raiz string, args []string) {
 	fmt.Print(memoria.Texto(m))
 }
 
+// memoriaArchivada: CERRADO exige que la memoria que apunta al slice ya esté archivada (E001/F002/S009).
+// Si se cierra antes y la memoria queda vieja, fijar y archivar se bloquean entre sí. Cancelar no lo exige.
+func memoriaArchivada(raiz, id string) error {
+	m, err := memoria.Leer(raiz)
+	if errors.Is(err, memoria.ErrSinMemoria) {
+		return nil
+	}
+	if err != nil {
+		return err
+	}
+	f := m.Foco
+	rel := memoria.RutaArchivo(f)
+	if rel == "" || f.Iniciativa+"/"+f.Feature+"/"+f.Slice != id {
+		return nil
+	}
+	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(rel))); err == nil {
+		return nil
+	}
+	return fmt.Errorf("la memoria apunta a %s y no está archivada: primero `aquas memoria fijar tarea=… siguiente=…`, luego `aquas memoria archivar`, y entonces cierra", id)
+}
+
 // focoEnBacklog: la memoria solo fija el slice que el backlog tiene en curso (S003).
 func focoEnBacklog(raiz string, f memoria.Foco) error {
 	if f.Slice == "" {
@@ -325,7 +347,12 @@ func backlogCLI(raiz string, args []string) {
 	case args[0] == "prioridad" && len(args) == 4 && strings.HasPrefix(args[3], "motivo="):
 		f, err = backlog.Prioridad(raiz, args[1], args[2], strings.TrimPrefix(args[3], "motivo="))
 	case args[0] == "estado" && len(args) == 3:
-		f, err = backlog.Estado(raiz, args[1], args[2])
+		if args[2] == "CERRADO" {
+			err = memoriaArchivada(raiz, args[1])
+		}
+		if err == nil {
+			f, err = backlog.Estado(raiz, args[1], args[2])
+		}
 		if err == nil && (f.Estado == "CERRADO" || f.Estado == "CANCELADO") {
 			fmt.Printf("archivada en %s/ · ", backlog.Archivo)
 		}

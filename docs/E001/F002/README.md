@@ -67,6 +67,8 @@ Slices de esta feature:
 | S004 Sello | Lista de lo que hay que revisar al cerrar un slice | Pendiente |
 | S005 `aquas ver` | Mapas de la wiki generados desde el backlog | Pendiente |
 | S006 Propuesta con diagrama | Un hook exige diagrama en cada propuesta | Pendiente |
+| S008 `siguiente` ve features | Avisa de features libres sin slices | Pendiente |
+| [S009 Cerrar exige memoria archivada](S009.md) | Ningún slice cierra con su memoria sin archivar | Hecho |
 
 ## Ejemplo de punta a punta
 
@@ -98,7 +100,7 @@ En la iniciativa, el pedido de Jesús ya es trabajo. Ahora hay que ubicarlo en l
 
 ## Contrato y evidencia
 
-Estado: en curso. S002 y S003 hechos; el resto pendiente.
+Estado: en curso. S002, S003 y S009 hechos; el resto pendiente.
 
 Objetivo: que el orden y el estado del trabajo los guarde un programa, no el agente.
 
@@ -110,6 +112,7 @@ Orden: S002 va primero por prioridad. Jesús la fijó en P1 el 2026-10-21.
 flowchart LR
     S2["S002 backlog<br/>Hecho"] --> S3["S003 rojo y verde<br/>Hecho"]
     S3 --> S4["S004 sello<br/>Pendiente"]
+    S3 --> S9["S009 cierre con memoria archivada<br/>Hecho"]
     S1["S001 auditoría<br/>Pendiente"]
 ```
 
@@ -120,3 +123,4 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S002 · Backlog en JSON](S002.md)
 - Abajo: [S003 · Rojo y verde](S003.md)
+- Abajo: [S009 · Cerrar exige memoria archivada](S009.md)
