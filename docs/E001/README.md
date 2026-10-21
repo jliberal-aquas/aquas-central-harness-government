@@ -110,7 +110,7 @@ Hoy funciona así:
 - Contestas cuando el agente te pregunta algo.
 - La especificación completa vive en [E001_GOBIERNO_DEL_TRABAJO.md](../../gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md).
 
-Desde F002/S002 existe `aquas backlog siguiente`, que dice qué toca. El rojo y verde (`aquas slice rojo`) llega en S003.
+Desde F002/S002 existe `aquas backlog siguiente`, que dice qué toca. Desde S003, cada ficha nombra sus pruebas con su intención; `aquas backlog rojo` y `verde` las corren, y cerrar exige los dos.
 
 ## Contrato y evidencia
 

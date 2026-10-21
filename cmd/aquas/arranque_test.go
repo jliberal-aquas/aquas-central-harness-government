@@ -95,6 +95,18 @@ func TestArranqueEnFrio(t *testing.T) {
 	git(t, raiz, "add", "a.txt")
 	git(t, raiz, "commit", "-q", "-m", "inicio")
 
+	// Desde E001/F002/S003 la memoria solo fija el slice que el backlog tiene en curso.
+	for _, args := range [][]string{
+		{"nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "prueba=./x:TestA=a"},
+		{"nuevo", "id=E001/F005", "titulo=M", "prioridad=P1", "motivo=m", "prueba=./x:TestA=a"},
+		{"nuevo", "id=E001/F005/S003", "titulo=A", "prioridad=P1", "motivo=m", "prueba=./x:TestA=a"},
+		{"estado", "E001/F005/S003", "EN_CURSO"},
+	} {
+		if s := aquas(t, raiz, "", append([]string{"backlog"}, args...)...); s.codigo != 0 {
+			t.Fatalf("backlog %v: %+v", args, s)
+		}
+	}
+
 	// Sesión 1: fija el foco, trabaja y el cierre exige actualizar.
 	if s := aquas(t, raiz, "", "memoria", "fijar", "iniciativa=E001", "feature=F005", "slice=S003",
 		"tarea=archivo al cerrar", "siguiente=probar arranque en frío", "pendiente=limpiar .tmp"); s.codigo != 0 {

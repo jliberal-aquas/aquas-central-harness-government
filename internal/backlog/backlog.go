@@ -30,6 +30,10 @@ type Ficha struct {
 	Padre        string   `json:"padre"`
 	BloqueadoPor []string `json:"bloqueado_por"`
 	Secuencia    int      `json:"secuencia"`
+	// S003: pruebas nombradas "./paquete:TestNombre"; sin pruebas = ficha anterior a S003.
+	Pruebas []Prueba  `json:"pruebas,omitempty"`
+	Rojo    *Registro `json:"rojo,omitempty"`
+	Verde   *Registro `json:"verde,omitempty"`
 }
 
 // Estados y prioridades del canónico E001 (sección Backlog).
@@ -125,10 +129,15 @@ func escribir(raiz, dir string, f Ficha) error {
 // Nuevo crea una ficha desde campos id=… titulo=… prioridad=… motivo=… [bloqueado_por=A,B].
 func Nuevo(raiz string, campos []string) (Ficha, error) {
 	v := map[string]string{}
+	var pruebas []string
 	for _, c := range campos {
 		k, val, ok := strings.Cut(c, "=")
-		if !ok || !esta([]string{"id", "titulo", "prioridad", "motivo", "bloqueado_por"}, k) {
-			return Ficha{}, fmt.Errorf("campo desconocido %q: usa id, titulo, prioridad, motivo, bloqueado_por", c)
+		if !ok || !esta([]string{"id", "titulo", "prioridad", "motivo", "bloqueado_por", "prueba"}, k) {
+			return Ficha{}, fmt.Errorf("campo desconocido %q: usa id, titulo, prioridad, motivo, bloqueado_por, prueba", c)
+		}
+		if k == "prueba" { // se repite: una por prueba
+			pruebas = append(pruebas, val)
+			continue
 		}
 		if _, repetido := v[k]; repetido {
 			return Ficha{}, fmt.Errorf("campo %s repetido", k)
@@ -146,6 +155,10 @@ func Nuevo(raiz string, campos []string) (Ficha, error) {
 	}
 	if !esta(prioridades, v["prioridad"]) {
 		return Ficha{}, fmt.Errorf("prioridad %q inválida: %s", v["prioridad"], strings.Join(prioridades, " | "))
+	}
+	ps, err := listaPruebas(pruebas)
+	if err != nil {
+		return Ficha{}, err
 	}
 	act, arc, err := todas(raiz)
 	if err != nil {
@@ -181,6 +194,7 @@ func Nuevo(raiz string, campos []string) (Ficha, error) {
 	}
 	f := Ficha{ID: id, Tipo: tipo, Titulo: v["titulo"], Estado: "BORRADOR", Prioridad: v["prioridad"],
 		Motivo: v["motivo"], Padre: padre, BloqueadoPor: bloq, Secuencia: sec + 1}
+	f.Pruebas = ps
 	return f, escribir(raiz, Activo, f)
 }
 
@@ -229,9 +243,21 @@ func Estado(raiz, id, estado string) (Ficha, error) {
 	if !esta(estados, estado) {
 		return Ficha{}, fmt.Errorf("estado %q inválido: %s", estado, strings.Join(estados, " | "))
 	}
+	act, _, err := todas(raiz)
+	if err != nil {
+		return Ficha{}, err
+	}
 	f, err := activa(raiz, id)
 	if err != nil {
 		return Ficha{}, err
+	}
+	if cur, hay := sliceEnCurso(act); f.Tipo == "slice" && hay && cur != id {
+		return Ficha{}, fmt.Errorf("%s está en curso: mientras tanto ningún otro slice cambia de estado", cur)
+	}
+	if estado == "CERRADO" {
+		if err := cierre(f); err != nil {
+			return Ficha{}, err
+		}
 	}
 	f.Estado = estado
 	if !terminal(estado) {
@@ -331,6 +357,7 @@ func Validar(raiz string) []string {
 	ids := map[string]string{}
 	secs := map[int]string{}
 	var fichas []Ficha
+	primero := "" // único slice en curso permitido
 	for _, dir := range []string{Activo, Archivo} {
 		archivos, _ := filepath.Glob(filepath.Join(raiz, filepath.FromSlash(dir), "*.json"))
 		sort.Strings(archivos)
@@ -362,6 +389,14 @@ func Validar(raiz string) []string {
 				p = append(p, fmt.Sprintf("%s: id %s repite %s", rel, f.ID, otro))
 			}
 			ids[f.ID] = rel
+			p = append(p, problemasRojoVerde(rel, f)...)
+			if f.Tipo == "slice" && corriendo(f) && dir == Activo {
+				if primero != "" {
+					p = append(p, fmt.Sprintf("%s: otro slice en curso además de %s; solo uno a la vez", rel, primero))
+				} else {
+					primero = f.ID
+				}
+			}
 			if otro, ok := secs[f.Secuencia]; ok {
 				p = append(p, fmt.Sprintf("%s: secuencia %d repite %s", rel, f.Secuencia, otro))
 			}

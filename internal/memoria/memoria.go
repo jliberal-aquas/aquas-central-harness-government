@@ -18,11 +18,13 @@ import (
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/jliberal/aquas-harness-governance/internal/backlog"
 )
 
 const (
 	Ruta    = ".aquas/memoria.json"
-	Backlog = "gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md"
+	Backlog = backlog.Activo // fichas del backlog (E001/F002/S002); antes, el canónico E001
 )
 
 var (
@@ -60,6 +62,12 @@ var formato = map[string]*regexp.Regexp{
 // Fijar aplica pares campo=valor sobre la memoria actual y la sella.
 // pendiente/decision: los valores nombrados reemplazan la lista entera; «pendiente=» la vacía.
 func Fijar(raiz string, pares []string, ahora time.Time) (Memoria, error) {
+	return FijarCon(raiz, pares, ahora, nil)
+}
+
+// FijarCon: como Fijar, pero validar (si no es nil) revisa el foco resultante antes de escribir.
+// El CLI la usa para exigir que el slice coincida con el que el backlog tiene en curso.
+func FijarCon(raiz string, pares []string, ahora time.Time, validar func(Foco) error) (Memoria, error) {
 	m, err := Leer(raiz)
 	if err != nil && !errors.Is(err, ErrSinMemoria) {
 		return Memoria{}, err
@@ -100,6 +108,11 @@ func Fijar(raiz string, pares []string, ahora time.Time) (Memoria, error) {
 	}
 	if l, ok := listas["decision"]; ok {
 		m.Decisiones = l
+	}
+	if validar != nil {
+		if err := validar(m.Foco); err != nil {
+			return Memoria{}, err
+		}
 	}
 	m.HuellaGit = HuellaGit(raiz)
 	m.Actualizado = ahora.UTC().Format(time.RFC3339)

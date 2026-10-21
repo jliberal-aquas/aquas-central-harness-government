@@ -17,15 +17,15 @@ func TestBacklogCLI(t *testing.T) {
 			t.Fatalf("backlog %v: se esperaba exit 0 con %q; dio %+v", args, want, s)
 		}
 	}
-	paso("E001", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=raíz")
-	paso("E001/F002", "nuevo", "id=E001/F002", "titulo=Backlog", "prioridad=P1", "motivo=orden")
-	paso("E001/F002/S002", "nuevo", "id=E001/F002/S002", "titulo=Backlog en JSON", "prioridad=P2", "motivo=m")
+	paso("E001", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=raíz", "prueba=./p:TestA=a")
+	paso("E001/F002", "nuevo", "id=E001/F002", "titulo=Backlog", "prioridad=P1", "motivo=orden", "prueba=./p:TestA=a")
+	paso("E001/F002/S002", "nuevo", "id=E001/F002/S002", "titulo=Backlog en JSON", "prioridad=P2", "motivo=m", "prueba=./p:TestA=a")
 	paso("E001/F002/S002", "siguiente")
 	paso("P0", "prioridad", "E001/F002/S002", "P0", "motivo=urgente")
 	paso("EN_CURSO", "estado", "E001/F002/S002", "EN_CURSO")
 	paso("E001/F002/S002", "ver")
 	paso("urgente", "ver", "E001/F002/S002")
-	paso("archivada", "estado", "E001/F002/S002", "CERRADO")
+	paso("archivada", "estado", "E001/F002/S002", "CANCELADO") // CERRADO exige rojo y verde: TestCerrarSliceDePuntaAPunta
 	if _, err := os.Stat(filepath.Join(raiz, "trabajo", "archivo", "E001-F002-S002.json")); err != nil {
 		t.Fatalf("la ficha cerrada vive en trabajo/archivo/: %v", err)
 	}

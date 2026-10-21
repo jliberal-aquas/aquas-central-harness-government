@@ -103,7 +103,7 @@ func TestRutasDelFoco(t *testing.T) {
 		Iniciativa: "docs/E001/README.md",
 		Feature:    "docs/E001/F005/README.md",
 		Slice:      "docs/E001/F005/S001.md",
-		Backlog:    Backlog,
+		Backlog:    "trabajo/activo",
 	}
 	if r != quiere {
 		t.Fatalf("rutas: %+v", r)
@@ -122,5 +122,16 @@ func TestVerMuestraFocoYRutas(t *testing.T) {
 		if !strings.Contains(txt, s) {
 			t.Errorf("ver debe mostrar %q; dio:\n%s", s, txt)
 		}
+	}
+}
+
+// E001/F002/S003: la ruta del backlog de la memoria apunta a las fichas reales, no al canónico viejo.
+func TestRutaBacklogEsTrabajo(t *testing.T) {
+	r := Rutas(Foco{})
+	if r.Backlog != "trabajo/activo" {
+		t.Fatalf("backlog = %q; se esperaba trabajo/activo", r.Backlog)
+	}
+	if st, err := os.Stat(filepath.Join("..", "..", filepath.FromSlash(r.Backlog))); err != nil || !st.IsDir() {
+		t.Fatalf("la ruta del backlog debe existir en el repo: %v", err)
 	}
 }

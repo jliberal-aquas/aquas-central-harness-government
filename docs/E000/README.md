@@ -81,7 +81,7 @@ Qué hace el [agente](../glosario.md#agente) con un fallo del gobierno:
 
 ## Cómo se usa
 
-- La lista de tareas vive en [E001_GOBIERNO_DEL_TRABAJO.md](../../gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md), en la parte de features y slices.
+- La lista de tareas vive en las fichas de `trabajo/`; se ve con `aquas backlog ver`. El diseño y las decisiones siguen en [E001_GOBIERNO_DEL_TRABAJO.md](../../gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md).
 - Hoy esa lista se escribe a mano. Con F002 de E001 pasará a un archivo que lee la herramienta `aquas`.
 
 ## Contrato y evidencia

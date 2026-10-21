@@ -254,7 +254,7 @@ func memoriaCLI(raiz string, args []string) {
 		if len(args) == 1 {
 			fallar(64, fmt.Errorf("fijar sin campos: aquas memoria fijar tarea=… siguiente=…"))
 		}
-		m, err = memoria.Fijar(raiz, args[1:], time.Now())
+		m, err = memoria.FijarCon(raiz, args[1:], time.Now(), func(f memoria.Foco) error { return focoEnBacklog(raiz, f) })
 	} else {
 		m, err = memoria.Leer(raiz)
 	}
@@ -264,14 +264,36 @@ func memoriaCLI(raiz string, args []string) {
 	fmt.Print(memoria.Texto(m))
 }
 
-// backlogCLI: nuevo | ver [id] | prioridad <id> <P> motivo=… | estado <id> <ESTADO> | siguiente.
+// focoEnBacklog: la memoria solo fija el slice que el backlog tiene en curso (S003).
+func focoEnBacklog(raiz string, f memoria.Foco) error {
+	if f.Slice == "" {
+		return nil
+	}
+	id := f.Iniciativa + "/" + f.Feature + "/" + f.Slice
+	cur, hay, err := backlog.SliceEnCurso(raiz)
+	switch {
+	case err != nil:
+		return err
+	case !hay:
+		if f, archivada, _ := backlog.Ver(raiz, id); archivada {
+			return fmt.Errorf("%s ya está archivado (%s): vacía el slice de la memoria con `aquas memoria archivar` o `aquas memoria fijar slice=`", id, f.Estado)
+		}
+		return fmt.Errorf("ningún slice en curso en el backlog: la memoria no fija %s (aquas backlog estado %s EN_CURSO)", id, id)
+	case cur != id:
+		return fmt.Errorf("el slice en curso es %s: la memoria no fija %s", cur, id)
+	}
+	return nil
+}
+
+// backlogCLI: nuevo | ver [id] | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente")
+	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=intención… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=intención… | rojo <id> | verde <id>")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}
 	var f backlog.Ficha
 	var err error
+	detalle := false
 	switch {
 	case args[0] == "nuevo" && len(args) > 1:
 		f, err = backlog.Nuevo(raiz, args[1:])
@@ -290,6 +312,16 @@ func backlogCLI(raiz string, args []string) {
 		if err == nil && archivada {
 			fmt.Print("archivada · ")
 		}
+		detalle = true
+	case args[0] == "pruebas" && len(args) > 2:
+		f, err = backlog.Pruebas(raiz, args[1], args[2:])
+		detalle = true
+	case args[0] == "rojo" && len(args) == 2:
+		f, err = backlog.Rojo(raiz, args[1], time.Now())
+		detalle = true
+	case args[0] == "verde" && len(args) == 2:
+		f, err = backlog.Verde(raiz, args[1], time.Now())
+		detalle = true
 	case args[0] == "prioridad" && len(args) == 4 && strings.HasPrefix(args[3], "motivo="):
 		f, err = backlog.Prioridad(raiz, args[1], args[2], strings.TrimPrefix(args[3], "motivo="))
 	case args[0] == "estado" && len(args) == 3:
@@ -311,4 +343,7 @@ func backlogCLI(raiz string, args []string) {
 		fallar(1, err)
 	}
 	fmt.Print(backlog.Texto(f))
+	if detalle {
+		fmt.Print(backlog.Detalle(f))
+	}
 }

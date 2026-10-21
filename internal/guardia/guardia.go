@@ -79,7 +79,7 @@ func memoria(raiz, abs, p string) string {
 		return fmt.Sprintf("archivo de memoria: %s solo se escribe con `aquas memoria archivar` al cerrar el slice", p)
 	}
 	if dentro(filepath.Join(raiz, "trabajo"), abs) {
-		return fmt.Sprintf("backlog: %s solo se escribe con `aquas backlog nuevo|prioridad|estado`", p)
+		return fmt.Sprintf("backlog: %s solo se escribe con `aquas backlog nuevo|prioridad|estado|pruebas|rojo|verde`", p)
 	}
 	return ""
 }

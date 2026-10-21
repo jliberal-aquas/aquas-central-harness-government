@@ -9,5 +9,77 @@
   "bloqueado_por": [
     "E001/F002/S002"
   ],
-  "secuencia": 21
+  "secuencia": 21,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestNuevoExigePruebas",
+      "intencion": "una ficha nueva sin pruebas o con nombre o intención malos no se crea"
+    },
+    {
+      "prueba": "./internal/backlog:TestPruebasReiniciaRojoYVerde",
+      "intencion": "cambiar la lista de pruebas borra el rojo y el verde viejos"
+    },
+    {
+      "prueba": "./internal/backlog:TestRojoExigeQueCadaPruebaFalle",
+      "intencion": "si una prueba pasa o se salta no hay rojo; el motivo del fallo queda guardado"
+    },
+    {
+      "prueba": "./internal/backlog:TestRojoNoCuentaCompilacionNiAusencia",
+      "intencion": "no compilar o no existir no cuenta como rojo"
+    },
+    {
+      "prueba": "./internal/backlog:TestRojoPruebaAislada",
+      "intencion": "una prueba que falla solo por culpa de otra no cuenta como rojo"
+    },
+    {
+      "prueba": "./internal/backlog:TestVerdeDespuesDelRojo",
+      "intencion": "no hay verde sin rojo ni con una prueba fallando"
+    },
+    {
+      "prueba": "./internal/backlog:TestCerrarExigeRojoYVerde",
+      "intencion": "cerrar exige pruebas, rojo y verde; cancelar no"
+    },
+    {
+      "prueba": "./internal/backlog:TestUnSoloSliceEnCurso",
+      "intencion": "con un slice en curso ningún otro slice cambia de estado; la prioridad sí"
+    },
+    {
+      "prueba": "./internal/backlog:TestValidarRojoYVerde",
+      "intencion": "el gate ve verde sin rojo, verde antes del rojo, dos en curso y pruebas mal escritas"
+    },
+    {
+      "prueba": "./internal/memoria:TestRutaBacklogEsTrabajo",
+      "intencion": "la memoria apunta a trabajo/activo y esa carpeta existe"
+    },
+    {
+      "prueba": "./cmd/aquas:TestMemoriaSegunBacklog",
+      "intencion": "la memoria rechaza un slice que no está en curso en el backlog"
+    },
+    {
+      "prueba": "./cmd/aquas:TestCerrarSliceDePuntaAPunta",
+      "intencion": "integral F002: nace con prueba, rojo, verde y archivo con el programa real"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T14:06:42Z",
+    "head": "2ea0a4212793c32156b101c30cb96ade84e15aff",
+    "resultado": {
+      "./cmd/aquas:TestCerrarSliceDePuntaAPunta": "rojo_test.go:69: backlog [pruebas E001/F002/S003 ./p:TestBandera=pide el arreglo]: se esperaba exit 0 con \"TestBandera\"; dio {out: err:aquas: uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… [bloqueado_por=A,B] | ver [id] | prioridad \u003cid\u003e \u003cP0..P3|SIN_TRIAGE\u003e motivo=… | estado \u003cid\u003e \u003cESTADO\u003e | siguiente",
+      "./cmd/aquas:TestMemoriaSegunBacklog": "rojo_test.go:39: sin slice en curso, la memoria no fija S003: exit 1 y lo dice; dio {out:MEMORIA CALIENTE · actualizada 2026-10-21T14:06:51Z",
+      "./internal/backlog:TestCerrarExigeRojoYVerde": "rojo_test.go:259: cerrar sin rojo; dio \u003cnil\u003e",
+      "./internal/backlog:TestNuevoExigePruebas": "rojo_test.go:117: sin pruebas: se esperaba error con \"prueba\"; dio \u003cnil\u003e",
+      "./internal/backlog:TestPruebasReiniciaRojoYVerde": "rojo_test.go:141: sin implementar (S003)",
+      "./internal/backlog:TestRojoExigeQueCadaPruebaFalle": "rojo_test.go:173: rojo de un slice que no está en curso; dio sin implementar (S003)",
+      "./internal/backlog:TestRojoNoCuentaCompilacionNiAusencia": "rojo_test.go:210: un fallo de compilación no es rojo; dio sin implementar (S003)",
+      "./internal/backlog:TestRojoPruebaAislada": "rojo_test.go:225: rojo corre cada prueba sola; dio sin implementar (S003)",
+      "./internal/backlog:TestUnSoloSliceEnCurso": "rojo_test.go:289: con S001 en curso, S002 no pasa a EN_CURSO; dio \u003cnil\u003e",
+      "./internal/backlog:TestValidarRojoYVerde": "rojo_test.go:354: Validar: falta \"verde sin rojo\" en la línea de E001-F002-S001.json; dio:",
+      "./internal/backlog:TestVerdeDespuesDelRojo": "rojo_test.go:233: verde sin rojo; dio sin implementar (S003)",
+      "./internal/memoria:TestRutaBacklogEsTrabajo": "memoria_test.go:132: backlog = \"gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\"; se esperaba trabajo/activo"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T14:14:20Z",
+    "head": "2ea0a4212793c32156b101c30cb96ade84e15aff"
+  }
 }

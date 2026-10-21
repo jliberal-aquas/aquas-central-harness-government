@@ -12,6 +12,9 @@ import (
 
 func nuevo(t *testing.T, raiz string, campos ...string) Ficha {
 	t.Helper()
+	if !strings.Contains(strings.Join(campos, " "), "prueba=") {
+		campos = append(campos, "prueba=./p:TestFalla=falla a propósito") // desde S003 toda ficha nace con pruebas
+	}
 	f, err := Nuevo(raiz, campos)
 	if err != nil {
 		t.Fatalf("Nuevo(%v): %v", campos, err)
@@ -72,7 +75,7 @@ func TestNuevoCreaFicha(t *testing.T) {
 
 func TestNuevoRechaza(t *testing.T) {
 	raiz := base(t)
-	ok := []string{"titulo=T", "prioridad=P1", "motivo=m"}
+	ok := []string{"titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a"}
 	for _, c := range []struct {
 		nombre string
 		campos []string
@@ -81,9 +84,9 @@ func TestNuevoRechaza(t *testing.T) {
 		{"id mal formado", append([]string{"id=E1/F2"}, ok...), "id"},
 		{"padre inexistente", append([]string{"id=E001/F009/S001"}, ok...), "padre"},
 		{"id repetido", append([]string{"id=E001/F002"}, ok...), "ya existe"},
-		{"prioridad inválida", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P9", "motivo=m"}, "prioridad"},
-		{"sin motivo", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P1"}, "motivo"},
-		{"sin título", []string{"id=E001/F002/S001", "prioridad=P1", "motivo=m"}, "titulo"},
+		{"prioridad inválida", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P9", "motivo=m", "prueba=./p:TestA=a"}, "prioridad"},
+		{"sin motivo", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P1", "prueba=./p:TestA=a"}, "motivo"},
+		{"sin título", []string{"id=E001/F002/S001", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a"}, "titulo"},
 		{"campo desconocido", append([]string{"id=E001/F002/S001", "color=rojo"}, ok...), "color"},
 		{"bloqueo inexistente", append([]string{"id=E001/F002/S001", "bloqueado_por=E009"}, ok...), "E009"},
 		{"campo repetido", append([]string{"id=E001/F002/S001", "id=E001/F002/S009"}, ok...), "repetido"},
@@ -112,6 +115,7 @@ func TestEstadoTerminalArchiva(t *testing.T) {
 	if _, err := Estado(raiz, "E001/F002/S002", "LISTISIMO"); err == nil || !strings.Contains(err.Error(), "estado") {
 		t.Errorf("estado inválido debe fallar; dio %v", err)
 	}
+	conRojoYVerde(t, raiz, "E001/F002/S002")
 	if _, err := Estado(raiz, "E001/F002/S002", "CERRADO"); err != nil {
 		t.Fatal(err)
 	}
@@ -174,6 +178,9 @@ func TestSiguienteOrdenFijo(t *testing.T) {
 	}
 	cambia := func(id, e string) {
 		t.Helper()
+		if e == "CERRADO" {
+			conRojoYVerde(t, raiz, id) // desde S003 cerrar exige rojo y verde
+		}
 		if _, err := Estado(raiz, id, e); err != nil {
 			t.Fatalf("Estado(%s, %s): %v", id, e, err)
 		}
