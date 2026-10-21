@@ -27,6 +27,7 @@ import (
 	"github.com/jliberal/aquas-harness-governance/internal/entorno"
 	"github.com/jliberal/aquas-harness-governance/internal/guardia"
 	"github.com/jliberal/aquas-harness-governance/internal/memoria"
+	"github.com/jliberal/aquas-harness-governance/internal/turno"
 	"github.com/jliberal/aquas-harness-governance/internal/wiki"
 )
 
@@ -96,6 +97,8 @@ func main() {
 		fmt.Println("GATE OK · derivados, sello, wiki, backlog y guardia al día")
 	case "hook":
 		hook(raiz)
+	case "turno": // hooks UserPromptSubmit y Stop: nunca bloquean; fallo = exit 1 + stderr
+		turnoCLI(raiz, os.Args[2:])
 	case "memoria":
 		memoriaCLI(raiz, os.Args[2:])
 	case "backlog":
@@ -379,5 +382,32 @@ func backlogCLI(raiz string, args []string) {
 	fmt.Print(backlog.Texto(f))
 	if detalle {
 		fmt.Print(backlog.Detalle(f))
+	}
+}
+
+// turnoCLI: auditoría de turnos (E001/F002/S001). Lee el JSON del hook por stdin. No imprime nada
+// por stdout: en UserPromptSubmit eso entraría al contexto. Un fallo sale con exit 1, que Claude Code
+// trata como error que no bloquea: el mensaje del humano sigue y el agente ve el aviso.
+func turnoCLI(raiz string, args []string) {
+	if len(args) != 1 || (args[0] != "abrir" && args[0] != "cerrar") {
+		fallar(64, fmt.Errorf("uso: aquas turno abrir|cerrar (JSON del hook por stdin)"))
+	}
+	var e struct {
+		Sesion    string `json:"session_id"`
+		Prompt    string `json:"prompt"`
+		Respuesta string `json:"last_assistant_message"`
+	}
+	datos, _ := io.ReadAll(os.Stdin)
+	if err := json.Unmarshal(datos, &e); err != nil {
+		fallar(1, fmt.Errorf("turno %s: entrada del hook ilegible: %w", args[0], err))
+	}
+	var err error
+	if args[0] == "abrir" {
+		_, err = turno.Abrir(raiz, e.Sesion, e.Prompt, time.Now())
+	} else {
+		_, err = turno.Cerrar(raiz, e.Sesion, e.Respuesta, time.Now())
+	}
+	if err != nil {
+		fallar(1, fmt.Errorf("turno %s: %w", args[0], err))
 	}
 }

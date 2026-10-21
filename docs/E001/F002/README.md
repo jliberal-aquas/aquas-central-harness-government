@@ -61,7 +61,7 @@ Slices de esta feature:
 
 | Slice | Qué entrega |
 |---|---|
-| S001 Auditoría | Guardar cada pedido tal cual, con su respuesta |
+| [S001 Auditoría](S001.md) | Guardar cada pedido tal cual, con su respuesta |
 | [S002 Backlog en JSON](S002.md) | Fichas en JSON, cinco comandos, guardia y migración |
 | [S003 Rojo y verde](S003.md) | El slice no cierra sin prueba en rojo y luego en verde |
 | S004 Sello | Lista de lo que hay que revisar al cerrar un slice |
@@ -135,7 +135,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| S001 | Auditoría de turnos | Planeado |
+| [S001](S001.md) | Auditoría de turnos | Hecho |
 | [S002](S002.md) | Backlog en JSON | Hecho |
 | [S003](S003.md) | Rojo y verde del slice | Hecho |
 | S004 | Sello de cierre | Planeado |

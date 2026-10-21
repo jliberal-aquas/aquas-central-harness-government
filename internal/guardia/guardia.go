@@ -16,6 +16,7 @@ import (
 
 	"github.com/jliberal/aquas-harness-governance/internal/backlog"
 	mem "github.com/jliberal/aquas-harness-governance/internal/memoria"
+	"github.com/jliberal/aquas-harness-governance/internal/turno"
 
 	"encoding/json"
 	"fmt"
@@ -77,7 +78,7 @@ func RevisarArchivo(raiz, p string) string {
 // protegida: carpetas que solo escribe `aquas` (E001/F005, E001/F002). Las rutas salen de los
 // paquetes que las usan (E000/F005/S005): si uno mueve su carpeta, la guardia protege la nueva.
 // La memoria caliente vive en la carpeta de mem.Ruta; su archivo por slice en mem.Archivo;
-// las fichas en la carpeta común de backlog.Activo y backlog.Archivo.
+// las fichas en la carpeta común de backlog.Activo y backlog.Archivo; la auditoría en turno.Carpeta.
 func protegida(raiz, abs, p string) string {
 	en := func(rel string) bool { return dentro(filepath.Join(raiz, filepath.FromSlash(rel)), abs) }
 	if en(path.Dir(mem.Ruta)) {
@@ -85,6 +86,9 @@ func protegida(raiz, abs, p string) string {
 	}
 	if en(mem.Archivo) {
 		return fmt.Sprintf("archivo de memoria: %s solo se escribe con `aquas memoria archivar` al cerrar el slice", p)
+	}
+	if en(turno.Carpeta) {
+		return fmt.Sprintf("auditoría: %s solo la escriben los hooks con `aquas turno abrir|cerrar`", p)
 	}
 	if en(path.Dir(backlog.Activo)) || en(path.Dir(backlog.Archivo)) {
 		return fmt.Sprintf("backlog: %s solo se escribe con `aquas backlog nuevo|prioridad|estado|pruebas|rojo|verde`", p)

@@ -1,0 +1,58 @@
+{
+  "id": "E001/F002/S001",
+  "tipo": "slice",
+  "titulo": "Auditoría de turnos",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "siguiente de F002 tras F005; humano aprobó alcance 2026-10-21",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 19,
+  "pruebas": [
+    {
+      "prueba": "./internal/turno:TestAbrirGuardaLiteralIntacto",
+      "intencion": "el mensaje del humano queda tal cual, aunque traiga backticks o títulos"
+    },
+    {
+      "prueba": "./internal/turno:TestNumeracionSinReutilizar",
+      "intencion": "cada turno lleva el número siguiente, también al cambiar de mes"
+    },
+    {
+      "prueba": "./internal/turno:TestCerrarGuardaRespuesta",
+      "intencion": "la respuesta queda en su turno; un segundo cierre la reemplaza"
+    },
+    {
+      "prueba": "./internal/turno:TestCerrarSinTurnoAbierto",
+      "intencion": "sin turno abierto de esa sesión, el cierre no escribe nada"
+    },
+    {
+      "prueba": "./internal/guardia:TestGuardiaProtegeAuditoria",
+      "intencion": "nadie salvo aquas escribe en auditoria/"
+    },
+    {
+      "prueba": "./internal/entorno:TestSettingsRealTraeHooksDeTurno",
+      "intencion": "la plantilla real abre turno al recibir el mensaje y lo cierra al terminar"
+    },
+    {
+      "prueba": "./cmd/aquas:TestTurnoCLIDePuntaAPunta",
+      "intencion": "por el CLI real, un turno se abre, se cierra y queda fuera de Git"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T18:36:11Z",
+    "head": "0918fc6a8194695d309cd17cdf7d09a3a72f149e",
+    "resultado": {
+      "./cmd/aquas:TestTurnoCLIDePuntaAPunta": "turno_test.go:19: abrir: exit 0 sin stdout (el stdout entraría al contexto); dio {out: err:aquas: subcomando desconocido: turno",
+      "./internal/entorno:TestSettingsRealTraeHooksDeTurno": "hooks_test.go:142: Stop debe traer turno cerrar sin perder memoria cierre; hay [{Matcher: Hooks:[{Command:sh \"${CLAUDE_PROJECT_DIR}/.claude/hooks/aquas.sh\" memoria cierre}]}]",
+      "./internal/guardia:TestGuardiaProtegeAuditoria": "auditoria_test.go:20: Bash hacia auditoria/turnos/2026-10/T000001.md: se esperaba bloqueo de auditoría; motivo \"\"",
+      "./internal/turno:TestAbrirGuardaLiteralIntacto": "turno_test.go:37: sin implementar",
+      "./internal/turno:TestCerrarGuardaRespuesta": "turno_test.go:75: sin implementar",
+      "./internal/turno:TestCerrarSinTurnoAbierto": "turno_test.go:105: sin turno abierto: no escribe ni falla; dio \"\", sin implementar",
+      "./internal/turno:TestNumeracionSinReutilizar": "turno_test.go:62: sin implementar"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T18:41:14Z",
+    "head": "0918fc6a8194695d309cd17cdf7d09a3a72f149e"
+  }
+}

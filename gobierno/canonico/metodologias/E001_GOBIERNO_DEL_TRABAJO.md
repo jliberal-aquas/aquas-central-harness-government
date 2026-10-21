@@ -21,7 +21,7 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 3. Clasifica: pregunta · queja · información · trabajo. Solo trabajo entra a iniciativa (existente o nueva).
 4. `aquas turno refinar` registra «pediste A → acordamos B» + clasificación + vínculo.
 5. Trabajo → contrato de slice por CLI → rojo → implementar → verde → sello → cierre → commit.
-6. Hook `Stop` → Go guarda respuesta del agente en auditoría (campo `last_assistant_message`: PROBABLE; verificar).
+6. Hook `Stop` → Go guarda respuesta del agente en auditoría (campo `last_assistant_message`: VERIFICADO 2026-10-21 en code.claude.com/docs/en/hooks; Stop se repite si otro hook frena → gana la última respuesta). Hecho en F002/S001 (`internal/turno/`; `aquas turno abrir|cerrar`; estado por sesión en `.aquas/turno.json`; guardia protege `auditoria/`). Límite: UserPromptSubmit también corre con mensajes que no escribe el humano (avisos de otras sesiones); se guardan igual.
 
 ## Auditoría
 - `auditoria/turnos/AAAA-MM/T000001.md`: literal, respuesta, refinado, diferencia A→B.

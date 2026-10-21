@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S001",
+    "tarea": "S001 Auditoría de turnos: verde y gate OK, cerrando"
+  },
+  "siguiente": "lo que diga aquas backlog siguiente",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "966a7af7b8d15bd94e981ca4b630cf15ff274e5318c5c4287dfb8cc45c9962b2",
+  "actualizado": "2026-10-21T18:42:19Z",
+  "sello": "db3e658293512f8761f3a99f476b0c961d96dbc372fcc4ca8ac7fa71c5453200"
+}

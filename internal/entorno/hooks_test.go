@@ -105,3 +105,40 @@ func TestSettingsRealTraeHookDeCierreDeAgente(t *testing.T) {
 		}
 	}
 }
+
+// E001/F002/S001: el turno se abre al recibir el mensaje del humano y se cierra al terminar.
+func TestSettingsRealTraeHooksDeTurno(t *testing.T) {
+	fuente, err := os.ReadFile(filepath.Join("..", "..", filepath.FromSlash(RutaPlantilla)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	b, err := generarSettings(fuente, "windows")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var s struct {
+		Hooks map[string][]struct {
+			Matcher string
+			Hooks   []struct{ Command string }
+		}
+	}
+	if err := json.Unmarshal(b, &s); err != nil {
+		t.Fatal(err)
+	}
+	tiene := func(evento, sufijo string) bool {
+		for _, h := range s.Hooks[evento] {
+			for _, c := range h.Hooks {
+				if strings.HasSuffix(c.Command, `aquas.sh" `+sufijo) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+	if !tiene("UserPromptSubmit", "turno abrir") {
+		t.Errorf("falta UserPromptSubmit → turno abrir; hay %+v", s.Hooks["UserPromptSubmit"])
+	}
+	if !tiene("Stop", "turno cerrar") || !tiene("Stop", "memoria cierre") {
+		t.Errorf("Stop debe traer turno cerrar sin perder memoria cierre; hay %+v", s.Hooks["Stop"])
+	}
+}

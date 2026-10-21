@@ -10,3 +10,7 @@ gobierno/config/entorno.local.json
 
 # Memoria caliente (E001/F005): local; solo se versiona su archivo en registro/memoria/
 .aquas/
+
+# Auditoría de turnos (E001/F002/S001): literal y respuesta de cada turno; fuera de Git por decisión
+# del canónico E001 (todo se guarda, sensible o no; el respaldo lo hace el humano)
+auditoria/
