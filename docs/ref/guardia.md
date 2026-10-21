@@ -30,6 +30,14 @@ Qué deja pasar: leer fuera del repo, `/dev/null` y `2>&1`.
 
 El gate `aquas verificar` revisa la lista. Falla si el archivo está roto, si falta un motivo o si una ruta permite todo un disco.
 
+**Entorno declarado.** Antes de revisar nada, la guardia mira `gobierno/config/entorno.local.json`. Ese archivo dice el sistema operativo y la raíz del repo en esta máquina. Lo escribe `aquas iniciar` y no se versiona.
+
+- Si el archivo falta, bloquea todo.
+- Si el sistema o la raíz no coinciden con la realidad, también bloquea todo. Por ejemplo, si el repo se movió de carpeta.
+- Con ese archivo, `aquas compilar` genera `.claude/settings.json` desde `gobierno/config/claude_settings.json`. El shell y las herramientas vigiladas salen del sistema operativo.
+
+**PowerShell.** En Windows la guardia también vigila PowerShell. No sabe leer sus comandos, así que los bloquea siempre. Para escribir, usa Bash.
+
 ## Analogía
 
 Piensa en el **portero de un edificio**.
@@ -87,6 +95,7 @@ Así decide la guardia con un comando de Bash:
 ## Cómo se usa
 
 - No hay que llamarla: corre sola antes de cada herramienta.
+- Clon nuevo: corre `go run ./cmd/aquas iniciar` en la raíz. Sin ese paso no hay hooks y el [pre-commit](../glosario.md#pre-commit) falla.
 - Si te bloquea, el mensaje dice la ruta. Usa una ruta dentro del repo, por ejemplo `.tmp/`.
 - Probar: `go test ./internal/guardia/`.
 - Agregar una excepción: añade una entrada con `ruta` y `motivo` en `gobierno/config/guardia.json`. Límite: hoy nada impide que el agente edite esa lista. Revisar ese cambio en el [commit](../glosario.md#commit) es criterio humano.

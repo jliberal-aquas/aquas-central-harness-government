@@ -48,6 +48,8 @@ func Revisar(raiz string, entrada []byte) string {
 			cwd = raiz
 		}
 		return RevisarBash(raiz, cwd, e.ToolInput.Command)
+	case "PowerShell":
+		return "PowerShell no se analiza: no se puede probar que no escribe fuera; usa Bash (" + regla + ")"
 	}
 	return ""
 }

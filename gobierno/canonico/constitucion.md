@@ -24,12 +24,12 @@
 - Sello: `gobierno/config/sellos.json` guarda SHA-256 de cada fuente y cada salida.
 - Compilar: `go run ./cmd/aquas compilar`. Verificar (gate): `go run ./cmd/aquas verificar`.
 - Disparadores: hook PostToolUse de Claude Code (recompila al editar) + git pre-commit (bloquea si hay desfase).
-- Clon nuevo: activar pre-commit con `git config core.hooksPath .githooks`.
+- Clon nuevo: `git config core.hooksPath .githooks` + `aquas iniciar` (SO y raíz).
 
 ## Mapa del repo
 - `cmd/aquas/` → CLI del harness. `internal/compilador/` → compilador y sellado. `internal/wiki/` → gate wiki.
 - `docs/` → wiki para humanos; gate la exige.
-- `.claude/settings.json` → fija `orchestrator` como agente por defecto y registra hooks.
+- `.claude/settings.json` → local, generado de `gobierno/config/claude_settings.json`.
 - `gobierno/canonico/agentes/` → cuerpo de cada agente. `gobierno/canonico/reglas/` → reglas enlazables.
 - `gobierno/canonico/comunicacion/` → reglas agente → humano; solo las carga el orquestador.
 - `metodologias/` = specs. Futuro: `plantillas/`, más gates.

@@ -1,5 +1,9 @@
 # Configuración personal de Claude Code (no versionar)
 .claude/settings.local.json
 
+# Locales por máquina: los genera `aquas iniciar` (SO, raíz, shell)
+gobierno/config/entorno.local.json
+.claude/settings.json
+
 # Temporales locales de Go
 .tmp/

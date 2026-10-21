@@ -120,3 +120,11 @@ func TestEntradaHook(t *testing.T) {
 		}
 	}
 }
+
+func TestPowerShellSeBloquea(t *testing.T) {
+	raiz := t.TempDir()
+	e := `{"tool_name":"PowerShell","tool_input":{"command":"Set-Content x.txt hola"}}`
+	if m := Revisar(raiz, []byte(e)); !strings.Contains(m, "PowerShell") {
+		t.Fatalf("PowerShell no se puede analizar: debe bloquearse; obtuve %q", m)
+	}
+}
