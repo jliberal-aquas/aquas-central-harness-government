@@ -25,7 +25,8 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 
 ## Auditoría
 - `auditoria/turnos/AAAA-MM/T000001.md`: literal, respuesta, refinado, diferencia A→B.
-- Todo se guarda, sensible o no. Fuera de git (`.gitignore`); respaldo lo hace el humano.
+- Todo se guarda, sensible o no. Fuera de git (`.gitignore`); respaldo lo hace el humano. Porqué (humano, 2026-10-21): la auditoría es transaccional y operativa, como los datos de una tabla; en Git va solo lo del repositorio y el producto.
+- Turno interrumpido (sin Stop) queda con respuesta «—»: el turno siguiente no lo cierra (visto en T000001, 2026-10-21).
 
 ## Backlog
 - `trabajo/activo/` y `trabajo/archivo/`; archivo por entidad: `E001.json`, `E001-F001.json`, `E001-F001-S001.json`, `D000001.json`.
