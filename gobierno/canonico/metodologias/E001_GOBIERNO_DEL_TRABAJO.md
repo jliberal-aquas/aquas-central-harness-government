@@ -8,10 +8,10 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Un solo slice activo por repo. Sin paralelismo de agentes salvo pedido explícito.
 - Persistencia: JSON (stdlib Go), un archivo por entidad, versionado en git. Git = historia de revisiones.
 - IDs de 3 cifras: `E001`, `E001/F001`, `E001/F001/S001`; turnos `T000001`; defectos `D000001`. Nunca se reutilizan.
-- `E000 Mantenimiento`: iniciativa permanente para cambios pequeños; contrato mínimo autogenerado.
+- `E000 Mantenimiento`: iniciativa permanente para cambios pequeños; contrato mínimo autogenerado. Solo gobierno de ESTE repo central; productos y proyectos hijos no usan E000 de aquí.
 - Contexto del agente en Caveman; explicación extensa en wiki con pedagogía acordada.
 - Calidad primero; tokens segundo.
-- Nombre: Aquas-driven development. No es spec-driven: contrato mínimo vigilado por gate, no comité.
+- Nombre: Aquas-driven development. No es spec-driven: contrato mínimo vigilado por gate, no comité. En evolución constante.
 - Interrupción (2026-10-20): pedido nuevo con slice activo → clasificar antes de ejecutar. No es trabajo → responder. Trabajo urgente o que protege repo → slice activo PAUSADO (registrado) → slice E000 (contrato mínimo, rojo, verde, commit) → reanudar. Resto → backlog con prioridad; slice sigue.
 - Defectos por repo (cada repo, su gobierno; nadie escribe en otros). Ver F004.
 
