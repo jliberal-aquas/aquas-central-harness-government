@@ -2,7 +2,7 @@
   "id": "E000/F005/S001",
   "tipo": "slice",
   "titulo": "Pruebas del compilador que miden la causa",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "humano 2026-10-21: slices de calidad de pruebas; una V y dos D del informe",
   "padre": "E000/F005",
@@ -21,5 +21,18 @@
       "prueba": "./internal/compilador:TestCompilarEsIdempotente",
       "intencion": "la primera compilación escribe los derivados y la segunda no reescribe nada"
     }
-  ]
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T14:28:00Z",
+    "head": "1e576b5cd422831625ef3176ab4cc164c76ccac6",
+    "resultado": {
+      "./internal/compilador:TestCompilarEsIdempotente": "compilador_test.go:149: primera compilación no escribió .claude/agents/orchestrator.md; escribió [gobierno/config/sellos.json]",
+      "./internal/compilador:TestEdicionManualDeDerivadoFallaGate": "compilador_test.go:120: problemas = [\"gobierno/config/sellos.json: sello desfasado\"]; se esperaba exactamente [\"CLAUDE.md: desfasado o editado a mano\"]",
+      "./internal/compilador:TestFuenteFueraDeCanonicoSeRechaza": "compilador_test.go:135: se esperaba el rechazo por fuente fuera de gobierno/canonico/; dio \u003cnil\u003e"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T14:28:03Z",
+    "head": "1e576b5cd422831625ef3176ab4cc164c76ccac6"
+  }
 }

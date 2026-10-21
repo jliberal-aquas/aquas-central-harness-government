@@ -110,24 +110,48 @@ func TestEdicionManualDeDerivadoFallaGate(t *testing.T) {
 	if err := escribir(raiz, "CLAUDE.md", []byte("editado a mano\n")); err != nil {
 		t.Fatal(err)
 	}
-	problemas, _ := Verificar(raiz)
-	if len(problemas) == 0 {
-		t.Fatal("gate debía detectar la edición manual de CLAUDE.md")
+	problemas, err := Verificar(raiz)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// E000/F005/S001: el gate nombra al archivo editado como causa; no basta «algún problema».
+	esperado := []string{"CLAUDE.md: desfasado o editado a mano"}
+	if strings.Join(problemas, "|") != strings.Join(esperado, "|") {
+		t.Fatalf("problemas = %q; se esperaba exactamente %q", problemas, esperado)
 	}
 }
 
 func TestFuenteFueraDeCanonicoSeRechaza(t *testing.T) {
 	raiz := repoMinimo(t)
-	escribir(raiz, RutaDocumentos, []byte(`{"documentos":[{"salida":"CLAUDE.md","fuentes":["README.md"]}]}`))
-	escribir(raiz, "README.md", []byte("x"))
-	if _, err := Compilar(raiz); err == nil {
-		t.Fatal("se esperaba error: fuente fuera de gobierno/canonico/")
+	// E000/F005/S001: config completa (con max_caracteres), para que el único defecto sea la fuente.
+	if err := escribir(raiz, RutaDocumentos, []byte(`{"documentos":[{"salida":"CLAUDE.md","fuentes":["README.md"],"max_caracteres":10000}]}`)); err != nil {
+		t.Fatal(err)
+	}
+	if err := escribir(raiz, "README.md", []byte("x")); err != nil {
+		t.Fatal(err)
+	}
+	_, err := Compilar(raiz)
+	if err == nil || !strings.Contains(err.Error(), "README.md: fuera de "+PrefijoCanon) {
+		t.Fatalf("se esperaba el rechazo por fuente fuera de %s; dio %v", PrefijoCanon, err)
 	}
 }
 
 func TestCompilarEsIdempotente(t *testing.T) {
 	raiz := repoMinimo(t)
-	Compilar(raiz)
+	// E000/F005/S001: la primera compilación sí escribe; si no, la segunda vacía no prueba nada.
+	prim, err := Compilar(raiz)
+	if err != nil {
+		t.Fatal(err)
+	}
+	quiere := []string{"CLAUDE.md", ".claude/agents/orchestrator.md", RutaSellos}
+	for _, q := range quiere {
+		if !strings.Contains("|"+strings.Join(prim.Escritos, "|")+"|", "|"+q+"|") {
+			t.Errorf("primera compilación no escribió %s; escribió %v", q, prim.Escritos)
+		}
+		if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(q))); err != nil {
+			t.Errorf("%s no existe tras compilar: %v", q, err)
+		}
+	}
 	inf, err := Compilar(raiz)
 	if err != nil {
 		t.Fatal(err)

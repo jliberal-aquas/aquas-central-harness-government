@@ -52,6 +52,7 @@ Estado de sus features:
 |---|---|---|
 | [F001 Guardia del repo](F001/README.md) | Impide escribir fuera del repositorio | Hecho |
 | [F002 Compilador y sello](F002/README.md) | Genera, sella y pone tope a los archivos de reglas | Hecho |
+| [F005 Calidad de las pruebas](F005/README.md) | Pruebas que fallan cuando se rompe su regla | En curso |
 
 ## Ejemplo de punta a punta
 
@@ -100,6 +101,8 @@ flowchart LR
     E --> F2["F002 Compilador y sello<br/>Hecho"]
     F2 --> T1["S001 compilar y sellar"]
     F2 --> T2["S002 tope de caracteres"]
+    E --> F5["F005 Calidad de las pruebas<br/>En curso"]
+    F5 --> U1["S001 pruebas del compilador"]
 ```
 
 Decisiones de Jesús:
@@ -115,3 +118,4 @@ Prueba integral de la iniciativa: `go test ./...` más `go run ./cmd/aquas verif
 - ↑ Subir: [Inicio de la wiki](../README.md)
 - Abajo: [F001 · Guardia del repo](F001/README.md)
 - Abajo: [F002 · Compilador y sello](F002/README.md)
+- Abajo: [F005 · Calidad de las pruebas](F005/README.md)
