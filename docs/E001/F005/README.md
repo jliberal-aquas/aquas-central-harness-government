@@ -63,7 +63,7 @@ Slices de esta feature:
 |---|---|---|
 | [S001 Archivo, sello y guardia](S001.md) | Memoria con campos fijos que solo escribe `aquas` | Hecho |
 | [S002 Hooks de inicio y cierre](S002.md) | Se muestra al empezar y se exige al cerrar | Hecho |
-| S003 Archivo y arranque en frío | Se archiva al cerrar el slice; prueba de sesión nueva | Pendiente |
+| [S003 Archivo y arranque en frío](S003.md) | Se archiva al cerrar el slice; prueba de sesión nueva | Hecho |
 
 ## Ejemplo de punta a punta
 
@@ -92,7 +92,7 @@ En la [iniciativa](../../glosario.md#iniciativa), el pedido de Jesús avanzó ha
 
 ## Contrato y evidencia
 
-Estado: en curso. S001 y S002 hechos; S003 pendiente.
+Estado: hecha. S001, S002 y S003 hechos.
 
 Objetivo: el agente recupera su foco tras compactar o abrir sesión, sin depender del resumen del chat.
 
@@ -108,13 +108,14 @@ Decisiones de Jesús (2026-10-20):
 ```mermaid
 flowchart LR
     S1["S001 archivo<br/>Hecho"] --> S2["S002 hooks<br/>Hecho"]
-    S2 --> S3["S003 archivo al cierre<br/>Pendiente"]
+    S2 --> S3["S003 archivo al cierre<br/>Hecho"]
 ```
 
-Prueba integral de la feature: todavía no existe. Llega con S003, la prueba de arranque en frío.
+Prueba integral de la feature: `TestArranqueEnFrio`, en `cmd/aquas/arranque_test.go`. Pasa en verde.
 
 ## Navegación
 
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S001 · Archivo, sello y guardia](S001.md)
 - Abajo: [S002 · Hooks de inicio y cierre](S002.md)
+- Abajo: [S003 · Archivo y arranque en frío](S003.md)

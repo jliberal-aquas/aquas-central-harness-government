@@ -121,6 +121,11 @@ func Leer(raiz string) (Memoria, error) {
 	if err != nil {
 		return Memoria{}, err
 	}
+	return decodificar(b)
+}
+
+// decodificar: campos fijos y sello sobre los bytes tal como se escribieron.
+func decodificar(b []byte) (Memoria, error) {
 	var m Memoria
 	d := json.NewDecoder(bytes.NewReader(b))
 	d.DisallowUnknownFields()

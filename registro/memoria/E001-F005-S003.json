@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F005",
+    "slice": "S003",
+    "tarea": "S003 hecho: archivar + guardia + arranque en frío en verde"
+  },
+  "siguiente": "elegir la feature siguiente de E001 con Jesús",
+  "pendientes": [
+    "limpiar .tmp/aq.exe, .tmp/m1, .tmp/sin-entorno, .tmp/t4"
+  ],
+  "decisiones": [],
+  "huella_git": "1fe21fc5526335446958b3a62f99118e71f8d655de68e50c16b744573f6358f0",
+  "actualizado": "2026-10-21T03:34:23Z",
+  "sello": "6e8eac6f184f9322b5e1d4704ed6d3b8a1ca66beeec8006779e2a5c5e2c0b232"
+}

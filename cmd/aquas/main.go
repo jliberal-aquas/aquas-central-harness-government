@@ -5,7 +5,7 @@
 //	aquas hook       modo hook PostToolUse de Claude Code (lee JSON por stdin)
 //	aquas guardia    hook PreToolUse: bloquea (exit 2) toda escritura fuera del repositorio
 //	aquas iniciar    declara SO y raíz de esta máquina (entorno.local.json) y genera .claude/settings.json
-//	aquas memoria    ver | fijar campo=valor… | inicio | cierre: memoria caliente del foco (.aquas/memoria.json)
+//	aquas memoria    ver | fijar campo=valor… | inicio | cierre | archivar: memoria caliente del foco (.aquas/memoria.json)
 package main
 
 import (
@@ -192,9 +192,21 @@ func memoriaCLI(raiz string, args []string) {
 			os.Exit(2)
 		}
 		return
+	case args[0] == "archivar": // cierre del slice: copia sellada a registro/memoria/
+		rel, err := memoria.Archivar(raiz, time.Now())
+		if err != nil {
+			fallar(1, err)
+		}
+		fmt.Println("archivada en " + rel)
+		m, err := memoria.Leer(raiz)
+		if err != nil {
+			fallar(1, err)
+		}
+		fmt.Print(memoria.Texto(m))
+		return
 	}
 	if len(args) == 0 || (args[0] != "ver" && args[0] != "fijar") {
-		fallar(64, fmt.Errorf("uso: aquas memoria ver | fijar campo=valor… | inicio | cierre"))
+		fallar(64, fmt.Errorf("uso: aquas memoria ver | fijar campo=valor… | inicio | cierre | archivar"))
 	}
 	var m memoria.Memoria
 	var err error

@@ -69,10 +69,14 @@ func RevisarArchivo(raiz, p string) string {
 	return memoria(raiz, abs, p)
 }
 
-// memoria: .aquas/ guarda la memoria caliente; solo la escribe `aquas memoria fijar` (E001/F005).
+// memoria: .aquas/ guarda la memoria caliente (solo `aquas memoria fijar`) y registro/memoria/ su
+// archivo por slice (solo `aquas memoria archivar`) (E001/F005).
 func memoria(raiz, abs, p string) string {
 	if dentro(filepath.Join(raiz, ".aquas"), abs) {
 		return fmt.Sprintf("memoria caliente: %s solo se escribe con `aquas memoria fijar campo=valor`", p)
+	}
+	if dentro(filepath.Join(raiz, "registro", "memoria"), abs) {
+		return fmt.Sprintf("archivo de memoria: %s solo se escribe con `aquas memoria archivar` al cerrar el slice", p)
 	}
 	return ""
 }
