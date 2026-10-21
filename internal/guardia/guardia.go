@@ -5,6 +5,7 @@
 //   - Bash: se analizan redirecciones (>, >>, &>), cd, y los destinos de rm, mv, cp, mkdir, touch,
 //     tee, ln, chmod, sed -i, perl -i, git clone/init/worktree add, curl -o, wget -O, dd of=, unzip -d.
 //     Leer fuera está permitido. Ruta con variable desconocida = no se puede probar → se bloquea.
+//   - Excepciones: solo las carpetas de gobierno/config/guardia.json (permitidos.go), con motivo.
 //
 // Límite (criterio humano): un programa que escribe por su cuenta (python, go run, node…) no se
 // inspecciona; tampoco `git -C`, `tar -C` ni enlaces simbólicos que salgan del repo.
@@ -60,7 +61,7 @@ func RevisarArchivo(raiz, p string) string {
 	if !ok {
 		return fmt.Sprintf("no se puede resolver la ruta «%s» (%s)", p, regla)
 	}
-	if !dentro(raiz, abs) {
+	if !dentro(raiz, abs) && !permitido(raiz, abs) {
 		return fmt.Sprintf("escritura fuera del repositorio bloqueada: %s (%s: %s)", p, regla, raiz)
 	}
 	return ""
@@ -435,7 +436,7 @@ func revisarDestino(raiz, cwd string, cwdOK bool, vars map[string]string, d stri
 	if !ok {
 		return fmt.Sprintf("no se puede resolver la ruta «%s» (%s)", e, regla)
 	}
-	if !dentro(raiz, abs) {
+	if !dentro(raiz, abs) && !permitido(raiz, abs) {
 		return fmt.Sprintf("escritura fuera del repositorio bloqueada: %s (%s: %s)", e, regla, raiz)
 	}
 	return ""

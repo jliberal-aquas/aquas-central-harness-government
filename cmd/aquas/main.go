@@ -44,6 +44,7 @@ func main() {
 		if err != nil {
 			fallar(1, err)
 		}
+		permitidos := guardia.ValidarConfig(raiz)
 		if len(derivados) > 0 {
 			listar("GATE FALLIDO · derivados desfasados:", derivados)
 			fmt.Fprintln(os.Stderr, "Desfase → go run ./cmd/aquas compilar · presupuesto → recortar canónico")
@@ -51,10 +52,13 @@ func main() {
 		if len(docs) > 0 {
 			listar("GATE FALLIDO · wiki docs/ incompleta:", docs)
 		}
-		if len(derivados)+len(docs) > 0 {
+		if len(permitidos) > 0 {
+			listar("GATE FALLIDO · lista de permitidos de la guardia inválida:", permitidos)
+		}
+		if len(derivados)+len(docs)+len(permitidos) > 0 {
 			os.Exit(1)
 		}
-		fmt.Println("GATE OK · derivados, sello y wiki al día")
+		fmt.Println("GATE OK · derivados, sello, wiki y guardia al día")
 	case "hook":
 		hook(raiz)
 	case "guardia":

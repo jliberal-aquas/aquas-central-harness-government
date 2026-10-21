@@ -21,6 +21,15 @@ Qué revisa:
 
 Qué deja pasar: leer fuera del repo, `/dev/null` y `2>&1`.
 
+**Lista de permitidos.** Las únicas carpetas de fuera donde sí se puede escribir están en `gobierno/config/guardia.json`. Cada una lleva su motivo. Si una carpeta no está en la lista, la guardia la bloquea.
+
+| Carpeta permitida | Motivo |
+|---|---|
+| `${LOCALAPPDATA}/go-build` | Caché de compilación de Go en Windows |
+| `~/.cache/go-build` | Caché de compilación de Go en Linux |
+
+El gate `aquas verificar` revisa la lista. Falla si el archivo está roto, si falta un motivo o si una ruta permite todo un disco.
+
 ## Analogía
 
 Piensa en el **portero de un edificio**.
@@ -80,8 +89,10 @@ Así decide la guardia con un comando de Bash:
 - No hay que llamarla: corre sola antes de cada herramienta.
 - Si te bloquea, el mensaje dice la ruta. Usa una ruta dentro del repo, por ejemplo `.tmp/`.
 - Probar: `go test ./internal/guardia/`.
+- Agregar una excepción: añade una entrada con `ruta` y `motivo` en `gobierno/config/guardia.json`. Límite: hoy nada impide que el agente edite esa lista. Revisar ese cambio en el [commit](../glosario.md#commit) es criterio humano.
+- Ojo: la caché la escribe Go por su cuenta, y la guardia no ve esa escritura. La lista deja la excepción por escrito y permite los comandos explícitos, como `go clean -cache`.
 - Límites: no ve programas que escriben por su cuenta, ni `git -C`, `tar -C` o enlaces que salen del repo. Eso es criterio humano.
-- Código: [guardia.go](../../internal/guardia/guardia.go) y [aquas.sh](../../.claude/hooks/aquas.sh).
+- Código: [guardia.go](../../internal/guardia/guardia.go), [permitidos.go](../../internal/guardia/permitidos.go) y [aquas.sh](../../.claude/hooks/aquas.sh).
 
 ## Navegación
 

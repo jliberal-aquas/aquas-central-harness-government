@@ -1,0 +1,12 @@
+{
+  "permitidos_fuera": [
+    {
+      "ruta": "${LOCALAPPDATA}/go-build",
+      "motivo": "Caché de compilación de Go en Windows (GOCACHE por defecto). La escribe la herramienta Go, no el agente."
+    },
+    {
+      "ruta": "~/.cache/go-build",
+      "motivo": "Caché de compilación de Go en Linux (GOCACHE por defecto). La escribe la herramienta Go, no el agente."
+    }
+  ]
+}
