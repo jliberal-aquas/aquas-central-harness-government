@@ -272,6 +272,7 @@ func TestCerrarExigeRojoYVerde(t *testing.T) {
 	}
 	f.Verde = &Registro{Fecha: "2026-10-21T13:00:00Z"}
 	pisar(t, raiz, Activo, f)
+	marcarTodo(t, raiz, "E001/F002/S001") // desde S004 cerrar exige el sello marcado
 	if g, err := Estado(raiz, "E001/F002/S001", "CERRADO"); err != nil || g.Verde == nil {
 		t.Errorf("con rojo y verde cierra y los conserva: %+v %v", g, err)
 	}

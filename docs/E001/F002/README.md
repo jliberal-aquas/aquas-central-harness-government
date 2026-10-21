@@ -147,6 +147,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | [S010](S010.md) | Wiki por niveles generada desde las fichas | Hecho |
 | S011 | La ficha dice qué hace | Planeado |
 | S012 | Sello: nivel trabajo | Planeado |
+| [S013](S013.md) | Sello sin commit base | Hecho |
 
 <!-- /GENERADO -->
 

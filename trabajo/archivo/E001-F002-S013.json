@@ -1,0 +1,110 @@
+{
+  "id": "E001/F002/S013",
+  "tipo": "slice",
+  "titulo": "Sello sin commit base",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "hueco de S004: sin commit el sello se apagaba; humano pidió corregirlo antes de S006",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 51,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSelloSinCommitBaseExigeArbol",
+      "intencion": "sin commit base el árbol se exige igual y un aviso marca lo omitido"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T19:42:00Z",
+    "head": "35099e680f855db8f4b1ce60bbd75a05ea27836d",
+    "resultado": {
+      "./internal/backlog:TestSelloSinCommitBaseExigeArbol": "sello_test.go:189: sin commit base el cierre igual exige el sello; dio \u003cnil\u003e"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T19:42:38Z",
+    "head": "35099e680f855db8f4b1ce60bbd75a05ea27836d"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "la feature sigue en curso"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa no cambia"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S013.md",
+      "marca": "actualizado",
+      "motivo": "página nueva del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "bloque generado con S013"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "lista features, no slices"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003einternal/backlog/backlog_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la página describe sus pruebas; solo se agregó marcar el sello antes de cerrar"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003einternal/backlog/rojo_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la página describe sus pruebas; solo se agregó marcar el sello antes de cerrar"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/cierre_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la página describe sus pruebas; solo se agregó marcar el sello antes de cerrar"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta solo como ejemplo"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "texto de una prueba; la ruta no cambia"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el chequeo interno del sello"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el chequeo interno del sello"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el chequeo interno del sello"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el chequeo interno del sello"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el chequeo interno del sello"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el chequeo interno del sello"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S013",
+    "tarea": "S013 Sello sin commit base: verde y sello marcado, cerrando"
+  },
+  "siguiente": "proponer alcance de E001/F002/S006 Propuesta con diagrama",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "6f52d19028d826168b57912f266d55894e3e33794104873701bd36a5e70a4abe",
+  "actualizado": "2026-10-21T19:43:25Z",
+  "sello": "29953024c1ee53068c15856297e3a60a78cc45a1b37c123e87058be737601b51"
+}

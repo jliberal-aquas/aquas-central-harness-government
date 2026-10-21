@@ -116,6 +116,7 @@ func TestEstadoTerminalArchiva(t *testing.T) {
 		t.Errorf("estado inválido debe fallar; dio %v", err)
 	}
 	conRojoYVerde(t, raiz, "E001/F002/S002")
+	marcarTodo(t, raiz, "E001/F002/S002") // desde S004 cerrar exige el sello marcado
 	if _, err := Estado(raiz, "E001/F002/S002", "CERRADO"); err != nil {
 		t.Fatal(err)
 	}
@@ -180,6 +181,7 @@ func TestSiguienteOrdenFijo(t *testing.T) {
 		t.Helper()
 		if e == "CERRADO" {
 			conRojoYVerde(t, raiz, id) // desde S003 cerrar exige rojo y verde
+			marcarTodo(t, raiz, id)    // desde S004 cerrar exige el sello marcado
 		}
 		if _, err := Estado(raiz, id, e); err != nil {
 			t.Fatalf("Estado(%s, %s): %v", id, e, err)

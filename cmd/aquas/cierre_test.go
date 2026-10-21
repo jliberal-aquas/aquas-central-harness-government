@@ -28,6 +28,7 @@ func TestCerrarExigeMemoriaArchivada(t *testing.T) {
 	}
 	cerrar := func(id string) salida {
 		t.Helper()
+		sellarCLI(t, raiz, id) // desde S004 cerrar exige el sello marcado
 		return aquas(t, raiz, "", "backlog", "estado", id, "CERRADO")
 	}
 

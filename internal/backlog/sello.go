@@ -9,7 +9,7 @@ package backlog
 //     del repo que nombra la ruta exacta de un tocado, o que importa (Go) su paquete, un ítem con
 //     la línea relevante. Se excluyen los datos: trabajo/, registro/, auditoria/, .tmp/, .aquas/.
 // La lista se arma de nuevo en cada consulta: tocar otro archivo agrega ítems sin marca.
-// Límite: sin HEAD en el rojo (repo sin commits o sin Git) no hay base y el sello no se exige.
+// Sin HEAD en el rojo (repo sin commits o sin Git) se exige el árbol y un aviso; solo se omite el nivel archivos (S013).
 // El nivel trabajo (otras iniciativas que comparten archivos o datos) es F002/S012.
 
 import (
@@ -209,6 +209,9 @@ func sello(raiz string, f Ficha) ([]Item, error) {
 			return nil, err
 		}
 		xs = append(xs, ys...)
+	} else {
+		// S013: sin commit base el árbol se exige igual; el aviso también se marca.
+		xs = append(xs, Item{Clave: "aviso:sin-commit-base", Linea: "nivel archivos omitido: el rojo no guardó commit (repo sin commits o sin Git)"})
 	}
 	marcas := map[string]Marca{}
 	for _, m := range f.Sello {
@@ -222,9 +225,9 @@ func sello(raiz string, f Ficha) ([]Item, error) {
 	return xs, nil
 }
 
-// selloCompleto: CERRADO exige marca en cada ítem. Sin HEAD en el rojo no hay base: no se exige.
+// selloCompleto: CERRADO exige marca en cada ítem, haya o no commit base (S013).
 func selloCompleto(raiz string, f Ficha) error {
-	if f.Tipo != "slice" || f.Rojo == nil || f.Rojo.Head == "" {
+	if f.Tipo != "slice" {
 		return nil
 	}
 	xs, err := sello(raiz, f)

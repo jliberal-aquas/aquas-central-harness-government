@@ -165,3 +165,31 @@ func TestSelloSeVuelveAArmarSiCambiaAlgo(t *testing.T) {
 		t.Fatalf("tocar otro archivo agrega ítems sin marca y el cierre los nombra; dio %v", err)
 	}
 }
+
+// E001/F002/S013: sin commit base (proyecto hijo recién creado, sin commits) el árbol se exige
+// igual; solo se omite el nivel archivos, y un aviso que también se marca lo deja a la vista.
+func TestSelloSinCommitBaseExigeArbol(t *testing.T) {
+	raiz := t.TempDir()
+	id := "E001/F002/S004"
+	reg := &Registro{Fecha: "2026-10-21T10:00:00Z", Resultado: map[string]string{"./a:TestA": "falló"}}
+	fichaJSON(t, raiz, Ficha{ID: "E001", Titulo: "I", Estado: "EN_CURSO", Secuencia: 1})
+	fichaJSON(t, raiz, Ficha{ID: "E001/F002", Titulo: "F", Estado: "EN_CURSO", Secuencia: 2})
+	fichaJSON(t, raiz, Ficha{ID: id, Titulo: "S", Estado: "EN_CURSO", Secuencia: 3,
+		Pruebas: []Prueba{{Nombre: "./a:TestA", Intencion: "x"}}, Rojo: reg, Verde: reg})
+	m := claves(t, raiz, id)
+	for _, k := range []string{"ficha:E001/F002", "ficha:E001", "pagina:docs/E001/F002/S004.md", "aviso:sin-commit-base"} {
+		if _, ok := m[k]; !ok {
+			t.Errorf("sin commit base falta %s; hay %v", k, m)
+		}
+	}
+	if it := m["aviso:sin-commit-base"]; !strings.Contains(it.Linea, "nivel archivos omitido") {
+		t.Errorf("el aviso dice qué se omitió; dio %q", it.Linea)
+	}
+	if _, err := Estado(raiz, id, "CERRADO"); err == nil || !strings.Contains(err.Error(), "sello incompleto") {
+		t.Fatalf("sin commit base el cierre igual exige el sello; dio %v", err)
+	}
+	marcarTodo(t, raiz, id)
+	if _, err := Estado(raiz, id, "CERRADO"); err != nil {
+		t.Fatalf("con el árbol y el aviso marcados cierra; dio %v", err)
+	}
+}
