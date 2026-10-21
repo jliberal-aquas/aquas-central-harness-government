@@ -132,7 +132,8 @@ func TestArranqueEnFrio(t *testing.T) {
 		t.Fatalf("falta el archivo: %v", err)
 	}
 	siguiente := aquas(t, raiz, `{"source":"startup"}`, ordenDeInicio(t)...)
-	if !strings.Contains(siguiente.out, "foco: E001 › F005\n") || !strings.Contains(siguiente.out, "- limpiar .tmp") {
-		t.Fatalf("tras archivar, la sesión nueva arranca en E001 › F005 con sus pendientes:\n%s", siguiente.out)
+	if !strings.Contains(siguiente.out, "foco: E001 › F005\n") || !strings.Contains(siguiente.out, "- limpiar .tmp") ||
+		!strings.Contains(siguiente.out, "siguiente: probar arranque en frío") {
+		t.Fatalf("tras archivar, la sesión nueva arranca en E001 › F005 con su siguiente y sus pendientes:\n%s", siguiente.out)
 	}
 }

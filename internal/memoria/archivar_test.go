@@ -60,8 +60,8 @@ func TestArchivarDejaFocoParaElSiguiente(t *testing.T) {
 	if err != nil {
 		t.Fatalf("la memoria debe seguir sellada: %v", err)
 	}
-	if m.Foco != (Foco{Iniciativa: "E001", Feature: "F005"}) || m.Siguiente != "" {
-		t.Fatalf("conserva E y F; vacía slice, tarea y siguiente: %+v", m)
+	if m.Foco != (Foco{Iniciativa: "E001", Feature: "F005"}) || m.Siguiente != "cerrar" {
+		t.Fatalf("conserva E, F y siguiente; vacía slice y tarea: %+v", m)
 	}
 	if strings.Join(m.Pendientes, "|") != "limpiar .tmp" || strings.Join(m.Decisiones, "|") != "¿gate?" {
 		t.Fatalf("pendientes y decisiones siguen: %+v", m)

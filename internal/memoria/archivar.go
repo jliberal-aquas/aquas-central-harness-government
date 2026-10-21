@@ -23,7 +23,7 @@ func RutaArchivo(f Foco) string {
 
 // Archivar copia los bytes sellados de la memoria a registro/memoria/<E>-<F>-<S>.json y deja
 // la memoria lista para el slice siguiente: conserva iniciativa, feature, pendientes y
-// decisiones; vacía slice, tarea y siguiente. Devuelve la ruta relativa del archivo.
+// decisiones y siguiente (qué viene después del slice); vacía slice y tarea. Devuelve la ruta relativa del archivo.
 // Exige foco con slice, sello bien y memoria al día; nunca pisa un archivo existente.
 func Archivar(raiz string, ahora time.Time) (string, error) {
 	m, err := Leer(raiz)
@@ -60,8 +60,9 @@ func Archivar(raiz string, ahora time.Time) (string, error) {
 	if err := f.Close(); err != nil {
 		return "", err
 	}
-	// Foco del slice siguiente: misma feature, sin slice. La huella ya incluye el archivo nuevo.
-	if _, err := Fijar(raiz, []string{"slice=", "tarea=", "siguiente="}, ahora); err != nil {
+	// Foco del slice siguiente: misma feature, sin slice; «siguiente» se conserva porque al cerrar
+	// un slice dice qué viene (fallo visto 2026-10-21). La huella ya incluye el archivo nuevo.
+	if _, err := Fijar(raiz, []string{"slice=", "tarea="}, ahora); err != nil {
 		return rel, err
 	}
 	return rel, nil
