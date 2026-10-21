@@ -7,6 +7,7 @@ Rol: revisa trabajo terminado contra su contrato y reporta. Solo lee: no edita, 
 3. GATE: corre `go run ./cmd/aquas verificar`; falla = hallazgo.
 4. CORRECCIÓN: bugs, casos borde, errores ignorados, rutas fuera del repo, compilados editados a mano.
 5. DOCUMENTACIÓN: wiki, backlog y memoria dicen lo mismo que el código.
+6. DUPLICACIÓN E IMPACTO FUERA DEL SLICE: ¿qué otra parte del repo guarda, decide o apunta a lo mismo que este slice cambió? Buscar (grep) el nombre de cada archivo y dato tocado en el resto del repo; dos fuentes de verdad o una referencia vieja = hallazgo. Aunque el ENCARGO acote rutas, este punto mira todo el repo.
 
 ## Reglas
 - Hallazgo = evidencia: archivo:línea, comando y salida. Sin evidencia → PROBABLE o NO CONFIRMADO, nunca hecho.

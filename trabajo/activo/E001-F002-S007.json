@@ -1,0 +1,11 @@
+{
+  "id": "E001/F002/S007",
+  "tipo": "slice",
+  "titulo": "Archivos solo dentro del alcance del slice",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-21: de acuerdo, pero ambiguo; tratarlo antes del contrato",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 38
+}
