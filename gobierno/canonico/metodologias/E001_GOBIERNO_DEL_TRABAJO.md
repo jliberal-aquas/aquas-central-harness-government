@@ -35,6 +35,7 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Prioridad obligatoria: P0 · P1 · P2 · P3 · SIN_TRIAGE, con motivo. Agente asigna; humano puede cambiar.
 - Orden determinista de `aquas backlog siguiente`: en curso (EN_CURSO, VERIFICANDO; un solo slice activo) → desbloqueado → prioridad → secuencia de ingreso → ID. Desbloqueado = no BLOQUEADO y cada `bloqueado_por` archivado (CERRADO o CANCELADO: un bloqueador cancelado libera, si no la ficha quedaría trabada).
 - Estados: BORRADOR · LISTO · EN_CURSO · VERIFICANDO · CERRADO; excepciones BLOQUEADO · CANCELADO. Archivado no es estado: es la carpeta `trabajo/archivo/` (decisión del agente en S002, 2026-10-21).
+- Dependencias (decisión humana 2026-10-21): slice = proceso independiente, finito y testeable. Dependencia circular = un solo slice. No circular → primero el que se usa (`bloqueado_por`). Hoy acíclico por construcción: `bloqueado_por` solo se fija al crear y apunta a fichas existentes; un comando que lo cambie exige chequeo de ciclos.
 - Hallazgo fuera de alcance del slice activo → `aquas backlog defecto`; no se toca en el slice.
 
 ## Slice y feature
@@ -50,7 +51,8 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Directriz humana 2026-10-21: al crear iniciativa, feature o slice se escriben las pruebas de lo que el humano espera de esa etapa (integral en E y F, del slice en S), y su ficha guarda rojo y verde. Objetivo: ante un fallo futuro, saber qué prueba falló o cuál faltó. Git guarda la historia de cada ficha.
 
 ## Sello (motor de impacto mínimo)
-- Al cerrar slice, Go arma lista obligatoria de revisión: iniciativa, feature, slices hermanos, páginas wiki enlazadas.
+- Al cerrar slice, Go arma lista obligatoria de revisión: iniciativa, feature, dependientes (fichas abiertas con `bloqueado_por` este slice) y páginas wiki del árbol. Decisión humana 2026-10-21: hermano = parentesco, no dependencia; un hermano sin dependencia ni archivos compartidos no entra.
+- Alcance (decisión humana 2026-10-21): F002/S004 = árbol + nivel archivo (tocados = `git diff` desde el HEAD del rojo + nuevos; «nombra» = ruta exacta en texto o import Go del paquete; excluye `trabajo/`, `registro/`, `auditoria/`, `.tmp/`). Nivel trabajo → F002/S012. Sello en cierre de F y E: después.
 - Mapa de relaciones (decisión humana 2026-10-21; absorbe F003/S004): dos niveles. Archivo: todo archivo del repo que nombra un archivo tocado por el slice. Trabajo: iniciativas, features y slices que comparten esos archivos o datos (no solo el árbol padre/hermanos). Caso que lo motivó: S002 movió el backlog a `trabajo/` y `internal/memoria/memoria.go` siguió apuntando al canónico; nada lo detectó.
 - Cierre bloqueado hasta que cada ítem tenga `sin cambio` o `actualizado` + motivo de una línea.
 - Go entrega solo líneas relevantes, no archivos completos (economía de tokens).

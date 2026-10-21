@@ -1,0 +1,19 @@
+{
+  "id": "E001/F002/S012",
+  "tipo": "slice",
+  "titulo": "Sello: nivel trabajo",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "parte del sello separada de S004, decisión humana 2026-10-21",
+  "padre": "E001/F002",
+  "bloqueado_por": [
+    "E001/F002/S004"
+  ],
+  "secuencia": 50,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSelloNivelTrabajo",
+      "intencion": "el sello lista fichas de otras iniciativas que comparten archivos tocados"
+    }
+  ]
+}

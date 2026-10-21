@@ -319,7 +319,7 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 
 // backlogCLI: nuevo | ver [id] | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=intención… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=intención… | rojo <id> | verde <id>")
+	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=intención… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=intención… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…]")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}
@@ -365,6 +365,19 @@ func backlogCLI(raiz string, args []string) {
 		}
 		if err == nil && (f.Estado == "CERRADO" || f.Estado == "CANCELADO") {
 			fmt.Printf("archivada en %s/ · ", backlog.Archivo)
+		}
+	case args[0] == "sello" && len(args) == 2: // E001/F002/S004: lista del sello de cierre
+		xs, err := backlog.Sello(raiz, args[1])
+		if err != nil {
+			fallar(1, err)
+		}
+		fmt.Print(backlog.TextoSello(xs))
+		return
+	case args[0] == "sello" && len(args) == 5 && strings.HasPrefix(args[4], "motivo="):
+		f, err = backlog.Marcar(raiz, args[1], args[2], args[3], strings.TrimPrefix(args[4], "motivo="))
+		if err == nil {
+			fmt.Println("marcado: " + args[2])
+			return
 		}
 	case args[0] == "siguiente" && len(args) == 1:
 		var hay bool

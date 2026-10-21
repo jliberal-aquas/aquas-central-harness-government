@@ -1,0 +1,135 @@
+{
+  "id": "E001/F002/S004",
+  "tipo": "slice",
+  "titulo": "Sello de cierre",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "siguiente de F002; alcance aprobado por el humano 2026-10-21",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 22,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSelloArmaListaDelArbol",
+      "intencion": "el sello lista padre, abuelo, dependientes abiertos y páginas; un hermano independiente no entra"
+    },
+    {
+      "prueba": "./internal/backlog:TestSelloArmaListaDeArchivos",
+      "intencion": "el sello lista quién nombra o importa lo tocado desde el rojo, con la línea; excluye datos"
+    },
+    {
+      "prueba": "./internal/backlog:TestCierreSinSelloCompletoSeNiega",
+      "intencion": "CERRADO se niega con un ítem sin marca; la marca exige sin_cambio o actualizado y motivo"
+    },
+    {
+      "prueba": "./internal/backlog:TestSelloSeVuelveAArmarSiCambiaAlgo",
+      "intencion": "tocar otro archivo tras marcar agrega ítems sin marca y frena el cierre"
+    },
+    {
+      "prueba": "./cmd/aquas:TestSelloCLIDePuntaAPunta",
+      "intencion": "por el CLI real, el sello se lista, frena el cierre y se marca"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-21T19:03:59Z",
+    "head": "39437fa2319b69b4587d68ec5fae78176d9631db",
+    "resultado": {
+      "./cmd/aquas:TestSelloCLIDePuntaAPunta": "sello_test.go:56: sello lista los ítems pendientes con [ ]; dio {out: err:aquas: uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=intención… [bloqueado_por=A,B] | ver [id] | prioridad \u003cid\u003e \u003cP0..P3|SIN_TRIAGE\u003e motivo=… | estado \u003cid\u003e \u003cESTADO\u003e | siguiente | pruebas \u003cid\u003e ./paquete:TestNombre=intención… | rojo \u003cid\u003e | verde \u003cid\u003e",
+      "./internal/backlog:TestCierreSinSelloCompletoSeNiega": "sello_test.go:132: sin marcas: CERRADO se niega por el sello; dio \u003cnil\u003e",
+      "./internal/backlog:TestSelloArmaListaDeArchivos": "sello_test.go:106: cmd/x/main.go importa el paquete tocado: ítem; hay map[]",
+      "./internal/backlog:TestSelloArmaListaDelArbol": "sello_test.go:91: falta pagina:docs/E001/README.md en el sello; hay map[]",
+      "./internal/backlog:TestSelloSeVuelveAArmarSiCambiaAlgo": "sello_test.go:165: tocar otro archivo agrega ítems sin marca y el cierre los nombra; dio \u003cnil\u003e"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-21T19:06:45Z",
+    "head": "39437fa2319b69b4587d68ec5fae78176d9631db"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "la feature sigue en curso; su ficha no guarda nada del sello"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa no cambia"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S004.md",
+      "marca": "actualizado",
+      "motivo": "página nueva del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "S004 enlazado en la tabla; bloque generado al día con S012"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "lista features, no slices"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "enlaza el canónico en general, no cita el sello"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta solo como ejemplo"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/rojo_test.go",
+      "marca": "sin_cambio",
+      "motivo": "describe rojo y verde; siguen iguales"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "enlaza la especificación completa; sigue válido"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "habla del compilador, no del backlog"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API previa del backlog no cambia; solo se agregan el campo sello y funciones nuevas"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API previa del backlog no cambia; solo se agregan el campo sello y funciones nuevas"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API previa del backlog no cambia; solo se agregan el campo sello y funciones nuevas"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API previa del backlog no cambia; solo se agregan el campo sello y funciones nuevas"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API previa del backlog no cambia; solo se agregan el campo sello y funciones nuevas"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "texto de una prueba; la ruta no cambia"
+    },
+    {
+      "clave": "ficha:E001/F002/S012",
+      "marca": "sin_cambio",
+      "motivo": "creada en este slice; ya nace bloqueada por S004 y espera su turno"
+    }
+  ]
+}

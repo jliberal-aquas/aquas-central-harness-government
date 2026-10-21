@@ -34,6 +34,8 @@ type Ficha struct {
 	Pruebas []Prueba  `json:"pruebas,omitempty"`
 	Rojo    *Registro `json:"rojo,omitempty"`
 	Verde   *Registro `json:"verde,omitempty"`
+	// S004: marcas del sello de cierre (clave, marca, motivo).
+	Sello []Marca `json:"sello,omitempty"`
 }
 
 // Estados y prioridades del canónico E001 (sección Backlog).
@@ -272,6 +274,9 @@ func Estado(raiz, id, estado string) (Ficha, error) {
 	}
 	if estado == "CERRADO" {
 		if err := cierre(f); err != nil {
+			return Ficha{}, err
+		}
+		if err := selloCompleto(raiz, f); err != nil {
 			return Ficha{}, err
 		}
 	}

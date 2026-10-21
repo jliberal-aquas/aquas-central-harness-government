@@ -83,6 +83,7 @@ func TestCerrarSliceDePuntaAPunta(t *testing.T) {
 	paso(0, "rojo: p_test.go", "rojo", "E001/F002/S003")
 	escribir(t, raiz, "p/arreglado", "")
 	paso(0, "· verde 20", "verde", "E001/F002/S003")
+	sellarCLI(t, raiz, "E001/F002/S003") // S004: el cierre exige el sello marcado
 	paso(0, "archivada", "estado", "E001/F002/S003", "CERRADO")
 	f := fichaEnDisco(t, raiz, "trabajo/archivo/E001-F002-S003.json")
 	if !strings.Contains(string(f["rojo"]), "falta el arreglo") || !strings.Contains(string(f["verde"]), "fecha") {
