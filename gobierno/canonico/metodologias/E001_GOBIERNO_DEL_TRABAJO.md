@@ -73,8 +73,9 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 
 ## Prioridades (humano aprobó 2026-10-21; rigen sobre el orden de lista)
 - P1 · 1.º F006 Workers y auditor (hecho 2026-10-21): pequeño; abarata lo que viene.
-- P1 · 2.º F003 Bibliotecario S001–S003: diseño cerrado; da a los workers la herramienta que ahorra tokens.
+- P1 · 2.º F003 Bibliotecario (hecha 2026-10-21 con S001; S002 descartado; S003–S004 aplazados: leer = 18 % de las llamadas).
 - P1 · 3.º F002/S002 backlog JSON con prioridad: el orden lo guarda `aquas`, no la memoria del agente.
+- P2 · PROPUESTA (humano aprobó registrarla 2026-10-21): estudiar las 173 llamadas de pruebas y gate (28 %, el mayor gasto en vueltas): cuántas son reintentos tras fallo; luego proponer herramienta.
 - P2: resto de F002 (auditoría de turnos, sello, `aquas ver`) y F004 Defectos. No bloquean hoy.
 - P3: migrar hooks globales (E000/F003, hoy inventario); idea de repos hijos.
 
@@ -100,6 +101,7 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
   - Decisiones humanas 2026-10-21: interfaz = comando `aquas biblioteca …` por Bash, arreglo de rutas en JSON por stdin (MCP propio solo si el uso lo pide). Esquema (firmas Go con `go/ast`, títulos Markdown) en S003, no en S001. Ahorro = prueba determinista: misma tarea por bibliotecario vs lectura completa, comparando caracteres. Ahorro real esperado: lote en una llamada, solo lo útil, tope + cuenta «devolví X de Y».
   - S001 HECHO 2026-10-21: `internal/biblioteca` + `aquas biblioteca leer` (stdin `{"rutas":["a.go:10-40","b.md"],"tope":0}`; bloques `== ruta · d-h de N` numerados; error por ruta sin frenar el lote; solo rutas relativas al repo; tope 200000 = desborde extremo, avisa corte; última línea `== devueltos X de Y caracteres`). Ahorro medido en prueba: 435 vs 10472 caracteres (96 %) frente a lectura completa; frente a Read con rango solo ahorra llamadas y numeración (auditor 2026-10-21). Auditoría: CON_HALLAZGOS, 5 corregidos (vacío, carpeta, grafía repetida, mensajes CLI, fixture); enlaces simbólicos = límite, sin uso hoy. Worker y orquestador lo usan para lotes.
   - S002 DESCARTADO 2026-10-21 (humano aceptó con datos): telemetría de las 3 sesiones del repo (576 vueltas, 610 herramientas): rachas seguidas de buscar/leer = 65, máximo 3 vueltas, 6 mezclan buscar y leer; fundirlas ahorraría ≤ 14 vueltas (≈ 2 % de la caché leída). Grep y Bash con tuberías ya buscan y leen en una vuelta. Métrica correcta del ahorro = vueltas al modelo × contexto, no caracteres. Script: `.tmp/telemetria/` (no versionado).
+  - F003 CERRADA 2026-10-21 con S001 (humano aceptó). S003 esquema y S004 relaciones aplazados: telemetría mide leer/buscar ≈ 18 % de las llamadas; pruebas+gate 28 %, escribir/editar 22 %.
 
 ## Podado (fuera de alcance)
 - Cierre transitivo completo y recibos por documento · token de reserva, CAS global, journal, recuperación ante caídas.

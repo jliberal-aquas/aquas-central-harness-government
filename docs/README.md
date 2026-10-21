@@ -111,7 +111,7 @@ flowchart TD
     E1 --> E1F5["F005 Memoria caliente<br/>Hecha"]
     E1 --> E1F2["F002 Turnos, backlog y sello<br/>Pendiente"]
     E1 --> E1F4["F004 Defectos<br/>Pendiente"]
-    E1 --> E1F3["F003 Bibliotecario<br/>En curso"]
+    E1 --> E1F3["F003 Bibliotecario<br/>Hecha"]
     E1 --> E1F6["F006 Workers y auditor<br/>Hecha"]
 ```
 
@@ -131,7 +131,7 @@ flowchart TD
 | ↳↳ [S001](E001/F005/S001.md) · [S002](E001/F005/S002.md) · [S003](E001/F005/S003.md) | Archivo, sello y guardia; hooks; archivo y arranque en frío | Hecho |
 | ↳ F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | Pendiente |
 | ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
-| ↳ [F003](E001/F003/README.md) Bibliotecario | Herramienta propia: lee rutas o busca y entrega solo lo útil | En curso |
+| ↳ [F003](E001/F003/README.md) Bibliotecario | Herramienta propia: lee un lote de rutas y entrega solo lo útil | Hecha |
 | ↳↳ [S001](E001/F003/S001.md) | Leer un lote de rutas | Hecho |
 | ↳ [F006](E001/F006/README.md) Workers y auditor | Agentes baratos que ejecutan y un auditor que revisa | Hecha |
 | ↳↳ [S001](E001/F006/S001.md) · [S002](E001/F006/S002.md) | Tres agentes y sus herramientas; comunicación entre agentes | Hecho |

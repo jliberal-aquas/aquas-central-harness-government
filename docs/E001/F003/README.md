@@ -60,8 +60,8 @@ stateDiagram-v2
 |---|---|---|
 | [S001 Leer un lote de rutas](S001.md) | Varias rutas y rangos en una llamada, con tope y cuenta | Hecho |
 | S002 Buscar | Expresión regular sobre rutas | Descartado: no ahorra vueltas |
-| S003 Esquema | Firmas de Go y títulos de Markdown | Pendiente |
-| S004 Relaciones | Quién usa qué, conectado al sello | Pendiente |
+| S003 Esquema | Firmas de Go y títulos de Markdown | Aplazado |
+| S004 Relaciones | Quién usa qué, conectado al sello | Aplazado |
 
 ## Ejemplo de punta a punta
 
@@ -91,7 +91,7 @@ En la [iniciativa](../../glosario.md#iniciativa), el pedido de Jesús llegó al 
 
 ## Contrato y evidencia
 
-Estado: en curso. S001 hecho; S002 descartado; S003 y S004 pendientes.
+Estado: hecha con S001. S002 descartado; S003 y S004 aplazados.
 
 Objetivo: que leer el repo cueste lo mínimo, medido en caracteres.
 
@@ -104,14 +104,15 @@ Decisiones de Jesús (2026-10-21):
 - El esquema va en S003.
 - El ahorro se prueba comparando caracteres con la lectura completa.
 - S002 se descarta: la telemetría mostró rachas de buscar y leer de 3 vueltas como máximo.
+- F003 se cierra con S001. Leer pesa el 18 % de las llamadas; S003 y S004 quedan aplazados.
 
 ```mermaid
 flowchart LR
-    S1["S001 leer<br/>Hecho"] --> S3["S003 esquema<br/>Pendiente"]
-    S3 --> S4["S004 relaciones<br/>Pendiente"]
+    S1["S001 leer<br/>Hecho"] --> S3["S003 esquema<br/>Aplazado"]
+    S3 --> S4["S004 relaciones<br/>Aplazado"]
 ```
 
-Prueba integral de la feature: todavía no existe. Llega cuando haya algo que integrar, con S003.
+Prueba integral de la feature: no hace falta. Con un solo slice, su prueba es la de S001.
 
 ## Navegación
 
