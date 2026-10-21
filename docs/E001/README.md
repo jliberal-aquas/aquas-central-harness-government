@@ -68,7 +68,7 @@ Estado actual de sus features:
 | [F006 Workers y auditor](F006/README.md) | Agentes baratos que ejecutan y un auditor que revisa | Hecha |
 | F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo/verde, sello | Pendiente |
 | F004 Defectos y reincidencia | Registra fallos y avisa si se repiten | Pendiente |
-| F003 Bibliotecario | Busca archivos y usos de código de forma determinista | Pendiente |
+| [F003 Bibliotecario](F003/README.md) | Lee el repo pidiendo solo lo útil | En curso |
 
 ## Ejemplo de punta a punta
 
@@ -122,7 +122,7 @@ Cuando llegue F002 habrá comandos como `aquas backlog siguiente` y `aquas slice
 flowchart LR
     E["E001"] --> F1["F001 Wiki + gate<br/>Hecho"]
     E --> F2["F002 Turnos, backlog y sello<br/>Pendiente"]
-    E --> F3["F003 Bibliotecario<br/>Pendiente"]
+    E --> F3["F003 Bibliotecario<br/>En curso"]
     E --> F4["F004 Defectos<br/>Pendiente"]
     E --> F5["F005 Memoria caliente<br/>Hecha"]
     E --> F6["F006 Workers y auditor<br/>Hecha"]
@@ -144,3 +144,4 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 - Abajo: [F001 · Wiki + gate](F001/README.md)
 - Abajo: [F005 · Memoria caliente](F005/README.md)
 - Abajo: [F006 · Workers y auditor](F006/README.md)
+- Abajo: [F003 · Bibliotecario](F003/README.md)

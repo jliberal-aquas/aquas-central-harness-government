@@ -5,6 +5,7 @@
 //	aquas hook       modo hook PostToolUse de Claude Code (lee JSON por stdin)
 //	aquas guardia    hook PreToolUse: bloquea (exit 2) toda escritura fuera del repositorio
 //	aquas iniciar    declara SO y raíz de esta máquina (entorno.local.json) y genera .claude/settings.json
+//	aquas biblioteca leer  bibliotecario: JSON {"rutas":[…]} por stdin → solo lo pedido, numerado
 //	aquas cierre-agente  hook SubagentStop: exige el CIERRE fijo de worker y auditor (exit 2)
 //	aquas memoria    ver | fijar campo=valor… | inicio | cierre | archivar: memoria caliente del foco (.aquas/memoria.json)
 package main
@@ -18,6 +19,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/jliberal/aquas-harness-governance/internal/biblioteca"
 	"github.com/jliberal/aquas-harness-governance/internal/compilador"
 	"github.com/jliberal/aquas-harness-governance/internal/encargo"
 	"github.com/jliberal/aquas-harness-governance/internal/entorno"
@@ -28,7 +30,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria | cierre-agente")
+		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria | cierre-agente | biblioteca")
 		os.Exit(64)
 	}
 	raiz, err := os.Getwd()
@@ -83,6 +85,23 @@ func main() {
 		hook(raiz)
 	case "memoria":
 		memoriaCLI(raiz, os.Args[2:])
+	case "biblioteca": // bibliotecario: lote de rutas por stdin (JSON) → solo lo pedido
+		if len(os.Args) < 3 || os.Args[2] != "leer" {
+			fallar(64, fmt.Errorf(`uso: echo '{"rutas":["a.go","b.md:10-40"]}' | aquas biblioteca leer`))
+		}
+		var p biblioteca.Pedido
+		datos, err := io.ReadAll(os.Stdin)
+		if err != nil {
+			fallar(1, fmt.Errorf("no se pudo leer stdin: %v", err))
+		}
+		if err := json.Unmarshal(datos, &p); err != nil {
+			fallar(64, fmt.Errorf(`se espera JSON {"rutas":[…]} por stdin: %v`, err))
+		}
+		if len(p.Rutas) == 0 {
+			fallar(64, fmt.Errorf(`pedido sin rutas: {"rutas":["a.go:10-40"]}`))
+		}
+		texto, _, _ := biblioteca.Leer(raiz, p)
+		fmt.Print(texto)
 	case "cierre-agente": // hook SubagentStop: exit 2 + stderr = el subagente reescribe su cierre
 		var e struct {
 			Tipo    string `json:"agent_type"`

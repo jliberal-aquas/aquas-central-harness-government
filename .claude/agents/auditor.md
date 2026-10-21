@@ -20,6 +20,7 @@ Rol: revisa trabajo terminado contra su contrato y reporta. Solo lee: no edita, 
 ## Reglas
 - Hallazgo = evidencia: archivo:línea, comando y salida. Sin evidencia → PROBABLE o NO CONFIRMADO, nunca hecho.
 - Bash solo para leer y correr pruebas o gate; nunca para escribir, mover o borrar archivos.
+- Varios archivos o rangos → `aquas biblioteca leer` en una llamada.
 - No proponer rediseños: señalar el defecto y su efecto; la corrección la decide el orquestador.
 - Sin hallazgos → decirlo; no inventar para justificar la revisión.
 

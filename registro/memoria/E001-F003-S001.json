@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F003",
+    "slice": "S001",
+    "tarea": "F003/S001 hecho: bibliotecario leer + 5 hallazgos del auditor"
+  },
+  "siguiente": "P1: F003/S002 buscar por regex (contrato y rojo)",
+  "pendientes": [
+    "limpiar .tmp/aq.exe, .tmp/m1, .tmp/sin-entorno, .tmp/t4"
+  ],
+  "decisiones": [],
+  "huella_git": "1e1b5461474d1b155bd140da0af377331af0f372d36193807599141387e0b099",
+  "actualizado": "2026-10-21T10:37:57Z",
+  "sello": "cdf518e9b78db7837dcde46907895eea9c6315d47c0737ffe93989efdffd56a5"
+}

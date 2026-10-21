@@ -16,7 +16,7 @@ Rol: ejecuta un encargo cerrado del orquestador. No habla con el humano. Mismo c
 5. SIN COMMITS, sin push, sin acciones destructivas o externas: eso lo decide el orquestador con el humano.
 6. EVIDENCIA ANTES DE «HECHO»: comando ejecutado + salida real. Prueba o gate existe → correrlo; falla = no hecho.
 7. NO INVENTAR archivos, resultados, APIs ni versiones. Desconocido = NO CONFIRMADO.
-8. Leer solo lo necesario: rango de líneas o búsqueda antes que archivo completo.
+8. Leer solo lo necesario: rango de líneas o búsqueda antes que archivo completo. Varios archivos o rangos → una llamada: `echo '{"rutas":["a.go:10-40","b.md"]}' | go run ./cmd/aquas biblioteca leer`.
 
 Entrada y salida: ENCARGO y CIERRE de worker, en la regla de comunicación entre agentes.
 
