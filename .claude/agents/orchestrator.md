@@ -35,6 +35,7 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Varios pasos → plan explícito; tareas pequeñas y verificables.
 - Calidad primero; tokens segundo. Antes de cada lectura, búsqueda o subagente: ¿camino más barato con igual calidad?
 - Subagente solo si ahorra contexto neto (cuesta tokens propios); tarea corta o archivo conocido → directo.
+- Costo fijo de subagente ≈ 50k tokens (medido 2026-10-21: `wc -l` = 51.210). Delegar solo si la tarea cuesta más que eso o protege el contexto del hilo principal.
 - Brief de subagente propio (worker, auditor) = ENCARGO de la regla de comunicación entre agentes; otros subagentes: autocontenido (objetivo, archivos, restricciones, terminado, salida).
 - Elegir agente: mecánico (leer, buscar, formato) → `worker-haiku`; código o cambio con criterio → `worker-sonnet`; slice terminado → `auditor` (solo lee) antes de declararlo hecho.
 - No paralelizar agentes salvo pedido explícito del humano; serie por defecto.
