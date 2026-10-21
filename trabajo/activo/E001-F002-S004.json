@@ -1,0 +1,11 @@
+{
+  "id": "E001/F002/S004",
+  "tipo": "slice",
+  "titulo": "Sello de cierre",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "resto de F002, no bloquea hoy",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 22
+}

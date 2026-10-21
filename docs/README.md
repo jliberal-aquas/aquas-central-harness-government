@@ -98,7 +98,7 @@ Mapa rápido del repositorio:
 
 ## Mapa del trabajo
 
-Todo lo hecho y lo planeado, con su estado. Hoy se escribe a mano. Cuando llegue el [backlog](glosario.md#backlog) en JSON, lo generará `aquas`.
+Todo lo hecho y lo planeado, con su estado. Hoy se escribe a mano. El estado vigente está en las fichas del [backlog](glosario.md#backlog): `aquas backlog ver`. Generar este mapa desde ellas llega en S005.
 
 ```mermaid
 flowchart TD
@@ -107,9 +107,10 @@ flowchart TD
     E0 --> E0F1["F001 Guardia del repo<br/>Hecho"]
     E0 --> E0F2["F002 Compilador y sello<br/>Hecho"]
     E0 --> E0F3["F003 Hooks globales<br/>Inventario"]
+    E0 --> E0F4["F004 Vueltas de pruebas<br/>Pendiente"]
     E1 --> E1F1["F001 Wiki + gate<br/>Hecho"]
     E1 --> E1F5["F005 Memoria caliente<br/>Hecha"]
-    E1 --> E1F2["F002 Turnos, backlog y sello<br/>Pendiente"]
+    E1 --> E1F2["F002 Turnos, backlog y sello<br/>En curso"]
     E1 --> E1F4["F004 Defectos<br/>Pendiente"]
     E1 --> E1F3["F003 Bibliotecario<br/>Hecha"]
     E1 --> E1F6["F006 Workers y auditor<br/>Hecha"]
@@ -123,20 +124,22 @@ flowchart TD
 | ↳ [F002](E000/F002/README.md) Compilador y sello | Archivos generados, sellados y con tope | Hecho |
 | ↳↳ [S001](E000/F002/S001.md) · [S002](E000/F002/S002.md) | Compilar y sellar, tope de caracteres | Hecho |
 | ↳ F003 Hooks globales | Ganchos en `~/.claude/hooks/` que rigen todo proyecto; solo registrados, no gobernados aquí | Inventario |
+| ↳ F004 Vueltas de pruebas y gate | Estudiar por qué pruebas y gate gastan el 28 % de las llamadas | Pendiente |
 | [E001](E001/README.md) Gobierno del trabajo | Camino fijo para cada pedido | En curso |
 | ↳ [F001](E001/F001/README.md) Wiki + gate | Esta wiki y el gate que la exige | Hecho |
 | ↳↳ [S001](E001/F001/S001.md) · [S002](E001/F001/S002.md) · [S003](E001/F001/S003.md) | Esqueleto, legibilidad y glosario, referencia | Hecho |
 | ↳↳ [S004](E001/F001/S004.md) | Contrato, evidencia y migas | Hecho |
 | ↳ [F005](E001/F005/README.md) Memoria caliente | El agente no pierde el foco entre sesiones | Hecha |
 | ↳↳ [S001](E001/F005/S001.md) · [S002](E001/F005/S002.md) · [S003](E001/F005/S003.md) | Archivo, sello y guardia; hooks; archivo y arranque en frío | Hecho |
-| ↳ F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | Pendiente |
+| ↳ [F002](E001/F002/README.md) Turnos, backlog y sello | Auditoría, backlog en JSON, rojo y verde, sello | En curso |
+| ↳↳ [S002](E001/F002/S002.md) | Backlog en JSON | Hecho |
 | ↳ F004 Defectos y reincidencia | Registro de fallos y alerta si se repiten | Pendiente |
 | ↳ [F003](E001/F003/README.md) Bibliotecario | Herramienta propia: lee un lote de rutas y entrega solo lo útil | Hecha |
 | ↳↳ [S001](E001/F003/S001.md) | Leer un lote de rutas | Hecho |
 | ↳ [F006](E001/F006/README.md) Workers y auditor | Agentes baratos que ejecutan y un auditor que revisa | Hecha |
 | ↳↳ [S001](E001/F006/S001.md) · [S002](E001/F006/S002.md) | Tres agentes y sus herramientas; comunicación entre agentes | Hecho |
 
-El orden de las pendientes es el orden de ejecución.
+El orden de ejecución no es el de esta tabla: lo dice `aquas backlog siguiente`.
 
 ## Navegación
 

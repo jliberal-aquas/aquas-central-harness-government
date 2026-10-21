@@ -1,0 +1,11 @@
+{
+  "id": "E000/F001/S002",
+  "tipo": "slice",
+  "titulo": "Lista de permitidos",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E000/F001",
+  "bloqueado_por": [],
+  "secuencia": 4
+}

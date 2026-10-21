@@ -1,0 +1,11 @@
+{
+  "id": "E001/F006/S002",
+  "tipo": "slice",
+  "titulo": "Comunicación entre agentes",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E001/F006",
+  "bloqueado_por": [],
+  "secuencia": 37
+}

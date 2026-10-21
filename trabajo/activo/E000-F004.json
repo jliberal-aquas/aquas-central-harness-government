@@ -1,0 +1,11 @@
+{
+  "id": "E000/F004",
+  "tipo": "feature",
+  "titulo": "Vueltas de pruebas y gate",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "PROPUESTA aprobada 2026-10-21: 173 llamadas (28 %), ver reintentos",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 11
+}

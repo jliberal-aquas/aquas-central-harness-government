@@ -1,0 +1,11 @@
+{
+  "id": "E001/F004",
+  "tipo": "feature",
+  "titulo": "Defectos y reincidencia",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "no bloquea hoy",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 30
+}

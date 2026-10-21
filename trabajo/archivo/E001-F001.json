@@ -1,0 +1,11 @@
+{
+  "id": "E001/F001",
+  "tipo": "feature",
+  "titulo": "Wiki + gate",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 13
+}

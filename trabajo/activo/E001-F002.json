@@ -1,0 +1,11 @@
+{
+  "id": "E001/F002",
+  "tipo": "feature",
+  "titulo": "Turnos, backlog y sello",
+  "estado": "EN_CURSO",
+  "prioridad": "P1",
+  "motivo": "P1 3.º: el orden lo guarda aquas",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 18
+}

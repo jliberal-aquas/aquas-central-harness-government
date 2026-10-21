@@ -1,0 +1,11 @@
+{
+  "id": "E000/F001/S003",
+  "tipo": "slice",
+  "titulo": "Hooks en Windows",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E000/F001",
+  "bloqueado_por": [],
+  "secuencia": 5
+}

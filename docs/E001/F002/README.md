@@ -1,0 +1,121 @@
+# F002 · Turnos, backlog y sello
+
+[Inicio](../../README.md) › [E001](../README.md) › F002
+
+[Feature](../../glosario.md#feature) que pasa el orden del trabajo a archivos que guarda `aquas`. Así el orden no depende de la memoria del [agente](../../glosario.md#agente).
+
+## En una frase
+
+La lista de tareas deja de estar en la cabeza del capataz y pasa a un tablero con fichas.
+
+## Para qué existe
+
+**El problema.** El [backlog](../../glosario.md#backlog) vivía en un texto largo del [canónico](../../glosario.md#canónico). El agente lo leía y decidía el orden a mano. Nada impedía que se saltara un paso o se equivocara de prioridad.
+
+**La solución.** Un archivo JSON por elemento, que solo escribe `aquas`:
+
+- Cada [iniciativa](../../glosario.md#iniciativa), feature y [slice](../../glosario.md#slice) tiene su ficha con estado y prioridad.
+- `aquas backlog siguiente` dice qué toca, con un orden fijo.
+- Lo cerrado pasa al archivo, y queda la traza.
+
+## Analogía
+
+Piensa en un **tablero de fichas** en una oficina.
+
+- Cada tarea es una ficha con su prioridad escrita.
+- Solo el encargado mueve fichas; nadie las tacha a mano.
+- Las terminadas van a una caja, no a la basura.
+
+Límite de la analogía: en el tablero cualquiera puede mover una ficha si nadie mira. Aquí la guardia bloquea que el agente edite los archivos a mano.
+
+## Diagrama
+
+Proceso: cómo se elige el siguiente trabajo.
+
+```mermaid
+flowchart LR
+    A["Fichas activas"] --> Z["En curso primero"]
+    Z --> B["Quita las bloqueadas"]
+    B --> C["Ordena por prioridad"]
+    C --> D["Desempata por orden de ingreso"]
+    D --> E["aquas backlog siguiente"]
+```
+
+Estados de una ficha:
+
+```mermaid
+stateDiagram-v2
+    [*] --> BORRADOR
+    BORRADOR --> LISTO
+    LISTO --> EN_CURSO
+    EN_CURSO --> VERIFICANDO
+    VERIFICANDO --> CERRADO
+    EN_CURSO --> BLOQUEADO
+    BLOQUEADO --> EN_CURSO
+    BORRADOR --> CANCELADO
+    CERRADO --> [*]: va al archivo
+    CANCELADO --> [*]: va al archivo
+```
+
+Slices de esta feature:
+
+| Slice | Qué entrega | Estado |
+|---|---|---|
+| S001 Auditoría | Guardar cada pedido tal cual, con su respuesta | Pendiente |
+| [S002 Backlog en JSON](S002.md) | Fichas en JSON, cinco comandos, guardia y migración | Hecho |
+| S003 Rojo y verde | El slice no cierra sin prueba en rojo y luego en verde | Pendiente |
+| S004 Sello | Lista de lo que hay que revisar al cerrar un slice | Pendiente |
+| S005 `aquas ver` | Mapas de la wiki generados desde el backlog | Pendiente |
+| S006 Propuesta con diagrama | Un hook exige diagrama en cada propuesta | Pendiente |
+
+## Ejemplo de punta a punta
+
+<a id="EJ-E001-F002"></a>
+
+continúa: [EJ-E001](../README.md#EJ-E001)
+
+En la iniciativa, el pedido de Jesús ya es trabajo. Ahora hay que ubicarlo en la cola.
+
+1. El agente crea la ficha del slice con prioridad P1 y su motivo.
+2. Pide `aquas backlog siguiente`.
+3. `aquas` responde con el slice que toca, sin que el agente elija.
+4. Al cerrar el slice, su ficha pasa al archivo.
+
+## Paso a paso
+
+1. S001: auditoría de turnos.
+2. S002: backlog en JSON y sus comandos.
+3. S003: rojo y verde del slice.
+4. S004: [sello](../../glosario.md#sello) de cierre.
+5. S005: `aquas ver`.
+6. S006: propuesta con diagrama.
+
+## Cómo se usa
+
+- Ver lo activo: `go run ./cmd/aquas backlog ver`.
+- Qué toca: `go run ./cmd/aquas backlog siguiente`.
+- Los archivos viven en `trabajo/activo/` y `trabajo/archivo/`. No se editan a mano.
+
+## Contrato y evidencia
+
+Estado: en curso. S002 hecho; el resto pendiente.
+
+Objetivo: que el orden y el estado del trabajo los guarde un programa, no el agente.
+
+Por qué seis slices: cada uno se usa solo. El backlog sirve sin auditoría, y el rojo y verde sirve sin sello.
+
+Orden: S002 va primero por prioridad. Jesús la fijó en P1 el 2026-10-21.
+
+```mermaid
+flowchart LR
+    S2["S002 backlog<br/>Hecho"] --> S3["S003 rojo y verde<br/>Pendiente"]
+    S3 --> S4["S004 sello<br/>Pendiente"]
+    S1["S001 auditoría<br/>Pendiente"]
+```
+
+Prueba integral de la feature: todavía no existe. Llega con S003, cuando haya un slice que cerrar de punta a punta.
+
+## Navegación
+
+- ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
+- Abajo: [S002 · Backlog en JSON](S002.md)

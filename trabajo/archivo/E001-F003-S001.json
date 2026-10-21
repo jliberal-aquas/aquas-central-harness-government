@@ -1,0 +1,11 @@
+{
+  "id": "E001/F003/S001",
+  "tipo": "slice",
+  "titulo": "Leer un lote de rutas",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E001/F003",
+  "bloqueado_por": [],
+  "secuencia": 26
+}

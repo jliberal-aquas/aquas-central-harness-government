@@ -1,0 +1,11 @@
+{
+  "id": "E001/F005",
+  "tipo": "feature",
+  "titulo": "Memoria caliente",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 31
+}

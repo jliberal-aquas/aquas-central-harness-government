@@ -1,0 +1,11 @@
+{
+  "id": "E001",
+  "tipo": "iniciativa",
+  "titulo": "Gobierno del trabajo",
+  "estado": "EN_CURSO",
+  "prioridad": "P1",
+  "motivo": "camino fijo para cada pedido",
+  "padre": "",
+  "bloqueado_por": [],
+  "secuencia": 12
+}

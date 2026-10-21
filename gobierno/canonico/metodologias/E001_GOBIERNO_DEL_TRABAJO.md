@@ -32,8 +32,8 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Solo `aquas` escribe. Control: hook PreToolUse niega Edit/Write en `trabajo/**` + pre-commit valida esquema.
 - Elemento cerrado se archiva al cerrarse (no espera al padre); referencias siguen resolviendo.
 - Prioridad obligatoria: P0 · P1 · P2 · P3 · SIN_TRIAGE, con motivo. Agente asigna; humano puede cambiar.
-- Orden determinista de `aquas backlog siguiente`: desbloqueado → prioridad → secuencia de ingreso → ID.
-- Estados: BORRADOR · LISTO · EN_CURSO · VERIFICANDO · CERRADO · ARCHIVADO; excepciones BLOQUEADO · CANCELADO.
+- Orden determinista de `aquas backlog siguiente`: en curso (EN_CURSO, VERIFICANDO; un solo slice activo) → desbloqueado → prioridad → secuencia de ingreso → ID. Desbloqueado = no BLOQUEADO y cada `bloqueado_por` archivado (CERRADO o CANCELADO: un bloqueador cancelado libera, si no la ficha quedaría trabada).
+- Estados: BORRADOR · LISTO · EN_CURSO · VERIFICANDO · CERRADO; excepciones BLOQUEADO · CANCELADO. Archivado no es estado: es la carpeta `trabajo/archivo/` (decisión del agente en S002, 2026-10-21).
 - Hallazgo fuera de alcance del slice activo → `aquas backlog defecto`; no se toca en el slice.
 
 ## Slice y feature
@@ -71,17 +71,13 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - `aquas ver`: Go genera Mermaid del estado (árbol de backlog, slice, lista de sello) desde JSON; agente no los dibuja.
 - Propuesta de proceso/diseño en chat → diagrama ASCII. Hook de cierre: bloque PROPUESTA sin bloque de código → falla. Límite: depende de que el agente marque PROPUESTA.
 
-## Prioridades (humano aprobó 2026-10-21; rigen sobre el orden de lista)
-- P1 · 1.º F006 Workers y auditor (hecho 2026-10-21): pequeño; abarata lo que viene.
-- P1 · 2.º F003 Bibliotecario (hecha 2026-10-21 con S001; S002 descartado; S003–S004 aplazados: leer = 18 % de las llamadas).
-- P1 · 3.º F002/S002 backlog JSON con prioridad: el orden lo guarda `aquas`, no la memoria del agente.
-- P2 · PROPUESTA (humano aprobó registrarla 2026-10-21): estudiar las 173 llamadas de pruebas y gate (28 %, el mayor gasto en vueltas): cuántas son reintentos tras fallo; luego proponer herramienta.
-- P2: resto de F002 (auditoría de turnos, sello, `aquas ver`) y F004 Defectos. No bloquean hoy.
-- P3: migrar hooks globales (E000/F003, hoy inventario); idea de repos hijos.
+## Prioridades y estado
+- Desde E001/F002/S002 (2026-10-21) estado, prioridad y orden viven en las fichas `trabajo/` (`aquas backlog ver | siguiente`). Las fichas mandan; este canónico guarda diseño y decisiones.
+- Migración 2026-10-21 (humano aprobó): todo el backlog anterior pasó a fichas; lo cerrado se creó y archivó al momento por la traza (37 fichas: 23 archivo, 14 activo).
 
-## Features y slices (backlog provisional hasta F002/S002)
+## Decisiones por feature (el estado vigente está en las fichas)
 - E000 Mantenimiento · F003 Hooks globales (inventario; pedido humano 2026-10-21; solo registro, no se migran): viven en `~/.claude/hooks/`, rigen todos los proyectos y este repo no los gobierna, prueba ni documenta. `presupuesto.py` (UserPromptSubmit, PreToolUse): topes de llamadas y agentes por prompt, plan por lotes «Plan: N llamadas, M agentes». `reglas.py` (UserPromptSubmit, PreToolUse, Stop, SessionStart compact): sandbox, no releer, aperturas prohibidas, protocolo de fallo, certeza, contexto medido. `herdr-agent-state.ps1` (SessionStart): función NO CONFIRMADA. `cbm-*`: de codebase-memory-mcp; se van con él. Pruebas propias allá (`probar_*.py`), no corren aquí. Python, no Go (principio 4): migrar = decisión futura del humano.
-- E000 Mantenimiento · F001 Guardia del repo: S001 regla de oro 5 (hecho, 6756b1d) · S002 lista de permitidos (hecho, 9e94e35) · S003 hooks no arrancaban en Windows: `args` lanza `sh` sin shell y el PATH no lo trae → `shell: bash` (hecho, bae7091). Wiki: hecha (docs/E000/). Backlog: pendiente (F002/S002). S004 entorno declarado (hecho; decisiones humanas 2026-10-20: archivo local no versionado, bloquea si falta o no coincide, settings.json compilado entero y no versionado): config declara sistema operativo y raíz del repo · `settings.json` se compila desde esa config con el shell del SO · la guardia valida su raíz contra la declarada (hoy la toma de `os.Getwd()`) · incluye el hueco de PowerShell (matcher no la cubre). Va antes de E001/F001/S004. F002 Compilador y sello (a posteriori, wiki hecha): S001 compilar y sellar (hecho, d2b7f3d) · S002 tope de caracteres (hecho, 458614f).
+- E000 Mantenimiento · F001 Guardia del repo: S001 regla de oro 5 (hecho, 6756b1d) · S002 lista de permitidos (hecho, 9e94e35) · S003 hooks no arrancaban en Windows: `args` lanza `sh` sin shell y el PATH no lo trae → `shell: bash` (hecho, bae7091). Wiki: hecha (docs/E000/). Backlog: fichas desde F002/S002. S004 entorno declarado (hecho; decisiones humanas 2026-10-20: archivo local no versionado, bloquea si falta o no coincide, settings.json compilado entero y no versionado): config declara sistema operativo y raíz del repo · `settings.json` se compila desde esa config con el shell del SO · la guardia valida su raíz contra la declarada (hoy la toma de `os.Getwd()`) · incluye el hueco de PowerShell (matcher no la cubre). Va antes de E001/F001/S004. F002 Compilador y sello (a posteriori, wiki hecha): S001 compilar y sellar (hecho, d2b7f3d) · S002 tope de caracteres (hecho, 458614f).
 - E001/F001/S004 contrato y evidencia en la wiki. HECHO. F005 = SIGUIENTE. Tareas en este orden (contenido primero, gate al final para no bloquear el pre-commit):
   - T3 páginas E000 → F001 Guardia → S001–S004, ya con sección 9 y migas (hecho).
   - T4 sección 9 + migas en E001, F001, S001–S004; cada prueba existente nombrada por su slice dueño (hecho; las 8 pruebas de internal/compilador, anteriores al método, pasan a E000/F002 por decisión humana 2026-10-20).

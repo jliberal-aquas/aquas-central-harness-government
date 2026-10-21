@@ -1,0 +1,11 @@
+{
+  "id": "E001/F005/S002",
+  "tipo": "slice",
+  "titulo": "Hooks de inicio y cierre",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E001/F005",
+  "bloqueado_por": [],
+  "secuencia": 33
+}

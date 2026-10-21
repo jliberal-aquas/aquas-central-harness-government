@@ -1,0 +1,11 @@
+{
+  "id": "E001/F006",
+  "tipo": "feature",
+  "titulo": "Workers y auditor",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 35
+}

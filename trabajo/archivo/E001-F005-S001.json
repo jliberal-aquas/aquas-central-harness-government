@@ -1,0 +1,11 @@
+{
+  "id": "E001/F005/S001",
+  "tipo": "slice",
+  "titulo": "Archivo, sello y guardia",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E001/F005",
+  "bloqueado_por": [],
+  "secuencia": 32
+}

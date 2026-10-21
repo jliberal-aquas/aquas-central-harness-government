@@ -19,6 +19,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/jliberal/aquas-harness-governance/internal/backlog"
 	"github.com/jliberal/aquas-harness-governance/internal/biblioteca"
 	"github.com/jliberal/aquas-harness-governance/internal/compilador"
 	"github.com/jliberal/aquas-harness-governance/internal/encargo"
@@ -30,7 +31,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria | cierre-agente | biblioteca")
+		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria | backlog | cierre-agente | biblioteca")
 		os.Exit(64)
 	}
 	raiz, err := os.Getwd()
@@ -61,6 +62,7 @@ func main() {
 		if err != nil {
 			fallar(1, err)
 		}
+		fichas := backlog.Validar(raiz)
 		permitidos := guardia.ValidarConfig(raiz)
 		if m := entorno.Validar(raiz); m != "" {
 			permitidos = append(permitidos, "entorno: "+m)
@@ -74,17 +76,22 @@ func main() {
 		if len(docs) > 0 {
 			listar("GATE FALLIDO · wiki docs/ incompleta:", docs)
 		}
+		if len(fichas) > 0 {
+			listar("GATE FALLIDO · backlog trabajo/ (fichas):", fichas)
+		}
 		if len(permitidos) > 0 {
 			listar("GATE FALLIDO · guardia (permitidos, entorno o settings):", permitidos)
 		}
-		if len(derivados)+len(docs)+len(permitidos) > 0 {
+		if len(derivados)+len(docs)+len(fichas)+len(permitidos) > 0 {
 			os.Exit(1)
 		}
-		fmt.Println("GATE OK · derivados, sello, wiki y guardia al día")
+		fmt.Println("GATE OK · derivados, sello, wiki, backlog y guardia al día")
 	case "hook":
 		hook(raiz)
 	case "memoria":
 		memoriaCLI(raiz, os.Args[2:])
+	case "backlog":
+		backlogCLI(raiz, os.Args[2:])
 	case "biblioteca": // bibliotecario: lote de rutas por stdin (JSON) → solo lo pedido
 		if len(os.Args) < 3 || os.Args[2] != "leer" {
 			fallar(64, fmt.Errorf(`uso: echo '{"rutas":["a.go","b.md:10-40"]}' | aquas biblioteca leer`))
@@ -255,4 +262,53 @@ func memoriaCLI(raiz string, args []string) {
 		fallar(1, err)
 	}
 	fmt.Print(memoria.Texto(m))
+}
+
+// backlogCLI: nuevo | ver [id] | prioridad <id> <P> motivo=… | estado <id> <ESTADO> | siguiente.
+func backlogCLI(raiz string, args []string) {
+	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente")
+	if len(args) == 0 {
+		fallar(64, uso)
+	}
+	var f backlog.Ficha
+	var err error
+	switch {
+	case args[0] == "nuevo" && len(args) > 1:
+		f, err = backlog.Nuevo(raiz, args[1:])
+	case args[0] == "ver" && len(args) == 1:
+		fs, err := backlog.Activas(raiz)
+		if err != nil {
+			fallar(1, err)
+		}
+		for _, f := range fs {
+			fmt.Print(backlog.Texto(f))
+		}
+		return
+	case args[0] == "ver" && len(args) == 2:
+		var archivada bool
+		f, archivada, err = backlog.Ver(raiz, args[1])
+		if err == nil && archivada {
+			fmt.Print("archivada · ")
+		}
+	case args[0] == "prioridad" && len(args) == 4 && strings.HasPrefix(args[3], "motivo="):
+		f, err = backlog.Prioridad(raiz, args[1], args[2], strings.TrimPrefix(args[3], "motivo="))
+	case args[0] == "estado" && len(args) == 3:
+		f, err = backlog.Estado(raiz, args[1], args[2])
+		if err == nil && (f.Estado == "CERRADO" || f.Estado == "CANCELADO") {
+			fmt.Printf("archivada en %s/ · ", backlog.Archivo)
+		}
+	case args[0] == "siguiente" && len(args) == 1:
+		var hay bool
+		f, hay, err = backlog.Siguiente(raiz)
+		if err == nil && !hay {
+			fmt.Println("nada: no hay slice en curso ni desbloqueado")
+			return
+		}
+	default:
+		fallar(64, uso)
+	}
+	if err != nil {
+		fallar(1, err)
+	}
+	fmt.Print(backlog.Texto(f))
 }

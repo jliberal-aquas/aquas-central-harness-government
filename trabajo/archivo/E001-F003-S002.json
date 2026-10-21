@@ -1,0 +1,11 @@
+{
+  "id": "E001/F003/S002",
+  "tipo": "slice",
+  "titulo": "Buscar por regex",
+  "estado": "CANCELADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: descartado antes del backlog JSON",
+  "padre": "E001/F003",
+  "bloqueado_por": [],
+  "secuencia": 27
+}

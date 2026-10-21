@@ -1,0 +1,11 @@
+{
+  "id": "E000",
+  "tipo": "iniciativa",
+  "titulo": "Mantenimiento del gobierno",
+  "estado": "EN_CURSO",
+  "prioridad": "P1",
+  "motivo": "iniciativa permanente del repo central",
+  "padre": "",
+  "bloqueado_por": [],
+  "secuencia": 1
+}

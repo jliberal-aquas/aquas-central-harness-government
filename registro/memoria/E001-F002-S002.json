@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S002",
+    "tarea": "F002/S002 hecho: backlog en fichas JSON, 37 migradas, auditor 7 de 8 corregidos"
+  },
+  "siguiente": "aquas backlog siguiente → E001/F002/S001 auditoría de turnos (P2); preguntar al humano",
+  "pendientes": [
+    "limpiar .tmp/aq.exe, .tmp/m1, .tmp/sin-entorno, .tmp/t4"
+  ],
+  "decisiones": [],
+  "huella_git": "c96fc724b26d6a20eb7e92facdac5d0854c2187d1d72084b6e549e026708c0ac",
+  "actualizado": "2026-10-21T11:57:19Z",
+  "sello": "fc2c5fd539c623a77d3c6672cde9ce3955c6441c3ed41833c2dc8e54e6a7ed22"
+}

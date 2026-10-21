@@ -1,0 +1,11 @@
+{
+  "id": "E001/F001/S002",
+  "tipo": "slice",
+  "titulo": "Glosario y legibilidad",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E001/F001",
+  "bloqueado_por": [],
+  "secuencia": 15
+}

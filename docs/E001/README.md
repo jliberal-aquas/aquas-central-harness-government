@@ -66,7 +66,7 @@ Estado actual de sus features:
 | [F001 Wiki + gate](F001/README.md) | Obliga a documentar con esta wiki | Hecho |
 | [F005 Memoria caliente](F005/README.md) | El agente no pierde el foco entre sesiones | Hecha |
 | [F006 Workers y auditor](F006/README.md) | Agentes baratos que ejecutan y un auditor que revisa | Hecha |
-| F002 Turnos, backlog y sello | Auditoría, backlog en JSON, rojo/verde, sello | Pendiente |
+| [F002 Turnos, backlog y sello](F002/README.md) | Auditoría, backlog en JSON, rojo/verde, sello | En curso |
 | F004 Defectos y reincidencia | Registra fallos y avisa si se repiten | Pendiente |
 | [F003 Bibliotecario](F003/README.md) | Lee el repo pidiendo solo lo útil | Hecha |
 
@@ -110,7 +110,7 @@ Hoy funciona así:
 - Contestas cuando el agente te pregunta algo.
 - La especificación completa vive en [E001_GOBIERNO_DEL_TRABAJO.md](../../gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md).
 
-Cuando llegue F002 habrá comandos como `aquas backlog siguiente` y `aquas slice rojo`. Todavía no existen.
+Desde F002/S002 existe `aquas backlog siguiente`, que dice qué toca. El rojo y verde (`aquas slice rojo`) llega en S003.
 
 ## Contrato y evidencia
 
@@ -121,7 +121,7 @@ Cuando llegue F002 habrá comandos como `aquas backlog siguiente` y `aquas slice
 ```mermaid
 flowchart LR
     E["E001"] --> F1["F001 Wiki + gate<br/>Hecho"]
-    E --> F2["F002 Turnos, backlog y sello<br/>Pendiente"]
+    E --> F2["F002 Turnos, backlog y sello<br/>En curso"]
     E --> F3["F003 Bibliotecario<br/>Hecha"]
     E --> F4["F004 Defectos<br/>Pendiente"]
     E --> F5["F005 Memoria caliente<br/>Hecha"]
@@ -144,4 +144,5 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 - Abajo: [F001 · Wiki + gate](F001/README.md)
 - Abajo: [F005 · Memoria caliente](F005/README.md)
 - Abajo: [F006 · Workers y auditor](F006/README.md)
+- Abajo: [F002 · Turnos, backlog y sello](F002/README.md)
 - Abajo: [F003 · Bibliotecario](F003/README.md)

@@ -1,0 +1,11 @@
+{
+  "id": "E001/F002/S005",
+  "tipo": "slice",
+  "titulo": "aquas ver",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "resto de F002, no bloquea hoy",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 23
+}

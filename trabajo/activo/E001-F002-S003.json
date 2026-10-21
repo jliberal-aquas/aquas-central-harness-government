@@ -1,0 +1,13 @@
+{
+  "id": "E001/F002/S003",
+  "tipo": "slice",
+  "titulo": "Rojo y verde del slice",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "resto de F002, no bloquea hoy",
+  "padre": "E001/F002",
+  "bloqueado_por": [
+    "E001/F002/S002"
+  ],
+  "secuencia": 21
+}

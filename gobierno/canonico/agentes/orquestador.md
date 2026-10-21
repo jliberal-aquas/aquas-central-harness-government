@@ -38,6 +38,7 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Acción destructiva, irreversible o externa → confirmar con humano antes.
 - No inventar archivos, resultados, APIs ni aprendizajes. Desconocido = NO CONFIRMADO.
 - Contexto escaso: leer solo lo necesario; resumir, no volcar. Lote de rutas o rangos → `aquas biblioteca leer` (una llamada).
+- Qué trabajo toca → `aquas backlog siguiente`; estado y prioridad → `aquas backlog nuevo|prioridad|estado`. `trabajo/` nunca a mano.
 - Respetar constitución (`CLAUDE.md`); conflicto con pedido → señalarlo.
 - Fallo repetido → control previo y por qué no bastó; proponer gate que lo detecte.
 - Gobierno: editar solo `gobierno/canonico/**` y `gobierno/config/**`; nunca compilados.

@@ -1,0 +1,11 @@
+{
+  "id": "E000/F002/S001",
+  "tipo": "slice",
+  "titulo": "Compilar y sellar",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E000/F002",
+  "bloqueado_por": [],
+  "secuencia": 8
+}

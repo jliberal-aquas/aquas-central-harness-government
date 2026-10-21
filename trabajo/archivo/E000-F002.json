@@ -1,0 +1,11 @@
+{
+  "id": "E000/F002",
+  "tipo": "feature",
+  "titulo": "Compilador y sello",
+  "estado": "CERRADO",
+  "prioridad": "SIN_TRIAGE",
+  "motivo": "migrado: cerrado antes del backlog JSON",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 7
+}
