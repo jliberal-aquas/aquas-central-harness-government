@@ -9,6 +9,7 @@
 //	aquas cierre-agente  hook SubagentStop: exige el CIERRE fijo de worker y auditor (exit 2)
 //	aquas memoria    ver | fijar campo=valor… | inicio | cierre | archivar: memoria caliente del foco (.aquas/memoria.json)
 //	aquas medir vueltas  cuenta corridas, fallas y motivos de go test y verificar en el historial de Claude Code
+//	aquas wiki enlazar docs/x.md…  enlaza al glosario la primera aparición de cada término
 //	aquas defecto    nuevo firma=… que=… causa=… arreglo=… cercioro=… | ocurre D000001 T000001 | ver [D000001]
 package main
 
@@ -119,6 +120,17 @@ func main() {
 	case "defecto": // E001/F004/S001: registro de defectos en registro/defectos/
 		if err := defectoCLI(raiz, os.Args[2:]); err != nil {
 			fallar(1, err)
+		}
+	case "wiki": // E000/F004/S003: aquas wiki enlazar docs/x.md… pone los enlaces al glosario que pide el gate
+		if len(os.Args) < 4 || os.Args[2] != "enlazar" {
+			fallar(64, errors.New("uso: aquas wiki enlazar docs/x.md…"))
+		}
+		for _, rel := range os.Args[3:] {
+			n, err := wiki.Enlazar(raiz, filepath.ToSlash(rel))
+			if err != nil {
+				fallar(1, err)
+			}
+			fmt.Printf("%s: %d enlaces al glosario\n", rel, n)
 		}
 	case "medir": // E000/F004/S001: corridas y fallas de pruebas y gate, solo lectura del historial
 		if len(os.Args) < 3 || os.Args[2] != "vueltas" {

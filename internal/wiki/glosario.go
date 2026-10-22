@@ -73,6 +73,23 @@ func revisarGlosario(pg *pagina) []string {
 // revisarTerminos exige que la primera aparición en prosa de cada término enlace a su entrada.
 func revisarTerminos(pg *pagina, ts []termino) []string {
 	var ps []string
+	for _, f := range faltantes(pg, ts) {
+		rel := relDesde(pg.rel, glosario)
+		ps = append(ps, fmt.Sprintf("%s: primera aparición de «%s» sin enlace al glosario (escribe [%s](%s#%s))",
+			pg.rel, f.t.nombre, f.forma, rel, f.t.ancla))
+	}
+	return ps
+}
+
+// falta: término cuya primera aparición en prosa no enlaza al glosario; forma = el texto tal cual aparece.
+type falta struct {
+	t     termino
+	forma string
+}
+
+// faltantes: la detección que comparten el gate (revisarTerminos) y el arreglo (Enlazar).
+func faltantes(pg *pagina, ts []termino) []falta {
+	var fs []falta
 	visto := make([]bool, len(ts))
 	for _, l := range pg.prosa {
 		if l == "" {
@@ -100,15 +117,13 @@ func revisarTerminos(pg *pagina, ts []termino) []string {
 				}
 				visto[i] = true
 				if !ok {
-					rel := relDesde(pg.rel, glosario)
-					ps = append(ps, fmt.Sprintf("%s: primera aparición de «%s» sin enlace al glosario (escribe [%s](%s#%s))",
-						pg.rel, t.nombre, l[ini:fin], rel, t.ancla))
+					fs = append(fs, falta{t, l[ini:fin]})
 				}
 				break
 			}
 		}
 	}
-	return ps
+	return fs
 }
 
 // relDesde da la ruta relativa de destino vista desde la carpeta de la página.

@@ -1,0 +1,66 @@
+{
+  "id": "E000/F004/S003",
+  "tipo": "slice",
+  "titulo": "Enlazar el glosario solo",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "enlace faltante al glosario = 110 de 166 caídas del gate; arreglo mecánico (humano 2026-10-22)",
+  "padre": "E000/F004",
+  "bloqueado_por": [],
+  "secuencia": 58,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestEnlazaGlosarioSolo",
+      "intencion": "aquas wiki enlazar pone el enlace en la primera aparición en prosa de cada término, no toca código, títulos, tablas ni enlaces, y una segunda corrida no cambia nada"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T15:56:27Z",
+    "head": "b76acbc3de488bb27a178da0046fb353a0ece1c3",
+    "resultado": {
+      "./internal/wiki:TestEnlazaGlosarioSolo": "enlazar_test.go:30: primera corrida: -1 enlaces, \u003cnil\u003e; esperaba 2"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T15:57:34Z",
+    "head": "b76acbc3de488bb27a178da0046fb353a0ece1c3"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F004",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el enlazador del glosario"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el enlazador del glosario"
+    },
+    {
+      "clave": "pagina:docs/E000/F004/S003.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a S003"
+    },
+    {
+      "clave": "pagina:docs/E000/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a S003"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a S003"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el enlazador del glosario"
+    }
+  ],
+  "alcance": [
+    "internal/wiki/**",
+    "cmd/aquas/**",
+    "docs/E000/**",
+    "docs/glosario.md"
+  ]
+}
