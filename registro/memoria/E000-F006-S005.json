@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F006",
+    "slice": "S005",
+    "tarea": "S005 wiki al día: cierre"
+  },
+  "siguiente": "E002/F001/S001 aquas install",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "c537b399bf02687729faf2be03478ceca0fab8b770528305f11bfd464ef8f2bd",
+  "actualizado": "2026-10-22T18:12:39Z",
+  "sello": "29eef5a2c0212fd88f43decf26dbc999c7e0ad5309ea37c9ce6b372308053459"
+}

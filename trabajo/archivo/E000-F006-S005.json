@@ -1,0 +1,503 @@
+{
+  "id": "E000/F006/S005",
+  "tipo": "slice",
+  "titulo": "Wiki y metodología al día",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "Fable #5: prosa vieja que el gate no ve",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 65,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestComandoCitadoExiste",
+      "intencion": "todo aquas X citado en docs/ y metodologias/ existe en el CLI"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T18:10:46Z",
+    "head": "c1ac509a7287c77630ad37e6c30c58837269a2e8",
+    "resultado": {
+      "./internal/wiki:TestComandoCitadoExiste": "comandos_test.go:37: quiero 2 problemas (turno refinar en docs/a.md, ver en m.md); obtuve 0:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T18:12:08Z",
+    "head": "c1ac509a7287c77630ad37e6c30c58837269a2e8"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S005.md",
+      "marca": "actualizado",
+      "motivo": "S005 nueva, fila en F006"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "actualizado",
+      "motivo": "S005 nueva, fila en F006"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "S005 nueva, fila en F006"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/wiki",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/punta_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/punta_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S005.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S006.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S013.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S014.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/comunicacion.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/constitucion.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/biblioteca/biblioteca.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/biblioteca/biblioteca.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/legibilidad_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombran README.md por ruta de wiki o el paquete wiki; la regla nueva no los cambia"
+    }
+  ],
+  "alcance": [
+    "internal/wiki/**",
+    "docs/**",
+    "gobierno/**",
+    "README.md",
+    "CLAUDE.md",
+    "metodologias/**"
+  ]
+}

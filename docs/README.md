@@ -5,21 +5,23 @@ Esta es la puerta de entrada. Desde aquí bajas a cada [iniciativa](glosario.md#
 
 ## En una frase
 
-Este repositorio es el **libro de reglas** que siguen los [agentes](glosario.md#agente) de Claude Code. También es una máquina que revisa que nadie se salte esas reglas.
+Aquas es el arnés central de gobierno de todos los productos de Aquas hechos con Claude Code. Define cómo se trabaja, lo hace cumplir con programas y lo instala en cada proyecto.
 
 ## Para qué existe
 
-**El problema.** Un agente de IA trabaja rápido, pero olvida. Si una regla solo vive en el chat, se pierde cuando el chat se compacta. Si una regla depende de que el agente «se acuerde», a veces no se acuerda.
+**El problema.** Cada producto tendría sus propias reglas, copiadas a mano. Una landing, una editorial, un libro o una API se irían desviando y contradiciendo.
 
-**La solución.** Las reglas se escriben en archivos. Un programa en [Go](glosario.md#go) las junta, las sella y revisa que todo esté en orden. Si algo está mal, el programa bloquea el [commit](glosario.md#commit). No depende de la buena memoria del agente.
+Además, un [agente](glosario.md#agente) de IA es rápido pero poco confiable sin controles. Olvida, se sale del alcance, inventa o declara «hecho» sin prueba.
 
-Tres ideas sostienen todo:
+**La solución.** Un solo repositorio central con cinco piezas:
 
-1. **Lo escrito manda.** Una regla que no está en un archivo [canónico](glosario.md#canónico) no existe.
-2. **La máquina revisa.** Lo que se puede comprobar con un programa, lo comprueba un programa (un *[gate](glosario.md#gate)*).
-3. **Se explica para humanos.** Esta [wiki](glosario.md#wiki) cuenta cada pieza con ejemplos y dibujos.
+1. **Gobierno escrito una vez.** Constitución, metodología y agentes viven en archivos [canónicos](glosario.md#canónico) sellados.
+2. **Cumplimiento por programa.** Lo que se puede comprobar lo comprueba un programa en [Go](glosario.md#go): un *[gate](glosario.md#gate)* o un [hook](glosario.md#hook).
+3. **Trabajo ordenado.** Iniciativa, feature y slice; la [prueba en rojo](glosario.md#prueba-en-rojo) va antes que el código.
+4. **Distribución a los proyectos hijos.** aquas install, update y report (en construcción, iniciativa E002).
+5. **Explicado para humanos.** Esta [wiki](glosario.md#wiki) cuenta cada pieza con ejemplos y dibujos.
 
-El método de trabajo se llama **Aquas-driven development**. No depende de un comité ni de documentos largos. Cada slice tiene un contrato mínimo y un gate lo vigila. Está en evolución constante.
+El método de trabajo se llama **Aquas-driven development**. Cada slice tiene un contrato mínimo y un gate lo vigila. Está en evolución constante.
 
 ## Analogía
 
@@ -64,7 +66,7 @@ Cada paso lo hace o lo revisa un programa. El agente no tiene que acordarse.
 2. El orquestador entiende el pedido. Edita el canónico `gobierno/canonico/agentes/orquestador.md` y agrega la regla «serie por defecto».
 3. Apenas guarda el archivo, un *[hook](glosario.md#hook)* de Claude Code ejecuta el [compilador](glosario.md#compilador). El compilador regenera `.claude/agents/orchestrator.md`.
 4. El compilador actualiza el [sello](glosario.md#sello): guarda la huella [SHA-256](glosario.md#sha-256) del canónico y del archivo generado.
-5. El orquestador hace commit. Antes de guardar, git ejecuta el gate `aquas verificar`.
+5. El orquestador hace [commit](glosario.md#commit). Antes de guardar, git ejecuta el gate `aquas verificar`.
 6. El gate compara huellas, revisa el tamaño máximo y revisa esta wiki. Todo cuadra, así que el commit entra.
 
 **¿Y si alguien edita a mano el archivo generado?** El hook revierte la edición y avisa: «es GENERADO; edita el canónico». La regla vive en un solo lugar.
@@ -104,10 +106,11 @@ Mapa rápido del repositorio:
 
 ## Las iniciativas
 
-Hoy el repositorio tiene dos iniciativas. Cada una tiene su página, con sus features, diagramas y pruebas.
+Hoy el repositorio tiene tres iniciativas. Cada una tiene su página, con sus features, diagramas y pruebas.
 
 - **[E000 · Mantenimiento del gobierno](E000/README.md).** Arregla y vigila este mismo repositorio. Aquí están la guardia, el compilador y la calidad de las pruebas.
 - **[E001 · Gobierno del trabajo](E001/README.md).** Define el camino fijo de cada pedido. Aquí están esta wiki, el [backlog](glosario.md#backlog), la memoria del agente y los workers.
+- **E002 · Proyectos hijos.** Instala y mantiene el gobierno en cada producto de Aquas. Planeada; arranca con la landing de Aquas.
 
 El estado de cada iniciativa está en la tabla de Navegación. La genera `aquas compilar` desde las fichas; nadie la escribe a mano. Si una ficha cambia y la tabla no, el [gate](glosario.md#gate) bloquea el commit.
 

@@ -145,6 +145,11 @@ func Verificar(raiz string) ([]string, error) {
 		problemas = append(problemas, revisarTerminos(pg, ts)...)
 	}
 	problemas = append(problemas, revisarAlcance(paginas, orden)...)
+	cmds, err := RevisarComandos(raiz)
+	if err != nil {
+		return nil, err
+	}
+	problemas = append(problemas, cmds...)
 	traza, err := revisarTrazabilidad(raiz, paginas, orden)
 	if err != nil {
 		return nil, err
