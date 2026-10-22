@@ -1,0 +1,71 @@
+{
+  "id": "E000/F004/S001",
+  "tipo": "slice",
+  "titulo": "Medir vueltas de pruebas y gate",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "43 % de corridas de prueba y gate fallan; medir primero abarata todo lo demás (humano 2026-10-22)",
+  "padre": "E000/F004",
+  "bloqueado_por": [],
+  "secuencia": 53,
+  "pruebas": [
+    {
+      "prueba": "./internal/vueltas:TestCuentaVueltasPorMotivo",
+      "intencion": "un historial de muestra con corridas de go test y aquas verificar conocidas da exactamente sus corridas, fallas y motivos"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T10:17:47Z",
+    "head": "d213e9059ee07e7e89ba7cb905cf054e028885f3",
+    "resultado": {
+      "./internal/vueltas:TestCuentaVueltasPorMotivo": "vueltas_test.go:43: conteo"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T10:19:55Z",
+    "head": "d213e9059ee07e7e89ba7cb905cf054e028885f3"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F004",
+      "marca": "sin_cambio",
+      "motivo": "no depende de medir vueltas"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "no depende de medir vueltas"
+    },
+    {
+      "clave": "pagina:docs/E000/F004/S001.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a F004/S001"
+    },
+    {
+      "clave": "pagina:docs/E000/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a F004/S001"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a F004/S001"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "no depende de medir vueltas"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no depende de medir vueltas"
+    }
+  ],
+  "alcance": [
+    "internal/vueltas/**",
+    "cmd/aquas/**",
+    "docs/E000/**",
+    "docs/glosario.md"
+  ]
+}

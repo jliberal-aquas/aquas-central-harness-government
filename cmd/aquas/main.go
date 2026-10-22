@@ -8,6 +8,7 @@
 //	aquas biblioteca leer  bibliotecario: JSON {"rutas":[…]} por stdin → solo lo pedido, numerado
 //	aquas cierre-agente  hook SubagentStop: exige el CIERRE fijo de worker y auditor (exit 2)
 //	aquas memoria    ver | fijar campo=valor… | inicio | cierre | archivar: memoria caliente del foco (.aquas/memoria.json)
+//	aquas medir vueltas  cuenta corridas, fallas y motivos de go test y verificar en el historial de Claude Code
 package main
 
 import (
@@ -29,6 +30,7 @@ import (
 	"github.com/jliberal/aquas-harness-governance/internal/memoria"
 	"github.com/jliberal/aquas-harness-governance/internal/propuesta"
 	"github.com/jliberal/aquas-harness-governance/internal/turno"
+	"github.com/jliberal/aquas-harness-governance/internal/vueltas"
 	"github.com/jliberal/aquas-harness-governance/internal/wiki"
 )
 
@@ -111,6 +113,17 @@ func main() {
 		if m := propuesta.Revisar(e.Respuesta); m != "" {
 			fmt.Fprintln(os.Stderr, m)
 			os.Exit(2)
+		}
+	case "medir": // E000/F004/S001: corridas y fallas de pruebas y gate, solo lectura del historial
+		if len(os.Args) < 3 || os.Args[2] != "vueltas" {
+			fallar(64, errors.New("uso: aquas medir vueltas [historial.jsonl…]"))
+		}
+		home, err := os.UserHomeDir()
+		if err == nil {
+			err = vueltas.Medir(os.Stdout, home, raiz, os.Args[3:])
+		}
+		if err != nil {
+			fallar(1, err)
 		}
 	case "memoria":
 		memoriaCLI(raiz, os.Args[2:])

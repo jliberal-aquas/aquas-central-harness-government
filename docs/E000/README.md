@@ -54,7 +54,7 @@ Sus features:
 | [F002 Compilador y sello](F002/README.md) | Genera, sella y pone tope a los archivos de reglas |
 | [F005 Calidad de las pruebas](F005/README.md) | Pruebas que fallan cuando se rompe su regla |
 | F003 Hooks globales | Inventario de los ganchos de `~/.claude/hooks/` que rigen todo proyecto |
-| F004 Vueltas de pruebas y gate | Estudiar por qué pruebas y gate gastan tantas llamadas |
+| [F004 Vueltas de pruebas y gate](F004/README.md) | Estudiar por qué pruebas y gate gastan tantas llamadas |
 
 ## Ejemplo de punta a punta
 
@@ -126,7 +126,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go run ./cmd/aquas verif
 | [F001](F001/README.md) | Guardia del repo | Hecho |
 | [F002](F002/README.md) | Compilador y sello | Hecho |
 | F003 | Hooks globales (inventario) | Cancelado |
-| F004 | Vueltas de pruebas y gate | Planeado |
+| [F004](F004/README.md) | Vueltas de pruebas y gate | Planeado |
 | [F005](F005/README.md) | Calidad de las pruebas | Hecho |
 
 <!-- /GENERADO -->
@@ -134,4 +134,5 @@ Prueba integral de la iniciativa: `go test ./...` más `go run ./cmd/aquas verif
 - ↑ Subir: [Inicio de la wiki](../README.md)
 - Abajo: [F001 · Guardia del repo](F001/README.md)
 - Abajo: [F002 · Compilador y sello](F002/README.md)
+- Abajo: [F004 · Vueltas de pruebas y gate](F004/README.md)
 - Abajo: [F005 · Calidad de las pruebas](F005/README.md)

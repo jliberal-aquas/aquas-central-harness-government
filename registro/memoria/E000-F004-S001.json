@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F004",
+    "slice": "S001",
+    "tarea": "E000/F004/S001 cerrado"
+  },
+  "siguiente": "lo que diga aquas backlog siguiente",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "e6b2ebd7d81a0cf7af05482325b657b65142e89c70973ba4b20176b5bb270047",
+  "actualizado": "2026-10-22T10:22:57Z",
+  "sello": "95a11b8b732ad7f05ef633b68154899ae52bfa59ff64b9f1e8252843ba9d1b37"
+}
