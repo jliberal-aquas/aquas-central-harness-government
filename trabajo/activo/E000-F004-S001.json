@@ -1,0 +1,17 @@
+{
+  "id": "E000/F004/S001",
+  "tipo": "slice",
+  "titulo": "Medir vueltas de pruebas y gate",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: medir antes de arreglar; muestra de una sesión: 235 corridas, 101 fallidas",
+  "padre": "E000/F004",
+  "bloqueado_por": [],
+  "secuencia": 53,
+  "pruebas": [
+    {
+      "prueba": "./internal/vueltas:TestCuentaVueltasPorMotivo",
+      "intencion": "un historial de muestra con corridas de go test y aquas verificar conocidas da exactamente sus corridas, fallas y motivos"
+    }
+  ]
+}

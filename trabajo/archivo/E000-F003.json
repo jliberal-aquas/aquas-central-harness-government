@@ -2,7 +2,7 @@
   "id": "E000/F003",
   "tipo": "feature",
   "titulo": "Hooks globales (inventario)",
-  "estado": "LISTO",
+  "estado": "CANCELADO",
   "prioridad": "P3",
   "motivo": "solo registro; migrar = decisión futura del humano",
   "padre": "E000",
