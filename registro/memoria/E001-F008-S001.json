@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F008",
+    "slice": "S001",
+    "tarea": "S001 cerrado: pruebas con valida/rojo/verde"
+  },
+  "siguiente": "E001/F008/S006 arreglos con ID",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "9ae12af3b04de9d1c87177d142c9f502c17f3ba40c9f7123f6fe3364bbf5497c",
+  "actualizado": "2026-10-22T23:12:33Z",
+  "sello": "0e2fca417ea825c985189626231bcc586f5067f6fec279577f86b84be40af360"
+}

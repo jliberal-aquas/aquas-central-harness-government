@@ -125,9 +125,9 @@ func esperados(raiz string) (map[string]esperado, []backlog.Ficha, error) {
 			continue
 		}
 		if f.Tipo == "slice" {
-			exp[rel] = esperado{secContrato, envolver(tablaPruebas(f))}
+			exp[rel] = esperado{secContrato, envolver(tablaPruebas(f) + tablaArreglos(f))}
 		} else {
-			exp[rel] = esperado{secNav, envolver(tablaHijos(raiz, rel, hijos[f.ID]))}
+			exp[rel] = esperado{secNav, envolver(tablaHijos(raiz, rel, hijos[f.ID]) + tablaArreglos(f))}
 		}
 	}
 	return exp, fichas, nil
@@ -231,4 +231,30 @@ func revisarHijos(raiz string, paginas map[string]*pagina, orden []string) ([]st
 		}
 	}
 	return ps, nil
+}
+
+// tablaArreglos: sección «Arreglos» de la ficha; vacía si no tiene.
+// Cada fila: ID corto, qué arregla (y el slice que absorbió), por qué, sus pruebas y la fecha.
+func tablaArreglos(f backlog.Ficha) string {
+	if len(f.Arreglos) == 0 {
+		return ""
+	}
+	var b strings.Builder
+	b.WriteString("\n### Arreglos\n\n| Arreglo | Qué arregla | Por qué | Pruebas | Fecha |\n|---|---|---|---|---|\n")
+	for _, a := range f.Arreglos {
+		titulo := a.Titulo
+		if a.Antes != "" {
+			titulo += " (antes " + a.Antes[strings.LastIndex(a.Antes, "/")+1:] + ")"
+		}
+		var ps []string
+		for _, p := range a.Pruebas {
+			ps = append(ps, "`"+p.Nombre[strings.LastIndex(p.Nombre, ":")+1:]+"`")
+		}
+		fecha := a.Fecha
+		if len(fecha) >= 10 {
+			fecha = fecha[:10]
+		}
+		fmt.Fprintf(&b, "| %s | %s | %s | %s | %s |\n", a.ID[strings.LastIndex(a.ID, "/")+1:], celda(titulo), celda(a.Motivo), oGuion(strings.Join(ps, ", ")), fecha)
+	}
+	return b.String()
 }

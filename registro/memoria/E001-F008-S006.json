@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F008",
+    "slice": "S006",
+    "tarea": "S006 cerrado: arreglos con ID; S005 es E002/F001/S002/X01"
+  },
+  "siguiente": "E001/F008/S003 portadas con iniciativas",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "6a263581f7ccd6bc8470e27ef3a2651bd2a65bb51b300b47c5b86731caff420d",
+  "actualizado": "2026-10-22T23:17:18Z",
+  "sello": "0536817008900933fc5b33a4b12769d464460b5f366cf661bbabc5330dceb93b"
+}

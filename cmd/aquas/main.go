@@ -422,7 +422,7 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 
 // backlogCLI: nuevo | ver [id] | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=…")
+	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=… | arreglo <slice|feature> titulo=… motivo=… [absorbe=<slice>]")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}
@@ -457,6 +457,17 @@ func backlogCLI(raiz string, args []string) {
 	case args[0] == "verde" && len(args) == 2:
 		f, err = backlog.Verde(raiz, args[1], time.Now())
 		detalle = true
+	case args[0] == "arreglo" && len(args) >= 3: // E001/F008/S006: arreglo con ID bajo su slice o feature
+		c := map[string]string{}
+		for _, x := range args[2:] {
+			k, v, _ := strings.Cut(x, "=")
+			c[k] = v
+		}
+		var a backlog.Arreglo
+		if a, err = backlog.Arreglar(raiz, args[1], c["titulo"], c["motivo"], c["absorbe"], time.Now()); err == nil {
+			fmt.Printf("%s · %s\n", a.ID, a.Titulo)
+			return
+		}
 	case args[0] == "prioridad" && len(args) == 4 && strings.HasPrefix(args[3], "motivo="):
 		f, err = backlog.Prioridad(raiz, args[1], args[2], strings.TrimPrefix(args[3], "motivo="))
 	case args[0] == "estado" && len(args) == 3:

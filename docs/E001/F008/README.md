@@ -46,6 +46,7 @@ stateDiagram-v2
 | Slice | Qué entrega |
 |---|---|
 | [S001 Cada prueba con valida, rojo cuando y verde cuando](S001.md) | Tres campos por prueba, en el backlog y en la wiki |
+| [S006 Arreglos con ID bajo su slice](S006.md) | Correcciones con ID propio, sin slices nuevos |
 
 ## Ejemplo de punta a punta
 
@@ -87,9 +88,10 @@ Prueba integral: `TestDocumentacionVerificable` (pendiente).
 | S003 | Portadas listan todas las iniciativas con enlace | Planeado |
 | S004 | Toda función comentada e índice docs/codigo generado | Planeado |
 | S005 | Sección Código en cada slice con enlaces a lo tocado | Planeado |
-| S006 | Arreglos con ID bajo su slice y sección Arreglos | Planeado |
+| [S006](S006.md) | Arreglos con ID bajo su slice y sección Arreglos | Hecho |
 
 <!-- /GENERADO -->
 
 - ↑ Subir: [E001 · Gobierno del trabajo](../README.md)
 - Abajo: [S001 · Cada prueba con valida, rojo cuando y verde cuando](S001.md)
+- Abajo: [S006 · Arreglos con ID bajo su slice y sección Arreglos](S006.md)

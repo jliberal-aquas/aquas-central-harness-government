@@ -39,6 +39,8 @@ type Ficha struct {
 	// S007: rutas declaradas del slice y ampliaciones con motivo.
 	Alcance      []string     `json:"alcance,omitempty"`
 	Ampliaciones []Ampliacion `json:"ampliaciones,omitempty"`
+
+	Arreglos []Arreglo `json:"arreglos,omitempty"`
 }
 
 // Estados y prioridades del canónico E001 (sección Backlog).
@@ -452,6 +454,7 @@ func Validar(raiz string) []string {
 			}
 			ids[f.ID] = rel
 			p = append(p, problemasRojoVerde(rel, f)...)
+			p = append(p, problemasArreglos(rel, f)...)
 			if f.Tipo == "slice" && corriendo(f) && dir == Activo {
 				if primero != "" {
 					p = append(p, fmt.Sprintf("%s: otro slice en curso además de %s; solo uno a la vez", rel, primero))

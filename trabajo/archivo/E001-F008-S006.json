@@ -1,0 +1,122 @@
+{
+  "id": "E001/F008/S006",
+  "tipo": "slice",
+  "titulo": "Arreglos con ID bajo su slice y sección Arreglos",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001/F008",
+  "bloqueado_por": [],
+  "secuencia": 84,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestArregloCuelgaDeSlice",
+      "intencion": "el arreglo vive bajo su slice con ID padre/X01",
+      "rojo_cuando": "se acepta sin padre o título, el ID no sigue X01, X02 o el slice absorbido sigue vivo",
+      "verde_cuando": "queda en la ficha del slice con su ID y el absorbido desaparece"
+    },
+    {
+      "prueba": "./internal/wiki:TestTablaArreglos",
+      "intencion": "la página del slice lista sus arreglos",
+      "rojo_cuando": "falta la sección, una columna o el slice absorbido",
+      "verde_cuando": "la tabla sale completa y sin arreglos no hay sección"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T23:15:04Z",
+    "head": "861db237a6c785c11b9f3585ddd093a2d4eb10b9",
+    "resultado": {
+      "./internal/backlog:TestArregloCuelgaDeSlice": "arreglo_test.go:25: pendiente",
+      "./internal/wiki:TestTablaArreglos": "arreglos_test.go:19: falta:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T23:16:41Z",
+    "head": "861db237a6c785c11b9f3585ddd093a2d4eb10b9"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F008",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/S006.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Ficha suma Arreglos opcional; la API previa no cambia"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Ficha suma Arreglos opcional; la API previa no cambia"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Ficha suma Arreglos opcional; la API previa no cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Ficha suma Arreglos opcional; la API previa no cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Ficha suma Arreglos opcional; la API previa no cambia"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "internal/wiki/**",
+    "cmd/aquas/**",
+    "docs/E001/**",
+    "docs/E002/**",
+    "registro/**"
+  ]
+}

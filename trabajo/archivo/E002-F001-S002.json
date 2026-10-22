@@ -119,5 +119,20 @@
     "cmd/aquas/**",
     "gobierno/canonico/**",
     "docs/E002/**"
+  ],
+  "arreglos": [
+    {
+      "id": "E002/F001/S002/X01",
+      "titulo": "Título del hijo y compilación según central o hijo",
+      "motivo": "build dejaba en el hijo el título y las instrucciones de compilar de la central: defecto de S002, no slice nuevo",
+      "fecha": "2026-10-22T23:16:42Z",
+      "antes": "E002/F001/S005",
+      "pruebas": [
+        {
+          "prueba": "./internal/hijo:TestBuildTituloYCompilacionDelHijo",
+          "intencion": "el hijo pone su título y recibe instrucciones de build, no las de la central"
+        }
+      ]
+    }
   ]
 }
