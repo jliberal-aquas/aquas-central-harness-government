@@ -346,6 +346,13 @@ func Siguiente(raiz string) (Ficha, bool, error) {
 	if err != nil {
 		return Ficha{}, false, err
 	}
+	// E001/F002/S008: el slice en curso no se interrumpe; después, definir antes de ejecutar.
+	if id, hay := sliceEnCurso(act); hay {
+		return act[id], true, nil
+	}
+	if f, hay := sinDefinir(act); hay {
+		return f, true, nil
+	}
 	var slices []Ficha
 	for _, f := range act {
 		if f.Tipo == "slice" {
@@ -359,6 +366,37 @@ func Siguiente(raiz string) (Ficha, bool, error) {
 		}
 	}
 	return Ficha{}, false, nil
+}
+
+// sinDefinir (E001/F002/S008, regla del humano 2026-10-21): iniciativa o feature activa sin hijos
+// activos. Va antes que cualquier slice, sin mirar prioridad ni bloqueo: iniciativas primero,
+// luego features, cada grupo por secuencia de ingreso.
+func sinDefinir(act map[string]Ficha) (Ficha, bool) {
+	conHijos := map[string]bool{}
+	for _, f := range act {
+		conHijos[f.Padre] = true
+	}
+	var mejor Ficha
+	hay := false
+	for _, f := range act {
+		if f.Tipo == "slice" || conHijos[f.ID] {
+			continue
+		}
+		if !hay || (f.Tipo == "iniciativa") != (mejor.Tipo == "iniciativa") && f.Tipo == "iniciativa" ||
+			f.Tipo == mejor.Tipo && f.Secuencia < mejor.Secuencia {
+			mejor, hay = f, true
+		}
+	}
+	return mejor, hay
+}
+
+// Definir: qué hacer con lo que `siguiente` saca sin definir; "" para un slice.
+func Definir(f Ficha) string {
+	hijos := map[string]string{"iniciativa": "features", "feature": "slices"}[f.Tipo]
+	if hijos == "" {
+		return ""
+	}
+	return fmt.Sprintf("definir %s: crea sus %s y reprioriza el backlog antes de seguir con slices\n", f.ID, hijos)
 }
 
 // libre: no está BLOQUEADO y cada bloqueador ya terminó (archivado: CERRADO o CANCELADO).

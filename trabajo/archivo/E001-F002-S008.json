@@ -1,0 +1,126 @@
+{
+  "id": "E001/F002/S008",
+  "tipo": "slice",
+  "titulo": "siguiente avisa features sin slices",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-21: definir antes de ejecutar es prioridad absoluta",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 46,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSiguienteExigeDefinirAntes",
+      "intencion": "iniciativa o feature activa sin hijos pendientes sale antes que cualquier slice libre, iniciativas primero y por orden de creación, aunque esté bloqueada; el slice en curso va primero"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T01:15:18Z",
+    "head": "23d9ba1e643d173fa2fe1cf3e85fc96e93835975",
+    "resultado": {
+      "./internal/backlog:TestSiguienteExigeDefinirAntes": "siguiente_test.go:25: siguiente = \"E001/F002/S001\" (true, \u003cnil\u003e); se esperaba E001/F003"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T01:16:08Z",
+    "head": "23d9ba1e643d173fa2fe1cf3e85fc96e93835975"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "la regla no cambia su contenido"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la regla no cambia su contenido"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S008.md",
+      "marca": "actualizado",
+      "motivo": "cuenta la regla definir antes de ejecutar"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "cuenta la regla definir antes de ejecutar"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la regla no cambia su contenido"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra la ruta; el cambio no la contradice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra la ruta; el cambio no la contradice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/backlog_test.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra la ruta; el cambio no la contradice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003einternal/backlog/backlog_test.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra la ruta; el cambio no la contradice"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra la ruta; el cambio no la contradice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra la ruta; el cambio no la contradice"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra la ruta; el cambio no la contradice"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog pero Siguiente conserva su firma; suite verde"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog pero Siguiente conserva su firma; suite verde"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog pero Siguiente conserva su firma; suite verde"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog pero Siguiente conserva su firma; suite verde"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra la ruta; el cambio no la contradice"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog pero Siguiente conserva su firma; suite verde"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/E001/F002/**",
+    "gobierno/canonico/**"
+  ]
+}

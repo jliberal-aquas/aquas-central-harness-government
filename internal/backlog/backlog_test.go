@@ -162,8 +162,9 @@ func TestSiguienteOrdenFijo(t *testing.T) {
 	s := func(id, p string, extra ...string) {
 		nuevo(t, raiz, append([]string{"id=" + id, "titulo=T", "prioridad=" + p, "motivo=m"}, extra...)...)
 	}
-	if _, hay, err := Siguiente(raiz); err != nil || hay {
-		t.Fatalf("sin slices no hay siguiente: %v %v", hay, err)
+	// Desde E001/F002/S008: feature sin slices exige definirse antes que cualquier slice.
+	if f, hay, err := Siguiente(raiz); err != nil || !hay || f.ID != "E001/F002" {
+		t.Fatalf("sin slices, siguiente pide definir la feature: %q %v %v", f.ID, hay, err)
 	}
 	s("E001/F002/S001", "P2")
 	s("E001/F002/S002", "P1", "bloqueado_por=E001/F002/S001") // bloqueado: S001 no está cerrado

@@ -45,8 +45,8 @@ func TestBacklogCLI(t *testing.T) {
 	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(s2))); !os.IsNotExist(err) {
 		t.Errorf("la ficha archivada ya no está en trabajo/activo/: %v", err)
 	}
-	if s := aquas(t, raiz, "", "backlog", "siguiente"); s.codigo != 0 || !strings.Contains(s.out, "nada") {
-		t.Fatalf("sin slices pendientes: exit 0 y lo dice; dio %+v", s)
+	if s := aquas(t, raiz, "", "backlog", "siguiente"); s.codigo != 0 || !strings.Contains(s.out, "definir E001/F002") {
+		t.Fatalf("sin slices pendientes: exit 0 y pide definir la feature (E001/F002/S008); dio %+v", s)
 	}
 	for _, args := range [][]string{{"backlog"}, {"backlog", "volar"}, {"backlog", "estado", "E001"}, {"backlog", "prioridad", "E001", "P1"}} {
 		if s := aquas(t, raiz, "", args...); s.codigo != 64 {

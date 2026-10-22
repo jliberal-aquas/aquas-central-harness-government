@@ -66,7 +66,7 @@ Slices de esta feature:
 | [S003 Rojo y verde](S003.md) | El slice no cierra sin prueba en rojo y luego en verde |
 | [S004 Sello ](S004.md) | Lista de lo que hay que revisar al cerrar un slice |
 | [S006 Propuesta con diagrama ](S006.md) | Un hook exige diagrama en cada propuesta |
-| S008 `siguiente` ve features | Avisa de features libres sin slices |
+| S008 Definir antes de ejecutar | `siguiente` pide definir lo que no tiene hijos antes de dar slices |
 | [S009 Cerrar exige memoria archivada](S009.md) | Ningún slice cierra con su memoria sin archivar |
 | S007 Alcance del slice | Solo se tocan archivos dentro del alcance del slice |
 | [S010 Wiki por niveles](S010.md) | Cada página lista sus hijos directos, generados desde las fichas |
@@ -93,7 +93,7 @@ En la iniciativa, el pedido de Jesús ya es trabajo. Ahora hay que ubicarlo en l
 5. S005: cancelado; lo reemplaza S010.
 6. S006: propuesta con diagrama.
 7. S007: archivos solo dentro del alcance del slice.
-8. S008: `siguiente` avisa de features sin slices.
+8. S008: definir antes de ejecutar.
 9. S009: cerrar exige memoria archivada.
 10. S010: [wiki](../../glosario.md#wiki) por niveles, generada desde las fichas.
 
@@ -120,7 +120,7 @@ flowchart LR
     S2["S002 backlog"] --> S3["S003 rojo y verde"]
     S3 --> S4["S004 sello"]
     S3 --> S9["S009 cierre con memoria archivada"]
-    S2 --> S8["S008 siguiente ve features"]
+    S2 --> S8["S008 definir antes de ejecutar"]
     S2 --> S10["S010 wiki por niveles"]
     S1["S001 auditoría"]
     S6["S006 propuesta con diagrama"]
@@ -142,7 +142,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | S005 | aquas ver | Cancelado |
 | [S006](S006.md) | Propuesta con diagrama | Hecho |
 | [S007](S007.md) | Archivos solo dentro del alcance del slice | Hecho |
-| S008 | siguiente avisa features sin slices | Planeado |
+| [S008](S008.md) | siguiente avisa features sin slices | Hecho |
 | [S009](S009.md) | Cerrar exige memoria archivada | Hecho |
 | [S010](S010.md) | Wiki por niveles generada desde las fichas | Hecho |
 | S011 | La ficha dice qué hace | Planeado |

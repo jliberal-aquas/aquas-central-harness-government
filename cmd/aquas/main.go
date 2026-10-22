@@ -409,6 +409,9 @@ func backlogCLI(raiz string, args []string) {
 	if err != nil {
 		fallar(1, err)
 	}
+	if args[0] == "siguiente" {
+		fmt.Print(backlog.Definir(f)) // E001/F002/S008
+	}
 	fmt.Print(backlog.Texto(f))
 	if detalle {
 		fmt.Print(backlog.Detalle(f))
