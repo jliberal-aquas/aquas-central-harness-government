@@ -20,9 +20,11 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"runtime/debug"
 	"strings"
 	"time"
 
+	gobcentral "github.com/jliberal-aquas/aquas-central-harness-government"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/biblioteca"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/compilador"
@@ -30,6 +32,7 @@ import (
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/encargo"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/entorno"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/guardia"
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/hijo"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/memoria"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/propuesta"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/turno"
@@ -164,6 +167,18 @@ func main() {
 		}
 		texto, _, _ := biblioteca.Leer(raiz, p)
 		fmt.Print(texto)
+	case "install": // instala el gobierno central en un proyecto hijo
+		if len(os.Args) != 3 {
+			fallar(1, errors.New("uso: aquas install <carpeta>"))
+		}
+		v := "devel"
+		if bi, ok := debug.ReadBuildInfo(); ok && bi.Main.Version != "" && bi.Main.Version != "(devel)" {
+			v = bi.Main.Version
+		}
+		if err := hijo.Install(os.Args[2], gobcentral.Central, v); err != nil {
+			fallar(1, err)
+		}
+		fmt.Printf("gobierno central %s instalado en %s/%s\n", v, os.Args[2], hijo.Carpeta)
 	case "cierre-agente": // hook SubagentStop: exit 2 + stderr = el subagente reescribe su cierre
 		var e struct {
 			Tipo    string `json:"agent_type"`

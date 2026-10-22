@@ -1,0 +1,90 @@
+# F001 · Instalar y heredar el núcleo común
+
+[Inicio](../../README.md) › [E002](../README.md) › F001
+
+[Feature](../../glosario.md#feature) que instala el núcleo común del gobierno en un hijo y lo mantiene sellado.
+
+## En una frase
+
+Instalar, heredar, actualizar y reportar, sin editar lo sellado.
+
+## Para qué existe
+
+**El problema.** Un hijo necesita las reglas de la central, pero no puede cambiarlas por su cuenta.
+
+**La solución.** Cuatro [slices](../../glosario.md#slice) en cadena: install, huecos con build, update con lock y report a la central.
+
+## Analogía
+
+Piensa en una **biblioteca de código instalada con un gestor de paquetes**.
+
+- Se instala una versión fija, con su huella.
+- Tu proyecto la usa, pero no edita sus archivos.
+
+Límite de la analogía: aquí lo instalado son reglas para [agentes](../../glosario.md#agente), no código.
+
+## Diagrama
+
+```mermaid
+flowchart LR
+    I["S001 install"] --> B["S002 huecos y build"]
+    B --> U["S003 update con lock"]
+    I --> R["S004 report"]
+```
+
+Estados de un archivo sellado en el hijo:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Sellado: install
+    Sellado --> Alterado: alguien lo edita
+    Alterado --> Sellado: update lo restaura
+    Sellado --> [*]
+```
+
+| Slice | Qué entrega |
+|---|---|
+| [S001 aquas install en carpeta vacía](S001.md) | La central sellada en `.aquas/central` con su lock |
+
+## Ejemplo de punta a punta
+
+<a id="EJ-E002-F001"></a>
+
+continúa: [EJ-E002](../README.md#EJ-E002)
+
+1. `aquas install` deja la central y el lock en la landing.
+2. Más adelante, build arma su `CLAUDE.md` con sus huecos.
+3. Si la central mejora, update la trae sin pisar lo local.
+
+## Paso a paso
+
+1. Install en carpeta vacía (S001).
+2. Huecos, [canónico](../../glosario.md#canónico) local y build (S002).
+3. Update sin pisar lo sellado (S003).
+4. Report de defectos a la central (S004).
+
+## Cómo se usa
+
+- `aquas install <carpeta>`.
+
+## Contrato y evidencia
+
+**Objetivo.** Un hijo instalado que pasa su propio [gate](../../glosario.md#gate).
+
+Prueba integral: `TestHijoInstaladoPasaSuGate` (pendiente).
+
+## Navegación
+
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+
+| Hijo | Qué es | Estado |
+|---|---|---|
+| [S001](S001.md) | aquas install en carpeta vacía | Hecho |
+| S002 | Huecos, canónico local y aquas build | Planeado |
+| S003 | aquas update sin pisar lo sellado | Planeado |
+| S004 | aquas report: defecto del hijo a la central | Planeado |
+
+<!-- /GENERADO -->
+
+- ↑ Subir: [E002 · Proyectos hijos](../README.md)
+- Abajo: [S001 · aquas install en carpeta vacía](S001.md)

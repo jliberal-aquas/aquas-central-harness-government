@@ -124,7 +124,7 @@ El orden de ejecución lo dice `aquas backlog siguiente`.
 |---|---|---|
 | [E000](E000/README.md) | Mantenimiento del gobierno | En curso |
 | [E001](E001/README.md) | Gobierno del trabajo | En curso |
-| E002 | Proyectos hijos | Planeado |
+| [E002](E002/README.md) | Proyectos hijos | En curso |
 
 <!-- /GENERADO -->
 

@@ -1,0 +1,70 @@
+// Package hijo instala y mantiene el gobierno central en un proyecto hijo.
+package hijo
+
+import (
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"io/fs"
+	"os"
+	"path/filepath"
+)
+
+// Carpeta del gobierno heredado dentro del hijo.
+const Carpeta = ".aquas"
+
+// Lock: versión instalada y SHA-256 de cada archivo de la central copiado.
+type Lock struct {
+	Version  string            `json:"version"`
+	Archivos map[string]string `json:"archivos"`
+}
+
+// Install copia la central sellada en dest/.aquas/central y escribe dest/.aquas/lock.json.
+// Solo instala en una carpeta vacía o inexistente; sobre una instalación previa toca update.
+func Install(dest string, central fs.FS, version string) error {
+	if version == "" {
+		return errors.New("install: falta la versión de la central")
+	}
+	es, err := os.ReadDir(dest)
+	switch {
+	case err == nil && len(es) > 0:
+		return fmt.Errorf("install: %s no está vacía (sobre una instalación previa usa update)", dest)
+	case err != nil && !errors.Is(err, fs.ErrNotExist):
+		return err
+	}
+	l := Lock{Version: version, Archivos: map[string]string{}}
+	base := filepath.Join(dest, Carpeta, "central")
+	err = fs.WalkDir(central, ".", func(p string, d fs.DirEntry, err error) error {
+		if err != nil || d.IsDir() {
+			return err
+		}
+		b, err := fs.ReadFile(central, p)
+		if err != nil {
+			return err
+		}
+		destino := filepath.Join(base, filepath.FromSlash(p))
+		if err := os.MkdirAll(filepath.Dir(destino), 0o755); err != nil {
+			return err
+		}
+		// Solo lectura: lo sellado no se edita en el hijo.
+		if err := os.WriteFile(destino, b, 0o444); err != nil {
+			return err
+		}
+		h := sha256.Sum256(b)
+		l.Archivos[p] = hex.EncodeToString(h[:])
+		return nil
+	})
+	if err != nil {
+		return err
+	}
+	if len(l.Archivos) == 0 {
+		return errors.New("install: la central está vacía")
+	}
+	b, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(filepath.Join(dest, Carpeta, "lock.json"), append(b, '\n'), 0o644)
+}

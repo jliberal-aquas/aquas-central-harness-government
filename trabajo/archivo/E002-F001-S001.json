@@ -1,0 +1,156 @@
+{
+  "id": "E002/F001/S001",
+  "tipo": "slice",
+  "titulo": "aquas install en carpeta vacía",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: repos hijos (revisión Fable)",
+  "padre": "E002/F001",
+  "bloqueado_por": [],
+  "secuencia": 71,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestInstallCopiaCentralConLock",
+      "intencion": "copia la central sellada a .aquas/central con lock de versión y hashes"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T20:23:52Z",
+    "head": "6f372e2a16d3122bd685bf0c448b9985b4480d84",
+    "resultado": {
+      "./internal/hijo:TestInstallCopiaCentralConLock": "hijo_test.go:27: constitución copiada: \"\", open D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestInstallCopiaCentralConLock2820562922\\001\\landing\\.aquas\\central\\gobierno\\canonico\\constitucion.md: El sistema no puede encontrar la ruta especificada."
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T20:25:16Z",
+    "head": "6f372e2a16d3122bd685bf0c448b9985b4480d84"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E002/F001",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "ficha:E002",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "ficha:E002/F001/S002",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "ficha:E002/F001/S004",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "pagina:docs/E002/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "E002, F001 y S001 nuevas"
+    },
+    {
+      "clave": "pagina:docs/E002/F001/README.md",
+      "marca": "actualizado",
+      "motivo": "E002, F001 y S001 nuevas"
+    },
+    {
+      "clave": "pagina:docs/E002/README.md",
+      "marca": "actualizado",
+      "motivo": "E002, F001 y S001 nuevas"
+    },
+    {
+      "clave": "nombra:README.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:cmd/aquas/punta_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S005.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:internal/biblioteca/biblioteca.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "install es comando nuevo; lo existente no cambia de conducta"
+    }
+  ],
+  "alcance": [
+    "internal/hijo/**",
+    "cmd/aquas/**",
+    "central.go",
+    "docs/**"
+  ]
+}
