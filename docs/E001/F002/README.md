@@ -148,6 +148,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | S011 | La ficha dice qué hace | Planeado |
 | S012 | Sello: nivel trabajo | Planeado |
 | [S013](S013.md) | Sello sin commit base | Hecho |
+| [S014](S014.md) | Sello sin ruido de derivados | Hecho |
 
 <!-- /GENERADO -->
 

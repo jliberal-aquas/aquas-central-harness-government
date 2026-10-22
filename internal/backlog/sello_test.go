@@ -166,6 +166,34 @@ func TestSelloSeVuelveAArmarSiCambiaAlgo(t *testing.T) {
 	}
 }
 
+// E001/F002/S014: los derivados del compilador (salidas del sello del compilador y el archivo
+// de sellos) no cuentan como tocados: ya los vigila el gate de derivados. Lo demás sigue igual.
+func TestSelloIgnoraDerivados(t *testing.T) {
+	raiz := repoSello(t)
+	poner(t, raiz, "gobierno/config/sellos.json", "{\"salidas\": {\"CLAUDE.md\": {\"sha256\": \"x\"}}}\n")
+	poner(t, raiz, "CLAUDE.md", "# Constitución v1\n")
+	poner(t, raiz, "docs/derivados.md", "Ver `CLAUDE.md` y `gobierno/config/sellos.json`.\n")
+	git(t, raiz, "add", "-A")
+	git(t, raiz, "commit", "-q", "-m", "derivados")
+	// La ficha apunta al commit nuevo: lo de repoSello vuelve a tocarse después.
+	f := Ficha{ID: "E001/F002/S004", Titulo: "S", Estado: "EN_CURSO", Secuencia: 3, Pruebas: []Prueba{{Nombre: "./a:TestA", Intencion: "x"}}}
+	reg := &Registro{Fecha: "2026-10-21T10:00:00Z", Head: git(t, raiz, "rev-parse", "HEAD"), Resultado: map[string]string{"./a:TestA": "falló"}}
+	f.Rojo, f.Verde = reg, reg
+	fichaJSON(t, raiz, f)
+	poner(t, raiz, "CLAUDE.md", "# Constitución v2\n")
+	poner(t, raiz, "gobierno/config/sellos.json", "{\"salidas\": {\"CLAUDE.md\": {\"sha256\": \"y\"}}}\n")
+	poner(t, raiz, "internal/a/a.go", "package a\n\nfunc A() int { return 3 }\n")
+	m := claves(t, raiz, "E001/F002/S004")
+	for k := range m {
+		if strings.HasSuffix(k, ">CLAUDE.md") || strings.HasSuffix(k, ">gobierno/config/sellos.json") {
+			t.Errorf("un derivado del compilador no cuenta como tocado; sobra %s", k)
+		}
+	}
+	if _, ok := m["nombra:docs/ref.md>internal/a/a.go"]; !ok {
+		t.Errorf("lo que no es derivado sigue en el sello; hay %v", m)
+	}
+}
+
 // E001/F002/S013: sin commit base (proyecto hijo recién creado, sin commits) el árbol se exige
 // igual; solo se omite el nivel archivos, y un aviso que también se marca lo deja a la vista.
 func TestSelloSinCommitBaseExigeArbol(t *testing.T) {

@@ -13,6 +13,7 @@ package backlog
 // El nivel trabajo (otras iniciativas que comparten archivos o datos) es F002/S012.
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"os"
@@ -21,6 +22,8 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+
+	"github.com/jliberal/aquas-harness-governance/internal/compilador"
 )
 
 // Marca: la revisión de un ítem del sello.
@@ -125,6 +128,25 @@ func lineaCon(c, s string) string {
 	return ""
 }
 
+// derivados: salidas del compilador según su archivo de sellos, más ese archivo (S014). Ya los vigila
+// el gate de derivados: revisarlos en el sello solo mete ruido. Sin archivo de sellos: ninguno.
+func derivados(raiz string) map[string]bool {
+	d := map[string]bool{compilador.RutaSellos: true}
+	b, err := os.ReadFile(filepath.Join(raiz, filepath.FromSlash(compilador.RutaSellos)))
+	if err != nil {
+		return d
+	}
+	var s struct {
+		Salidas map[string]json.RawMessage `json:"salidas"`
+	}
+	if json.Unmarshal(b, &s) == nil {
+		for p := range s.Salidas {
+			d[p] = true
+		}
+	}
+	return d
+}
+
 // archivos: quién nombra o importa lo tocado desde el HEAD del rojo.
 func archivos(raiz, head string) ([]Item, error) {
 	cambiados, err := gitLineas(raiz, "diff", "--name-only", head)
@@ -142,8 +164,9 @@ func archivos(raiz, head string) ([]Item, error) {
 	tocado := map[string]bool{}
 	var tocados []string
 	paquetes := map[string]bool{}
+	der := derivados(raiz)
 	for _, p := range append(cambiados, nuevos...) {
-		if excluida(p) || tocado[p] {
+		if excluida(p) || tocado[p] || der[p] {
 			continue
 		}
 		tocado[p] = true

@@ -1,0 +1,105 @@
+{
+  "id": "E001/F002/S014",
+  "tipo": "slice",
+  "titulo": "Sello sin ruido de derivados",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "en S006 la mitad del sello eran derivados; humano aprobó 2026-10-21",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 52,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSelloIgnoraDerivados",
+      "intencion": "los derivados del compilador no cuentan como tocados; lo demás sigue en el sello"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T00:54:01Z",
+    "head": "8242281f40161a9023aedb328ae34a49c5fa6748",
+    "resultado": {
+      "./internal/backlog:TestSelloIgnoraDerivados": "sello_test.go:189: un derivado del compilador no cuenta como tocado; sobra nombra:docs/derivados.md\u003eCLAUDE.md"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T00:54:37Z",
+    "head": "8242281f40161a9023aedb328ae34a49c5fa6748"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S014.md",
+      "marca": "actualizado",
+      "motivo": "página nueva del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "bloque generado al día con S014"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con este slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el filtro interno del sello"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta como ejemplo o en pruebas; no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003einternal/backlog/sello.go",
+      "marca": "sin_cambio",
+      "motivo": "la página describe su slice; sigue válida"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S013.md\u003einternal/backlog/sello.go",
+      "marca": "sin_cambio",
+      "motivo": "la página describe su slice; sigue válida"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el filtro interno del sello"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el filtro interno del sello"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el filtro interno del sello"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el filtro interno del sello"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta como ejemplo o en pruebas; no cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API del backlog no cambia; solo el filtro interno del sello"
+    }
+  ]
+}

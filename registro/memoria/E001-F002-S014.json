@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S014",
+    "tarea": "S014 Sello sin ruido: verde y sello marcado, cerrando"
+  },
+  "siguiente": "E001/F002/S007 con opción B: escribir pruebas",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "24aa5969a31cc9baea629564806c965b1e51d0ce62f2f4570a255aa937b0ee70",
+  "actualizado": "2026-10-22T00:55:23Z",
+  "sello": "945785d0abfadcf9efebc2fbe609f73cf2f4249f2fedeac7a7d880b539939b23"
+}
