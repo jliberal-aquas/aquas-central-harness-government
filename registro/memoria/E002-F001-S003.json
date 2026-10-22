@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E002",
+    "feature": "F001",
+    "slice": "S003",
+    "tarea": "S003 cerrando"
+  },
+  "siguiente": "E002/F001/S004 report",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "40abcfef9eba1cf3fe762956e1fe7d910bfdcaba011d386697c3d290030b2dfb",
+  "actualizado": "2026-10-22T20:46:16Z",
+  "sello": "f89824704855f9547641c4eccbbcb011a4ae318002531d6d03a8767fe52a7187"
+}

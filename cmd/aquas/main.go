@@ -175,6 +175,18 @@ func main() {
 			fallar(1, err)
 		}
 		fmt.Printf("CLAUDE.md armado en %s\n", os.Args[2])
+	case "update": // trae la central de este binario al hijo, sin tocar lo local
+		if len(os.Args) != 3 {
+			fallar(1, errors.New("uso: aquas update <carpeta-del-hijo>"))
+		}
+		rest, err := hijo.Update(os.Args[2], gobcentral.Central, versionBinario())
+		if err != nil {
+			fallar(1, err)
+		}
+		for _, p := range rest {
+			fmt.Printf("restaurado (estaba alterado; repórtalo a la central): %s\n", p)
+		}
+		fmt.Printf("gobierno central %s en %s; corre aquas build para regenerar CLAUDE.md\n", versionBinario(), os.Args[2])
 	case "install": // instala el gobierno central en un proyecto hijo
 		if len(os.Args) != 3 {
 			fallar(1, errors.New("uso: aquas install <carpeta>"))
@@ -557,4 +569,12 @@ func defectoCLI(raiz string, args []string) error {
 		fmt.Print(defecto.Texto(d))
 	}
 	return nil
+}
+
+// versionBinario: versión del módulo con que se compiló el binario (= versión del gobierno embebido).
+func versionBinario() string {
+	if bi, ok := debug.ReadBuildInfo(); ok && bi.Main.Version != "" && bi.Main.Version != "(devel)" {
+		return bi.Main.Version
+	}
+	return "devel"
 }

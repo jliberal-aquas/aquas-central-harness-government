@@ -34,9 +34,14 @@ func Install(dest string, central fs.FS, version string) error {
 	case err != nil && !errors.Is(err, fs.ErrNotExist):
 		return err
 	}
+	return copiarCentral(dest, central, version)
+}
+
+// copiarCentral escribe la central como solo lectura y su lock con versión y hashes.
+func copiarCentral(dest string, central fs.FS, version string) error {
 	l := Lock{Version: version, Archivos: map[string]string{}}
 	base := filepath.Join(dest, Carpeta, "central")
-	err = fs.WalkDir(central, ".", func(p string, d fs.DirEntry, err error) error {
+	err := fs.WalkDir(central, ".", func(p string, d fs.DirEntry, err error) error {
 		if err != nil || d.IsDir() {
 			return err
 		}

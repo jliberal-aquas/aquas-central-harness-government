@@ -1,0 +1,77 @@
+{
+  "id": "E002/F001/S003",
+  "tipo": "slice",
+  "titulo": "aquas update sin pisar lo sellado",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: repos hijos (revisión Fable)",
+  "padre": "E002/F001",
+  "bloqueado_por": [
+    "E002/F001/S002"
+  ],
+  "secuencia": 73,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestUpdateRespetaLock",
+      "intencion": "editar lo sellado hace caer el gate; update cambia de versión y conserva lo local"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T20:44:49Z",
+    "head": "872cfad1163cd0a879513d664622f0a6706a7b32",
+    "resultado": {
+      "./internal/hijo:TestUpdateRespetaLock": "update_test.go:36: update falló: sin implementar"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T20:45:42Z",
+    "head": "872cfad1163cd0a879513d664622f0a6706a7b32"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E002/F001",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "ficha:E002",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "pagina:docs/E002/F001/S003.md",
+      "marca": "actualizado",
+      "motivo": "wiki de S003"
+    },
+    {
+      "clave": "pagina:docs/E002/F001/README.md",
+      "marca": "actualizado",
+      "motivo": "wiki de S003"
+    },
+    {
+      "clave": "pagina:docs/E002/README.md",
+      "marca": "actualizado",
+      "motivo": "wiki de S003"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    }
+  ],
+  "alcance": [
+    "internal/hijo/**",
+    "cmd/aquas/**",
+    "docs/E002/**"
+  ]
+}

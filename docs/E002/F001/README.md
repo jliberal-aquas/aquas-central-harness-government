@@ -46,6 +46,7 @@ stateDiagram-v2
 |---|---|
 | [S001 aquas install en carpeta vacía](S001.md) | La central sellada en `.aquas/central` con su lock |
 | [S002 Huecos, canónico local y aquas build](S002.md) | El `CLAUDE.md` del hijo: central final + huecos locales |
+| [S003 aquas update sin pisar lo sellado](S003.md) | Versión nueva de la central sin tocar lo local |
 | [S005 Título del hijo y compilación según central o hijo](S005.md) | El hijo recibe su título y sus instrucciones, no las de la central |
 
 ## Ejemplo de punta a punta
@@ -83,7 +84,7 @@ Prueba integral: `TestHijoInstaladoPasaSuGate` (pendiente).
 |---|---|---|
 | [S001](S001.md) | aquas install en carpeta vacía | Hecho |
 | [S002](S002.md) | Huecos, canónico local y aquas build | Hecho |
-| S003 | aquas update sin pisar lo sellado | Planeado |
+| [S003](S003.md) | aquas update sin pisar lo sellado | Hecho |
 | S004 | aquas report: defecto del hijo a la central | Planeado |
 | [S005](S005.md) | Título del hijo y compilación según central o hijo | Hecho |
 
@@ -93,3 +94,4 @@ Prueba integral: `TestHijoInstaladoPasaSuGate` (pendiente).
 - Abajo: [S001 · aquas install en carpeta vacía](S001.md)
 - Abajo: [S002 · Huecos, canónico local y aquas build](S002.md)
 - Abajo: [S005 · Título del hijo y compilación según central o hijo](S005.md)
+- Abajo: [S003 · aquas update sin pisar lo sellado](S003.md)
