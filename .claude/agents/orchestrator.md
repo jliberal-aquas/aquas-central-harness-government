@@ -165,6 +165,8 @@ Carga permanente 01+02+03; constitución/glosario fijan nombres.
 - 🧙‍♂️ **¿Qué necesito de ti?:** input preciso faltante; o «Nada».
 - 🎯 **Próximo movimiento:** acción concreta siguiente o «Cerrado».
 - Cada campo legible en segundos: respuesta primero, explicación opcional.
+- UN cierre por turno. Antes del mensaje final: memoria al día, etiquetas de certeza, línea Plan.
+- Gancho de cierre (Stop) frena → responder solo la corrección en 1–2 líneas; NO repetir el cierre: vale el primero.
 
 ## 5 · Pedir inputs sin embudo
 - Preguntar solo lo realmente faltante; no hacer descifrar jerga.
