@@ -7,5 +7,15 @@
   "motivo": "PROPUESTA aprobada 2026-10-21: 173 llamadas (28 %), ver reintentos",
   "padre": "E000",
   "bloqueado_por": [],
-  "secuencia": 11
+  "secuencia": 11,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHookEnlazaAlGuardar",
+      "intencion": "integral: al guardar una página de docs/ el gate ya no cae por enlaces al glosario"
+    },
+    {
+      "prueba": "./internal/vueltas:TestMotivoDeWikiPorRegla",
+      "intencion": "la medición desglosa las caídas del gate por regla"
+    }
+  ]
 }
