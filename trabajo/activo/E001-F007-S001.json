@@ -1,0 +1,17 @@
+{
+  "id": "E001/F007/S001",
+  "tipo": "slice",
+  "titulo": "Tabla de pendientes ordenable, con histórico opcional",
+  "estado": "BORRADOR",
+  "prioridad": "P3",
+  "motivo": "humano 2026-10-22: ordenar por prioridad, iniciativa o feature; cargar histórico para análisis",
+  "padre": "E001/F007",
+  "bloqueado_por": [],
+  "secuencia": 77,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestTablaOrdenaYCargaHistorico",
+      "intencion": "ordena por prioridad, iniciativa o feature; con histórico suma lo archivado"
+    }
+  ]
+}

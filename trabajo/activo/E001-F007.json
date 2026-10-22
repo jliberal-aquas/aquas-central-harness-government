@@ -1,0 +1,17 @@
+{
+  "id": "E001/F007",
+  "tipo": "feature",
+  "titulo": "Tabla del backlog en la terminal",
+  "estado": "BORRADOR",
+  "prioridad": "P3",
+  "motivo": "humano 2026-10-22: ver iniciativa, feature y slice en una sola tabla, sin navegar",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 76,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestTablaBacklog",
+      "intencion": "una tabla con iniciativa, feature, slice y descripción corta"
+    }
+  ]
+}
