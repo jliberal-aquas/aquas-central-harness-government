@@ -18,6 +18,12 @@ const CarpetaHuecos = "gobierno/canonico/huecos"
 // reHueco: bloque que la central deja abierto; lo de adentro es su relleno propio.
 var reHueco = regexp.MustCompile(`(?s)<!-- hueco: ([a-z0-9-]+) -->\r?\n.*?<!-- /hueco -->\r?\n`)
 
+// reSoloCentral: texto que vale solo en la central; build lo quita en el hijo.
+var reSoloCentral = regexp.MustCompile(`(?s)<!-- solo-central -->\r?\n.*?<!-- /solo-central -->\r?\n`)
+
+// reSoloHijo: texto comentado en la central; build lo descomenta en el hijo.
+var reSoloHijo = regexp.MustCompile(`(?s)<!-- solo-hijo\r?\n(.*?)-->\r?\n`)
+
 // Build arma el CLAUDE.md del hijo: central sellada + huecos locales.
 // Falla si lo sellado no coincide con el lock, si un hueco queda vacío
 // o si lo local nombra algo que no es hueco (una sección final).
@@ -59,6 +65,8 @@ func Build(dir string) error {
 		sort.Strings(ajenos)
 		return fmt.Errorf("no son huecos de la central (sección final, no se redefine): %s", strings.Join(ajenos, ", "))
 	}
+	out = reSoloCentral.ReplaceAllString(out, "")
+	out = reSoloHijo.ReplaceAllString(out, "$1")
 	cab := "<!-- GENERADO por `aquas build` desde .aquas/central + " + CarpetaHuecos + ". NO EDITAR. -->\n\n"
 	return os.WriteFile(filepath.Join(dir, "CLAUDE.md"), []byte(cab+out), 0o644)
 }

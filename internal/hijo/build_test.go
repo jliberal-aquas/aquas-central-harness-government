@@ -84,3 +84,46 @@ func TestBuildRellenaHuecosSinTocarFinal(t *testing.T) {
 		t.Errorf("central alterada debió fallar por sello; err=%v", err)
 	}
 }
+
+const constitucionConTitulo = `<!-- hueco: titulo -->
+# CONSTITUCIÓN · central
+<!-- /hueco -->
+
+## Compilación
+<!-- solo-central -->
+- Compilar: go run ./cmd/aquas compilar.
+<!-- /solo-central -->
+<!-- solo-hijo
+- Compilar: aquas build.
+-->
+`
+
+func TestBuildTituloYCompilacionDelHijo(t *testing.T) {
+	dir := filepath.Join(t.TempDir(), "hijo")
+	central := fstest.MapFS{"gobierno/canonico/constitucion.md": {Data: []byte(constitucionConTitulo)}}
+	if err := Install(dir, central, "v1.0.0"); err != nil {
+		t.Fatal(err)
+	}
+	p := filepath.Join(dir, CarpetaHuecos, "titulo.md")
+	if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(p, []byte("# CONSTITUCIÓN · landing\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if err := Build(dir); err != nil {
+		t.Fatalf("build falló: %v", err)
+	}
+	b, _ := os.ReadFile(filepath.Join(dir, "CLAUDE.md"))
+	out := string(b)
+	for _, debe := range []string{"# CONSTITUCIÓN · landing", "- Compilar: aquas build."} {
+		if !strings.Contains(out, debe) {
+			t.Errorf("CLAUDE.md sin %q:\n%s", debe, out)
+		}
+	}
+	for _, no := range []string{"· central", "cmd/aquas", "solo-central", "solo-hijo"} {
+		if strings.Contains(out, no) {
+			t.Errorf("CLAUDE.md del hijo trae %q de la central:\n%s", no, out)
+		}
+	}
+}
