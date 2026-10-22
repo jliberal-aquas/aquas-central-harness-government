@@ -1,0 +1,82 @@
+{
+  "id": "E000/F006/S001",
+  "tipo": "slice",
+  "titulo": "Hooks fallan cerrados",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "Fable #3: build roto apaga guardia, memoria y cierre",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 61,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHookFallaCerrado",
+      "intencion": "con aquas sin compilar el hook sale 2 y bloquea"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T17:33:24Z",
+    "head": "2231b2b3920d9b2f105f98896af7578e70679996",
+    "resultado": {
+      "./cmd/aquas:TestHookFallaCerrado": "hook_cerrado_test.go:58: roto y sin versión anterior: exit 1, quiero 2 (bloquea); stderr: # x/cmd/aquas"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T17:34:00Z",
+    "head": "2231b2b3920d9b2f105f98896af7578e70679996"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "aquas.sh sigue compilando y corriendo directo; solo suma respaldo"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "aquas.sh sigue compilando y corriendo directo; solo suma respaldo"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S001.md",
+      "marca": "actualizado",
+      "motivo": "F006 y S001 nuevas"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "actualizado",
+      "motivo": "F006 y S001 nuevas"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "F006 y S001 nuevas"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S001.md\u003e.claude/hooks/aquas.sh",
+      "marca": "sin_cambio",
+      "motivo": "aquas.sh sigue compilando y corriendo directo; solo suma respaldo"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003e.claude/hooks/aquas.sh",
+      "marca": "sin_cambio",
+      "motivo": "aquas.sh sigue compilando y corriendo directo; solo suma respaldo"
+    },
+    {
+      "clave": "nombra:internal/entorno/entorno.go\u003e.claude/hooks/aquas.sh",
+      "marca": "sin_cambio",
+      "motivo": "aquas.sh sigue compilando y corriendo directo; solo suma respaldo"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "aquas.sh sigue compilando y corriendo directo; solo suma respaldo"
+    }
+  ],
+  "alcance": [
+    ".claude/hooks/**",
+    "cmd/aquas/**",
+    "docs/E000/**",
+    "docs/README.md",
+    "docs/glosario.md"
+  ]
+}

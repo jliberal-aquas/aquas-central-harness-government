@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F006",
+    "slice": "S001",
+    "tarea": "S001 hooks fallan cerrados: cierre"
+  },
+  "siguiente": "E000/F006/S002 ruta del módulo",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "cb2e7a228309a67bc3d641cfcd7dfa88c49aad3b10f3aa212cdf1f23c47d9fe1",
+  "actualizado": "2026-10-22T17:34:52Z",
+  "sello": "fb9c46c67e9d9ef44538ff95f37196885b8d37c1d294403f270af70136a6be21"
+}
