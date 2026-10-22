@@ -175,6 +175,20 @@ func main() {
 			fallar(1, err)
 		}
 		fmt.Printf("CLAUDE.md armado en %s\n", os.Args[2])
+	case "report": // borrador de issue para la central; no envía: lo decide el humano
+		if len(os.Args) != 5 {
+			fallar(1, errors.New("uso: aquas report <carpeta-del-hijo> \"<qué pasó>\" \"<cómo reproducirlo>\""))
+		}
+		body, err := hijo.Report(os.Args[2], os.Args[3], os.Args[4])
+		if err != nil {
+			fallar(1, err)
+		}
+		f := filepath.Join(os.Args[2], hijo.Carpeta, "reporte.md")
+		if err := os.WriteFile(f, []byte(body), 0o644); err != nil {
+			fallar(1, err)
+		}
+		fmt.Printf("%s\nBorrador en %s. Nada se envió. Para abrir el issue, revisa y corre:\ngh issue create --repo %s --title %q --body-file %s\n",
+			body, f, hijo.RepoCentral, os.Args[3], f)
 	case "update": // trae la central de este binario al hijo, sin tocar lo local
 		if len(os.Args) != 3 {
 			fallar(1, errors.New("uso: aquas update <carpeta-del-hijo>"))

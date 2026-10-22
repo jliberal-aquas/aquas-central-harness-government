@@ -1,0 +1,77 @@
+{
+  "id": "E002/F001/S004",
+  "tipo": "slice",
+  "titulo": "aquas report: defecto del hijo a la central",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: fallos de gobierno en hijos vuelven a la central",
+  "padre": "E002/F001",
+  "bloqueado_por": [
+    "E002/F001/S001"
+  ],
+  "secuencia": 74,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestReportArmaIssueConVersion",
+      "intencion": "arma el issue con firma, qué pasó, reproducción y versión del lock; sin gh confirmado no envía"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T21:01:27Z",
+    "head": "7956ed9a1e112611b3d62d6fd0ebd676c2ec45ed",
+    "resultado": {
+      "./internal/hijo:TestReportArmaIssueConVersion": "report_test.go:19: report falló: sin implementar"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T21:01:41Z",
+    "head": "7956ed9a1e112611b3d62d6fd0ebd676c2ec45ed"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E002/F001",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "ficha:E002",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "pagina:docs/E002/F001/S004.md",
+      "marca": "actualizado",
+      "motivo": "wiki de S004"
+    },
+    {
+      "clave": "pagina:docs/E002/F001/README.md",
+      "marca": "actualizado",
+      "motivo": "wiki de S004"
+    },
+    {
+      "clave": "pagina:docs/E002/README.md",
+      "marca": "actualizado",
+      "motivo": "wiki de S004"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    }
+  ],
+  "alcance": [
+    "internal/hijo/**",
+    "cmd/aquas/**",
+    "docs/E002/**"
+  ]
+}
