@@ -1,0 +1,66 @@
+{
+  "id": "E000/F004/S004",
+  "tipo": "slice",
+  "titulo": "Enlazar al guardar",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "el enlazador dependía de que el agente lo llame; determinismo primero (humano 2026-10-22)",
+  "padre": "E000/F004",
+  "bloqueado_por": [],
+  "secuencia": 59,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHookEnlazaAlGuardar",
+      "intencion": "el hook PostToolUse sobre una página de docs/ pone los enlaces al glosario que faltan; sobre un archivo fuera de docs/ no toca nada"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T16:11:26Z",
+    "head": "a4bfe54728c454aba0cf2dbee2589894dbb92373",
+    "resultado": {
+      "./cmd/aquas:TestHookEnlazaAlGuardar": "enlazar_hook_test.go:32: página de docs/ sin enlazar"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T16:12:03Z",
+    "head": "a4bfe54728c454aba0cf2dbee2589894dbb92373"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F004",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con enlazar al guardar"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con enlazar al guardar"
+    },
+    {
+      "clave": "pagina:docs/E000/F004/S004.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a S004"
+    },
+    {
+      "clave": "pagina:docs/E000/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a S004"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a S004"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con enlazar al guardar"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/**",
+    "internal/wiki/**",
+    "docs/E000/**",
+    "docs/glosario.md"
+  ]
+}

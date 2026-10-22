@@ -208,6 +208,16 @@ func hook(raiz string) {
 	}
 	rel = filepath.ToSlash(rel)
 
+	// E000/F004/S004: página de docs/ → enlaces al glosario que pide el gate, sin depender del agente.
+	// Error (p. ej. enlace equivocado previo) no frena aquí: el gate lo reporta.
+	if strings.HasPrefix(rel, "docs/") && strings.HasSuffix(rel, ".md") && rel != "docs/glosario.md" {
+		if n, err := wiki.Enlazar(raiz, rel); err == nil && n > 0 {
+			fmt.Fprintf(os.Stderr, "%s: %d enlaces al glosario puestos por aquas (relee el archivo antes de editarlo otra vez)\n", rel, n)
+			os.Exit(2)
+		}
+		return
+	}
+
 	editoSalida := compilador.EsSalida(raiz, rel)
 	if !editoSalida && !compilador.EsGobernado(rel) {
 		return
