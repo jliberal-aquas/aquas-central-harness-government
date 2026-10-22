@@ -37,6 +37,8 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Estados: BORRADOR · LISTO · EN_CURSO · VERIFICANDO · CERRADO; excepciones BLOQUEADO · CANCELADO. Archivado no es estado: es la carpeta `trabajo/archivo/` (decisión del agente en S002, 2026-10-21).
 - Dependencias (decisión humana 2026-10-21): slice = proceso independiente, finito y testeable. Dependencia circular = un solo slice. No circular → primero el que se usa (`bloqueado_por`). Hoy acíclico por construcción: `bloqueado_por` solo se fija al crear y apunta a fichas existentes; un comando que lo cambie exige chequeo de ciclos.
 - Hallazgo fuera de alcance del slice activo → `aquas backlog defecto`; no se toca en el slice.
+- Alcance vigilado (F002/S007, decisión humana 2026-10-21: opción B): el slice declara sus rutas al arrancar; tocar otra ruta exige ampliar el alcance con motivo de una línea (queda registrado en la ficha); derivados del compilador siempre permitidos. Rechazadas: A bloqueo duro (traba con archivos imprevisibles: S001 tocó `.gitignore` y la guardia) y C solo aviso al cerrar (no previene).
+- Ruido del sello (decisión humana 2026-10-21): los derivados del compilador (salidas en `gobierno/config/sellos.json` y ese archivo) no cuentan como tocados; ya los vigila el gate de derivados.
 
 ## Slice y feature
 - Contrato slice: id, fuente (turnos), objetivo, alcance (incluye/excluye/rutas), comando de prueba, entrega esperada, docs enlazados.

@@ -4,7 +4,7 @@
   "titulo": "Archivos solo dentro del alcance del slice",
   "estado": "BORRADOR",
   "prioridad": "P2",
-  "motivo": "humano 2026-10-21: de acuerdo, pero ambiguo; tratarlo antes del contrato",
+  "motivo": "alcance definido: opción B, decisión humana 2026-10-21",
   "padre": "E001/F002",
   "bloqueado_por": [],
   "secuencia": 38
