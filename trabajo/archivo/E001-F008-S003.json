@@ -1,0 +1,499 @@
+{
+  "id": "E001/F008/S003",
+  "tipo": "slice",
+  "titulo": "Portadas listan todas las iniciativas con enlace",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001/F008",
+  "bloqueado_por": [],
+  "secuencia": 81,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestPortadasListanIniciativas",
+      "intencion": "cada iniciativa tiene enlace en README.md y docs/README.md",
+      "rojo_cuando": "falta una iniciativa o sale sin enlace y el gate calla",
+      "verde_cuando": "el gate nombra portada e iniciativa faltantes y calla si están todas"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T23:38:18Z",
+    "head": "e756f8e035ba9d7b7fb69e0421727f2706f1883d",
+    "resultado": {
+      "./internal/wiki:TestPortadasListanIniciativas": "portadas_test.go:20: se esperaba también E001 ausente de docs/README.md; salió []"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T23:39:15Z",
+    "head": "e756f8e035ba9d7b7fb69e0421727f2706f1883d"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F008",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/wiki",
+      "marca": "sin_cambio",
+      "motivo": "se agrega una revisión nueva; la API previa no cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/punta_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S005.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S006.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S005.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S013.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S014.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/comunicacion.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/constitucion.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/biblioteca/biblioteca.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/legibilidad_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    }
+  ],
+  "alcance": [
+    "internal/wiki/**",
+    "docs/E001/**",
+    "docs/README.md",
+    "README.md",
+    "registro/**"
+  ]
+}

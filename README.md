@@ -16,6 +16,14 @@ And an AI agent is fast but unreliable without controls: it forgets, drifts out 
 4. **Distribution to child projects.** `install`, `update` and `report` commands (in progress, initiative E002).
 5. **Explained for humans.** A wiki in Spanish under [`docs/`](docs/README.md).
 
+## Initiatives
+
+Each initiative opens its own map in the wiki (in Spanish):
+
+- [E000 · Governance maintenance](docs/E000/README.md): guards, compiler and test quality of this repo.
+- [E001 · Work governance](docs/E001/README.md): the fixed path of every request, backlog, wiki, agent memory and workers.
+- [E002 · Child projects](docs/E002/README.md): install, build, update and report governance in each Aquas product.
+
 ## Quick start
 
 ```bash

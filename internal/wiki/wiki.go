@@ -160,6 +160,11 @@ func Verificar(raiz string) ([]string, error) {
 		return nil, err
 	}
 	problemas = append(problemas, hijosPs...)
+	portadas, err := revisarPortadas(raiz)
+	if err != nil {
+		return nil, err
+	}
+	problemas = append(problemas, portadas...)
 	return problemas, nil
 }
 

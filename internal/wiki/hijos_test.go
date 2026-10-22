@@ -70,6 +70,7 @@ const aviso = "<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas 
 
 func TestHijosGeneradosDesdeFichas(t *testing.T) {
 	raiz := conFichas(t)
+	escribir(t, raiz, "README.md", "- [E001](docs/E001/README.md)\n")
 	if e := generar(t, raiz); len(e) != 4 {
 		t.Errorf("primera generación escribe inicio, E001, F001 y S001; escribió %q", e)
 	}

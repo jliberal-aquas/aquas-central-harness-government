@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F008",
+    "slice": "S003",
+    "tarea": "S003 cerrado: portadas con iniciativas"
+  },
+  "siguiente": "E001/F008/S004 funciones comentadas",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "7ee88fdfa178a24b8e050cdfac81de350e52774047e1cef1e4461d509bc9c123",
+  "actualizado": "2026-10-22T23:40:07Z",
+  "sello": "e73a84cb2bf7cc8b99aaf5087a0fd19138ca5a6b2741d3d0aa6b33bbfb641a33"
+}
