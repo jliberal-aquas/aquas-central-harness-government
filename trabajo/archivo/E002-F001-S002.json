@@ -1,0 +1,123 @@
+{
+  "id": "E002/F001/S002",
+  "tipo": "slice",
+  "titulo": "Huecos, canónico local y aquas build",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: repos hijos (revisión Fable)",
+  "padre": "E002/F001",
+  "bloqueado_por": [
+    "E002/F001/S001"
+  ],
+  "secuencia": 72,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestBuildRellenaHuecosSinTocarFinal",
+      "intencion": "build une central y huecos locales en un CLAUDE.md; local sobre una sección final cae"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T20:34:11Z",
+    "head": "ab7f2d555a4907279a21af288be8115307d83408",
+    "resultado": {
+      "./internal/hijo:TestBuildRellenaHuecosSinTocarFinal": "build_test.go:46: build válido falló: sin implementar"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T20:35:29Z",
+    "head": "ab7f2d555a4907279a21af288be8115307d83408"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E002/F001",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "ficha:E002",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "ficha:E002/F001/S003",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "pagina:docs/E002/F001/S002.md",
+      "marca": "actualizado",
+      "motivo": "wiki de S002"
+    },
+    {
+      "clave": "pagina:docs/E002/F001/README.md",
+      "marca": "actualizado",
+      "motivo": "wiki de S002"
+    },
+    {
+      "clave": "pagina:docs/E002/README.md",
+      "marca": "actualizado",
+      "motivo": "wiki de S002"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:docs/ref/constitucion.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:gobierno/config/documentos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:internal/compilador/modulo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin impacto"
+    }
+  ],
+  "alcance": [
+    "internal/hijo/**",
+    "cmd/aquas/**",
+    "gobierno/canonico/**",
+    "docs/E002/**"
+  ]
+}

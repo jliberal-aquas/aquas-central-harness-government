@@ -167,6 +167,14 @@ func main() {
 		}
 		texto, _, _ := biblioteca.Leer(raiz, p)
 		fmt.Print(texto)
+	case "build": // arma el CLAUDE.md del hijo: central sellada + huecos locales
+		if len(os.Args) != 3 {
+			fallar(1, errors.New("uso: aquas build <carpeta-del-hijo>"))
+		}
+		if err := hijo.Build(os.Args[2]); err != nil {
+			fallar(1, err)
+		}
+		fmt.Printf("CLAUDE.md armado en %s\n", os.Args[2])
 	case "install": // instala el gobierno central en un proyecto hijo
 		if len(os.Args) != 3 {
 			fallar(1, errors.New("uso: aquas install <carpeta>"))

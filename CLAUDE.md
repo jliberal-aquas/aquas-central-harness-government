@@ -3,9 +3,11 @@
 # CONSTITUCIÓN · aquas-harness-governance · v0.2
 
 ## Misión
+<!-- hueco: mision -->
 - Este repo GOBIERNA y GENERA la estructura inicial de todo proyecto trabajado con Claude Code.
 - Fuente única de verdad para: constitución, metodologías, gates y validadores deterministas.
 - Proyectos hijos heredan desde aquí; no se inventan reglas locales que contradigan esta constitución.
+<!-- /hueco -->
 
 ## Principios
 1. Gobierno incremental: se construye poco a poco. Regla no escrita en un canónico = regla no vigente.
@@ -30,9 +32,11 @@
 - Clon nuevo: `git config core.hooksPath .githooks` + `aquas iniciar` (SO y raíz).
 
 ## Mapa del repo
+<!-- hueco: mapa -->
 - `cmd/aquas/` → CLI del harness. `internal/compilador/` → compilador y sellado. `internal/wiki/` → gate wiki.
 - `docs/` → wiki para humanos; gate la exige.
 - `.claude/settings.json` → local, generado de `gobierno/config/claude_settings.json`.
 - `gobierno/canonico/agentes/` → cuerpo de cada agente. `gobierno/canonico/reglas/` → reglas enlazables.
 - `gobierno/canonico/comunicacion/` → reglas agente → humano; solo las carga el orquestador.
 - `metodologias/` = specs. Futuro: `plantillas/`, más gates.
+<!-- /hueco -->
