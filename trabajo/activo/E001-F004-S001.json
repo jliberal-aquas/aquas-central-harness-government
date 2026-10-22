@@ -1,0 +1,17 @@
+{
+  "id": "E001/F004/S001",
+  "tipo": "slice",
+  "titulo": "Registro de defectos",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: definir E001/F004; base de S002 y S003",
+  "padre": "E001/F004",
+  "bloqueado_por": [],
+  "secuencia": 54,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestRegistroDeDefectos",
+      "intencion": "aquas defecto nuevo crea D000001 con firma única y campos cortos; ocurre suma un turno; firma repetida o campo vacío fallan; D000001 hook-exit-go-run sembrado"
+    }
+  ]
+}

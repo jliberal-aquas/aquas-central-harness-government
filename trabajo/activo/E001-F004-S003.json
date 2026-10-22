@@ -1,0 +1,19 @@
+{
+  "id": "E001/F004/S003",
+  "tipo": "slice",
+  "titulo": "Reincidencia crea slice E000",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: definir E001/F004",
+  "padre": "E001/F004",
+  "bloqueado_por": [
+    "E001/F004/S001"
+  ],
+  "secuencia": 56,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestReincidenciaCreaSlice",
+      "intencion": "al llegar al umbral de ocurrencias (config, 3) aquas crea un slice P1 en E000 una sola vez; debajo del umbral no crea nada"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "E001/F004/S002",
+  "tipo": "slice",
+  "titulo": "Stop frena fallo sin defecto",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: definir E001/F004",
+  "padre": "E001/F004",
+  "bloqueado_por": [
+    "E001/F004/S001"
+  ],
+  "secuencia": 55,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestStopFrenaFalloSinDefecto",
+      "intencion": "¿Salió algo mal? distinto de No sin defecto con ocurrencia en este turno bloquea; con ocurrencia o con No pasa"
+    }
+  ]
+}
