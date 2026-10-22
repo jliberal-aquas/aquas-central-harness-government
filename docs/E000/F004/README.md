@@ -46,6 +46,7 @@ stateDiagram-v2
 | Slice | Qué entrega |
 |---|---|
 | [S001 Medir vueltas](S001.md) | `aquas medir vueltas` con motivos |
+| [S002 Por qué cae la wiki](S002.md) | Caídas de la wiki por regla |
 
 ## Ejemplo de punta a punta
 
@@ -60,6 +61,7 @@ continúa: [EJ-E000](../README.md#EJ-E000)
 ## Paso a paso
 
 1. Medir vueltas de pruebas y gate (S001).
+2. Desglosar las caídas de la wiki por regla (S002).
 
 ## Cómo se usa
 
@@ -79,9 +81,10 @@ Prueba integral: `TestCuentaVueltasPorMotivo`, en S001.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | Medir vueltas de pruebas y gate | Hecho |
-| S002 | Por qué cae la wiki | Planeado |
+| [S002](S002.md) | Por qué cae la wiki | Hecho |
 
 <!-- /GENERADO -->
 
 - ↑ Subir: [E000 · Mantenimiento del gobierno](../README.md)
 - Abajo: [S001 · Medir vueltas](S001.md)
+- Abajo: [S002 · Por qué cae la wiki](S002.md)

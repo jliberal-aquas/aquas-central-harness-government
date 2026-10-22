@@ -1,0 +1,66 @@
+{
+  "id": "E000/F004/S002",
+  "tipo": "slice",
+  "titulo": "Por qué cae la wiki",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "wiki causa 143 de 166 caídas del gate; saber qué regla (humano 2026-10-22)",
+  "padre": "E000/F004",
+  "bloqueado_por": [],
+  "secuencia": 57,
+  "pruebas": [
+    {
+      "prueba": "./internal/vueltas:TestMotivoDeWikiPorRegla",
+      "intencion": "una caída de wiki cuenta por la regla que la causó (ej. «falta diagrama», «oración larga»), no solo como «wiki»"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T14:41:40Z",
+    "head": "5f212e9cffa525f6ae4e91bdaf455c518a281ee3",
+    "resultado": {
+      "./internal/vueltas:TestMotivoDeWikiPorRegla": "vueltas_test.go:69: motivos"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T14:42:36Z",
+    "head": "5f212e9cffa525f6ae4e91bdaf455c518a281ee3"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F004",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el desglose de la wiki"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el desglose de la wiki"
+    },
+    {
+      "clave": "pagina:docs/E000/F004/S002.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a S002"
+    },
+    {
+      "clave": "pagina:docs/E000/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a S002"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a S002"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/vueltas",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el desglose de la wiki"
+    }
+  ],
+  "alcance": [
+    "internal/vueltas/**",
+    "docs/E000/**",
+    "registro/defectos/**",
+    "docs/glosario.md"
+  ]
+}

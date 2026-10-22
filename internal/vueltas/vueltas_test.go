@@ -48,3 +48,24 @@ func TestCuentaVueltasPorMotivo(t *testing.T) {
 		t.Fatalf("línea\n got %s\nwant %s", l, w)
 	}
 }
+
+func TestMotivoDeWikiPorRegla(t *testing.T) {
+	salida := "GATE FALLIDO · wiki docs/ incompleta:\n" +
+		"  - docs/a.md: falta sección «Contrato y evidencia»\n" +
+		"  - docs/b.md: falta sección «Paso a paso»\n" +
+		"  - docs/b.md: primera aparición de «agente» sin enlace al glosario (escribe [agente](../glosario.md#agente))\n" +
+		"GATE FALLIDO · derivados desfasados:\n  - CLAUDE.md"
+	historial := uso("a", ".tmp/aq.exe verificar") + "\n" + res("a", strings.ReplaceAll(salida, "\n", `\n`), true) // escapado como en el JSON real
+	got, err := Contar(strings.NewReader(historial))
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := map[string]int{
+		"wiki: falta sección «…»":                               1, // misma regla en dos páginas = una vuelta
+		"wiki: primera aparición de «…» sin enlace al glosario": 1,
+		"derivados": 1,
+	}
+	if !reflect.DeepEqual(got["verificar"].Motivos, want) {
+		t.Fatalf("motivos\n got %v\nwant %v", got["verificar"].Motivos, want)
+	}
+}

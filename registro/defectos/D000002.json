@@ -1,0 +1,11 @@
+{
+  "id": "D000002",
+  "firma": "plan-sin-linea",
+  "que": "mensaje que invita a seguir sin la línea «Plan: N llamadas»; el dale del humano no registra plan y el hook bloquea",
+  "causa": "el hook de presupuesto solo abre plan si el mensaje previo del agente trae esa línea",
+  "arreglo": "repetir la propuesta con su línea de plan y pedir dale de nuevo",
+  "como_me_cercioro": "todo mensaje que pide dale termina con Plan: N llamadas, M agentes",
+  "ocurrencias": [
+    "T000030"
+  ]
+}

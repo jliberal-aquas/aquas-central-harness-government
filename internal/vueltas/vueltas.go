@@ -49,10 +49,49 @@ func motivos(tipo, salida string) []string {
 		}
 		return m
 	}
-	for _, s := range gateFallido.FindAllStringSubmatch(salida, -1) {
-		m = append(m, s[1])
+	// verificar: cada sección «GATE FALLIDO · x»; la wiki se desglosa por regla (E000/F004/S002).
+	seccion, reglas := "", 0
+	cerrarWiki := func() {
+		if seccion == "wiki" && reglas == 0 {
+			m = append(m, "wiki") // sin detalle legible: queda el motivo grueso
+		}
 	}
+	for _, l := range strings.Split(salida, "\n") {
+		if s := gateFallido.FindStringSubmatch(l); s != nil {
+			cerrarWiki()
+			seccion, reglas = s[1], 0
+			if seccion != "wiki" {
+				m = append(m, seccion)
+			}
+			continue
+		}
+		item, ok := strings.CutPrefix(l, "  - ")
+		if seccion != "wiki" || !ok {
+			continue
+		}
+		if _, txt, ok := strings.Cut(item, ": "); ok {
+			reglas++
+			if r := "wiki: " + regla(txt); !slices.Contains(m, r) { // misma regla en dos páginas = una vuelta
+				m = append(m, r)
+			}
+		}
+	}
+	cerrarWiki()
 	return m
+}
+
+var (
+	citaR      = regexp.MustCompile(`«[^»]*»`)
+	parentesis = regexp.MustCompile(`\s*\(.*$`) // pista final; puede traer paréntesis anidados
+	numeroR    = regexp.MustCompile(`\d+`)
+)
+
+// regla: el mensaje del gate sin lo que cambia de página a página (citas, paréntesis, números).
+func regla(txt string) string {
+	txt, _, _ = strings.Cut(txt, ": ") // «prueba sin slice dueño: TestX» → la regla, sin el caso
+	txt = citaR.ReplaceAllString(txt, "«…»")
+	txt = parentesis.ReplaceAllString(txt, "")
+	return strings.TrimSpace(numeroR.ReplaceAllString(txt, "N"))
 }
 
 type bloque struct {
