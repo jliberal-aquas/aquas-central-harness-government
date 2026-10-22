@@ -128,6 +128,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go run ./cmd/aquas verif
 | F003 | Hooks globales (inventario) | Cancelado |
 | [F004](F004/README.md) | Vueltas de pruebas y gate | Hecho |
 | [F005](F005/README.md) | Calidad de las pruebas | Hecho |
+| F006 | Correcciones de la revisión externa | Planeado |
 
 <!-- /GENERADO -->
 

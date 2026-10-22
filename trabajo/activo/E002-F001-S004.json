@@ -1,0 +1,19 @@
+{
+  "id": "E002/F001/S004",
+  "tipo": "slice",
+  "titulo": "aquas report: defecto del hijo a la central",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: fallos de gobierno en hijos vuelven a la central",
+  "padre": "E002/F001",
+  "bloqueado_por": [
+    "E002/F001/S001"
+  ],
+  "secuencia": 74,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestReportArmaIssueConVersion",
+      "intencion": "arma el issue con firma, qué pasó, reproducción y versión del lock; sin gh confirmado no envía"
+    }
+  ]
+}

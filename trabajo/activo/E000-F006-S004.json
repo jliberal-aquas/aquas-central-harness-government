@@ -1,0 +1,17 @@
+{
+  "id": "E000/F006/S004",
+  "tipo": "slice",
+  "titulo": "Avisar oración larga al guardar",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "Fable #7: 50 caídas del gate",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 64,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHookAvisaOracionLarga",
+      "intencion": "al guardar docs/ con oración \u003e 20 palabras el hook avisa la línea"
+    }
+  ]
+}

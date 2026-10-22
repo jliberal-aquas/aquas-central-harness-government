@@ -1,0 +1,17 @@
+{
+  "id": "E000/F006",
+  "tipo": "feature",
+  "titulo": "Correcciones de la revisión externa",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "revisión Fable 2026-10-22",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 60,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHookFallaCerrado",
+      "intencion": "integral: con aquas sin compilar el hook bloquea"
+    }
+  ]
+}

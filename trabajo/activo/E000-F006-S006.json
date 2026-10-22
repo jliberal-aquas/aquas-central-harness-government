@@ -1,0 +1,17 @@
+{
+  "id": "E000/F006/S006",
+  "tipo": "slice",
+  "titulo": "CLI en inglés",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: comandos en inglés por convención",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 66,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestComandosEnIngles",
+      "intencion": "build, verify, backlog… responden; los nombres viejos avisan el nuevo"
+    }
+  ]
+}

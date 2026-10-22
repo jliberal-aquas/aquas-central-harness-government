@@ -1,0 +1,17 @@
+{
+  "id": "E002/F001",
+  "tipo": "feature",
+  "titulo": "Instalar y heredar el núcleo común",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: repos hijos (revisión Fable)",
+  "padre": "E002",
+  "bloqueado_por": [],
+  "secuencia": 70,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHijoInstaladoPasaSuGate",
+      "intencion": "integral: install en carpeta vacía, build y verify del hijo pasan"
+    }
+  ]
+}

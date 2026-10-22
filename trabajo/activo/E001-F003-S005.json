@@ -1,0 +1,17 @@
+{
+  "id": "E001/F003/S005",
+  "tipo": "slice",
+  "titulo": "Biblioteca cuenta bien lo devuelto",
+  "estado": "BORRADOR",
+  "prioridad": "P3",
+  "motivo": "Fable #10: devueltos 60081 de 56670",
+  "padre": "E001/F003",
+  "bloqueado_por": [],
+  "secuencia": 68,
+  "pruebas": [
+    {
+      "prueba": "./internal/biblioteca:TestDevueltosNoSuperaTotal",
+      "intencion": "devueltos nunca supera el total"
+    }
+  ]
+}

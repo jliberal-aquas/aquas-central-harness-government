@@ -3,8 +3,8 @@
   "tipo": "slice",
   "titulo": "Sello: nivel trabajo",
   "estado": "BORRADOR",
-  "prioridad": "P2",
-  "motivo": "parte del sello separada de S004, decisión humana 2026-10-21",
+  "prioridad": "P3",
+  "motivo": "Fable #8d: ampliar sello antes de ver uso",
   "padre": "E001/F002",
   "bloqueado_por": [
     "E001/F002/S004"

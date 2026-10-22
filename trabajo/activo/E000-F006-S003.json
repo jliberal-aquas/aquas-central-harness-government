@@ -1,0 +1,17 @@
+{
+  "id": "E000/F006/S003",
+  "tipo": "slice",
+  "titulo": "Features con prueba propia y siguiente",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "Fable #2: 7 de 8 features sin pruebas",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 63,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSiguienteNoTrabaFeatureArchivada",
+      "intencion": "feature con slices archivados no cuenta como sin definir"
+    }
+  ]
+}

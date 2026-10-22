@@ -1,0 +1,17 @@
+{
+  "id": "E002",
+  "tipo": "iniciativa",
+  "titulo": "Proyectos hijos",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "misión: GENERA la estructura de todo proyecto",
+  "padre": "",
+  "bloqueado_por": [],
+  "secuencia": 69,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestCicloDeVidaDelHijo",
+      "intencion": "integral: install, build, update y report sobre un hijo de prueba"
+    }
+  ]
+}

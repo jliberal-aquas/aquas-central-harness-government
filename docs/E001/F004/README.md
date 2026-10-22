@@ -96,6 +96,7 @@ Prueba de S001: `TestRegistroDeDefectos`.
 | [S001](S001.md) | Registro de defectos | Hecho |
 | S002 | Stop frena fallo sin defecto | Planeado |
 | S003 | Reincidencia crea slice E000 | Planeado |
+| S004 | Stop frena pedido de dale sin plan | Planeado |
 
 <!-- /GENERADO -->
 

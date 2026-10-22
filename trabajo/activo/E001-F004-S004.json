@@ -1,0 +1,17 @@
+{
+  "id": "E001/F004/S004",
+  "tipo": "slice",
+  "titulo": "Stop frena pedido de dale sin plan",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "D000002",
+  "padre": "E001/F004",
+  "bloqueado_por": [],
+  "secuencia": 67,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestStopFrenaDaleSinPlan",
+      "intencion": "mensaje que invita a seguir sin línea Plan: bloquea"
+    }
+  ]
+}

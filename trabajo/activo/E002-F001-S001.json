@@ -1,0 +1,17 @@
+{
+  "id": "E002/F001/S001",
+  "tipo": "slice",
+  "titulo": "aquas install en carpeta vacía",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: repos hijos (revisión Fable)",
+  "padre": "E002/F001",
+  "bloqueado_por": [],
+  "secuencia": 71,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestInstallCopiaCentralConLock",
+      "intencion": "copia la central sellada a .aquas/central con lock de versión y hashes"
+    }
+  ]
+}

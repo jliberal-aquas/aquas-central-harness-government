@@ -1,0 +1,19 @@
+{
+  "id": "E002/F001/S002",
+  "tipo": "slice",
+  "titulo": "Huecos, canónico local y aquas build",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: repos hijos (revisión Fable)",
+  "padre": "E002/F001",
+  "bloqueado_por": [
+    "E002/F001/S001"
+  ],
+  "secuencia": 72,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestBuildRellenaHuecosSinTocarFinal",
+      "intencion": "build une central y huecos locales en un CLAUDE.md; local sobre una sección final cae"
+    }
+  ]
+}
