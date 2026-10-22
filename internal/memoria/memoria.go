@@ -19,7 +19,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jliberal/aquas-harness-governance/internal/backlog"
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
 )
 
 const (

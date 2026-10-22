@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F006",
+    "slice": "S002",
+    "tarea": "S002 ruta del módulo: cierre"
+  },
+  "siguiente": "E000/F006/S003 o E002/F001/S001 (push pendiente de confirmar)",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "f4cf97a928fa22b185c2575af112316746be33fcb01131464837d0ae1f5dde8c",
+  "actualizado": "2026-10-22T17:41:38Z",
+  "sello": "1fdf4d6f67c63ebc951dadf7d8cbf11c60f810c824c834a70d47a275f7181d8e"
+}

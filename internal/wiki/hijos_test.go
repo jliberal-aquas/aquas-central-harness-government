@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jliberal/aquas-harness-governance/internal/backlog"
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
 )
 
 // E001/F002/S010: navegación por niveles. Cada página lista solo a sus hijos directos;

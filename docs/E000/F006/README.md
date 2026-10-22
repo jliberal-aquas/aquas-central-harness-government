@@ -45,6 +45,7 @@ stateDiagram-v2
 | Slice | Qué entrega |
 |---|---|
 | [S001 Hooks fallan cerrados](S001.md) | El hook sigue vigilando aunque el código no compile |
+| [S002 Ruta del módulo igual al remoto](S002.md) | `go install` encuentra el módulo en GitHub |
 
 ## Ejemplo de punta a punta
 
@@ -83,7 +84,7 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | Hooks fallan cerrados | Hecho |
-| S002 | Ruta del módulo igual al remoto | Planeado |
+| [S002](S002.md) | Ruta del módulo igual al remoto | Hecho |
 | S003 | Features con prueba propia y siguiente | Planeado |
 | S004 | Avisar oración larga al guardar | Planeado |
 | S005 | Wiki y metodología al día | Planeado |
@@ -93,3 +94,4 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 
 - ↑ Subir: [E000 · Mantenimiento del gobierno](../README.md)
 - Abajo: [S001 · Hooks fallan cerrados](S001.md)
+- Abajo: [S002 · Ruta del módulo igual al remoto](S002.md)

@@ -1,0 +1,158 @@
+{
+  "id": "E000/F006/S002",
+  "tipo": "slice",
+  "titulo": "Ruta del módulo igual al remoto",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "go install exige module == repo; errata goverment",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 62,
+  "pruebas": [
+    {
+      "prueba": "./internal/compilador:TestModuloIgualRemoto",
+      "intencion": "go.mod y constitución apuntan a github.com/jliberal-aquas/aquas-central-harness-government"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T17:40:07Z",
+    "head": "1fbea95ad4fd469d6497a3ee00224e25cff67641",
+    "resultado": {
+      "./internal/compilador:TestModuloIgualRemoto": "modulo_test.go:20: go.mod: módulo \"github.com/jliberal/aquas-harness-governance\", quiero \"github.com/jliberal-aquas/aquas-central-harness-government\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T17:40:38Z",
+    "head": "1fbea95ad4fd469d6497a3ee00224e25cff67641"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S002.md",
+      "marca": "actualizado",
+      "motivo": "S002 nueva y fila en F006"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "actualizado",
+      "motivo": "S002 nueva y fila en F006"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "S002 nueva y fila en F006"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ego.mod",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:cmd/aquas/rojo_test.go\u003ego.mod",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003einternal/backlog/sello.go",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S013.md\u003einternal/backlog/sello.go",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S014.md\u003einternal/backlog/sello.go",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/ref/constitucion.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003einternal/memoria/memoria.go",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:gobierno/config/documentos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:internal/backlog/rojo_test.go\u003ego.mod",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003ego.mod",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambia la ruta del módulo; ninguna de estas menciones la nombra"
+    }
+  ],
+  "alcance": [
+    "go.mod",
+    "cmd/**",
+    "internal/**",
+    "gobierno/**",
+    "CLAUDE.md",
+    "docs/**"
+  ]
+}

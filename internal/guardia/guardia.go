@@ -14,9 +14,9 @@ package guardia
 import (
 	"path"
 
-	"github.com/jliberal/aquas-harness-governance/internal/backlog"
-	mem "github.com/jliberal/aquas-harness-governance/internal/memoria"
-	"github.com/jliberal/aquas-harness-governance/internal/turno"
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
+	mem "github.com/jliberal-aquas/aquas-central-harness-government/internal/memoria"
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/turno"
 
 	"encoding/json"
 	"fmt"

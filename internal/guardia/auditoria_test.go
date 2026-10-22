@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jliberal/aquas-harness-governance/internal/turno"
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/turno"
 )
 
 // E001/F002/S001: la auditoría solo la escribe `aquas turno` desde los hooks. La carpeta sale

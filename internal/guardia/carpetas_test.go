@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jliberal/aquas-harness-governance/internal/backlog"
-	mem "github.com/jliberal/aquas-harness-governance/internal/memoria"
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
+	mem "github.com/jliberal-aquas/aquas-central-harness-government/internal/memoria"
 )
 
 // E000/F005/S005: las carpetas protegidas salen de los paquetes que las usan, no de una copia.

@@ -11,7 +11,7 @@
 1. Gobierno incremental: se construye poco a poco. Regla no escrita en un canónico = regla no vigente.
 2. Determinismo primero: toda regla verificable se valida con un programa (gate), no con juicio del modelo.
 3. Lo no verificable por programa se marca explícitamente como «criterio humano» o «probabilístico».
-4. Go = lenguaje único de gates, validadores y herramientas. Módulo: `github.com/jliberal/aquas-harness-governance`.
+4. Go = lenguaje único de gates, validadores y herramientas. Módulo: `github.com/jliberal-aquas/aquas-central-harness-government`.
 5. Un cambio coherente = un commit. Git local obligatorio. Mensaje explica el porqué.
 6. Evidencia antes de afirmar: no declarar «hecho» sin prueba ejecutada.
 7. Contexto permanente en formato Caveman: corto, denso, sin relleno. Detalle extenso va en archivos bajo demanda.

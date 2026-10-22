@@ -23,7 +23,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/jliberal/aquas-harness-governance/internal/compilador"
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/compilador"
 )
 
 // Marca: la revisión de un ítem del sello.
