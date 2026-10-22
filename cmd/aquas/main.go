@@ -9,6 +9,7 @@
 //	aquas cierre-agente  hook SubagentStop: exige el CIERRE fijo de worker y auditor (exit 2)
 //	aquas memoria    ver | fijar campo=valor… | inicio | cierre | archivar: memoria caliente del foco (.aquas/memoria.json)
 //	aquas medir vueltas  cuenta corridas, fallas y motivos de go test y verificar en el historial de Claude Code
+//	aquas defecto    nuevo firma=… que=… causa=… arreglo=… cercioro=… | ocurre D000001 T000001 | ver [D000001]
 package main
 
 import (
@@ -24,6 +25,7 @@ import (
 	"github.com/jliberal/aquas-harness-governance/internal/backlog"
 	"github.com/jliberal/aquas-harness-governance/internal/biblioteca"
 	"github.com/jliberal/aquas-harness-governance/internal/compilador"
+	"github.com/jliberal/aquas-harness-governance/internal/defecto"
 	"github.com/jliberal/aquas-harness-governance/internal/encargo"
 	"github.com/jliberal/aquas-harness-governance/internal/entorno"
 	"github.com/jliberal/aquas-harness-governance/internal/guardia"
@@ -113,6 +115,10 @@ func main() {
 		if m := propuesta.Revisar(e.Respuesta); m != "" {
 			fmt.Fprintln(os.Stderr, m)
 			os.Exit(2)
+		}
+	case "defecto": // E001/F004/S001: registro de defectos en registro/defectos/
+		if err := defectoCLI(raiz, os.Args[2:]); err != nil {
+			fallar(1, err)
 		}
 	case "medir": // E000/F004/S001: corridas y fallas de pruebas y gate, solo lectura del historial
 		if len(os.Args) < 3 || os.Args[2] != "vueltas" {
@@ -456,4 +462,54 @@ func turnoCLI(raiz string, args []string) {
 	if err != nil {
 		fallar(1, fmt.Errorf("turno %s: %w", args[0], err))
 	}
+}
+
+// defectoCLI: nuevo | ocurre | ver (E001/F004/S001).
+func defectoCLI(raiz string, args []string) error {
+	uso := errors.New("uso: aquas defecto nuevo firma=… que=… causa=… arreglo=… cercioro=… | ocurre D000001 T000001 | ver [D000001]")
+	if len(args) == 0 {
+		return uso
+	}
+	var ds []defecto.Defecto
+	switch {
+	case args[0] == "nuevo":
+		c := map[string]string{}
+		for _, a := range args[1:] {
+			k, v, ok := strings.Cut(a, "=")
+			if !ok {
+				return uso
+			}
+			c[k] = v
+		}
+		d, err := defecto.Nuevo(raiz, c)
+		if err != nil {
+			return err
+		}
+		ds = append(ds, d)
+	case args[0] == "ocurre" && len(args) == 3:
+		d, err := defecto.Ocurre(raiz, args[1], args[2])
+		if err != nil {
+			return err
+		}
+		ds = append(ds, d)
+	case args[0] == "ver" && len(args) <= 2:
+		todos, err := defecto.Leer(raiz)
+		if err != nil {
+			return err
+		}
+		for _, d := range todos {
+			if len(args) == 1 || d.ID == args[1] {
+				ds = append(ds, d)
+			}
+		}
+		if len(args) == 2 && len(ds) == 0 {
+			return fmt.Errorf("no existe el defecto %s", args[1])
+		}
+	default:
+		return uso
+	}
+	for _, d := range ds {
+		fmt.Print(defecto.Texto(d))
+	}
+	return nil
 }

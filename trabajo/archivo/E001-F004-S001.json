@@ -1,0 +1,117 @@
+{
+  "id": "E001/F004/S001",
+  "tipo": "slice",
+  "titulo": "Registro de defectos",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "sin registro, lo que enseña la medición no queda guardado (humano 2026-10-22)",
+  "padre": "E001/F004",
+  "bloqueado_por": [],
+  "secuencia": 54,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestRegistroDeDefectos",
+      "intencion": "aquas defecto nuevo crea D000001 con firma única y campos cortos; ocurre suma un turno; firma repetida o campo vacío fallan; D000001 hook-exit-go-run sembrado"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T14:29:54Z",
+    "head": "a40aced20aa72a803a7db47f3306553139b33797",
+    "resultado": {
+      "./internal/defecto:TestRegistroDeDefectos": "defecto_test.go:23: primer defecto: {ID:x Firma: Que: Causa: Arreglo: Cercioro: Ocurrencias:[]}"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T14:30:45Z",
+    "head": "a40aced20aa72a803a7db47f3306553139b33797"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F004",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "ficha:E001/F004/S002",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "ficha:E001/F004/S003",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "pagina:docs/E001/F004/S001.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a F004/S001"
+    },
+    {
+      "clave": "pagina:docs/E001/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a F004/S001"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "página nueva o enlace a F004/S001"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con el registro de defectos"
+    }
+  ],
+  "alcance": [
+    "internal/defecto/**",
+    "cmd/aquas/**",
+    "docs/E001/**",
+    "registro/defectos/**",
+    "docs/glosario.md"
+  ]
+}

@@ -67,7 +67,7 @@ Estado actual de sus features:
 | [F005 Memoria caliente](F005/README.md) | El agente no pierde el foco entre sesiones |
 | [F006 Workers y auditor](F006/README.md) | Agentes baratos que ejecutan y un auditor que revisa |
 | [F002 Turnos, backlog y sello](F002/README.md) | Auditoría, backlog en JSON, rojo/verde, sello |
-| F004 Defectos y reincidencia | Registra fallos y avisa si se repiten |
+| [F004 Defectos y reincidencia](F004/README.md) | Registra fallos y avisa si se repiten |
 | [F003 Bibliotecario](F003/README.md) | Lee el repo pidiendo solo lo útil |
 
 ## Ejemplo de punta a punta
@@ -147,7 +147,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F001](F001/README.md) | Wiki + gate | Hecho |
 | [F002](F002/README.md) | Turnos, backlog y sello | En curso |
 | [F003](F003/README.md) | Bibliotecario | Hecho |
-| F004 | Defectos y reincidencia | Planeado |
+| [F004](F004/README.md) | Defectos y reincidencia | Planeado |
 | [F005](F005/README.md) | Memoria caliente | Hecho |
 | [F006](F006/README.md) | Workers y auditor | Hecho |
 
@@ -158,4 +158,5 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 - Abajo: [F005 · Memoria caliente](F005/README.md)
 - Abajo: [F006 · Workers y auditor](F006/README.md)
 - Abajo: [F002 · Turnos, backlog y sello](F002/README.md)
+- Abajo: [F004 · Defectos y reincidencia](F004/README.md)
 - Abajo: [F003 · Bibliotecario](F003/README.md)

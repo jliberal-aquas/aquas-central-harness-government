@@ -1,0 +1,9 @@
+{
+  "id": "D000001",
+  "firma": "hook-exit-go-run",
+  "que": "un hook que sale con exit 2 llega como exit 1 y Claude Code no lo trata como bloqueo",
+  "causa": "go run convierte el exit code del programa en 1",
+  "arreglo": "los hooks corren el binario compilado, no go run",
+  "como_me_cercioro": "probar el hook real y ver exit 2 en su salida",
+  "ocurrencias": []
+}
