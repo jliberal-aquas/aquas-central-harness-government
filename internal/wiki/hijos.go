@@ -75,19 +75,27 @@ func fecha(r *backlog.Registro) string {
 	return r.Fecha[:10]
 }
 
-// tablaPruebas: las pruebas del slice con su intención y si se vieron en rojo y en verde.
+// oGuion: el texto como celda, o «—» si está vacío (pruebas anteriores a E001/F008/S001).
+func oGuion(s string) string {
+	if strings.TrimSpace(s) == "" {
+		return "—"
+	}
+	return celda(s)
+}
+
+// tablaPruebas: las pruebas del slice: qué validan, cuándo quedan en rojo y en verde, y si se vieron en rojo y en verde.
 func tablaPruebas(f backlog.Ficha) string {
 	var b strings.Builder
-	b.WriteString("| Prueba | Qué demuestra | Rojo | Verde |\n|---|---|---|---|\n")
+	b.WriteString("| Prueba | Valida | Rojo cuando | Verde cuando | Rojo | Verde |\n|---|---|---|---|---|---|\n")
 	if len(f.Pruebas) == 0 {
-		b.WriteString("| — | ficha anterior al registro de pruebas | — | — |\n")
+		b.WriteString("| — | ficha anterior al registro de pruebas | — | — | — | — |\n")
 	}
 	for _, p := range f.Pruebas {
 		rojo := "—"
 		if f.Rojo != nil && f.Rojo.Resultado[p.Nombre] != "" {
 			rojo = fecha(f.Rojo)
 		}
-		fmt.Fprintf(&b, "| `%s` | %s | %s | %s |\n", p.Nombre[strings.LastIndex(p.Nombre, ":")+1:], celda(p.Intencion), rojo, fecha(f.Verde))
+		fmt.Fprintf(&b, "| `%s` | %s | %s | %s | %s | %s |\n", p.Nombre[strings.LastIndex(p.Nombre, ":")+1:], celda(p.Intencion), oGuion(p.RojoCuando), oGuion(p.VerdeCuando), rojo, fecha(f.Verde))
 	}
 	return b.String()
 }

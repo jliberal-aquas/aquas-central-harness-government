@@ -97,9 +97,9 @@ func TestArranqueEnFrio(t *testing.T) {
 
 	// Desde E001/F002/S003 la memoria solo fija el slice que el backlog tiene en curso.
 	for _, args := range [][]string{
-		{"nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "prueba=./x:TestA=a"},
-		{"nuevo", "id=E001/F005", "titulo=M", "prioridad=P1", "motivo=m", "prueba=./x:TestA=a"},
-		{"nuevo", "id=E001/F005/S003", "titulo=A", "prioridad=P1", "motivo=m", "prueba=./x:TestA=a"},
+		{"nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "prueba=./x:TestA=a|r|v"},
+		{"nuevo", "id=E001/F005", "titulo=M", "prioridad=P1", "motivo=m", "prueba=./x:TestA=a|r|v"},
+		{"nuevo", "id=E001/F005/S003", "titulo=A", "prioridad=P1", "motivo=m", "prueba=./x:TestA=a|r|v"},
 		{"estado", "E001/F005/S003", "EN_CURSO"},
 	} {
 		if s := aquas(t, raiz, "", append([]string{"backlog"}, args...)...); s.codigo != 0 {

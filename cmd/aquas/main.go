@@ -422,7 +422,7 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 
 // backlogCLI: nuevo | ver [id] | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=intención… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=intención… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=…")
+	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=…")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}

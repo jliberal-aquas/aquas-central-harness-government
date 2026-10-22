@@ -13,7 +13,7 @@ import (
 func nuevo(t *testing.T, raiz string, campos ...string) Ficha {
 	t.Helper()
 	if !strings.Contains(strings.Join(campos, " "), "prueba=") {
-		campos = append(campos, "prueba=./p:TestFalla=falla a propósito") // desde S003 toda ficha nace con pruebas
+		campos = append(campos, "prueba=./p:TestFalla=falla a propósito|r|v") // desde S003 toda ficha nace con pruebas
 	}
 	f, err := Nuevo(raiz, campos)
 	if err != nil {
@@ -75,7 +75,7 @@ func TestNuevoCreaFicha(t *testing.T) {
 
 func TestNuevoRechaza(t *testing.T) {
 	raiz := base(t)
-	ok := []string{"titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a"}
+	ok := []string{"titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a|r|v"}
 	for _, c := range []struct {
 		nombre string
 		campos []string
@@ -84,9 +84,9 @@ func TestNuevoRechaza(t *testing.T) {
 		{"id mal formado", append([]string{"id=E1/F2"}, ok...), "id"},
 		{"padre inexistente", append([]string{"id=E001/F009/S001"}, ok...), "padre"},
 		{"id repetido", append([]string{"id=E001/F002"}, ok...), "ya existe"},
-		{"prioridad inválida", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P9", "motivo=m", "prueba=./p:TestA=a"}, "prioridad"},
-		{"sin motivo", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P1", "prueba=./p:TestA=a"}, "motivo"},
-		{"sin título", []string{"id=E001/F002/S001", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a"}, "titulo"},
+		{"prioridad inválida", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P9", "motivo=m", "prueba=./p:TestA=a|r|v"}, "prioridad"},
+		{"sin motivo", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P1", "prueba=./p:TestA=a|r|v"}, "motivo"},
+		{"sin título", []string{"id=E001/F002/S001", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a|r|v"}, "titulo"},
 		{"campo desconocido", append([]string{"id=E001/F002/S001", "color=rojo"}, ok...), "color"},
 		{"bloqueo inexistente", append([]string{"id=E001/F002/S001", "bloqueado_por=E009"}, ok...), "E009"},
 		{"campo repetido", append([]string{"id=E001/F002/S001", "id=E001/F002/S009"}, ok...), "repetido"},

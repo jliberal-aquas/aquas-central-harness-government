@@ -48,15 +48,15 @@ func TestBashDentroPasa(t *testing.T) {
 	raiz := raizPrueba(t)
 	for _, c := range []string{
 		`go test ./...`,
-		`cat ~/.claude/settings.json`,                 // leer fuera está permitido
-		`sed -n 1,5p /c/Users/x/a.md && ls ~`,          // leer fuera está permitido
-		`echo hola > .tmp/x.txt`,                       // escribir dentro
-		`cat > docs/a.md <<'EOF'` + "\nhola\nEOF",      // heredoc dentro
-		`go vet ./... 2>&1 | tail -3`,                  // 2>&1 no es archivo
-		`go run ./cmd/aquas verificar > /dev/null`,     // /dev/null permitido
-		`f=docs/x.md && sed -i 's/a/b/' $f`,            // variable asignada en el comando
-		`cp /c/Users/x/plantilla.md docs/nueva.md`,     // copiar desde fuera hacia dentro
-		`mkdir -p .tmp && rm -rf .tmp/integral`,        // borrar dentro
+		`cat ~/.claude/settings.json`,              // leer fuera está permitido
+		`sed -n 1,5p /c/Users/x/a.md && ls ~`,      // leer fuera está permitido
+		`echo hola > .tmp/x.txt`,                   // escribir dentro
+		`cat > docs/a.md <<'EOF'` + "\nhola\nEOF",  // heredoc dentro
+		`go vet ./... 2>&1 | tail -3`,              // 2>&1 no es archivo
+		`go run ./cmd/aquas verificar > /dev/null`, // /dev/null permitido
+		`f=docs/x.md && sed -i 's/a/b/' $f`,        // variable asignada en el comando
+		`cp /c/Users/x/plantilla.md docs/nueva.md`, // copiar desde fuera hacia dentro
+		`mkdir -p .tmp && rm -rf .tmp/integral`,    // borrar dentro
 		`git commit -q -F - <<'EOF'` + "\nmsg > no es redirección dentro del heredoc\nEOF",
 	} {
 		if m := RevisarBash(raiz, raiz, c); m != "" {

@@ -25,11 +25,11 @@ func TestBacklogCLI(t *testing.T) {
 		}
 	}
 	const s2 = "trabajo/activo/E001-F002-S002.json"
-	paso("E001", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=raíz", "prueba=./p:TestA=a")
+	paso("E001", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=raíz", "prueba=./p:TestA=a|r|v")
 	campo("trabajo/activo/E001.json", "titulo", "Gobierno")
-	paso("E001/F002", "nuevo", "id=E001/F002", "titulo=Backlog", "prioridad=P1", "motivo=orden", "prueba=./p:TestA=a")
+	paso("E001/F002", "nuevo", "id=E001/F002", "titulo=Backlog", "prioridad=P1", "motivo=orden", "prueba=./p:TestA=a|r|v")
 	campo("trabajo/activo/E001-F002.json", "padre", "E001")
-	paso("E001/F002/S002", "nuevo", "id=E001/F002/S002", "titulo=Backlog en JSON", "prioridad=P2", "motivo=m", "prueba=./p:TestA=a")
+	paso("E001/F002/S002", "nuevo", "id=E001/F002/S002", "titulo=Backlog en JSON", "prioridad=P2", "motivo=m", "prueba=./p:TestA=a|r|v")
 	campo(s2, "estado", "BORRADOR")
 	campo(s2, "prioridad", "P2")
 	paso("E001/F002/S002 ·", "siguiente")

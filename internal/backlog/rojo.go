@@ -16,10 +16,12 @@ import (
 	"time"
 )
 
-// Prueba: nombre "./paquete:TestNombre" e intención (qué demuestra).
+// Prueba: nombre "./paquete:TestNombre", qué valida (Intencion) y cuándo queda en rojo y en verde.
 type Prueba struct {
-	Nombre    string `json:"prueba"`
-	Intencion string `json:"intencion"`
+	Nombre      string `json:"prueba"`
+	Intencion   string `json:"intencion"`
+	RojoCuando  string `json:"rojo_cuando,omitempty"`
+	VerdeCuando string `json:"verde_cuando,omitempty"`
 }
 
 // Registro: una corrida de las pruebas de la ficha. Resultado: prueba → primera línea de su fallo (rojo).
@@ -31,7 +33,7 @@ type Registro struct {
 
 var reNombrePrueba = regexp.MustCompile(`^\./[\w.-]+(/[\w.-]+)*:Test([A-Z0-9_]\w*)?$`)
 
-const formatoPrueba = "./paquete:TestNombre=intención"
+const formatoPrueba = "./paquete:TestNombre=valida|rojo cuando|verde cuando"
 
 // problemaPrueba: por qué una prueba de la ficha está mal escrita ("" si está bien).
 func problemaPrueba(p Prueba) string {
@@ -40,6 +42,9 @@ func problemaPrueba(p Prueba) string {
 	}
 	if strings.TrimSpace(p.Intencion) == "" {
 		return fmt.Sprintf("prueba %s sin intención: di qué demuestra (%s)", p.Nombre, formatoPrueba)
+	}
+	if (p.RojoCuando == "") != (p.VerdeCuando == "") {
+		return fmt.Sprintf("prueba %s: «rojo cuando» y «verde cuando» van juntos (%s)", p.Nombre, formatoPrueba)
 	}
 	return ""
 }
@@ -52,7 +57,11 @@ func listaPruebas(xs []string) ([]Prueba, error) {
 	var ps []Prueba
 	for _, x := range xs {
 		n, i, _ := strings.Cut(x, "=")
-		p := Prueba{strings.TrimSpace(n), strings.TrimSpace(i)}
+		c := append(strings.SplitN(i, "|", 3), "", "")
+		p := Prueba{Nombre: strings.TrimSpace(n), Intencion: strings.TrimSpace(c[0]), RojoCuando: strings.TrimSpace(c[1]), VerdeCuando: strings.TrimSpace(c[2])}
+		if p.Intencion != "" && (p.RojoCuando == "" || p.VerdeCuando == "") {
+			return nil, fmt.Errorf("prueba %s sin «rojo cuando» o «verde cuando»: usa %s", p.Nombre, formatoPrueba)
+		}
 		if m := problemaPrueba(p); m != "" {
 			return nil, errors.New(m)
 		}

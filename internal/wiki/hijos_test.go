@@ -83,9 +83,9 @@ func TestHijosGeneradosDesdeFichas(t *testing.T) {
 		tF001: aviso + "| Hijo | Qué es | Estado |\n|---|---|---|\n" +
 			"| [S001](S001.md) | Regla | Hecho |\n" +
 			"| S002 | Lista | Planeado |\n\n<!-- /GENERADO -->",
-		tS001: aviso + "| Prueba | Qué demuestra | Rojo | Verde |\n|---|---|---|---|\n" +
-			"| `TestA` | bloquea fuera | 2026-10-21 | 2026-10-21 |\n" +
-			"| `TestB` | deja pasar | — | 2026-10-21 |\n\n<!-- /GENERADO -->",
+		tS001: aviso + "| Prueba | Valida | Rojo cuando | Verde cuando | Rojo | Verde |\n|---|---|---|---|---|---|\n" +
+			"| `TestA` | bloquea fuera | — | — | 2026-10-21 | 2026-10-21 |\n" +
+			"| `TestB` | deja pasar | — | — | — | 2026-10-21 |\n\n<!-- /GENERADO -->",
 	}
 	seccionDe := map[string]string{tInicio: "## Navegación", tE001: "## Navegación", tF001: "## Navegación", tS001: "## Contrato y evidencia"}
 	for rel, bloque := range quiere {

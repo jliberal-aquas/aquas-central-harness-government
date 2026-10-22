@@ -44,7 +44,7 @@ func TestNoPermitidoSigueBloqueado(t *testing.T) {
 	raiz, fuera := conPermitidos(t, "")
 	conPermitidosEn(t, raiz, `{"permitidos_fuera":[{"ruta":"`+filepath.ToSlash(fuera)+`","motivo":"caché"}]}`)
 	for _, p := range []string{
-		filepath.Join(fuera+"-gemelo", "x"),          // prefijo igual, carpeta distinta
+		filepath.Join(fuera+"-gemelo", "x"),            // prefijo igual, carpeta distinta
 		filepath.Join(filepath.Dir(raiz), "otra", "x"), // hermana no listada
 	} {
 		if m := RevisarArchivo(raiz, p); !strings.Contains(m, "fuera del repositorio") {

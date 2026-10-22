@@ -47,7 +47,7 @@ func TestCompilarRegeneraHijos(t *testing.T) {
 	inicio := filepath.Join(raiz, "docs", "README.md")
 	os.MkdirAll(filepath.Dir(inicio), 0o755)
 	os.WriteFile(inicio, []byte("# Inicio\n\n## Navegación\n\n- Glosario\n"), 0o644)
-	if s := aquas(t, raiz, "", "backlog", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a"); s.codigo != 0 {
+	if s := aquas(t, raiz, "", "backlog", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a|r|v"); s.codigo != 0 {
 		t.Fatalf("backlog nuevo: %+v", s)
 	}
 	pagina := func() string {

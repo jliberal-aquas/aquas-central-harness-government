@@ -59,7 +59,7 @@ func modulo(t *testing.T) string {
 	return raiz
 }
 
-// enCurso: slice nuevo con esas pruebas ("./p:TestX=intención"), ya EN_CURSO.
+// enCurso: slice nuevo con esas pruebas ("./p:TestX=intención|r|v"), ya EN_CURSO.
 func enCurso(t *testing.T, raiz, id string, pruebas ...string) {
 	t.Helper()
 	campos := []string{"id=" + id, "titulo=T", "prioridad=P1", "motivo=m"}
@@ -107,22 +107,22 @@ func TestNuevoExigePruebas(t *testing.T) {
 	}{
 		{"sin pruebas", nil, "prueba"},
 		{"sin intención", []string{"prueba=./p:TestA"}, "intención"},
-		{"intención vacía", []string{"prueba=./p:TestA= "}, "intención"},
+		{"intención vacía", []string{"prueba=./p:TestA= |r|v"}, "intención"},
 		{"paquete sin ./", []string{"prueba=internal/p:TestA=x"}, "./paquete:TestNombre"},
 		{"nombre sin Test", []string{"prueba=./p:testa=x"}, "./paquete:TestNombre"},
 		{"sin paquete", []string{"prueba=TestA=x"}, "./paquete:TestNombre"},
-		{"repetida", []string{"prueba=./p:TestA=x", "prueba=./p:TestA=y"}, "repetida"},
+		{"repetida", []string{"prueba=./p:TestA=x|r|v", "prueba=./p:TestA=y|r|v"}, "repetida"},
 	} {
 		if _, err := Nuevo(raiz, append(append([]string{}, ok...), c.campos...)); err == nil || !strings.Contains(err.Error(), c.dice) {
 			t.Errorf("%s: se esperaba error con %q; dio %v", c.nombre, c.dice, err)
 		}
 	}
-	f, err := Nuevo(raiz, append(ok, "prueba=./p:TestFalla=falla por el contrato", "prueba=./cmd/x:TestB_2=otra = con igual"))
+	f, err := Nuevo(raiz, append(ok, "prueba=./p:TestFalla=falla por el contrato|r|v", "prueba=./cmd/x:TestB_2=otra = con igual|r|v"))
 	if err != nil {
 		t.Fatal(err)
 	}
 	g := leerFicha(t, activo(raiz, "E001-F002-S001.json"))
-	quiere := []Prueba{{"./p:TestFalla", "falla por el contrato"}, {"./cmd/x:TestB_2", "otra = con igual"}}
+	quiere := []Prueba{{Nombre: "./p:TestFalla", Intencion: "falla por el contrato", RojoCuando: "r", VerdeCuando: "v"}, {Nombre: "./cmd/x:TestB_2", Intencion: "otra = con igual", RojoCuando: "r", VerdeCuando: "v"}}
 	for _, x := range []Ficha{f, g} {
 		if len(x.Pruebas) != 2 || x.Pruebas[0] != quiere[0] || x.Pruebas[1] != quiere[1] || x.Rojo != nil || x.Verde != nil {
 			t.Errorf("pruebas con intención, en el orden dado, sin rojo ni verde: %+v", x)
@@ -132,16 +132,16 @@ func TestNuevoExigePruebas(t *testing.T) {
 
 func TestPruebasReiniciaRojoYVerde(t *testing.T) {
 	raiz := base(t)
-	f := nuevo(t, raiz, "id=E001/F002/S001", "titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestFalla=falla")
+	f := nuevo(t, raiz, "id=E001/F002/S001", "titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestFalla=falla|r|v")
 	f.Rojo = &Registro{Fecha: "2026-10-20T10:00:00Z", Resultado: map[string]string{"./p:TestFalla": "x"}}
 	f.Verde = &Registro{Fecha: "2026-10-20T11:00:00Z"}
 	pisar(t, raiz, Activo, f)
-	g, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestPasa=pasa", "./p:TestBandera=pide el arreglo"})
+	g, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestPasa=pasa|r|v", "./p:TestBandera=pide el arreglo|r|v"})
 	if err != nil {
 		t.Fatal(err)
 	}
 	for _, x := range []Ficha{g, leerFicha(t, activo(raiz, "E001-F002-S001.json"))} {
-		if len(x.Pruebas) != 2 || x.Pruebas[1] != (Prueba{"./p:TestBandera", "pide el arreglo"}) || x.Rojo != nil || x.Verde != nil {
+		if len(x.Pruebas) != 2 || x.Pruebas[1] != (Prueba{Nombre: "./p:TestBandera", Intencion: "pide el arreglo", RojoCuando: "r", VerdeCuando: "v"}) || x.Rojo != nil || x.Verde != nil {
 			t.Errorf("pruebas nuevas y rojo y verde borrados: %+v", x)
 		}
 	}
@@ -161,14 +161,14 @@ func TestPruebasReiniciaRojoYVerde(t *testing.T) {
 	if _, err := Estado(raiz, "E001/F002/S001", "CANCELADO"); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestPasa=pasa"}); err == nil || !strings.Contains(err.Error(), "archivada") {
+	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestPasa=pasa|r|v"}); err == nil || !strings.Contains(err.Error(), "archivada") {
 		t.Errorf("una archivada no cambia sus pruebas; dio %v", err)
 	}
 }
 
 func TestRojoExigeQueCadaPruebaFalle(t *testing.T) {
 	raiz := modulo(t)
-	nuevo(t, raiz, "id=E001/F002/S001", "titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestFalla=falla")
+	nuevo(t, raiz, "id=E001/F002/S001", "titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestFalla=falla|r|v")
 	if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), "en curso") {
 		t.Errorf("rojo de un slice que no está en curso; dio %v", err)
 	}
@@ -176,10 +176,10 @@ func TestRojoExigeQueCadaPruebaFalle(t *testing.T) {
 		t.Fatal(err)
 	}
 	for _, c := range []struct{ prueba, dice string }{
-		{"./p:TestPasa=pasa", "TestPasa"},
-		{"./p:TestSalta=se salta", "TestSalta"},
+		{"./p:TestPasa=pasa|r|v", "TestPasa"},
+		{"./p:TestSalta=se salta|r|v", "TestSalta"},
 	} {
-		if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestFalla=falla", c.prueba}); err != nil {
+		if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestFalla=falla|r|v", c.prueba}); err != nil {
 			t.Fatal(err)
 		}
 		if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), c.dice) || strings.Contains(err.Error(), "TestFalla") {
@@ -189,7 +189,7 @@ func TestRojoExigeQueCadaPruebaFalle(t *testing.T) {
 			t.Errorf("rojo rechazado no se registra: %+v", g.Rojo)
 		}
 	}
-	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestFalla=falla"}); err != nil {
+	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestFalla=falla|r|v"}); err != nil {
 		t.Fatal(err)
 	}
 	f, err := Rojo(raiz, "E001/F002/S001", hora)
@@ -205,17 +205,17 @@ func TestRojoExigeQueCadaPruebaFalle(t *testing.T) {
 
 func TestRojoNoCuentaCompilacionNiAusencia(t *testing.T) {
 	raiz := modulo(t)
-	enCurso(t, raiz, "E001/F002/S001", "./roto:TestX=no compila")
+	enCurso(t, raiz, "E001/F002/S001", "./roto:TestX=no compila|r|v")
 	if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), "no compila") {
 		t.Errorf("un fallo de compilación no es rojo; dio %v", err)
 	}
-	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestNoExiste=no existe"}); err != nil {
+	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestNoExiste=no existe|r|v"}); err != nil {
 		t.Fatal(err)
 	}
 	if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), "no existe") {
 		t.Errorf("una prueba que no existe no es rojo; dio %v", err)
 	}
-	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./nada:TestX=paquete ausente"}); err != nil {
+	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./nada:TestX=paquete ausente|r|v"}); err != nil {
 		t.Fatal(err)
 	}
 	if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), "paquete no existe") {
@@ -226,7 +226,7 @@ func TestRojoNoCuentaCompilacionNiAusencia(t *testing.T) {
 func TestRojoPruebaAislada(t *testing.T) {
 	raiz := modulo(t)
 	// Juntas, TestDepende falla por culpa de TestEnsucia; sola, pasa: no es su rojo.
-	enCurso(t, raiz, "E001/F002/S001", "./p:TestEnsucia=ensucia", "./p:TestDepende=depende")
+	enCurso(t, raiz, "E001/F002/S001", "./p:TestEnsucia=ensucia|r|v", "./p:TestDepende=depende|r|v")
 	if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), "TestDepende") {
 		t.Errorf("rojo corre cada prueba sola; dio %v", err)
 	}
@@ -234,7 +234,7 @@ func TestRojoPruebaAislada(t *testing.T) {
 
 func TestVerdeDespuesDelRojo(t *testing.T) {
 	raiz := modulo(t)
-	enCurso(t, raiz, "E001/F002/S001", "./p:TestBandera=pide el arreglo")
+	enCurso(t, raiz, "E001/F002/S001", "./p:TestBandera=pide el arreglo|r|v")
 	if _, err := Verde(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), "rojo") {
 		t.Errorf("verde sin rojo; dio %v", err)
 	}
@@ -260,7 +260,7 @@ func TestVerdeDespuesDelRojo(t *testing.T) {
 
 func TestCerrarExigeRojoYVerde(t *testing.T) {
 	raiz := base(t)
-	enCurso(t, raiz, "E001/F002/S001", "./p:TestFalla=falla")
+	enCurso(t, raiz, "E001/F002/S001", "./p:TestFalla=falla|r|v")
 	if _, err := Estado(raiz, "E001/F002/S001", "CERRADO"); err == nil || !strings.Contains(err.Error(), "rojo") {
 		t.Errorf("cerrar sin rojo; dio %v", err)
 	}
@@ -289,8 +289,8 @@ func TestCerrarExigeRojoYVerde(t *testing.T) {
 
 func TestUnSoloSliceEnCurso(t *testing.T) {
 	raiz := base(t)
-	enCurso(t, raiz, "E001/F002/S001", "./p:TestFalla=falla")
-	nuevo(t, raiz, "id=E001/F002/S002", "titulo=T", "prioridad=P2", "motivo=m", "prueba=./p:TestFalla=falla")
+	enCurso(t, raiz, "E001/F002/S001", "./p:TestFalla=falla|r|v")
+	nuevo(t, raiz, "id=E001/F002/S002", "titulo=T", "prioridad=P2", "motivo=m", "prueba=./p:TestFalla=falla|r|v")
 	for _, e := range []string{"EN_CURSO", "LISTO"} {
 		if _, err := Estado(raiz, "E001/F002/S002", e); err == nil || !strings.Contains(err.Error(), "E001/F002/S001") {
 			t.Errorf("con S001 en curso, S002 no pasa a %s; dio %v", e, err)
@@ -332,16 +332,16 @@ func TestValidarRojoYVerde(t *testing.T) {
 		}
 		return &Registro{Fecha: fecha, Resultado: m}
 	}
-	ok := []Prueba{{"./p:TestA", "a"}}
-	pisar(t, raiz, Activo, s("1", "BORRADOR", ok, nil, r("2026-10-21T13:00:00Z")))                                    // verde sin rojo
-	pisar(t, raiz, Activo, s("2", "BORRADOR", ok, r("2026-10-21T12:00:00Z", "./p:TestOtra"), nil))                    // rojo de otra prueba
-	pisar(t, raiz, Activo, s("3", "EN_CURSO", ok, nil, nil))                                                          // dos en curso
-	pisar(t, raiz, Activo, s("4", "VERIFICANDO", ok, nil, nil))                                                       // dos en curso
-	pisar(t, raiz, Archivo, s("5", "CERRADO", ok, r("2026-10-21T12:00:00Z", "./p:TestA"), nil))                       // cerrado sin verde
-	pisar(t, raiz, Activo, s("6", "BORRADOR", ok, r("2026-10-21T12:00:00Z", "./p:TestA"), r("2026-10-21T11:00:00Z"))) // verde antes del rojo
-	pisar(t, raiz, Activo, s("7", "BORRADOR", []Prueba{{"p:TestA", "a"}}, nil, nil))                                  // formato malo
-	pisar(t, raiz, Archivo, s("9", "CERRADO", ok, nil, r("2026-10-21T13:00:00Z")))                                    // cerrado sin rojo
-	pisar(t, raiz, Activo, s("8", "BORRADOR", []Prueba{{"./p:TestA", ""}}, nil, nil))                                 // sin intención
+	ok := []Prueba{{Nombre: "./p:TestA", Intencion: "a", RojoCuando: "r", VerdeCuando: "v"}}
+	pisar(t, raiz, Activo, s("1", "BORRADOR", ok, nil, r("2026-10-21T13:00:00Z")))                                                          // verde sin rojo
+	pisar(t, raiz, Activo, s("2", "BORRADOR", ok, r("2026-10-21T12:00:00Z", "./p:TestOtra"), nil))                                          // rojo de otra prueba
+	pisar(t, raiz, Activo, s("3", "EN_CURSO", ok, nil, nil))                                                                                // dos en curso
+	pisar(t, raiz, Activo, s("4", "VERIFICANDO", ok, nil, nil))                                                                             // dos en curso
+	pisar(t, raiz, Archivo, s("5", "CERRADO", ok, r("2026-10-21T12:00:00Z", "./p:TestA"), nil))                                             // cerrado sin verde
+	pisar(t, raiz, Activo, s("6", "BORRADOR", ok, r("2026-10-21T12:00:00Z", "./p:TestA"), r("2026-10-21T11:00:00Z")))                       // verde antes del rojo
+	pisar(t, raiz, Activo, s("7", "BORRADOR", []Prueba{{Nombre: "p:TestA", Intencion: "a"}}, nil, nil))                                     // formato malo
+	pisar(t, raiz, Archivo, s("9", "CERRADO", ok, nil, r("2026-10-21T13:00:00Z")))                                                          // cerrado sin rojo
+	pisar(t, raiz, Activo, s("8", "BORRADOR", []Prueba{{Nombre: "./p:TestA", Intencion: "", RojoCuando: "r", VerdeCuando: "v"}}, nil, nil)) // sin intención
 	p := strings.Join(Validar(raiz), "\n")
 	for _, c := range []struct{ archivo, dice string }{
 		{"E001-F002-S001.json", "verde sin rojo"},

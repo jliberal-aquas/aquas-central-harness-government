@@ -1,0 +1,207 @@
+{
+  "id": "E001/F008/S001",
+  "tipo": "slice",
+  "titulo": "Cada prueba con valida, rojo cuando y verde cuando, en backlog y wiki",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001/F008",
+  "bloqueado_por": [],
+  "secuencia": 79,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestPruebaExigeValidaRojoVerde",
+      "intencion": "prueba sin valida, rojo cuando o verde cuando cae al registrarla"
+    },
+    {
+      "prueba": "./internal/wiki:TestTablaPruebasMuestraCuando",
+      "intencion": "la tabla del slice muestra valida, rojo cuando y verde cuando"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T23:05:18Z",
+    "head": "0f96a1554e3f62d811d5445d042410843155889a",
+    "resultado": {
+      "./internal/backlog:TestPruebaExigeValidaRojoVerde": "campos_test.go:22: el gate debió señalar que falta «verde cuando»",
+      "./internal/wiki:TestTablaPruebasMuestraCuando": "cuando_test.go:25: falta \"| `TestB` | vieja | — | — | — | — |\" en:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T23:08:28Z",
+    "head": "0f96a1554e3f62d811d5445d042410843155889a"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F008",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "ficha:E001/F008/S002",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/auditor.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/orchestrator.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-haiku.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-sonnet.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/enlazar_hook_test.go\u003edocs/E000/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/README.md\u003ecmd/aquas/rojo_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/README.md\u003ecmd/aquas/arranque_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003ecmd/aquas/arranque_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Prueba suma dos campos opcionales; el resto de la API no cambia"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Prueba suma dos campos opcionales; el resto de la API no cambia"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Prueba suma dos campos opcionales; el resto de la API no cambia"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/F005/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/enlazar_test.go\u003edocs/E000/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la ruta nombrada no cambia en este slice"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "internal/wiki/**",
+    "cmd/aquas/**",
+    "docs/E001/**",
+    "docs/README.md"
+  ]
+}
