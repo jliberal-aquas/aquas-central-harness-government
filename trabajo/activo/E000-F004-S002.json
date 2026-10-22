@@ -1,0 +1,17 @@
+{
+  "id": "E000/F004/S002",
+  "tipo": "slice",
+  "titulo": "Por qué cae la wiki",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "wiki causa 143 de 166 caídas del gate; saber qué regla (humano 2026-10-22)",
+  "padre": "E000/F004",
+  "bloqueado_por": [],
+  "secuencia": 57,
+  "pruebas": [
+    {
+      "prueba": "./internal/vueltas:TestMotivoDeWikiPorRegla",
+      "intencion": "una caída de wiki cuenta por la regla que la causó (ej. «falta diagrama», «oración larga»), no solo como «wiki»"
+    }
+  ]
+}

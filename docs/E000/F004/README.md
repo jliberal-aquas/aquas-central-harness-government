@@ -79,6 +79,7 @@ Prueba integral: `TestCuentaVueltasPorMotivo`, en S001.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | Medir vueltas de pruebas y gate | Hecho |
+| S002 | Por qué cae la wiki | Planeado |
 
 <!-- /GENERADO -->
 
