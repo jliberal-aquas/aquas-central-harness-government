@@ -94,6 +94,7 @@ Así decide la guardia con un comando de Bash:
 
 ## Cómo se usa
 
+- Con un [slice](../glosario.md#slice) en curso, también frena lo que cae fuera de su alcance declarado (ver E001/F002/S007).
 - No hay que llamarla: corre sola antes de cada herramienta.
 - Clon nuevo: corre `go run ./cmd/aquas iniciar` en la raíz. Sin ese paso no hay hooks y el [pre-commit](../glosario.md#pre-commit) falla.
 - Si te bloquea, el mensaje dice la ruta. Usa una ruta dentro del repo, por ejemplo `.tmp/`.

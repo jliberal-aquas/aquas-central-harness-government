@@ -141,7 +141,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | [S004](S004.md) | Sello de cierre | Hecho |
 | S005 | aquas ver | Cancelado |
 | [S006](S006.md) | Propuesta con diagrama | Hecho |
-| S007 | Archivos solo dentro del alcance del slice | Planeado |
+| [S007](S007.md) | Archivos solo dentro del alcance del slice | Hecho |
 | S008 | siguiente avisa features sin slices | Planeado |
 | [S009](S009.md) | Cerrar exige memoria archivada | Hecho |
 | [S010](S010.md) | Wiki por niveles generada desde las fichas | Hecho |

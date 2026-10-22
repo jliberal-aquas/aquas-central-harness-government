@@ -1,0 +1,123 @@
+{
+  "id": "E001/F002/S007",
+  "tipo": "slice",
+  "titulo": "Archivos solo dentro del alcance del slice",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "alcance definido: opción B, decisión humana 2026-10-21",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 38,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestAlcanceSeDeclaraYAmplia",
+      "intencion": "rutas declaradas, ampliadas con motivo, derivados y datos de aquas pasan; lo demás frena y dice cómo ampliar"
+    },
+    {
+      "prueba": "./internal/backlog:TestSinAlcanceDeclaradoBloquea",
+      "intencion": "slice en curso sin alcance frena y dice cómo declararlo"
+    },
+    {
+      "prueba": "./internal/backlog:TestSinSliceEnCursoNoRestringe",
+      "intencion": "sin slice en curso no hay restricción"
+    },
+    {
+      "prueba": "./internal/guardia:TestGuardiaBloqueaFueraDelAlcance",
+      "intencion": "la guardia aplica el alcance a Write y a Bash"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T01:00:42Z",
+    "head": "654c9d1cd0f6ba83010b3d6b4be39df88b4900a9",
+    "resultado": {
+      "./internal/backlog:TestAlcanceSeDeclaraYAmplia": "alcance_test.go:44: la ampliación queda registrada con su motivo; dio []",
+      "./internal/backlog:TestSinAlcanceDeclaradoBloquea": "alcance_test.go:51: slice en curso sin alcance: frena y dice cómo declararlo; dio \"x\"",
+      "./internal/backlog:TestSinSliceEnCursoNoRestringe": "alcance_test.go:59: sin slice en curso no hay alcance que vigilar; dio \"x\"",
+      "./internal/guardia:TestGuardiaBloqueaFueraDelAlcance": "alcance_test.go:25: Bash fuera del alcance: bloquea; motivo \"\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T01:01:39Z",
+    "head": "654c9d1cd0f6ba83010b3d6b4be39df88b4900a9"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S007.md",
+      "marca": "actualizado",
+      "motivo": "página nueva del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "bloque generado al día con S007"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia con este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta como ejemplo o en pruebas; no cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "habla del compilador, no del comando alcance"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta como ejemplo o en pruebas; no cambia"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API previa del backlog no cambia; solo se agregan alcance y ampliaciones"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API previa del backlog no cambia; solo se agregan alcance y ampliaciones"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API previa del backlog no cambia; solo se agregan alcance y ampliaciones"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "usa la ruta como ejemplo o en pruebas; no cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API previa del backlog no cambia; solo se agregan alcance y ampliaciones"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "internal/guardia/**",
+    "cmd/aquas/**",
+    "docs/E001/F002/**",
+    "gobierno/canonico/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "docs/ref/guardia.md",
+      "motivo": "la referencia de la guardia debe contar que ahora frena por alcance"
+    }
+  ]
+}

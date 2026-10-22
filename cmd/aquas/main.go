@@ -332,7 +332,7 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 
 // backlogCLI: nuevo | ver [id] | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=intención… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=intención… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…]")
+	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=intención… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=intención… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=…")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}
@@ -392,6 +392,10 @@ func backlogCLI(raiz string, args []string) {
 			fmt.Println("marcado: " + args[2])
 			return
 		}
+	case args[0] == "alcance" && len(args) == 5 && args[2] == "ampliar" && strings.HasPrefix(args[4], "motivo="): // E001/F002/S007
+		f, err = backlog.Ampliar(raiz, args[1], args[3], strings.TrimPrefix(args[4], "motivo="))
+	case args[0] == "alcance" && len(args) > 2 && args[2] != "ampliar":
+		f, err = backlog.Alcance(raiz, args[1], args[2:])
 	case args[0] == "siguiente" && len(args) == 1:
 		var hay bool
 		f, hay, err = backlog.Siguiente(raiz)

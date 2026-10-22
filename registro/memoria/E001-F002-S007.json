@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S007",
+    "tarea": "S007 alcance vigilado: verde y sello marcado, cerrando"
+  },
+  "siguiente": "lo que diga aquas backlog siguiente",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "f3ade4809a8cb676101decd19a2f7dd3798bb229c276b972c1fa51df50d6f12c",
+  "actualizado": "2026-10-22T01:02:42Z",
+  "sello": "a190f5f9dd6743b0e69f24e1971ab83b69d7c0c955014c9d039dbfb97ed0a85d"
+}

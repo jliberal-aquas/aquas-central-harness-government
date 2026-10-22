@@ -36,6 +36,9 @@ type Ficha struct {
 	Verde   *Registro `json:"verde,omitempty"`
 	// S004: marcas del sello de cierre (clave, marca, motivo).
 	Sello []Marca `json:"sello,omitempty"`
+	// S007: rutas declaradas del slice y ampliaciones con motivo.
+	Alcance      []string     `json:"alcance,omitempty"`
+	Ampliaciones []Ampliacion `json:"ampliaciones,omitempty"`
 }
 
 // Estados y prioridades del canónico E001 (sección Backlog).

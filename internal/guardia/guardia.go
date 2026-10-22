@@ -93,6 +93,10 @@ func protegida(raiz, abs, p string) string {
 	if en(path.Dir(backlog.Activo)) || en(path.Dir(backlog.Archivo)) {
 		return fmt.Sprintf("backlog: %s solo se escribe con `aquas backlog nuevo|prioridad|estado|pruebas|rojo|verde`", p)
 	}
+	// E001/F002/S007: alcance del slice en curso; solo rutas dentro del repo.
+	if rel, err := filepath.Rel(raiz, abs); err == nil && !strings.HasPrefix(filepath.ToSlash(rel), "../") {
+		return backlog.FueraDeAlcance(raiz, filepath.ToSlash(rel))
+	}
 	return ""
 }
 
