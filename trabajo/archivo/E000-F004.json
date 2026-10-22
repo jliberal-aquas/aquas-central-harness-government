@@ -2,7 +2,7 @@
   "id": "E000/F004",
   "tipo": "feature",
   "titulo": "Vueltas de pruebas y gate",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P2",
   "motivo": "PROPUESTA aprobada 2026-10-21: 173 llamadas (28 %), ver reintentos",
   "padre": "E000",
@@ -17,5 +17,17 @@
       "prueba": "./internal/vueltas:TestMotivoDeWikiPorRegla",
       "intencion": "la medición desglosa las caídas del gate por regla"
     }
-  ]
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T16:49:04Z",
+    "head": "8e3895f9c9aaf1651b1f40e7b184578c182554c1",
+    "resultado": {
+      "./cmd/aquas:TestHookEnlazaAlGuardar": "enlazar_hook_test.go:32: página de docs/ sin enlazar",
+      "./internal/vueltas:TestMotivoDeWikiPorRegla": "vueltas_test.go:69: motivos"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-22T16:49:06Z",
+    "head": "8e3895f9c9aaf1651b1f40e7b184578c182554c1"
+  }
 }
