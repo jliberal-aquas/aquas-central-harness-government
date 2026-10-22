@@ -1,0 +1,17 @@
+{
+  "id": "E001/F008/S006",
+  "tipo": "slice",
+  "titulo": "Arreglos con ID bajo su slice y sección Arreglos",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001/F008",
+  "bloqueado_por": [],
+  "secuencia": 84,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestArregloCuelgaDeSlice",
+      "intencion": "arreglo sin slice padre cae; la página del slice lista sus arreglos"
+    }
+  ]
+}

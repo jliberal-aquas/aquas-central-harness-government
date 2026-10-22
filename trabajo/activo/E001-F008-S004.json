@@ -1,0 +1,17 @@
+{
+  "id": "E001/F008/S004",
+  "tipo": "slice",
+  "titulo": "Toda función comentada e índice docs/codigo generado",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001/F008",
+  "bloqueado_por": [],
+  "secuencia": 82,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestFuncionSinComentarioCae",
+      "intencion": "función sin comentario cae; el índice lista cada función con su comentario"
+    }
+  ]
+}

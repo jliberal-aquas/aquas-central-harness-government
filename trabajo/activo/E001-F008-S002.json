@@ -1,0 +1,19 @@
+{
+  "id": "E001/F008/S002",
+  "tipo": "slice",
+  "titulo": "Prueba integral del feature obligatoria para cerrarlo",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001/F008",
+  "bloqueado_por": [
+    "E001/F008/S001"
+  ],
+  "secuencia": 80,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestFeatureNoCierraSinIntegralVerde",
+      "intencion": "feature con integral sin verde no cierra; con verde cierra"
+    }
+  ]
+}

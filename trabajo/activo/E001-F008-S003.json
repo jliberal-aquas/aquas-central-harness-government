@@ -1,0 +1,17 @@
+{
+  "id": "E001/F008/S003",
+  "tipo": "slice",
+  "titulo": "Portadas listan todas las iniciativas con enlace",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001/F008",
+  "bloqueado_por": [],
+  "secuencia": 81,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestPortadasListanIniciativas",
+      "intencion": "iniciativa ausente de README.md o docs/README.md cae"
+    }
+  ]
+}

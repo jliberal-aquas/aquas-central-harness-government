@@ -1,0 +1,17 @@
+{
+  "id": "E001/F008",
+  "tipo": "feature",
+  "titulo": "Documentación verificable de pruebas, código y arreglos",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 78,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestDocumentacionVerificable",
+      "intencion": "wiki de un slice muestra pruebas con valida/rojo/verde, su código y sus arreglos"
+    }
+  ]
+}
