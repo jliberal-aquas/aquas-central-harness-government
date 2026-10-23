@@ -206,6 +206,14 @@
     "trabajo/**",
     "gobierno/**"
   ],
+  "arreglos": [
+    {
+      "id": "E001/F002/S016/X01",
+      "titulo": "RevisarInsight lee el estado, no cualquier mención de PROPUESTO",
+      "motivo": "D000009: frenó una línea con Estado IMPLEMENTADO Y PROBADO que solo citaba la palabra (2026-10-23)",
+      "fecha": "2026-10-23T02:04:08Z"
+    }
+  ],
   "codigo": [
     "cmd/aquas/main.go",
     "internal/propuesta/insight.go"

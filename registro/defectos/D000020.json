@@ -1,0 +1,9 @@
+{
+  "id": "D000020",
+  "firma": "arreglo-sin-pruebas-propias",
+  "que": "un arreglo nuevo (aquas backlog arreglo) no puede registrar sus pruebas ni pasar rojo y verde: backlog pruebas responde «no existe» con el ID padre/X01 (E001/F002/S016/X01, 2026-10-23); la prueba del arreglo se sumó a la del slice",
+  "causa": "Arreglar solo guarda titulo y motivo; pruebas, rojo y verde operan sobre fichas, y documentar solo cambia textos de pruebas ya registradas",
+  "arreglo": "backlog pruebas, rojo y verde aceptan el ID de un arreglo y registran sus pruebas y fechas en él",
+  "como_me_cercioro": "prueba en internal/backlog: pruebas y rojo sobre padre/X01 guardan la prueba y su rojo en el arreglo",
+  "ocurrencias": []
+}

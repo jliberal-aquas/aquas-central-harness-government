@@ -16,6 +16,9 @@ func TestInsightPropuestoExigeDefecto(t *testing.T) {
 		{"💡 **Insights:** Aprendimos X. Estado: IMPLEMENTADO Y PROBADO; evidencia: TestA.", false, "implementado"},
 		{"💡 **Insights:** Sin insight nuevo", false, "sin insight"},
 		{"texto que menciona PROPUESTO fuera del campo", false, "fuera del campo"},
+		// E001/F002/S016/X01 (D000009): la palabra citada no es el estado.
+		{"💡 **Insights:** los insights «PROPUESTO» se perdían. Estado: IMPLEMENTADO Y PROBADO; evidencia: TestA.", false, "implementado que cita la palabra"},
+		{"💡 **Insights:** Aprendimos X. Estado: propuesto; evidencia: pendiente.", true, "propuesto en minúsculas sin defecto"},
 	}
 	for _, c := range casos {
 		if got := RevisarInsight(c.msg) != ""; got != c.frena {
