@@ -385,7 +385,7 @@ func memoriaCLI(raiz string, args []string) {
 	fmt.Print(memoria.Texto(m))
 }
 
-// memoriaArchivada: CERRADO exige que la memoria que apunta al slice ya esté archivada (E001/F002/S009).
+// memoriaArchivada: CERRADO exige el archivo de memoria del slice, apunte o no la memoria a él (E001/F002/S009, X01).
 // Si se cierra antes y la memoria queda vieja, fijar y archivar se bloquean entre sí. Cancelar no lo exige.
 func memoriaArchivada(raiz, id string) error {
 	m, err := memoria.Leer(raiz)
@@ -396,14 +396,22 @@ func memoriaArchivada(raiz, id string) error {
 		return err
 	}
 	f := m.Foco
-	rel := memoria.RutaArchivo(f)
-	if rel == "" || f.Iniciativa+"/"+f.Feature+"/"+f.Slice != id {
+	if f.Iniciativa+"/"+f.Feature+"/"+f.Slice == id {
+		if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(memoria.RutaArchivo(f)))); err == nil {
+			return nil
+		}
+		return fmt.Errorf("la memoria apunta a %s y no está archivada: primero `aquas memoria fijar tarea=… siguiente=…`, luego `aquas memoria archivar`, y entonces cierra", id)
+	}
+	// X01 (D000010): con la memoria en otro foco, el slice igual necesita su archivo de memoria.
+	p := strings.Split(id, "/")
+	if len(p) != 3 {
 		return nil
 	}
+	rel := memoria.RutaArchivo(memoria.Foco{Iniciativa: p[0], Feature: p[1], Slice: p[2]})
 	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(rel))); err == nil {
 		return nil
 	}
-	return fmt.Errorf("la memoria apunta a %s y no está archivada: primero `aquas memoria fijar tarea=… siguiente=…`, luego `aquas memoria archivar`, y entonces cierra", id)
+	return fmt.Errorf("%s sin memoria archivada: `aquas memoria fijar slice=%s tarea=… siguiente=…`, luego `aquas memoria archivar`, y entonces cierra", id, p[2])
 }
 
 // focoEnBacklog: la memoria solo fija el slice que el backlog tiene en curso (S003).

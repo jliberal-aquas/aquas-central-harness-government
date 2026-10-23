@@ -66,7 +66,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `lista` | lista une los textos con comas, o «—» si no hay ninguno. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `fallar` | fallar imprime el error en stderr y termina con el código dado. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `memoriaCLI` | memoriaCLI: `ver` imprime la memoria; `fijar campo=valor…` la actualiza y la sella. |
-| [cmd/aquas/main.go](../../cmd/aquas/main.go) | `memoriaArchivada` | memoriaArchivada: CERRADO exige que la memoria que apunta al slice ya esté archivada (E001/F002/S009). |
+| [cmd/aquas/main.go](../../cmd/aquas/main.go) | `memoriaArchivada` | memoriaArchivada: CERRADO exige el archivo de memoria del slice, apunte o no la memoria a él (E001/F002/S009, X01). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `focoEnBacklog` | focoEnBacklog: la memoria solo fija el slice que el backlog tiene en curso (S003). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `backlogCLI` | backlogCLI: nuevo \\| ver [id] \\| prioridad \\| estado \\| siguiente \\| pruebas \\| rojo \\| verde. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `turnoCLI` | turnoCLI: auditoría de turnos (E001/F002/S001). Lee el JSON del hook por stdin. No imprime nada |

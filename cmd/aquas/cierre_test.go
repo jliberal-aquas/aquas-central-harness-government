@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// E001/F002/S009: cerrar un slice exige que su memoria esté archivada, si la memoria apunta a él.
+// E001/F002/S009: cerrar un slice exige que su memoria esté archivada, apunte o no la memoria a él (X01).
 // Orden correcto: memoria fijar → memoria archivar → backlog estado … CERRADO.
 func TestCerrarExigeMemoriaArchivada(t *testing.T) {
 	raiz := t.TempDir()
@@ -47,10 +47,10 @@ func TestCerrarExigeMemoriaArchivada(t *testing.T) {
 		t.Fatalf("EN_CURSO S004: %+v", s)
 	}
 
-	// 3 · Memoria en otro foco: no se bloquea por memoria (cae en la regla de rojo y verde).
+	// 3 · Memoria en otro foco y sin archivo del slice: también se bloquea (E001/F002/S009/X01, D000010).
 	fijar("slice=", "tarea=otra")
-	if s := cerrar("E001/F002/S004"); strings.Contains(s.err, "memoria apunta") || !strings.Contains(s.err, "rojo") {
-		t.Errorf("memoria en otro foco: el cierre no se bloquea por memoria; dio %+v", s)
+	if s := cerrar("E001/F002/S004"); s.codigo != 1 || !strings.Contains(s.err, "E001/F002/S004 sin memoria archivada") {
+		t.Errorf("memoria en otro foco: CERRADO exige el archivo de memoria del slice; dio %+v", s)
 	}
 
 	// 4 · Memoria archivada: tampoco se bloquea por memoria.

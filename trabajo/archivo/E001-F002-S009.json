@@ -11,9 +11,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestCerrarExigeMemoriaArchivada",
-      "intencion": "CERRADO se niega si la memoria apunta al slice sin archivar y dice cómo archivar",
-      "rojo_cuando": "CERRADO pasa con memoria sin archivar, o se bloquea por memoria con otro foco, archivada o al cancelar",
-      "verde_cuando": "sin archivar sale 1 pidiendo archivar; con otro foco, archivada o CANCELADO no se bloquea por memoria"
+      "intencion": "CERRADO se niega si el slice no tiene su memoria archivada, apunte o no la memoria a él, y dice cómo archivar",
+      "rojo_cuando": "CERRADO acepta un slice sin archivo de memoria, con la memoria en él o en otro foco, o bloquea CANCELADO",
+      "verde_cuando": "sin archivo de memoria CERRADO da exit 1 y pide archivar; con archivo o al cancelar no se bloquea"
     }
   ],
   "rojo": {
@@ -26,5 +26,16 @@
   "verde": {
     "fecha": "2026-10-21T15:02:30Z",
     "head": "9a19fe36a207bcc30fed0a9eaeb6792758353169"
-  }
+  },
+  "arreglos": [
+    {
+      "id": "E001/F002/S009/X01",
+      "titulo": "CERRADO exige la memoria archivada aunque la memoria apunte a otro slice",
+      "motivo": "D000010: S005 se cerró sin archivo de memoria porque el foco no apuntaba a él (2026-10-23)",
+      "fecha": "2026-10-23T02:08:38Z"
+    }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go"
+  ]
 }
