@@ -1,0 +1,10 @@
+{
+  "id": "D000028",
+  "firma": "pruebas-pisa-arreglo",
+  "que": "backlog pruebas y rojo sobre un arreglo existente reemplazan su prueba sin avisar",
+  "causa": "el agente supuso el id X01 sin leer el que devolvió backlog arreglo (X02); el CLI no protege pruebas ya declaradas",
+  "arreglo": "restaurado X01 desde git",
+  "como_me_cercioro": "git diff de trabajo/archivo/E002-F001-S002.json deja X01 igual que HEAD",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

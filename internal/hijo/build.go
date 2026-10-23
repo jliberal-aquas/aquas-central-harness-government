@@ -28,17 +28,26 @@ var reSoloHijo = regexp.MustCompile(`(?s)<!-- solo-hijo\r?\n(.*?)-->\r?\n`)
 // Falla si lo sellado no coincide con el lock, si un hueco queda vacío
 // o si lo local nombra algo que no es hueco (una sección final).
 func Build(dir string) error {
+	txt, err := armar(dir)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(filepath.Join(dir, "CLAUDE.md"), []byte(txt), 0o644)
+}
+
+// armar devuelve el CLAUDE.md que Build escribiría, sin escribirlo.
+func armar(dir string) (string, error) {
 	central := filepath.Join(dir, Carpeta, "central")
 	if err := verificarSello(dir, central); err != nil {
-		return err
+		return "", err
 	}
 	b, err := os.ReadFile(filepath.Join(central, "gobierno", "canonico", "constitucion.md"))
 	if err != nil {
-		return err
+		return "", err
 	}
 	locales, err := leerHuecos(filepath.Join(dir, filepath.FromSlash(CarpetaHuecos)))
 	if err != nil {
-		return err
+		return "", err
 	}
 	usados := map[string]bool{}
 	var faltan []string
@@ -53,7 +62,7 @@ func Build(dir string) error {
 		return txt
 	})
 	if len(faltan) > 0 {
-		return fmt.Errorf("hueco sin llenar: %s (escribe %s/<nombre>.md)", strings.Join(faltan, ", "), CarpetaHuecos)
+		return "", fmt.Errorf("hueco sin llenar: %s (escribe %s/<nombre>.md)", strings.Join(faltan, ", "), CarpetaHuecos)
 	}
 	var ajenos []string
 	for nombre := range locales {
@@ -63,12 +72,12 @@ func Build(dir string) error {
 	}
 	if len(ajenos) > 0 {
 		sort.Strings(ajenos)
-		return fmt.Errorf("no son huecos de la central (sección final, no se redefine): %s", strings.Join(ajenos, ", "))
+		return "", fmt.Errorf("no son huecos de la central (sección final, no se redefine): %s", strings.Join(ajenos, ", "))
 	}
 	out = reSoloCentral.ReplaceAllString(out, "")
 	out = reSoloHijo.ReplaceAllString(out, "$1")
 	cab := "<!-- GENERADO por `aquas build` desde .aquas/central + " + CarpetaHuecos + ". NO EDITAR. -->\n\n"
-	return os.WriteFile(filepath.Join(dir, "CLAUDE.md"), []byte(cab+out), 0o644)
+	return cab + out, nil
 }
 
 // verificarSello compara cada archivo de la central con su hash del lock.
@@ -119,4 +128,22 @@ func leerHuecos(dir string) (map[string]string, error) {
 		m[strings.TrimSuffix(e.Name(), ".md")] = txt
 	}
 	return m, nil
+}
+
+// Verificar (X02): gate del hijo; nil si su central sellada y su CLAUDE.md están al día.
+func Verificar(dir string) []string {
+	quiero, err := armar(dir)
+	if err != nil {
+		return []string{err.Error()}
+	}
+	if hay, err := os.ReadFile(filepath.Join(dir, "CLAUDE.md")); err != nil || string(hay) != quiero {
+		return []string{"CLAUDE.md desfasado o ausente: corre aquas build " + dir}
+	}
+	return nil
+}
+
+// EsHijo: dir tiene un gobierno central instalado (lock.json de aquas install).
+func EsHijo(dir string) bool {
+	_, err := os.Stat(filepath.Join(dir, Carpeta, "lock.json"))
+	return err == nil
 }

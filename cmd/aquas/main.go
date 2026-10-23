@@ -73,6 +73,14 @@ func main() {
 		fmt.Printf("Entorno declarado en %s · so=%s · raiz=%s\nConfírmalo: si no es esta máquina y esta carpeta, bórralo.\n", entorno.RutaEntorno, e.SO, e.Raiz)
 		compilarSettings(os.Stdout)
 	case "verificar":
+		if hijo.EsHijo(raiz) { // E002/F001/S002/X02: un hijo no tiene la config de la central
+			if m := hijo.Verificar(raiz); len(m) > 0 {
+				listar("GATE FALLIDO · hijo:", m)
+				os.Exit(1)
+			}
+			fmt.Println("GATE OK · hijo: central sellada y CLAUDE.md al día")
+			return
+		}
 		derivados, err := compilador.Verificar(raiz)
 		if err != nil {
 			fallar(1, err)

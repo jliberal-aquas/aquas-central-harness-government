@@ -22,5 +22,9 @@
     "resultado": {
       "./cmd/aquas:TestHijoInstaladoPasaSuGate": "hijo_integral_test.go:35: aquas verificar en el hijo: exit 1; quiero 0"
     }
+  },
+  "verde": {
+    "fecha": "2026-10-23T15:35:15Z",
+    "head": "1bf16487245cef0543a316cbc89f2ca16c248f55"
   }
 }

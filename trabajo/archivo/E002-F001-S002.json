@@ -61,57 +61,57 @@
       "motivo": "wiki de S002"
     },
     {
-      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go>cmd/aquas/main.go",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:docs/glosario.md\u003egobierno/canonico/constitucion.md",
+      "clave": "nombra:docs/glosario.md>gobierno/canonico/constitucion.md",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "clave": "nombra:docs/ref/compilador.md>cmd/aquas/main.go",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:docs/ref/compilador.md\u003egobierno/canonico/constitucion.md",
+      "clave": "nombra:docs/ref/compilador.md>gobierno/canonico/constitucion.md",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:docs/ref/constitucion.md\u003egobierno/canonico/constitucion.md",
+      "clave": "nombra:docs/ref/constitucion.md>gobierno/canonico/constitucion.md",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:gobierno/config/documentos.json\u003egobierno/canonico/constitucion.md",
+      "clave": "nombra:gobierno/config/documentos.json>gobierno/canonico/constitucion.md",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/constitucion.md",
+      "clave": "nombra:gobierno/config/sellos.json>gobierno/canonico/constitucion.md",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:internal/compilador/compilador_test.go\u003egobierno/canonico/constitucion.md",
+      "clave": "nombra:internal/compilador/compilador_test.go>gobierno/canonico/constitucion.md",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:internal/compilador/modulo_test.go\u003egobierno/canonico/constitucion.md",
+      "clave": "nombra:internal/compilador/modulo_test.go>gobierno/canonico/constitucion.md",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:internal/hijo/hijo_test.go\u003egobierno/canonico/constitucion.md",
+      "clave": "nombra:internal/hijo/hijo_test.go>gobierno/canonico/constitucion.md",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     },
     {
-      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "clave": "nombra:internal/wiki/comandos_test.go>cmd/aquas/main.go",
       "marca": "sin_cambio",
       "motivo": "sin impacto"
     }
@@ -137,6 +137,31 @@
           "verde_cuando": "el CLAUDE.md del hijo lleva su título y «Compilar: aquas build.», sin nada propio de la central"
         }
       ]
+    },
+    {
+      "id": "E002/F001/S002/X02",
+      "titulo": "aquas verificar corre dentro de un hijo",
+      "motivo": "la integral TestHijoInstaladoPasaSuGate cae: verificar busca gobierno/config/agentes.json, que solo tiene la central",
+      "fecha": "2026-10-23T15:34:16Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/hijo:TestVerificarEnHijo",
+          "intencion": "el gate del hijo revisa su central sellada y su CLAUDE.md armado",
+          "rojo_cuando": "un hijo recién armado no pasa o pasa con CLAUDE.md editado o central alterada",
+          "verde_cuando": "recién armado sin hallazgos; CLAUDE.md desfasado pide aquas build; central alterada se nombra"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T15:34:25Z",
+        "head": "1bf16487245cef0543a316cbc89f2ca16c248f55",
+        "resultado": {
+          "./internal/hijo:TestVerificarEnHijo": "verificar_test.go:19: hijo recién armado: debió pasar; dio [Verificar aún no implementado]"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T15:35:14Z",
+        "head": "1bf16487245cef0543a316cbc89f2ca16c248f55"
+      }
     }
   ],
   "codigo": [
