@@ -11,11 +11,15 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestHookEnlazaAlGuardar",
-      "intencion": "integral: al guardar una página de docs/ el gate ya no cae por enlaces al glosario"
+      "intencion": "al guardar una página de docs/ ya no caen los enlaces al glosario",
+      "rojo_cuando": "la página de docs/ queda sin enlazar, el hook no avisa, o cambia un archivo fuera de docs/",
+      "verde_cuando": "docs/ queda enlazada y el hook avisa lo cambiado; fuera de docs/ el archivo queda igual"
     },
     {
       "prueba": "./internal/vueltas:TestMotivoDeWikiPorRegla",
-      "intencion": "la medición desglosa las caídas del gate por regla"
+      "intencion": "la medición desglosa las caídas del gate por regla",
+      "rojo_cuando": "la caída se cuenta solo como wiki sin su regla",
+      "verde_cuando": "los motivos de verificar salen por regla de wiki"
     }
   ],
   "rojo": {

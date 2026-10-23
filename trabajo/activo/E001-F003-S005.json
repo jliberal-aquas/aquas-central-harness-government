@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/biblioteca:TestDevueltosNoSuperaTotal",
-      "intencion": "devueltos nunca supera el total"
+      "intencion": "devueltos nunca supera el total del archivo",
+      "rojo_cuando": "el resumen cuenta más líneas devueltas que el total",
+      "verde_cuando": "el resumen devuelve como mucho el total de líneas"
     }
   ]
 }

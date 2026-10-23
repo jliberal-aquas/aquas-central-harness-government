@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestHijoInstaladoPasaSuGate",
-      "intencion": "integral: install en carpeta vacía, build y verify del hijo pasan"
+      "intencion": "un hijo instalado en carpeta vacía compila y verifica sin errores",
+      "rojo_cuando": "install en carpeta vacía deja un hijo cuyo build o verify sale distinto de 0",
+      "verde_cuando": "install, build y verify del hijo salen con exit 0 y GATE OK"
     }
   ]
 }

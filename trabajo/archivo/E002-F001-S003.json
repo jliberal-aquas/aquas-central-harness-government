@@ -13,7 +13,9 @@
   "pruebas": [
     {
       "prueba": "./internal/hijo:TestUpdateRespetaLock",
-      "intencion": "editar lo sellado hace caer el gate; update cambia de versión y conserva lo local"
+      "intencion": "editar lo sellado cae el gate; update conserva lo local",
+      "rojo_cuando": "update pisa lo local o el gate no detecta lo editado",
+      "verde_cuando": "el gate cae tras editar; update sube versión y deja lo local"
     }
   ],
   "rojo": {

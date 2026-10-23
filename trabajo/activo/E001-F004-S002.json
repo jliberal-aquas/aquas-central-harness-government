@@ -13,7 +13,9 @@
   "pruebas": [
     {
       "prueba": "./internal/defecto:TestStopFrenaFalloSinDefecto",
-      "intencion": "¿Salió algo mal? distinto de No sin defecto con ocurrencia en este turno bloquea; con ocurrencia o con No pasa"
+      "intencion": "el cierre con fallo debe tener defecto registrado",
+      "rojo_cuando": "un ¿Salió algo mal? sin defecto no frena el cierre",
+      "verde_cuando": "sin defecto frena; con defecto o con No pasa"
     }
   ]
 }

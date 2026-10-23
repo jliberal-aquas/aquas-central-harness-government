@@ -13,7 +13,9 @@
   "pruebas": [
     {
       "prueba": "./internal/hijo:TestReportArmaIssueConVersion",
-      "intencion": "arma el issue con firma, qué pasó, reproducción y versión del lock; sin gh confirmado no envía"
+      "intencion": "report arma el issue con firma y versión del lock",
+      "rojo_cuando": "el issue omite firma, reproducción o versión, o envía sin gh",
+      "verde_cuando": "issue con firma, qué pasó, reproducción y versión; sin gh no envía"
     }
   ],
   "rojo": {

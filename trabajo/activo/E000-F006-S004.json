@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestHookAvisaOracionLarga",
-      "intencion": "al guardar docs/ con oración \u003e 20 palabras el hook avisa la línea"
+      "intencion": "el hook avisa la línea de una oración larga al guardar una página de docs/",
+      "rojo_cuando": "se guarda docs/ con una oración de más de 20 palabras y el hook no avisa su línea",
+      "verde_cuando": "el hook avisa la línea de la oración larga y no avisa si todas son cortas"
     }
   ]
 }

@@ -13,51 +13,75 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestNuevoExigePruebas",
-      "intencion": "una ficha nueva sin pruebas o con nombre o intención malos no se crea"
+      "intencion": "una ficha nueva sin pruebas o con nombre o intención malos no se crea",
+      "rojo_cuando": "Nuevo crea una ficha sin pruebas, sin intención, con nombre mal formado o con prueba repetida",
+      "verde_cuando": "cada caso malo da error con su motivo y las pruebas buenas se guardan en orden, sin rojo ni verde"
     },
     {
       "prueba": "./internal/backlog:TestPruebasReiniciaRojoYVerde",
-      "intencion": "cambiar la lista de pruebas borra el rojo y el verde viejos"
+      "intencion": "cambiar la lista de pruebas borra el rojo y el verde viejos",
+      "rojo_cuando": "Pruebas cambia la lista y deja el rojo o verde viejos, o acepta lista vacía, formato malo o ficha archivada",
+      "verde_cuando": "la lista nueva queda guardada sin rojo ni verde y los casos malos dan error"
     },
     {
       "prueba": "./internal/backlog:TestRojoExigeQueCadaPruebaFalle",
-      "intencion": "si una prueba pasa o se salta no hay rojo; el motivo del fallo queda guardado"
+      "intencion": "si una prueba pasa o se salta no hay rojo; el motivo del fallo queda guardado",
+      "rojo_cuando": "Rojo se registra con una prueba que pasa o se salta, o sin slice en curso",
+      "verde_cuando": "Rojo falla nombrando solo la prueba que pasa; con todas fallando guarda fecha y motivo de cada una"
     },
     {
       "prueba": "./internal/backlog:TestRojoNoCuentaCompilacionNiAusencia",
-      "intencion": "no compilar o no existir no cuenta como rojo"
+      "intencion": "no compilar o no existir no cuenta como rojo",
+      "rojo_cuando": "Rojo acepta como fallo una prueba que no compila, no existe o está en un paquete ausente",
+      "verde_cuando": "Rojo se niega diciendo no compila, no existe o paquete no existe, según el caso"
     },
     {
       "prueba": "./internal/backlog:TestRojoPruebaAislada",
-      "intencion": "una prueba que falla solo por culpa de otra no cuenta como rojo"
+      "intencion": "una prueba que falla solo por culpa de otra no cuenta como rojo",
+      "rojo_cuando": "Rojo da por buena una prueba que falla junta pero pasa sola",
+      "verde_cuando": "Rojo corre cada prueba sola y rechaza la que no falla aislada, nombrándola"
     },
     {
       "prueba": "./internal/backlog:TestVerdeDespuesDelRojo",
-      "intencion": "no hay verde sin rojo ni con una prueba fallando"
+      "intencion": "no hay verde sin rojo ni con una prueba fallando",
+      "rojo_cuando": "Verde se registra sin rojo previo o mientras la prueba sigue fallando",
+      "verde_cuando": "Verde falla pidiendo rojo, luego nombrando la prueba; con la prueba arreglada se registra después del rojo"
     },
     {
       "prueba": "./internal/backlog:TestCerrarExigeRojoYVerde",
-      "intencion": "cerrar exige pruebas, rojo y verde; cancelar no"
+      "intencion": "cerrar exige pruebas, rojo y verde; cancelar no",
+      "rojo_cuando": "Estado deja cerrar un slice sin rojo, sin verde o sin pruebas, o impide cancelarlo",
+      "verde_cuando": "cerrar falla pidiendo rojo, luego verde, luego pruebas; con todo cierra y cancelar siempre se puede"
     },
     {
       "prueba": "./internal/backlog:TestUnSoloSliceEnCurso",
-      "intencion": "con un slice en curso ningún otro slice cambia de estado; la prioridad sí"
+      "intencion": "con un slice en curso ningún otro slice cambia de estado; la prioridad sí",
+      "rojo_cuando": "Estado deja a un segundo slice pasar a EN_CURSO o LISTO con otro en curso, o bloquea prioridad o features",
+      "verde_cuando": "el segundo slice recibe error nombrando al primero; prioridad y features cambian; libre el turno, entra"
     },
     {
       "prueba": "./internal/backlog:TestValidarRojoYVerde",
-      "intencion": "el gate ve verde sin rojo, verde antes del rojo, dos en curso y pruebas mal escritas"
+      "intencion": "el gate ve verde sin rojo, verde antes del rojo, dos en curso y pruebas mal escritas",
+      "rojo_cuando": "Validar deja pasar verde sin rojo, verde antes del rojo, dos en curso o una prueba mal escrita",
+      "verde_cuando": "cada ficha defectuosa sale en su línea con el motivo esperado"
     },
     {
       "prueba": "./internal/memoria:TestRutaBacklogEsTrabajo",
-      "intencion": "la memoria apunta a trabajo/activo y esa carpeta existe"
+      "intencion": "la memoria apunta al backlog en trabajo/activo",
+      "rojo_cuando": "la ruta del backlog no es trabajo/activo o no existe",
+      "verde_cuando": "Backlog es trabajo/activo y es una carpeta del repo"
     },
     {
       "prueba": "./cmd/aquas:TestMemoriaSegunBacklog",
-      "intencion": "la memoria rechaza un slice que no está en curso en el backlog"
+      "intencion": "la memoria acepta solo el slice en curso del backlog y guía a vaciarla si está archivado",
+      "rojo_cuando": "se fija memoria sin slice en curso, con otro foco o con slice archivado, o no dice cómo salir",
+      "verde_cuando": "memoria solo fija con foco igual al slice en curso; si no, sale 1 nombrándolo; vaciada vuelve a fijar"
     },
     {
       "prueba": "./cmd/aquas:TestCerrarSliceDePuntaAPunta",
-      "intencion": "integral F002: nace con prueba, rojo, verde y archivo con el programa real"
+      "intencion": "un slice nace con prueba, pasa por rojo y verde y se archiva con el programa real",
+      "rojo_cuando": "el cierre no exige rojo y verde, o la ficha archivada pierde el rojo con motivo o el verde",
+      "verde_cuando": "archivada queda con rojo (motivo) y verde guardados; uso malo sale 64"
     }
   ],
   "rojo": {

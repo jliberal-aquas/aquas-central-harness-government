@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/hijo:TestInstallCopiaCentralConLock",
-      "intencion": "copia la central sellada a .aquas/central con lock de versión y hashes"
+      "intencion": "install copia la central a .aquas/central con lock",
+      "rojo_cuando": "falta la copia, el lock o sus hashes, o instala dos veces",
+      "verde_cuando": "copia la central, escribe lock con versión y hashes; repetir falla"
     }
   ],
   "rojo": {

@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestHookEnlazaAlGuardar",
-      "intencion": "el hook PostToolUse sobre una página de docs/ pone los enlaces al glosario que faltan; sobre un archivo fuera de docs/ no toca nada"
+      "intencion": "el hook enlaza al glosario al guardar una página de docs/ y no toca otros archivos",
+      "rojo_cuando": "la página de docs/ queda sin enlazar, el hook no avisa, o cambia un archivo fuera de docs/",
+      "verde_cuando": "docs/ queda enlazada y el hook avisa lo cambiado; fuera de docs/ el archivo queda igual"
     }
   ],
   "rojo": {

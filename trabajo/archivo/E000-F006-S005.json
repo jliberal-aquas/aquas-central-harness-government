@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/wiki:TestComandoCitadoExiste",
-      "intencion": "todo aquas X citado en docs/ y metodologias/ existe en el CLI"
+      "intencion": "todo aquas X citado en docs/ y metodologias/ existe como comando del CLI",
+      "rojo_cuando": "un comando citado inexistente no se reporta, o se reportan más o menos de los esperados",
+      "verde_cuando": "reporta exactamente los 2 comandos inexistentes sembrados y ninguno de los válidos"
     }
   ],
   "rojo": {

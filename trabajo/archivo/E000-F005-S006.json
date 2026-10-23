@@ -11,47 +11,69 @@
   "pruebas": [
     {
       "prueba": "./internal/compilador:TestCambioEnCanonicoRecompilaAgente",
-      "intencion": "editar un canónico cambia el agente compilado"
+      "intencion": "editar un canónico cambia el agente compilado",
+      "rojo_cuando": "el gate no cae o el agente no trae la regla nueva",
+      "verde_cuando": "el gate cae, recompilar cambia solo esa fuente y el gate pasa"
     },
     {
       "prueba": "./internal/compilador:TestCompilarGeneraAgenteYDocumento",
-      "intencion": "compilar genera el agente y el documento desde sus canónicos"
+      "intencion": "compilar genera agente y documento desde canónicos",
+      "rojo_cuando": "falta algún campo del agente, GENERADO, o hay CRLF",
+      "verde_cuando": "agente y CLAUDE.md salen completos, en LF, y el gate pasa"
     },
     {
       "prueba": "./internal/compilador:TestPresupuestoDentroPasaGate",
-      "intencion": "una salida dentro de max_caracteres pasa el gate"
+      "intencion": "una salida dentro de max_caracteres pasa el gate",
+      "rojo_cuando": "el gate falla con la salida dentro del presupuesto",
+      "verde_cuando": "compila y el gate no da problemas"
     },
     {
       "prueba": "./internal/compilador:TestPresupuestoExcedidoFallaGate",
-      "intencion": "una salida que excede max_caracteres falla el gate"
+      "intencion": "una salida sobre max_caracteres falla el gate",
+      "rojo_cuando": "el gate pasa aunque la salida exceda el presupuesto",
+      "verde_cuando": "el gate da exactamente un problema «excede presupuesto»"
     },
     {
       "prueba": "./internal/compilador:TestSinPresupuestoSeRechaza",
-      "intencion": "una salida sin max_caracteres se rechaza"
+      "intencion": "una salida sin max_caracteres se rechaza",
+      "rojo_cuando": "la planificación acepta una salida sin presupuesto",
+      "verde_cuando": "Planificar falla nombrando max_caracteres"
     },
     {
       "prueba": "./internal/guardia:TestConfigInvalida",
-      "intencion": "una config de permitidos inválida se rechaza con su motivo"
+      "intencion": "una config de permitidos inválida se rechaza",
+      "rojo_cuando": "una config rota, sin motivo, vacía o raíz se acepta",
+      "verde_cuando": "cada caso da su problema y la config rota no permite nada"
     },
     {
       "prueba": "./internal/guardia:TestNoPermitidoSigueBloqueado",
-      "intencion": "una ruta fuera y no permitida sigue bloqueada"
+      "intencion": "lo no listado sigue bloqueado aunque se parezca",
+      "rojo_cuando": "un gemelo con prefijo igual o una hermana pasa",
+      "verde_cuando": "ambas rutas se bloquean por fuera del repositorio"
     },
     {
       "prueba": "./internal/guardia:TestPermitidoFueraPasa",
-      "intencion": "una ruta fuera pero permitida pasa"
+      "intencion": "una ruta fuera pero listada pasa",
+      "rojo_cuando": "la ruta listada, en Write o Bash, se bloquea",
+      "verde_cuando": "Write y Bash a la ruta permitida pasan y la config valida"
     },
     {
       "prueba": "./internal/wiki:TestFallasRef",
-      "intencion": "una página de referencia mal armada falla el gate wiki"
+      "intencion": "una página de referencia mal armada hace fallar el gate wiki",
+      "rojo_cuando": "falta ancla, diagrama, enlace del inicio, subir, sección o nombre válido y el gate no cae",
+      "verde_cuando": "cada defecto sembrado hace caer el gate con el problema esperado"
     },
     {
       "prueba": "./internal/wiki:TestRefAceptaCualquierDiagrama",
-      "intencion": "la página de referencia acepta cualquier tipo de diagrama"
+      "intencion": "la página de referencia acepta cualquier tipo de diagrama Mermaid",
+      "rojo_cuando": "una referencia con sequenceDiagram falla el gate por el tipo de diagrama",
+      "verde_cuando": "la referencia con sequenceDiagram pasa el gate sin problemas"
     },
     {
       "prueba": "./internal/wiki:TestRefValidaPasa",
-      "intencion": "una página de referencia bien armada pasa"
+      "intencion": "una página de referencia bien armada pasa el gate",
+      "rojo_cuando": "una referencia válida produce problemas en el gate",
+      "verde_cuando": "la referencia válida no produce ningún problema"
     }
   ],
   "rojo": {

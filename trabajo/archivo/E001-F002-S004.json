@@ -11,23 +11,33 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestSelloArmaListaDelArbol",
-      "intencion": "el sello lista padre, abuelo, dependientes abiertos y páginas; un hermano independiente no entra"
+      "intencion": "el sello lista padre, abuelo, dependientes abiertos y páginas; un hermano independiente no entra",
+      "rojo_cuando": "Sello omite el padre, el abuelo, un dependiente abierto o una página, o mete un hermano independiente",
+      "verde_cuando": "el sello trae esas fichas y páginas, sin el hermano sin relación"
     },
     {
       "prueba": "./internal/backlog:TestSelloArmaListaDeArchivos",
-      "intencion": "el sello lista quién nombra o importa lo tocado desde el rojo, con la línea; excluye datos"
+      "intencion": "el sello lista quién nombra o importa lo tocado desde el rojo, con la línea; excluye datos",
+      "rojo_cuando": "Sello omite quien nombra o importa un archivo tocado, o incluye registro, trabajo u otros archivos ajenos",
+      "verde_cuando": "salen los ítems nombra e importa con la línea relevante y nada de datos ni archivos no tocados"
     },
     {
       "prueba": "./internal/backlog:TestCierreSinSelloCompletoSeNiega",
-      "intencion": "CERRADO se niega con un ítem sin marca; la marca exige sin_cambio o actualizado y motivo"
+      "intencion": "CERRADO se niega con un ítem sin marca; la marca exige sin_cambio o actualizado y motivo",
+      "rojo_cuando": "Estado cierra con ítems del sello sin marcar, o Marcar acepta marca inválida, sin motivo o clave ajena",
+      "verde_cuando": "cerrar falla con sello incompleto; con todo marcado cierra y la ficha guarda la última marca"
     },
     {
       "prueba": "./internal/backlog:TestSelloSeVuelveAArmarSiCambiaAlgo",
-      "intencion": "tocar otro archivo tras marcar agrega ítems sin marca y frena el cierre"
+      "intencion": "tocar otro archivo tras marcar agrega ítems sin marca y frena el cierre",
+      "rojo_cuando": "cerrar pasa tras tocar otro archivo, porque el sello no se rearma",
+      "verde_cuando": "el cierre falla nombrando el ítem nuevo sin marca"
     },
     {
       "prueba": "./cmd/aquas:TestSelloCLIDePuntaAPunta",
-      "intencion": "por el CLI real, el sello se lista, frena el cierre y se marca"
+      "intencion": "por el CLI real el sello se lista, frena el cierre y se marca",
+      "rojo_cuando": "el sello no lista pendientes, el cierre no se niega sin marcas o con todo marcado no cierra",
+      "verde_cuando": "pendientes con [ ]; sin marcas el cierre se niega; marcado con [x], marca y motivo; cierra"
     }
   ],
   "rojo": {

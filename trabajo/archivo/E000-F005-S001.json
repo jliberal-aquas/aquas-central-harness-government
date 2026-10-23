@@ -11,15 +11,21 @@
   "pruebas": [
     {
       "prueba": "./internal/compilador:TestFuenteFueraDeCanonicoSeRechaza",
-      "intencion": "con la config completa, una fuente fuera de gobierno/canonico se rechaza por esa regla y no por otra"
+      "intencion": "una fuente fuera de gobierno/canonico se rechaza",
+      "rojo_cuando": "la fuente README.md se acepta o falla por otra causa",
+      "verde_cuando": "Compilar falla con «fuera de gobierno/canonico»"
     },
     {
       "prueba": "./internal/compilador:TestEdicionManualDeDerivadoFallaGate",
-      "intencion": "el gate nombra al CLAUDE.md editado como causa, no basta cualquier problema"
+      "intencion": "editar a mano un derivado hace caer el gate",
+      "rojo_cuando": "el gate pasa o nombra otro problema que CLAUDE.md",
+      "verde_cuando": "el único problema es «CLAUDE.md: desfasado o editado»"
     },
     {
       "prueba": "./internal/compilador:TestCompilarEsIdempotente",
-      "intencion": "la primera compilación escribe los derivados y la segunda no reescribe nada"
+      "intencion": "compilar dos veces no reescribe nada la segunda",
+      "rojo_cuando": "la 1.ª no escribe los derivados, o la 2.ª reescribe",
+      "verde_cuando": "la 1.ª escribe derivados y sellos; la 2.ª escribe cero"
     }
   ],
   "rojo": {

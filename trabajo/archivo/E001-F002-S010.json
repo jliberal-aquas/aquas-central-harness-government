@@ -11,23 +11,33 @@
   "pruebas": [
     {
       "prueba": "./internal/wiki:TestHijosGeneradosDesdeFichas",
-      "intencion": "inicio, E y F listan solo hijos directos con estado; S lista sus pruebas con rojo/verde"
+      "intencion": "inicio, E y F listan solo hijos directos con estado y S lista sus pruebas",
+      "rojo_cuando": "falta un bloque GENERADO, hay más de uno, el gate cae tras generar o la segunda corrida escribe",
+      "verde_cuando": "primera corrida escribe 4 páginas; tras generar gate OK; segunda corrida no escribe nada"
     },
     {
       "prueba": "./internal/wiki:TestHijosDesfasadosFallan",
-      "intencion": "bloque GENERADO ausente o distinto de las fichas hace fallar el gate"
+      "intencion": "un bloque GENERADO ausente o distinto de las fichas hace fallar el gate",
+      "rojo_cuando": "el gate pasa con el bloque ausente o desfasado, o BLOQUEADO no se muestra como Bloqueado",
+      "verde_cuando": "sin bloque o desfasado el gate cae; al regenerar, la iniciativa bloqueada muestra Bloqueado"
     },
     {
       "prueba": "./internal/wiki:TestInicioMuestraSoloIniciativas",
-      "intencion": "el inicio no enlaza features ni slices"
+      "intencion": "el inicio lista solo iniciativas y los niveles inferiores no saltan niveles",
+      "rojo_cuando": "el bloque del inicio nombra features o slices, o subir/ir al hermano salta niveles",
+      "verde_cuando": "el inicio nombra solo iniciativas; el slice enlaza al inicio y a su hermano sin problemas"
     },
     {
       "prueba": "./internal/wiki:TestEntidadArrancadaSinPagina",
-      "intencion": "ficha EN_CURSO o CERRADO sin página hace fallar el gate; BORRADOR no"
+      "intencion": "una ficha EN_CURSO o CERRADO sin página hace fallar el gate; BORRADOR no",
+      "rojo_cuando": "el gate pasa con una ficha arrancada sin página, o exige página a una no arrancada",
+      "verde_cuando": "EN_CURSO y CERRADO sin página caen; BORRADOR sin página no produce problemas"
     },
     {
       "prueba": "./cmd/aquas:TestCompilarRegeneraHijos",
-      "intencion": "aquas compilar reescribe el bloque tras cambiar una ficha"
+      "intencion": "aquas compilar reescribe el bloque del inicio tras cambiar una ficha y conserva lo manual",
+      "rojo_cuando": "compilar no escribe el inicio, no refleja el cambio de ficha, pierde texto manual o toca sin cambios",
+      "verde_cuando": "el inicio sale Planeado sin enlace, tras cambiar la ficha En curso con lo manual intacto"
     }
   ],
   "rojo": {

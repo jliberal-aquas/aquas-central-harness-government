@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestComandosEnIngles",
-      "intencion": "build, verify, backlog… responden; los nombres viejos avisan el nuevo"
+      "intencion": "los comandos en inglés responden y los nombres viejos avisan el nuevo",
+      "rojo_cuando": "un comando en inglés no responde o un nombre viejo no indica el comando nuevo",
+      "verde_cuando": "build, verify y backlog responden y cada nombre viejo avisa su reemplazo"
     }
   ]
 }

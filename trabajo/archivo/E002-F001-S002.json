@@ -13,7 +13,9 @@
   "pruebas": [
     {
       "prueba": "./internal/hijo:TestBuildRellenaHuecosSinTocarFinal",
-      "intencion": "build une central y huecos locales en un CLAUDE.md; local sobre una sección final cae"
+      "intencion": "build llena huecos con lo local y respeta lo final",
+      "rojo_cuando": "lo local pisa una sección final o queda el relleno central",
+      "verde_cuando": "CLAUDE.md trae lo local y lo final; redefinir lo final falla"
     }
   ],
   "rojo": {

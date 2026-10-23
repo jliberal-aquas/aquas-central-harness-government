@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/wiki:TestDocumentacionVerificable",
-      "intencion": "wiki de un slice muestra pruebas con valida/rojo/verde, su código y sus arreglos"
+      "intencion": "la wiki de un slice muestra sus pruebas con valida/rojo/verde, su código y sus arreglos",
+      "rojo_cuando": "falta en la página del slice la tabla de pruebas, el código enlazado o los arreglos",
+      "verde_cuando": "la página del slice trae pruebas con los tres campos, enlaces al código y sus arreglos"
     }
   ]
 }

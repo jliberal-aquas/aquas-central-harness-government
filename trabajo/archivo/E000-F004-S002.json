@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/vueltas:TestMotivoDeWikiPorRegla",
-      "intencion": "una caída de wiki cuenta por la regla que la causó (ej. «falta diagrama», «oración larga»), no solo como «wiki»"
+      "intencion": "una caída de wiki cuenta por la regla que falló",
+      "rojo_cuando": "varias páginas con la misma regla cuentan más de una vuelta",
+      "verde_cuando": "cada regla de wiki es un motivo y repetida cuenta una vez"
     }
   ],
   "rojo": {

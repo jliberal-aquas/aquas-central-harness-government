@@ -11,23 +11,33 @@
   "pruebas": [
     {
       "prueba": "./internal/propuesta:TestPropuestaSinDiagramaFrena",
-      "intencion": "una línea PROPUESTA sin diagrama después frena el cierre y nombra la propuesta"
+      "intencion": "una PROPUESTA sin diagrama frena el cierre",
+      "rojo_cuando": "una propuesta sin dibujo pasa o una tapa a la siguiente",
+      "verde_cuando": "frena nombrando la propuesta, también con negritas y la 2.ª"
     },
     {
       "prueba": "./internal/propuesta:TestPropuestaConDiagramaPasa",
-      "intencion": "con un bloque de código con flechas o cajas pasa"
+      "intencion": "una PROPUESTA con diagrama pasa",
+      "rojo_cuando": "un bloque con flechas o cajas se rechaza",
+      "verde_cuando": "las cuatro formas de diagrama pasan sin mensaje"
     },
     {
       "prueba": "./internal/propuesta:TestBloqueSinFlechasNoEsDiagrama",
-      "intencion": "un bloque sin flechas ni cajas, o una flecha en prosa, no es diagrama"
+      "intencion": "un bloque sin flechas ni cajas no es diagrama",
+      "rojo_cuando": "un bloque bash o una flecha en prosa cuenta como diagrama",
+      "verde_cuando": "ambos casos frenan con «PROPUESTA sin diagrama»"
     },
     {
       "prueba": "./internal/propuesta:TestSinMarcaPasa",
-      "intencion": "sin línea PROPUESTA el mensaje pasa, aunque nombre la palabra"
+      "intencion": "sin línea PROPUESTA el mensaje pasa",
+      "rojo_cuando": "frena un mensaje que solo nombra la palabra o la trae en bloque",
+      "verde_cuando": "los cuatro mensajes sin línea PROPUESTA pasan"
     },
     {
       "prueba": "./internal/propuesta:TestPlantillaTraeHookDePropuesta",
-      "intencion": "la plantilla real trae el hook en el cierre"
+      "intencion": "la plantilla trae el hook de propuesta en el cierre",
+      "rojo_cuando": "falta el hook de Stop con orden propuesta en la plantilla",
+      "verde_cuando": "la plantilla incluye ese hook de Stop"
     }
   ],
   "rojo": {

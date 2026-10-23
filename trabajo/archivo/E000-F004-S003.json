@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/wiki:TestEnlazaGlosarioSolo",
-      "intencion": "aquas wiki enlazar pone el enlace en la primera aparición en prosa de cada término, no toca código, títulos, tablas ni enlaces, y una segunda corrida no cambia nada"
+      "intencion": "wiki enlazar pone el enlace solo en la primera aparición en prosa y es idempotente",
+      "rojo_cuando": "enlaza más de una vez, toca código, títulos o tablas, o una segunda corrida cambia la página",
+      "verde_cuando": "la primera corrida enlaza 2 términos y deja la página esperada; la segunda enlaza 0"
     }
   ],
   "rojo": {

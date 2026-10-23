@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/defecto:TestStopFrenaDaleSinPlan",
-      "intencion": "mensaje que invita a seguir sin línea Plan: bloquea"
+      "intencion": "invitar a seguir sin línea Plan frena el cierre",
+      "rojo_cuando": "un mensaje que invita a seguir sin Plan: pasa",
+      "verde_cuando": "el mensaje sin línea Plan: se bloquea"
     }
   ]
 }

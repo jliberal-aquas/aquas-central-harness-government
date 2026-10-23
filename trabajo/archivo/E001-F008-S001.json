@@ -11,11 +11,15 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestPruebaExigeValidaRojoVerde",
-      "intencion": "prueba sin valida, rojo cuando o verde cuando cae al registrarla"
+      "intencion": "una prueba sin valida, rojo cuando o verde cuando cae al registrarla",
+      "rojo_cuando": "listaPruebas o el gate aceptan una prueba con algún campo vacío",
+      "verde_cuando": "las malas dan error, la completa guarda sus tres campos y falta verde cuando se señala"
     },
     {
       "prueba": "./internal/wiki:TestTablaPruebasMuestraCuando",
-      "intencion": "la tabla del slice muestra valida, rojo cuando y verde cuando"
+      "intencion": "la tabla del slice muestra valida, rojo cuando y verde cuando de cada prueba",
+      "rojo_cuando": "a la tabla le falta alguna de las tres columnas o su texto",
+      "verde_cuando": "la página generada del slice contiene los tres textos de la prueba en su tabla"
     }
   ],
   "rojo": {

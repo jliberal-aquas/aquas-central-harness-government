@@ -13,7 +13,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestVerificarDePuntaAPunta",
-      "intencion": "prueba integral: el gate real frena un derivado editado y una wiki rota"
+      "intencion": "el gate real frena un derivado editado y una wiki rota",
+      "rojo_cuando": "derivado editado o wiki rota no dan exit 1 nombrando el problema",
+      "verde_cuando": "sano sale 0; derivado editado sale 1; tras compilar vuelve a 0; wiki rota sale 1"
     }
   ],
   "rojo": {

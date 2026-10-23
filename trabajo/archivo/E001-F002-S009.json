@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestCerrarExigeMemoriaArchivada",
-      "intencion": "con la memoria apuntando al slice sin archivar, CERRADO se niega y dice cómo archivar; archivada, o con otro foco, o al cancelar, no se bloquea por memoria"
+      "intencion": "CERRADO se niega si la memoria apunta al slice sin archivar y dice cómo archivar",
+      "rojo_cuando": "CERRADO pasa con memoria sin archivar, o se bloquea por memoria con otro foco, archivada o al cancelar",
+      "verde_cuando": "sin archivar sale 1 pidiendo archivar; con otro foco, archivada o CANCELADO no se bloquea por memoria"
     }
   ],
   "rojo": {

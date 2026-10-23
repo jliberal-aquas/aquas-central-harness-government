@@ -13,7 +13,9 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestFeatureNoCierraSinIntegralVerde",
-      "intencion": "feature con integral sin verde no cierra; con verde cierra"
+      "intencion": "una feature con prueba integral sin verde no cierra; con verde cierra",
+      "rojo_cuando": "la feature cierra aunque su prueba integral no tenga verde",
+      "verde_cuando": "cierra solo cuando su integral tiene verde"
     }
   ]
 }

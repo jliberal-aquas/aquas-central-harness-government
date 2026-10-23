@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestSelloSinCommitBaseExigeArbol",
-      "intencion": "sin commit base el árbol se exige igual y un aviso marca lo omitido"
+      "intencion": "sin commit base el árbol se exige igual y un aviso marca lo omitido",
+      "rojo_cuando": "sin commit base el sello omite el árbol, no avisa del nivel archivos o deja cerrar sin marcar",
+      "verde_cuando": "salen ficha, página y aviso sin-commit-base; cerrar exige marcarlos y con todo marcado cierra"
     }
   ],
   "rojo": {

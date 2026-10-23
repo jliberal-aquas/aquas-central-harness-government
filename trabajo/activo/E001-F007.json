@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestTablaBacklog",
-      "intencion": "una tabla con iniciativa, feature, slice y descripción corta"
+      "intencion": "la tabla muestra iniciativa, feature, slice y descripción corta de cada ficha",
+      "rojo_cuando": "a la tabla le falta una columna o la descripción corta de una ficha",
+      "verde_cuando": "la tabla trae iniciativa, feature, slice y descripción corta"
     }
   ]
 }

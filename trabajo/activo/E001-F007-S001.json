@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestTablaOrdenaYCargaHistorico",
-      "intencion": "ordena por prioridad, iniciativa o feature; con histórico suma lo archivado"
+      "intencion": "la tabla ordena por prioridad, iniciativa o feature y con histórico suma lo archivado",
+      "rojo_cuando": "el orden pedido no se respeta o el histórico no suma las fichas archivadas",
+      "verde_cuando": "la tabla sale en el orden pedido y con histórico incluye lo archivado"
     }
   ]
 }

@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestHookFallaCerrado",
-      "intencion": "con aquas sin compilar el hook sale 2 y bloquea"
+      "intencion": "con aquas sin compilar el hook bloquea en vez de dejar pasar",
+      "rojo_cuando": "roto y sin versión anterior no sale 2, o roto con versión anterior no usa la última ni avisa",
+      "verde_cuando": "roto sin versión previa sale 2; roto con versión previa corre la última buena y avisa"
     }
   ],
   "rojo": {

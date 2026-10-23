@@ -11,19 +11,27 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestAlcanceSeDeclaraYAmplia",
-      "intencion": "rutas declaradas, ampliadas con motivo, derivados y datos de aquas pasan; lo demás frena y dice cómo ampliar"
+      "intencion": "rutas declaradas, ampliadas, derivados y datos de aquas pasan; lo demás frena y dice cómo ampliar",
+      "rojo_cuando": "FueraDeAlcance frena una ruta declarada, ampliada, derivada o de datos, o deja pasar una ajena",
+      "verde_cuando": "las permitidas dan vacío; las ajenas dan mensaje con el comando de ampliar; la ampliación guarda su motivo"
     },
     {
       "prueba": "./internal/backlog:TestSinAlcanceDeclaradoBloquea",
-      "intencion": "slice en curso sin alcance frena y dice cómo declararlo"
+      "intencion": "slice en curso sin alcance frena y dice cómo declararlo",
+      "rojo_cuando": "FueraDeAlcance deja editar con un slice en curso que no declaró alcance",
+      "verde_cuando": "devuelve mensaje que pide declarar el alcance con el comando aquas backlog alcance"
     },
     {
       "prueba": "./internal/backlog:TestSinSliceEnCursoNoRestringe",
-      "intencion": "sin slice en curso no hay restricción"
+      "intencion": "sin slice en curso no hay restricción",
+      "rojo_cuando": "FueraDeAlcance frena una ruta cuando no hay ningún slice en curso",
+      "verde_cuando": "FueraDeAlcance devuelve vacío para cualquier ruta"
     },
     {
       "prueba": "./internal/guardia:TestGuardiaBloqueaFueraDelAlcance",
-      "intencion": "la guardia aplica el alcance a Write y a Bash"
+      "intencion": "la guardia aplica el alcance del slice en curso",
+      "rojo_cuando": "Write o Bash fuera del alcance pasa, o dentro se bloquea",
+      "verde_cuando": "fuera bloquea con «fuera del alcance»; dentro pasa"
     }
   ],
   "rojo": {

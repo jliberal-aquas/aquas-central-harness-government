@@ -11,31 +11,45 @@
   "pruebas": [
     {
       "prueba": "./internal/turno:TestAbrirGuardaLiteralIntacto",
-      "intencion": "el mensaje del humano queda tal cual, aunque traiga backticks o títulos"
+      "intencion": "el mensaje del humano se guarda tal cual",
+      "rojo_cuando": "el literal pierde backticks, sangría o su cerca",
+      "verde_cuando": "el turno trae el literal en cerca larga y la respuesta en «—»"
     },
     {
       "prueba": "./internal/turno:TestNumeracionSinReutilizar",
-      "intencion": "cada turno lleva el número siguiente, también al cambiar de mes"
+      "intencion": "el número de turno no se reutiliza ni al cambiar de mes",
+      "rojo_cuando": "un turno repite número o reutiliza un hueco borrado",
+      "verde_cuando": "T000001 a T000003 entre meses y tras borrar sigue T000004"
     },
     {
       "prueba": "./internal/turno:TestCerrarGuardaRespuesta",
-      "intencion": "la respuesta queda en su turno; un segundo cierre la reemplaza"
+      "intencion": "cerrar guarda la respuesta en su turno",
+      "rojo_cuando": "la respuesta cae en otro turno o se duplica al repetir",
+      "verde_cuando": "la respuesta y la hora de cierre quedan; la última reemplaza"
     },
     {
       "prueba": "./internal/turno:TestCerrarSinTurnoAbierto",
-      "intencion": "sin turno abierto de esa sesión, el cierre no escribe nada"
+      "intencion": "sin turno abierto de esa sesión el cierre no escribe",
+      "rojo_cuando": "cerrar crea auditoria/ o escribe en el turno de otra sesión",
+      "verde_cuando": "devuelve vacío sin error y no crea ni toca archivos"
     },
     {
       "prueba": "./internal/guardia:TestGuardiaProtegeAuditoria",
-      "intencion": "nadie salvo aquas escribe en auditoria/"
+      "intencion": "solo aquas escribe en auditoria/",
+      "rojo_cuando": "Write o Bash a auditoria/ pasa, o un nombre parecido se bloquea",
+      "verde_cuando": "Write y Bash bloquean con «auditoría»; docs/auditoria.md pasa"
     },
     {
       "prueba": "./internal/entorno:TestSettingsRealTraeHooksDeTurno",
-      "intencion": "la plantilla real abre turno al recibir el mensaje y lo cierra al terminar"
+      "intencion": "la plantilla abre y cierra turno por hooks",
+      "rojo_cuando": "falta UserPromptSubmit turno abrir o Stop turno cerrar",
+      "verde_cuando": "trae turno abrir, turno cerrar y memoria cierre"
     },
     {
       "prueba": "./cmd/aquas:TestTurnoCLIDePuntaAPunta",
-      "intencion": "por el CLI real, un turno se abre, se cierra y queda fuera de Git"
+      "intencion": "por el CLI real un turno se abre, se cierra y queda fuera de Git",
+      "rojo_cuando": "abrir o cerrar escriben stdout, el literal se altera, la entrada rota no da exit 1 o auditoria/ entra en Git",
+      "verde_cuando": "abrir y cerrar salen 0 sin stdout y guardan el literal; entrada rota sale 1; auditoria/ ignorada"
     }
   ],
   "rojo": {

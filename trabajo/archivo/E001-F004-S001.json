@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/defecto:TestRegistroDeDefectos",
-      "intencion": "aquas defecto nuevo crea D000001 con firma única y campos cortos; ocurre suma un turno; firma repetida o campo vacío fallan; D000001 hook-exit-go-run sembrado"
+      "intencion": "el registro crea defectos con firma única y campos válidos",
+      "rojo_cuando": "acepta firma repetida, campo vacío, firma no kebab o extra",
+      "verde_cuando": "crea D000001 y D000002; los cuatro casos malos se rechazan"
     }
   ],
   "rojo": {

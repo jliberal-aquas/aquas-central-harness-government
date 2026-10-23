@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestSiguienteNoTrabaFeatureArchivada",
-      "intencion": "feature con slices archivados no cuenta como sin definir"
+      "intencion": "una feature con slices archivados no se trata como sin definir",
+      "rojo_cuando": "Siguiente propone definir slices de una feature que ya tiene slices archivados",
+      "verde_cuando": "Siguiente no la marca como sin definir y sigue con lo demás"
     }
   ]
 }

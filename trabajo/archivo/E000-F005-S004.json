@@ -11,19 +11,27 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestVerificarDePuntaAPunta",
-      "intencion": "aquas verificar da exit 0 en un repo sano y exit 1 con un derivado editado"
+      "intencion": "aquas verificar da exit 0 en repo sano y exit 1 con derivado editado o wiki rota",
+      "rojo_cuando": "repo sano no da exit 0 con GATE OK, o derivado editado o wiki rota no dan exit 1 nombrándolo",
+      "verde_cuando": "sano sale 0; derivado editado sale 1 y lo nombra; tras compilar vuelve a 0; wiki rota sale 1"
     },
     {
       "prueba": "./cmd/aquas:TestGuardiaCLIBloquea",
-      "intencion": "aquas guardia sale con exit 2 ante una escritura fuera del repo"
+      "intencion": "aquas guardia bloquea escrituras fuera del repo y deja pasar las de dentro",
+      "rojo_cuando": "una escritura o redirección fuera del repo no sale 2, o una escritura dentro no sale 0",
+      "verde_cuando": "fuera y redirección por Bash salen 2 con la ruta en el motivo; dentro sale 0"
     },
     {
       "prueba": "./cmd/aquas:TestGuardiaCLISinEntornoBloquea",
-      "intencion": "sin entorno válido, aquas guardia bloquea todo"
+      "intencion": "sin entorno válido, aquas guardia bloquea todo y dice cómo arreglarlo",
+      "rojo_cuando": "sin entorno o con el de otra carpeta, una escritura de dentro no se bloquea con exit 2",
+      "verde_cuando": "sin entorno y con entorno de otra carpeta sale 2 y explica cómo arreglarlo"
     },
     {
       "prueba": "./internal/entorno:TestSettingsRealTraeGuardiaYHook",
-      "intencion": "la plantilla real trae el hook PreToolUse de guardia y el PostToolUse de recompilar"
+      "intencion": "la plantilla real trae la guardia y el hook de compilar",
+      "rojo_cuando": "falta PreToolUse de guardia o PostToolUse de hook en un SO",
+      "verde_cuando": "windows y linux traen ambos hooks con su matcher"
     }
   ],
   "rojo": {

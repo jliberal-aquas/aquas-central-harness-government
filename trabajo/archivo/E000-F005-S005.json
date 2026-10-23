@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/guardia:TestCarpetasProtegidasSalenDeSusPaquetes",
-      "intencion": "la guardia protege las rutas de backlog y memoria tomadas de esos paquetes"
+      "intencion": "la guardia protege memoria y backlog desde sus paquetes",
+      "rojo_cuando": "Write o Bash a esas carpetas pasa sin bloqueo",
+      "verde_cuando": "Write y Bash a cada carpeta protegida se bloquean con su motivo"
     }
   ],
   "rojo": {

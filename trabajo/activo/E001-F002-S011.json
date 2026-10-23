@@ -11,11 +11,15 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestFichaGuardaQueHace",
-      "intencion": "nuevo exige que_hace y lo guarda; ficha vieja sin campo sigue legible"
+      "intencion": "nuevo exige que_hace y lo guarda; una ficha vieja sin ese campo sigue legible",
+      "rojo_cuando": "nuevo acepta una ficha sin que_hace o la ficha vieja deja de leerse",
+      "verde_cuando": "nuevo guarda que_hace y la ficha sin el campo se lee bien"
     },
     {
       "prueba": "./internal/wiki:TestHijosMuestranQueHace",
-      "intencion": "la tabla generada muestra que_hace de cada hijo"
+      "intencion": "la tabla generada de hijos muestra el que_hace de cada hijo",
+      "rojo_cuando": "la tabla de hijos omite el que_hace de un hijo o muestra otro texto",
+      "verde_cuando": "cada fila de la tabla generada trae el que_hace de su ficha"
     }
   ]
 }

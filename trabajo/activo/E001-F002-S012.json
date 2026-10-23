@@ -13,7 +13,9 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestSelloNivelTrabajo",
-      "intencion": "el sello lista fichas de otras iniciativas que comparten archivos tocados"
+      "intencion": "el sello lista fichas de otras iniciativas que comparten archivos tocados",
+      "rojo_cuando": "el sello omite una ficha de otra iniciativa que comparte archivos tocados",
+      "verde_cuando": "el sello incluye esa ficha ajena entre sus ítems"
     }
   ]
 }

@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestCicloDeVidaDelHijo",
-      "intencion": "integral: install, build, update y report sobre un hijo de prueba"
+      "intencion": "el hijo cumple su ciclo completo: install, build, update y report",
+      "rojo_cuando": "algún paso del ciclo (install, build, update o report) sale con error o no deja el efecto esperado",
+      "verde_cuando": "los cuatro pasos corren sobre un hijo de prueba con exit 0 y su efecto visible"
     }
   ]
 }

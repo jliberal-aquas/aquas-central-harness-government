@@ -11,23 +11,33 @@
   "pruebas": [
     {
       "prueba": "./internal/entorno:TestValidarArchivoRotoBloquea",
-      "intencion": "el bloqueo dice que el archivo de entorno está roto"
+      "intencion": "un archivo de entorno roto bloquea",
+      "rojo_cuando": "el entorno ilegible no bloquea o no pide aquas iniciar",
+      "verde_cuando": "el mensaje dice «ilegible» y pide aquas iniciar"
     },
     {
       "prueba": "./internal/entorno:TestSettingsSOSinConfigFalla",
-      "intencion": "el error nombra el sistema operativo que no tiene configuración"
+      "intencion": "un SO sin shell declarado falla nombrándolo",
+      "rojo_cuando": "genera settings con un shell inventado para plan9",
+      "verde_cuando": "falla con «sin shell declarado para el SO plan9»"
     },
     {
       "prueba": "./internal/guardia:TestBashConCwdFuera",
-      "intencion": "bloquea porque el directorio de trabajo está fuera del repo"
+      "intencion": "Bash con cwd fuera del repo bloquea escrituras relativas",
+      "rojo_cuando": "echo x \u003e a.txt desde fuera del repo no se bloquea",
+      "verde_cuando": "bloquea con «escritura fuera del repositorio: a.txt»"
     },
     {
       "prueba": "./internal/guardia:TestEntradaHook",
-      "intencion": "cada entrada del hook bloquea o pasa por el motivo esperado"
+      "intencion": "cada entrada del hook bloquea o pasa por su motivo",
+      "rojo_cuando": "una entrada pasa cuando debía bloquear o al revés",
+      "verde_cuando": "Write y Read pasan; Edit, Bash fuera y JSON roto bloquean"
     },
     {
       "prueba": "./internal/guardia:TestSinConfigTodoFueraBloqueado",
-      "intencion": "sin config de permitidos, bloquea por ruta fuera del repo y no por otra causa"
+      "intencion": "sin lista de permitidos todo lo de fuera se bloquea",
+      "rojo_cuando": "una ruta fuera del repo pasa sin config",
+      "verde_cuando": "bloquea nombrando la ruta fuera del repositorio"
     }
   ],
   "rojo": {

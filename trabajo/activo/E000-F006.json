@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./cmd/aquas:TestHookFallaCerrado",
-      "intencion": "integral: con aquas sin compilar el hook bloquea"
+      "intencion": "con el CLI roto el hook bloquea o usa la última versión que compiló",
+      "rojo_cuando": "roto y sin versión anterior no sale 2, o roto con versión anterior no usa la última ni avisa",
+      "verde_cuando": "roto sin versión previa sale 2; roto con versión previa corre la última buena y avisa"
     }
   ]
 }

@@ -13,7 +13,9 @@
   "pruebas": [
     {
       "prueba": "./internal/defecto:TestReincidenciaCreaSlice",
-      "intencion": "al llegar al umbral de ocurrencias (config, 3) aquas crea un slice P1 en E000 una sola vez; debajo del umbral no crea nada"
+      "intencion": "la reincidencia crea un slice P1 una sola vez",
+      "rojo_cuando": "al llegar al umbral no crea el slice, o lo crea repetido",
+      "verde_cuando": "crea un slice P1 en el umbral; debajo no crea nada"
     }
   ]
 }

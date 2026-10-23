@@ -11,7 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/vueltas:TestCuentaVueltasPorMotivo",
-      "intencion": "un historial de muestra con corridas de go test y aquas verificar conocidas da exactamente sus corridas, fallas y motivos"
+      "intencion": "cuenta corridas, fallas y motivos del historial",
+      "rojo_cuando": "las corridas, fallas o motivos no coinciden con los conocidos",
+      "verde_cuando": "el historial de muestra da exactamente su conteo y línea"
     }
   ],
   "rojo": {
