@@ -118,5 +118,11 @@
     "docs/E001/**",
     "docs/E002/**",
     "registro/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/arreglo.go",
+    "internal/backlog/backlog.go",
+    "internal/wiki/hijos.go"
   ]
 }

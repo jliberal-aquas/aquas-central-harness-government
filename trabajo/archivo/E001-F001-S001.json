@@ -7,5 +7,9 @@
   "motivo": "migrado: cerrado antes del backlog JSON",
   "padre": "E001/F001",
   "bloqueado_por": [],
-  "secuencia": 14
+  "secuencia": 14,
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/wiki/wiki.go"
+  ]
 }

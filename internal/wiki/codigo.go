@@ -6,12 +6,15 @@ import (
 	"fmt"
 	"go/ast"
 	"go/parser"
+	"go/printer"
 	"go/token"
 	"io/fs"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
+
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
 )
 
 // paginaCodigo: página de referencia que lleva el índice generado.
@@ -21,6 +24,7 @@ const paginaCodigo = "docs/ref/codigo.md"
 type funcion struct {
 	archivo, nombre, comentario string
 	linea                       int
+	firma                       string // parámetros y resultados, sin «func»
 }
 
 // funcionesGo recorre cmd/ e internal/ (sin _test.go) y devuelve sus funciones en orden de archivo y línea.
@@ -60,7 +64,9 @@ func funcionesGo(raiz string) ([]funcion, error) {
 				if fd.Doc != nil {
 					c, _, _ = strings.Cut(strings.TrimSpace(fd.Doc.Text()), "\n")
 				}
-				todas = append(todas, funcion{rel, n, c, fset.Position(fd.Pos()).Line})
+				var firma strings.Builder
+				printer.Fprint(&firma, fset, fd.Type)
+				todas = append(todas, funcion{rel, n, c, fset.Position(fd.Pos()).Line, strings.TrimPrefix(firma.String(), "func")})
 			}
 			return nil
 		})
@@ -102,6 +108,37 @@ func indiceCodigo(raiz string) (string, error) {
 	b.WriteString("| Archivo | Función | Qué hace |\n|---|---|---|\n")
 	for _, f := range fns {
 		fmt.Fprintf(&b, "| [%s](../../%s) | `%s` | %s |\n", f.archivo, f.archivo, f.nombre, oGuion(celda(f.comentario)))
+	}
+	return b.String(), nil
+}
+
+// tablaCodigo: sección «Código» de un slice: cada archivo tocado con sus funciones, parámetros y qué hacen.
+func tablaCodigo(raiz string, f backlog.Ficha) (string, error) {
+	if len(f.Codigo) == 0 {
+		return "", nil
+	}
+	fs, err := funcionesGo(raiz)
+	if err != nil {
+		return "", err
+	}
+	subir := strings.Repeat("../", strings.Count(paginaDe(f.ID), "/"))
+	var b strings.Builder
+	b.WriteString("\n### Código\n\n| Archivo | Función | Parámetros | Qué hace |\n|---|---|---|---|\n")
+	for _, a := range f.Codigo {
+		if !existe(raiz, a) {
+			fmt.Fprintf(&b, "| %s (ya no existe) | — | — | — |\n", a)
+			continue
+		}
+		n := 0
+		for _, fn := range fs {
+			if fn.archivo == a {
+				fmt.Fprintf(&b, "| [%s](%s%s) | `%s` | `%s` | %s |\n", a, subir, a, fn.nombre, celda(fn.firma), oGuion(celda(fn.comentario)))
+				n++
+			}
+		}
+		if n == 0 {
+			fmt.Fprintf(&b, "| [%s](%s%s) | — | — | — |\n", a, subir, a)
+		}
 	}
 	return b.String(), nil
 }

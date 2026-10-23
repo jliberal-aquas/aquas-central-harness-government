@@ -196,5 +196,9 @@
       "marca": "sin_cambio",
       "motivo": "usa la ruta como ejemplo o en pruebas; no cambia"
     }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/propuesta/propuesta.go"
   ]
 }

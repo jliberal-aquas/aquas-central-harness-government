@@ -121,5 +121,11 @@
     "cmd/aquas/**",
     "docs/E001/**",
     "registro/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/arreglo.go",
+    "internal/backlog/documentar.go",
+    "internal/backlog/rojo.go"
   ]
 }

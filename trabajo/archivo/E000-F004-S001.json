@@ -69,5 +69,9 @@
     "cmd/aquas/**",
     "docs/E000/**",
     "docs/glosario.md"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/vueltas/vueltas.go"
   ]
 }

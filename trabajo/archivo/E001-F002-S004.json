@@ -141,5 +141,10 @@
       "marca": "sin_cambio",
       "motivo": "creada en este slice; ya nace bloqueada por S004 y espera su turno"
     }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/backlog.go",
+    "internal/backlog/sello.go"
   ]
 }

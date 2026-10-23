@@ -495,5 +495,9 @@
     "docs/README.md",
     "README.md",
     "registro/**"
+  ],
+  "codigo": [
+    "internal/wiki/portadas.go",
+    "internal/wiki/wiki.go"
   ]
 }

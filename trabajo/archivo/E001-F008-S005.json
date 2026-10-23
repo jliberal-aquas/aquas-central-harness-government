@@ -1,0 +1,154 @@
+{
+  "id": "E001/F008/S005",
+  "tipo": "slice",
+  "titulo": "Sección Código en cada slice con enlaces a lo tocado",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001/F008",
+  "bloqueado_por": [
+    "E001/F008/S004"
+  ],
+  "secuencia": 83,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestSliceEnlazaSuCodigo",
+      "intencion": "la página del slice lista su código: archivo enlazado, función, parámetros y qué hace",
+      "rojo_cuando": "falta la sección Código, el enlace, una función, sus parámetros o su comentario, o un archivo borrado queda como enlace roto",
+      "verde_cuando": "cada archivo del slice aparece enlazado con sus funciones, parámetros y comentario; el borrado aparece sin enlace"
+    },
+    {
+      "prueba": "./internal/backlog:TestCerrarGuardaCodigo",
+      "intencion": "el código tocado de un slice sale de sus commits y de los cambios sin commit",
+      "rojo_cuando": "omite un archivo de producción tocado, o incluye pruebas, docs o archivos de commits ajenos",
+      "verde_cuando": "devuelve solo los .go de producción de cmd/ e internal/ tocados por el slice, ordenados"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-23T01:43:34Z",
+    "head": "622cd8eb6bcf24261e99f6e80abc50bb7a485381",
+    "resultado": {
+      "./internal/backlog:TestCerrarGuardaCodigo": "codigo_test.go:45: codigoTocado = [], se esperaba [cmd/c/main.go internal/a/a.go]",
+      "./internal/wiki:TestSliceEnlazaSuCodigo": "seccioncodigo_test.go:27: el archivo borrado debe aparecer sin enlace:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-23T01:45:20Z",
+    "head": "622cd8eb6bcf24261e99f6e80abc50bb7a485381"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F008",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia: S005 no altera alcance ni estado del padre"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia: S005 no altera alcance ni estado del padre"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/S005.md",
+      "marca": "actualizado",
+      "motivo": "revisado en este slice: docs/E001/F008/S005.md cambió y quedó coherente"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/README.md",
+      "marca": "actualizado",
+      "motivo": "revisado en este slice: docs/E001/F008/README.md cambió y quedó coherente"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/README.md no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/hook_cerrado_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/ref/compilador.md no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/S004.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/backlog/sello_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/carpetas_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/guardia.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/memoria/memoria.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/arreglos_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/comandos_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/contrato_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/cuando_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/portadas.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/wiki.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/wiki_test.go no menciona la sección Código ni el campo codigo: S005 no altera lo que nombra o importa"
+    }
+  ],
+  "alcance": [
+    "internal/**",
+    "cmd/**",
+    "docs/**",
+    "trabajo/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/backlog.go",
+    "internal/backlog/codigo.go",
+    "internal/wiki/codigo.go",
+    "internal/wiki/hijos.go"
+  ]
+}

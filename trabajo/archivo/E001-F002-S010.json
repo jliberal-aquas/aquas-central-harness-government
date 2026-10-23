@@ -54,5 +54,11 @@
   "verde": {
     "fecha": "2026-10-21T16:29:32Z",
     "head": "363b2fc002d03651d0f8c49793db884133e013ee"
-  }
+  },
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/backlog.go",
+    "internal/wiki/hijos.go",
+    "internal/wiki/wiki.go"
+  ]
 }

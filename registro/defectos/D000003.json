@@ -1,0 +1,9 @@
+{
+  "id": "D000003",
+  "firma": "plan-perdido-tras-compact",
+  "que": "tras /compact el dale del humano no registra el plan aunque el último mensaje tenía «Plan: N llamadas»; el contador sigue sumando el pedido anterior y el freno bloquea (llamadas 26 y 27, 2026-10-22)",
+  "causa": "hipótesis no confirmada: presupuesto.py busca la línea Plan en el último mensaje del transcript y tras /compact ese mensaje ya no está",
+  "arreglo": "presupuesto.py (fuera del repo, ~/.claude/hooks) reinicia el contador en cada dale y lee el plan pendiente aunque haya compactación; lo edita el humano o lo autoriza",
+  "como_me_cercioro": "prueba del hook: dale tras /compact con plan en el mensaje previo debe registrar plan y contador en 0",
+  "ocurrencias": []
+}

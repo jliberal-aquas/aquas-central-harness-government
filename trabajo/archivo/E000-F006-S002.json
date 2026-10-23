@@ -156,5 +156,12 @@
     "gobierno/**",
     "CLAUDE.md",
     "docs/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/sello.go",
+    "internal/guardia/guardia.go",
+    "internal/memoria/memoria.go",
+    "internal/wiki/hijos.go"
   ]
 }

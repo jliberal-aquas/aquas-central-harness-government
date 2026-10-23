@@ -115,5 +115,9 @@
     "docs/E001/**",
     "registro/defectos/**",
     "docs/glosario.md"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/defecto/defecto.go"
   ]
 }

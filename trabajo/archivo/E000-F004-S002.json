@@ -64,5 +64,8 @@
     "docs/E000/**",
     "registro/defectos/**",
     "docs/glosario.md"
+  ],
+  "codigo": [
+    "internal/vueltas/vueltas.go"
   ]
 }

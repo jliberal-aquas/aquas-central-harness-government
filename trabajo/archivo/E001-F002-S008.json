@@ -124,5 +124,9 @@
     "cmd/aquas/**",
     "docs/E001/F002/**",
     "gobierno/canonico/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/backlog.go"
   ]
 }

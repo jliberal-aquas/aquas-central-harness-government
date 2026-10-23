@@ -26,5 +26,8 @@
   "verde": {
     "fecha": "2026-10-21T17:58:55Z",
     "head": "fa4a1ce7eaeb45dacab67ea7fe7700d990d221b1"
-  }
+  },
+  "codigo": [
+    "internal/guardia/guardia.go"
+  ]
 }

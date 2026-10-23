@@ -1,0 +1,9 @@
+{
+  "id": "D000004",
+  "firma": "cierre-repetido-por-worker",
+  "que": "con workers en curso cada aviso de worker abre un turno y el freno de cierre exige el cierre de diez campos en todos; el humano recibió 4 cierres en un pedido",
+  "causa": "reglas.py exige cierre completo en todo turno final sin distinguir turnos intermedios por aviso de worker",
+  "arreglo": "reglas.py (fuera del repo) exige el cierre completo solo cuando no quedan workers pendientes; los turnos intermedios llevan una línea de estado",
+  "como_me_cercioro": "prueba del hook: turno con worker pendiente y una línea de estado pasa; turno final sin cierre falla",
+  "ocurrencias": []
+}

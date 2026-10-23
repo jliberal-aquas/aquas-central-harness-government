@@ -127,5 +127,11 @@
       "ruta": "docs/ref/guardia.md",
       "motivo": "la referencia de la guardia debe contar que ahora frena por alcance"
     }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/alcance.go",
+    "internal/backlog/backlog.go",
+    "internal/guardia/guardia.go"
   ]
 }

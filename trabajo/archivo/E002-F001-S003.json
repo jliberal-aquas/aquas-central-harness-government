@@ -75,5 +75,10 @@
     "internal/hijo/**",
     "cmd/aquas/**",
     "docs/E002/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/hijo/hijo.go",
+    "internal/hijo/update.go"
   ]
 }

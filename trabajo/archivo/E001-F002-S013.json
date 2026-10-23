@@ -108,5 +108,8 @@
       "marca": "sin_cambio",
       "motivo": "la API del backlog no cambia; solo el chequeo interno del sello"
     }
+  ],
+  "codigo": [
+    "internal/backlog/sello.go"
   ]
 }

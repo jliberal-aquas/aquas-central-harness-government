@@ -102,6 +102,8 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/backlog/backlog.go](../../internal/backlog/backlog.go) | `libre` | libre: no está BLOQUEADO y cada bloqueador ya terminó (archivado: CERRADO o CANCELADO). |
 | [internal/backlog/backlog.go](../../internal/backlog/backlog.go) | `Validar` | Validar: problemas de las fichas en disco (gate). Sin carpeta trabajo/ no hay problemas. |
 | [internal/backlog/backlog.go](../../internal/backlog/backlog.go) | `Texto` | Texto: una línea por ficha, para el agente. |
+| [internal/backlog/codigo.go](../../internal/backlog/codigo.go) | `codigoTocado` | codigoTocado: .go de producción en cmd/ e internal/ que tocaron los commits del slice y, si sinCommit, los cambios pendientes (E001/F008/S005). |
+| [internal/backlog/codigo.go](../../internal/backlog/codigo.go) | `Codigo` | Codigo recalcula y guarda el código tocado de un slice desde sus commits; sirve para slices ya cerrados. |
 | [internal/backlog/documentar.go](../../internal/backlog/documentar.go) | `Documentar` | Documentar reescribe valida, rojo cuando y verde cuando de pruebas ya registradas. |
 | [internal/backlog/rojo.go](../../internal/backlog/rojo.go) | `problemaPrueba` | problemaPrueba: por qué una prueba de la ficha está mal escrita ("" si está bien). |
 | [internal/backlog/rojo.go](../../internal/backlog/rojo.go) | `listaPruebas` | listaPruebas convierte "./paquete:TestNombre=intención" en pruebas válidas, sin repetidas. |
@@ -233,6 +235,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/wiki/codigo.go](../../internal/wiki/codigo.go) | `funcionesGo` | funcionesGo recorre cmd/ e internal/ (sin _test.go) y devuelve sus funciones en orden de archivo y línea. |
 | [internal/wiki/codigo.go](../../internal/wiki/codigo.go) | `revisarCodigo` | revisarCodigo: avisos por cada función sin comentario. |
 | [internal/wiki/codigo.go](../../internal/wiki/codigo.go) | `indiceCodigo` | indiceCodigo: tabla archivo → función → primera línea de su comentario. |
+| [internal/wiki/codigo.go](../../internal/wiki/codigo.go) | `tablaCodigo` | tablaCodigo: sección «Código» de un slice: cada archivo tocado con sus funciones, parámetros y qué hacen. |
 | [internal/wiki/comandos.go](../../internal/wiki/comandos.go) | `RevisarComandos` | RevisarComandos: todo `aquas X [Y]` citado entre comillas invertidas en docs/ y en |
 | [internal/wiki/contrato.go](../../internal/wiki/contrato.go) | `seccionesDe` | seccionesDe: orden fijo de secciones según el nivel de la página. |
 | [internal/wiki/contrato.go](../../internal/wiki/contrato.go) | `migasEsperadas` | migasEsperadas: migas «Inicio › E001 › F001», cada nivel con enlace relativo a la página. |

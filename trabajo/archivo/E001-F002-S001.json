@@ -68,5 +68,10 @@
   "verde": {
     "fecha": "2026-10-21T18:41:14Z",
     "head": "0918fc6a8194695d309cd17cdf7d09a3a72f149e"
-  }
+  },
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/guardia/guardia.go",
+    "internal/turno/turno.go"
+  ]
 }

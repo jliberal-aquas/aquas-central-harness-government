@@ -154,5 +154,9 @@
     "cmd/aquas/**",
     "central.go",
     "docs/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/hijo/hijo.go"
   ]
 }

@@ -41,6 +41,8 @@ type Ficha struct {
 	Ampliaciones []Ampliacion `json:"ampliaciones,omitempty"`
 
 	Arreglos []Arreglo `json:"arreglos,omitempty"`
+	// E001/F008/S005: código de producción tocado, congelado al cerrar.
+	Codigo []string `json:"codigo,omitempty"`
 }
 
 // Estados y prioridades del canónico E001 (sección Backlog).
@@ -288,6 +290,11 @@ func Estado(raiz, id, estado string) (Ficha, error) {
 		}
 		if err := selloCompleto(raiz, f); err != nil {
 			return Ficha{}, err
+		}
+		if f.Tipo == "slice" { // E001/F008/S005: congela el código tocado
+			if f.Codigo, err = codigoTocado(raiz, id, true); err != nil {
+				return Ficha{}, err
+			}
 		}
 	}
 	f.Estado = estado

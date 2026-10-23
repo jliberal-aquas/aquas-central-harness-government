@@ -49,6 +49,7 @@ stateDiagram-v2
 | [S003 Portadas con todas las iniciativas](S003.md) | El gate exige enlace a cada iniciativa en las dos portadas |
 | [S007 Completar la documentación vieja](S007.md) | Documentar pruebas viejas, también en arreglos; el gate exige los textos a todas |
 | [S004 Toda función comentada e índice del código](S004.md) | El gate exige comentario a cada función; índice en ref/codigo.md |
+| [S005 Sección Código en cada slice](S005.md) | Cada slice lista su código: funciones, parámetros y qué hacen |
 | [S006 Arreglos con ID bajo su slice](S006.md) | Correcciones con ID propio, sin slices nuevos |
 
 ## Ejemplo de punta a punta
@@ -90,7 +91,7 @@ Prueba integral: `TestDocumentacionVerificable` (pendiente).
 | S002 | Prueba integral del feature obligatoria para cerrarlo | Planeado |
 | [S003](S003.md) | Portadas listan todas las iniciativas con enlace | Hecho |
 | [S004](S004.md) | Toda función comentada e índice docs/codigo generado | Hecho |
-| S005 | Sección Código en cada slice con enlaces a lo tocado | Planeado |
+| [S005](S005.md) | Sección Código en cada slice con enlaces a lo tocado | Hecho |
 | [S006](S006.md) | Arreglos con ID bajo su slice y sección Arreglos | Hecho |
 | [S007](S007.md) | Completar la documentación vieja de pruebas y arreglos | Hecho |
 
@@ -102,3 +103,4 @@ Prueba integral: `TestDocumentacionVerificable` (pendiente).
 - Abajo: [S003 · Portadas listan todas las iniciativas con enlace](S003.md)
 - Abajo: [S007 · Completar la documentación vieja de pruebas y arreglos](S007.md)
 - Abajo: [S004 · Toda función comentada e índice docs/codigo generado](S004.md)
+- Abajo: [S005 · Sección Código en cada slice con enlaces a lo tocado](S005.md)

@@ -128,7 +128,11 @@ func esperados(raiz string) (map[string]esperado, []backlog.Ficha, error) {
 			continue
 		}
 		if f.Tipo == "slice" {
-			exp[rel] = esperado{secContrato, envolver(tablaPruebas(f) + tablaArreglos(f))}
+			cod, err := tablaCodigo(raiz, f) // E001/F008/S005
+			if err != nil {
+				return nil, fichas, err
+			}
+			exp[rel] = esperado{secContrato, envolver(tablaPruebas(f) + cod + tablaArreglos(f))}
 		} else {
 			exp[rel] = esperado{secNav, envolver(tablaHijos(raiz, rel, hijos[f.ID]) + tablaArreglos(f))}
 		}

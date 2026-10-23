@@ -501,5 +501,9 @@
     "README.md",
     "CLAUDE.md",
     "metodologias/**"
+  ],
+  "codigo": [
+    "internal/wiki/comandos.go",
+    "internal/wiki/wiki.go"
   ]
 }

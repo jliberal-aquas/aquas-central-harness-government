@@ -279,5 +279,27 @@
     "internal/**",
     "cmd/**",
     "docs/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/alcance.go",
+    "internal/backlog/backlog.go",
+    "internal/backlog/rojo.go",
+    "internal/backlog/sello.go",
+    "internal/compilador/compilador.go",
+    "internal/defecto/defecto.go",
+    "internal/encargo/encargo.go",
+    "internal/entorno/entorno.go",
+    "internal/guardia/guardia.go",
+    "internal/guardia/permitidos.go",
+    "internal/memoria/memoria.go",
+    "internal/propuesta/propuesta.go",
+    "internal/turno/turno.go",
+    "internal/wiki/codigo.go",
+    "internal/wiki/contrato.go",
+    "internal/wiki/glosario.go",
+    "internal/wiki/hijos.go",
+    "internal/wiki/legibilidad.go",
+    "internal/wiki/wiki.go"
   ]
 }

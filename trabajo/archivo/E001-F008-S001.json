@@ -207,5 +207,10 @@
     "cmd/aquas/**",
     "docs/E001/**",
     "docs/README.md"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/rojo.go",
+    "internal/wiki/hijos.go"
   ]
 }

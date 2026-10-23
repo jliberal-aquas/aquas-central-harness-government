@@ -138,5 +138,12 @@
         }
       ]
     }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/arreglo.go",
+    "internal/backlog/backlog.go",
+    "internal/hijo/build.go",
+    "internal/wiki/hijos.go"
   ]
 }

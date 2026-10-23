@@ -64,5 +64,10 @@
     "cmd/aquas/**",
     "docs/E000/**",
     "docs/glosario.md"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/wiki/enlazar.go",
+    "internal/wiki/glosario.go"
   ]
 }
