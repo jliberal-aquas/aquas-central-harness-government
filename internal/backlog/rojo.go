@@ -106,6 +106,9 @@ func Pruebas(raiz, id string, lista []string) (Ficha, error) {
 	if err != nil {
 		return Ficha{}, err
 	}
+	if _, ok := padreDeArreglo(id); ok { // D000020
+		return pruebasArreglo(raiz, id, ps)
+	}
 	f, err := activa(raiz, id)
 	if err != nil {
 		return Ficha{}, err
@@ -131,53 +134,35 @@ func corrible(raiz, id string) (Ficha, error) {
 
 // Rojo corre cada prueba sola con `go test -json`; exige que cada una falle por sí misma.
 func Rojo(raiz, id string, ahora time.Time) (Ficha, error) {
+	if _, ok := padreDeArreglo(id); ok { // D000020
+		return rojoArreglo(raiz, id, ahora)
+	}
 	f, err := corrible(raiz, id)
 	if err != nil {
 		return Ficha{}, err
 	}
-	res := map[string]string{}
-	var malas []string
-	for _, p := range f.Pruebas {
-		r, err := correr(raiz, []Prueba{p})
-		if err != nil {
-			return Ficha{}, err
-		}
-		if x := r[p.Nombre]; x.accion == "fail" {
-			res[p.Nombre] = x.salida
-		} else {
-			malas = append(malas, fmt.Sprintf("%s: %s", p.Nombre, x.motivo("corrida sola, pasa: no falla por sí misma")))
-		}
+	r, err := rojoDe(raiz, f.Pruebas, ahora)
+	if err != nil {
+		return Ficha{}, err
 	}
-	if len(malas) > 0 {
-		return Ficha{}, fmt.Errorf("rojo rechazado; cada prueba debe fallar sola por su motivo:\n  - %s", strings.Join(malas, "\n  - "))
-	}
-	f.Rojo, f.Verde = &Registro{Fecha: ahora.UTC().Format(time.RFC3339), Head: head(raiz), Resultado: res}, nil
+	f.Rojo, f.Verde = r, nil
 	return f, escribir(raiz, Activo, f)
 }
 
 // Verde corre las pruebas juntas tras el rojo; exige que todas pasen.
 func Verde(raiz, id string, ahora time.Time) (Ficha, error) {
+	if _, ok := padreDeArreglo(id); ok { // D000020
+		return verdeArreglo(raiz, id, ahora)
+	}
 	f, err := corrible(raiz, id)
 	if err != nil {
 		return Ficha{}, err
 	}
-	if f.Rojo == nil {
-		return Ficha{}, fmt.Errorf("%s sin rojo: primero aquas backlog rojo %s", id, id)
-	}
-	r, err := correr(raiz, f.Pruebas)
+	r, err := verdeDe(raiz, id, f.Pruebas, f.Rojo, ahora)
 	if err != nil {
 		return Ficha{}, err
 	}
-	var malas []string
-	for _, p := range f.Pruebas {
-		if x := r[p.Nombre]; x.accion != "pass" {
-			malas = append(malas, fmt.Sprintf("%s: %s", p.Nombre, x.motivo("")))
-		}
-	}
-	if len(malas) > 0 {
-		return Ficha{}, fmt.Errorf("verde rechazado; todas deben pasar:\n  - %s", strings.Join(malas, "\n  - "))
-	}
-	f.Verde = &Registro{Fecha: ahora.UTC().Format(time.RFC3339), Head: head(raiz)}
+	f.Verde = r
 	return f, escribir(raiz, Activo, f)
 }
 

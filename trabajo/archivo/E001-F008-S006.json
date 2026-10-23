@@ -119,10 +119,28 @@
     "docs/E002/**",
     "registro/**"
   ],
+  "arreglos": [
+    {
+      "id": "E001/F008/S006/X01",
+      "titulo": "Un arreglo registra sus pruebas y pasa rojo y verde con su ID",
+      "motivo": "D000020: backlog pruebas respondía «no existe» con padre/Xnn y la prueba del arreglo se escondía en la del slice (2026-10-23)",
+      "fecha": "2026-10-23T02:13:52Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/backlog:TestArregloRegistraSusPruebas",
+          "intencion": "un arreglo registra sus pruebas y pasa rojo y verde con su propio ID, aunque su slice esté cerrado",
+          "rojo_cuando": "pruebas, rojo o verde rechazan el ID padre/Xnn, guardan en la ficha padre, o el verde pasa sin rojo o con la prueba fallando",
+          "verde_cuando": "el arreglo guarda su prueba, su rojo y su verde; la ficha padre conserva los suyos"
+        }
+      ]
+    }
+  ],
   "codigo": [
     "cmd/aquas/main.go",
     "internal/backlog/arreglo.go",
+    "internal/backlog/arreglo_pruebas.go",
     "internal/backlog/backlog.go",
+    "internal/backlog/rojo.go",
     "internal/wiki/hijos.go"
   ]
 }

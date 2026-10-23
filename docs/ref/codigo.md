@@ -81,6 +81,13 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/backlog/arreglo.go](../../internal/backlog/arreglo.go) | `dirDe` | dirDe: carpeta de trabajo/ donde vive la ficha, según esté archivada o no. |
 | [internal/backlog/arreglo.go](../../internal/backlog/arreglo.go) | `Arreglar` | Arreglar anota un arreglo en la ficha de su slice o feature, abierta o archivada. |
 | [internal/backlog/arreglo.go](../../internal/backlog/arreglo.go) | `problemasArreglos` | problemasArreglos: chequeo del gate: IDs en secuencia bajo su ficha, con título y motivo. |
+| [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `padreDeArreglo` | padreDeArreglo: el ID del slice o feature dueño, si id es de un arreglo (padre/Xnn). |
+| [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `cambiarArreglo` | cambiarArreglo carga la ficha dueña, aplica cambio al arreglo id y la guarda donde vive (activa o archivada). |
+| [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `rojoDe` | rojoDe corre cada prueba sola; exige que cada una falle por sí misma. |
+| [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `verdeDe` | verdeDe corre las pruebas juntas tras el rojo; exige que todas pasen. |
+| [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `pruebasArreglo` | pruebasArreglo fija las pruebas del arreglo; cambiarlas borra su rojo y su verde. |
+| [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `rojoArreglo` | rojoArreglo registra el rojo del arreglo. |
+| [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `verdeArreglo` | verdeArreglo registra el verde del arreglo. |
 | [internal/backlog/backlog.go](../../internal/backlog/backlog.go) | `terminal` | terminal: el estado ya no cambia (CERRADO o CANCELADO). |
 | [internal/backlog/backlog.go](../../internal/backlog/backlog.go) | `esta` | esta: x figura en la lista. |
 | [internal/backlog/backlog.go](../../internal/backlog/backlog.go) | `tipoYPadre` | tipoYPadre deriva del id: E001 → iniciativa; E001/F002 → feature de E001; E001/F002/S002 → slice. |

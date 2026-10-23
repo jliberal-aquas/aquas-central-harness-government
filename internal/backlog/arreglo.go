@@ -20,6 +20,9 @@ type Arreglo struct {
 	Fecha   string   `json:"fecha"`
 	Antes   string   `json:"antes,omitempty"`
 	Pruebas []Prueba `json:"pruebas,omitempty"`
+	// D000020: rojo y verde propios del arreglo.
+	Rojo  *Registro `json:"rojo,omitempty"`
+	Verde *Registro `json:"verde,omitempty"`
 }
 
 // idArreglo: ID del n-ésimo arreglo (1, 2…) de padre: padre/X01.
