@@ -29,6 +29,8 @@ type Registro struct {
 	Fecha     string            `json:"fecha"`
 	Head      string            `json:"head"`
 	Resultado map[string]string `json:"resultado,omitempty"`
+	// X02: slice cerrado del que una feature heredó este rojo; "" = rojo propio.
+	Origen string `json:"origen,omitempty"`
 }
 
 var reNombrePrueba = regexp.MustCompile(`^\./[\w.-]+(/[\w.-]+)*:Test([A-Z0-9_]\w*)?$`)
@@ -145,11 +147,40 @@ func Rojo(raiz, id string, ahora time.Time) (Ficha, error) {
 		return Ficha{}, err
 	}
 	r, err := rojoDe(raiz, f.Pruebas, ahora)
+	if err != nil && f.Tipo == "feature" {
+		if h := rojoHeredado(raiz, f); h != nil {
+			r, err = h, nil
+		}
+	}
 	if err != nil {
 		return Ficha{}, err
 	}
 	f.Rojo, f.Verde = r, nil
 	return f, escribir(raiz, Activo, f)
+}
+
+// rojoHeredado (X02): rojo que un slice cerrado de la feature registró para todas sus pruebas
+// integrales; nil si ninguno las respalda. La integral que ya pasó no vuelve a caer: este rojo es su evidencia.
+func rojoHeredado(raiz string, f Ficha) *Registro {
+	_, arc, err := todas(raiz)
+	if err != nil {
+		return nil
+	}
+	for _, s := range arc {
+		if s.Tipo != "slice" || s.Padre != f.ID || s.Rojo == nil {
+			continue
+		}
+		res := map[string]string{}
+		for _, p := range f.Pruebas {
+			if v, ok := s.Rojo.Resultado[p.Nombre]; ok {
+				res[p.Nombre] = v
+			}
+		}
+		if len(res) == len(f.Pruebas) {
+			return &Registro{Fecha: s.Rojo.Fecha, Head: s.Rojo.Head, Resultado: res, Origen: s.ID}
+		}
+	}
+	return nil
 }
 
 // Verde corre las pruebas juntas tras el rojo; exige que todas pasen.

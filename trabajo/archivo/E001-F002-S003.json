@@ -131,6 +131,31 @@
         "fecha": "2026-10-23T14:01:05Z",
         "head": "7297fe655e1c4a7eacea48ae7ce56d14dc3dcde2"
       }
+    },
+    {
+      "id": "E001/F002/S003/X02",
+      "titulo": "Una feature hereda el rojo de su integral desde un slice cerrado",
+      "motivo": "D000023 deja sin rojo posible a features cuya integral ya pasó en un slice, como E000/F006",
+      "fecha": "2026-10-23T15:09:39Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/backlog:TestFeatureHeredaRojoDeSuSlice",
+          "intencion": "una feature cuya integral ya pasó hereda el rojo de un slice cerrado suyo con esa prueba y nombra el origen",
+          "rojo_cuando": "se niega pese al slice que la respalda, hereda de otra prueba o no nombra el origen",
+          "verde_cuando": "sin respaldo se niega; con él guarda ese rojo y el slice de origen"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T15:10:16Z",
+        "head": "9b121205c42b4ca8f7ef284e7be502d08882ece3",
+        "resultado": {
+          "./internal/backlog:TestFeatureHeredaRojoDeSuSlice": "rojo_heredado_test.go:35: slice cerrado con esa prueba en rojo: debió heredarse; dio rojo rechazado; cada prueba debe fallar sola por su motivo:"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T15:10:55Z",
+        "head": "9b121205c42b4ca8f7ef284e7be502d08882ece3"
+      }
     }
   ],
   "codigo": [

@@ -15,5 +15,13 @@
       "rojo_cuando": "roto y sin versión anterior no sale 2, o roto con versión anterior no usa la última ni avisa",
       "verde_cuando": "roto sin versión previa sale 2; roto con versión previa corre la última buena y avisa"
     }
-  ]
+  ],
+  "rojo": {
+    "fecha": "2026-10-22T17:33:24Z",
+    "head": "2231b2b3920d9b2f105f98896af7578e70679996",
+    "resultado": {
+      "./cmd/aquas:TestHookFallaCerrado": "hook_cerrado_test.go:58: roto y sin versión anterior: exit 1, quiero 2 (bloquea); stderr: # x/cmd/aquas"
+    },
+    "origen": "E000/F006/S001"
+  }
 }
