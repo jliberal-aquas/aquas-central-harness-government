@@ -1,0 +1,9 @@
+{
+  "id": "D000019",
+  "firma": "sello-marca-sin-correccion",
+  "que": "T15: una marca del sello mal puesta no se corrige con la ficha cerrada (S007, 2026-10-23); el contador de deuda no veía arreglos, corregido en S007",
+  "causa": "el sello se congela al cerrar y acepta sin_cambio para una página que sí cambió",
+  "arreglo": "`aquas backlog sello` rechaza sin_cambio para un archivo que aparece en git status",
+  "como_me_cercioro": "prueba en internal/backlog: página modificada marcada sin_cambio hace fallar el sello",
+  "ocurrencias": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "D000014",
+  "firma": "sello-memoria-sobre-estructura",
+  "que": "T10: el sello de la memoria se calculaba sobre la estructura y un campo nuevo hacía parecer manipulada una memoria vieja (2026-10-21); estado actual NO CONFIRMADO",
+  "causa": "huella sobre el JSON recodificado, no sobre los bytes escritos",
+  "arreglo": "sellar los bytes tal como se escribieron",
+  "como_me_cercioro": "TestSelloSobreviveCampoNuevo en verde; confirmar si ya existe",
+  "ocurrencias": []
+}

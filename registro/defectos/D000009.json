@@ -1,0 +1,9 @@
+{
+  "id": "D000009",
+  "firma": "hook-palabra-clave-falso-fallo",
+  "que": "T05: controles por palabra clave toman un tema por un incidente: reglas.py exigió las 5 preguntas por la palabra «fallas» de un texto pegado (2026-10-20); RevisarInsight (S016) frenó una línea con Estado IMPLEMENTADO Y PROBADO que solo citaba la palabra PROPUESTO (2026-10-23)",
+  "causa": "buscan una subcadena sin mirar su función en el texto",
+  "arreglo": "reglas.py exige el protocolo solo ante un fallo señalado (fuera del repo (~/.claude/hooks): lo edita el humano o lo autoriza); RevisarInsight lee el valor después de «Estado:»",
+  "como_me_cercioro": "prueba en internal/propuesta: línea con «Estado: IMPLEMENTADO Y PROBADO» que cita PROPUESTO pasa",
+  "ocurrencias": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "D000011",
+  "firma": "foco-duplicado-memoria-backlog",
+  "que": "T07: memoria y backlog guardan el mismo foco; la memoria apuntó al backlog viejo (2026-10-21)",
+  "causa": "dato duplicado en dos features; el sello no ve dependencias por dato compartido",
+  "arreglo": "un único dueño del foco, o que el sello sume a quienes comparten el dato",
+  "como_me_cercioro": "prueba: cambiar el slice en curso sin actualizar la memoria hace avisar al gate",
+  "ocurrencias": []
+}

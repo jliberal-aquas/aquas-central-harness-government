@@ -1,0 +1,9 @@
+{
+  "id": "D000016",
+  "firma": "aprobacion-humana-sin-justificar",
+  "que": "T12: cubrir un riesgo con «que apruebe el humano» hace crecer el freno sin que nadie lo note (2026-10-20)",
+  "causa": "cada aprobación nueva entra sin justificación escrita",
+  "arreglo": "el gate exige una justificación por cada aprobación requerida en la config",
+  "como_me_cercioro": "prueba: aprobación sin motivo en la config hace fallar el gate",
+  "ocurrencias": []
+}

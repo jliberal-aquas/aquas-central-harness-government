@@ -1,0 +1,9 @@
+{
+  "id": "D000010",
+  "firma": "memoria-fuera-de-orden-al-cerrar",
+  "que": "T06: la memoria se actualiza antes del commit o no se archiva antes del cierre; S005 quedó sin archivo de memoria (2026-10-23); 9 líneas",
+  "causa": "el orden memoria fijar, archivar, CERRADO, commit, fijar depende de que el agente lo recuerde; el hook de cierre lo detecta tarde",
+  "arreglo": "`aquas backlog estado \u003cid\u003e CERRADO` exige la memoria del slice archivada",
+  "como_me_cercioro": "prueba en internal/backlog: CERRADO sin memoria archivada falla y nombra el paso",
+  "ocurrencias": []
+}

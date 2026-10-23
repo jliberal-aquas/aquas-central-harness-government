@@ -1,0 +1,9 @@
+{
+  "id": "D000005",
+  "firma": "presupuesto-plan-viejo-tras-cierre",
+  "que": "T01: tras cerrar un slice, el pedido siguiente se cuenta contra el plan anterior y el freno bloquea; 22 líneas del historial, 2026-10-21 a 2026-10-23. Pariente de D000002 y D000003",
+  "causa": "cerrar un slice no cierra su plan; solo un dale con línea Plan lo reinicia (cita: «cerrar un slice no cierra su plan»)",
+  "arreglo": "presupuesto.py reinicia el contador al registrar cada plan; fuera del repo (~/.claude/hooks): lo edita el humano o lo autoriza",
+  "como_me_cercioro": "prueba del hook: pedido nuevo tras un cierre arranca en llamada 1",
+  "ocurrencias": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "D000015",
+  "firma": "python-crlf-windows",
+  "que": "T11: en Windows, Python en modo texto escribe CRLF y convierte el archivo entero sin avisar (2026-10-21; se repitió al comentar funciones en S004)",
+  "causa": "open() en modo texto traduce el salto de línea",
+  "arreglo": "el gate rechaza CRLF en .go y .md versionados",
+  "como_me_cercioro": "prueba: archivo .go con CRLF hace fallar `aquas verificar`; con LF pasa",
+  "ocurrencias": []
+}

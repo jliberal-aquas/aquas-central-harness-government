@@ -1,0 +1,9 @@
+{
+  "id": "D000012",
+  "firma": "herencia-claude-md-sin-gate",
+  "que": "T08: archivos escritos a mano no pasan por gate; settings.json ya es compilado sellado, pero la herencia de CLAUDE.md entre central e hijo no se verifica (2026-10-22)",
+  "causa": "las capas de CLAUDE.md se suman en Claude Code y nada compara la del hijo con la central",
+  "arreglo": "resolver la herencia al compilar y que el gate verifique sus huellas",
+  "como_me_cercioro": "prueba: CLAUDE.md de un hijo distinto de su sello hace fallar el gate",
+  "ocurrencias": []
+}

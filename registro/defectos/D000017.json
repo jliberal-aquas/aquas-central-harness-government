@@ -1,0 +1,9 @@
+{
+  "id": "D000017",
+  "firma": "cambio-sin-revisar-contrato",
+  "que": "T13: propuestas o cambios no revisados contra la ficha o las fuentes; una propuesta contradijo la ficha (2026-10-22); 8 líneas",
+  "causa": "depende de que el agente recuerde revisar; no hay control",
+  "arreglo": "criterio humano por ahora; candidato: auditor contra el contrato antes de proponer un cambio de diseño",
+  "como_me_cercioro": "probabilístico: contar hallazgos del auditor por slice; alerta si un slice cierra sin auditoría",
+  "ocurrencias": []
+}

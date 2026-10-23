@@ -1,0 +1,9 @@
+{
+  "id": "D000006",
+  "firma": "guardia-ruta-sin-resolver",
+  "que": "T02: la guardia dejó pasar `echo x \u003e \"$NOEXISTE\"` (2026-10-21); probar la regla aislada no probó que el hook estuviera activo",
+  "causa": "hipótesis no confirmada: la regla se probó sola, no en la sesión real",
+  "arreglo": "control al iniciar sesión que dispare el hook con una escritura fuera y espere el bloqueo",
+  "como_me_cercioro": "prueba de arranque: escritura con variable sin resolver sale con exit 2",
+  "ocurrencias": []
+}

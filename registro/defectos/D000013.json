@@ -1,0 +1,9 @@
+{
+  "id": "D000013",
+  "firma": "comando-citado-arg-como-subcomando",
+  "que": "T09: la regla de comandos citados marcó `aquas install landing` como subcomando inexistente (2026-10-22)",
+  "causa": "la regla no distingue subcomandos de argumentos",
+  "arreglo": "cada comando declara sus subcomandos y la regla compara contra esa lista",
+  "como_me_cercioro": "prueba en internal/wiki: cita `aquas install landing` pasa; un subcomando inventado falla",
+  "ocurrencias": []
+}

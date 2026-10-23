@@ -1,0 +1,9 @@
+{
+  "id": "D000018",
+  "firma": "compactacion-pierde-contexto",
+  "que": "T14: lo que solo vive en el chat se pierde al compactar; el resumen y el hook de arranque se solapan y la prueba no distingue cuál aportó el dato (2026-10-20 a 2026-10-21)",
+  "causa": "solo el aviso de éxito del hook prueba que funcionó; el resumen tapa su ausencia",
+  "arreglo": "prueba de arranque en frío en una sesión sin resumen",
+  "como_me_cercioro": "sesión nueva sin resumen muestra la memoria caliente del hook",
+  "ocurrencias": []
+}

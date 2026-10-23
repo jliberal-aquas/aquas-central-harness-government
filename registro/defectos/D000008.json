@@ -1,0 +1,9 @@
+{
+  "id": "D000008",
+  "firma": "tmp-relativo-rompe-go-test",
+  "que": "T04: TMP=./.tmp sirve para go run pero rompe go test y produjo un falso rojo (2026-10-21); 6 líneas sobre permisos y temporales",
+  "causa": "go test corre cada prueba en la carpeta de su paquete, así que una ruta relativa apunta a otro lado",
+  "arreglo": "el canónico ya pide ruta absoluta; falta que la guardia frene TMP, TEMP o GOTMPDIR relativos",
+  "como_me_cercioro": "prueba de guardia: comando con TMP=./.tmp falla; con ruta absoluta del repo pasa",
+  "ocurrencias": []
+}

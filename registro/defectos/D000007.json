@@ -1,0 +1,9 @@
+{
+  "id": "D000007",
+  "firma": "guardia-falso-positivo-argumento",
+  "que": "T03: la guardia tomó como ruta argumentos que no lo son (`644` de chmod, `$H/$n.md`, un patrón de sed) y revisa el alcance antes de que se declare; 10 líneas, 2026-10-21 a 2026-10-22",
+  "causa": "revisa todos los argumentos posicionales en vez del destino real de escritura de cada comando",
+  "arreglo": "en internal/guardia, revisar como ruta solo el destino de escritura de cada comando",
+  "como_me_cercioro": "prueba en internal/guardia: `chmod 644 x` y `sed 's/a/b/' x` pasan; `echo \u003e /fuera` falla",
+  "ocurrencias": []
+}
