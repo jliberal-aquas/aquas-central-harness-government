@@ -2,7 +2,7 @@
   "id": "E001/F008/S002",
   "tipo": "slice",
   "titulo": "Prueba integral del feature obligatoria para cerrarlo",
-  "estado": "BORRADOR",
+  "estado": "CANCELADO",
   "prioridad": "P1",
   "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
   "padre": "E001/F008",

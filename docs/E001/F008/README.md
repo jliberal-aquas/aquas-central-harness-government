@@ -90,7 +90,7 @@ Arreglo X01 del feature (D000021): `TestMermaidSinPuntoYComa`.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | Cada prueba con valida, rojo cuando y verde cuando, en backlog y wiki | Hecho |
-| S002 | Prueba integral del feature obligatoria para cerrarlo | Planeado |
+| S002 | Prueba integral del feature obligatoria para cerrarlo | Cancelado |
 | [S003](S003.md) | Portadas listan todas las iniciativas con enlace | Hecho |
 | [S004](S004.md) | Toda función comentada e índice docs/codigo generado | Hecho |
 | [S005](S005.md) | Sección Código en cada slice con enlaces a lo tocado | Hecho |
@@ -99,9 +99,9 @@ Arreglo X01 del feature (D000021): `TestMermaidSinPuntoYComa`.
 
 ### Arreglos
 
-| Arreglo | Qué arregla | Por qué | Pruebas | Fecha |
-|---|---|---|---|---|
-| X01 | El gate rechaza «;» dentro de un diagrama Mermaid | D000021: GitHub no dibujaba 4 diagramas con «;» (reportado por el humano 2026-10-23) | `TestMermaidSinPuntoYComa` | 2026-10-23 |
+| Arreglo | Qué arregla | Por qué | Pruebas | Fecha | Rojo | Verde |
+|---|---|---|---|---|---|---|
+| X01 | El gate rechaza «;» dentro de un diagrama Mermaid | D000021: GitHub no dibujaba 4 diagramas con «;» (reportado por el humano 2026-10-23) | `TestMermaidSinPuntoYComa` | 2026-10-23 | 2026-10-23 | 2026-10-23 |
 
 <!-- /GENERADO -->
 

@@ -254,7 +254,7 @@ func tablaArreglos(f backlog.Ficha) string {
 		return ""
 	}
 	var b strings.Builder
-	b.WriteString("\n### Arreglos\n\n| Arreglo | Qué arregla | Por qué | Pruebas | Fecha |\n|---|---|---|---|---|\n")
+	b.WriteString("\n### Arreglos\n\n| Arreglo | Qué arregla | Por qué | Pruebas | Fecha | Rojo | Verde |\n|---|---|---|---|---|---|---|\n")
 	for _, a := range f.Arreglos {
 		titulo := a.Titulo
 		if a.Antes != "" {
@@ -264,11 +264,12 @@ func tablaArreglos(f backlog.Ficha) string {
 		for _, p := range a.Pruebas {
 			ps = append(ps, "`"+p.Nombre[strings.LastIndex(p.Nombre, ":")+1:]+"`")
 		}
-		fecha := a.Fecha
-		if len(fecha) >= 10 {
-			fecha = fecha[:10]
+		dia := a.Fecha
+		if len(dia) >= 10 {
+			dia = dia[:10]
 		}
-		fmt.Fprintf(&b, "| %s | %s | %s | %s | %s |\n", a.ID[strings.LastIndex(a.ID, "/")+1:], celda(titulo), celda(a.Motivo), oGuion(strings.Join(ps, ", ")), fecha)
+		// E001/F008: el rojo y el verde propios del arreglo (D000020) quedan a la vista.
+		fmt.Fprintf(&b, "| %s | %s | %s | %s | %s | %s | %s |\n", a.ID[strings.LastIndex(a.ID, "/")+1:], celda(titulo), celda(a.Motivo), oGuion(strings.Join(ps, ", ")), dia, fecha(a.Rojo), fecha(a.Verde))
 	}
 	return b.String()
 }

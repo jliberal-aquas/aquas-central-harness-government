@@ -2,7 +2,7 @@
   "id": "E001/F008",
   "tipo": "feature",
   "titulo": "Documentación verificable de pruebas, código y arreglos",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
   "padre": "E001",
@@ -11,11 +11,22 @@
   "pruebas": [
     {
       "prueba": "./internal/wiki:TestDocumentacionVerificable",
-      "intencion": "la wiki de un slice muestra sus pruebas con valida/rojo/verde, su código y sus arreglos",
-      "rojo_cuando": "falta en la página del slice la tabla de pruebas, el código enlazado o los arreglos",
-      "verde_cuando": "la página del slice trae pruebas con los tres campos, enlaces al código y sus arreglos"
+      "intencion": "la wiki de un slice muestra sus pruebas con valida/rojo/verde, su código y sus arreglos con su rojo y verde",
+      "rojo_cuando": "la página omite una de esas partes o el gate no queda limpio",
+      "verde_cuando": "la página trae las tres partes y el gate queda limpio"
     }
   ],
+  "rojo": {
+    "fecha": "2026-10-23T11:48:02Z",
+    "head": "a3444101bf0b462703f42374468ed05360e085ab",
+    "resultado": {
+      "./internal/wiki:TestDocumentacionVerificable": "integral_test.go:41: la página del slice no muestra \"2026-10-22 | 2026-10-23\":"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-23T11:48:42Z",
+    "head": "a3444101bf0b462703f42374468ed05360e085ab"
+  },
   "arreglos": [
     {
       "id": "E001/F008/X01",

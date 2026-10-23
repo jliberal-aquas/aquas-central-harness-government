@@ -152,7 +152,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F005](F005/README.md) | Memoria caliente | Hecho |
 | [F006](F006/README.md) | Workers y auditor | Hecho |
 | F007 | Tabla del backlog en la terminal | Planeado |
-| [F008](F008/README.md) | Documentación verificable de pruebas, código y arreglos | Planeado |
+| [F008](F008/README.md) | Documentación verificable de pruebas, código y arreglos | Hecho |
 
 <!-- /GENERADO -->
 
