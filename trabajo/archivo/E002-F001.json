@@ -2,7 +2,7 @@
   "id": "E002/F001",
   "tipo": "feature",
   "titulo": "Instalar y heredar el núcleo común",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "humano 2026-10-22: repos hijos (revisión Fable)",
   "padre": "E002",
