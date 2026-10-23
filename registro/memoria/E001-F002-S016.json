@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S016",
+    "tarea": "S016 verde y sellado"
+  },
+  "siguiente": "rojo, verde, extraer insights del historial (86 MB)",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "8a9adbd0f2edc16d32b92f7a2129058070b6fc6774e3d98508c36099cb933e94",
+  "actualizado": "2026-10-23T01:52:56Z",
+  "sello": "f21a06f0f15fb6b8609c5d81ccdcc041b993b0babcb2f16e86344e387338187d"
+}

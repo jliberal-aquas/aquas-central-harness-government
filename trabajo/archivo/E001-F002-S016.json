@@ -1,0 +1,213 @@
+{
+  "id": "E001/F002/S016",
+  "tipo": "slice",
+  "titulo": "Insight PROPUESTO exige defecto registrado",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: los insights propuestos se perdían y los fallos se repetían (D000002, D000003)",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 87,
+  "pruebas": [
+    {
+      "prueba": "./internal/propuesta:TestInsightPropuestoExigeDefecto",
+      "intencion": "un insight PROPUESTO en el cierre nombra un defecto D000NNN",
+      "rojo_cuando": "el freno deja pasar un insight PROPUESTO sin número de defecto, o frena uno que lo nombra o que está implementado",
+      "verde_cuando": "frena el PROPUESTO sin defecto y deja pasar el que nombra D000NNN y los implementados"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-23T01:51:35Z",
+    "head": "12800b01af92da0270556ed85e4260ac66a0dff1",
+    "resultado": {
+      "./internal/propuesta:TestInsightPropuestoExigeDefecto": "insight_test.go:22: propuesto sin defecto: frena=false, se esperaba true"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-23T01:51:55Z",
+    "head": "12800b01af92da0270556ed85e4260ac66a0dff1"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia: S016 no altera alcance ni estado del padre"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia: S016 no altera alcance ni estado del padre"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S016.md",
+      "marca": "actualizado",
+      "motivo": "revisado en este slice: docs/E001/F002/S016.md cambió y quedó coherente"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "revisado en este slice: docs/E001/F002/README.md cambió y quedó coherente"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/README.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/hook_cerrado_test.go no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F004/S001.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F004/S003.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F004/S004.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S002.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F001/README.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F001/S001.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S001.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S004.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S006.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S007.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S008.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S010.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F004/S001.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S001.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S004.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S004.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S005.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S006.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S007.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F001/S001.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F001/S002.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F001/S003.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F001/S004.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/ref/compilador.md no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/backlog/sello_test.go no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/codigo.go no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/comandos_test.go no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos_test.go no nombra RevisarInsight ni el hook de insights: S016 no altera lo que nombra o importa"
+    }
+  ],
+  "alcance": [
+    "internal/**",
+    "cmd/**",
+    "docs/**",
+    "trabajo/**",
+    "gobierno/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/propuesta/insight.go"
+  ]
+}

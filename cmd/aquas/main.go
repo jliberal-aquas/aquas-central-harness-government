@@ -117,9 +117,11 @@ func main() {
 		if err := json.Unmarshal(datos, &e); err != nil {
 			fallar(1, fmt.Errorf("propuesta: entrada del hook ilegible: %w", err))
 		}
-		if m := propuesta.Revisar(e.Respuesta); m != "" {
-			fmt.Fprintln(os.Stderr, m)
-			os.Exit(2)
+		for _, m := range []string{propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta)} { // S016: insight PROPUESTO exige defecto
+			if m != "" {
+				fmt.Fprintln(os.Stderr, m)
+				os.Exit(2)
+			}
 		}
 	case "defecto": // E001/F004/S001: registro de defectos en registro/defectos/
 		if err := defectoCLI(raiz, os.Args[2:]); err != nil {

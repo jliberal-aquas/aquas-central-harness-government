@@ -214,6 +214,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `mismaCarpeta` | mismaCarpeta: las dos rutas apuntan a la misma carpeta en disco. |
 | [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `Cierre` | Cierre decide el hook Stop: "" deja cerrar el turno; si no, el motivo para seguir. |
 | [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `Inicio` | Inicio: texto que el hook SessionStart agrega al contexto. Nunca bloquea. |
+| [internal/propuesta/insight.go](../../internal/propuesta/insight.go) | `RevisarInsight` | RevisarInsight devuelve "" si pasa; si no, el motivo del freno: insight PROPUESTO sin defecto registrado (E001/F002/S016). |
 | [internal/propuesta/propuesta.go](../../internal/propuesta/propuesta.go) | `marca` | marca: texto de la propuesta si la línea empieza con PROPUESTA: (admite viñeta, título, cita o negrita). |
 | [internal/propuesta/propuesta.go](../../internal/propuesta/propuesta.go) | `diagrama` | diagrama: el texto trae algún trazo de diagrama (flechas o cajas). |
 | [internal/propuesta/propuesta.go](../../internal/propuesta/propuesta.go) | `cercaDe` | cercaDe: el carácter y el largo de una cerca de bloque (``` o ~~~), o largo 0 si no es cerca. |
