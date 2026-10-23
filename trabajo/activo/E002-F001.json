@@ -15,5 +15,12 @@
       "rojo_cuando": "install en carpeta vacía deja un hijo cuyo build o verify sale distinto de 0",
       "verde_cuando": "install, build y verify del hijo salen con exit 0 y GATE OK"
     }
-  ]
+  ],
+  "rojo": {
+    "fecha": "2026-10-23T15:05:23Z",
+    "head": "e383a60d5dffae6364ba6b230b7a10b47856c5f0",
+    "resultado": {
+      "./cmd/aquas:TestHijoInstaladoPasaSuGate": "hijo_integral_test.go:35: aquas verificar en el hijo: exit 1; quiero 0"
+    }
+  }
 }

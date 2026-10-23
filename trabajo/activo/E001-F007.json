@@ -10,10 +10,17 @@
   "secuencia": 76,
   "pruebas": [
     {
-      "prueba": "./internal/backlog:TestTablaBacklog",
+      "prueba": "./cmd/aquas:TestTablaBacklog",
       "intencion": "la tabla muestra iniciativa, feature, slice y descripción corta de cada ficha",
-      "rojo_cuando": "a la tabla le falta una columna o la descripción corta de una ficha",
-      "verde_cuando": "la tabla trae iniciativa, feature, slice y descripción corta"
+      "rojo_cuando": "el comando falla o una fila no trae iniciativa, feature, slice y título juntos",
+      "verde_cuando": "sale 0 con encabezado y una fila por ficha con las cuatro columnas"
     }
-  ]
+  ],
+  "rojo": {
+    "fecha": "2026-10-23T15:05:48Z",
+    "head": "e383a60d5dffae6364ba6b230b7a10b47856c5f0",
+    "resultado": {
+      "./cmd/aquas:TestTablaBacklog": "tabla_integral_test.go:30: aquas backlog tabla: exit 64; quiero 0"
+    }
+  }
 }
