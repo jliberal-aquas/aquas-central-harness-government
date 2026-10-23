@@ -1,6 +1,10 @@
 package wiki
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
+)
 
 // E001/F001/S004: sección «Contrato y evidencia», migas y trazabilidad de pruebas.
 
@@ -46,6 +50,22 @@ func TestFallasContrato(t *testing.T) {
 			c.mutar(t, raiz)
 			exigeProblema(t, raiz, c.espera)
 		})
+	}
+}
+
+// TestIntegralConDuenoEnSuFeature: la integral de una feature puede vivir nombrada solo en el README de su feature (D000025).
+// Rojo cuando: el gate pide página de slice para una prueba que la ficha de la feature declara como suya.
+// Verde cuando: nombrada en «Contrato y evidencia» de su feature, el gate queda limpio; una prueba ajena a la ficha sigue sin dueño (caso «nombrada fuera de un slice no cuenta»).
+func TestIntegralConDuenoEnSuFeature(t *testing.T) {
+	raiz := conFichas(t)
+	escribir(t, raiz, "README.md", "- [E001](docs/E001/README.md)\n")
+	ficha(t, raiz, backlog.Ficha{ID: "E001/F001", Titulo: "Guardia", Estado: "CERRADO", Secuencia: 3,
+		Pruebas: []backlog.Prueba{{Nombre: "./x:TestNombrada", Intencion: "integral"}}})
+	escribir(t, raiz, "x/x_test.go", "package x\n\nimport \"testing\"\n\nfunc TestA(t *testing.T) {}\n\nfunc TestB(t *testing.T) {}\n\nfunc TestNombrada(t *testing.T) {}\n")
+	reemplazar(t, raiz, tF001, "Lo prometido y su prueba.", "Integral: `TestNombrada`.")
+	generar(t, raiz)
+	if p := verificar(t, raiz); len(p) > 0 {
+		t.Fatalf("la integral nombrada en su feature debió tener dueño; problemas: %q", p)
 	}
 }
 

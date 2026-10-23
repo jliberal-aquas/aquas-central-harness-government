@@ -8,6 +8,33 @@
   "padre": "E001/F001",
   "bloqueado_por": [],
   "secuencia": 17,
+  "arreglos": [
+    {
+      "id": "E001/F001/S004/X01",
+      "titulo": "La integral de una feature tiene dueño en el README de su feature",
+      "motivo": "D000025: la integral escrita primero no tenía página de slice donde vivir",
+      "fecha": "2026-10-23T13:11:34Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/wiki:TestIntegralConDuenoEnSuFeature",
+          "intencion": "la integral de una feature tiene dueño si la nombra el README de su feature y la ficha la declara",
+          "rojo_cuando": "el gate pide página de slice para la integral declarada en la ficha de su feature",
+          "verde_cuando": "nombrada en su feature el gate queda limpio y una prueba ajena sigue sin dueño"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T13:11:54Z",
+        "head": "ac6dc131021c669364d9b76471a47803cfb090a2",
+        "resultado": {
+          "./internal/wiki:TestIntegralConDuenoEnSuFeature": "contrato_test.go:68: la integral nombrada en su feature debió tener dueño; problemas: [\"x/x_test.go: prueba sin slice dueño: TestNombrada (nómbrala en «Contrato y evidencia» de su slice)\"]"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T13:12:29Z",
+        "head": "ac6dc131021c669364d9b76471a47803cfb090a2"
+      }
+    }
+  ],
   "codigo": [
     "internal/wiki/contrato.go",
     "internal/wiki/wiki.go"

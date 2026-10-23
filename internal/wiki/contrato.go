@@ -13,6 +13,8 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
 )
 
 const secContrato = "Contrato y evidencia"
@@ -71,6 +73,16 @@ func revisarTrazabilidad(raiz string, paginas map[string]*pagina, orden []string
 	}
 	for _, rel := range orden {
 		pg := paginas[rel]
+		if pg.nivel == nF { // D000025: la feature es dueña solo de las pruebas que declara su ficha (su integral)
+			for _, n := range integralesDe(raiz, pg.rel) {
+				for _, x := range pg.pruebas {
+					if x == n {
+						nombradas[n] = true
+					}
+				}
+			}
+			continue
+		}
 		if pg.nivel != nS {
 			continue
 		}
@@ -89,6 +101,23 @@ func revisarTrazabilidad(raiz string, paginas map[string]*pagina, orden []string
 	}
 	sort.Strings(sinDueno)
 	return append(ps, sinDueno...), nil
+}
+
+// integralesDe: nombres de las func Test que declara la ficha de la feature de la página rel; ninguno si no hay ficha.
+func integralesDe(raiz, rel string) []string {
+	m := reF.FindStringSubmatch(rel)
+	if m == nil {
+		return nil
+	}
+	f, _, err := backlog.Ver(raiz, m[1]+"/"+m[2])
+	if err != nil {
+		return nil
+	}
+	var ns []string
+	for _, p := range f.Pruebas {
+		ns = append(ns, p.Nombre[strings.LastIndex(p.Nombre, ":")+1:])
+	}
+	return ns
 }
 
 // pruebasDelRepo: nombre de cada func Test → archivo; salta carpetas ocultas (.git, .tmp).
