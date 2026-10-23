@@ -1,0 +1,19 @@
+{
+  "id": "E001/F008/S007",
+  "tipo": "slice",
+  "titulo": "Completar la documentación vieja de pruebas y arreglos",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: ~109 pruebas sin rojo/verde cuando; arreglos viejos con pista en el historial",
+  "padre": "E001/F008",
+  "bloqueado_por": [],
+  "secuencia": 85,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestDocumentarNoBorraRojoVerde",
+      "intencion": "documentar cambia solo los textos de una prueba, también en fichas cerradas",
+      "rojo_cuando": "borra rojo o verde, rechaza una ficha cerrada o acepta un campo vacío",
+      "verde_cuando": "guarda los tres textos y conserva rojo y verde"
+    }
+  ]
+}

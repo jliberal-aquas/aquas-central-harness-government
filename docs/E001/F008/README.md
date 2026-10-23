@@ -90,6 +90,7 @@ Prueba integral: `TestDocumentacionVerificable` (pendiente).
 | S004 | Toda función comentada e índice docs/codigo generado | Planeado |
 | S005 | Sección Código en cada slice con enlaces a lo tocado | Planeado |
 | [S006](S006.md) | Arreglos con ID bajo su slice y sección Arreglos | Hecho |
+| S007 | Completar la documentación vieja de pruebas y arreglos | Planeado |
 
 <!-- /GENERADO -->
 
