@@ -9,7 +9,7 @@ import (
 )
 
 func campos(firma string) map[string]string {
-	return map[string]string{"firma": firma, "que": "qué pasó", "causa": "por qué", "arreglo": "cómo se arregló", "cercioro": "cómo me cercioro"}
+	return map[string]string{"firma": firma, "que": "qué pasó", "causa": "por qué", "arreglo": "cómo se arregló", "cercioro": "cómo me cercioro", "relacion": "nuevo"}
 }
 
 func TestRegistroDeDefectos(t *testing.T) {

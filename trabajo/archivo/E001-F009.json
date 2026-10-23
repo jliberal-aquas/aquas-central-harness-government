@@ -2,7 +2,7 @@
   "id": "E001/F009",
   "tipo": "feature",
   "titulo": "Backlog sin fichas repetidas",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "humano 2026-10-23: evitar fichas repetidas o que piden lo ya construido (caso E001/F008/S002)",
   "padre": "E001",
@@ -22,5 +22,9 @@
     "resultado": {
       "./internal/backlog:TestBacklogSinRepetidos": "repetidos_test.go:14: Nuevo([id=E001/F002/S001 titulo=Exportar el backlog a CSV prioridad=P1 motivo=reportes relacion=nueva prueba=./p:TestFalla=falla a propósito|r|v]): campo desconocido \"relacion=nueva\": usa id, titulo, prioridad, motivo, bloqueado_por, prueba"
     }
+  },
+  "verde": {
+    "fecha": "2026-10-23T13:54:30Z",
+    "head": "1b1a9340d1ece641acf8fbd6286102c8022b6137"
   }
 }

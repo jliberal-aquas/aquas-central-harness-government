@@ -11,6 +11,8 @@ import (
 	"slices"
 	"sort"
 	"strings"
+
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
 )
 
 // Carpeta del registro, relativa a la raíz del repo.
@@ -25,6 +27,7 @@ type Defecto struct {
 	Arreglo     string   `json:"arreglo"`
 	Cercioro    string   `json:"como_me_cercioro"`
 	Ocurrencias []string `json:"ocurrencias"`
+	Relacion    string   `json:"relacion,omitempty"` // E001/F009/S002: nuevo o el id de una ficha
 }
 
 // Campos que pide `nuevo`, en orden.
@@ -39,8 +42,8 @@ var (
 // Nuevo crea el siguiente D000NNN. Todos los campos son obligatorios; la firma es kebab-case y única.
 func Nuevo(raiz string, c map[string]string) (Defecto, error) {
 	for k := range c {
-		if !slices.Contains(Campos, k) {
-			return Defecto{}, fmt.Errorf("campo desconocido %q: usa %s", k, strings.Join(Campos, ", "))
+		if !slices.Contains(Campos, k) && k != "relacion" {
+			return Defecto{}, fmt.Errorf("campo desconocido %q: usa %s, relacion", k, strings.Join(Campos, ", "))
 		}
 	}
 	for _, k := range Campos {
@@ -60,9 +63,13 @@ func Nuevo(raiz string, c map[string]string) (Defecto, error) {
 			return Defecto{}, fmt.Errorf("la firma %s ya existe en %s: usa `aquas defecto ocurre %s T000NNN`", d.Firma, d.ID, d.ID)
 		}
 	}
+	if err := revisarRelacion(raiz, c["relacion"], c["que"], todos); err != nil {
+		return Defecto{}, err
+	}
 	d := Defecto{
-		ID:    fmt.Sprintf("D%06d", len(todos)+1),
-		Firma: c["firma"], Que: c["que"], Causa: c["causa"], Arreglo: c["arreglo"], Cercioro: c["cercioro"],
+		ID:       fmt.Sprintf("D%06d", len(todos)+1),
+		Relacion: c["relacion"],
+		Firma:    c["firma"], Que: c["que"], Causa: c["causa"], Arreglo: c["arreglo"], Cercioro: c["cercioro"],
 		Ocurrencias: []string{},
 	}
 	return d, escribir(raiz, d)
@@ -141,4 +148,38 @@ func escribir(raiz string, d Defecto) error {
 // Texto: una línea por defecto para `aquas defecto ver`.
 func Texto(d Defecto) string {
 	return fmt.Sprintf("%s · %s · %d ocurrencias · %s\n", d.ID, d.Firma, len(d.Ocurrencias), d.Que)
+}
+
+// revisarRelacion (E001/F009/S002): relacion=nuevo o el id de una ficha; sin ella, lista defectos y fichas parecidos.
+// repite:<D> se niega: el mismo defecto se cuenta con `aquas defecto ocurre`.
+func revisarRelacion(raiz, rel, que string, todos []Defecto) error {
+	switch {
+	case rel == "":
+		ps, err := backlog.Parecidas(raiz, que)
+		if err != nil {
+			return err
+		}
+		m := "falta relacion=nuevo | repite:<D> | <id de ficha>; revisa si ya existe:"
+		if len(ps) == 0 {
+			m += " sin parecidas"
+		}
+		for _, p := range ps {
+			m += "\n  - " + p
+		}
+		return fmt.Errorf("%s", m)
+	case rel == "nuevo":
+		return nil
+	case strings.HasPrefix(rel, "repite:"):
+		id := strings.TrimPrefix(rel, "repite:")
+		for _, d := range todos {
+			if d.ID == id {
+				return fmt.Errorf("es el mismo defecto: suma la ocurrencia con `aquas defecto ocurre %s T000NNN`", id)
+			}
+		}
+		return fmt.Errorf("relacion: el defecto %s no existe", id)
+	}
+	if _, _, err := backlog.Ver(raiz, rel); err != nil {
+		return fmt.Errorf("relacion %q: la ficha no existe o el valor es inválido (usa nuevo, repite:<D> o el id de una ficha)", rel)
+	}
+	return nil
 }

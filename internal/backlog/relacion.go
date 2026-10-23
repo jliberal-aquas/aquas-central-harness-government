@@ -107,3 +107,16 @@ func revisarRelacion(raiz, rel, titulo string, act, arc map[string]Ficha) error 
 	}
 	return nil
 }
+
+// Parecidas: líneas «id · texto» de las fichas y defectos con más palabras en común con texto (E001/F009/S002).
+func Parecidas(raiz, texto string) ([]string, error) {
+	act, arc, err := todas(raiz)
+	if err != nil {
+		return nil, err
+	}
+	var ls []string
+	for _, p := range parecidas(raiz, texto, act, arc) {
+		ls = append(ls, p.id+" · "+p.texto)
+	}
+	return ls, nil
+}

@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F009",
+    "slice": "S003",
+    "tarea": "S003 hecho: backlog editar con historial"
+  },
+  "siguiente": "E001/F009/S002 defecto nuevo con parecidas y relacion; luego cerrar F009",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "7689409d00f59ab95e2589db4e66adfcfd28da2bc89bd36385889abca2da86a5",
+  "actualizado": "2026-10-23T13:50:29Z",
+  "sello": "a7c82e37b03ddb515c9ba09f84746a5cbc9eb5f3856ee5f7e41eb703f6cca5e2"
+}

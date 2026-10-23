@@ -1,0 +1,334 @@
+{
+  "id": "E001/F009/S002",
+  "tipo": "slice",
+  "titulo": "defecto nuevo muestra parecidos y exige relación",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-23: evitar fichas repetidas o que piden lo ya construido (caso E001/F008/S002)",
+  "padre": "E001/F009",
+  "bloqueado_por": [
+    "E001/F009/S001"
+  ],
+  "secuencia": 90,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestDefectoNuevoExigeRelacion",
+      "intencion": "defecto nuevo lista los defectos y fichas parecidos y exige relacion (nuevo, repite:\u003cD\u003e o el id de una ficha)",
+      "rojo_cuando": "registra el defecto sin relacion o sin mostrar parecidos",
+      "verde_cuando": "exige relacion y muestra parecidos"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-23T13:52:01Z",
+    "head": "1b1a9340d1ece641acf8fbd6286102c8022b6137",
+    "resultado": {
+      "./internal/defecto:TestDefectoNuevoExigeRelacion": "relacion_test.go:18: relacion=nuevo debió registrar: campo desconocido \"relacion\": usa firma, que, causa, arreglo, cercioro"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-23T13:53:42Z",
+    "head": "1b1a9340d1ece641acf8fbd6286102c8022b6137"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F009",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "pagina:docs/E001/F009/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "pagina:docs/E001/F009/README.md",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003einternal/propuesta/insight.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "el uso de defecto nuevo nombra relacion; índice regenerado"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Parecidas es función nueva y relacion es opcional al leer defectos"
+    }
+  ],
+  "alcance": [
+    "internal/defecto/**",
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/**",
+    "trabajo/**",
+    "registro/**",
+    "gobierno/config/sellos.json"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "internal/propuesta/insight.go",
+      "motivo": "el freno de insights cita el uso de defecto nuevo; debe nombrar relacion"
+    }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/relacion.go",
+    "internal/defecto/defecto.go",
+    "internal/propuesta/insight.go"
+  ],
+  "ediciones": [
+    {
+      "fecha": "2026-10-23T13:49:15Z",
+      "campo": "titulo",
+      "antes": "defecto nuevo muestra parecidos y exige relacion",
+      "despues": "defecto nuevo muestra parecidos y exige relación",
+      "motivo": "tilde en relación"
+    }
+  ]
+}

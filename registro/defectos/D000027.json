@@ -1,0 +1,10 @@
+{
+  "id": "D000027",
+  "firma": "heredoc-barra-n",
+  "que": "Al editar Go con python dentro de un heredoc de Bash, la barra-n de un string se vuelve salto real y rompe la compilación; 5 veces hasta 2026-10-23 (la última en defecto.go, E001/F009/S002).",
+  "causa": "La herramienta Bash interpreta el escape antes de que python lo vea.",
+  "arreglo": "Propuesto: strings Go con barra-n se escriben con la herramienta Edit, nunca con heredoc.",
+  "como_me_cercioro": "Prueba: go vet tras cada edición por heredoc; string literal not terminated delata el caso.",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

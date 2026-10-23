@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F009",
+    "slice": "S002",
+    "tarea": "S002 hecho: defecto nuevo con relacion y parecidas"
+  },
+  "siguiente": "cerrar F009 con su integral; push",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "5a4952dc12ec591a9d500f94ecf18c1fca84be1493fd70e0c56162906990dc62",
+  "actualizado": "2026-10-23T13:54:29Z",
+  "sello": "0de61143a85ccc557c9b98e8e74e82baa6bac68c6fc904f659eb46fdcd645f1c"
+}

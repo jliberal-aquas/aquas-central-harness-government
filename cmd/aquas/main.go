@@ -571,7 +571,7 @@ func turnoCLI(raiz string, args []string) {
 
 // defectoCLI: nuevo | ocurre | ver (E001/F004/S001).
 func defectoCLI(raiz string, args []string) error {
-	uso := errors.New("uso: aquas defecto nuevo firma=… que=… causa=… arreglo=… cercioro=… | ocurre D000001 T000001 | ver [D000001]")
+	uso := errors.New("uso: aquas defecto nuevo firma=… que=… causa=… arreglo=… cercioro=… relacion=nuevo|repite:<D>|<id de ficha> | ocurre D000001 T000001 | ver [D000001]")
 	if len(args) == 0 {
 		return uso
 	}

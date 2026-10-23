@@ -154,7 +154,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F006](F006/README.md) | Workers y auditor | Hecho |
 | F007 | Tabla del backlog en la terminal | Planeado |
 | [F008](F008/README.md) | Documentación verificable de pruebas, código y arreglos | Hecho |
-| [F009](F009/README.md) | Backlog sin fichas repetidas | Planeado |
+| [F009](F009/README.md) | Backlog sin fichas repetidas | Hecho |
 
 <!-- /GENERADO -->
 
