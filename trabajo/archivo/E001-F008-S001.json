@@ -208,6 +208,33 @@
     "docs/E001/**",
     "docs/README.md"
   ],
+  "arreglos": [
+    {
+      "id": "E001/F008/S001/X01",
+      "titulo": "Una prueba con más de tres partes separadas por | se rechaza",
+      "motivo": "D000024: el sobrante se pegaba a verde cuando sin aviso",
+      "fecha": "2026-10-23T14:27:26Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/backlog:TestPruebaConPartesDeMasCae",
+          "intencion": "una prueba con más de tres partes separadas por barra vertical se rechaza",
+          "rojo_cuando": "el sobrante se pega a verde cuando sin aviso",
+          "verde_cuando": "cuatro partes caen diciendo cuántas hay y tres pasan"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T14:27:53Z",
+        "head": "a585a6e1f2665b83f190a0b9f267a0e4a091a56c",
+        "resultado": {
+          "./internal/backlog:TestPruebaConPartesDeMasCae": "campos_test.go:35: cuatro partes: debió caer diciendo cuántas hay; dio \u003cnil\u003e"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T14:28:33Z",
+        "head": "a585a6e1f2665b83f190a0b9f267a0e4a091a56c"
+      }
+    }
+  ],
   "codigo": [
     "cmd/aquas/main.go",
     "internal/backlog/rojo.go",

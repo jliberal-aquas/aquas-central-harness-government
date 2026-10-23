@@ -57,6 +57,9 @@ func listaPruebas(xs []string) ([]Prueba, error) {
 	var ps []Prueba
 	for _, x := range xs {
 		n, i, _ := strings.Cut(x, "=")
+		if k := strings.Count(i, "|") + 1; k > 3 { // D000024: el sobrante no se pega a «verde cuando»
+			return nil, fmt.Errorf("prueba %s con %d partes separadas por |: deben ser 3 (valida|rojo cuando|verde cuando); escribe «o» en vez de | dentro del texto", strings.TrimSpace(n), k)
+		}
 		c := append(strings.SplitN(i, "|", 3), "", "")
 		p := Prueba{Nombre: strings.TrimSpace(n), Intencion: strings.TrimSpace(c[0]), RojoCuando: strings.TrimSpace(c[1]), VerdeCuando: strings.TrimSpace(c[2])}
 		if m := problemaPrueba(p); m != "" {
