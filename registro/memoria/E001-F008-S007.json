@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F008",
+    "slice": "S007",
+    "tarea": "S007 cerrado: gate exige rojo/verde cuando a todas, también en arreglos"
+  },
+  "siguiente": "F008: S004 funciones comentadas o S002 prueba integral",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "f396052263c6d5af01bc72fde71e962c289ba6b6d7541bffabc2f38ddd53385b",
+  "actualizado": "2026-10-23T01:01:55Z",
+  "sello": "dabeacbe99ec8e1fdc6daae733c5014e147af88f64d55db2049116c6b6449404"
+}

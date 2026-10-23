@@ -104,9 +104,6 @@ func main() {
 			os.Exit(1)
 		}
 		fmt.Println("GATE OK · derivados, sello, wiki, backlog y guardia al día")
-		if n, err := backlog.Deuda(raiz); err == nil && n > 0 { // E001/F008/S007: deuda visible hasta saldarla
-			fmt.Printf("deuda: %d pruebas sin «rojo cuando» o «verde cuando» (E001/F008/S007; aquas backlog documentar)\n", n)
-		}
 	case "hook":
 		hook(raiz)
 	case "turno": // hooks UserPromptSubmit y Stop: nunca bloquean; fallo = exit 1 + stderr

@@ -82,6 +82,11 @@ func problemasArreglos(rel string, f Ficha) []string {
 		if strings.TrimSpace(a.Titulo) == "" || strings.TrimSpace(a.Motivo) == "" {
 			p = append(p, fmt.Sprintf("%s: arreglo %s sin título o motivo", rel, a.ID))
 		}
+		for _, x := range a.Pruebas {
+			if m := problemaPrueba(x); m != "" {
+				p = append(p, fmt.Sprintf("%s: arreglo %s: %s", rel, a.ID, m))
+			}
+		}
 	}
 	return p
 }

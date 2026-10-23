@@ -43,8 +43,8 @@ func problemaPrueba(p Prueba) string {
 	if strings.TrimSpace(p.Intencion) == "" {
 		return fmt.Sprintf("prueba %s sin intención: di qué demuestra (%s)", p.Nombre, formatoPrueba)
 	}
-	if (p.RojoCuando == "") != (p.VerdeCuando == "") {
-		return fmt.Sprintf("prueba %s: «rojo cuando» y «verde cuando» van juntos (%s)", p.Nombre, formatoPrueba)
+	if p.RojoCuando == "" || p.VerdeCuando == "" { // E001/F008/S007: sin excepción para pruebas viejas
+		return fmt.Sprintf("prueba %s sin «rojo cuando» o «verde cuando»: aquas backlog documentar (%s)", p.Nombre, formatoPrueba)
 	}
 	return ""
 }
@@ -59,9 +59,6 @@ func listaPruebas(xs []string) ([]Prueba, error) {
 		n, i, _ := strings.Cut(x, "=")
 		c := append(strings.SplitN(i, "|", 3), "", "")
 		p := Prueba{Nombre: strings.TrimSpace(n), Intencion: strings.TrimSpace(c[0]), RojoCuando: strings.TrimSpace(c[1]), VerdeCuando: strings.TrimSpace(c[2])}
-		if p.Intencion != "" && (p.RojoCuando == "" || p.VerdeCuando == "") {
-			return nil, fmt.Errorf("prueba %s sin «rojo cuando» o «verde cuando»: usa %s", p.Nombre, formatoPrueba)
-		}
 		if m := problemaPrueba(p); m != "" {
 			return nil, errors.New(m)
 		}

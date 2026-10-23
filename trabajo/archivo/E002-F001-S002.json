@@ -132,7 +132,9 @@
       "pruebas": [
         {
           "prueba": "./internal/hijo:TestBuildTituloYCompilacionDelHijo",
-          "intencion": "el hijo pone su título y recibe instrucciones de build, no las de la central"
+          "intencion": "el hijo pone su título y recibe instrucciones de build, no las de la central",
+          "rojo_cuando": "el CLAUDE.md del hijo no lleva su título o «aquas build», o trae texto de la central",
+          "verde_cuando": "el CLAUDE.md del hijo lleva su título y «Compilar: aquas build.», sin nada propio de la central"
         }
       ]
     }

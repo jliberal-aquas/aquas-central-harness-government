@@ -47,7 +47,7 @@ stateDiagram-v2
 |---|---|
 | [S001 Cada prueba con valida, rojo cuando y verde cuando](S001.md) | Tres campos por prueba, en el backlog y en la wiki |
 | [S003 Portadas con todas las iniciativas](S003.md) | El gate exige enlace a cada iniciativa en las dos portadas |
-| [S007 Completar la documentación vieja](S007.md) | Documentar pruebas viejas sin borrar rojo ni verde; deuda visible |
+| [S007 Completar la documentación vieja](S007.md) | Documentar pruebas viejas, también en arreglos; el gate exige los textos a todas |
 | [S006 Arreglos con ID bajo su slice](S006.md) | Correcciones con ID propio, sin slices nuevos |
 
 ## Ejemplo de punta a punta
@@ -91,7 +91,7 @@ Prueba integral: `TestDocumentacionVerificable` (pendiente).
 | S004 | Toda función comentada e índice docs/codigo generado | Planeado |
 | S005 | Sección Código en cada slice con enlaces a lo tocado | Planeado |
 | [S006](S006.md) | Arreglos con ID bajo su slice y sección Arreglos | Hecho |
-| [S007](S007.md) | Completar la documentación vieja de pruebas y arreglos | En curso |
+| [S007](S007.md) | Completar la documentación vieja de pruebas y arreglos | Hecho |
 
 <!-- /GENERADO -->
 

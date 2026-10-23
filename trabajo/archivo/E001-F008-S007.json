@@ -1,0 +1,125 @@
+{
+  "id": "E001/F008/S007",
+  "tipo": "slice",
+  "titulo": "Completar la documentación vieja de pruebas y arreglos",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: ~109 pruebas sin rojo/verde cuando; arreglos viejos con pista en el historial",
+  "padre": "E001/F008",
+  "bloqueado_por": [],
+  "secuencia": 85,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestDocumentarNoBorraRojoVerde",
+      "intencion": "documentar cambia solo los textos de una prueba, en fichas cerradas y en arreglos",
+      "rojo_cuando": "borra rojo o verde, rechaza la ficha cerrada o el ID de un arreglo, o acepta un campo vacío o ajeno",
+      "verde_cuando": "guarda los tres textos en la ficha y en su arreglo y conserva rojo y verde"
+    },
+    {
+      "prueba": "./internal/backlog:TestGateExigeCuandoATodas",
+      "intencion": "el gate exige rojo cuando y verde cuando a toda prueba, vieja o de un arreglo",
+      "rojo_cuando": "el gate calla ante una prueba vieja o de arreglo sin los dos textos",
+      "verde_cuando": "el gate da un aviso por prueba incompleta y calla cuando todas están completas"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-23T01:00:04Z",
+    "head": "31fdf1566e6afe4bb3374e08b895ce97a170664a",
+    "resultado": {
+      "./internal/backlog:TestDocumentarNoBorraRojoVerde": "documentar_test.go:49: documentar en arreglo: E001/F001/S001/X01 no existe",
+      "./internal/backlog:TestGateExigeCuandoATodas": "documentar_test.go:72: prueba vieja y de arreglo incompletas: 0 avisos, se esperaban 2: [trabajo/archivo/E001-F001-S001.json: padre E001/F001 no existe]"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-23T01:01:29Z",
+    "head": "31fdf1566e6afe4bb3374e08b895ce97a170664a"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F008",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia: S007 no altera alcance ni estado del padre"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia: S007 no altera alcance ni estado del padre"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/S007.md",
+      "marca": "sin_cambio",
+      "motivo": "página de iniciativa: S007 no cambia su mapa ni su resumen"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/README.md",
+      "marca": "sin_cambio",
+      "motivo": "página de iniciativa: S007 no cambia su mapa ni su resumen"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "página de iniciativa: S007 no cambia su mapa ni su resumen"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "main.go solo pierde la línea deuda; el texto citado sigue válido"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "main.go solo pierde la línea deuda; el texto citado sigue válido"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog sin Deuda; Documentar y problemaPrueba conservan firma"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog sin Deuda; Documentar y problemaPrueba conservan firma"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog sin Deuda; Documentar y problemaPrueba conservan firma"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog sin Deuda; Documentar y problemaPrueba conservan firma"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "main.go solo pierde la línea deuda; el texto citado sigue válido"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog sin Deuda; Documentar y problemaPrueba conservan firma"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog sin Deuda; Documentar y problemaPrueba conservan firma"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog sin Deuda; Documentar y problemaPrueba conservan firma"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "usa backlog sin Deuda; Documentar y problemaPrueba conservan firma"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/E001/**",
+    "registro/**"
+  ]
+}

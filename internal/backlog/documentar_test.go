@@ -1,6 +1,9 @@
 package backlog
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
 
 // fichaCerrada: slice archivado con una prueba vieja (solo valida), rojo y verde.
 func fichaCerrada(t *testing.T, raiz string) Ficha {
@@ -11,9 +14,16 @@ func fichaCerrada(t *testing.T, raiz string) Ficha {
 	return f
 }
 
-// TestDocumentarNoBorraRojoVerde: documentar cambia solo los textos de una prueba ya registrada, también en fichas cerradas.
-// Rojo cuando: borra rojo o verde, rechaza la ficha cerrada, acepta un campo vacío o una prueba que la ficha no tiene.
-// Verde cuando: guarda los tres textos y conserva rojo y verde; lo incompleto o ajeno falla.
+// conArreglo: cuelga de la ficha cerrada un arreglo con una prueba vieja.
+func conArreglo(t *testing.T, raiz string) {
+	f, _, _ := Ver(raiz, "E001/F001/S001")
+	f.Arreglos = []Arreglo{{ID: "E001/F001/S001/X01", Titulo: "t", Motivo: "m", Fecha: "2026-10-02", Pruebas: []Prueba{{Nombre: "./x:TestB", Intencion: "vieja"}}}}
+	pisar(t, raiz, Archivo, f)
+}
+
+// TestDocumentarNoBorraRojoVerde: documentar cambia solo los textos de una prueba ya registrada, también en fichas cerradas y en arreglos.
+// Rojo cuando: borra rojo o verde, rechaza la ficha cerrada o el ID de un arreglo, acepta un campo vacío o una prueba ajena.
+// Verde cuando: guarda los tres textos, en la ficha y en su arreglo, y conserva rojo y verde; lo incompleto o ajeno falla.
 func TestDocumentarNoBorraRojoVerde(t *testing.T) {
 	raiz := t.TempDir()
 	fichaCerrada(t, raiz)
@@ -34,21 +44,38 @@ func TestDocumentarNoBorraRojoVerde(t *testing.T) {
 	if h, archivada, _ := Ver(raiz, "E001/F001/S001"); !archivada || h.Pruebas[0].RojoCuando != "cae si X" || h.Rojo == nil {
 		t.Errorf("no quedó guardado en el archivo: %+v", h)
 	}
+	conArreglo(t, raiz)
+	if _, err := Documentar(raiz, "E001/F001/S001/X01", []string{"./x:TestB=v|r|v"}); err != nil {
+		t.Fatalf("documentar en arreglo: %v", err)
+	}
+	if h, _, _ := Ver(raiz, "E001/F001/S001"); h.Arreglos[0].Pruebas[0].VerdeCuando != "v" || h.Rojo == nil {
+		t.Errorf("arreglo no guardado o rojo perdido: %+v", h)
+	}
 }
 
-// TestDeudaCuentaPruebasSinCuando: el gate sabe cuántas pruebas faltan por completar.
-// Rojo cuando: el conteo ignora las fichas archivadas o cuenta las ya completas.
-// Verde cuando: cuenta 1 con la prueba vieja y 0 después de documentarla.
-func TestDeudaCuentaPruebasSinCuando(t *testing.T) {
+// TestGateExigeCuandoATodas: el gate exige rojo cuando y verde cuando a toda prueba, vieja o de un arreglo.
+// Rojo cuando: el gate calla ante una prueba vieja o de arreglo sin los dos textos.
+// Verde cuando: el gate da un aviso por cada prueba incompleta y calla cuando todas están completas.
+func TestGateExigeCuandoATodas(t *testing.T) {
 	raiz := t.TempDir()
 	fichaCerrada(t, raiz)
-	if n, err := Deuda(raiz); err != nil || n != 1 {
-		t.Errorf("deuda con una prueba vieja: %d, %v", n, err)
+	conArreglo(t, raiz)
+	avisos := func() (n int) {
+		for _, m := range Validar(raiz) {
+			if strings.Contains(m, "rojo cuando") {
+				n++
+			}
+		}
+		return n
 	}
-	if _, err := Documentar(raiz, "E001/F001/S001", []string{"./x:TestA=v|r|v"}); err != nil {
-		t.Fatal(err)
+	if n := avisos(); n != 2 {
+		t.Errorf("prueba vieja y de arreglo incompletas: %d avisos, se esperaban 2: %v", n, Validar(raiz))
 	}
-	if n, _ := Deuda(raiz); n != 0 {
-		t.Errorf("deuda tras documentar: %d", n)
+	f, _, _ := Ver(raiz, "E001/F001/S001")
+	f.Pruebas[0].RojoCuando, f.Pruebas[0].VerdeCuando = "r", "v"
+	f.Arreglos[0].Pruebas[0].RojoCuando, f.Arreglos[0].Pruebas[0].VerdeCuando = "r", "v"
+	pisar(t, raiz, Archivo, f)
+	if n := avisos(); n != 0 {
+		t.Errorf("todas completas: %d avisos: %v", n, Validar(raiz))
 	}
 }
