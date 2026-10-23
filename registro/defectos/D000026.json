@@ -1,0 +1,9 @@
+{
+  "id": "D000026",
+  "firma": "binario-aquas-viejo",
+  "que": "Se validó con .tmp/aq.exe compilado antes del cambio; el gate dio un falso fallo aunque el código ya estaba corregido (D000025, 2026-10-23).",
+  "causa": "Nada compara la fecha del binario con la del código Go antes de usarlo.",
+  "arreglo": "Propuesto: aquas verificar avisa o se niega si algún .go de cmd/ o internal/ es más nuevo que el binario que corre.",
+  "como_me_cercioro": "Prueba: binario más viejo que un .go da aviso; binario al día no.",
+  "ocurrencias": []
+}
