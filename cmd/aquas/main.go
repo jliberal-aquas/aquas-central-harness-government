@@ -104,6 +104,9 @@ func main() {
 			os.Exit(1)
 		}
 		fmt.Println("GATE OK · derivados, sello, wiki, backlog y guardia al día")
+		if n, err := backlog.Deuda(raiz); err == nil && n > 0 { // E001/F008/S007: deuda visible hasta saldarla
+			fmt.Printf("deuda: %d pruebas sin «rojo cuando» o «verde cuando» (E001/F008/S007; aquas backlog documentar)\n", n)
+		}
 	case "hook":
 		hook(raiz)
 	case "turno": // hooks UserPromptSubmit y Stop: nunca bloquean; fallo = exit 1 + stderr
@@ -422,7 +425,7 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 
 // backlogCLI: nuevo | ver [id] | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=… | arreglo <slice|feature> titulo=… motivo=… [absorbe=<slice>]")
+	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | documentar <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=… | arreglo <slice|feature> titulo=… motivo=… [absorbe=<slice>]")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}
@@ -447,6 +450,9 @@ func backlogCLI(raiz string, args []string) {
 		if err == nil && archivada {
 			fmt.Print("archivada · ")
 		}
+		detalle = true
+	case args[0] == "documentar" && len(args) > 2: // E001/F008/S007
+		f, err = backlog.Documentar(raiz, args[1], args[2:])
 		detalle = true
 	case args[0] == "pruebas" && len(args) > 2:
 		f, err = backlog.Pruebas(raiz, args[1], args[2:])

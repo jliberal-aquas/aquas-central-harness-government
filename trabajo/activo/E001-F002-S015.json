@@ -1,0 +1,19 @@
+{
+  "id": "E001/F002/S015",
+  "tipo": "slice",
+  "titulo": "Sello rechaza el mismo motivo repetido en lote",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: el sello respondido en lote no prueba revisión",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 86,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSelloRechazaMotivoEnLote",
+      "intencion": "el sello exige revisión por archivo",
+      "rojo_cuando": "acepta el mismo motivo en muchas claves sin justificar",
+      "verde_cuando": "rechaza el lote y acepta motivos propios o un grupo justificado"
+    }
+  ]
+}
