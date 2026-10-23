@@ -42,7 +42,8 @@ type Ficha struct {
 
 	Arreglos []Arreglo `json:"arreglos,omitempty"`
 	// E001/F008/S005: código de producción tocado, congelado al cerrar.
-	Codigo []string `json:"codigo,omitempty"`
+	Codigo   []string `json:"codigo,omitempty"`
+	Relacion string   `json:"relacion,omitempty"` // E001/F009/S001: nueva, amplia:<id> o corrige:<id>
 }
 
 // Estados y prioridades del canónico E001 (sección Backlog).
@@ -156,14 +157,14 @@ func escribir(raiz, dir string, f Ficha) error {
 	return os.WriteFile(filepath.Join(d, nombre(f.ID)), append(b, '\n'), 0o644)
 }
 
-// Nuevo crea una ficha desde campos id=… titulo=… prioridad=… motivo=… [bloqueado_por=A,B].
+// Nuevo crea una ficha desde campos id=… titulo=… prioridad=… motivo=… relacion=… [bloqueado_por=A,B].
 func Nuevo(raiz string, campos []string) (Ficha, error) {
 	v := map[string]string{}
 	var pruebas []string
 	for _, c := range campos {
 		k, val, ok := strings.Cut(c, "=")
-		if !ok || !esta([]string{"id", "titulo", "prioridad", "motivo", "bloqueado_por", "prueba"}, k) {
-			return Ficha{}, fmt.Errorf("campo desconocido %q: usa id, titulo, prioridad, motivo, bloqueado_por, prueba", c)
+		if !ok || !esta([]string{"id", "titulo", "prioridad", "motivo", "bloqueado_por", "prueba", "relacion"}, k) {
+			return Ficha{}, fmt.Errorf("campo desconocido %q: usa id, titulo, prioridad, motivo, bloqueado_por, prueba, relacion", c)
 		}
 		if k == "prueba" { // se repite: una por prueba
 			pruebas = append(pruebas, val)
@@ -214,6 +215,9 @@ func Nuevo(raiz string, campos []string) (Ficha, error) {
 			bloq = append(bloq, b)
 		}
 	}
+	if err := revisarRelacion(raiz, v["relacion"], v["titulo"], act, arc); err != nil {
+		return Ficha{}, err
+	}
 	sec := 0
 	for _, m := range []map[string]Ficha{act, arc} {
 		for _, f := range m {
@@ -224,7 +228,7 @@ func Nuevo(raiz string, campos []string) (Ficha, error) {
 	}
 	f := Ficha{ID: id, Tipo: tipo, Titulo: v["titulo"], Estado: "BORRADOR", Prioridad: v["prioridad"],
 		Motivo: v["motivo"], Padre: padre, BloqueadoPor: bloq, Secuencia: sec + 1}
-	f.Pruebas = ps
+	f.Pruebas, f.Relacion = ps, v["relacion"]
 	return f, escribir(raiz, Activo, f)
 }
 

@@ -15,6 +15,9 @@ func nuevo(t *testing.T, raiz string, campos ...string) Ficha {
 	if !strings.Contains(strings.Join(campos, " "), "prueba=") {
 		campos = append(campos, "prueba=./p:TestFalla=falla a propósito|r|v") // desde S003 toda ficha nace con pruebas
 	}
+	if !strings.Contains(strings.Join(campos, " "), "relacion=") {
+		campos = append(campos, "relacion=nueva") // desde E001/F009/S001 toda ficha declara su relación
+	}
 	f, err := Nuevo(raiz, campos)
 	if err != nil {
 		t.Fatalf("Nuevo(%v): %v", campos, err)

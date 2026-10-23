@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F009",
+    "slice": "S001",
+    "tarea": "S001 hecho: relacion obligatoria y parecidas en backlog nuevo"
+  },
+  "siguiente": "E001/F009/S003 backlog editar (S002 bloqueado por S001, ya libre)",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "522339f971a378fbfc5193ff7ee0313e1f9e662477f84e38e27e8e20d570d76a",
+  "actualizado": "2026-10-23T13:18:16Z",
+  "sello": "68a2a2a59eb204879c4d58f43e5618d68e249254a9412aa93951acae22670ded"
+}

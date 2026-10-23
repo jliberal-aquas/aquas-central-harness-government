@@ -49,7 +49,7 @@ stateDiagram-v2
 
 | Slice | Qué entrega |
 |---|---|
-| S001 backlog nuevo muestra parecidos y exige relación | Lista de parecidas y campo `relacion=` obligatorio |
+| [S001 backlog nuevo muestra parecidos y exige relación](S001.md) | Lista de parecidas y campo `relacion=` obligatorio |
 | S002 defecto nuevo muestra parecidos y exige relación | Lo mismo para los defectos |
 | S003 backlog editar cambia una ficha que aún no arranca | Edición con historial, solo en BORRADOR o LISTO |
 
@@ -83,10 +83,11 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| S001 | backlog nuevo muestra parecidos y exige relacion | Planeado |
+| [S001](S001.md) | backlog nuevo muestra parecidos y exige relacion | Hecho |
 | S002 | defecto nuevo muestra parecidos y exige relacion | Planeado |
 | S003 | backlog editar cambia una ficha que aún no arranca | Planeado |
 
 <!-- /GENERADO -->
 
 - ↑ Subir: [E001](../README.md)
+- Abajo: [S001 · backlog nuevo muestra parecidos y exige relación](S001.md)

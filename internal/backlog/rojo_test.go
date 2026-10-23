@@ -117,7 +117,7 @@ func TestNuevoExigePruebas(t *testing.T) {
 			t.Errorf("%s: se esperaba error con %q; dio %v", c.nombre, c.dice, err)
 		}
 	}
-	f, err := Nuevo(raiz, append(ok, "prueba=./p:TestFalla=falla por el contrato|r|v", "prueba=./cmd/x:TestB_2=otra = con igual|r|v"))
+	f, err := Nuevo(raiz, append(ok, "relacion=nueva", "prueba=./p:TestFalla=falla por el contrato|r|v", "prueba=./cmd/x:TestB_2=otra = con igual|r|v"))
 	if err != nil {
 		t.Fatal(err)
 	}
