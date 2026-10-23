@@ -289,6 +289,11 @@ func Estado(raiz, id, estado string) (Ficha, error) {
 	if cur, hay := sliceEnCurso(act); f.Tipo == "slice" && hay && cur != id {
 		return Ficha{}, fmt.Errorf("%s está en curso: mientras tanto ningún otro slice cambia de estado", cur)
 	}
+	if estado == "EN_CURSO" && f.Tipo == "slice" { // D000023: la integral de la feature va en rojo antes de sus slices
+		if p, _, err := Ver(raiz, f.Padre); err == nil && len(p.Pruebas) > 0 && p.Rojo == nil {
+			return Ficha{}, fmt.Errorf("%s no arranca: la integral de su feature %s no tiene rojo; regístralo antes con aquas backlog rojo %s", id, p.ID, p.ID)
+		}
+	}
 	if estado == "CERRADO" {
 		if err := cierre(f); err != nil {
 			return Ficha{}, err

@@ -105,6 +105,7 @@ func TestArranqueEnFrio(t *testing.T) {
 		if s := aquas(t, raiz, "", append([]string{"backlog"}, args...)...); s.codigo != 0 {
 			t.Fatalf("backlog %v: %+v", args, s)
 		}
+		rojoIntegral(t, raiz, args)
 	}
 
 	// Sesión 1: fija el foco, trabaja y el cierre exige actualizar.

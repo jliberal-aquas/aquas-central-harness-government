@@ -33,6 +33,7 @@ func TestMemoriaSegunBacklog(t *testing.T) {
 		if s := aquas(t, raiz, "", append([]string{"backlog"}, args...)...); s.codigo != 0 {
 			t.Fatalf("backlog %v: %+v", args, s)
 		}
+		rojoIntegral(t, raiz, args)
 	}
 	foco := []string{"memoria", "fijar", "iniciativa=E001", "feature=F002", "slice=S003", "tarea=t"}
 	if s := aquas(t, raiz, "", foco...); s.codigo != 1 || !strings.Contains(s.err, "en curso") {
@@ -75,6 +76,7 @@ func TestCerrarSliceDePuntaAPunta(t *testing.T) {
 	}
 	paso(0, "E001", "nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestBandera=pide el arreglo|r|v")
 	paso(0, "E001/F002", "nuevo", "id=E001/F002", "titulo=B", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestBandera=pide el arreglo|r|v")
+	rojoIntegral(t, raiz, []string{"nuevo", "id=E001/F002"})
 	paso(0, "E001/F002/S003", "nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestOtra=otra|r|v")
 	paso(0, "TestBandera · pide el arreglo", "pruebas", "E001/F002/S003", "./p:TestBandera=pide el arreglo|r|v")
 	paso(0, "EN_CURSO", "estado", "E001/F002/S003", "EN_CURSO")

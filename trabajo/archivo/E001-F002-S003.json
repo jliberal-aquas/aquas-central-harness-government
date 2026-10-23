@@ -106,6 +106,33 @@
     "fecha": "2026-10-21T14:14:20Z",
     "head": "2ea0a4212793c32156b101c30cb96ade84e15aff"
   },
+  "arreglos": [
+    {
+      "id": "E001/F002/S003/X01",
+      "titulo": "Un slice no arranca si la integral de su feature no tiene rojo",
+      "motivo": "D000023: la integral de E001/F008 llegó tarde y ya no pudo quedar en rojo",
+      "fecha": "2026-10-23T13:58:42Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/backlog:TestArranqueExigeRojoDeLaIntegral",
+          "intencion": "un slice no pasa a EN_CURSO si su feature declara una integral sin rojo",
+          "rojo_cuando": "el slice arranca con la integral sin rojo, o no arranca con rojo o sin integral",
+          "verde_cuando": "sin rojo se niega nombrando el comando; con rojo o sin integral arranca"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T13:59:02Z",
+        "head": "7297fe655e1c4a7eacea48ae7ce56d14dc3dcde2",
+        "resultado": {
+          "./internal/backlog:TestArranqueExigeRojoDeLaIntegral": "arranque_test.go:34: E001/F002/S001 está en curso: mientras tanto ningún otro slice cambia de estado"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T14:01:05Z",
+        "head": "7297fe655e1c4a7eacea48ae7ce56d14dc3dcde2"
+      }
+    }
+  ],
   "codigo": [
     "cmd/aquas/main.go",
     "internal/backlog/backlog.go",

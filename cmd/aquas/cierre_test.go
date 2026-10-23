@@ -19,6 +19,7 @@ func TestCerrarExigeMemoriaArchivada(t *testing.T) {
 		if s := aquas(t, raiz, "", append([]string{"backlog"}, args...)...); s.codigo != 0 {
 			t.Fatalf("backlog %v: %+v", args, s)
 		}
+		rojoIntegral(t, raiz, args)
 	}
 	fijar := func(pares ...string) {
 		t.Helper()

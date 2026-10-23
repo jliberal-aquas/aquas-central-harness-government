@@ -45,7 +45,9 @@ func base(t *testing.T) string {
 	t.Helper()
 	raiz := t.TempDir()
 	nuevo(t, raiz, "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=raíz")
-	nuevo(t, raiz, "id=E001/F002", "titulo=Backlog", "prioridad=P1", "motivo=orden")
+	f := nuevo(t, raiz, "id=E001/F002", "titulo=Backlog", "prioridad=P1", "motivo=orden")
+	f.Rojo = &Registro{Fecha: "2026-10-21T00:00:00Z", Resultado: map[string]string{"./p:TestFalla": "falló"}} // D000023: sus slices lo exigen
+	pisar(t, raiz, Activo, f)
 	return raiz
 }
 
