@@ -1,0 +1,9 @@
+{
+  "id": "D000023",
+  "firma": "integral-escrita-tarde",
+  "que": "La prueba integral de E001/F008 no se escribio en rojo antes de sus slices; escrita al final pasa de una y el gate de rojo la rechaza, asi la feature no puede cerrar con evidencia honesta.",
+  "causa": "Nada obliga a registrar el rojo de la integral de la feature antes de arrancar su primer slice.",
+  "arreglo": "Propuesto: backlog estado \u003cslice\u003e EN_CURSO se niega si la feature padre tiene pruebas sin rojo registrado.",
+  "como_me_cercioro": "Prueba: arrancar un slice con la integral de su feature sin rojo falla; con rojo pasa.",
+  "ocurrencias": []
+}
