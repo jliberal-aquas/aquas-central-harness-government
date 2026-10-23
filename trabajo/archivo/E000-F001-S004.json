@@ -8,6 +8,33 @@
   "padre": "E000/F001",
   "bloqueado_por": [],
   "secuencia": 6,
+  "arreglos": [
+    {
+      "id": "E000/F001/S004/X01",
+      "titulo": "El gate avisa si el binario de aquas es más viejo que el código",
+      "motivo": "D000026: validar con un binario viejo dio un falso GATE FALLIDO",
+      "fecha": "2026-10-23T14:32:29Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/entorno:TestBinarioViejoSeNombra",
+          "intencion": "el gate avisa si el binario de aquas es más viejo que el código de producción",
+          "rojo_cuando": "un .go más nuevo no se señala, o se señala una prueba o un binario al día",
+          "verde_cuando": "nombra el .go más nuevo y pide reconstruir; al día calla"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T14:32:31Z",
+        "head": "20b46e79e1d8edaebd84b3617dfeda935e6182a9",
+        "resultado": {
+          "./internal/entorno:TestBinarioViejoSeNombra": "binario_test.go:38: binario viejo: debió nombrar cmd/aquas/main.go y pedir go build; dio \"\""
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T14:33:32Z",
+        "head": "20b46e79e1d8edaebd84b3617dfeda935e6182a9"
+      }
+    }
+  ],
   "codigo": [
     ".claude/settings.json",
     "cmd/aquas/main.go",

@@ -174,6 +174,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `revisarRelacion` | `(raiz, rel, que string, todos []Defecto) error` | revisarRelacion (E001/F009/S002): relacion=nuevo o el id de una ficha; sin ella, lista defectos y fichas parecidos. |
 | [internal/encargo/encargo.go](../../internal/encargo/encargo.go) | `Revisar` | `(tipo, mensaje string, stopHookActive bool) string` | Revisar decide el hook SubagentStop: "" deja cerrar; si no, qué falta en el cierre. |
 | [internal/encargo/encargo.go](../../internal/encargo/encargo.go) | `falla` | `(motivo string) string` | falla: mensaje de cierre inválido que pide reescribirlo según el canónico. |
+| [internal/entorno/binario.go](../../internal/entorno/binario.go) | `BinarioViejo` | `(raiz, exe string) string` | BinarioViejo (D000026): aviso si algún .go de producción es más nuevo que el binario exe; "" si está al día. |
 | [internal/entorno/entorno.go](../../internal/entorno/entorno.go) | `Leer` | `(raiz string) (Entorno, error)` | Leer carga el entorno declarado. |
 | [internal/entorno/entorno.go](../../internal/entorno/entorno.go) | `Validar` | `(raiz string) string` | Validar compara el entorno declarado con el real; "" = coincide, si no, el motivo del bloqueo. |
 | [internal/entorno/entorno.go](../../internal/entorno/entorno.go) | `Iniciar` | `(raiz string) (Entorno, error)` | Iniciar detecta SO y raíz (git) y escribe entorno.local.json; exige correr desde la raíz. |

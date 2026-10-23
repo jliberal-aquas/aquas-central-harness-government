@@ -83,6 +83,11 @@ func main() {
 		}
 		fichas := backlog.Validar(raiz)
 		permitidos := guardia.ValidarConfig(raiz)
+		if exe, err := os.Executable(); err == nil { // D000026: binario viejo = gate falso
+			if m := entorno.BinarioViejo(raiz, exe); m != "" {
+				permitidos = append(permitidos, m)
+			}
+		}
 		if m := entorno.Validar(raiz); m != "" {
 			permitidos = append(permitidos, "entorno: "+m)
 		} else if m := entorno.VerificarSettings(raiz); m != "" {
