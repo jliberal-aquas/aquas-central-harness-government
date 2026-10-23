@@ -326,8 +326,15 @@ func esNombre(c rune) bool {
 
 var reAsignacion = regexp.MustCompile(`^[A-Za-z_][A-Za-z0-9_]*=`)
 
+// reArchivoGo: el comando nombra un archivo .go.
+var reArchivoGo = regexp.MustCompile(`\.go\b`)
+
 // RevisarBash analiza un comando de Bash; cwd es el directorio donde arranca.
 func RevisarBash(raiz, cwd, comando string) string {
+	// D000027: dentro de un heredoc, «\\n» llega como salto real y rompe los strings de Go.
+	if strings.Contains(comando, "<<") && strings.Contains(comando, `\\n`) && reArchivoGo.MatchString(comando) {
+		return "heredoc con «\\\\n» que toca un .go: llega como salto real y rompe los strings de Go (D000027); edita ese .go con la herramienta Edit o Write"
+	}
 	vars := map[string]string{}
 	actual, cwdOK := cwd, true
 	ps := lexear(sinHeredocs(comando))

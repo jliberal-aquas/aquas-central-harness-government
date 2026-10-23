@@ -7,5 +7,32 @@
   "motivo": "migrado: cerrado antes del backlog JSON",
   "padre": "E000/F001",
   "bloqueado_por": [],
-  "secuencia": 3
+  "secuencia": 3,
+  "arreglos": [
+    {
+      "id": "E000/F001/S001/X01",
+      "titulo": "Un heredoc con barra-n que edita un .go se frena y remite a Edit",
+      "motivo": "D000027: el heredoc convirtió la barra-n de strings Go en saltos reales 5 veces",
+      "fecha": "2026-10-23T14:56:35Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/guardia:TestHeredocConBarraNEnGoSeFrena",
+          "intencion": "un heredoc con barra-n doble que edita un .go se frena y remite a Edit",
+          "rojo_cuando": "el comando pasa, o se frena un heredoc sin barra-n, sin .go o un comando sin heredoc",
+          "verde_cuando": "solo la mezcla heredoc, barra-n y .go se frena nombrando Edit"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T14:56:46Z",
+        "head": "410305659d0f6bb0f585e9c28d5c601b388a6072",
+        "resultado": {
+          "./internal/guardia:TestHeredocConBarraNEnGoSeFrena": "heredoc_test.go:15: heredoc con \\\\n sobre un .go: debió frenarse nombrando Edit; dio \"\""
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T14:57:27Z",
+        "head": "410305659d0f6bb0f585e9c28d5c601b388a6072"
+      }
+    }
+  ]
 }
