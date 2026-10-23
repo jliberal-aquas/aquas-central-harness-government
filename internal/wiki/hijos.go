@@ -40,10 +40,12 @@ func paginaDe(id string) string {
 	return "docs/" + p[0] + "/" + p[1] + "/" + p[2] + ".md"
 }
 
+// celda escapa saltos de línea y «|» para una celda de tabla Markdown.
 func celda(s string) string {
 	return strings.ReplaceAll(strings.ReplaceAll(s, "\n", " "), "|", `\|`)
 }
 
+// existe: la ruta relativa existe en disco.
 func existe(raiz, rel string) bool {
 	_, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(rel)))
 	return err == nil
@@ -68,6 +70,7 @@ func tablaHijos(raiz, padreRel string, hijos []backlog.Ficha) string {
 	return b.String()
 }
 
+// fecha: día AAAA-MM-DD de un registro, o «—» si no hay.
 func fecha(r *backlog.Registro) string {
 	if r == nil || len(r.Fecha) < 10 {
 		return "—"
@@ -129,6 +132,13 @@ func esperados(raiz string) (map[string]esperado, []backlog.Ficha, error) {
 		} else {
 			exp[rel] = esperado{secNav, envolver(tablaHijos(raiz, rel, hijos[f.ID]) + tablaArreglos(f))}
 		}
+	}
+	if existe(raiz, paginaCodigo) { // E001/F008/S004: índice de funciones
+		idx, err := indiceCodigo(raiz)
+		if err != nil {
+			return nil, fichas, err
+		}
+		exp[paginaCodigo] = esperado{"Cómo se usa", envolver(idx)}
 	}
 	return exp, fichas, nil
 }

@@ -61,8 +61,10 @@ func Silabas(palabra string) int {
 	return n
 }
 
+// esVocalLetra: la runa es vocal castellana, con o sin tilde.
 func esVocalLetra(r rune) bool { return strings.ContainsRune("aeiouáéíóúü", r) }
 
+// hiato: las dos vocales seguidas se cuentan como sílabas separadas.
 func hiato(a, b rune) bool {
 	fuerte := func(r rune) bool { return strings.ContainsRune("aeoáéó", r) }
 	debilTilde := func(r rune) bool { return r == 'í' || r == 'ú' }
@@ -118,6 +120,7 @@ func Perspicuidad(ors [][]string) float64 {
 	return 206.835 - 62.3*float64(silabas)/w - w/float64(len(ors))
 }
 
+// revisarLegibilidad: avisos por oraciones largas o prosa difícil de leer.
 func revisarLegibilidad(pg *pagina) []string {
 	var ps []string
 	ors := oraciones(pg.prosa)
@@ -137,4 +140,5 @@ func revisarLegibilidad(pg *pagina) []string {
 	return ps
 }
 
+// coma formatea un número con un decimal y coma decimal.
 func coma(x float64) string { return strings.Replace(fmt.Sprintf("%.1f", x), ".", ",", 1) }

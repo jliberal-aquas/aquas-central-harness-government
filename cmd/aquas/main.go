@@ -40,6 +40,7 @@ import (
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/wiki"
 )
 
+// main despacha el subcomando de aquas (compilar, verificar, backlog, hooks…) y sale con su código.
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria | backlog | cierre-agente | biblioteca")
@@ -300,6 +301,7 @@ func compilarSettings(w io.Writer) {
 	}
 }
 
+// reportar imprime qué derivados escribió la compilación, o que todo estaba al día.
 func reportar(w io.Writer, inf compilador.Informe) {
 	if len(inf.Escritos) == 0 {
 		fmt.Fprintln(w, "Sin cambios · derivados al día")
@@ -309,6 +311,7 @@ func reportar(w io.Writer, inf compilador.Informe) {
 	fmt.Fprintln(w, "Escritos: "+lista(inf.Escritos))
 }
 
+// listar imprime en stderr un título y cada problema en su viñeta.
 func listar(titulo string, problemas []string) {
 	fmt.Fprintln(os.Stderr, titulo)
 	for _, p := range problemas {
@@ -316,6 +319,7 @@ func listar(titulo string, problemas []string) {
 	}
 }
 
+// lista une los textos con comas, o «—» si no hay ninguno.
 func lista(xs []string) string {
 	if len(xs) == 0 {
 		return "—"
@@ -323,6 +327,7 @@ func lista(xs []string) string {
 	return strings.Join(xs, ", ")
 }
 
+// fallar imprime el error en stderr y termina con el código dado.
 func fallar(codigo int, err error) {
 	fmt.Fprintln(os.Stderr, "aquas:", err)
 	os.Exit(codigo)

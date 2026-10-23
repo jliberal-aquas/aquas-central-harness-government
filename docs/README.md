@@ -133,3 +133,4 @@ El orden de ejecución lo dice `aquas backlog siguiente`.
 - Referencia: [Compilador](ref/compilador.md)
 - Referencia: [Comunicación agente → humano](ref/comunicacion.md)
 - Referencia: [Guardia: nada se escribe fuera del repo](ref/guardia.md)
+- Referencia: [Código: cada función y qué hace](ref/codigo.md)

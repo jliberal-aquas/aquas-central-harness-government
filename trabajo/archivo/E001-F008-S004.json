@@ -1,0 +1,283 @@
+{
+  "id": "E001/F008/S004",
+  "tipo": "slice",
+  "titulo": "Toda función comentada e índice docs/codigo generado",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-22: la documentación es el instrumento principal del humano",
+  "padre": "E001/F008",
+  "bloqueado_por": [],
+  "secuencia": 82,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestFuncionSinComentarioCae",
+      "intencion": "una función sin comentario hace caer el gate y el índice lista cada función con su comentario",
+      "rojo_cuando": "una función sin comentario no hace caer el gate, o el índice omite una función o su comentario",
+      "verde_cuando": "la función sin comentario cae nombrada; con comentario el gate pasa y el índice la lista"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-23T01:07:29Z",
+    "head": "a3e2f196a28a9d3f12e0b674c76cf2bc65dfc847",
+    "resultado": {
+      "./internal/wiki:TestFuncionSinComentarioCae": "codigo_test.go:34: índice sin resta:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-23T01:09:51Z",
+    "head": "a3e2f196a28a9d3f12e0b674c76cf2bc65dfc847"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F008",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia: S004 no altera alcance ni estado"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia: S004 no altera alcance ni estado"
+    },
+    {
+      "clave": "ficha:E001/F008/S005",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia: S004 no altera alcance ni estado"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/S004.md",
+      "marca": "actualizado",
+      "motivo": "tocado en S004: comentario o enlace nuevo, revisado en el diff"
+    },
+    {
+      "clave": "pagina:docs/E001/F008/README.md",
+      "marca": "actualizado",
+      "motivo": "tocado en S004: comentario o enlace nuevo, revisado en el diff"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "página sin relación con comentarios ni índice de código"
+    },
+    {
+      "clave": "nombra:README.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:cmd/aquas/punta_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S005.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S002.md\u003einternal/wiki/legibilidad.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003einternal/turno/turno.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003einternal/backlog/sello.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003einternal/propuesta/propuesta.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003einternal/backlog/alcance.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S013.md\u003einternal/backlog/sello.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S014.md\u003einternal/backlog/sello.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S003.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003einternal/compilador/compilador.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003einternal/guardia/permitidos.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003einternal/memoria/memoria.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003einternal/wiki/contrato.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003einternal/wiki/legibilidad.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:internal/biblioteca/biblioteca.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "importa:internal/guardia/auditoria_test.go\u003einternal/turno",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian comentarios y funciones privadas nuevas; API pública igual"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian comentarios y funciones privadas nuevas; API pública igual"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/memoria",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian comentarios y funciones privadas nuevas; API pública igual"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian comentarios y funciones privadas nuevas; API pública igual"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian comentarios y funciones privadas nuevas; API pública igual"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian comentarios y funciones privadas nuevas; API pública igual"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian comentarios y funciones privadas nuevas; API pública igual"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el texto citado sigue válido: no cambia nombres ni firmas"
+    }
+  ],
+  "alcance": [
+    "internal/wiki/**",
+    "internal/**",
+    "cmd/**",
+    "docs/**"
+  ]
+}

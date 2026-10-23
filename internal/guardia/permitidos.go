@@ -65,6 +65,7 @@ func cargar(raiz string) ([]string, []string) {
 	return dirs, ps
 }
 
+// expandirConfig sustituye variables de entorno ${X} de la config; ok falso si falta alguna.
 func expandirConfig(s string) (string, bool) {
 	ok := true
 	s = reVarConfig.ReplaceAllStringFunc(s, func(m string) string {
@@ -101,6 +102,7 @@ func ValidarConfig(raiz string) []string {
 	return ps
 }
 
+// itoa convierte un entero a texto.
 func itoa(i int) string {
 	if i == 0 {
 		return "0"

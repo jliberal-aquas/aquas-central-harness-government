@@ -127,6 +127,7 @@ func resolver(base, p string) (string, bool) {
 
 var reUnidadBash = regexp.MustCompile(`^/([a-zA-Z])(?:/(.*))?$`)
 
+// dentro: la ruta absoluta queda dentro de la raíz del repo.
 func dentro(raiz, abs string) bool {
 	rel, err := filepath.Rel(raiz, abs) // en Windows compara sin distinguir mayúsculas
 	if err != nil {
@@ -165,6 +166,7 @@ func sinHeredocs(c string) string {
 	return strings.Join(out, "\n")
 }
 
+// lexear parte un comando de shell en palabras, respetando comillas y operadores.
 func lexear(c string) []palabra {
 	var ps []palabra
 	var b strings.Builder
@@ -317,6 +319,7 @@ func variable(r []rune, i int) (string, int) {
 	return "", 0
 }
 
+// esNombre: el carácter vale en un nombre de variable de shell.
 func esNombre(c rune) bool {
 	return c == '_' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9'
 }
@@ -341,6 +344,7 @@ func RevisarBash(raiz, cwd, comando string) string {
 	return ""
 }
 
+// segmento revisa un comando simple: sigue cd y variables y devuelve el primer destino fuera del repo.
 func segmento(raiz string, cwd *string, cwdOK *bool, vars map[string]string, ps []palabra) string {
 	var args []string
 	var destinos []string
@@ -442,6 +446,7 @@ func segmento(raiz string, cwd *string, cwdOK *bool, vars map[string]string, ps 
 	return ""
 }
 
+// posicionales: argumentos que no son opciones (los que empiezan con «-», salvo «-» solo).
 func posicionales(args []string) []string {
 	var p []string
 	for _, a := range args {
@@ -453,6 +458,7 @@ func posicionales(args []string) []string {
 	return p
 }
 
+// revisarDestino: motivo de bloqueo si la ruta no se resuelve o cae fuera del repo; vacío si vale.
 func revisarDestino(raiz, cwd string, cwdOK bool, vars map[string]string, d string) string {
 	e, ok := expandir(d, vars, cwd)
 	if !ok {
@@ -502,4 +508,5 @@ func expandir(s string, vars map[string]string, cwd string) (string, bool) {
 	return out, ok
 }
 
+// legible muestra las variables internas como $NOMBRE en los mensajes.
 func legible(s string) string { return reVar.ReplaceAllString(s, "$$$1") }

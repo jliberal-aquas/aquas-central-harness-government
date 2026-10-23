@@ -109,6 +109,7 @@ func Leer(raiz string) ([]Defecto, error) {
 	return out, nil
 }
 
+// leerUno carga el defecto con ese ID; valida el formato D000001.
 func leerUno(raiz, id string) (Defecto, error) {
 	if !idR.MatchString(id) {
 		return Defecto{}, fmt.Errorf("id %q: formato D000001", id)
@@ -124,6 +125,7 @@ func leerUno(raiz, id string) (Defecto, error) {
 	return d, nil
 }
 
+// escribir guarda el defecto como JSON en su carpeta.
 func escribir(raiz string, d Defecto) error {
 	dir := filepath.Join(raiz, Carpeta)
 	if err := os.MkdirAll(dir, 0o755); err != nil {

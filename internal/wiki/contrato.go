@@ -31,7 +31,7 @@ func seccionesDe(n nivel) []string {
 	return append(s, secContrato, secNav)
 }
 
-// migasEsperadas: «[Inicio](…) › [E001](…) › F001» con rutas relativas a la página.
+// migasEsperadas: migas «Inicio › E001 › F001», cada nivel con enlace relativo a la página.
 func migasEsperadas(pg *pagina) string {
 	var ids []string
 	for _, re := range []*regexp.Regexp{reS, reF, reE} {
@@ -52,6 +52,7 @@ func migasEsperadas(pg *pagina) string {
 	return strings.Join(append(partes, ids[len(ids)-1]), " › ")
 }
 
+// revisarMigas: aviso si las migas de pan no coinciden con la ruta de la página.
 func revisarMigas(pg *pagina) []string {
 	esperadas := migasEsperadas(pg)
 	if esperadas == "" || pg.migas == esperadas {

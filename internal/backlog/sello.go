@@ -41,6 +41,7 @@ type Item struct {
 
 var excluidas = []string{"trabajo/", "registro/", "auditoria/", ".tmp/", ".aquas/"}
 
+// excluida: la ruta cae bajo una carpeta que el sello no revisa.
 func excluida(p string) bool {
 	for _, e := range excluidas {
 		if strings.HasPrefix(p, e) {
@@ -50,6 +51,7 @@ func excluida(p string) bool {
 	return false
 }
 
+// gitLineas corre git en la raíz y devuelve su salida línea por línea.
 func gitLineas(raiz string, args ...string) ([]string, error) {
 	out, err := exec.Command("git", append([]string{"-C", raiz, "-c", "core.quotepath=off"}, args...)...).Output()
 	if err != nil {
@@ -64,6 +66,7 @@ func gitLineas(raiz string, args ...string) ([]string, error) {
 	return xs, nil
 }
 
+// pagina: ruta de la página wiki de una ficha según su nivel en el ID.
 func pagina(id string) string {
 	p := strings.Split(id, "/")
 	if len(p) == 3 {
@@ -102,6 +105,7 @@ func arbol(raiz string, f Ficha) ([]Item, error) {
 	return xs, nil
 }
 
+// moduloGo: ruta del módulo declarada en go.mod, o vacío si no hay.
 func moduloGo(raiz string) string {
 	b, err := os.ReadFile(filepath.Join(raiz, "go.mod"))
 	if err != nil {
@@ -115,6 +119,7 @@ func moduloGo(raiz string) string {
 	return ""
 }
 
+// lineaCon: primera línea de c que contiene s, recortada; sirve de evidencia en el sello.
 func lineaCon(c, s string) string {
 	for _, l := range strings.Split(c, "\n") {
 		if strings.Contains(l, s) {
@@ -218,6 +223,7 @@ func Sello(raiz, id string) ([]Item, error) {
 	return sello(raiz, f)
 }
 
+// sello arma la lista de piezas que el cambio de un slice obliga a revisar.
 func sello(raiz string, f Ficha) ([]Item, error) {
 	if f.Tipo != "slice" {
 		return nil, fmt.Errorf("%s: el sello es de slices", f.ID)

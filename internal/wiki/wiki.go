@@ -165,9 +165,15 @@ func Verificar(raiz string) ([]string, error) {
 		return nil, err
 	}
 	problemas = append(problemas, portadas...)
+	codigo, err := revisarCodigo(raiz)
+	if err != nil {
+		return nil, err
+	}
+	problemas = append(problemas, codigo...)
 	return problemas, nil
 }
 
+// relativa: ruta de p respecto de la raíz, con barras «/».
 func relativa(raiz, p string) string {
 	r, _ := filepath.Rel(raiz, p)
 	return filepath.ToSlash(r)
@@ -294,6 +300,7 @@ func slug(s string) string {
 	return b.String()
 }
 
+// seccion busca una sección de la página por su título; nil si no está.
 func (pg *pagina) seccion(titulo string) *seccion {
 	for i := range pg.secciones {
 		if pg.secciones[i].titulo == titulo {
@@ -303,6 +310,7 @@ func (pg *pagina) seccion(titulo string) *seccion {
 	return nil
 }
 
+// revisarSecciones: faltan secciones fijas o están fuera de orden.
 func revisarSecciones(pg *pagina) []string {
 	var ps []string
 	ultimo, desorden := -1, false
@@ -333,6 +341,7 @@ func revisarSecciones(pg *pagina) []string {
 	return ps
 }
 
+// revisarDiagramas: la sección Diagrama trae el Mermaid que pide su nivel.
 func revisarDiagramas(pg *pagina) []string {
 	s := pg.seccion(secDiagrama)
 	if s == nil {
@@ -367,6 +376,7 @@ func revisarDiagramas(pg *pagina) []string {
 	return ps
 }
 
+// revisarEjemplo: el ejemplo lleva su ancla EJ- y encadena con el del padre.
 func revisarEjemplo(pg *pagina, paginas map[string]*pagina) []string {
 	s := pg.seccion(secEjemplo)
 	if s == nil {
@@ -399,6 +409,7 @@ func revisarEjemplo(pg *pagina, paginas map[string]*pagina) []string {
 	return append(ps, fmt.Sprintf("%s: falta «continúa:» hacia %s (%s)", pg.rel, ejPadre, pg.padre))
 }
 
+// revisarNavegacion: hay ↑ Subir y un enlace Abajo a cada hija.
 func revisarNavegacion(pg *pagina, hijos []string) []string {
 	var ps []string
 	enlazados := map[string]bool{}
@@ -424,6 +435,7 @@ func revisarNavegacion(pg *pagina, hijos []string) []string {
 	return ps
 }
 
+// revisarEnlaces: cada enlace interno apunta a un archivo y ancla que existen.
 func revisarEnlaces(raiz string, pg *pagina, anclas map[string]map[string]bool) []string {
 	var ps []string
 	for _, e := range pg.enlaces {

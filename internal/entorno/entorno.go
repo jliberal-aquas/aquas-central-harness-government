@@ -87,6 +87,7 @@ func Iniciar(raiz string) (Entorno, error) {
 	return e, nil
 }
 
+// mismaRuta compara dos rutas limpias; en Windows sin distinguir mayúsculas.
 func mismaRuta(a, b string) bool {
 	a = filepath.ToSlash(filepath.Clean(a))
 	b = filepath.ToSlash(filepath.Clean(b))

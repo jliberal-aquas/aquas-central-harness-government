@@ -19,6 +19,7 @@ type Ampliacion struct {
 	Motivo string `json:"motivo"`
 }
 
+// limpia normaliza una ruta: barras «/», sin «./» inicial ni segmentos redundantes.
 func limpia(r string) string {
 	return strings.TrimPrefix(path.Clean(strings.ReplaceAll(r, `\`, "/")), "./")
 }

@@ -61,6 +61,7 @@ func siguiente(raiz string) (int, error) {
 	return mayor + 1, nil
 }
 
+// leerEstado carga los turnos abiertos; vacío si el archivo no existe.
 func leerEstado(raiz string) (map[string]abierto, error) {
 	e := map[string]abierto{}
 	b, err := os.ReadFile(filepath.Join(raiz, filepath.FromSlash(Estado)))
@@ -75,6 +76,7 @@ func leerEstado(raiz string) (map[string]abierto, error) {
 	return e, nil
 }
 
+// escribir guarda bytes en la ruta relativa, creando sus carpetas.
 func escribir(raiz, rel string, b []byte) error {
 	p := filepath.Join(raiz, filepath.FromSlash(rel))
 	if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
@@ -101,6 +103,7 @@ func cerca(s string) string {
 	return f + "text\n" + s + "\n" + f + "\n"
 }
 
+// render arma el Markdown del registro de un turno: literal del humano y respuesta.
 func render(a abierto, respuesta, cerrado string) []byte {
 	var b strings.Builder
 	fmt.Fprintf(&b, "# %s\n\n- Sesión: `%s`\n- Abierto: %s\n- Cerrado: %s\n\n", a.ID, a.Sesion, a.Abierto, cerrado)

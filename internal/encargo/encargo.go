@@ -74,6 +74,7 @@ func Revisar(tipo, mensaje string, stopHookActive bool) string {
 	return ""
 }
 
+// falla: mensaje de cierre inválido que pide reescribirlo según el canónico.
 func falla(motivo string) string {
 	return "cierre inválido: " + motivo + ". Reescribe solo el CIERRE según " + canonico + "."
 }

@@ -23,6 +23,7 @@ func marca(l string) (string, bool) {
 	return r, true
 }
 
+// diagrama: el texto trae algún trazo de diagrama (flechas o cajas).
 func diagrama(c string) bool {
 	for _, t := range trazos {
 		if strings.Contains(c, t) {

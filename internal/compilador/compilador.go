@@ -65,6 +65,7 @@ type Informe struct {
 	FuentesCambiadas []string // fuentes cuyo hash difiere del sello anterior
 }
 
+// marca: comentario «GENERADO» que encabeza cada derivado y nombra su config.
 func marca(config string) string {
 	return fmt.Sprintf("<!-- GENERADO por `aquas compilar` desde %s. NO EDITAR: edita los canónicos y recompila. -->", config)
 }
@@ -113,6 +114,7 @@ func Planificar(raiz string) ([]Salida, error) {
 	return salidas, nil
 }
 
+// compilarAgente arma el .md de un agente desde su config y sus canónicos, y valida campos y tope.
 func compilarAgente(raiz string, a Agente) (Salida, error) {
 	if a.Name == "" || a.Description == "" || a.Model == "" || a.Cuerpo == "" || a.Max <= 0 {
 		return Salida{}, fmt.Errorf("%s: agente %q requiere name, description, model, cuerpo y max_caracteres > 0", RutaAgentes, a.Name)
@@ -240,6 +242,7 @@ func EsSalida(raiz, rel string) bool {
 	return false
 }
 
+// sellar calcula la huella SHA-256 de cada salida y de sus fuentes.
 func sellar(raiz string, salidas []Salida) (Sello, error) {
 	sello := Sello{Salidas: map[string]SelloSalida{}}
 	for _, s := range salidas {
@@ -256,6 +259,7 @@ func sellar(raiz string, salidas []Salida) (Sello, error) {
 	return sello, nil
 }
 
+// diferencias: rutas cuya huella cambió o que aparecen o desaparecen entre dos sellos.
 func diferencias(anterior, nuevo Sello) []string {
 	vistos := map[string]bool{}
 	var cambiadas []string
@@ -272,6 +276,7 @@ func diferencias(anterior, nuevo Sello) []string {
 	return cambiadas
 }
 
+// leerCanonicos lee las fuentes pedidas; rechaza las que no están bajo gobierno/canonico/.
 func leerCanonicos(raiz string, rutas []string) ([]string, error) {
 	partes := make([]string, 0, len(rutas))
 	for _, r := range rutas {
@@ -287,6 +292,7 @@ func leerCanonicos(raiz string, rutas []string) ([]string, error) {
 	return partes, nil
 }
 
+// leerJSON lee y decodifica un JSON relativo a la raíz.
 func leerJSON(raiz, rel string, v any) error {
 	datos, err := os.ReadFile(filepath.Join(raiz, rel))
 	if err != nil {
@@ -300,6 +306,7 @@ func leerJSON(raiz, rel string, v any) error {
 	return nil
 }
 
+// leerSello carga gobierno/config/sellos.json.
 func leerSello(raiz string) (Sello, error) {
 	var s Sello
 	datos, err := os.ReadFile(filepath.Join(raiz, RutaSellos))
@@ -310,6 +317,7 @@ func leerSello(raiz string) (Sello, error) {
 	return s, err
 }
 
+// codificarSello serializa el sello como JSON indentado con salto final.
 func codificarSello(s Sello) ([]byte, error) {
 	datos, err := json.MarshalIndent(s, "", "  ")
 	if err != nil {
@@ -327,15 +335,18 @@ func citarYAML(s string) string {
 	return strings.TrimRight(b.String(), "\n")
 }
 
+// normalizar cambia CRLF por LF para que la huella no dependa del sistema.
 func normalizar(b []byte) []byte {
 	return bytes.ReplaceAll(b, []byte("\r\n"), []byte("\n"))
 }
 
+// huella: SHA-256 en hexadecimal.
 func huella(b []byte) string {
 	h := sha256.Sum256(b)
 	return hex.EncodeToString(h[:])
 }
 
+// escribir guarda datos en la ruta relativa, creando sus carpetas.
 func escribir(raiz, rel string, datos []byte) error {
 	destino := filepath.Join(raiz, rel)
 	if err := os.MkdirAll(filepath.Dir(destino), 0o755); err != nil {

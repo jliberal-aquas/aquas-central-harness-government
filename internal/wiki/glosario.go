@@ -47,6 +47,7 @@ func terminos(pg *pagina) []termino {
 	return ts
 }
 
+// revisarGlosario: cada término del glosario lleva definición y ejemplo.
 func revisarGlosario(pg *pagina) []string {
 	var ps []string
 	for _, s := range pg.secciones {

@@ -156,6 +156,7 @@ func decodificar(b []byte) (Memoria, error) {
 	return m, nil
 }
 
+// Rutas: páginas wiki de la iniciativa, feature y slice del foco, más el backlog.
 func Rutas(f Foco) Mapa {
 	r := Mapa{Backlog: Backlog}
 	if f.Iniciativa == "" {
@@ -199,6 +200,7 @@ func Texto(m Memoria) string {
 	return b.String()
 }
 
+// guion devuelve «—» si el texto está vacío.
 func guion(s string) string {
 	if s == "" {
 		return "—"
@@ -206,6 +208,7 @@ func guion(s string) string {
 	return s
 }
 
+// lista escribe un título y sus viñetas, o «—» si no hay ninguna.
 func lista(b *strings.Builder, titulo string, xs []string) {
 	if len(xs) == 0 {
 		fmt.Fprintf(b, "%s: —\n", titulo)
@@ -217,11 +220,13 @@ func lista(b *strings.Builder, titulo string, xs []string) {
 	}
 }
 
+// codificar serializa la memoria como JSON indentado con salto final.
 func codificar(m Memoria) []byte {
 	b, _ := json.MarshalIndent(m, "", "  ") // struct de strings: no falla
 	return append(b, '\n')
 }
 
+// huella: SHA-256 de la memoria codificada; detecta cambios.
 func huella(m Memoria) string {
 	s := sha256.Sum256(codificar(m))
 	return hex.EncodeToString(s[:])
@@ -270,6 +275,7 @@ func HuellaGit(raiz string) string {
 	return hex.EncodeToString(h.Sum(nil))
 }
 
+// mismaCarpeta: las dos rutas apuntan a la misma carpeta en disco.
 func mismaCarpeta(a, b string) bool {
 	ia, err1 := os.Stat(filepath.FromSlash(a))
 	ib, err2 := os.Stat(b)

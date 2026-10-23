@@ -1,0 +1,16 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F008",
+    "slice": "S004",
+    "tarea": "S004 cerrado: gate exige comentario por función; índice docs/ref/codigo.md"
+  },
+  "siguiente": "F008: S005 sección Código por slice, luego S002 prueba integral",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [],
+  "huella_git": "42c0096000cf0248a9885d35e9d207e28cb81d2f807702d549efc8c7f10dbc00",
+  "actualizado": "2026-10-23T01:11:18Z",
+  "sello": "1a8f879e7b252c18a484c6b003674b1bfd55f3fc2e493b488a7c4b5ed2fb9f8a"
+}

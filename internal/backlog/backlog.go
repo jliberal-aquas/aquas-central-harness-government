@@ -50,8 +50,10 @@ var (
 	reID        = regexp.MustCompile(`^E\d{3}(/F\d{3}(/S\d{3})?)?$`)
 )
 
+// terminal: el estado ya no cambia (CERRADO o CANCELADO).
 func terminal(estado string) bool { return estado == "CERRADO" || estado == "CANCELADO" }
 
+// esta: x figura en la lista.
 func esta(xs []string, x string) bool {
 	for _, y := range xs {
 		if x == y {
@@ -68,6 +70,7 @@ func tipoYPadre(id string) (tipo, padre string) {
 	return tipo, strings.Join(partes[:len(partes)-1], "/")
 }
 
+// nombre: archivo JSON de una ficha, con «/» del ID cambiadas por «-».
 func nombre(id string) string { return strings.ReplaceAll(id, "/", "-") + ".json" }
 
 // todas lee activo y archivo. Una ficha ilegible es error: Validar la detalla.
@@ -105,6 +108,7 @@ func Todas(raiz string) ([]Ficha, error) {
 	return fs, nil
 }
 
+// leer carga una ficha desde su archivo JSON.
 func leer(ruta string) (Ficha, error) {
 	b, err := os.ReadFile(ruta)
 	if err != nil {
@@ -134,6 +138,7 @@ func leer(ruta string) (Ficha, error) {
 	return f, nil
 }
 
+// escribir guarda la ficha como JSON en trabajo/<dir>/, con listas vacías en vez de null.
 func escribir(raiz, dir string, f Ficha) error {
 	if f.BloqueadoPor == nil {
 		f.BloqueadoPor = []string{}

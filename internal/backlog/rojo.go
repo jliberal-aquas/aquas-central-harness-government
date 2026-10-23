@@ -72,6 +72,7 @@ func listaPruebas(xs []string) ([]Prueba, error) {
 	return ps, nil
 }
 
+// corriendo: la ficha está EN_CURSO o VERIFICANDO.
 func corriendo(f Ficha) bool { return f.Estado == "EN_CURSO" || f.Estado == "VERIFICANDO" }
 
 // sliceEnCurso: el primer slice EN_CURSO o VERIFICANDO entre las activas, por id.
@@ -187,6 +188,7 @@ type resultado struct {
 	noCompila, sinPaquete bool
 }
 
+// motivo: texto que explica el resultado de una prueba; siPasa se usa cuando pasó.
 func (r resultado) motivo(siPasa string) string {
 	switch {
 	case r.accion == "pass" && siPasa != "":
