@@ -42,8 +42,9 @@ type Ficha struct {
 
 	Arreglos []Arreglo `json:"arreglos,omitempty"`
 	// E001/F008/S005: código de producción tocado, congelado al cerrar.
-	Codigo   []string `json:"codigo,omitempty"`
-	Relacion string   `json:"relacion,omitempty"` // E001/F009/S001: nueva, amplia:<id> o corrige:<id>
+	Codigo    []string  `json:"codigo,omitempty"`
+	Relacion  string    `json:"relacion,omitempty"`  // E001/F009/S001: nueva, amplia:<id> o corrige:<id>
+	Ediciones []Edicion `json:"ediciones,omitempty"` // E001/F009/S003: cambios antes de arrancar
 }
 
 // Estados y prioridades del canónico E001 (sección Backlog).

@@ -1,0 +1,379 @@
+{
+  "id": "E001/F009/S003",
+  "tipo": "slice",
+  "titulo": "backlog editar cambia una ficha que aún no arranca",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-23: evitar fichas repetidas o que piden lo ya construido (caso E001/F008/S002)",
+  "padre": "E001/F009",
+  "bloqueado_por": [],
+  "secuencia": 91,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestEditarSoloAntesDeArrancar",
+      "intencion": "backlog editar cambia titulo o bloqueado_por solo en BORRADOR o LISTO, exige motivo y guarda campo, antes, después y motivo",
+      "rojo_cuando": "edita una ficha EN_CURSO o cerrada, acepta un campo no editable o sin motivo, o no deja historial",
+      "verde_cuando": "edita antes de arrancar con historial y niega lo demás"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-23T13:46:54Z",
+    "head": "c9f9f4e682d8b9dd98c0ae96e2eb7bfd5225e021",
+    "resultado": {
+      "./internal/backlog:TestEditarSoloAntesDeArrancar": "editar_test.go:17: editar en BORRADOR: sin implementar (E001/F009/S003)"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-23T13:49:14Z",
+    "head": "c9f9f4e682d8b9dd98c0ae96e2eb7bfd5225e021"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F009",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "pagina:docs/E001/F009/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "pagina:docs/E001/F009/README.md",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "comando backlog editar y su uso; índice regenerado"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "Editar es función nueva; el campo ediciones es opcional al leer"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/**",
+    "trabajo/**",
+    "gobierno/config/sellos.json"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/backlog.go",
+    "internal/backlog/editar.go"
+  ]
+}

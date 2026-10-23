@@ -42,8 +42,8 @@ func TestBacklogSinRepetidos(t *testing.T) {
 		t.Errorf("la edición no guardó el valor nuevo, el anterior o el porqué:\n%s", s)
 	}
 	// 5. Editar algo en curso se niega.
-	enCurso(t, raiz, "E001/F002/S001", "./p:TestFalla=falla|r|v")
-	if _, err := Editar(raiz, "E001/F002/S001", []string{"titulo=otro", "motivo=x"}, hora); err == nil {
+	enCurso(t, raiz, "E001/F002/S003", "./p:TestFalla=falla|r|v")
+	if _, err := Editar(raiz, "E001/F002/S003", []string{"titulo=otro", "motivo=x"}, hora); err == nil {
 		t.Error("editar EN_CURSO: debió negarse")
 	}
 }
