@@ -156,6 +156,31 @@
         "fecha": "2026-10-23T15:10:55Z",
         "head": "9b121205c42b4ca8f7ef284e7be502d08882ece3"
       }
+    },
+    {
+      "id": "E001/F002/S003/X03",
+      "titulo": "backlog pruebas no pisa la prueba de un arreglo",
+      "motivo": "D000028: pruebas sobre un arreglo existente le cambió su prueba sin avisar",
+      "fecha": "2026-10-23T16:15:22Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/backlog:TestPruebasNoPisaArregloAjeno",
+          "intencion": "backlog pruebas se niega a cambiar la prueba que un arreglo ya declara",
+          "rojo_cuando": "una prueba distinta reemplaza en silencio la del arreglo o se niega la misma",
+          "verde_cuando": "otra prueba se rechaza nombrando la que ya tiene; la misma con otro texto se acepta"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T16:15:22Z",
+        "head": "c4545b804d3ced86e1a916eb569c79a8b0f41b3b",
+        "resultado": {
+          "./internal/backlog:TestPruebasNoPisaArregloAjeno": "pruebas_arreglo_test.go:20: otra prueba sobre un arreglo con prueba: debió negarse nombrando TestVieja; dio \u003cnil\u003e"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T16:16:02Z",
+        "head": "c4545b804d3ced86e1a916eb569c79a8b0f41b3b"
+      }
     }
   ],
   "codigo": [

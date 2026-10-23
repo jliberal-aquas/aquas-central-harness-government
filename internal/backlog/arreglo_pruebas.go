@@ -80,6 +80,18 @@ func verdeDe(raiz, id string, ps []Prueba, rojo *Registro, ahora time.Time) (*Re
 // pruebasArreglo fija las pruebas del arreglo; cambiarlas borra su rojo y su verde.
 func pruebasArreglo(raiz, id string, ps []Prueba) (Ficha, error) {
 	return cambiarArreglo(raiz, id, func(a *Arreglo) error {
+		if len(a.Pruebas) > 0 { // D000028: no pisar la prueba de un arreglo ajeno por un id supuesto
+			var ya, nuevas []string
+			for _, p := range a.Pruebas {
+				ya = append(ya, p.Nombre)
+			}
+			for _, p := range ps {
+				nuevas = append(nuevas, p.Nombre)
+			}
+			if strings.Join(ya, ",") != strings.Join(nuevas, ",") {
+				return fmt.Errorf("%s ya tiene prueba %s: ¿es el arreglo correcto? usa el id que devolvió aquas backlog arreglo (D000028)", id, strings.Join(ya, ", "))
+			}
+		}
 		a.Pruebas, a.Rojo, a.Verde = ps, nil, nil
 		return nil
 	})
