@@ -7,5 +7,8 @@
   "motivo": "migrado: cerrado antes del backlog JSON",
   "padre": "E000/F001",
   "bloqueado_por": [],
-  "secuencia": 5
+  "secuencia": 5,
+  "codigo": [
+    ".claude/settings.json"
+  ]
 }

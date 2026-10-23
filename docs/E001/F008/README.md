@@ -81,6 +81,8 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 Prueba integral: `TestDocumentacionVerificable` (pendiente).
 
+Arreglo X01 del feature (D000021): `TestMermaidSinPuntoYComa`.
+
 ## Navegación
 
 <!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
@@ -94,6 +96,12 @@ Prueba integral: `TestDocumentacionVerificable` (pendiente).
 | [S005](S005.md) | Sección Código en cada slice con enlaces a lo tocado | Hecho |
 | [S006](S006.md) | Arreglos con ID bajo su slice y sección Arreglos | Hecho |
 | [S007](S007.md) | Completar la documentación vieja de pruebas y arreglos | Hecho |
+
+### Arreglos
+
+| Arreglo | Qué arregla | Por qué | Pruebas | Fecha |
+|---|---|---|---|---|
+| X01 | El gate rechaza «;» dentro de un diagrama Mermaid | D000021: GitHub no dibujaba 4 diagramas con «;» (reportado por el humano 2026-10-23) | `TestMermaidSinPuntoYComa` | 2026-10-23 |
 
 <!-- /GENERADO -->
 

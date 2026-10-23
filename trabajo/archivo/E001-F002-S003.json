@@ -105,5 +105,12 @@
   "verde": {
     "fecha": "2026-10-21T14:14:20Z",
     "head": "2ea0a4212793c32156b101c30cb96ade84e15aff"
-  }
+  },
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/backlog.go",
+    "internal/backlog/rojo.go",
+    "internal/guardia/guardia.go",
+    "internal/memoria/memoria.go"
+  ]
 }

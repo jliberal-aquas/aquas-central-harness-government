@@ -86,7 +86,9 @@ func TestHijosGeneradosDesdeFichas(t *testing.T) {
 			"| S002 | Lista | Planeado |\n\n<!-- /GENERADO -->",
 		tS001: aviso + "| Prueba | Valida | Rojo cuando | Verde cuando | Rojo | Verde |\n|---|---|---|---|---|---|\n" +
 			"| `TestA` | bloquea fuera | — | — | 2026-10-21 | 2026-10-21 |\n" +
-			"| `TestB` | deja pasar | — | — | — | 2026-10-21 |\n\n<!-- /GENERADO -->",
+			"| `TestB` | deja pasar | — | — | — | 2026-10-21 |\n" +
+			"\n### Código\n\nSin código registrado: sus cambios no tocaron código ni configuración, o no nombran el ID (`aquas backlog codigo E001/F001/S001 <commit>…` los asigna).\n" + // D000022
+			"\n<!-- /GENERADO -->",
 	}
 	seccionDe := map[string]string{tInicio: "## Navegación", tE001: "## Navegación", tF001: "## Navegación", tS001: "## Contrato y evidencia"}
 	for rel, bloque := range quiere {

@@ -7,5 +7,11 @@
   "motivo": "migrado: cerrado antes del backlog JSON",
   "padre": "E001/F005",
   "bloqueado_por": [],
-  "secuencia": 34
+  "secuencia": 34,
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/guardia/guardia.go",
+    "internal/memoria/archivar.go",
+    "internal/memoria/memoria.go"
+  ]
 }

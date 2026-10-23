@@ -1,0 +1,9 @@
+{
+  "id": "D000022",
+  "firma": "codigo-vacio-en-slices-viejos",
+  "que": "22 slices cerrados no muestran sección Código (ej. E000/F001/S003): sus commits no empiezan con el ID (bae7091 «Guardia: los hooks nunca arrancaban en Windows», 16dded3 «… (E000/F005/S003)»); la página omite la sección sin avisar; reportado por el humano 2026-10-23",
+  "causa": "codigoTocado solo busca commits cuyo mensaje empieza con el ID; tablaCodigo devuelve vacío si no hay lista",
+  "arreglo": "buscar el ID en cualquier parte del mensaje, permitir  para commits que no lo nombran, y mostrar la sección con «sin código registrado» cuando la lista esté vacía",
+  "como_me_cercioro": "prueba: commit con el ID al final cuenta; slice sin lista muestra la sección con el aviso",
+  "ocurrencias": []
+}

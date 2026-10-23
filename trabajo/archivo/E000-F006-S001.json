@@ -80,5 +80,8 @@
     "docs/E000/**",
     "docs/README.md",
     "docs/glosario.md"
+  ],
+  "codigo": [
+    ".claude/hooks/aquas.sh"
   ]
 }

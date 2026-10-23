@@ -7,5 +7,12 @@
   "motivo": "migrado: cerrado antes del backlog JSON",
   "padre": "E000/F001",
   "bloqueado_por": [],
-  "secuencia": 6
+  "secuencia": 6,
+  "codigo": [
+    ".claude/settings.json",
+    "cmd/aquas/main.go",
+    "gobierno/config/claude_settings.json",
+    "internal/entorno/entorno.go",
+    "internal/guardia/guardia.go"
+  ]
 }

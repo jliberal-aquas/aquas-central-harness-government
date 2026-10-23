@@ -27,3 +27,16 @@ func TestSliceEnlazaSuCodigo(t *testing.T) {
 		t.Errorf("el archivo borrado debe aparecer sin enlace:\n%s", s)
 	}
 }
+
+// TestSeccionCodigoVaciaVisible: un slice cerrado sin código registrado muestra la sección con el aviso (D000022).
+// Rojo cuando: la sección Código desaparece si la lista está vacía.
+// Verde cuando: la sección aparece y dice «sin código registrado».
+func TestSeccionCodigoVaciaVisible(t *testing.T) {
+	s, err := tablaCodigo(t.TempDir(), backlog.Ficha{ID: "E001/F001/S001", Tipo: "slice", Estado: "CERRADO"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(s, "### Código") || !strings.Contains(strings.ToLower(s), "sin código registrado") {
+		t.Errorf("sección vacía oculta:\n%s", s)
+	}
+}

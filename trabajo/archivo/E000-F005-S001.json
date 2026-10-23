@@ -40,5 +40,8 @@
   "verde": {
     "fecha": "2026-10-21T14:28:03Z",
     "head": "1e576b5cd422831625ef3176ab4cc164c76ccac6"
-  }
+  },
+  "codigo": [
+    "cmd/aquas/main.go"
+  ]
 }

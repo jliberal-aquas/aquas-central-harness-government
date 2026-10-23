@@ -71,6 +71,7 @@
   },
   "codigo": [
     "cmd/aquas/main.go",
+    "gobierno/config/claude_settings.json",
     "internal/guardia/guardia.go",
     "internal/turno/turno.go"
   ]

@@ -7,5 +7,9 @@
   "motivo": "migrado: cerrado antes del backlog JSON",
   "padre": "E001/F006",
   "bloqueado_por": [],
-  "secuencia": 36
+  "secuencia": 36,
+  "codigo": [
+    "gobierno/config/agentes.json",
+    "internal/compilador/compilador.go"
+  ]
 }

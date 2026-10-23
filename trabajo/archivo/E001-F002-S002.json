@@ -7,5 +7,10 @@
   "motivo": "P1 3.º, aprobado 2026-10-21",
   "padre": "E001/F002",
   "bloqueado_por": [],
-  "secuencia": 20
+  "secuencia": 20,
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/backlog.go",
+    "internal/guardia/guardia.go"
+  ]
 }

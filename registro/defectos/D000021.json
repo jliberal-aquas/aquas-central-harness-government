@@ -1,0 +1,9 @@
+{
+  "id": "D000021",
+  "firma": "mermaid-punto-y-coma",
+  "que": "GitHub no dibuja el diagrama de docs/E000/F001/S003.md: «Parse error on line 7»; el mensaje «no se encuentra; error que no bloquea» lleva «;». Hay 4 diagramas con «;» (E000/F001/S003, E001/F008/S007, E002/F001/S002, E002/F001/S003); reportado por el humano 2026-10-23",
+  "causa": "en Mermaid «;» separa sentencias: el resto del mensaje queda como sentencia suelta; el gate revisa que exista el diagrama pero no su sintaxis",
+  "arreglo": "cambiar «;» por «,» en los 4 diagramas y que el gate de la wiki rechace «;» dentro de un bloque mermaid",
+  "como_me_cercioro": "prueba en internal/wiki: bloque mermaid con «;» falla nombrando archivo y línea; sin «;» pasa",
+  "ocurrencias": []
+}

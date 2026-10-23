@@ -144,11 +144,47 @@
     "docs/**",
     "trabajo/**"
   ],
+  "arreglos": [
+    {
+      "id": "E001/F008/S005/X01",
+      "titulo": "Código de slices viejos: ID en todo el mensaje, commits explícitos y sección vacía visible",
+      "motivo": "D000022: 22 slices sin sección Código porque sus commits no empiezan con el ID (reportado por el humano 2026-10-23)",
+      "fecha": "2026-10-23T02:17:36Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/backlog:TestCodigoIDEnTodoElMensaje",
+          "intencion": "el ID cuenta en cualquier parte del mensaje y se suman commits que no lo nombran",
+          "rojo_cuando": "ignora el commit con el ID al final, toma un ID más largo que empieza igual, o no suma el commit explícito",
+          "verde_cuando": "toma el commit con el ID al final y el explícito, y descarta el ID más largo"
+        },
+        {
+          "prueba": "./internal/wiki:TestSeccionCodigoVaciaVisible",
+          "intencion": "un slice sin código registrado muestra la sección con el aviso",
+          "rojo_cuando": "la sección Código desaparece si la lista está vacía",
+          "verde_cuando": "la sección aparece y dice «sin código registrado»"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T02:17:38Z",
+        "head": "8db7d3ef28f346d400c8d8c5ea2f25b4a6884f20",
+        "resultado": {
+          "./internal/backlog:TestCodigoIDEnTodoElMensaje": "codigo_test.go:90: Codigo = [], se esperaba [internal/a/a.go internal/b/b.go]",
+          "./internal/wiki:TestSeccionCodigoVaciaVisible": "seccioncodigo_test.go:40: sección vacía oculta:"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T02:25:02Z",
+        "head": "8db7d3ef28f346d400c8d8c5ea2f25b4a6884f20"
+      }
+    }
+  ],
   "codigo": [
     "cmd/aquas/main.go",
     "internal/backlog/backlog.go",
     "internal/backlog/codigo.go",
     "internal/wiki/codigo.go",
-    "internal/wiki/hijos.go"
+    "internal/wiki/hijos.go",
+    "internal/wiki/mermaid.go",
+    "internal/wiki/wiki.go"
   ]
 }

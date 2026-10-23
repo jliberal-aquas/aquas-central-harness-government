@@ -138,6 +138,9 @@ func Verificar(raiz string) ([]string, error) {
 		problemas = append(problemas, revisarSecciones(pg)...)
 		problemas = append(problemas, revisarMigas(pg)...)
 		problemas = append(problemas, revisarDiagramas(pg)...)
+		if c, err := os.ReadFile(filepath.Join(raiz, filepath.FromSlash(rel))); err == nil { // D000021
+			problemas = append(problemas, revisarMermaid(rel, string(c))...)
+		}
 		problemas = append(problemas, revisarEjemplo(pg, paginas)...)
 		problemas = append(problemas, revisarNavegacion(pg, hijos[rel])...)
 		problemas = append(problemas, revisarEnlaces(raiz, pg, anclas)...)

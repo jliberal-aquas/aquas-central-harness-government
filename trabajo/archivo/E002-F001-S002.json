@@ -143,6 +143,8 @@
     "cmd/aquas/main.go",
     "internal/backlog/arreglo.go",
     "internal/backlog/backlog.go",
+    "internal/backlog/documentar.go",
+    "internal/backlog/rojo.go",
     "internal/hijo/build.go",
     "internal/wiki/hijos.go"
   ]

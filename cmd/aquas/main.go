@@ -437,7 +437,7 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 
 // backlogCLI: nuevo | ver [id] | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | documentar <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=… | arreglo <slice|feature> titulo=… motivo=… [absorbe=<slice>] | codigo <id>")
+	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | documentar <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=… | arreglo <slice|feature> titulo=… motivo=… [absorbe=<slice>] | codigo <id> [commit…]")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}
@@ -466,8 +466,8 @@ func backlogCLI(raiz string, args []string) {
 	case args[0] == "documentar" && len(args) > 2: // E001/F008/S007
 		f, err = backlog.Documentar(raiz, args[1], args[2:])
 		detalle = true
-	case args[0] == "codigo" && len(args) == 2: // E001/F008/S005: recalcula el código tocado
-		f, err = backlog.Codigo(raiz, args[1])
+	case args[0] == "codigo" && len(args) >= 2: // E001/F008/S005: recalcula el código tocado
+		f, err = backlog.Codigo(raiz, args[1], args[2:])
 	case args[0] == "pruebas" && len(args) > 2:
 		f, err = backlog.Pruebas(raiz, args[1], args[2:])
 		detalle = true

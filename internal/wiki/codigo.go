@@ -98,24 +98,27 @@ func revisarCodigo(raiz string) ([]string, error) {
 	return ps, nil
 }
 
-// indiceCodigo: tabla archivo → función → primera línea de su comentario.
+// indiceCodigo: tabla archivo → función → parámetros → primera línea de su comentario.
 func indiceCodigo(raiz string) (string, error) {
 	fns, err := funcionesGo(raiz)
 	if err != nil {
 		return "", err
 	}
 	var b strings.Builder
-	b.WriteString("| Archivo | Función | Qué hace |\n|---|---|---|\n")
+	b.WriteString("| Archivo | Función | Parámetros | Qué hace |\n|---|---|---|---|\n")
 	for _, f := range fns {
-		fmt.Fprintf(&b, "| [%s](../../%s) | `%s` | %s |\n", f.archivo, f.archivo, f.nombre, oGuion(celda(f.comentario)))
+		fmt.Fprintf(&b, "| [%s](../../%s) | `%s` | `%s` | %s |\n", f.archivo, f.archivo, f.nombre, celda(f.firma), oGuion(celda(f.comentario)))
 	}
 	return b.String(), nil
 }
 
 // tablaCodigo: sección «Código» de un slice: cada archivo tocado con sus funciones, parámetros y qué hacen.
 func tablaCodigo(raiz string, f backlog.Ficha) (string, error) {
-	if len(f.Codigo) == 0 {
-		return "", nil
+	if len(f.Codigo) == 0 && f.Estado != "CERRADO" {
+		return "", nil // en curso: el código se registra al cerrar
+	}
+	if len(f.Codigo) == 0 { // D000022: en un slice cerrado la sección vacía queda a la vista
+		return "\n### Código\n\nSin código registrado: sus cambios no tocaron código ni configuración, o no nombran el ID (`aquas backlog codigo " + f.ID + " <commit>…` los asigna).\n", nil
 	}
 	fs, err := funcionesGo(raiz)
 	if err != nil {

@@ -15,5 +15,32 @@
       "rojo_cuando": "falta en la página del slice la tabla de pruebas, el código enlazado o los arreglos",
       "verde_cuando": "la página del slice trae pruebas con los tres campos, enlaces al código y sus arreglos"
     }
+  ],
+  "arreglos": [
+    {
+      "id": "E001/F008/X01",
+      "titulo": "El gate rechaza «;» dentro de un diagrama Mermaid",
+      "motivo": "D000021: GitHub no dibujaba 4 diagramas con «;» (reportado por el humano 2026-10-23)",
+      "fecha": "2026-10-23T02:17:36Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/wiki:TestMermaidSinPuntoYComa",
+          "intencion": "un «;» dentro de un bloque mermaid hace caer el gate",
+          "rojo_cuando": "el gate calla ante un «;» en un diagrama, o avisa por uno en la prosa",
+          "verde_cuando": "avisa con archivo y línea del «;» en el diagrama y calla con el «;» fuera"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-23T02:17:36Z",
+        "head": "8db7d3ef28f346d400c8d8c5ea2f25b4a6884f20",
+        "resultado": {
+          "./internal/wiki:TestMermaidSinPuntoYComa": "mermaid_test.go:15: se esperaba un aviso en docs/x.md:7: []"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-23T02:20:43Z",
+        "head": "8db7d3ef28f346d400c8d8c5ea2f25b4a6884f20"
+      }
+    }
   ]
 }
