@@ -70,6 +70,7 @@ Estado actual de sus features:
 | [F004 Defectos y reincidencia](F004/README.md) | Registra fallos y avisa si se repiten |
 | [F003 Bibliotecario](F003/README.md) | Lee el repo pidiendo solo lo útil |
 | [F008 Documentación verificable](F008/README.md) | Pruebas, código y arreglos escritos en la wiki |
+| [F009 Backlog sin fichas repetidas](F009/README.md) | Parecidas y relación antes de crear una ficha |
 
 ## Ejemplo de punta a punta
 
@@ -153,6 +154,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F006](F006/README.md) | Workers y auditor | Hecho |
 | F007 | Tabla del backlog en la terminal | Planeado |
 | [F008](F008/README.md) | Documentación verificable de pruebas, código y arreglos | Hecho |
+| [F009](F009/README.md) | Backlog sin fichas repetidas | Planeado |
 
 <!-- /GENERADO -->
 
@@ -164,3 +166,4 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 - Abajo: [F004 · Defectos y reincidencia](F004/README.md)
 - Abajo: [F003 · Bibliotecario](F003/README.md)
 - Abajo: [F008 · Documentación verificable de pruebas, código y arreglos](F008/README.md)
+- Abajo: [F009 · Backlog sin fichas repetidas](F009/README.md)

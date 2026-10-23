@@ -65,7 +65,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 ## Paso a paso
 
 1. Detalle de cada prueba (S001).
-2. Prueba integral obligatoria para cerrar el feature (S002).
+2. Prueba integral obligatoria (S002, cancelado: `cierre()` ya lo exigía).
 3. Portadas con todas las iniciativas (S003).
 4. Funciones comentadas e índice de código (S004).
 5. Sección «Código» en cada slice (S005).

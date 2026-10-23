@@ -1,0 +1,9 @@
+{
+  "id": "D000024",
+  "firma": "pipe-parte-prueba",
+  "que": "backlog pruebas y nuevo aceptan un texto de prueba con más de tres partes separadas por |; el sobrante se pierde o corre a rojo/verde cuando sin aviso (E001/F009/S001 y S002, 2026-10-23).",
+  "causa": "El parser divide en | sin exigir exactamente tres partes.",
+  "arreglo": "Propuesto: rechazar la prueba si valida|rojo|verde no da exactamente tres partes.",
+  "como_me_cercioro": "Prueba: un texto con cuatro partes cae al registrarlo; con tres pasa.",
+  "ocurrencias": []
+}

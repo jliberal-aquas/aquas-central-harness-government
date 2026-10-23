@@ -1,0 +1,21 @@
+{
+  "id": "E001/F009/S002",
+  "tipo": "slice",
+  "titulo": "defecto nuevo muestra parecidos y exige relacion",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-23: evitar fichas repetidas o que piden lo ya construido (caso E001/F008/S002)",
+  "padre": "E001/F009",
+  "bloqueado_por": [
+    "E001/F009/S001"
+  ],
+  "secuencia": 90,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestDefectoNuevoExigeRelacion",
+      "intencion": "defecto nuevo lista los defectos y fichas parecidos y exige relacion (nuevo, repite:\u003cD\u003e o el id de una ficha)",
+      "rojo_cuando": "registra el defecto sin relacion o sin mostrar parecidos",
+      "verde_cuando": "exige relacion y muestra parecidos"
+    }
+  ]
+}

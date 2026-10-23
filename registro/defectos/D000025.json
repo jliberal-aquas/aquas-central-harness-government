@@ -1,0 +1,9 @@
+{
+  "id": "D000025",
+  "firma": "integral-sin-pagina-feature",
+  "que": "El gate de la wiki solo acepta como dueña de una prueba la página de un slice; la integral de una feature (TestBacklogSinRepetidos, E001/F009) no puede subirse en rojo antes de su primer slice.",
+  "causa": "La trazabilidad busca el nombre solo en «Contrato y evidencia» de páginas de slice.",
+  "arreglo": "Propuesto: aceptar la integral nombrada en «Contrato y evidencia» del README de su feature.",
+  "como_me_cercioro": "Prueba: integral nombrada solo en el README de su feature pasa el gate; una prueba de slice nombrada solo ahí sigue fallando.",
+  "ocurrencias": []
+}
