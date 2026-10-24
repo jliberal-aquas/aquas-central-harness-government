@@ -1,0 +1,10 @@
+{
+  "id": "D000033",
+  "firma": "rojo-subtest-sin-motivo",
+  "que": "el rojo guarda motivo vacío cuando falla un subtest; la wiki pinta «—» como si nunca hubiera estado en rojo (TestGateDetectaHijoHuerfano en E001/F002/S017; también E000, E001, E002, E000/F005/S006, E001/F010/S001)",
+  "causa": "correr (internal/backlog/rojo.go:276-296) solo junta salida con Test igual a la prueba padre; go test -json reporta el fallo con Test=Padre/sub",
+  "arreglo": "juntar también la salida de Padre/*",
+  "como_me_cercioro": "prueba: rojo con fallo solo en subtest guarda motivo no vacío",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

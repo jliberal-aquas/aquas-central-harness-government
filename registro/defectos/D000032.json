@@ -1,0 +1,10 @@
+{
+  "id": "D000032",
+  "firma": "rojo-heredado-de-cancelado",
+  "que": "rojoHeredado (internal/backlog/rojo.go:167) toma el rojo de cualquier slice archivado de la feature, también CANCELADO",
+  "causa": "filtra archivados sin mirar el estado; hallado en la revisión del criterio 6 de E001/F002/S017",
+  "arreglo": "heredar solo de slices CERRADO",
+  "como_me_cercioro": "prueba: slice CANCELADO con rojo no respalda la integral; CERRADO sí",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

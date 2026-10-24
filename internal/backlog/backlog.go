@@ -334,8 +334,8 @@ func Estado(raiz, id, estado string) (Ficha, error) {
 	return f, os.Remove(filepath.Join(raiz, filepath.FromSlash(Activo), nombre(id)))
 }
 
-// sinHijosActivos: CERRADO o CANCELADO de una feature o iniciativa exige que sus hijos directos
-// ya estén en el archivo. Los hijos son las fichas activas cuyo padre es f.
+// sinHijosActivos: cerrar o cancelar una feature o iniciativa exige sus hijos directos ya archivados.
+// Los hijos son las fichas activas cuyo padre es f.
 func sinHijosActivos(act map[string]Ficha, f Ficha) error {
 	var hijos []Ficha
 	for _, h := range act {

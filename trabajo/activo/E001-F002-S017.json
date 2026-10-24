@@ -34,6 +34,153 @@
     "fecha": "2026-10-24T02:03:36Z",
     "head": "277b19eb8d0bcd22aaa359d748b5c814aa8329b0"
   },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia; la regla nueva solo actúa cuando se pida su cierre"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia; la regla nueva solo actúa cuando se pida su cierre"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S017.md",
+      "marca": "actualizado",
+      "motivo": "contrato, casos borde y revisión de comprobaciones escritos en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "tabla de hijos regenerada con S017 y huérfanos fuera"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la página de la iniciativa no describe el cierre de padres"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "nombra:cmd/aquas/aprobacion_test.go\u003edocs/E001/F002/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "nombra una ruta de docs como dato o ejemplo; la ruta sigue existiendo y su contenido no depende del cierre de padres"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombra una ruta de docs como dato o ejemplo; la ruta sigue existiendo y su contenido no depende del cierre de padres"
+    },
+    {
+      "clave": "nombra:internal/backlog/aprobacion_test.go\u003edocs/E001/F002/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "nombra una ruta de docs como dato o ejemplo; la ruta sigue existiendo y su contenido no depende del cierre de padres"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombra una ruta de docs como dato o ejemplo; la ruta sigue existiendo y su contenido no depende del cierre de padres"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/S004.md",
+      "marca": "sin_cambio",
+      "motivo": "nombra una ruta de docs como dato o ejemplo; la ruta sigue existiendo y su contenido no depende del cierre de padres"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "nombra una ruta de docs como dato o ejemplo; la ruta sigue existiendo y su contenido no depende del cierre de padres"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "nombra una ruta de docs como dato o ejemplo; la ruta sigue existiendo y su contenido no depende del cierre de padres"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la API de internal/backlog no cambió; solo se agregan rechazos al cerrar padres y un problema nuevo en Validar"
+    }
+  ],
   "alcance": [
     "internal/backlog/**",
     "cmd/aquas/**",
