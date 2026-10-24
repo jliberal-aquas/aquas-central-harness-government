@@ -11,10 +11,22 @@
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestPadreNoCierraConHijosAbiertos",
-      "intencion": "valida que cerrar feature o iniciativa con hijo no terminal se rechaza nombrando al hijo",
+      "intencion": "valida que cerrar o cancelar feature o iniciativa con hijo activo se rechaza nombrando al hijo",
       "rojo_cuando": "rojo cuando la feature cierra con un slice EN_CURSO",
       "verde_cuando": "verde cuando el cierre se rechaza y pasa al cerrar todos los hijos"
+    },
+    {
+      "prueba": "./internal/backlog:TestGateDetectaHijoHuerfano",
+      "intencion": "valida que el gate falla con hijo activo y padre archivado",
+      "rojo_cuando": "rojo cuando el gate da OK con un huérfano",
+      "verde_cuando": "verde cuando el gate nombra hijo y padre"
     }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/E001/F002/**",
+    "registro/defectos/**"
   ],
   "relacion": "amplia:E001/F002"
 }
