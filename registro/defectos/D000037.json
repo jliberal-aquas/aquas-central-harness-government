@@ -1,0 +1,10 @@
+{
+  "id": "D000037",
+  "firma": "aprobacion-solo-la-primera-del-mensaje",
+  "que": "«apruebo E001/F002/S018, apruebo E000/F006/S008; a» registró solo S018; S008 quedó sin aprobación",
+  "causa": "no confirmada; el hook de aprobación parece tomar solo el primer id del mensaje",
+  "arreglo": "el hook registra cada «apruebo \u003cid\u003e» del mensaje",
+  "como_me_cercioro": "prueba: mensaje con dos apruebo registra ambas fichas",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
