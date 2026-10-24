@@ -1,0 +1,10 @@
+{
+  "id": "D000034",
+  "firma": "go-run-binario-cacheado-viejo",
+  "que": "el pre-commit (go run ./cmd/aquas verificar) falla con «binario de aquas más viejo que internal/backlog/backlog.go» aunque el código ya está compilado",
+  "causa": "go run reutilizó un ejecutable de la caché con fecha anterior al .go editado; con GOFLAGS=-a el mismo gate da GATE OK (2026-10-24, go1.26.2)",
+  "arreglo": "BinarioViejo compara contenido o versión embebida en vez de fecha, o el pre-commit construye a .tmp y corre ese binario",
+  "como_me_cercioro": "prueba: editar un .go, go run verificar sin -a no da falso aviso",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
