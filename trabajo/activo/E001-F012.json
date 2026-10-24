@@ -1,0 +1,20 @@
+{
+  "id": "E001/F012",
+  "tipo": "feature",
+  "titulo": "Prevención activa",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-23: gobierno activo, no reactivo; casos borde y vigencia antes de construir",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 97,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestPrevencionActivaGobernada",
+      "intencion": "valida que todo contrato nuevo trae casos borde",
+      "rojo_cuando": "rojo cuando un contrato sin tabla de casos borde pasa el gate",
+      "verde_cuando": "verde cuando el gate lo rechaza y el contrato completo pasa"
+    }
+  ],
+  "relacion": "nueva"
+}

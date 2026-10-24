@@ -1,0 +1,20 @@
+{
+  "id": "E001/F002/S017",
+  "tipo": "slice",
+  "titulo": "Padre no cierra con hijos abiertos",
+  "estado": "BORRADOR",
+  "prioridad": "P0",
+  "motivo": "D000030 (arreglo X01): E001/F010 cerró con S001 EN_CURSO; E001/F003 archivada con S003-S005 en BORRADOR",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 96,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestPadreNoCierraConHijosAbiertos",
+      "intencion": "valida que cerrar feature o iniciativa con hijo no terminal se rechaza nombrando al hijo",
+      "rojo_cuando": "rojo cuando la feature cierra con un slice EN_CURSO",
+      "verde_cuando": "verde cuando el cierre se rechaza y pasa al cerrar todos los hijos"
+    }
+  ],
+  "relacion": "amplia:E001/F002"
+}

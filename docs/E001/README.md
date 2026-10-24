@@ -157,6 +157,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F009](F009/README.md) | Backlog sin fichas repetidas | Hecho |
 | [F010](F010/README.md) | Contrato aprobado antes de construir | Hecho |
 | F011 | Frenos propios del gobierno | Planeado |
+| F012 | Prevención activa | Planeado |
 
 <!-- /GENERADO -->
 

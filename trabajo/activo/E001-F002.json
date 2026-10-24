@@ -7,5 +7,13 @@
   "motivo": "P1 3.º: el orden lo guarda aquas",
   "padre": "E001",
   "bloqueado_por": [],
-  "secuencia": 18
+  "secuencia": 18,
+  "arreglos": [
+    {
+      "id": "E001/F002/X01",
+      "titulo": "Padre no cierra con hijos abiertos",
+      "motivo": "D000030: E001/F010 cerró con S001 EN_CURSO; E001/F003 archivada con S003-S005 en BORRADOR",
+      "fecha": "2026-10-24T01:26:47Z"
+    }
+  ]
 }

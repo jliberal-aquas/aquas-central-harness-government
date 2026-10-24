@@ -1,0 +1,20 @@
+{
+  "id": "E001/F012/S001",
+  "tipo": "slice",
+  "titulo": "Casos borde y vigencia en el contrato",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-23: aprobó con a los 4 textos (ciclo, principios 11 y 12, regla 04)",
+  "padre": "E001/F012",
+  "bloqueado_por": [],
+  "secuencia": 98,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestContratoExigeCasosBorde",
+      "intencion": "valida que la página del slice trae la tabla de casos borde con las 7 categorías",
+      "rojo_cuando": "rojo cuando falta una categoría y el gate da OK",
+      "verde_cuando": "verde cuando el gate nombra la categoría que falta"
+    }
+  ],
+  "relacion": "nueva"
+}

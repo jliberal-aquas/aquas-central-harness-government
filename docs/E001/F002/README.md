@@ -151,6 +151,13 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | [S014](S014.md) | Sello sin ruido de derivados | Hecho |
 | S015 | Sello rechaza el mismo motivo repetido en lote | Planeado |
 | [S016](S016.md) | Insight PROPUESTO exige defecto registrado | Hecho |
+| S017 | Padre no cierra con hijos abiertos | Planeado |
+
+### Arreglos
+
+| Arreglo | Qué arregla | Por qué | Pruebas | Fecha | Rojo | Verde |
+|---|---|---|---|---|---|---|
+| X01 | Padre no cierra con hijos abiertos | D000030: E001/F010 cerró con S001 EN_CURSO; E001/F003 archivada con S003-S005 en BORRADOR | — | 2026-10-24 | — | — |
 
 <!-- /GENERADO -->
 
