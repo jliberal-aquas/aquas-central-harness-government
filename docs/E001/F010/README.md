@@ -82,7 +82,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | Contrato, aprobación sellada y DoD común | En curso |
+| [S001](S001.md) | Contrato, aprobación sellada y DoD común | Hecho |
 
 <!-- /GENERADO -->
 
