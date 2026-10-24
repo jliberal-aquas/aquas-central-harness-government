@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S017",
+    "tarea": "S017 cerrado: padre no cierra con hijos abiertos (D000030)"
+  },
+  "siguiente": "ciclo: recuperar hallazgos (D000032, D000033) → definir → repriorizar → siguiente",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [
+    "freno propio en aquas: humano lo propone; recomiendo feature nueva con contrato"
+  ],
+  "huella_git": "01caeb0c07f5fef4df3b9f544f894a808d6134b54279545deea756310b315c6a",
+  "actualizado": "2026-10-24T02:14:43Z",
+  "sello": "112050b59f3c3d95104fb1fc5480d9743c63b541e60c3da80878d82ccf1a3be6"
+}
