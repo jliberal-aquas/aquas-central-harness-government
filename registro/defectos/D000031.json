@@ -1,0 +1,10 @@
+{
+  "id": "D000031",
+  "firma": "contrato-sin-casos-borde",
+  "que": "los contratos no buscan casos borde por categoría; 5 defectos del 2026-10-23 eran previsibles (tipo de ficha, estado de origen, quién habla, choque entre controles, fallo a mitad)",
+  "causa": "el refinamiento no tiene lista de categorías ni control que exija la tabla Casos borde",
+  "arreglo": "regla 04_CASOS_BORDE con 7 categorías + gate que exige la tabla en cada contrato + auditor juzga calidad",
+  "como_me_cercioro": "contrato sin la tabla o sin una categoría hace fallar el gate; con las 7 pasa",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
