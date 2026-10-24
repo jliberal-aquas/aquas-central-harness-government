@@ -1,0 +1,10 @@
+{
+  "id": "D000030",
+  "firma": "padre-cierra-con-hijos-abiertos",
+  "que": "una feature pasa a CERRADO con slices sin cerrar (E001/F010 con S001 EN_CURSO; E001/F003 con S003-S005 en BORRADOR)",
+  "causa": "Estado(CERRADO) de feature solo mira pruebas, rojo y verde propios; selloCompleto ignora no-slices; el gate no cruza padre archivado con hijo activo",
+  "arreglo": "Estado rechaza cerrar padre con hijo no terminal; verificar falla si hay hijo activo con padre archivado",
+  "como_me_cercioro": "prueba: cerrar feature con slice EN_CURSO se rechaza; gate falla con huérfano; pasa cuando todos los hijos cerraron",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
