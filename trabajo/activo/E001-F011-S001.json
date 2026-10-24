@@ -1,0 +1,33 @@
+{
+  "id": "E001/F011/S001",
+  "tipo": "slice",
+  "titulo": "Interruptor de hooks globales",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "el repo no puede apagar un hook global que choca con el gobierno",
+  "padre": "E001/F011",
+  "bloqueado_por": [],
+  "secuencia": 95,
+  "pruebas": [
+    {
+      "prueba": "./internal/compilador:TestInterruptorCompiladoYSellado",
+      "intencion": "la fuente se compila en .claude/hooks-globales.json sellada",
+      "rojo_cuando": "no existe el compilado o no está en el sello",
+      "verde_cuando": "el compilado existe y su sello coincide"
+    },
+    {
+      "prueba": "./internal/compilador:TestInterruptorRechazaInvalidos",
+      "intencion": "clave desconocida o valor no booleano hacen fallar el gate",
+      "rojo_cuando": "el gate acepta una clave inventada o un texto",
+      "verde_cuando": "el gate falla y nombra la clave"
+    }
+  ],
+  "alcance": [
+    "gobierno/config/**",
+    "internal/compilador/**",
+    ".claude/**",
+    "CLAUDE.md",
+    "docs/E001/F011/**"
+  ],
+  "relacion": "nueva"
+}

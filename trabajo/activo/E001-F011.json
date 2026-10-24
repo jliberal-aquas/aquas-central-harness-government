@@ -1,0 +1,20 @@
+{
+  "id": "E001/F011",
+  "tipo": "feature",
+  "titulo": "Frenos propios del gobierno",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "el freno global choca con los cierres de aquas (D000029)",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 94,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestFrenosPropiosGobernados",
+      "intencion": "el freno de este repo es de aquas y nunca bloquea lo que exige un cierre",
+      "rojo_cuando": "memoria fijar se bloquea con plan desbordado",
+      "verde_cuando": "memoria fijar pasa y otro comando se frena"
+    }
+  ],
+  "relacion": "nueva"
+}
