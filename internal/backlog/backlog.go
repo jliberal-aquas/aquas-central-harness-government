@@ -291,6 +291,11 @@ func Estado(raiz, id, estado string) (Ficha, error) {
 	if cur, hay := sliceEnCurso(act); f.Tipo == "slice" && hay && cur != id {
 		return Ficha{}, fmt.Errorf("%s está en curso: mientras tanto ningún otro slice cambia de estado", cur)
 	}
+	if terminal(estado) { // E001/F002/S017: un padre no termina con hijos activos
+		if err := sinHijosActivos(act, f); err != nil {
+			return Ficha{}, err
+		}
+	}
 	if estado == "EN_CURSO" && f.Tipo == "slice" { // E001/F010/S001: contrato aprobado antes de construir
 		if err := aprobada(raiz, f); err != nil {
 			return Ficha{}, err
@@ -327,6 +332,26 @@ func Estado(raiz, id, estado string) (Ficha, error) {
 		return Ficha{}, err
 	}
 	return f, os.Remove(filepath.Join(raiz, filepath.FromSlash(Activo), nombre(id)))
+}
+
+// sinHijosActivos: CERRADO o CANCELADO de una feature o iniciativa exige que sus hijos directos
+// ya estén en el archivo. Los hijos son las fichas activas cuyo padre es f.
+func sinHijosActivos(act map[string]Ficha, f Ficha) error {
+	var hijos []Ficha
+	for _, h := range act {
+		if h.Padre == f.ID {
+			hijos = append(hijos, h)
+		}
+	}
+	if len(hijos) == 0 {
+		return nil
+	}
+	sort.Slice(hijos, func(i, j int) bool { return hijos[i].ID < hijos[j].ID })
+	var xs []string
+	for _, h := range hijos {
+		xs = append(xs, h.ID+" ("+h.Estado+")")
+	}
+	return fmt.Errorf("%s no termina: tiene hijos sin terminar: %s; termina o cancela cada hijo antes", f.ID, strings.Join(xs, ", "))
 }
 
 // orden de `siguiente`: en curso → desbloqueado → prioridad → secuencia → id.
@@ -506,6 +531,9 @@ func Validar(raiz string) []string {
 	for _, f := range fichas {
 		if f.Padre != "" && ids[f.Padre] == "" {
 			p = append(p, fmt.Sprintf("%s: padre %s no existe", ids[f.ID], f.Padre))
+		}
+		if f.Padre != "" && strings.HasPrefix(ids[f.ID], Activo+"/") && strings.HasPrefix(ids[f.Padre], Archivo+"/") { // E001/F002/S017
+			p = append(p, fmt.Sprintf("%s: hijo activo con padre %s archivado (%s)", ids[f.ID], f.Padre, ids[f.Padre]))
 		}
 		for _, b := range f.BloqueadoPor {
 			if ids[b] == "" {

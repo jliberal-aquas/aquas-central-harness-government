@@ -151,7 +151,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | [S014](S014.md) | Sello sin ruido de derivados | Hecho |
 | S015 | Sello rechaza el mismo motivo repetido en lote | Planeado |
 | [S016](S016.md) | Insight PROPUESTO exige defecto registrado | Hecho |
-| [S017](S017.md) | Padre no cierra con hijos abiertos | Planeado |
+| [S017](S017.md) | Padre no cierra con hijos abiertos | En curso |
 
 ### Arreglos
 

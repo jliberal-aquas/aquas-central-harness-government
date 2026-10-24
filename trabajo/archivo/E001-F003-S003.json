@@ -2,9 +2,9 @@
   "id": "E001/F003/S003",
   "tipo": "slice",
   "titulo": "Esquema Go y Markdown",
-  "estado": "BORRADOR",
+  "estado": "CANCELADO",
   "prioridad": "P3",
-  "motivo": "aplazado 2026-10-21: leer = 18 % de las llamadas",
+  "motivo": "humano 2026-10-23 (a): cancelado; su feature está archivada (D000030)",
   "padre": "E001/F003",
   "bloqueado_por": [],
   "secuencia": 28

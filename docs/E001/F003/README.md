@@ -122,9 +122,9 @@ Prueba integral de la feature: no hace falta. Con un solo slice, su prueba es la
 |---|---|---|
 | [S001](S001.md) | Leer un lote de rutas | Hecho |
 | S002 | Buscar por regex | Cancelado |
-| S003 | Esquema Go y Markdown | Planeado |
-| S004 | Relaciones conectadas al sello | Planeado |
-| S005 | Biblioteca cuenta bien lo devuelto | Planeado |
+| S003 | Esquema Go y Markdown | Cancelado |
+| S004 | Relaciones conectadas al sello | Cancelado |
+| S005 | Biblioteca cuenta bien lo devuelto | Cancelado |
 
 <!-- /GENERADO -->
 

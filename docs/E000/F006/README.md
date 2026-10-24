@@ -90,6 +90,7 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 | S004 | Avisar oración larga al guardar | Planeado |
 | [S005](S005.md) | Wiki y metodología al día | Hecho |
 | S006 | CLI en inglés | Planeado |
+| S007 | Biblioteca cuenta bien lo devuelto | Planeado |
 
 <!-- /GENERADO -->
 

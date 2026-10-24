@@ -2,7 +2,7 @@
   "id": "E001/F002/S017",
   "tipo": "slice",
   "titulo": "Padre no cierra con hijos abiertos",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P0",
   "motivo": "D000030 (arreglo X01): E001/F010 cerró con S001 EN_CURSO; E001/F003 archivada con S003-S005 en BORRADOR",
   "padre": "E001/F002",
@@ -22,11 +22,28 @@
       "verde_cuando": "verde cuando el gate nombra hijo y padre"
     }
   ],
+  "rojo": {
+    "fecha": "2026-10-24T02:03:15Z",
+    "head": "277b19eb8d0bcd22aaa359d748b5c814aa8329b0",
+    "resultado": {
+      "./internal/backlog:TestGateDetectaHijoHuerfano": "",
+      "./internal/backlog:TestPadreNoCierraConHijosAbiertos": "backlog_padre_test.go:57: open D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestPadreNoCierraConHijosAbiertos3687198718\\001\\trabajo\\activo\\E001-F002.json: El sistema no puede encontrar el archivo especificado."
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-24T02:03:36Z",
+    "head": "277b19eb8d0bcd22aaa359d748b5c814aa8329b0"
+  },
   "alcance": [
     "internal/backlog/**",
     "cmd/aquas/**",
     "docs/E001/F002/**",
     "registro/defectos/**"
   ],
+  "aprobacion": {
+    "fecha": "2026-10-24T02:01:17Z",
+    "huella": "4923140b7b94c8314e7c780b4e63f8a0c655b59d25e6d290dd9d84bb8a1058ff",
+    "mensaje": "apruebo E001/F002/S017, dale, plan de 8 llamadas y 1 agente; a"
+  },
   "relacion": "amplia:E001/F002"
 }
