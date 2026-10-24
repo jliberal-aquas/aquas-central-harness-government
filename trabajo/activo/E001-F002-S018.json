@@ -1,0 +1,20 @@
+{
+  "id": "E001/F002/S018",
+  "tipo": "slice",
+  "titulo": "Rojo heredado solo de slices cerrados",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "D000032: rojoHeredado acepta el rojo de un slice CANCELADO; una integral puede pasar respaldada por trabajo descartado",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 100,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestRojoNoHeredaDeCancelado",
+      "intencion": "valida que solo un slice CERRADO respalda el rojo heredado",
+      "rojo_cuando": "rojo cuando un slice CANCELADO con rojo respalda la integral",
+      "verde_cuando": "verde cuando CANCELADO no respalda y CERRADO sí"
+    }
+  ],
+  "relacion": "nueva"
+}

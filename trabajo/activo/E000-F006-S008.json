@@ -1,0 +1,20 @@
+{
+  "id": "E000/F006/S008",
+  "tipo": "slice",
+  "titulo": "Guardia sin falso binario viejo con go run",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "D000034: el pre-commit falla con binario viejo falso por la caché de go run; hoy cada commit exige GOFLAGS=-a",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 102,
+  "pruebas": [
+    {
+      "prueba": "./internal/entorno:TestBinarioViejoSinFalsoPorCache",
+      "intencion": "valida que un binario al día no se marca viejo por su fecha",
+      "rojo_cuando": "rojo cuando un binario al día con fecha vieja se marca viejo",
+      "verde_cuando": "verde cuando solo un binario realmente desfasado se marca viejo"
+    }
+  ],
+  "relacion": "nueva"
+}
