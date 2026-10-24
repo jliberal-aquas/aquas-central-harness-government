@@ -91,7 +91,7 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 | [S005](S005.md) | Wiki y metodología al día | Hecho |
 | S006 | CLI en inglés | Planeado |
 | S007 | Biblioteca cuenta bien lo devuelto | Planeado |
-| S008 | Guardia sin falso binario viejo con go run | Planeado |
+| [S008](S008.md) | Guardia sin falso binario viejo con go run | Planeado |
 
 <!-- /GENERADO -->
 
