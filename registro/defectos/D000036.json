@@ -1,0 +1,10 @@
+{
+  "id": "D000036",
+  "firma": "prueba-nueva-fuera-de-alcance-anula-aprobacion",
+  "que": "corregir un hallazgo del auditor con un archivo de prueba nuevo exigió ampliar el alcance y anuló la aprobación de E001/F002/S018",
+  "causa": "la prueba se escribió en un archivo nuevo, fuera del alcance aprobado",
+  "arreglo": "escribir pruebas nuevas en un archivo ya en el alcance, o pedir el alcance completo al aprobar",
+  "como_me_cercioro": "próximo slice: ningún ampliar alcance tras la aprobación",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

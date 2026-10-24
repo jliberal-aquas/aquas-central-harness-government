@@ -172,7 +172,7 @@ func rojoHeredado(raiz string, f Ficha) *Registro {
 		return nil
 	}
 	for _, s := range arc {
-		if s.Tipo != "slice" || s.Padre != f.ID || s.Rojo == nil {
+		if s.Tipo != "slice" || s.Padre != f.ID || s.Rojo == nil || s.Estado != "CERRADO" { // D000032: CANCELADO no respalda
 			continue
 		}
 		res := map[string]string{}

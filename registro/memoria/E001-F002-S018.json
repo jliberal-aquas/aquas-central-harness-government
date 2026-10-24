@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S018",
+    "tarea": "S018 verde, sello completo, auditor con leves corregidos"
+  },
+  "siguiente": "cerrar S018 → E000/F006/S008",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [
+    "freno propio en aquas: humano lo propone; recomiendo feature nueva con contrato"
+  ],
+  "huella_git": "a18526a9ffd3aafa7d6427921323ccc0e335cd6a79844dc8d722b7b8fdf4e61e",
+  "actualizado": "2026-10-24T12:43:05Z",
+  "sello": "8a1376c5a08de37c187fbccda8847e35ac3b3b6607931f25034bad23a388f42d"
+}

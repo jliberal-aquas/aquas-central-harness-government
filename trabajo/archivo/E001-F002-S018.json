@@ -1,0 +1,292 @@
+{
+  "id": "E001/F002/S018",
+  "tipo": "slice",
+  "titulo": "Rojo heredado solo de slices cerrados",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "D000032: rojoHeredado acepta el rojo de un slice CANCELADO; una integral puede pasar respaldada por trabajo descartado",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 100,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestRojoNoHeredaDeCancelado",
+      "intencion": "valida que solo un slice CERRADO respalda el rojo heredado",
+      "rojo_cuando": "rojo cuando un slice CANCELADO con rojo respalda la integral",
+      "verde_cuando": "verde cuando CANCELADO no respalda y CERRADO sí"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-24T12:01:48Z",
+    "head": "5b344a47d102741e731b1a182829e31501f3ae83",
+    "resultado": {
+      "./internal/backlog:TestRojoNoHeredaDeCancelado": "rojo_cancelado_test.go:27: solo un slice CANCELADO: el rojo debió negarse; heredó de E001/F002/S008"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-24T12:42:49Z",
+    "head": "5b344a47d102741e731b1a182829e31501f3ae83"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S018.md",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "solo agrega un filtro por estado dentro de rojoHeredado; ninguna firma ni texto citado cambia"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/alcance.go",
+    "internal/backlog/alcance_test.go",
+    "internal/backlog/aprobacion.go",
+    "internal/backlog/aprobacion_test.go",
+    "internal/backlog/arranque_test.go",
+    "internal/backlog/arreglo.go",
+    "internal/backlog/arreglo_pruebas.go",
+    "internal/backlog/arreglo_pruebas_test.go",
+    "internal/backlog/arreglo_test.go",
+    "internal/backlog/backlog.go",
+    "internal/backlog/backlog_padre_test.go",
+    "internal/backlog/backlog_test.go",
+    "internal/backlog/campos_test.go",
+    "internal/backlog/codigo.go",
+    "internal/backlog/codigo_test.go",
+    "internal/backlog/documentar.go",
+    "internal/backlog/documentar_test.go",
+    "internal/backlog/editar.go",
+    "internal/backlog/editar_test.go",
+    "internal/backlog/pruebas_arreglo_test.go",
+    "internal/backlog/relacion.go",
+    "internal/backlog/relacion_test.go",
+    "internal/backlog/repetidos_test.go",
+    "internal/backlog/rojo.go",
+    "internal/backlog/rojo_heredado_test.go",
+    "internal/backlog/rojo_test.go",
+    "internal/backlog/sello.go",
+    "internal/backlog/sello_test.go",
+    "internal/backlog/siguiente_test.go",
+    "docs/E001/F002/README.md",
+    "docs/E001/F002/S001.md",
+    "docs/E001/F002/S002.md",
+    "docs/E001/F002/S003.md",
+    "docs/E001/F002/S004.md",
+    "docs/E001/F002/S006.md",
+    "docs/E001/F002/S007.md",
+    "docs/E001/F002/S008.md",
+    "docs/E001/F002/S009.md",
+    "docs/E001/F002/S010.md",
+    "docs/E001/F002/S013.md",
+    "docs/E001/F002/S014.md",
+    "docs/E001/F002/S016.md",
+    "docs/E001/F002/S017.md",
+    "docs/E001/F002/S018.md",
+    "registro/defectos/D000001.json",
+    "registro/defectos/D000002.json",
+    "registro/defectos/D000003.json",
+    "registro/defectos/D000004.json",
+    "registro/defectos/D000005.json",
+    "registro/defectos/D000006.json",
+    "registro/defectos/D000007.json",
+    "registro/defectos/D000008.json",
+    "registro/defectos/D000009.json",
+    "registro/defectos/D000010.json",
+    "registro/defectos/D000011.json",
+    "registro/defectos/D000012.json",
+    "registro/defectos/D000013.json",
+    "registro/defectos/D000014.json",
+    "registro/defectos/D000015.json",
+    "registro/defectos/D000016.json",
+    "registro/defectos/D000017.json",
+    "registro/defectos/D000018.json",
+    "registro/defectos/D000019.json",
+    "registro/defectos/D000020.json",
+    "registro/defectos/D000021.json",
+    "registro/defectos/D000022.json",
+    "registro/defectos/D000023.json",
+    "registro/defectos/D000024.json",
+    "registro/defectos/D000025.json",
+    "registro/defectos/D000026.json",
+    "registro/defectos/D000027.json",
+    "registro/defectos/D000028.json",
+    "registro/defectos/D000029.json",
+    "registro/defectos/D000030.json",
+    "registro/defectos/D000031.json",
+    "registro/defectos/D000032.json",
+    "registro/defectos/D000033.json",
+    "registro/defectos/D000034.json"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "internal/backlog/rojo_cancelado_test.go",
+      "motivo": "prueba nueva del criterio 1 y del caso borde fallo a medias"
+    }
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-24T12:42:39Z",
+    "huella": "330e4daf28fd34bcb70e81408a6237d3086f1810b3032b5f0f01e0be18e21301",
+    "mensaje": "apruebo E001/F002/S018, dale, plan de 5 llamadas y 0 agentes; sí"
+  },
+  "codigo": [
+    "internal/backlog/rojo.go"
+  ],
+  "relacion": "nueva"
+}

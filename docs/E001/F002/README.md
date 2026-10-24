@@ -152,7 +152,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | S015 | Sello rechaza el mismo motivo repetido en lote | Planeado |
 | [S016](S016.md) | Insight PROPUESTO exige defecto registrado | Hecho |
 | [S017](S017.md) | Padre no cierra con hijos abiertos | Hecho |
-| [S018](S018.md) | Rojo heredado solo de slices cerrados | Planeado |
+| [S018](S018.md) | Rojo heredado solo de slices cerrados | Hecho |
 | S019 | Rojo de subtest guarda su motivo | Planeado |
 
 ### Arreglos
