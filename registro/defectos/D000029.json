@@ -1,0 +1,10 @@
+{
+  "id": "D000029",
+  "firma": "freno-plan-bloquea-memoria",
+  "que": "el freno de plan (presupuesto.py) bloqueó aquas memoria fijar al desbordar y la memoria caliente quedó vieja",
+  "causa": "el freno trata igual guardar estado que trabajar; no tiene exenciones",
+  "arreglo": "exentar aquas memoria fijar sin encadenar, sin contar en el plan",
+  "como_me_cercioro": "con plan desbordado, memoria fijar pasa y otro Bash se bloquea",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
