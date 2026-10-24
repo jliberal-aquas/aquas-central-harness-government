@@ -88,7 +88,7 @@ func revisarTrazabilidad(raiz string, paginas map[string]*pagina, orden []string
 		}
 		for _, n := range pg.pruebas {
 			nombradas[n] = true
-			if enCodigo[n] == "" {
+			if enCodigo[n] == "" && !prevista(raiz, rel, n) {
 				ps = append(ps, fmt.Sprintf("%s: prueba nombrada no existe en el código: %s", rel, n))
 			}
 		}
@@ -101,6 +101,25 @@ func revisarTrazabilidad(raiz string, paginas map[string]*pagina, orden []string
 	}
 	sort.Strings(sinDueno)
 	return append(ps, sinDueno...), nil
+}
+
+// prevista (E001/F010/S001): la prueba n aún no existe en el código pero la ficha del slice de la página rel
+// la declara y la ficha aún no tiene rojo registrado (ni está archivada): es una prueba prevista del contrato, no una referencia rota.
+func prevista(raiz, rel, n string) bool {
+	m := reS.FindStringSubmatch(rel)
+	if m == nil {
+		return false
+	}
+	f, archivada, err := backlog.Ver(raiz, m[1]+"/"+m[2]+"/"+m[3])
+	if err != nil || archivada || f.Rojo != nil {
+		return false
+	}
+	for _, p := range f.Pruebas {
+		if p.Nombre[strings.LastIndex(p.Nombre, ":")+1:] == n {
+			return true
+		}
+	}
+	return false
 }
 
 // integralesDe: nombres de las func Test que declara la ficha de la feature de la página rel; ninguno si no hay ficha.

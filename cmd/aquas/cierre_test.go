@@ -16,6 +16,9 @@ func TestCerrarExigeMemoriaArchivada(t *testing.T) {
 		{"nuevo", "id=E001/F002/S004", "titulo=Q", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"},
 		{"estado", "E001/F002/S003", "EN_CURSO"},
 	} {
+		if args[0] == "estado" {
+			aprobarCLI(t, raiz, args[1])
+		}
 		if s := aquas(t, raiz, "", append([]string{"backlog"}, args...)...); s.codigo != 0 {
 			t.Fatalf("backlog %v: %+v", args, s)
 		}
@@ -44,6 +47,7 @@ func TestCerrarExigeMemoriaArchivada(t *testing.T) {
 	if s := aquas(t, raiz, "", "backlog", "estado", "E001/F002/S003", "CANCELADO"); s.codigo != 0 {
 		t.Fatalf("CANCELADO con memoria sin archivar no se bloquea; dio %+v", s)
 	}
+	aprobarCLI(t, raiz, "E001/F002/S004")
 	if s := aquas(t, raiz, "", "backlog", "estado", "E001/F002/S004", "EN_CURSO"); s.codigo != 0 {
 		t.Fatalf("EN_CURSO S004: %+v", s)
 	}

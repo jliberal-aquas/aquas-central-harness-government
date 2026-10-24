@@ -3,7 +3,7 @@ Origen: especificación SS-GOV-EFS v0.1.0 podada con el humano (2026-10-20). Est
 No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`) + resumen Caveman en orquestador.
 
 ## Decisiones ratificadas
-- Cero aprobaciones formales. Única puerta humana = interrogación cuando el agente tiene duda real.
+- Puerta humana = refinamiento + «apruebo <id>» del contrato del slice antes del rojo (lo registra el hook; el agente no se aprueba). Más: interrogación cuando el agente tiene duda real.
 - Hallazgo que cambia lo pedido = duda → preguntar. Si no, agente decide e informa en el cierre.
 - Un solo slice activo por repo. Sin paralelismo de agentes salvo pedido explícito.
 - Persistencia: JSON (stdlib Go), un archivo por entidad, versionado en git. Git = historia de revisiones.

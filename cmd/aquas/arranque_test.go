@@ -102,6 +102,9 @@ func TestArranqueEnFrio(t *testing.T) {
 		{"nuevo", "id=E001/F005/S003", "titulo=A", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./x:TestA=a|r|v"},
 		{"estado", "E001/F005/S003", "EN_CURSO"},
 	} {
+		if args[0] == "estado" {
+			aprobarCLI(t, raiz, args[1])
+		}
 		if s := aquas(t, raiz, "", append([]string{"backlog"}, args...)...); s.codigo != 0 {
 			t.Fatalf("backlog %v: %+v", args, s)
 		}

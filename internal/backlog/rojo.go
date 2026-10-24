@@ -142,6 +142,11 @@ func Rojo(raiz, id string, ahora time.Time) (Ficha, error) {
 	if _, ok := padreDeArreglo(id); ok { // D000020
 		return rojoArreglo(raiz, id, ahora)
 	}
+	if f0, err := activa(raiz, id); err == nil { // E001/F010/S001: el contrato se aprueba antes del rojo
+		if err := aprobada(raiz, f0); err != nil {
+			return Ficha{}, err
+		}
+	}
 	f, err := corrible(raiz, id)
 	if err != nil {
 		return Ficha{}, err
@@ -187,6 +192,11 @@ func rojoHeredado(raiz string, f Ficha) *Registro {
 func Verde(raiz, id string, ahora time.Time) (Ficha, error) {
 	if _, ok := padreDeArreglo(id); ok { // D000020
 		return verdeArreglo(raiz, id, ahora)
+	}
+	if f0, err := activa(raiz, id); err == nil { // E001/F010/S001: el verde compara la huella aprobada
+		if err := aprobada(raiz, f0); err != nil {
+			return Ficha{}, err
+		}
 	}
 	f, err := corrible(raiz, id)
 	if err != nil {

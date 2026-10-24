@@ -1,0 +1,131 @@
+{
+  "id": "E001/F010/S001",
+  "tipo": "slice",
+  "titulo": "Contrato, aprobación sellada y DoD común",
+  "estado": "EN_CURSO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-23: contrato aprobado antes del rojo",
+  "padre": "E001/F010",
+  "bloqueado_por": [],
+  "secuencia": 93,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestRojoExigeAprobacion",
+      "intencion": "rojo y EN_CURSO exigen aprobación vigente",
+      "rojo_cuando": "un slice sin aprobación registra rojo o pasa a EN_CURSO",
+      "verde_cuando": "se rechaza y el mensaje pide apruebo con el id"
+    },
+    {
+      "prueba": "./internal/backlog:TestExigenciaPorEstado",
+      "intencion": "BORRADOR, LISTO y BLOQUEADO piden aprobación para arrancar; el slice con rojo previo queda exento",
+      "rojo_cuando": "un slice sin rojo arranca o registra rojo sin aprobación, por BLOQUEADO también, o el de rojo previo la pide",
+      "verde_cuando": "todos esos estados piden apruebo y el slice con rojo previo sigue exento"
+    },
+    {
+      "prueba": "./internal/backlog:TestAprobacionAtadaAHuella",
+      "intencion": "cambiar pruebas, alcance o contrato tras aprobar anula la aprobación",
+      "rojo_cuando": "el rojo se acepta con el contrato cambiado",
+      "verde_cuando": "el rojo se rechaza y pide aprobar de nuevo"
+    },
+    {
+      "prueba": "./internal/backlog:TestAmpliarAnulaAprobacion",
+      "intencion": "ampliar el alcance tras aprobar anula la aprobación",
+      "rojo_cuando": "ampliar deja vigente la aprobación",
+      "verde_cuando": "EN_CURSO y el rojo se rechazan pidiendo apruebo"
+    },
+    {
+      "prueba": "./internal/backlog:TestDerivaEnCursoAnulaAprobacion",
+      "intencion": "cambiar el contrato en EN_CURSO tras aprobar hace fallar rojo, verde y cierre",
+      "rojo_cuando": "rojo, verde o cierre pasan con el contrato cambiado tras aprobar",
+      "verde_cuando": "los tres se rechazan pidiendo apruebo con el id"
+    },
+    {
+      "prueba": "./cmd/aquas:TestHookRegistraApruebo",
+      "intencion": "el mensaje del humano registra la aprobación y el texto del agente no",
+      "rojo_cuando": "no se registra con el mensaje humano o se registra desde una herramienta",
+      "verde_cuando": "el mensaje humano guarda fecha y huella; la herramienta no guarda nada"
+    },
+    {
+      "prueba": "./cmd/aquas:TestApruebaSoloLineaAfirmativa",
+      "intencion": "solo una línea afirmativa que empieza por apruebo aprueba",
+      "rojo_cuando": "una negación o una pregunta registran aprobación",
+      "verde_cuando": "solo la línea «apruebo id» sin signo de pregunta guarda la aprobación"
+    },
+    {
+      "prueba": "./cmd/aquas:TestHookIgnoraMensajeDeAgente",
+      "intencion": "el hook descarta cada marca de agente sola y solo acepta apruebo en la primera línea",
+      "rojo_cuando": "una sola marca de agente, o un apruebo en segunda línea, registra la aprobación",
+      "verde_cuando": "cada marca sola y el apruebo en segunda línea no registran; en la primera línea limpia sí"
+    },
+    {
+      "prueba": "./internal/wiki:TestPruebaPrevistaSoloSinRojo",
+      "intencion": "una prueba inexistente se acepta solo si su ficha no tiene rojo",
+      "rojo_cuando": "se acepta con rojo o archivada, o se rechaza sin rojo",
+      "verde_cuando": "sin rojo se acepta; con rojo o archivada se rechaza"
+    },
+    {
+      "prueba": "./internal/entorno:TestSettingsRealTraeHookAprobacion",
+      "intencion": "la plantilla de settings trae el hook de aprobación",
+      "rojo_cuando": "no hay hook de aprobación en UserPromptSubmit",
+      "verde_cuando": "el settings generado trae la orden de aprobación"
+    },
+    {
+      "prueba": "./internal/compilador:TestDoDComunCompilado",
+      "intencion": "la regla de terminado común llega al orquestador compilado",
+      "rojo_cuando": "el bloque de la regla en el compilado no trae sus requisitos",
+      "verde_cuando": "el bloque trae título con versión y sus requisitos"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-24T00:18:47Z",
+    "head": "6403aa7b7a8a435aaf19fe18e05339e800ba08b6",
+    "resultado": {
+      "./cmd/aquas:TestApruebaSoloLineaAfirmativa": "aprobacion_test.go:122: la primera línea «apruebo E001/F002/S003» sí aprueba, aunque otra línea sea una pregunta",
+      "./cmd/aquas:TestHookIgnoraMensajeDeAgente": "aprobacion_test.go:144: «apruebo E001/F002/S003» en la primera línea sí aprueba",
+      "./cmd/aquas:TestHookRegistraApruebo": "aprobacion_test.go:71: la ficha guarda la aprobación: unexpected end of JSON input",
+      "./internal/backlog:TestAmpliarAnulaAprobacion": "aprobacion_test.go:225: ampliar tras aprobar: EN_CURSO se rechaza y pide «apruebo E001/F002/S002»; dio \u003cnil\u003e",
+      "./internal/backlog:TestAprobacionAtadaAHuella": "aprobacion_test.go:123: cambio de pruebas tras aprobar: EN_CURSO se rechaza y pide «apruebo E001/F002/S002»; dio \u003cnil\u003e",
+      "./internal/backlog:TestDerivaEnCursoAnulaAprobacion": "aprobacion_test.go:208: deriva por alcance ampliado en EN_CURSO: el cierre pide «apruebo E001/F002/S002»; dio E001/F002/S002 no cierra sin verde: aquas backlog verde E001/F002/S002",
+      "./internal/backlog:TestExigenciaPorEstado": "aprobacion_test.go:140: rojo en BORRADOR sin aprobación: pide «apruebo E001/F002/S002»; dio E001/F002/S002 no está en curso (BORRADOR): rojo y verde son del slice en curso",
+      "./internal/backlog:TestRojoExigeAprobacion": "aprobacion_test.go:74: EN_CURSO sin aprobación: error que pide «apruebo E001/F002/S002»; dio \u003cnil\u003e",
+      "./internal/compilador:TestDoDComunCompilado": "dod_test.go:33: agentes.json: el orquestador debe enlazar gobierno/canonico/reglas/03_DOD_COMUN.md",
+      "./internal/entorno:TestSettingsRealTraeHookAprobacion": "hooks_test.go:173: falta UserPromptSubmit → aprobacion; hay [{Hooks:[{Command:sh \"${CLAUDE_PROJECT_DIR}/.claude/hooks/aquas.sh\" turno abrir}]}]",
+      "./internal/wiki:TestPruebaPrevistaSoloSinRojo": ""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-24T00:19:12Z",
+    "head": "6403aa7b7a8a435aaf19fe18e05339e800ba08b6"
+  },
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "internal/wiki/**",
+    "internal/compilador/**",
+    "gobierno/canonico/**",
+    "gobierno/config/**",
+    "docs/E001/F010/**",
+    "CLAUDE.md",
+    ".claude/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "internal/guardia/**",
+      "motivo": "H1: la guardia bloquea la autoaprobación"
+    },
+    {
+      "ruta": "internal/entorno/**",
+      "motivo": "H9: prueba del hook aprobacion en settings"
+    },
+    {
+      "ruta": "docs/E001/README.md",
+      "motivo": "quitar la frase vieja «no hay aprobaciones formales», que contradice F010"
+    }
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-23T23:32:45Z",
+    "huella": "e0f2ef4e9eb1029c9714fb6d31d6448a70ad138ba65bdec2950127e602abe979",
+    "mensaje": "apruebo E001/F010/S001, dale con el plan de 5 llamadas. aplica un fix también de urgencia porque la memoria caliente siempre debe actualizarse, porque si se cae en este minuto, perdemos toda la información. Así que el freno no debe nunca frenar la memoria caliente. Hay cosas que el freno nunca debe "
+  },
+  "relacion": "nueva"
+}

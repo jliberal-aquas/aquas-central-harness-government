@@ -39,6 +39,7 @@ func TestMemoriaSegunBacklog(t *testing.T) {
 	if s := aquas(t, raiz, "", foco...); s.codigo != 1 || !strings.Contains(s.err, "en curso") {
 		t.Errorf("sin slice en curso, la memoria no fija S003: exit 1 y lo dice; dio %+v", s)
 	}
+	aprobarCLI(t, raiz, "E001/F002/S003")
 	if s := aquas(t, raiz, "", "backlog", "estado", "E001/F002/S003", "EN_CURSO"); s.codigo != 0 {
 		t.Fatalf("EN_CURSO: %+v", s)
 	}
@@ -79,6 +80,7 @@ func TestCerrarSliceDePuntaAPunta(t *testing.T) {
 	rojoIntegral(t, raiz, []string{"nuevo", "id=E001/F002"})
 	paso(0, "E001/F002/S003", "nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestOtra=otra|r|v")
 	paso(0, "TestBandera · pide el arreglo", "pruebas", "E001/F002/S003", "./p:TestBandera=pide el arreglo|r|v")
+	aprobarCLI(t, raiz, "E001/F002/S003")
 	paso(0, "EN_CURSO", "estado", "E001/F002/S003", "EN_CURSO")
 	paso(1, "sin rojo", "estado", "E001/F002/S003", "CERRADO")
 	paso(1, "rojo", "verde", "E001/F002/S003")

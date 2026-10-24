@@ -24,7 +24,7 @@ Cada cosa que pides se anota y se parte en pedacitos que se pueden probar. No se
 - Cada slice nace con una [prueba en rojo](../glosario.md#prueba-en-rojo) y termina con la misma [prueba en verde](../glosario.md#prueba-en-verde).
 - Al cerrar, un **[sello](../glosario.md#sello)** obliga a revisar todo lo que el cambio pudo afectar.
 
-No hay aprobaciones formales. Tu única tarea es responder cuando el agente tiene una duda real.
+Tu puerta humana es la ronda de refinamiento. Antes del rojo escribes «apruebo <id>» sobre el contrato del slice (ver [F010](F010/README.md)). Fuera de eso, solo respondes ante una duda real.
 
 ## Analogía
 
@@ -132,7 +132,7 @@ flowchart LR
 
 Decisiones de Jesús (2026-10-20):
 
-- No hay aprobaciones formales. La única puerta humana es la ronda de preguntas.
+- La puerta humana es la ronda de refinamiento más «apruebo <id>» del contrato antes del rojo (F010, 2026-10-23). Antes no había aprobaciones formales.
 - Un solo slice activo por repositorio, sin agentes en paralelo salvo pedido.
 - El backlog se guarda en JSON, un archivo por elemento, versionado en git.
 - Un pedido urgente o que protege el repo pausa el slice activo y entra por E000.
@@ -155,6 +155,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F007](F007/README.md) | Tabla del backlog en la terminal | Planeado |
 | [F008](F008/README.md) | Documentación verificable de pruebas, código y arreglos | Hecho |
 | [F009](F009/README.md) | Backlog sin fichas repetidas | Hecho |
+| [F010](F010/README.md) | Contrato aprobado antes de construir | Planeado |
 
 <!-- /GENERADO -->
 

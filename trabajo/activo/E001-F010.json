@@ -1,0 +1,31 @@
+{
+  "id": "E001/F010",
+  "tipo": "feature",
+  "titulo": "Contrato aprobado antes de construir",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-23: aprobar criterios, pruebas y estrategia antes de construir",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 92,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestContratoAprobadoAntesDeConstruir",
+      "intencion": "un slice no registra rojo sin contrato aprobado por el humano",
+      "rojo_cuando": "el rojo se acepta sin aprobación o tras cambiar el contrato aprobado",
+      "verde_cuando": "sin aprobación se rechaza; tras apruebo se acepta; tras cambiar el contrato se rechaza"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-23T19:17:15Z",
+    "head": "6403aa7b7a8a435aaf19fe18e05339e800ba08b6",
+    "resultado": {
+      "./cmd/aquas:TestContratoAprobadoAntesDeConstruir": "aprobacion_test.go:83: sin aprobación: EN_CURSO se rechaza y pide «apruebo E001/F002/S003»; dio {out:E001/F002/S003 · EN_CURSO · P1 · R · m"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-23T21:17:06Z",
+    "head": "6403aa7b7a8a435aaf19fe18e05339e800ba08b6"
+  },
+  "relacion": "nueva"
+}

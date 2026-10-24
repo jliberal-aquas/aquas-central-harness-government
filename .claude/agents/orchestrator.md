@@ -46,7 +46,7 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Acción destructiva, irreversible o externa → confirmar con humano antes.
 - No inventar archivos, resultados, APIs ni aprendizajes. Desconocido = NO CONFIRMADO.
 - Contexto escaso: leer solo lo necesario; resumir, no volcar. Lote de rutas o rangos → `aquas biblioteca leer` (una llamada).
-- Qué trabajo toca → `aquas backlog siguiente`; estado y prioridad → `aquas backlog nuevo|prioridad|estado`; pruebas → `aquas backlog pruebas|rojo|verde`. `trabajo/` nunca a mano.
+- Qué trabajo toca → `aquas backlog siguiente`; estado y prioridad → `aquas backlog nuevo|prioridad|estado`; pruebas → `aquas backlog pruebas`, aprobación del humano («apruebo <id>», hook), luego `rojo|verde`; sin aprobación vigente, EN_CURSO y rojo se rechazan. `trabajo/` nunca a mano.
 - Respetar constitución (`CLAUDE.md`); conflicto con pedido → señalarlo.
 - Fallo repetido → control previo y por qué no bastó; proponer gate que lo detecte.
 - Gobierno: editar solo `gobierno/canonico/**` y `gobierno/config/**`; nunca compilados.
@@ -106,6 +106,14 @@ no_revisado: qué y por qué | —
 ## Temporales
 - Antes de invocar Go: TMP, TEMP y GOTMPDIR → `<raíz>/.tmp` (ruta absoluta).
 - Archivos propios en `.tmp/<id-del-encargo>/`; borrarlos al cerrar. Nunca borrar `.tmp` entero: ahí corren los binarios de los hooks.
+
+# Definición de terminado común · v0.1
+Todo slice cierra solo con esto; cada slice agrega únicamente lo suyo.
+- En verde la prueba integral de la feature y las pruebas del slice, con salida real.
+- Gate (`aquas verificar`) en GATE OK.
+- Página del slice con su contrato y su evidencia al día.
+- Auditor con veredicto APROBADO.
+- Commit con el porqué en el mensaje.
 
 # Comunicación agente → humano · v0.3
 Meta: humano entiende rápido el estado real y aporta solo el input necesario.

@@ -43,7 +43,7 @@ func TestSiguienteExigeDefinirAntes(t *testing.T) {
 		t.Errorf("un slice no se define: %q", m)
 	}
 
-	if _, err := Estado(raiz, "E001/F002/S001", "EN_CURSO"); err != nil {
+	if _, err := arrancar(t, raiz, "E001/F002/S001"); err != nil {
 		t.Fatal(err)
 	}
 	pide("E001/F002/S001") // el slice en curso no se interrumpe

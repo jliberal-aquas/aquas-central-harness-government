@@ -37,6 +37,7 @@ func TestBacklogCLI(t *testing.T) {
 	paso("P0", "prioridad", "E001/F002/S002", "P0", "motivo=urgente")
 	campo(s2, "prioridad", "P0")
 	campo(s2, "motivo", "urgente")
+	aprobarCLI(t, raiz, "E001/F002/S002")
 	paso("EN_CURSO", "estado", "E001/F002/S002", "EN_CURSO")
 	campo(s2, "estado", "EN_CURSO")
 	paso("E001/F002/S002", "ver")

@@ -67,7 +67,7 @@ func enCurso(t *testing.T, raiz, id string, pruebas ...string) {
 		campos = append(campos, "prueba="+x)
 	}
 	nuevo(t, raiz, campos...)
-	if _, err := Estado(raiz, id, "EN_CURSO"); err != nil {
+	if _, err := arrancar(t, raiz, id); err != nil {
 		t.Fatalf("EN_CURSO %s: %v", id, err)
 	}
 }
@@ -169,10 +169,11 @@ func TestPruebasReiniciaRojoYVerde(t *testing.T) {
 func TestRojoExigeQueCadaPruebaFalle(t *testing.T) {
 	raiz := modulo(t)
 	nuevo(t, raiz, "id=E001/F002/S001", "titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestFalla=falla|r|v")
+	sembrarAprobacion(t, raiz, "E001/F002/S001")
 	if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), "en curso") {
 		t.Errorf("rojo de un slice que no está en curso; dio %v", err)
 	}
-	if _, err := Estado(raiz, "E001/F002/S001", "EN_CURSO"); err != nil {
+	if _, err := arrancar(t, raiz, "E001/F002/S001"); err != nil {
 		t.Fatal(err)
 	}
 	for _, c := range []struct{ prueba, dice string }{
@@ -182,6 +183,7 @@ func TestRojoExigeQueCadaPruebaFalle(t *testing.T) {
 		if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestFalla=falla|r|v", c.prueba}); err != nil {
 			t.Fatal(err)
 		}
+		sembrarAprobacion(t, raiz, "E001/F002/S001") // cambiar pruebas en curso pide aprobar de nuevo
 		if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), c.dice) || strings.Contains(err.Error(), "TestFalla") {
 			t.Errorf("rojo rechaza solo %s; dio %v", c.dice, err)
 		}
@@ -192,6 +194,7 @@ func TestRojoExigeQueCadaPruebaFalle(t *testing.T) {
 	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestFalla=falla|r|v"}); err != nil {
 		t.Fatal(err)
 	}
+	sembrarAprobacion(t, raiz, "E001/F002/S001") // cambiar pruebas en curso pide aprobar de nuevo
 	f, err := Rojo(raiz, "E001/F002/S001", hora)
 	if err != nil {
 		t.Fatal(err)
@@ -212,12 +215,14 @@ func TestRojoNoCuentaCompilacionNiAusencia(t *testing.T) {
 	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./p:TestNoExiste=no existe|r|v"}); err != nil {
 		t.Fatal(err)
 	}
+	sembrarAprobacion(t, raiz, "E001/F002/S001") // cambiar pruebas en curso pide aprobar de nuevo
 	if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), "no existe") {
 		t.Errorf("una prueba que no existe no es rojo; dio %v", err)
 	}
 	if _, err := Pruebas(raiz, "E001/F002/S001", []string{"./nada:TestX=paquete ausente|r|v"}); err != nil {
 		t.Fatal(err)
 	}
+	sembrarAprobacion(t, raiz, "E001/F002/S001") // cambiar pruebas en curso pide aprobar de nuevo
 	if _, err := Rojo(raiz, "E001/F002/S001", hora); err == nil || !strings.Contains(err.Error(), "paquete no existe") {
 		t.Errorf("un paquete que no existe se nombra así, no como «no compila»; dio %v", err)
 	}
@@ -279,6 +284,7 @@ func TestCerrarExigeRojoYVerde(t *testing.T) {
 	// Ficha anterior a S003 (sin pruebas): para cerrarla primero se le ponen pruebas.
 	pisar(t, raiz, Activo, Ficha{ID: "E001/F002/S002", Tipo: "slice", Titulo: "T", Estado: "EN_CURSO", Prioridad: "P1",
 		Motivo: "m", Padre: "E001/F002", BloqueadoPor: []string{}, Secuencia: 9})
+	sembrarAprobacion(t, raiz, "E001/F002/S002")
 	if _, err := Estado(raiz, "E001/F002/S002", "CERRADO"); err == nil || !strings.Contains(err.Error(), "pruebas") {
 		t.Errorf("cerrar sin pruebas; dio %v", err)
 	}
@@ -299,7 +305,7 @@ func TestUnSoloSliceEnCurso(t *testing.T) {
 	if _, err := Prioridad(raiz, "E001/F002/S002", "P0", "urge"); err != nil {
 		t.Errorf("la prioridad sí cambia en cualquier ficha: %v", err)
 	}
-	if _, err := Estado(raiz, "E001/F002", "EN_CURSO"); err != nil {
+	if _, err := arrancar(t, raiz, "E001/F002"); err != nil {
 		t.Errorf("una feature sí cambia de estado: %v", err)
 	}
 	if _, err := Estado(raiz, "E001/F002/S001", "VERIFICANDO"); err != nil {
@@ -314,7 +320,7 @@ func TestUnSoloSliceEnCurso(t *testing.T) {
 	if _, hay, err := SliceEnCurso(raiz); err != nil || hay {
 		t.Errorf("sin slice en curso: %v %v", hay, err)
 	}
-	if _, err := Estado(raiz, "E001/F002/S002", "EN_CURSO"); err != nil {
+	if _, err := arrancar(t, raiz, "E001/F002/S002"); err != nil {
 		t.Errorf("libre el turno, S002 entra: %v", err)
 	}
 }

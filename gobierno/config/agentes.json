@@ -8,7 +8,8 @@
       "cuerpo": "gobierno/canonico/agentes/orquestador.md",
       "reglas": [
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md",
-        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md"
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md",
+        "gobierno/canonico/reglas/03_DOD_COMUN.md"
       ],
       "comunicacion": [
         "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md",

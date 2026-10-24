@@ -114,7 +114,7 @@ func TestNuevoRechaza(t *testing.T) {
 func TestEstadoTerminalArchiva(t *testing.T) {
 	raiz := base(t)
 	nuevo(t, raiz, "id=E001/F002/S002", "titulo=T", "prioridad=P1", "motivo=m")
-	if f, err := Estado(raiz, "E001/F002/S002", "EN_CURSO"); err != nil || f.Estado != "EN_CURSO" {
+	if f, err := arrancar(t, raiz, "E001/F002/S002"); err != nil || f.Estado != "EN_CURSO" {
 		t.Fatalf("EN_CURSO: %+v %v", f, err)
 	}
 	if _, err := Estado(raiz, "E001/F002/S002", "LISTISIMO"); err == nil || !strings.Contains(err.Error(), "estado") {
@@ -134,7 +134,7 @@ func TestEstadoTerminalArchiva(t *testing.T) {
 	if f, archivada, err := Ver(raiz, "E001/F002/S002"); err != nil || !archivada || f.Estado != "CERRADO" {
 		t.Errorf("Ver encuentra la archivada: %+v %v %v", f, archivada, err)
 	}
-	if _, err := Estado(raiz, "E001/F002/S002", "EN_CURSO"); err == nil || !strings.Contains(err.Error(), "archivada") {
+	if _, err := arrancar(t, raiz, "E001/F002/S002"); err == nil || !strings.Contains(err.Error(), "archivada") {
 		t.Errorf("una archivada no cambia; dio %v", err)
 	}
 	if _, err := Prioridad(raiz, "E001/F002/S002", "P0", "m"); err == nil || !strings.Contains(err.Error(), "archivada") {
@@ -188,6 +188,9 @@ func TestSiguienteOrdenFijo(t *testing.T) {
 		if e == "CERRADO" {
 			conRojoYVerde(t, raiz, id) // desde S003 cerrar exige rojo y verde
 			marcarTodo(t, raiz, id)    // desde S004 cerrar exige el sello marcado
+		}
+		if e == "EN_CURSO" {
+			sembrarAprobacion(t, raiz, id) // E001/F010/S001: arrancar exige la aprobación humana
 		}
 		if _, err := Estado(raiz, id, e); err != nil {
 			t.Fatalf("Estado(%s, %s): %v", id, e, err)
