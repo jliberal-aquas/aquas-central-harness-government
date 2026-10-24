@@ -1,0 +1,10 @@
+{
+  "id": "D000035",
+  "firma": "presupuesto-registra-plan-distinto",
+  "que": "presupuesto.py registra un tope distinto del plan del humano: «plan de 6» → 4 (dos veces), «plan de 3» → 5",
+  "causa": "no confirmada; descartado leer la línea Plan del mensaje previo del agente (el último decía 3 y registró 5)",
+  "arreglo": "el hook toma N del último mensaje del humano y muestra el texto que leyó",
+  "como_me_cercioro": "prueba: prompt «dale, plan de 6 llamadas» registra 6",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
