@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F010",
+    "slice": "S001",
+    "tarea": "F010/S001 listo para cerrar: auditado, gate OK, commit 15a0dc6"
+  },
+  "siguiente": "páginas de F011 y apruebo E001/F011/S001",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [
+    "freno propio en aquas: humano lo propone; recomiendo feature nueva con contrato"
+  ],
+  "huella_git": "4727bd7506e0f15e244fb72553af523ce03c1aff2465aa5a5b9de5d5c58b0fac",
+  "actualizado": "2026-10-24T00:26:31Z",
+  "sello": "695cfbae4a1c56521ca6d4bc7a18dc2299ba663274a8ffc6ff445ac5cd577d4a"
+}
