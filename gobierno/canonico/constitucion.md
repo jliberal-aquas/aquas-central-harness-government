@@ -34,7 +34,7 @@
 - Presupuesto: `max_caracteres` obligatorio por salida en config; gate falla si se excede.
 - Tope = freno de desborde extremo, con holgura amplia; no es meta. Nunca condensar una regla hasta perder contexto para caber: se sube el tope.
 - Sello: `gobierno/config/sellos.json` guarda SHA-256 de cada fuente y cada salida.
-- Compilar: `go run ./cmd/aquas compilar`. Verificar (gate): `go run ./cmd/aquas verificar`.
+- Compilar: `go run ./cmd/aquas compilar`. Verificar (gate): `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar`.
 - Disparadores: hook PostToolUse de Claude Code (recompila al editar) + git pre-commit (bloquea si hay desfase).
 - Clon nuevo: `git config core.hooksPath .githooks` + `aquas iniciar` (SO y raíz).
 <!-- /solo-central -->

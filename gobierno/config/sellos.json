@@ -1,9 +1,9 @@
 {
   "salidas": {
     ".claude/agents/auditor.md": {
-      "sha256": "d0a52b4c886b819216fee6a9e298a54189f09a0d0edc961910ab19b9a6ee444d",
+      "sha256": "b7ce9a0ec8ff95c7a198da62261b24b61ef52e6fad0c9784ee9cbf17e518193d",
       "fuentes": {
-        "gobierno/canonico/agentes/auditor.md": "6b9bbf0e618141045ea74b2df82311c7eb7206edf3b729e0d9a5f86cd988840e",
+        "gobierno/canonico/agentes/auditor.md": "26ed53205bd326fe4277cd1e10687d7c43f7052429a73d8bf2d62fe4d9045e6f",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
         "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "a0fbc09fcb442d0a69705cb35c6b3379ee079b70c5ee085d8864e7b11b3bccfd",
         "gobierno/config/agentes.json": "26f60352364209889e1dc4003312e2ca78f95a9f91c8388119831af5f08a383e"
@@ -41,9 +41,9 @@
       }
     },
     "CLAUDE.md": {
-      "sha256": "3252bb907fe3813bde3d1015368d9a04cadfd67887444b043d3c3ac9b2cb8247",
+      "sha256": "f97f6cb74e342005d7435ee08fe657e65d0f0b8ac470714b3020e4ac38a12b2a",
       "fuentes": {
-        "gobierno/canonico/constitucion.md": "c32ea80b852f6d2d313262d942e6492160f10504b621264a10525ccd3959331b",
+        "gobierno/canonico/constitucion.md": "5c472dbd18f54eebdfde362f998f61f3b6b218a833b061808164613ae7418cdb",
         "gobierno/config/documentos.json": "8725c5c1c167976365eafc575bb74ad42840bffc0bfba3123ded26f2574bb6dd"
       }
     }

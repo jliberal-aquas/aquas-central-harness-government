@@ -1,0 +1,757 @@
+{
+  "id": "E000/F006/S010",
+  "tipo": "slice",
+  "titulo": "Instrucciones sin go run para verificar",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "D000034 resto: auditor.md, constitución y páginas aún mandan go run ./cmd/aquas verificar y dan el falso binario viejo",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 104,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestInstruccionesSinGoRunVerificar",
+      "intencion": "valida que canónicos y docs no mandan go run ./cmd/aquas verificar",
+      "rojo_cuando": "rojo cuando algún canónico o página contiene go run ./cmd/aquas verificar",
+      "verde_cuando": "verde cuando ninguno lo contiene"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-25T13:09:36Z",
+    "head": "3a200c4b7e0a70579578f685237e995c64808f2f",
+    "resultado": {
+      "./cmd/aquas:TestInstruccionesSinGoRunVerificar": "instrucciones_test.go:39: README.md:32 manda `go run ./cmd/aquas verificar`; usa `go build -o .tmp/aquas.exe ./cmd/aquas \u0026\u0026 ./.tmp/aquas.exe verificar`"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-25T13:09:37Z",
+    "head": "3a200c4b7e0a70579578f685237e995c64808f2f"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S010.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/punta_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/punta_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S005.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S006.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S005.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S005.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S004.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S013.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S014.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S017.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S018.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S019.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S003.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/comunicacion.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/agentes/auditor.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:gobierno/config/documentos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/agentes/auditor.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/biblioteca/biblioteca.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/biblioteca/biblioteca.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/compilador/modulo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/hijo/build_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/hijo/report_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/hijo/update_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/integral_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/legibilidad_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/ref/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003eREADME.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambian textos de instrucciones y una prueba nueva; ninguna API ni nombre cambia"
+    }
+  ],
+  "alcance": [
+    "gobierno/canonico/**",
+    "docs/**",
+    "cmd/aquas/**",
+    "registro/defectos/**",
+    "CLAUDE.md",
+    ".claude/agents/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "README.md",
+      "motivo": "auditor: README.md:32 manda go run ./cmd/aquas verificar en el arranque rápido; mismo defecto D000034"
+    }
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-25T13:09:27Z",
+    "huella": "0d2b7ee568aaf0d15fcd179b2189ebb737418f665555d81950c35e1d9b0abb34",
+    "mensaje": "apruebo E000/F006/S010"
+  },
+  "relacion": "amplia:E000/F006/S008"
+}

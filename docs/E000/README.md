@@ -115,7 +115,7 @@ Decisiones de Jesús:
 - Un fallo se arregla antes de continuar, aunque cambie el orden del trabajo (2026-10-20).
 - Las pruebas del [compilador](../glosario.md#compilador), anteriores al método, viven en E000/F002 (2026-10-20).
 
-Prueba integral de la iniciativa: `go test ./...` más `go run ./cmd/aquas verificar`. Las dos pasaron en el commit `2c418d1`.
+Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar`. Las dos pasaron en el commit `2c418d1`.
 
 ## Navegación
 

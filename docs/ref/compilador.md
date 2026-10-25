@@ -97,7 +97,7 @@ Así revisa `aquas verificar`:
 ## Cómo se usa
 
 - Después de editar un canónico a mano fuera de Claude Code: `go run ./cmd/aquas compilar`.
-- Antes de guardar: `go run ./cmd/aquas verificar`.
+- Antes de guardar: `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar`.
 - Si sale «desfasado o editado a mano», ejecuta `compilar` y revisa el cambio.
 - Si sale «excede presupuesto», recorta el canónico.
 - Si sale «sello desfasado», ejecuta `compilar`.

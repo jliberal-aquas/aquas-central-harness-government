@@ -87,7 +87,7 @@ Comandos principales, desde la raíz del repositorio:
 | Quiero… | Comando |
 |---|---|
 | Regenerar archivos derivados y sello | `go run ./cmd/aquas compilar` |
-| Revisar que todo esté en orden | `go run ./cmd/aquas verificar` |
+| Revisar que todo esté en orden | `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar` |
 | Activar el gate en un clon nuevo | `git config core.hooksPath .githooks` |
 | Declarar sistema y carpeta en un clon nuevo | `go run ./cmd/aquas iniciar` |
 

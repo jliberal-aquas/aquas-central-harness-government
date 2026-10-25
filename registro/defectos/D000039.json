@@ -1,0 +1,10 @@
+{
+  "id": "D000039",
+  "firma": "edicion-de-contrato-invalida-aprobacion",
+  "que": "el agente corrigió la Estrategia de S010 tras la aprobación y el rojo se rechazó",
+  "causa": "todo lo bajo «Para qué existe» entra en la huella; el agente no revisó la sección completa antes de pedir aprobación",
+  "arreglo": "revisar que la propia página y la prueba no choquen antes de pedir aprobación",
+  "como_me_cercioro": "propuesto: sin control automático",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

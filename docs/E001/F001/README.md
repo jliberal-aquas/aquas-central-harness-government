@@ -93,12 +93,12 @@ Para agregar documentación de algo nuevo:
 4. Agrega el diagrama del nivel.
 5. En el ejemplo, pon el [ancla](../../glosario.md#ancla) propia y la línea `continúa:` hacia la página de arriba.
 6. Enlaza la página nueva desde la «Navegación» de su página padre.
-7. Ejecuta `go run ./cmd/aquas verificar` y corrige hasta ver «GATE OK».
+7. Ejecuta `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar` y corrige hasta ver «GATE OK».
 
 ## Cómo se usa
 
 - Leer: abre `docs/README.md` en VS Code y pulsa Ctrl+Shift+V.
-- Revisar: `go run ./cmd/aquas verificar`. Cada problema sale como `archivo: problema`.
+- Revisar: `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar`. Cada problema sale como `archivo: problema`.
 - El [pre-commit](../../glosario.md#pre-commit) ejecuta lo mismo; no hace falta acordarse.
 - Límite: el gate revisa el tipo de cada diagrama, no si está bien escrito. Un diagrama roto pasa. Míralo en la vista previa antes de guardar.
 

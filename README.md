@@ -29,7 +29,7 @@ Each initiative opens its own map in the wiki (in Spanish):
 ```bash
 git config core.hooksPath .githooks
 go run ./cmd/aquas iniciar
-go run ./cmd/aquas verificar
+go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar
 ```
 
 Requires Go 1.26. The CLI is being migrated to English command names.

@@ -67,7 +67,7 @@ Para cambiar la constitución:
 1. Edita `gobierno/canonico/constitucion.md`. Nunca `CLAUDE.md`.
 2. Escribe en formato corto: una idea por línea, sin relleno.
 3. Ejecuta `go run ./cmd/aquas compilar`.
-4. Ejecuta `go run ./cmd/aquas verificar` y busca «GATE OK».
+4. Ejecuta `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar` y busca «GATE OK».
 
 ## Cómo se usa
 
