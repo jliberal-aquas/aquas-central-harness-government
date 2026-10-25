@@ -92,7 +92,7 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 | S006 | CLI en inglés | Planeado |
 | S007 | Biblioteca cuenta bien lo devuelto | Planeado |
 | [S008](S008.md) | Guardia sin falso binario viejo con go run | Hecho |
-| S009 | aquas limpiar temporales del encargo | Planeado |
+| [S009](S009.md) | aquas limpiar temporales del encargo | Hecho |
 | [S010](S010.md) | Instrucciones sin go run para verificar | Hecho |
 
 <!-- /GENERADO -->

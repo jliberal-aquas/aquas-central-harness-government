@@ -60,6 +60,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 |---|---|---|---|
 | [cmd/aquas/aprobacion.go](../../cmd/aquas/aprobacion.go) | `idAprobado` | `(prompt string) (string, bool)` | idAprobado: id de la PRIMERA línea no vacía si es «apruebo <id>»; una línea que termina en «?» es pregunta. |
 | [cmd/aquas/aprobacion.go](../../cmd/aquas/aprobacion.go) | `aprobacionCLI` | `(raiz string)` | aprobacionCLI: solo un evento UserPromptSubmit cuenta como mensaje del humano. PreToolUse, PostToolUse, |
+| [cmd/aquas/limpiar.go](../../cmd/aquas/limpiar.go) | `limpiar` | `(raiz string, args []string) (string, error)` | limpiar (E000/F006/S009): borra .tmp/<id>/ de un encargo y nada más. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `main` | `()` | main despacha el subcomando de aquas (compilar, verificar, backlog, hooks…) y sale con su código. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `hook` | `(raiz string)` | hook: exit 0 = nada que reportar; exit 2 = stderr se muestra a Claude. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `compilarSettings` | `(w io.Writer)` | compilarSettings regenera .claude/settings.json; sin entorno declarado no inventa uno. |

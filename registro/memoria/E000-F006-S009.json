@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F006",
+    "slice": "S009",
+    "tarea": "S009 cerrando"
+  },
+  "siguiente": "commit S009",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [
+    "freno propio en aquas: humano lo propone; recomiendo feature nueva con contrato"
+  ],
+  "huella_git": "5a06d16b5b30648c041be6241920b38714387626fe992863117a373c6d8b9007",
+  "actualizado": "2026-10-25T14:27:36Z",
+  "sello": "310f4c9267bf64304c47d62b8eeb394e2c6b954ec6181d39147f5e370473e30d"
+}

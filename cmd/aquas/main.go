@@ -138,6 +138,12 @@ func main() {
 				os.Exit(2)
 			}
 		}
+	case "limpiar": // E000/F006/S009: borra .tmp/<id>/ de un encargo y nada más
+		msg, err := limpiar(raiz, os.Args[2:])
+		if err != nil {
+			fallar(1, err)
+		}
+		fmt.Println(msg)
 	case "defecto": // E001/F004/S001: registro de defectos en registro/defectos/
 		if err := defectoCLI(raiz, os.Args[2:]); err != nil {
 			fallar(1, err)
