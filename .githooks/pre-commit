@@ -1,4 +1,7 @@
 #!/bin/sh
 # Gate aquas: bloquea el commit si algún derivado o sello está desfasado.
+# D000034: go build -o deja un binario con fecha de ahora, no uno reusado de la caché de Go.
 mkdir -p ./.tmp
-GOTMPDIR="$PWD/.tmp" TMP="$PWD/.tmp" TEMP="$PWD/.tmp" exec go run ./cmd/aquas verificar
+export GOTMPDIR="$PWD/.tmp" TMP="$PWD/.tmp" TEMP="$PWD/.tmp"
+go build -o ./.tmp/aquas-precommit.exe ./cmd/aquas || exit 1
+exec ./.tmp/aquas-precommit.exe verificar

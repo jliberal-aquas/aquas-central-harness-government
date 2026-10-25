@@ -1,0 +1,10 @@
+{
+  "id": "D000038",
+  "firma": "ruta-con-espacio-sin-comillas-escribe-fuera",
+  "que": "el auditor de S008 usó una ruta sin comillas; la raíz tiene espacio, cd falló y pisó cmd/aquas/main.go y creó Factory/ y D:/Agents",
+  "causa": "la variable con la ruta se partió en dos palabras; los comandos siguientes corrieron en otra carpeta",
+  "arreglo": "la guardia rechaza comandos con cd o rutas a la raíz sin comillas cuando la raíz tiene espacio",
+  "como_me_cercioro": "prueba de la guardia: comando con ruta sin comillas se bloquea; con comillas pasa",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

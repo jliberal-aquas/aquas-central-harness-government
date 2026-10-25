@@ -2,7 +2,7 @@
   "id": "E000/F006/S008",
   "tipo": "slice",
   "titulo": "Guardia sin falso binario viejo con go run",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "D000034: el pre-commit falla con binario viejo falso por la caché de go run; hoy cada commit exige GOFLAGS=-a",
   "padre": "E000/F006",
@@ -14,6 +14,44 @@
       "intencion": "valida que el pre-commit construye aquas a .tmp con go build -o y no usa go run",
       "rojo_cuando": "rojo cuando el script contiene go run",
       "verde_cuando": "verde cuando el script construye a .tmp y hace exec del binario"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-24T22:14:14Z",
+    "head": "48d3cda05a7fcb59802277743e414ab3654f7ab0",
+    "resultado": {
+      "./cmd/aquas:TestPreCommitNoUsaGoRun": "precommit_test.go:20: el pre-commit usa `go run`: reutiliza un ejecutable de la caché de Go con fecha vieja"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-25T00:28:13Z",
+    "head": "48d3cda05a7fcb59802277743e414ab3654f7ab0"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "la feature no cambia: S008 solo arregla el pre-commit"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa no cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S008.md",
+      "marca": "sin_cambio",
+      "motivo": "ya al día en este slice: demostración manual y causa VERIFICADO"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la tabla de hijos la rehace aquas compilar"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa no cambia"
     }
   ],
   "alcance": [
@@ -75,6 +113,20 @@
     "registro/defectos/D000032.json",
     "registro/defectos/D000033.json",
     "registro/defectos/D000034.json"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "cmd/aquas/precommit_test.go",
+      "motivo": "la prueba propia del slice, creada antes de EN_CURSO; fortalecerla por hallazgo del auditor"
+    }
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-25T00:28:06Z",
+    "huella": "e21bea41f7cbb5e820ba1e5d669156b409a13f94285065b9013d5fb86a9fc95f",
+    "mensaje": "apruebo E000/F006/S008"
+  },
+  "codigo": [
+    ".githooks/pre-commit"
   ],
   "relacion": "nueva"
 }

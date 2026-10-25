@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F006",
+    "slice": "S008",
+    "tarea": "cerrando S008"
+  },
+  "siguiente": "humano escribe solo «apruebo E000/F006/S008» → verde, sello, cerrar S008, commit sin GOFLAGS=-a",
+  "pendientes": [
+    "limpiar .tmp (aq.exe, s003-rojo, calidad-pruebas)"
+  ],
+  "decisiones": [
+    "freno propio en aquas: humano lo propone; recomiendo feature nueva con contrato"
+  ],
+  "huella_git": "f2bbaaa3180f394022482604e087d01959f059c3a91f9f5fa1566219ea0665e9",
+  "actualizado": "2026-10-25T00:28:30Z",
+  "sello": "f4d480b5d5c69b39c6a712ee73475fcb4b55beaedc60963c9d6cbec21053a1f3"
+}
