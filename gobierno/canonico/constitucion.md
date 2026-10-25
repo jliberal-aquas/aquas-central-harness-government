@@ -7,6 +7,7 @@
 - Este repo GOBIERNA y GENERA la estructura inicial de todo proyecto trabajado con Claude Code.
 - Fuente única de verdad para: constitución, metodologías, gates y validadores deterministas.
 - Proyectos hijos heredan desde aquí; no se inventan reglas locales que contradigan esta constitución.
+- Aquí no se construyen productos: cada producto vive en su repo hijo; aquí solo se cuida su gobierno.
 <!-- /hueco -->
 
 ## Principios

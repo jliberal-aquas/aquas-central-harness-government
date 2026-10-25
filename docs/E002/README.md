@@ -76,6 +76,7 @@ Prueba integral: `TestCicloDeVidaDelHijo` (pendiente).
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [F001](F001/README.md) | Instalar y heredar el núcleo común | Hecho |
+| [F002](F002/README.md) | Instalar y actualizar un hijo con un comando cada uno | Planeado |
 
 <!-- /GENERADO -->
 

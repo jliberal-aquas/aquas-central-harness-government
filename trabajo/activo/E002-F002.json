@@ -1,0 +1,20 @@
+{
+  "id": "E002/F002",
+  "tipo": "feature",
+  "titulo": "Instalar y actualizar un hijo con un comando cada uno",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "instalar la landing aquas.cl exigió install, escribir 3 huecos a mano y build; install rechaza carpetas con código",
+  "padre": "E002",
+  "bloqueado_por": [],
+  "secuencia": 106,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHijoEnUnComando",
+      "intencion": "valida que install y update dejan CLAUDE.md armado en un comando cada uno",
+      "rojo_cuando": "rojo cuando install no arma CLAUDE.md o rechaza una carpeta con código",
+      "verde_cuando": "verde cuando install arma CLAUDE.md con huecos PENDIENTE y update lo rearma sin pisar los huecos"
+    }
+  ],
+  "relacion": "nueva"
+}
