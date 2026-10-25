@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F006",
+    "slice": "S011",
+    "tarea": "S011 cerrando; auditor APROBADO"
+  },
+  "siguiente": "commit S011",
+  "pendientes": [
+    "D000041: re-auditar S009 junto con S011"
+  ],
+  "decisiones": [
+    "freno propio en aquas: humano lo propone; recomiendo feature nueva con contrato"
+  ],
+  "huella_git": "fba6feb898ecf92fd1272f781b7973923d0935f6c5b1228e8160aa8a3b2b7f22",
+  "actualizado": "2026-10-25T17:33:03Z",
+  "sello": "a840149649d02741cef8bdd7e433a88a6a2d24a0d668f31b610ae6a3d5d28952"
+}

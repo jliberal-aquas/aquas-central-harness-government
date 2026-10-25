@@ -1,42 +1,42 @@
 {
   "salidas": {
     ".claude/agents/auditor.md": {
-      "sha256": "b7ce9a0ec8ff95c7a198da62261b24b61ef52e6fad0c9784ee9cbf17e518193d",
+      "sha256": "df718dd6e282a0f5c73daf1abb2b8d888d9305109e4f101f86fef0783e2a256a",
       "fuentes": {
         "gobierno/canonico/agentes/auditor.md": "26ed53205bd326fe4277cd1e10687d7c43f7052429a73d8bf2d62fe4d9045e6f",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "a0fbc09fcb442d0a69705cb35c6b3379ee079b70c5ee085d8864e7b11b3bccfd",
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "7ffbca4525851e24e97d06085d11a3c481f318f2f31e07ddc0e4abc368fcd6b8",
         "gobierno/config/agentes.json": "26f60352364209889e1dc4003312e2ca78f95a9f91c8388119831af5f08a383e"
       }
     },
     ".claude/agents/orchestrator.md": {
-      "sha256": "92c60b2cd86f21c0adb6a007676e32a3a9e069ab8b4da4076b25c486c0766b4e",
+      "sha256": "ca7c1f66aff7edd35ee44278d69d9d5561c9ac074660f0a589f8ee3f6640d2ac",
       "fuentes": {
         "gobierno/canonico/agentes/orquestador.md": "fec82bd071570c1713cf8b190b0f51a4e8c1e0f396114d7747f9f0e763cb9a68",
         "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md": "08a3028fe7a5e84ba6847fa9f1790d8076e3ed2f96ee7b33262ec9026745451c",
         "gobierno/canonico/comunicacion/02_PEDAGOGIA_CHAT.md": "04793b3914f29bedb875fcd43dc154a893d3e8535c0a5274cd9ff4be19c7eca6",
         "gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md": "a1f498624ced9d2f222f78bfd7d4a143420fb377d833d41d43312e8c4c9994b3",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "a0fbc09fcb442d0a69705cb35c6b3379ee079b70c5ee085d8864e7b11b3bccfd",
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "7ffbca4525851e24e97d06085d11a3c481f318f2f31e07ddc0e4abc368fcd6b8",
         "gobierno/canonico/reglas/03_DOD_COMUN.md": "c81754ac7822aaaf880b0646695f05cf0abc942c53d47b88969be0036d4efc06",
         "gobierno/config/agentes.json": "26f60352364209889e1dc4003312e2ca78f95a9f91c8388119831af5f08a383e"
       }
     },
     ".claude/agents/worker-haiku.md": {
-      "sha256": "9e3b622e228531e8b5b3ffab54e0ed2a7962312bd54bf84abf2405676ed33a8e",
+      "sha256": "5fbf793afaa4d7b710cb73a1e4ae23ee5c1d549fcd988d8a76e707f8752300b9",
       "fuentes": {
         "gobierno/canonico/agentes/worker.md": "462cf913e7c52c0fccd25bb56d668396dab6dfaf296fc6e2b4bfc23cb9ea39eb",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "a0fbc09fcb442d0a69705cb35c6b3379ee079b70c5ee085d8864e7b11b3bccfd",
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "7ffbca4525851e24e97d06085d11a3c481f318f2f31e07ddc0e4abc368fcd6b8",
         "gobierno/config/agentes.json": "26f60352364209889e1dc4003312e2ca78f95a9f91c8388119831af5f08a383e"
       }
     },
     ".claude/agents/worker-sonnet.md": {
-      "sha256": "f0e1f2a36b3a41300a0471dd974ef04ccd1d27e3ad9af414ebac1afeb930d61a",
+      "sha256": "09a1db87484d6c7498202d0a03387f29452a42b563d1d35d94e4f904ea25887c",
       "fuentes": {
         "gobierno/canonico/agentes/worker.md": "462cf913e7c52c0fccd25bb56d668396dab6dfaf296fc6e2b4bfc23cb9ea39eb",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "a0fbc09fcb442d0a69705cb35c6b3379ee079b70c5ee085d8864e7b11b3bccfd",
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "7ffbca4525851e24e97d06085d11a3c481f318f2f31e07ddc0e4abc368fcd6b8",
         "gobierno/config/agentes.json": "26f60352364209889e1dc4003312e2ca78f95a9f91c8388119831af5f08a383e"
       }
     },

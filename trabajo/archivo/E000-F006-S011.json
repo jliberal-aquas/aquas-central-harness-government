@@ -1,0 +1,304 @@
+{
+  "id": "E000/F006/S011",
+  "tipo": "slice",
+  "titulo": "aquas limpiar conectado: CLI y regla de encargos",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "auditor S009: ninguna prueba cubre el despacho del CLI y la regla de encargos no nombra aquas limpiar",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 105,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestLimpiarConectado",
+      "intencion": "valida que el CLI despacha limpiar y la regla de encargos lo nombra",
+      "rojo_cuando": "rojo cuando el despacho falta o la regla no nombra aquas limpiar",
+      "verde_cuando": "verde cuando el CLI borra por subcomando y la regla lo nombra"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-25T15:04:54Z",
+    "head": "f1bab7935275896aba53ea48f40bda1372b67ba5",
+    "resultado": {
+      "./cmd/aquas:TestLimpiarConectado": "limpiar_conectado_test.go:49: la regla de encargos debió nombrar `aquas limpiar`"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-25T16:21:14Z",
+    "head": "f1bab7935275896aba53ea48f40bda1372b67ba5"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S011.md",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:internal/encargo/encargo.go\u003egobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "prueba nueva, comentario y una línea de regla; ninguna API ni nombre existente cambia"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/**",
+    "gobierno/canonico/reglas/**",
+    ".claude/agents/**",
+    "gobierno/config/sellos.json",
+    "docs/E000/F006/**",
+    "registro/defectos/**"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-25T15:04:34Z",
+    "huella": "ecc9b290b30fb6a864f41e98cb9bd354066e344e695d4a87c4f945afa04d066f",
+    "mensaje": "apruebo E000/F006/S011"
+  },
+  "codigo": [
+    "cmd/aquas/main.go"
+  ],
+  "relacion": "nueva"
+}

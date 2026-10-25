@@ -75,4 +75,4 @@ no_revisado: qué y por qué | —
 
 ## Temporales
 - Antes de invocar Go: TMP, TEMP y GOTMPDIR → `<raíz>/.tmp` (ruta absoluta).
-- Archivos propios en `.tmp/<id-del-encargo>/`; borrarlos al cerrar. Nunca borrar `.tmp` entero: ahí corren los binarios de los hooks.
+- Archivos propios en `.tmp/<id-del-encargo>/`; borrarlos al cerrar con `aquas limpiar <id-del-encargo>`. Nunca borrar `.tmp` entero: ahí corren los binarios de los hooks.

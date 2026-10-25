@@ -1,0 +1,10 @@
+{
+  "id": "D000042",
+  "firma": "codigo-de-slice-por-mencion-en-commit",
+  "que": "la tabla Código de S009 atribuye internal/backlog/rojo.go por un commit que solo menciona el id",
+  "causa": "internal/backlog/codigo.go:11 usa git log --grep=\u003cid\u003e, que calza con cualquier mención en el cuerpo",
+  "arreglo": "atribuir solo commits cuyo título nombra el id, o un trailer explícito",
+  "como_me_cercioro": "propuesto: sin slice todavía",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

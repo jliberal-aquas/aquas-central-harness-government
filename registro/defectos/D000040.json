@@ -1,0 +1,10 @@
+{
+  "id": "D000040",
+  "firma": "plan-no-registrado-si-dale-no-abre",
+  "que": "el hook de presupuesto no registra el plan cuando el mensaje empieza con respuestas (1a, a;) antes del dale",
+  "causa": "hipótesis no confirmada: el patrón exige dale al inicio del mensaje",
+  "arreglo": "aceptar dale con números en cualquier parte del mensaje o avisar al humano que no se registró",
+  "como_me_cercioro": "propuesto: el hook vive en ~/.claude/hooks, fuera del repo; lo edita el humano",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

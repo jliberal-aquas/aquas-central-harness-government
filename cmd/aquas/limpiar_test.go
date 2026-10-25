@@ -88,9 +88,43 @@ func TestLimpiarSoloTmpDelEncargo(t *testing.T) {
 		t.Errorf("sin carpeta debió avisar «nada que borrar» sin error; dio %q, %v", msg, err)
 	}
 
+	// La carpeta del encargo misma como enlace: se rechaza y el destino queda.
+	escribir("afuera2/x.txt")
+	enlazar(t, filepath.Join(raiz, ".tmp", "E000-F006-S012-A1"), filepath.Join(raiz, "afuera2"))
+	if _, err := limpiar(raiz, []string{"E000-F006-S012-A1"}); err == nil || !existe("afuera2/x.txt") {
+		t.Errorf("carpeta del encargo como enlace debió rechazarse sin borrar; err=%v", err)
+	}
+
+	// .tmp como enlace: se rechaza y nada se borra.
+	raiz2 := t.TempDir()
+	real := filepath.Join(raiz2, "real", "E000-F006-S010-A1")
+	if err := os.MkdirAll(real, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	enlazar(t, filepath.Join(raiz2, ".tmp"), filepath.Join(raiz2, "real"))
+	if _, err := limpiar(raiz2, []string{"E000-F006-S010-A1"}); err == nil {
+		t.Error(".tmp como enlace debió rechazarse")
+	}
+	if _, err := os.Stat(real); err != nil {
+		t.Errorf(".tmp como enlace no debió borrar: %v", err)
+	}
+
 	// Un archivo con nombre de id no es una carpeta de encargo: se rechaza y queda.
 	escribir(".tmp/E000-F006-S013-T1")
 	if _, err := limpiar(raiz, []string{"E000-F006-S013-T1"}); err == nil || !existe(".tmp/E000-F006-S013-T1") {
 		t.Errorf("archivo con nombre de id debió rechazarse sin borrar; err=%v", err)
+	}
+}
+
+// enlazar crea un enlace a una carpeta: symlink, o junction en Windows sin privilegio.
+func enlazar(t *testing.T, enlace, destino string) {
+	t.Helper()
+	if err := os.Symlink(destino, enlace); err == nil {
+		return
+	} else if runtime.GOOS != "windows" {
+		t.Fatal(err)
+	}
+	if out, err := exec.Command("cmd", "/c", "mklink", "/J", enlace, destino).CombinedOutput(); err != nil {
+		t.Fatalf("no se pudo crear el enlace: %v %s", err, out)
 	}
 }

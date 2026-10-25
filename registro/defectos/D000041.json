@@ -1,0 +1,10 @@
+{
+  "id": "D000041",
+  "firma": "cierre-sin-aprobado-del-auditor",
+  "que": "S009 se cerró con auditor CON_HALLAZGOS corregidos, sin segunda revisión APROBADO",
+  "causa": "el cierre del backlog no exige veredicto del auditor; el orquestador lo saltó",
+  "arreglo": "re-auditar tras corregir hallazgos; gate propuesto: el cierre exige veredicto APROBADO registrado",
+  "como_me_cercioro": "propuesto: sin gate hoy",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

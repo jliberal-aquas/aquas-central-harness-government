@@ -10,6 +10,7 @@
 //	aquas memoria    ver | fijar campo=valor… | inicio | cierre | archivar: memoria caliente del foco (.aquas/memoria.json)
 //	aquas medir vueltas  cuenta corridas, fallas y motivos de go test y verificar en el historial de Claude Code
 //	aquas wiki enlazar docs/x.md…  enlaza al glosario la primera aparición de cada término
+//	aquas limpiar <id>  borra .tmp/<id>/ de un encargo (E000/F006/S010-A1) y nada más
 //	aquas defecto    nuevo firma=… que=… causa=… arreglo=… cercioro=… | ocurre D000001 T000001 | ver [D000001]
 package main
 
