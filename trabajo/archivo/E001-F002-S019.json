@@ -1,0 +1,216 @@
+{
+  "id": "E001/F002/S019",
+  "tipo": "slice",
+  "titulo": "Rojo de subtest guarda su motivo",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "D000033: el rojo guarda motivo vacío si falla solo un subtest; la wiki muestra «—» y se pierde la evidencia",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 101,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestRojoSubtestGuardaMotivo",
+      "intencion": "valida que el motivo junta la salida de Padre/sub",
+      "rojo_cuando": "rojo cuando un fallo solo en subtest deja motivo vacío",
+      "verde_cuando": "verde cuando el motivo trae la salida del subtest"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-25T00:49:37Z",
+    "head": "65643060bd555d8e45bcdfe40b69e54e3c0dc87d",
+    "resultado": {
+      "./internal/backlog:TestRojoSubtestGuardaMotivo": "rojo_subtest_test.go:38: el motivo debió traer la línea del subtest Padre/sub/hondo; dio \"\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-25T00:50:11Z",
+    "head": "65643060bd555d8e45bcdfe40b69e54e3c0dc87d"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S019.md",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S018.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003einternal/backlog/rojo.go",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "el cambio es interno a correr; no cambia API ni nombres de backlog"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "docs/E001/F002/**",
+    "registro/defectos/**"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-25T00:49:30Z",
+    "huella": "d6a413344094f9131c4ebd226d446e1f6c50005fc9b7d86a99b10b4bae3be555",
+    "mensaje": "apruebo E001/F002/S019"
+  },
+  "codigo": [
+    "internal/backlog/rojo.go"
+  ],
+  "relacion": "nueva"
+}

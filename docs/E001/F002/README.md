@@ -153,7 +153,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | [S016](S016.md) | Insight PROPUESTO exige defecto registrado | Hecho |
 | [S017](S017.md) | Padre no cierra con hijos abiertos | Hecho |
 | [S018](S018.md) | Rojo heredado solo de slices cerrados | Hecho |
-| S019 | Rojo de subtest guarda su motivo | Planeado |
+| [S019](S019.md) | Rojo de subtest guarda su motivo | Hecho |
 
 ### Arreglos
 

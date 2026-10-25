@@ -275,7 +275,15 @@ func correr(raiz string, ps []Prueba) (map[string]resultado, error) {
 			}
 			r := porPrueba[e.Test]
 			if r == nil {
-				continue
+				// D000033: la salida de un subtest (Padre/sub/…) se suma al motivo del padre;
+				// sus eventos pasa/falla/salta no tocan el resultado del padre.
+				i := strings.Index(e.Test, "/")
+				if i < 0 || e.Action != "output" {
+					continue
+				}
+				if r = porPrueba[e.Test[:i]]; r == nil {
+					continue
+				}
 			}
 			switch e.Action {
 			case "pass", "fail", "skip":
