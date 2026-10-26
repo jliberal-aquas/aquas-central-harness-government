@@ -13,10 +13,16 @@
   "pruebas": [
     {
       "prueba": "./internal/calidad:TestImportNoPermitido",
-      "intencion": "valida que un import fuera de la tabla falla",
-      "rojo_cuando": "rojo cuando un import prohibido pasa",
-      "verde_cuando": "verde cuando falla y nombra la arista"
+      "intencion": "valida que un import interno fuera de la tabla, de código o de prueba, y un paquete sin fila hacen fallar el gate",
+      "rojo_cuando": "rojo cuando un import prohibido, uno solo de prueba o un paquete sin fila pasan",
+      "verde_cuando": "verde cuando cada uno falla nombrando arista o paquete y el repo de hoy pasa"
     }
+  ],
+  "alcance": [
+    "internal/calidad/**",
+    "cmd/aquas/**",
+    "gobierno/config/dependencias.json",
+    "docs/E001/**"
   ],
   "relacion": "nueva"
 }
