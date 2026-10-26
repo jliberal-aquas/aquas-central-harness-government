@@ -1,0 +1,10 @@
+{
+  "id": "D000049",
+  "firma": "dod-auditor-sin-gate",
+  "que": "la definición de terminado exige auditor APROBADO pero ningún comando lo comprueba (03_DOD_COMUN.md:6; backlog sin campo auditor)",
+  "causa": "el veredicto del auditor vive solo en el chat",
+  "arreglo": "registrar el veredicto en la ficha (aquas backlog auditoria \u003cid\u003e APROBADO) y exigirlo en CERRADO",
+  "como_me_cercioro": "falla: estado CERRADO sin veredicto → rechaza; pasa: con APROBADO",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

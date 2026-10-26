@@ -1,0 +1,10 @@
+{
+  "id": "D000046",
+  "firma": "perl-escape-newline-en-go",
+  "que": "un reemplazo perl -0pi con comillas simples convirtió \\n en salto de línea real dentro de literales Go; la prueba no compiló (3 veces el 2026-10-26)",
+  "causa": "en el reemplazo de s///, \\n se interpola como salto; hacía falta \\n",
+  "arreglo": "código Go con literales de texto se escribe con Edit o heredoc a archivo, no con perl s///",
+  "como_me_cercioro": "gofmt -l sobre el archivo tras cada edición automática: falla con string literal not terminated si se repite",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

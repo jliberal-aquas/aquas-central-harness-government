@@ -1,0 +1,10 @@
+{
+  "id": "D000050",
+  "firma": "prueba-lee-git-del-padre",
+  "que": "sello_test.go:201-224 cierra en t.TempDir() sin git init; como TMP=.tmp cae dentro de la central, git lee el repo padre: falso verde",
+  "causa": "t.TempDir() bajo .tmp hereda el repo de la central; codigo.go:11 corre git log sin HEAD propio",
+  "arreglo": "git init en cada carpeta temporal de prueba que use git, y codigoTocado tolera repo sin HEAD",
+  "como_me_cercioro": "falla: git -C \u003ctempdir\u003e rev-parse --show-toplevel da la central; pasa: da el tempdir",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

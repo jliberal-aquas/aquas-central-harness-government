@@ -1,0 +1,108 @@
+{
+  "id": "E001/F013/S002",
+  "tipo": "slice",
+  "titulo": "Tabla de dependencias entre paquetes",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "relaciones entre paquetes fijadas por tabla sellada, incluye imports de pruebas",
+  "padre": "E001/F013",
+  "bloqueado_por": [
+    "E001/F013/S001"
+  ],
+  "secuencia": 112,
+  "pruebas": [
+    {
+      "prueba": "./internal/calidad:TestImportNoPermitido",
+      "intencion": "valida que un import interno fuera de la tabla, de código o de prueba, y un paquete sin fila hacen fallar el gate",
+      "rojo_cuando": "rojo cuando un import prohibido, uno solo de prueba o un paquete sin fila pasan",
+      "verde_cuando": "verde cuando cada uno falla nombrando arista o paquete y el repo de hoy pasa"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-26T19:29:57Z",
+    "head": "8d5fd4b5470b142bd7a7a6a0f8c44e02b6b7888d",
+    "resultado": {
+      "./internal/calidad:TestImportNoPermitido": "dependencias_test.go:57: la copia sin tocar debió dar GATE OK para aislar las dependencias; exit 1:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-26T23:00:31Z",
+    "head": "8d5fd4b5470b142bd7a7a6a0f8c44e02b6b7888d"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F013",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por TestImportNoPermitido y tres auditorías del slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por TestImportNoPermitido y tres auditorías del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F013/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por TestImportNoPermitido y tres auditorías del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F013/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por TestImportNoPermitido y tres auditorías del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por TestImportNoPermitido y tres auditorías del slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/calidad.go\u003einternal/calidad",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por TestImportNoPermitido y tres auditorías del slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/wiki",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por TestImportNoPermitido y tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003einternal/wiki/contrato.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por TestImportNoPermitido y tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por TestImportNoPermitido y tres auditorías del slice"
+    }
+  ],
+  "alcance": [
+    "internal/calidad/**",
+    "cmd/aquas/**",
+    "gobierno/config/dependencias.json",
+    "docs/E001/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "internal/wiki/contrato.go",
+      "motivo": "la wiki contaba pruebas de testdata como pruebas del repo (TestC del módulo de prueba); go y la tabla de código ya ignoran testdata"
+    }
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-26T23:00:20Z",
+    "huella": "83000c6c753f464d2c397f31df16017558e8bf2c75fa3447fc54f8fde3b4071b",
+    "mensaje": "apruebo E001/F013/S002"
+  },
+  "codigo": [
+    "gobierno/config/dependencias.json",
+    "internal/calidad/calidad.go",
+    "internal/calidad/dependencias.go",
+    "internal/calidad/testdata/deps/internal/a/a.go",
+    "internal/calidad/testdata/deps/internal/b/b.go",
+    "internal/calidad/testdata/deps/internal/c/c.go",
+    "internal/calidad/testdata/deps/internal/d/d.go",
+    "internal/calidad/testdata/deps/internal/e/e.go",
+    "internal/wiki/contrato.go"
+  ],
+  "relacion": "nueva"
+}

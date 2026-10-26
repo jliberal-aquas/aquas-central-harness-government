@@ -82,7 +82,7 @@ Prueba integral: `TestCanarioFallaYRepoPasa` (pendiente).
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | Formato y análisis estático en el gate | Hecho |
-| [S002](S002.md) | Tabla de dependencias entre paquetes | Planeado |
+| [S002](S002.md) | Tabla de dependencias entre paquetes | Hecho |
 | S003 | Reporte de complejidad y limpieza | Planeado |
 
 <!-- /GENERADO -->

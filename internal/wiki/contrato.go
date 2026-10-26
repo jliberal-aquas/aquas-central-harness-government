@@ -139,7 +139,7 @@ func integralesDe(raiz, rel string) []string {
 	return ns
 }
 
-// pruebasDelRepo: nombre de cada func Test → archivo; salta carpetas ocultas (.git, .tmp).
+// pruebasDelRepo: nombre de cada func Test → archivo; salta carpetas ocultas (.git, .tmp) y testdata.
 func pruebasDelRepo(raiz string) (map[string]string, error) {
 	pruebas := map[string]string{}
 	err := filepath.WalkDir(raiz, func(p string, d fs.DirEntry, err error) error {
@@ -147,7 +147,7 @@ func pruebasDelRepo(raiz string) (map[string]string, error) {
 			return err
 		}
 		if d.IsDir() {
-			if p != raiz && strings.HasPrefix(d.Name(), ".") {
+			if p != raiz && (strings.HasPrefix(d.Name(), ".") || d.Name() == "testdata") { // testdata no es del repo, como en go
 				return filepath.SkipDir
 			}
 			return nil

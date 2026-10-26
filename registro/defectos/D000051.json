@@ -1,0 +1,10 @@
+{
+  "id": "D000051",
+  "firma": "go-en-carpeta-ignorada-rompe-gate",
+  "que": "un .go de evidencia en auditoria/ (ignorada por git) rompió el gate: go list y golangci-lint no respetan .gitignore",
+  "causa": "Go incluye en ./... toda carpeta del módulo salvo testdata, _x y .x",
+  "arreglo": "evidencia en Go se guarda como .go.txt o en .tmp; el gate sigue viendo todo el módulo (correcto: go build también lo ve)",
+  "como_me_cercioro": "falla: package main sin formato en auditoria/x.go → GATE FALLIDO; pasa: como x.go.txt",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

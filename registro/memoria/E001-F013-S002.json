@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F013",
+    "slice": "S002",
+    "tarea": "S002 verde y auditado"
+  },
+  "siguiente": "cerrar S002",
+  "pendientes": [
+    "D000041: re-auditar S009 junto con S011"
+  ],
+  "decisiones": [
+    "freno propio en aquas: humano lo propone; recomiendo feature nueva con contrato"
+  ],
+  "huella_git": "23d4c1b7beba510dcd7762531cda5d2b046866efb7ec34cc82edd6bff9742c95",
+  "actualizado": "2026-10-26T22:59:48Z",
+  "sello": "33f268bcd7500c1e39ab76eb8875c1a3e53adba822e1c07e7bf0e1ac167b60f8"
+}

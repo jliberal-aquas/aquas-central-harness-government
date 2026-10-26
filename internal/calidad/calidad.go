@@ -73,7 +73,11 @@ func RevisarCentral(raiz string) []string {
 	}
 	hs, err := Revisar(raiz, filepath.Join(raiz, "gobierno", "config", "golangci.yml"))
 	if err != nil {
-		return []string{err.Error()}
+		hs = []string{err.Error()}
 	}
-	return hs
+	dh, err := RevisarDependencias(raiz, filepath.Join(raiz, "gobierno", "config", "dependencias.json"))
+	if err != nil {
+		dh = []string{err.Error()}
+	}
+	return append(hs, dh...)
 }

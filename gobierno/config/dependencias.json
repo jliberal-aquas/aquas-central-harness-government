@@ -1,0 +1,45 @@
+{
+  ".": [],
+  "cmd/aquas": [
+    "internal/backlog",
+    "internal/biblioteca",
+    "internal/calidad",
+    "internal/compilador",
+    "internal/defecto",
+    "internal/encargo",
+    "internal/entorno",
+    "internal/guardia",
+    "internal/hijo",
+    "internal/memoria",
+    "internal/propuesta",
+    "internal/turno",
+    "internal/vueltas",
+    "internal/wiki"
+  ],
+  "internal/backlog": [
+    "internal/compilador"
+  ],
+  "internal/biblioteca": [],
+  "internal/calidad": [],
+  "internal/compilador": [],
+  "internal/defecto": [
+    "internal/backlog"
+  ],
+  "internal/encargo": [],
+  "internal/entorno": [],
+  "internal/guardia": [
+    "internal/backlog",
+    "internal/memoria",
+    "internal/turno"
+  ],
+  "internal/hijo": [],
+  "internal/memoria": [
+    "internal/backlog"
+  ],
+  "internal/propuesta": [],
+  "internal/turno": [],
+  "internal/vueltas": [],
+  "internal/wiki": [
+    "internal/backlog"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "D000048",
+  "firma": "lock-hijo-vacio-pasa",
+  "que": "hijo con lock.json de archivos vacíos da GATE OK (internal/hijo/build.go:93)",
+  "causa": "el bucle de verificación recorre l.Archivos sin exigir el inventario embebido",
+  "arreglo": "comparar el inventario del lock con el embebido en el binario; vacío o incompleto = falla",
+  "como_me_cercioro": "falla: lock con archivos {} → verificar del hijo falla; pasa: lock completo",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

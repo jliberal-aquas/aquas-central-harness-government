@@ -1,0 +1,10 @@
+{
+  "id": "D000047",
+  "firma": "cierre-sin-reejecutar-verde",
+  "que": "el cierre de un slice acepta cualquier verde registrado aunque el código cambió después (arreglo_pruebas.go:60-78, rojo.go:332-342)",
+  "causa": "CERRADO solo exige que exista fecha de verde; no reejecuta ni compara huella del árbol",
+  "arreglo": "al cerrar, reejecutar las pruebas del slice o comparar una huella del código tocado con la del verde",
+  "como_me_cercioro": "falla: verde, editar código, cerrar → debe rechazar; pasa: verde y cerrar sin cambios",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
