@@ -194,14 +194,18 @@ func TestEntidadArrancadaSinPagina(t *testing.T) {
 		{"CERRADO", "docs/E001/F002/README.md: falta la página de E001/F002 (ficha CERRADO)"},
 	} {
 		raiz := conFichas(t)
-		os.Remove(filepath.Join(raiz, "trabajo", "activo", "E001-F002.json"))
+		if err := os.Remove(filepath.Join(raiz, "trabajo", "activo", "E001-F002.json")); err != nil {
+			t.Fatal(err)
+		}
 		ficha(t, raiz, backlog.Ficha{ID: "E001/F002", Titulo: "Backlog", Estado: c.estado, Secuencia: 4})
 		generar(t, raiz)
 		exigeProblema(t, raiz, c.espera)
 	}
 	for _, estado := range []string{"BORRADOR", "LISTO", "BLOQUEADO", "CANCELADO"} {
 		raiz := conFichas(t)
-		os.Remove(filepath.Join(raiz, "trabajo", "activo", "E001-F002.json"))
+		if err := os.Remove(filepath.Join(raiz, "trabajo", "activo", "E001-F002.json")); err != nil {
+			t.Fatal(err)
+		}
 		ficha(t, raiz, backlog.Ficha{ID: "E001/F002", Titulo: "Backlog", Estado: estado, Secuencia: 4})
 		generar(t, raiz)
 		for _, p := range verificar(t, raiz) {

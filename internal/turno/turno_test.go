@@ -64,7 +64,9 @@ func TestNumeracionSinReutilizar(t *testing.T) {
 		}
 	}
 	// Un hueco no se rellena: el siguiente es el mayor + 1, aunque se haya borrado uno.
-	os.Remove(filepath.Join(raiz, "auditoria", "turnos", "2026-10", "T000002.md"))
+	if err := os.Remove(filepath.Join(raiz, "auditoria", "turnos", "2026-10", "T000002.md")); err != nil {
+		t.Fatal(err)
+	}
 	if rel := abrir(t, raiz, "s2", "otra", fechas[2]); rel != "auditoria/turnos/2026-11/T000004.md" {
 		t.Errorf("tras borrar T000002 sigue T000004; dio %s", rel)
 	}

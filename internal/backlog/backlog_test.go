@@ -249,8 +249,12 @@ func TestValidarDetectaFichasMalas(t *testing.T) {
 	}
 	escribir := func(rel, c string) {
 		p := filepath.Join(raiz, filepath.FromSlash(rel))
-		os.MkdirAll(filepath.Dir(p), 0o755)
-		os.WriteFile(p, []byte(c), 0o644)
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(p, []byte(c), 0o644); err != nil {
+			t.Fatal(err)
+		}
 	}
 	escribir(Activo+"/roto.json", "{no es json")
 	escribir(Activo+"/E001-F003.json", `{"id":"E001/F003","tipo":"feature","titulo":"T","estado":"LISTO","prioridad":"P1","motivo":"m","padre":"E001","bloqueado_por":[],"secuencia":9,"color":"rojo"}`)

@@ -24,7 +24,9 @@ func TestCerrarGuardaCodigo(t *testing.T) {
 	}
 	poner := func(rel string) {
 		p := filepath.Join(raiz, filepath.FromSlash(rel))
-		os.MkdirAll(filepath.Dir(p), 0o755)
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
 		if err := os.WriteFile(p, []byte("package a\n"), 0o644); err != nil {
 			t.Fatal(err)
 		}
@@ -66,7 +68,9 @@ func TestCodigoIDEnTodoElMensaje(t *testing.T) {
 	}
 	poner := func(rel string) {
 		p := filepath.Join(raiz, filepath.FromSlash(rel))
-		os.MkdirAll(filepath.Dir(p), 0o755)
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
 		if err := os.WriteFile(p, []byte("package a"), 0o644); err != nil {
 			t.Fatal(err)
 		}

@@ -48,8 +48,12 @@ func TestSelloCLIDePuntaAPunta(t *testing.T) {
 		f["titulo"], f["prioridad"], f["motivo"], f["bloqueado_por"] = "t", "P1", "m", []string{}
 		b, _ := json.MarshalIndent(f, "", "  ")
 		p := filepath.Join(raiz, "trabajo", "activo", strings.ReplaceAll(f["id"].(string), "/", "-")+".json")
-		os.MkdirAll(filepath.Dir(p), 0o755)
-		os.WriteFile(p, b, 0o644)
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(p, b, 0o644); err != nil {
+			t.Fatal(err)
+		}
 	}
 	s := aquas(t, raiz, "", "backlog", "sello", "E001/F001/S001")
 	if s.codigo != 0 || !strings.Contains(s.out, "  [ ] ficha:E001/F001 · ") {

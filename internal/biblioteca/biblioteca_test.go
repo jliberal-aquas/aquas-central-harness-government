@@ -26,8 +26,12 @@ func repo(t *testing.T) string {
 		"vacio.txt": "",
 	} {
 		p := filepath.Join(raiz, filepath.FromSlash(rel))
-		os.MkdirAll(filepath.Dir(p), 0o755)
-		os.WriteFile(p, []byte(c), 0o644)
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(p, []byte(c), 0o644); err != nil {
+			t.Fatal(err)
+		}
 	}
 	return raiz
 }

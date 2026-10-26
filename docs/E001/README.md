@@ -158,6 +158,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F010](F010/README.md) | Contrato aprobado antes de construir | Hecho |
 | F011 | Frenos propios del gobierno | Planeado |
 | F012 | Prevención activa | Planeado |
+| [F013](F013/README.md) | Calidad Go en el gate | Planeado |
 
 <!-- /GENERADO -->
 

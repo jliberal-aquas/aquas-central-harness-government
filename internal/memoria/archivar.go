@@ -53,8 +53,8 @@ func Archivar(raiz string, ahora time.Time) (string, error) {
 		return "", err
 	}
 	if _, err := f.Write(b); err != nil {
-		f.Close()
-		os.Remove(dest)
+		_ = f.Close() // limpieza tras fallo de escritura; el error útil es el de Write
+		_ = os.Remove(dest)
 		return "", err
 	}
 	if err := f.Close(); err != nil {

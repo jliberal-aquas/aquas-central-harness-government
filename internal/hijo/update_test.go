@@ -18,13 +18,21 @@ func TestUpdateRespetaLock(t *testing.T) {
 		t.Fatal(err)
 	}
 	local := filepath.Join(dir, CarpetaHuecos, "mision.md")
-	os.MkdirAll(filepath.Dir(local), 0o755)
-	os.WriteFile(local, []byte("- Landing.\n"), 0o644)
+	if err := os.MkdirAll(filepath.Dir(local), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(local, []byte("- Landing.\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
 
 	// Editar lo sellado hace caer el gate (build).
 	sellado := filepath.Join(dir, Carpeta, "central", "gobierno", "canonico", "constitucion.md")
-	os.Chmod(sellado, 0o644)
-	os.WriteFile(sellado, []byte("# alterado\n"), 0o644)
+	if err := os.Chmod(sellado, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(sellado, []byte("# alterado\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	if err := Build(dir); err == nil {
 		t.Fatal("build sobre lo sellado alterado debió fallar")
 	}

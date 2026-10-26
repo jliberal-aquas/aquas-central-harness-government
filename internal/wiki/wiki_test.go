@@ -148,7 +148,11 @@ func TestFallas(t *testing.T) {
 		mutar  func(t *testing.T, raiz string)
 		espera string
 	}{
-		{"sin tInicio", func(t *testing.T, r string) { os.Remove(filepath.Join(r, "docs", "README.md")) },
+		{"sin tInicio", func(t *testing.T, r string) {
+			if err := os.Remove(filepath.Join(r, "docs", "README.md")); err != nil {
+				t.Fatal(err)
+			}
+		},
 			"falta docs/README.md"},
 		{"falta sección", func(t *testing.T, r string) { reemplazar(t, r, tS001, "## Analogía", "## Otra cosa") },
 			"falta sección «Analogía»"},

@@ -56,10 +56,18 @@ func repoSano(t *testing.T) string {
 		t.Fatalf("git init: %v %s", err, out)
 	}
 	copiarGobierno(t, raiz)
-	os.MkdirAll(filepath.Join(raiz, ".claude"), 0o755)
-	os.MkdirAll(filepath.Join(raiz, "docs"), 0o755)
-	os.WriteFile(filepath.Join(raiz, "docs", "README.md"), []byte(inicioMinimo), 0o644)
-	os.WriteFile(filepath.Join(raiz, "docs", "glosario.md"), []byte("# Glosario\n\nPalabras técnicas.\n\n## zeta\n\nUna letra.\n\nEjemplo: la zeta va al final.\n"), 0o644)
+	if err := os.MkdirAll(filepath.Join(raiz, ".claude"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.MkdirAll(filepath.Join(raiz, "docs"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(raiz, "docs", "README.md"), []byte(inicioMinimo), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(raiz, "docs", "glosario.md"), []byte("# Glosario\n\nPalabras técnicas.\n\n## zeta\n\nUna letra.\n\nEjemplo: la zeta va al final.\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	for _, orden := range [][]string{{"iniciar"}, {"compilar"}} {
 		if s := aquas(t, raiz, "", orden...); s.codigo != 0 {
 			t.Fatalf("%v: %+v", orden, s)
@@ -75,7 +83,9 @@ func TestVerificarDePuntaAPunta(t *testing.T) {
 	}
 	claude := filepath.Join(raiz, "CLAUDE.md")
 	b, _ := os.ReadFile(claude)
-	os.WriteFile(claude, append(b, []byte("\nregla metida a mano\n")...), 0o644)
+	if err := os.WriteFile(claude, append(b, []byte("\nregla metida a mano\n")...), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	s := aquas(t, raiz, "", "verificar")
 	if s.codigo != 1 || !strings.Contains(s.err, "CLAUDE.md: desfasado o editado a mano") {
 		t.Fatalf("derivado editado: exit 1 y lo nombra; dio %+v", s)
@@ -87,7 +97,9 @@ func TestVerificarDePuntaAPunta(t *testing.T) {
 		t.Fatalf("tras compilar vuelve a exit 0; dio %+v", s)
 	}
 	inicio := filepath.Join(raiz, "docs", "README.md")
-	os.WriteFile(inicio, []byte(strings.Replace(inicioMinimo, "## Paso a paso", "## Otra cosa", 1)), 0o644)
+	if err := os.WriteFile(inicio, []byte(strings.Replace(inicioMinimo, "## Paso a paso", "## Otra cosa", 1)), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	if s := aquas(t, raiz, "", "verificar"); s.codigo != 1 || !strings.Contains(s.err, "docs/README.md: falta sección «Paso a paso»") {
 		t.Fatalf("wiki rota: exit 1 y nombra la sección; dio %+v", s)
 	}
@@ -121,7 +133,9 @@ func TestGuardiaCLISinEntornoBloquea(t *testing.T) {
 	raiz = repoSano(t)
 	p := filepath.Join(raiz, "gobierno", "config", "entorno.local.json")
 	b, _ := os.ReadFile(p)
-	os.WriteFile(p, []byte(strings.Replace(string(b), filepath.ToSlash(raiz), "C:/otra/carpeta", 1)), 0o644)
+	if err := os.WriteFile(p, []byte(strings.Replace(string(b), filepath.ToSlash(raiz), "C:/otra/carpeta", 1)), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	if s := aquas(t, raiz, dentro, "guardia"); s.codigo != 2 || !strings.Contains(s.err, "entorno no verificado") {
 		t.Fatalf("entorno de otra carpeta: exit 2; dio %+v", s)
 	}

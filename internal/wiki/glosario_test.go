@@ -24,7 +24,11 @@ func TestFallasGlosario(t *testing.T) {
 		mutar  func(t *testing.T, raiz string)
 		espera string
 	}{
-		{"sin glosario", func(t *testing.T, r string) { os.Remove(filepath.Join(r, "docs", "glosario.md")) },
+		{"sin glosario", func(t *testing.T, r string) {
+			if err := os.Remove(filepath.Join(r, "docs", "glosario.md")); err != nil {
+				t.Fatal(err)
+			}
+		},
 			"falta docs/glosario.md"},
 		{"término sin enlace", func(t *testing.T, r string) { reemplazar(t, r, tS001, "Se lee.", "La zeta manda.") },
 			"primera aparición de «zeta» sin enlace al glosario (escribe [zeta](../../glosario.md#zeta))"},

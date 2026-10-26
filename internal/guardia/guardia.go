@@ -293,9 +293,10 @@ func variable(r []rune, i int) (string, int) {
 	case n == '(':
 		prof := 0
 		for j := i + 1; j < len(r); j++ {
-			if r[j] == '(' {
+			switch r[j] {
+			case '(':
 				prof++
-			} else if r[j] == ')' {
+			case ')':
 				if prof--; prof == 0 {
 					return "?", j - i + 1
 				}

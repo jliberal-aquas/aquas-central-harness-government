@@ -1,0 +1,10 @@
+{
+  "id": "D000045",
+  "firma": "freno-plan-lee-cierre-agente",
+  "que": "el freno de presupuesto registra la cifra de la última línea «Plan: N llamadas» del agente, no la del mensaje del humano",
+  "causa": "probable: el hook toma el patrón de plan desde el cierre del agente; observado 3 veces el 2026-10-26",
+  "arreglo": "el hook lee solo el prompt del humano en UserPromptSubmit y exige que empiece con «dale, plan de»",
+  "como_me_cercioro": "falla: «apruebo X» tras cierre «Plan: 2 llamadas» no registra plan; pasa: «dale, plan de 12 llamadas y 2 agentes» registra 12 y 2",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

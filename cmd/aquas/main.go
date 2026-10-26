@@ -44,7 +44,7 @@ import (
 // main despacha el subcomando de aquas (compilar, verificar, backlog, hooks…) y sale con su código.
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria | backlog | cierre-agente | biblioteca")
+		_, _ = fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria | backlog | cierre-agente | biblioteca")
 		os.Exit(64)
 	}
 	raiz, err := os.Getwd()
@@ -90,6 +90,10 @@ func main() {
 			fmt.Println("GATE OK · hijo: central sellada y CLAUDE.md al día")
 			return
 		}
+		calidadGo := revisarGo(raiz) // E001/F013/S001: primero, para que se vea aunque otro chequeo corte
+		if len(calidadGo) > 0 {
+			listar("GATE FALLIDO · calidad Go:", calidadGo)
+		}
 		derivados, err := compilador.Verificar(raiz)
 		if err != nil {
 			fallar(1, err)
@@ -112,7 +116,7 @@ func main() {
 		}
 		if len(derivados) > 0 {
 			listar("GATE FALLIDO · derivados desfasados:", derivados)
-			fmt.Fprintln(os.Stderr, "Desfase → go run ./cmd/aquas compilar · presupuesto → recortar canónico")
+			_, _ = fmt.Fprintln(os.Stderr, "Desfase → go run ./cmd/aquas compilar · presupuesto → recortar canónico")
 		}
 		if len(docs) > 0 {
 			listar("GATE FALLIDO · wiki docs/ incompleta:", docs)
@@ -123,7 +127,7 @@ func main() {
 		if len(permitidos) > 0 {
 			listar("GATE FALLIDO · guardia (permitidos, entorno o settings):", permitidos)
 		}
-		if len(derivados)+len(docs)+len(fichas)+len(permitidos) > 0 {
+		if len(derivados)+len(docs)+len(fichas)+len(permitidos)+len(calidadGo) > 0 {
 			os.Exit(1)
 		}
 		fmt.Println("GATE OK · derivados, sello, wiki, backlog y guardia al día")
@@ -143,7 +147,7 @@ func main() {
 		}
 		for _, m := range []string{propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta)} { // S016: insight PROPUESTO exige defecto
 			if m != "" {
-				fmt.Fprintln(os.Stderr, m)
+				_, _ = fmt.Fprintln(os.Stderr, m)
 				os.Exit(2)
 			}
 		}
@@ -263,17 +267,17 @@ func main() {
 		datos, _ := io.ReadAll(os.Stdin)
 		_ = json.Unmarshal(datos, &e)
 		if m := encargo.Revisar(e.Tipo, e.Mensaje, e.Activo); m != "" {
-			fmt.Fprintln(os.Stderr, m)
+			_, _ = fmt.Fprintln(os.Stderr, m)
 			os.Exit(2)
 		}
 	case "guardia":
 		datos, _ := io.ReadAll(os.Stdin)
 		if m := entorno.Validar(raiz); m != "" {
-			fmt.Fprintln(os.Stderr, "aquas guardia: entorno no verificado, se bloquea todo: "+m)
+			_, _ = fmt.Fprintln(os.Stderr, "aquas guardia: entorno no verificado, se bloquea todo: "+m)
 			os.Exit(2)
 		}
 		if m := guardia.Revisar(raiz, datos); m != "" {
-			fmt.Fprintln(os.Stderr, "aquas guardia: "+m)
+			_, _ = fmt.Fprintln(os.Stderr, "aquas guardia: "+m)
 			os.Exit(2)
 		}
 	default:
@@ -337,25 +341,25 @@ func compilarSettings(w io.Writer) {
 		fallar(1, err)
 	}
 	if cambio {
-		fmt.Fprintln(w, "Escrito: "+entorno.RutaSettings)
+		_, _ = fmt.Fprintln(w, "Escrito: "+entorno.RutaSettings)
 	}
 }
 
 // reportar imprime qué derivados escribió la compilación, o que todo estaba al día.
 func reportar(w io.Writer, inf compilador.Informe) {
 	if len(inf.Escritos) == 0 {
-		fmt.Fprintln(w, "Sin cambios · derivados al día")
+		_, _ = fmt.Fprintln(w, "Sin cambios · derivados al día")
 		return
 	}
-	fmt.Fprintln(w, "Recompilado · fuentes cambiadas: "+lista(inf.FuentesCambiadas))
-	fmt.Fprintln(w, "Escritos: "+lista(inf.Escritos))
+	_, _ = fmt.Fprintln(w, "Recompilado · fuentes cambiadas: "+lista(inf.FuentesCambiadas))
+	_, _ = fmt.Fprintln(w, "Escritos: "+lista(inf.Escritos))
 }
 
 // listar imprime en stderr un título y cada problema en su viñeta.
 func listar(titulo string, problemas []string) {
-	fmt.Fprintln(os.Stderr, titulo)
+	_, _ = fmt.Fprintln(os.Stderr, titulo)
 	for _, p := range problemas {
-		fmt.Fprintln(os.Stderr, "  - "+p)
+		_, _ = fmt.Fprintln(os.Stderr, "  - "+p)
 	}
 }
 
@@ -369,7 +373,7 @@ func lista(xs []string) string {
 
 // fallar imprime el error en stderr y termina con el código dado.
 func fallar(codigo int, err error) {
-	fmt.Fprintln(os.Stderr, "aquas:", err)
+	_, _ = fmt.Fprintln(os.Stderr, "aquas:", err)
 	os.Exit(codigo)
 }
 
@@ -387,7 +391,7 @@ func memoriaCLI(raiz string, args []string) {
 		datos, _ := io.ReadAll(os.Stdin)
 		_ = json.Unmarshal(datos, &e)
 		if m := memoria.Cierre(raiz, e.Activo); m != "" {
-			fmt.Fprintln(os.Stderr, m)
+			_, _ = fmt.Fprintln(os.Stderr, m)
 			os.Exit(2)
 		}
 		return

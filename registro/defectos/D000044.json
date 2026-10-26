@@ -1,0 +1,10 @@
+{
+  "id": "D000044",
+  "firma": "gate-sin-gofmt-ni-vet",
+  "que": "5 archivos Go con CRLF (backlog/aprobacion.go, backlog/backlog.go, backlog/rojo.go, guardia/guardia.go, wiki/contrato.go) fallan gofmt y nadie lo vio",
+  "causa": "aquas verificar no corre gofmt, go vet ni staticcheck; el escritor que mete CRLF no está confirmado",
+  "arreglo": "gofmt -l, go vet y staticcheck con versión fija dentro de aquas verificar; herramienta ausente = falla",
+  "como_me_cercioro": "un .go con CRLF en cmd o internal hace salir GATE FALLIDO nombrándolo",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

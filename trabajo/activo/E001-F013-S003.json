@@ -1,0 +1,22 @@
+{
+  "id": "E001/F013/S003",
+  "tipo": "slice",
+  "titulo": "Reporte de complejidad y limpieza",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "complejidad y duplicados como INFO; arreglar 13 errores ignorados de producción, versión duplicada y formato",
+  "padre": "E001/F013",
+  "bloqueado_por": [
+    "E001/F013/S001"
+  ],
+  "secuencia": 113,
+  "pruebas": [
+    {
+      "prueba": "./internal/calidad:TestReporteNoBloquea",
+      "intencion": "valida que complejidad sale como INFO sin fallar el gate",
+      "rojo_cuando": "rojo cuando un umbral de reporte tumba el gate",
+      "verde_cuando": "verde cuando sale INFO y GATE OK"
+    }
+  ],
+  "relacion": "nueva"
+}

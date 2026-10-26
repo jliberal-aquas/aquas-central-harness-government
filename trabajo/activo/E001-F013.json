@@ -1,0 +1,27 @@
+{
+  "id": "E001/F013",
+  "tipo": "feature",
+  "titulo": "Calidad Go en el gate",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "el gate no corre linters: 0 de staticcheck no probaba limpieza (defecto D000044)",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 110,
+  "pruebas": [
+    {
+      "prueba": "./internal/calidad:TestCanarioFallaYRepoPasa",
+      "intencion": "valida que el gate de calidad detecta código malo y deja pasar el limpio",
+      "rojo_cuando": "rojo cuando el canario pasa o el repo limpio falla",
+      "verde_cuando": "verde cuando el canario falla en cada linter y el repo limpio pasa"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-26T16:54:35Z",
+    "head": "2842ae7e946265f3c8c9bd1f141034e4d5ac1c08",
+    "resultado": {
+      "./internal/calidad:TestCanarioFallaYRepoPasa": "integral_test.go:25: el canario no disparó staticcheck; hallazgos:"
+    }
+  },
+  "relacion": "nueva"
+}

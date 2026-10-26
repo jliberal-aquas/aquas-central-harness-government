@@ -20,7 +20,9 @@ func TestHijoEnUnComando(t *testing.T) {
 	if _, err := os.Stat(claude); err != nil {
 		t.Fatalf("install debió dejar CLAUDE.md: %v", err)
 	}
-	os.Remove(claude)
+	if err := os.Remove(claude); err != nil {
+		t.Fatal(err)
+	}
 	if s := aquas(t, dir, "", "update"); s.codigo != 0 {
 		t.Fatalf("update: exit %d\n%s%s", s.codigo, s.out, s.err)
 	}
@@ -66,7 +68,9 @@ func TestInstallYUpdateArmanClaude(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(hd, "mision.md"), []byte(propia), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	os.Remove(filepath.Join(hd, "titulo.md"))
+	if err := os.Remove(filepath.Join(hd, "titulo.md")); err != nil {
+		t.Fatal(err)
+	}
 	correr(dir, "update")
 	if leer(filepath.Join(hd, "mision.md")) != propia {
 		t.Error("update no debió tocar un hueco escrito")
@@ -82,7 +86,9 @@ func TestInstallYUpdateArmanClaude(t *testing.T) {
 	if err := os.RemoveAll(filepath.Join(dir, "gobierno")); err != nil {
 		t.Fatal(err)
 	}
-	os.Remove(filepath.Join(dir, "CLAUDE.md"))
+	if err := os.Remove(filepath.Join(dir, "CLAUDE.md")); err != nil {
+		t.Fatal(err)
+	}
 	correr(dir, "update")
 	for _, h := range huecos {
 		if _, err := os.Stat(filepath.Join(hd, h+".md")); err != nil {

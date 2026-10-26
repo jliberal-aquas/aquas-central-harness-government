@@ -14,10 +14,12 @@ import (
 
 func TestAgenteConHerramientas(t *testing.T) {
 	raiz := repoMinimo(t)
-	escribir(raiz, RutaAgentes, []byte(`{"agentes":[
+	if err := escribir(raiz, RutaAgentes, []byte(`{"agentes":[
 		{"name":"auditor","description":"Revisa","model":"opus","effort":"high","tools":["Read","Grep","Glob","Bash"],
 		 "cuerpo":"gobierno/canonico/agentes/orq.md","max_caracteres":10000},
-		{"name":"worker","description":"Ejecuta","model":"haiku","cuerpo":"gobierno/canonico/agentes/orq.md","max_caracteres":10000}]}`))
+		{"name":"worker","description":"Ejecuta","model":"haiku","cuerpo":"gobierno/canonico/agentes/orq.md","max_caracteres":10000}]}`)); err != nil {
+		t.Fatal(err)
+	}
 	if _, err := Compilar(raiz); err != nil {
 		t.Fatal(err)
 	}

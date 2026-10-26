@@ -80,7 +80,9 @@ func TestArchivarRechaza(t *testing.T) {
 			focoCompleto(t, r)
 			p := filepath.Join(r, Ruta)
 			b, _ := os.ReadFile(p)
-			os.WriteFile(p, bytes.Replace(b, []byte("archivar"), []byte("trucada"), 1), 0o644)
+			if err := os.WriteFile(p, bytes.Replace(b, []byte("archivar"), []byte("trucada"), 1), 0o644); err != nil {
+				t.Fatal(err)
+			}
 		}, "el sello no coincide"},
 		{"memoria vieja", func(t *testing.T, r string) {
 			focoCompleto(t, r)
@@ -123,7 +125,9 @@ func TestArchivoDetectaEdicion(t *testing.T) {
 	}
 	p := filepath.Join(raiz, filepath.FromSlash(rel))
 	b, _ := os.ReadFile(p)
-	os.WriteFile(p, bytes.Replace(b, []byte("archivar"), []byte("trucada"), 1), 0o644)
+	if err := os.WriteFile(p, bytes.Replace(b, []byte("archivar"), []byte("trucada"), 1), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	if _, err := LeerArchivo(p); !errors.Is(err, ErrSelloRoto) {
 		t.Fatalf("archivo editado debe dar ErrSelloRoto; dio %v", err)
 	}

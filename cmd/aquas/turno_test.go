@@ -13,7 +13,9 @@ import (
 // respuesta, nada de eso sale por stdout (no gasta contexto) y auditoria/ queda fuera de Git.
 func TestTurnoCLIDePuntaAPunta(t *testing.T) {
 	raiz := repoSano(t)
-	os.WriteFile(filepath.Join(raiz, ".gitignore"), mustLeer(t, filepath.Join("..", "..", ".gitignore")), 0o644)
+	if err := os.WriteFile(filepath.Join(raiz, ".gitignore"), mustLeer(t, filepath.Join("..", "..", ".gitignore")), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	s := aquas(t, raiz, `{"session_id":"s1","hook_event_name":"UserPromptSubmit","prompt":"haz X\n`+"```"+`y`+"```"+`"}`, "turno", "abrir")
 	if s.codigo != 0 || s.out != "" {
 		t.Fatalf("abrir: exit 0 sin stdout (el stdout entraría al contexto); dio %+v", s)

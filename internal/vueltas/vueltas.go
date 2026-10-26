@@ -232,11 +232,16 @@ func Medir(w io.Writer, home, raiz string, archivos []string) error {
 			return err
 		}
 		c, err := Contar(f)
-		f.Close()
+		cerr := f.Close()
 		if err != nil {
 			return fmt.Errorf("%s: %w", a, err)
 		}
-		fmt.Fprintln(w, Linea(strings.TrimSuffix(filepath.Base(a), ".jsonl"), c))
+		if cerr != nil {
+			return fmt.Errorf("%s: %w", a, cerr)
+		}
+		if _, err := fmt.Fprintln(w, Linea(strings.TrimSuffix(filepath.Base(a), ".jsonl"), c)); err != nil {
+			return err
+		}
 		for t, k := range c {
 			s := total[t]
 			if s.Motivos == nil {
@@ -249,8 +254,8 @@ func Medir(w io.Writer, home, raiz string, archivos []string) error {
 			total[t] = s
 		}
 	}
-	fmt.Fprintln(w, Linea("TOTAL", total))
-	return nil
+	_, err := fmt.Fprintln(w, Linea("TOTAL", total))
+	return err
 }
 
 // Linea: «nombre · go test 92/47 (TestA 3, compilación 2) · verificar 102/37 (wiki 20)»; motivos de más a menos.

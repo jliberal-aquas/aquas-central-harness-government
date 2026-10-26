@@ -25,9 +25,9 @@ func Update(dest string, central fs.FS, version string) ([]string, error) {
 	}
 	base := filepath.Join(dest, Carpeta, "central")
 	// Lo sellado es solo lectura; en Windows hay que habilitar escritura para borrarlo.
-	filepath.WalkDir(base, func(p string, d fs.DirEntry, err error) error {
+	_ = filepath.WalkDir(base, func(p string, d fs.DirEntry, err error) error {
 		if err == nil {
-			os.Chmod(p, 0o755)
+			_ = os.Chmod(p, 0o755) // mejor esfuerzo: RemoveAll informa si no basta
 		}
 		return nil
 	})

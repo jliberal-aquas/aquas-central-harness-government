@@ -174,7 +174,7 @@ func Generar(raiz string) ([]string, error) {
 			return nil, err
 		}
 		c := string(b)
-		nuevo := c
+		var nuevo string
 		if ini, fin := bloqueActual(c); ini >= 0 && fin >= 0 {
 			nuevo = c[:ini] + e.bloque + c[fin:]
 		} else if ini >= 0 {

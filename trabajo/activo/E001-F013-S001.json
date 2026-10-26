@@ -1,0 +1,559 @@
+{
+  "id": "E001/F013/S001",
+  "tipo": "slice",
+  "titulo": "Formato y análisis estático en el gate",
+  "estado": "EN_CURSO",
+  "prioridad": "P1",
+  "motivo": "gofmt y golangci-lint con versión fija; herramienta ausente = falla (D000044)",
+  "padre": "E001/F013",
+  "bloqueado_por": [],
+  "secuencia": 111,
+  "pruebas": [
+    {
+      "prueba": "./internal/calidad:TestLintBloquea",
+      "intencion": "valida que verificar falla ante código sin formato o con error ignorado",
+      "rojo_cuando": "rojo cuando verificar pasa con el canario",
+      "verde_cuando": "verde cuando verificar falla con el canario y nombra archivo y linter"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-26T16:54:36Z",
+    "head": "2842ae7e946265f3c8c9bd1f141034e4d5ac1c08",
+    "resultado": {
+      "./internal/calidad:TestLintBloquea": "calidad_test.go:41: sin golangci-lint en el PATH debió fallar"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-26T18:45:18Z",
+    "head": "2842ae7e946265f3c8c9bd1f141034e4d5ac1c08"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F013",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "ficha:E001/F013/S002",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "ficha:E001/F013/S003",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F013/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F013/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:README.md\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/aviso_test.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003einternal/vueltas/vueltas.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S002.md\u003einternal/vueltas/vueltas.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S005.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003einternal/wiki/wiki_test.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S004.md\u003einternal/wiki/wiki_test.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003einternal/backlog/backlog_test.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003einternal/biblioteca/biblioteca.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003einternal/biblioteca/biblioteca_test.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003einternal/memoria/hooks_test.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003einternal/memoria/archivar.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003einternal/memoria/archivar_test.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S001.md\u003einternal/compilador/herramientas_test.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003einternal/hijo/update.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/aviso.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003einternal/guardia/guardia.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/backlog/sello.go\u003einternal/compilador",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/guardia/auditoria_test.go\u003einternal/turno",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/memoria",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/integral_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cubierto por las pruebas y las tres auditorías del slice"
+    }
+  ],
+  "alcance": [
+    "internal/**",
+    "cmd/aquas/**",
+    "gobierno/config/golangci.yml",
+    "docs/E001/**"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-26T16:53:46Z",
+    "huella": "cb0564da9ee37f1aabb6d32825d12c6fe2be78bd7dabe6b854f5d03139e42afc",
+    "mensaje": "apruebo E001/F013/S001"
+  },
+  "relacion": "nueva"
+}

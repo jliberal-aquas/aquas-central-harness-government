@@ -1,0 +1,9 @@
+# Configuración de golangci-lint del gate (E001/F013/S001). Versión fija: 2.15.0.
+version: "2"
+linters:
+  default: none
+  enable: [govet, staticcheck, errcheck, ineffassign, unused]
+formatters:
+  enable: [gofmt]
+run:
+  relative-path-mode: gomod

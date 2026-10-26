@@ -14,6 +14,6 @@ func avisarVersion(w io.Writer, comando, raiz, version string) {
 		return // ellos mismos ponen la versión del lock
 	}
 	if a := hijo.AvisoVersion(raiz, version); a != "" {
-		fmt.Fprintln(w, a)
+		_, _ = fmt.Fprintln(w, a)
 	}
 }

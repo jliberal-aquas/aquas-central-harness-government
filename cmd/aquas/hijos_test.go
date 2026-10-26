@@ -40,13 +40,19 @@ func TestCompilarRegeneraHijos(t *testing.T) {
 	if out, err := exec.Command("git", "-C", raiz, "init", "-q").CombinedOutput(); err != nil {
 		t.Fatalf("git init: %v %s", err, out) // iniciar exige ser la raíz de su propio repo
 	}
-	os.MkdirAll(filepath.Join(raiz, ".claude"), 0o755) // en un clon real ya existe: trae los agentes compilados
+	if err := os.MkdirAll(filepath.Join(raiz, ".claude"), 0o755); err != nil { // en un clon real ya existe: trae los agentes compilados
+		t.Fatal(err)
+	}
 	if s := aquas(t, raiz, "", "iniciar"); s.codigo != 0 {
 		t.Fatalf("iniciar: %+v", s)
 	}
 	inicio := filepath.Join(raiz, "docs", "README.md")
-	os.MkdirAll(filepath.Dir(inicio), 0o755)
-	os.WriteFile(inicio, []byte("# Inicio\n\n## Navegación\n\n- Glosario\n"), 0o644)
+	if err := os.MkdirAll(filepath.Dir(inicio), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(inicio, []byte("# Inicio\n\n## Navegación\n\n- Glosario\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	if s := aquas(t, raiz, "", "backlog", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"); s.codigo != 0 {
 		t.Fatalf("backlog nuevo: %+v", s)
 	}

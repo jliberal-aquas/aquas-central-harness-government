@@ -113,6 +113,6 @@ func Leer(raiz string, p Pedido) (texto string, devueltos, completos int) {
 		}
 		escribir(blq.String())
 	}
-	b.WriteString(fmt.Sprintf("== devueltos %d de %d caracteres\n", devueltos, completos))
+	fmt.Fprintf(&b, "== devueltos %d de %d caracteres\n", devueltos, completos)
 	return b.String(), devueltos, completos
 }

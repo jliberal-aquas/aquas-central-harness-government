@@ -115,7 +115,9 @@ func TestCierre(t *testing.T) {
 			fijar(t, r, "iniciativa=E001", "tarea=original")
 			p := filepath.Join(r, Ruta)
 			b, _ := os.ReadFile(p)
-			os.WriteFile(p, []byte(strings.Replace(string(b), "original", "trucada", 1)), 0o644)
+			if err := os.WriteFile(p, []byte(strings.Replace(string(b), "original", "trucada", 1)), 0o644); err != nil {
+				t.Fatal(err)
+			}
 		}, false, "el sello no coincide"},
 	}
 	for _, c := range casos {
@@ -153,7 +155,9 @@ func TestInicio(t *testing.T) {
 	}
 	p := filepath.Join(raiz, Ruta)
 	b, _ := os.ReadFile(p)
-	os.WriteFile(p, []byte(strings.Replace(string(b), "hooks", "trucada", 1)), 0o644)
+	if err := os.WriteFile(p, []byte(strings.Replace(string(b), "hooks", "trucada", 1)), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	if got := Inicio(raiz); !strings.Contains(got, "el sello no coincide") {
 		t.Fatalf("sello roto: debe avisar; dio %q", got)
 	}

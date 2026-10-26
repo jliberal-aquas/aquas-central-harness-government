@@ -25,7 +25,9 @@ func git(t *testing.T, raiz string, args ...string) string {
 func poner(t *testing.T, raiz, rel, c string) {
 	t.Helper()
 	p := filepath.Join(raiz, filepath.FromSlash(rel))
-	os.MkdirAll(filepath.Dir(p), 0o755)
+	if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+		t.Fatal(err)
+	}
 	if err := os.WriteFile(p, []byte(c), 0o644); err != nil {
 		t.Fatal(err)
 	}

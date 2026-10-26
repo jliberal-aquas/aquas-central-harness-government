@@ -27,7 +27,7 @@ type funcion struct {
 	firma                       string // parámetros y resultados, sin «func»
 }
 
-// funcionesGo recorre cmd/ e internal/ (sin _test.go) y devuelve sus funciones en orden de archivo y línea.
+// funcionesGo recorre cmd/ e internal/ (sin _test.go ni testdata) y devuelve sus funciones en orden de archivo y línea.
 func funcionesGo(raiz string) ([]funcion, error) {
 	var todas []funcion
 	for _, base := range []string{"cmd", "internal"} {
@@ -36,6 +36,9 @@ func funcionesGo(raiz string) ([]funcion, error) {
 			continue
 		}
 		err := filepath.WalkDir(dir, func(p string, d fs.DirEntry, err error) error {
+			if err == nil && d.IsDir() && d.Name() == "testdata" {
+				return filepath.SkipDir // como go: testdata no es código de la central
+			}
 			if err != nil || d.IsDir() || !strings.HasSuffix(p, ".go") || strings.HasSuffix(p, "_test.go") {
 				return err
 			}
@@ -65,7 +68,7 @@ func funcionesGo(raiz string) ([]funcion, error) {
 					c, _, _ = strings.Cut(strings.TrimSpace(fd.Doc.Text()), "\n")
 				}
 				var firma strings.Builder
-				printer.Fprint(&firma, fset, fd.Type)
+				_ = printer.Fprint(&firma, fset, fd.Type)
 				todas = append(todas, funcion{rel, n, c, fset.Position(fd.Pos()).Line, strings.TrimPrefix(firma.String(), "func")})
 			}
 			return nil

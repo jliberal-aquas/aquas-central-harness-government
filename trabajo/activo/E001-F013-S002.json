@@ -1,0 +1,22 @@
+{
+  "id": "E001/F013/S002",
+  "tipo": "slice",
+  "titulo": "Tabla de dependencias entre paquetes",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "relaciones entre paquetes fijadas por tabla sellada, incluye imports de pruebas",
+  "padre": "E001/F013",
+  "bloqueado_por": [
+    "E001/F013/S001"
+  ],
+  "secuencia": 112,
+  "pruebas": [
+    {
+      "prueba": "./internal/calidad:TestImportNoPermitido",
+      "intencion": "valida que un import fuera de la tabla falla",
+      "rojo_cuando": "rojo cuando un import prohibido pasa",
+      "verde_cuando": "verde cuando falla y nombra la arista"
+    }
+  ],
+  "relacion": "nueva"
+}
