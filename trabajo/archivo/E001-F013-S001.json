@@ -2,7 +2,7 @@
   "id": "E001/F013/S001",
   "tipo": "slice",
   "titulo": "Formato y análisis estático en el gate",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "gofmt y golangci-lint con versión fija; herramienta ausente = falla (D000044)",
   "padre": "E001/F013",
@@ -555,5 +555,23 @@
     "huella": "cb0564da9ee37f1aabb6d32825d12c6fe2be78bd7dabe6b854f5d03139e42afc",
     "mensaje": "apruebo E001/F013/S001"
   },
+  "codigo": [
+    "cmd/aquas/aviso.go",
+    "cmd/aquas/calidad.go",
+    "cmd/aquas/main.go",
+    "gobierno/config/golangci.yml",
+    "internal/biblioteca/biblioteca.go",
+    "internal/calidad/calidad.go",
+    "internal/calidad/testdata/canario/errcheck.go",
+    "internal/calidad/testdata/canario/otros.go",
+    "internal/calidad/testdata/canario/sinformato.go",
+    "internal/calidad/testdata/falso/main.go",
+    "internal/guardia/guardia.go",
+    "internal/hijo/update.go",
+    "internal/memoria/archivar.go",
+    "internal/vueltas/vueltas.go",
+    "internal/wiki/codigo.go",
+    "internal/wiki/hijos.go"
+  ],
   "relacion": "nueva"
 }
