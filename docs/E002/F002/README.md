@@ -84,7 +84,7 @@ Evidencia real: la instalación en la landing aquas.cl, copiada aquí al cerrar.
 |---|---|---|
 | [S001](S001.md) | install y update desde la carpeta del hijo crean huecos PENDIENTE y arman CLAUDE.md | Hecho |
 | S002 | install sobre una carpeta con código sin tocar lo existente | Planeado |
-| S003 | aviso de versión: el hijo pide aquas update cuando su lock es más viejo | Planeado |
+| [S003](S003.md) | aviso de versión: el hijo pide aquas update cuando su lock es más viejo | Hecho |
 
 <!-- /GENERADO -->
 

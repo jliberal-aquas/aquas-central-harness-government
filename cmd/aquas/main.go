@@ -51,6 +51,14 @@ func main() {
 	if err != nil {
 		fallar(1, err)
 	}
+	// E002/F002/S003: dentro de un hijo, avisar si su lock y este ejecutable no van a la par.
+	// D000043: AQUAS_VERSION fija solo la versión que compara el aviso (las pruebas corren un binario devel).
+	// No toca versionBinario: update sigue sellando el lock con la versión real.
+	vAviso := os.Getenv("AQUAS_VERSION")
+	if vAviso == "" {
+		vAviso = versionBinario()
+	}
+	avisarVersion(os.Stderr, os.Args[1], raiz, vAviso)
 	switch os.Args[1] {
 	case "compilar":
 		inf, err := compilador.Compilar(raiz)

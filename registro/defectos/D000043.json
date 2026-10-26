@@ -1,0 +1,10 @@
+{
+  "id": "D000043",
+  "firma": "prueba-subproceso-devel-no-ve-version",
+  "que": "TestAvisoEnElArranque corre aquas como subproceso; el binario de prueba es devel y el aviso calla, así que la prueba pasa aunque se borre la llamada en main.go:55",
+  "causa": "versionBinario() devuelve devel en binarios de go test; nada fija la versión en la prueba",
+  "arreglo": "variable AQUAS_VERSION que la prueba fija para que el subproceso compare fechas (opción A, pendiente de decisión del humano)",
+  "como_me_cercioro": "borrar la llamada avisarVersion en main.go hace fallar TestAvisoEnElArranque",
+  "ocurrencias": [],
+  "relacion": "E002/F002/S003"
+}

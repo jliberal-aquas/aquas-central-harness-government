@@ -1,0 +1,311 @@
+{
+  "id": "E002/F002/S003",
+  "tipo": "slice",
+  "titulo": "aviso de versión: el hijo pide aquas update cuando su lock es más viejo",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "modelo paquete: el hijo debe enterarse solo de que quedó atrás, como npm",
+  "padre": "E002/F002",
+  "bloqueado_por": [],
+  "secuencia": 109,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestAvisoDeVersion",
+      "intencion": "valida que el aviso compara la versión del lock con la del ejecutable y solo habla cuando difieren y ambas son comparables",
+      "rojo_cuando": "rojo cuando calla con versiones distintas, avisa con versiones iguales o con devel, o confunde cuál quedó atrás",
+      "verde_cuando": "verde cuando lock viejo pide aquas update, ejecutable viejo pide go install, y versiones iguales o devel callan"
+    },
+    {
+      "prueba": "./cmd/aquas:TestAvisoEnElArranque",
+      "intencion": "valida que el arranque avisa en los comandos del hijo, menos install y update, sin cambiar el código de salida",
+      "rojo_cuando": "rojo cuando calla en un comando del hijo, avisa en install o update, o el aviso cambia el código de salida",
+      "verde_cuando": "verde cuando avisa en verificar, calla en install y update, y la salida es la misma con y sin lock"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-26T13:23:56Z",
+    "head": "e5f9d7c6e1a0b759fe1702cfd217908afbe80792",
+    "resultado": {
+      "./cmd/aquas:TestAvisoEnElArranque": "aviso_test.go:33: backlog: avisa=false; quiero true (\"\")",
+      "./internal/hijo:TestAvisoDeVersion": "aviso_test.go:53: borde: pseudo-versión tras etiqueta: quiero aviso con \"corre aquas update\"; obtuve \"\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-26T13:24:05Z",
+    "head": "e5f9d7c6e1a0b759fe1702cfd217908afbe80792"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E002/F002",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "ficha:E002",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "pagina:docs/E002/F002/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "pagina:docs/E002/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "pagina:docs/E002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo aviso de versión en el arranque"
+    }
+  ],
+  "alcance": [
+    "internal/hijo/**",
+    "cmd/aquas/**",
+    "docs/E002/**",
+    "registro/defectos/**"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-26T13:23:44Z",
+    "huella": "08d4545b0d342fa9f300cbe800030d67d9a2ebf867c79b2a1d2c03b6648fe7ea",
+    "mensaje": "apruebo E002/F002/S003"
+  },
+  "codigo": [
+    "cmd/aquas/aviso.go",
+    "cmd/aquas/main.go",
+    "internal/hijo/aviso.go"
+  ],
+  "relacion": "nueva"
+}
