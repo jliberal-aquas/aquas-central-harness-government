@@ -1,0 +1,20 @@
+{
+  "id": "E001/F014",
+  "tipo": "feature",
+  "titulo": "Cierre honesto",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "cerrar no comprueba que el verde siga vigente ni que el auditor aprobó (D000047, D000049; auditoría externa 2026-10-26)",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 114,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestCierreHonesto",
+      "intencion": "valida que un slice solo cierra con verde vigente y auditor APROBADO registrado",
+      "rojo_cuando": "rojo cuando cierra con código cambiado tras el verde o sin veredicto",
+      "verde_cuando": "verde cuando ambos rechazos ocurren y el caso sano cierra"
+    }
+  ],
+  "relacion": "nueva"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "E001/F014/S001",
+  "tipo": "slice",
+  "titulo": "Verde vigente al cerrar",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "el verde guarda la huella del código Go del alcance; CERRADO la recalcula (D000047)",
+  "padre": "E001/F014",
+  "bloqueado_por": [],
+  "secuencia": 115,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestCierreExigeVerdeVigente",
+      "intencion": "valida que CERRADO rechaza si el código Go del alcance cambió desde el verde",
+      "rojo_cuando": "rojo cuando cierra tras editar un .go del alcance",
+      "verde_cuando": "verde cuando rechaza nombrando el cambio y cierra si nada cambió o solo cambiaron docs"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "docs/E001/**"
+  ],
+  "relacion": "nueva"
+}

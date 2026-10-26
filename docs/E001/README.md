@@ -159,6 +159,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | F011 | Frenos propios del gobierno | Planeado |
 | F012 | Prevención activa | Planeado |
 | [F013](F013/README.md) | Calidad Go en el gate | Planeado |
+| [F014](F014/README.md) | Cierre honesto | Planeado |
 
 <!-- /GENERADO -->
 

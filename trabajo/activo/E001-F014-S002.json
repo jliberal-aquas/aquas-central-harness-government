@@ -1,0 +1,22 @@
+{
+  "id": "E001/F014/S002",
+  "tipo": "slice",
+  "titulo": "Veredicto del auditor en la ficha",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "aquas backlog auditoria registra el veredicto; CERRADO exige APROBADO posterior al verde (D000049)",
+  "padre": "E001/F014",
+  "bloqueado_por": [
+    "E001/F014/S001"
+  ],
+  "secuencia": 116,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestCierreExigeAuditorAprobado",
+      "intencion": "valida que CERRADO exige un veredicto APROBADO posterior al verde",
+      "rojo_cuando": "rojo cuando cierra sin veredicto, con CON_HALLAZGOS o con APROBADO anterior al verde",
+      "verde_cuando": "verde cuando esos tres rechazan y APROBADO posterior cierra"
+    }
+  ],
+  "relacion": "nueva"
+}
