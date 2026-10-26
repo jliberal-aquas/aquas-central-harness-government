@@ -16,5 +16,12 @@
       "verde_cuando": "verde cuando install arma CLAUDE.md con huecos PENDIENTE y update lo rearma sin pisar los huecos"
     }
   ],
+  "rojo": {
+    "fecha": "2026-10-25T22:24:56Z",
+    "head": "29445ccfebeaaa4b507a43bd95be0d1eb5fec801",
+    "resultado": {
+      "./cmd/aquas:TestHijoEnUnComando": "hijo_comando_test.go:34: install: exit status 1"
+    }
+  },
   "relacion": "nueva"
 }

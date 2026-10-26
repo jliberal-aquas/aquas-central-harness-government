@@ -51,7 +51,7 @@ stateDiagram-v2
 continúa: [EJ-INICIO](../README.md#EJ-INICIO)
 
 1. Se quiere la landing de Aquas como primer hijo.
-2. `aquas install ./landing` copia la central y su lock.
+2. en la carpeta de la landing, `aquas install` copia la central y su lock.
 3. La landing trabaja con las mismas reglas que este repositorio.
 
 ## Paso a paso
@@ -61,7 +61,7 @@ continúa: [EJ-INICIO](../README.md#EJ-INICIO)
 
 ## Cómo se usa
 
-- Instalar: `aquas install <carpeta>` en una carpeta vacía.
+- Instalar: en la carpeta vacía del hijo, `aquas install`.
 
 ## Contrato y evidencia
 

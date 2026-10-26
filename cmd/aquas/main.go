@@ -215,29 +215,37 @@ func main() {
 		fmt.Printf("%s\nBorrador en %s. Nada se envió. Para abrir el issue, revisa y corre:\ngh issue create --repo %s --title %q --body-file %s\n",
 			body, f, hijo.RepoCentral, os.Args[3], f)
 	case "update": // trae la central de este binario al hijo, sin tocar lo local
-		if len(os.Args) != 3 {
-			fallar(1, errors.New("uso: aquas update <carpeta-del-hijo>"))
+		// E002/F002/S001: corre en la carpeta del hijo, sin ruta, como un paquete.
+		if len(os.Args) != 2 {
+			fallar(1, errors.New("uso: aquas update (en la carpeta del hijo, sin ruta)"))
 		}
-		rest, err := hijo.Update(os.Args[2], gobcentral.Central, versionBinario())
+		rest, err := hijo.Update(raiz, gobcentral.Central, versionBinario())
 		if err != nil {
 			fallar(1, err)
 		}
 		for _, p := range rest {
 			fmt.Printf("restaurado (estaba alterado; repórtalo a la central): %s\n", p)
 		}
-		fmt.Printf("gobierno central %s en %s; corre aquas build para regenerar CLAUDE.md\n", versionBinario(), os.Args[2])
+		if err := hijo.Listo(raiz); err != nil {
+			fallar(1, err)
+		}
+		fmt.Printf("gobierno central %s en %s; CLAUDE.md armado\n", versionBinario(), raiz)
 	case "install": // instala el gobierno central en un proyecto hijo
-		if len(os.Args) != 3 {
-			fallar(1, errors.New("uso: aquas install <carpeta>"))
+		// E002/F002/S001: corre en la carpeta del hijo, sin ruta, como un paquete.
+		if len(os.Args) != 2 {
+			fallar(1, errors.New("uso: aquas install (en la carpeta del hijo, sin ruta)"))
 		}
 		v := "devel"
 		if bi, ok := debug.ReadBuildInfo(); ok && bi.Main.Version != "" && bi.Main.Version != "(devel)" {
 			v = bi.Main.Version
 		}
-		if err := hijo.Install(os.Args[2], gobcentral.Central, v); err != nil {
+		if err := hijo.Install(raiz, gobcentral.Central, v); err != nil {
 			fallar(1, err)
 		}
-		fmt.Printf("gobierno central %s instalado en %s/%s\n", v, os.Args[2], hijo.Carpeta)
+		if err := hijo.Listo(raiz); err != nil {
+			fallar(1, err)
+		}
+		fmt.Printf("gobierno central %s instalado en %s; CLAUDE.md armado con huecos PENDIENTE en %s\n", v, raiz, hijo.CarpetaHuecos)
 	case "cierre-agente": // hook SubagentStop: exit 2 + stderr = el subagente reescribe su cierre
 		var e struct {
 			Tipo    string `json:"agent_type"`

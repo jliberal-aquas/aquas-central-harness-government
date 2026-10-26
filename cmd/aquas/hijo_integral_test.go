@@ -19,12 +19,15 @@ func TestHijoInstaladoPasaSuGate(t *testing.T) {
 			t.Fatalf("aquas %v: exit %d; quiero 0\n%s%s", paso, s.codigo, s.out, s.err)
 		}
 	}
-	correr("install", hijo)
-	// los huecos son lo único que el hijo escribe a mano (E002/F001/S002)
-	huecos := filepath.Join(hijo, "gobierno", "canonico", "huecos")
-	if err := os.MkdirAll(huecos, 0o755); err != nil {
+	// E002/F002/S001: install corre en la carpeta del hijo, sin ruta, y crea los huecos PENDIENTE.
+	if err := os.MkdirAll(hijo, 0o755); err != nil {
 		t.Fatal(err)
 	}
+	if s := aquas(t, hijo, "", "install"); s.codigo != 0 {
+		t.Fatalf("aquas install en el hijo: exit %d; quiero 0\n%s%s", s.codigo, s.out, s.err)
+	}
+	// los huecos son lo único que el hijo escribe a mano (E002/F001/S002)
+	huecos := filepath.Join(hijo, "gobierno", "canonico", "huecos")
 	for _, h := range []string{"titulo", "mision", "mapa"} {
 		if err := os.WriteFile(filepath.Join(huecos, h+".md"), []byte("Hijo de prueba: "+h+".\n"), 0o644); err != nil {
 			t.Fatal(err)

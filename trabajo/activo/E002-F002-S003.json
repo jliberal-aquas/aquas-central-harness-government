@@ -1,0 +1,20 @@
+{
+  "id": "E002/F002/S003",
+  "tipo": "slice",
+  "titulo": "aviso de versión: el hijo pide aquas update cuando su lock es más viejo",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "modelo paquete: el hijo debe enterarse solo de que quedó atrás, como npm",
+  "padre": "E002/F002",
+  "bloqueado_por": [],
+  "secuencia": 109,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestAvisoDeVersion",
+      "intencion": "valida que un comando en el hijo avisa corre aquas update si el lock es más viejo que el binario",
+      "rojo_cuando": "rojo cuando no avisa con lock viejo o avisa con lock al día",
+      "verde_cuando": "verde cuando avisa solo con lock viejo"
+    }
+  ],
+  "relacion": "nueva"
+}

@@ -68,7 +68,7 @@ continúa: [EJ-E002](../README.md#EJ-E002)
 
 ## Cómo se usa
 
-- `aquas install <carpeta>`.
+- En la carpeta del hijo: `aquas install` (desde E002/F002/S001, sin ruta).
 
 ## Contrato y evidencia
 

@@ -1,0 +1,302 @@
+{
+  "id": "E002/F002/S001",
+  "tipo": "slice",
+  "titulo": "install y update desde la carpeta del hijo crean huecos PENDIENTE y arman CLAUDE.md",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "la landing quedó instalada sin CLAUDE.md: build exige 3 huecos escritos a mano",
+  "padre": "E002/F002",
+  "bloqueado_por": [],
+  "secuencia": 107,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestInstallYUpdateArmanClaude",
+      "intencion": "valida que install y update corridos en la carpeta del hijo, sin ruta, dejan CLAUDE.md armado y crean solo los huecos que faltan",
+      "rojo_cuando": "rojo cuando piden ruta, terminan sin CLAUDE.md o pisan un hueco escrito",
+      "verde_cuando": "verde cuando sin ruta arman CLAUDE.md, crean los huecos faltantes con PENDIENTE y respetan los escritos"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-25T22:24:58Z",
+    "head": "29445ccfebeaaa4b507a43bd95be0d1eb5fec801",
+    "resultado": {
+      "./cmd/aquas:TestInstallYUpdateArmanClaude": "hijo_comando_test.go:66: install sin ruta debió salir 0: exit status 1"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-25T22:27:31Z",
+    "head": "29445ccfebeaaa4b507a43bd95be0d1eb5fec801"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E002/F002",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "ficha:E002",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "pagina:docs/E002/F002/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "pagina:docs/E002/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "pagina:docs/E002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:README.md\u003edocs/E002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "sin cambio en este slice: solo install/update sin ruta y huecos PENDIENTE"
+    }
+  ],
+  "alcance": [
+    "internal/hijo/**",
+    "cmd/aquas/**",
+    "docs/E002/**",
+    "registro/defectos/**"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-25T22:24:03Z",
+    "huella": "302fc61fc40a84aa2dd89ff1240967210bf9b4a2c742be58ee6c0463bff9eddc",
+    "mensaje": "apruebo E002/F002/S001"
+  },
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/hijo/huecos.go"
+  ],
+  "relacion": "nueva",
+  "ediciones": [
+    {
+      "fecha": "2026-10-25T20:11:56Z",
+      "campo": "titulo",
+      "antes": "install y update crean huecos PENDIENTE y arman CLAUDE.md",
+      "despues": "install y update desde la carpeta del hijo crean huecos PENDIENTE y arman CLAUDE.md",
+      "motivo": "humano pide modelo paquete: cada hijo corre aquas en su carpeta, sin ruta"
+    }
+  ]
+}

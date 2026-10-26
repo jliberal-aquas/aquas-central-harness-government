@@ -65,8 +65,8 @@ continúa: [EJ-E002](../README.md#EJ-E002)
 
 ## Cómo se usa
 
-- Instalar: `aquas install <carpeta>`.
-- Actualizar: `aquas update <carpeta>`.
+- Instalar: en la carpeta del hijo, `aquas install`.
+- Actualizar: en la carpeta del hijo, `aquas update`.
 
 ## Contrato y evidencia
 
@@ -82,7 +82,9 @@ Evidencia real: la instalación en la landing aquas.cl, copiada aquí al cerrar.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| — | sin hijos todavía | — |
+| [S001](S001.md) | install y update desde la carpeta del hijo crean huecos PENDIENTE y arman CLAUDE.md | Hecho |
+| S002 | install sobre una carpeta con código sin tocar lo existente | Planeado |
+| S003 | aviso de versión: el hijo pide aquas update cuando su lock es más viejo | Planeado |
 
 <!-- /GENERADO -->
 

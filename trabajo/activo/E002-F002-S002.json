@@ -1,0 +1,20 @@
+{
+  "id": "E002/F002/S002",
+  "tipo": "slice",
+  "titulo": "install sobre una carpeta con código sin tocar lo existente",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "un repo de producto ya tiene código o git al instalar; hoy install exige carpeta vacía",
+  "padre": "E002/F002",
+  "bloqueado_por": [],
+  "secuencia": 108,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestInstallEnCarpetaConCodigo",
+      "intencion": "valida que install acepta una carpeta con archivos y no los toca",
+      "rojo_cuando": "rojo cuando rechaza la carpeta o altera un archivo existente",
+      "verde_cuando": "verde cuando instala y los archivos previos quedan idénticos"
+    }
+  ],
+  "relacion": "nueva"
+}
