@@ -352,6 +352,9 @@ func cierre(raiz string, f Ficha) error {
 			return fmt.Errorf("%s no cierra: el código cambió desde el verde: %s; corre aquas backlog verde %s", f.ID, strings.Join(cambio, ", "), f.ID)
 		}
 	}
+	if f.Tipo == "slice" { // E001/F014/S002: el auditor aprobó este verde y este código
+		return veredictoVigente(f)
+	}
 	return nil
 }
 

@@ -34,6 +34,8 @@ type Ficha struct {
 	Pruebas []Prueba  `json:"pruebas,omitempty"`
 	Rojo    *Registro `json:"rojo,omitempty"`
 	Verde   *Registro `json:"verde,omitempty"`
+	// E001/F014/S002: último veredicto del auditor, anotado por el gancho cierre-agente.
+	Auditoria *Auditoria `json:"auditoria,omitempty"`
 	// S004: marcas del sello de cierre (clave, marca, motivo).
 	Sello []Marca `json:"sello,omitempty"`
 	// S007: rutas declaradas del slice y ampliaciones con motivo.

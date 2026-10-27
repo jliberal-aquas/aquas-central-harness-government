@@ -43,7 +43,7 @@ Aplica a orquestador → worker/auditor y vuelta. No aplica a mensajes al humano
 - Sin analogías ni pedagogía.
 - Único texto emitido: el CIERRE. Resto = llamadas a herramientas.
 - Cada texto emitido se reenvía en cada turno siguiente → brevedad = menos gasto.
-- Gate: hook `SubagentStop` → `aquas cierre-agente` rechaza cierre sin sus campos fijos.
+- Gate: hook `SubagentStop` → `aquas cierre-agente` rechaza cierre sin sus campos fijos. Con cierre de auditor válido, anota su veredicto en la ficha.
 
 ## ENCARGO (orquestador → agente; campos fijos, en este orden)
 ```
@@ -66,8 +66,10 @@ bloqueo: motivo | —
 fuera_de_alcance: hallazgos no resueltos | —
 ```
 
-## CIERRE auditor (primera línea = veredicto)
+## CIERRE auditor (primera línea = id, segunda = veredicto)
+Encargo de auditor a un slice: `id: E001/F003/S001-A1`. El cierre copia ese id con guiones (`E001-F003-S001-A1`). El gancho `aquas cierre-agente` anota el veredicto en la ficha del slice (debe estar EN_CURSO); CERRADO exige APROBADO posterior al verde y sobre el mismo código. Auditoría de algo que no es un slice (feature, arreglo u otra auditoría): primera línea `id: —`; es válido y el gancho no anota nada.
 ```
+id: E001-F003-S001-A1
 veredicto: APROBADO | CON_HALLAZGOS | RECHAZADO
 hallazgos: qué · dónde (archivo:línea) · evidencia · efecto · certeza; grave → leve | —
 no_revisado: qué y por qué | —

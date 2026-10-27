@@ -74,6 +74,7 @@ func TestCierreExigeVerdeVigente(t *testing.T) {
 			t.Errorf("huella vacía y luego un .go: se esperaba rechazo nombrando docs/nuevo.go; dio %v", err)
 		}
 		raiz, id = sliceConVerde(t, "docs/**")
+		aprobar(t, raiz, id, "APROBADO", hora.Add(2*time.Hour))
 		if _, err := Estado(raiz, id, "CERRADO"); err != nil {
 			t.Errorf("huella vacía sin cambios debió cerrar: %v", err)
 		}
@@ -109,12 +110,14 @@ func TestCierreExigeVerdeVigente(t *testing.T) {
 	})
 	t.Run("sin cambios cierra", func(t *testing.T) {
 		raiz, id := sliceConVerde(t)
+		aprobar(t, raiz, id, "APROBADO", hora.Add(2*time.Hour))
 		if _, err := Estado(raiz, id, "CERRADO"); err != nil {
 			t.Errorf("verde sin cambios posteriores: debe cerrar; dio %v", err)
 		}
 	})
 	t.Run("cambio solo en un .md del alcance cierra", func(t *testing.T) {
 		raiz, id := sliceConVerde(t)
+		aprobar(t, raiz, id, "APROBADO", hora.Add(2*time.Hour))
 		escribirEn(t, raiz, "docs/nota.md", "# nota\n\ncambio solo en docs\n")
 		if _, err := Estado(raiz, id, "CERRADO"); err != nil {
 			t.Errorf("cambio en docs no entra en la huella: debe cerrar; dio %v", err)
@@ -143,6 +146,7 @@ func TestCierreExigeVerdeVigente(t *testing.T) {
 		f := leerFicha(t, activo(raiz, nombre(id)))
 		f.Verde = &Registro{Fecha: f.Verde.Fecha, Head: f.Verde.Head} // como antes de este tramo: sin huella
 		pisar(t, raiz, Activo, f)
+		aprobar(t, raiz, id, "APROBADO", hora.Add(2*time.Hour))
 		escribirEn(t, raiz, "p/p.go", "package p\n\nconst V = 3\n")
 		if _, err := Estado(raiz, id, "CERRADO"); err != nil {
 			t.Errorf("verde viejo sin huella: cierra como hoy; dio %v", err)
@@ -152,13 +156,15 @@ func TestCierreExigeVerdeVigente(t *testing.T) {
 
 // Rojo cuando: cierra con código cambiado tras el verde o sin veredicto.
 // Verde cuando: ambos rechazos ocurren y el caso sano cierra.
-// Hoy cubre la parte de S001; el caso del veredicto fallará hasta S002 (cuando exista, el caso sano debe llevar veredicto APROBADO).
+// El caso sano lleva veredicto APROBADO posterior al verde (E001/F014/S002).
 func TestCierreHonesto(t *testing.T) {
 	t.Run("código cambiado tras el verde rechaza", func(t *testing.T) {
 		raiz, id := sliceConVerde(t)
+		aprobar(t, raiz, id, "APROBADO", hora.Add(2*time.Hour)) // D000052: con veredicto vigente, el rechazo debe ser por el código
 		escribirEn(t, raiz, "p/p.go", "package p\n\nconst V = 9\n")
-		if _, err := Estado(raiz, id, "CERRADO"); err == nil {
-			t.Errorf("cerró con código cambiado tras el verde")
+		_, err := Estado(raiz, id, "CERRADO")
+		if err == nil || !strings.Contains(err.Error(), "cambió desde el verde") {
+			t.Errorf("cerrar con código cambiado tras el verde: se esperaba rechazo «cambió desde el verde»; dio %v", err)
 		}
 	})
 	t.Run("sin veredicto APROBADO rechaza", func(t *testing.T) {
@@ -170,8 +176,9 @@ func TestCierreHonesto(t *testing.T) {
 	})
 	t.Run("caso sano cierra", func(t *testing.T) {
 		raiz, id := sliceConVerde(t)
+		aprobar(t, raiz, id, "APROBADO", hora.Add(2*time.Hour))
 		if _, err := Estado(raiz, id, "CERRADO"); err != nil {
-			t.Errorf("caso sano (hoy sin veredicto): debe cerrar; dio %v", err)
+			t.Errorf("caso sano con veredicto APROBADO: debe cerrar; dio %v", err)
 		}
 	})
 }

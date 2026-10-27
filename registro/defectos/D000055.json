@@ -1,0 +1,10 @@
+{
+  "id": "D000055",
+  "firma": "transcript-filtros-sin-prueba",
+  "que": "auditoría A3 de E001/F014/S002: filtros de nombre SubagentHandback y de mensaje vacío sin prueba; docs dicen que siempre se lee el transcript pero last_assistant_message gana si viene; comentario viejo en cierre_agente_test.go:9",
+  "causa": "mutantes M5, M6 y M8 sobreviven",
+  "arreglo": "pruebas para ambos filtros; alinear doc o código sobre qué campo gana; corregir el comentario",
+  "como_me_cercioro": "M5, M6 y M8 mueren",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

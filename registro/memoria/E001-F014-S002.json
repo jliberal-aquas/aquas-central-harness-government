@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F014",
+    "slice": "S002",
+    "tarea": "S002 APROBADO por A3 (anotado por gancho real); cerrando"
+  },
+  "siguiente": "tramos hijos D000054",
+  "pendientes": [
+    "D000041: re-auditar S009 junto con S011"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "e11572e06274767e229401244a4c2b29c71c5cea42390dd2dec0073e0ada85cf",
+  "actualizado": "2026-10-27T21:06:04Z",
+  "sello": "c20e1be0ac06069f0a3564032e287222edc13ef7ade076e236745ec4bed874e3"
+}

@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+	"time"
 )
 
 // E001/F002/S003 sobre el binario real: memoria según el backlog; rojo, verde y cierre de punta a punta.
@@ -87,7 +88,10 @@ func TestCerrarSliceDePuntaAPunta(t *testing.T) {
 	paso(0, "rojo: p_test.go", "rojo", "E001/F002/S003")
 	escribir(t, raiz, "p/arreglado", "")
 	paso(0, "· verde 20", "verde", "E001/F002/S003")
-	sellarCLI(t, raiz, "E001/F002/S003") // S004: el cierre exige el sello marcado
+	sellarCLI(t, raiz, "E001/F002/S003")                        // S004: el cierre exige el sello marcado
+	paso(1, "veredicto", "estado", "E001/F002/S003", "CERRADO") // E001/F014/S002: sin auditor APROBADO no cierra
+	time.Sleep(1100 * time.Millisecond)                         // el veredicto debe ser posterior al verde, con precisión de segundos
+	aprobarGancho(t, raiz, "E001/F002/S003")
 	paso(0, "archivada", "estado", "E001/F002/S003", "CERRADO")
 	f := fichaEnDisco(t, raiz, "trabajo/archivo/E001-F002-S003.json")
 	if !strings.Contains(string(f["rojo"]), "falta el arreglo") || !strings.Contains(string(f["verde"]), "fecha") {

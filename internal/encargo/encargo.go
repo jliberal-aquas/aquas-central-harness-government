@@ -13,13 +13,19 @@ const canonico = "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md"
 type contrato struct {
 	primera *regexp.Regexp // primera línea no vacía
 	campo   string         // nombre de la primera línea, para el mensaje
+	segunda *regexp.Regexp // si no es nil, segunda línea no vacía (auditor: veredicto tras el id)
+	campo2  string         // nombre de la segunda línea, para el mensaje
 	resto   []string       // campos obligatorios después
 }
 
 var (
-	worker  = contrato{regexp.MustCompile(`^estado: (HECHO|PARCIAL|BLOQUEADO)\s*$`), "estado: HECHO | PARCIAL | BLOQUEADO", []string{"archivos", "evidencia", "bloqueo", "fuera_de_alcance"}}
-	auditor = contrato{regexp.MustCompile(`^veredicto: (APROBADO|CON_HALLAZGOS|RECHAZADO)\s*$`), "veredicto: APROBADO | CON_HALLAZGOS | RECHAZADO", []string{"hallazgos", "no_revisado"}}
-	porTipo = map[string]contrato{"worker-sonnet": worker, "worker-haiku": worker, "auditor": auditor}
+	reIDAuditor = regexp.MustCompile(`^id: (E\d{3}-F\d{3}-S\d{3})-A\d+\s*$`)
+	reVeredicto = regexp.MustCompile(`^veredicto: (APROBADO|CON_HALLAZGOS|RECHAZADO)\s*$`)
+	worker      = contrato{regexp.MustCompile(`^estado: (HECHO|PARCIAL|BLOQUEADO)\s*$`), "estado: HECHO | PARCIAL | BLOQUEADO", nil, "", []string{"archivos", "evidencia", "bloqueo", "fuera_de_alcance"}}
+	// «id: —»: auditoría sin tramo (feature, arreglo u otra auditoría); válido, el gancho no anota (S002-T2 H2).
+	reIDAuditorOSin = regexp.MustCompile(`^id: (E\d{3}-F\d{3}-S\d{3}-A\d+|—)\s*$`)
+	auditor         = contrato{reIDAuditorOSin, "id: E000-F000-S000-A1 (id del encargo del auditor; «id: —» si no audita un tramo)", reVeredicto, "veredicto: APROBADO | CON_HALLAZGOS | RECHAZADO", []string{"hallazgos", "no_revisado"}}
+	porTipo         = map[string]contrato{"worker-sonnet": worker, "worker-haiku": worker, "auditor": auditor}
 )
 
 // Revisar decide el hook SubagentStop: "" deja cerrar; si no, qué falta en el cierre.
@@ -36,14 +42,24 @@ func Revisar(tipo, mensaje string, stopHookActive bool) string {
 			lineas = append(lineas, l)
 		}
 	}
-	if len(lineas) == 0 || !c.primera.MatchString(strings.TrimSpace(lineas[0])) {
+	if len(lineas) == 0 { // D000053: un cierre vacío nunca pasa en silencio
+		return falla("cierre vacío: la primera línea debe ser «" + c.campo + "»; el cierre es el único texto, sin prosa")
+	}
+	if !c.primera.MatchString(strings.TrimSpace(lineas[0])) {
 		return falla("la primera línea debe ser «" + c.campo + "»; el cierre es el único texto, sin prosa")
+	}
+	resto := lineas[1:]
+	if c.segunda != nil {
+		if len(resto) == 0 || !c.segunda.MatchString(strings.TrimSpace(resto[0])) {
+			return falla("la segunda línea debe ser «" + c.campo2 + "»")
+		}
+		resto = resto[1:]
 	}
 	// Cada línea siguiente abre un campo («campo: valor») o continúa el anterior
 	// («- …», «· …» o sangría). Otra cosa es texto fuera del cierre.
 	valor := map[string]bool{} // campo visto → tiene valor
 	actual := ""
-	for _, l := range lineas[1:] {
+	for _, l := range resto {
 		t := strings.TrimSpace(l)
 		if campo, v, ok := strings.Cut(t, ":"); ok && slices.Contains(c.resto, campo) {
 			actual = campo
@@ -72,6 +88,24 @@ func Revisar(tipo, mensaje string, stopHookActive bool) string {
 		return falla("campos vacíos: " + strings.Join(vacios, ", ") + " (usa «—» si no aplica)")
 	}
 	return ""
+}
+
+// Veredicto extrae del cierre de un auditor ya válido el id del tramo («E001/F014/S002») y su veredicto.
+func Veredicto(mensaje string) (id, veredicto string, ok bool) {
+	var ls []string
+	for _, l := range strings.Split(strings.ReplaceAll(mensaje, "\r\n", "\n"), "\n") {
+		if t := strings.TrimSpace(l); t != "" && !strings.HasPrefix(t, "```") {
+			ls = append(ls, t)
+		}
+	}
+	if len(ls) < 2 {
+		return "", "", false
+	}
+	a, b := reIDAuditor.FindStringSubmatch(ls[0]), reVeredicto.FindStringSubmatch(ls[1])
+	if a == nil || b == nil {
+		return "", "", false
+	}
+	return strings.ReplaceAll(a[1], "-", "/"), b[1], true
 }
 
 // falla: mensaje de cierre inválido que pide reescribirlo según el canónico.

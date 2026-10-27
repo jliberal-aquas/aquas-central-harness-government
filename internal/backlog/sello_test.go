@@ -63,7 +63,7 @@ func repoSello(t *testing.T) string {
 	fichaJSON(t, raiz, Ficha{ID: "E001", Titulo: "I", Estado: "EN_CURSO", Secuencia: 1})
 	fichaJSON(t, raiz, Ficha{ID: "E001/F002", Titulo: "F", Estado: "EN_CURSO", Secuencia: 2})
 	fichaJSON(t, raiz, Ficha{ID: "E001/F002/S004", Titulo: "S", Estado: "EN_CURSO", Secuencia: 3,
-		Pruebas: []Prueba{{Nombre: "./a:TestA", Intencion: "x", RojoCuando: "r", VerdeCuando: "v"}}, Rojo: reg, Verde: reg})
+		Pruebas: []Prueba{{Nombre: "./a:TestA", Intencion: "x", RojoCuando: "r", VerdeCuando: "v"}}, Rojo: reg, Verde: reg, Auditoria: &Auditoria{Fecha: "2026-10-21T11:00:00Z", Veredicto: "APROBADO"}}) // E001/F014/S002
 	fichaJSON(t, raiz, Ficha{ID: "E001/F002/S005", Titulo: "D", Estado: "BORRADOR", Secuencia: 4, BloqueadoPor: []string{"E001/F002/S004"}})
 	fichaJSON(t, raiz, Ficha{ID: "E001/F002/S006", Titulo: "H", Estado: "BORRADOR", Secuencia: 5})
 	poner(t, raiz, "internal/a/a.go", "package a\n\nfunc A() int { return 2 }\n")
@@ -205,7 +205,8 @@ func TestSelloSinCommitBaseExigeArbol(t *testing.T) {
 	fichaJSON(t, raiz, Ficha{ID: "E001", Titulo: "I", Estado: "EN_CURSO", Secuencia: 1})
 	fichaJSON(t, raiz, Ficha{ID: "E001/F002", Titulo: "F", Estado: "EN_CURSO", Secuencia: 2})
 	fichaJSON(t, raiz, Ficha{ID: id, Titulo: "S", Estado: "EN_CURSO", Secuencia: 3,
-		Pruebas: []Prueba{{Nombre: "./a:TestA", Intencion: "x", RojoCuando: "r", VerdeCuando: "v"}}, Rojo: reg, Verde: reg})
+		Pruebas: []Prueba{{Nombre: "./a:TestA", Intencion: "x", RojoCuando: "r", VerdeCuando: "v"}}, Rojo: reg, Verde: reg,
+		Auditoria: &Auditoria{Fecha: "2026-10-21T11:00:00Z", Veredicto: "APROBADO"}}) // E001/F014/S002
 	m := claves(t, raiz, id)
 	for _, k := range []string{"ficha:E001/F002", "ficha:E001", "pagina:docs/E001/F002/S004.md", "aviso:sin-commit-base"} {
 		if _, ok := m[k]; !ok {

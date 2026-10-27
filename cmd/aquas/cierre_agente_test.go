@@ -14,7 +14,8 @@ func TestCierreAgenteCLI(t *testing.T) {
 	if s := aquas(t, raiz, malo, "cierre-agente"); s.codigo != 2 || !strings.Contains(s.err, "cierre inválido") {
 		t.Fatalf("cierre en prosa: exit 2 con aviso por stderr; dio %+v", s)
 	}
-	bueno := `{"agent_type":"auditor","last_assistant_message":"veredicto: APROBADO\nhallazgos: —\nno_revisado: —","stop_hook_active":false}`
+	fichaSlice(t, raiz, "E001/F014/S002", "EN_CURSO") // E001/F014/S002: el cierre del auditor se anota en la ficha de su tramo
+	bueno := `{"agent_type":"auditor","last_assistant_message":"id: E001-F014-S002-A1\nveredicto: APROBADO\nhallazgos: —\nno_revisado: —","stop_hook_active":false}`
 	if s := aquas(t, raiz, bueno, "cierre-agente"); s.codigo != 0 {
 		t.Fatalf("cierre completo: exit 0; dio %+v", s)
 	}

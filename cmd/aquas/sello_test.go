@@ -59,6 +59,7 @@ func TestSelloCLIDePuntaAPunta(t *testing.T) {
 	if s.codigo != 0 || !strings.Contains(s.out, "  [ ] ficha:E001/F001 · ") {
 		t.Fatalf("sello lista los ítems pendientes con [ ]; dio %+v", s)
 	}
+	aprobarGancho(t, raiz, "E001/F001/S001") // E001/F014/S002: el verde es de 2026-10-21; el gancho anota con la hora de ahora
 	if s := aquas(t, raiz, "", "backlog", "estado", "E001/F001/S001", "CERRADO"); s.codigo != 1 || !strings.Contains(s.err, "sello incompleto") {
 		t.Fatalf("sin marcas el cierre se niega; dio %+v", s)
 	}

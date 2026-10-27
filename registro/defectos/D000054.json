@@ -1,0 +1,10 @@
+{
+  "id": "D000054",
+  "firma": "hueco-pendiente-sin-gate",
+  "que": "un hijo puede quedar con huecos PENDIENTE (titulo, mision, mapa) y ningún gate lo detecta; además el principio 4 de la central se copia al hijo",
+  "causa": "PENDIENTE solo se escribe en install (internal/hijo/huecos.go:33), nunca se verifica; principio 4 sin marca solo-central",
+  "arreglo": "aquas verificar del hijo falla con huecos PENDIENTE; envolver principio 4 en solo-central",
+  "como_me_cercioro": "hijo recién instalado: verificar falla nombrando el hueco; con huecos llenos pasa; CLAUDE.md del hijo sin «lenguaje único»",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

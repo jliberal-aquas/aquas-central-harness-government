@@ -263,12 +263,27 @@ func main() {
 			Tipo    string `json:"agent_type"`
 			Mensaje string `json:"last_assistant_message"`
 			Activo  bool   `json:"stop_hook_active"`
+			Agente  string `json:"agent_transcript_path"`
 		}
 		datos, _ := io.ReadAll(os.Stdin)
 		_ = json.Unmarshal(datos, &e)
+		if e.Mensaje == "" && e.Agente != "" { // D000053: el cierre real vive en el transcript del subagente
+			e.Mensaje = ultimoMensaje(e.Agente)
+		}
 		if m := encargo.Revisar(e.Tipo, e.Mensaje, e.Activo); m != "" {
 			_, _ = fmt.Fprintln(os.Stderr, m)
 			os.Exit(2)
+		}
+		if e.Tipo == "auditor" { // E001/F014/S002: el veredicto queda en la ficha; CERRADO lo exige
+			// Sin id y veredicto válidos (stop_hook_active dejó pasar un cierre malo) no se anota nada.
+			if id, v, ok := encargo.Veredicto(e.Mensaje); ok {
+				if err := backlog.AnotarAuditoria(raiz, id, v, time.Now()); err != nil {
+					_, _ = fmt.Fprintf(os.Stderr, "aquas cierre-agente: el veredicto de %s no quedó anotado: %v\n", id, err)
+					if !e.Activo { // con stop_hook_active nunca se atrapa al auditor: aviso y sale
+						os.Exit(2)
+					}
+				}
+			}
 		}
 	case "guardia":
 		datos, _ := io.ReadAll(os.Stdin)

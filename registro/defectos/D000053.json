@@ -1,0 +1,10 @@
+{
+  "id": "D000053",
+  "firma": "gancho-probado-solo-directo",
+  "que": "el gancho cierre-agente pasa sus pruebas pero no anotó el veredicto del auditor real",
+  "causa": "las pruebas invocan el gancho directo; no prueban que Claude Code lo dispare con esos datos",
+  "arreglo": "diagnosticar la entrada real de SubagentStop y exigir un veredicto anotado por auditor real antes de cerrar S002",
+  "como_me_cercioro": "tras una auditoría real, la ficha muestra el campo auditoria",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

@@ -94,6 +94,7 @@ func conRojoYVerde(t *testing.T, raiz, id string) {
 	f := leerFicha(t, activo(raiz, nombre(id)))
 	f.Rojo = &Registro{Fecha: "2026-10-21T12:00:00Z", Resultado: map[string]string{f.Pruebas[0].Nombre: "falló"}}
 	f.Verde = &Registro{Fecha: "2026-10-21T13:00:00Z"}
+	f.Auditoria = &Auditoria{Fecha: "2026-10-21T14:00:00Z", Veredicto: "APROBADO"} // E001/F014/S002: cerrar exige el APROBADO del auditor
 	pisar(t, raiz, Activo, f)
 }
 
@@ -276,6 +277,7 @@ func TestCerrarExigeRojoYVerde(t *testing.T) {
 		t.Errorf("cerrar sin verde; dio %v", err)
 	}
 	f.Verde = &Registro{Fecha: "2026-10-21T13:00:00Z"}
+	f.Auditoria = &Auditoria{Fecha: "2026-10-21T14:00:00Z", Veredicto: "APROBADO"} // E001/F014/S002
 	pisar(t, raiz, Activo, f)
 	marcarTodo(t, raiz, "E001/F002/S001") // desde S004 cerrar exige el sello marcado
 	if g, err := Estado(raiz, "E001/F002/S001", "CERRADO"); err != nil || g.Verde == nil {

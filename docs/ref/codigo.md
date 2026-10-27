@@ -77,6 +77,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `turnoCLI` | `(raiz string, args []string)` | turnoCLI: auditoría de turnos (E001/F002/S001). Lee el JSON del hook por stdin. No imprime nada |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `defectoCLI` | `(raiz string, args []string) error` | defectoCLI: nuevo \\| ocurre \\| ver (E001/F004/S001). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `versionBinario` | `() string` | versionBinario: versión del módulo con que se compiló el binario (= versión del gobierno embebido). |
+| [cmd/aquas/transcript.go](../../cmd/aquas/transcript.go) | `ultimoMensaje` | `(ruta string) string` | ultimoMensaje (D000053): SubagentStop no trae last_assistant_message en esta versión de Claude Code |
 | [internal/backlog/alcance.go](../../internal/backlog/alcance.go) | `limpia` | `(r string) string` | limpia normaliza una ruta: barras «/», sin «./» inicial ni segmentos redundantes. |
 | [internal/backlog/alcance.go](../../internal/backlog/alcance.go) | `Alcance` | `(raiz, id string, rutas []string) (Ficha, error)` | Alcance declara (reemplaza) las rutas del slice. |
 | [internal/backlog/alcance.go](../../internal/backlog/alcance.go) | `Ampliar` | `(raiz, id, ruta, motivo string) (Ficha, error)` | Ampliar agrega una ruta al alcance; el motivo es obligatorio y de una línea. |
@@ -97,6 +98,9 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `pruebasArreglo` | `(raiz, id string, ps []Prueba) (Ficha, error)` | pruebasArreglo fija las pruebas del arreglo; cambiarlas borra su rojo y su verde. |
 | [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `rojoArreglo` | `(raiz, id string, ahora time.Time) (Ficha, error)` | rojoArreglo registra el rojo del arreglo. |
 | [internal/backlog/arreglo_pruebas.go](../../internal/backlog/arreglo_pruebas.go) | `verdeArreglo` | `(raiz, id string, ahora time.Time) (Ficha, error)` | verdeArreglo registra el verde del arreglo. |
+| [internal/backlog/auditoria.go](../../internal/backlog/auditoria.go) | `AnotarAuditoria` | `(raiz, id, veredicto string, ahora time.Time) error` | AnotarAuditoria anota el veredicto del auditor en la ficha de un slice EN_CURSO; gana el último. |
+| [internal/backlog/auditoria.go](../../internal/backlog/auditoria.go) | `veredictoVigente` | `(f Ficha) error` | veredictoVigente: CERRADO de un slice exige el último veredicto APROBADO, posterior al verde y sobre el mismo código. |
+| [internal/backlog/auditoria.go](../../internal/backlog/auditoria.go) | `derefHuella` | `(h *map[string]string) map[string]string` | derefHuella: la huella apuntada, o nil si no hay. |
 | [internal/backlog/backlog.go](../../internal/backlog/backlog.go) | `terminal` | `(estado string) bool` | terminal: el estado ya no cambia (CERRADO o CANCELADO). |
 | [internal/backlog/backlog.go](../../internal/backlog/backlog.go) | `esta` | `(xs []string, x string) bool` | esta: x figura en la lista. |
 | [internal/backlog/backlog.go](../../internal/backlog/backlog.go) | `tipoYPadre` | `(id string) (tipo, padre string)` | tipoYPadre deriva del id: E001 → iniciativa; E001/F002 → feature de E001; E001/F002/S002 → slice. |
@@ -194,6 +198,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `Texto` | `(d Defecto) string` | Texto: una línea por defecto para `aquas defecto ver`. |
 | [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `revisarRelacion` | `(raiz, rel, que string, todos []Defecto) error` | revisarRelacion (E001/F009/S002): relacion=nuevo o el id de una ficha; sin ella, lista defectos y fichas parecidos. |
 | [internal/encargo/encargo.go](../../internal/encargo/encargo.go) | `Revisar` | `(tipo, mensaje string, stopHookActive bool) string` | Revisar decide el hook SubagentStop: "" deja cerrar; si no, qué falta en el cierre. |
+| [internal/encargo/encargo.go](../../internal/encargo/encargo.go) | `Veredicto` | `(mensaje string) (id, veredicto string, ok bool)` | Veredicto extrae del cierre de un auditor ya válido el id del tramo («E001/F014/S002») y su veredicto. |
 | [internal/encargo/encargo.go](../../internal/encargo/encargo.go) | `falla` | `(motivo string) string` | falla: mensaje de cierre inválido que pide reescribirlo según el canónico. |
 | [internal/entorno/binario.go](../../internal/entorno/binario.go) | `BinarioViejo` | `(raiz, exe string) string` | BinarioViejo (D000026): aviso si algún .go de producción es más nuevo que el binario exe; "" si está al día. |
 | [internal/entorno/entorno.go](../../internal/entorno/entorno.go) | `Leer` | `(raiz string) (Entorno, error)` | Leer carga el entorno declarado. |
