@@ -1,0 +1,10 @@
+{
+  "id": "D000052",
+  "firma": "prueba-rechazo-texto-generico",
+  "que": "la prueba de archivo ilegible buscaba solo «no cierra» y aceptaba el rechazo por código cambiado",
+  "causa": "aserción sobre texto común a varios rechazos",
+  "arreglo": "cada prueba de rechazo exige el texto propio de su causa",
+  "como_me_cercioro": "mutante que traga el error de lectura debe tumbar la prueba",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

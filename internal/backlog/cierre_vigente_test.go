@@ -85,6 +85,28 @@ func TestCierreExigeVerdeVigente(t *testing.T) {
 			t.Errorf("alcance */p.go con p/p.go cambiado: se esperaba rechazo; dio %v", err)
 		}
 	})
+	t.Run("alcance fuera del repo no se lee", func(t *testing.T) {
+		raiz := t.TempDir()
+		for _, p := range []string{"../fuera/**", `..\fuera/**`, "p/../../x/**", "C:/Windows/**", "/etc/**"} {
+			if _, err := huellaCodigo(raiz, Ficha{Alcance: []string{p}}); err == nil || !strings.Contains(err.Error(), "alcance fuera del repo") {
+				t.Errorf("alcance %q: se esperaba «alcance fuera del repo»; dio %v", p, err)
+			}
+		}
+		if _, err := huellaCodigo(raiz, Ficha{Alcance: []string{"p/**", "*/x.go"}}); err != nil {
+			t.Errorf("alcance relativo debió pasar: %v", err)
+		}
+	})
+	t.Run("código ilegible al cerrar rechaza", func(t *testing.T) {
+		// D000052: huella vacía, así un error tragado daría «sin cambios» y cerraría; se exige el rechazo por error, no por cambio.
+		raiz, id := sliceConVerde(t, "docs/**")
+		f, err := activa(raiz, id)
+		if err != nil {
+			t.Fatalf("ficha: %v", err)
+		}
+		if err := cierre("ilegible\x00raiz", f); err == nil || !strings.Contains(err.Error(), "no cierra") || strings.Contains(err.Error(), "cambió desde el verde") {
+			t.Errorf("con el código ilegible se esperaba «no cierra» por error de lectura, no por cambio; dio %v", err)
+		}
+	})
 	t.Run("sin cambios cierra", func(t *testing.T) {
 		raiz, id := sliceConVerde(t)
 		if _, err := Estado(raiz, id, "CERRADO"); err != nil {

@@ -36,6 +36,19 @@ func baseFija(p string) string {
 	return strings.Join(fijas, "/")
 }
 
+// fueraDelRepo: patrón absoluto, con unidad («C:») o con un tramo «..»; la huella no lee fuera de la raíz.
+func fueraDelRepo(p string) bool {
+	if strings.HasPrefix(p, "/") || filepath.IsAbs(filepath.FromSlash(p)) || filepath.VolumeName(filepath.FromSlash(p)) != "" || strings.ContainsAny(p, `:\`) {
+		return true
+	}
+	for _, s := range strings.Split(p, "/") {
+		if s == ".." {
+			return true
+		}
+	}
+	return false
+}
+
 // huellaCodigo: ruta relativa con «/» → SHA-256 de cada .go cubierto por el alcance (con ampliaciones).
 // Omite carpetas .git, .tmp y testdata. Sin archivos Go devuelve un mapa vacío. Un archivo ilegible es error.
 func huellaCodigo(raiz string, f Ficha) (map[string]string, error) {
@@ -46,6 +59,9 @@ func huellaCodigo(raiz string, f Ficha) (map[string]string, error) {
 	res := map[string]string{}
 	vistos := map[string]bool{}
 	for _, p := range patrones {
+		if fueraDelRepo(p) {
+			return nil, fmt.Errorf("alcance fuera del repo: %s; usa rutas relativas a la raíz, sin «..»", p)
+		}
 		inicio := filepath.Join(raiz, filepath.FromSlash(baseFija(p)))
 		err := filepath.WalkDir(inicio, func(ruta string, d fs.DirEntry, err error) error {
 			if err != nil {
