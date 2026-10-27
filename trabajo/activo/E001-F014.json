@@ -16,5 +16,12 @@
       "verde_cuando": "verde cuando ambos rechazos ocurren y el caso sano cierra"
     }
   ],
+  "rojo": {
+    "fecha": "2026-10-27T00:26:07Z",
+    "head": "ef2f77160a779f5919e36720591702ac798482a9",
+    "resultado": {
+      "./internal/backlog:TestCierreHonesto": "cierre_vigente_test.go:125: cerrar sin veredicto del auditor: se esperaba rechazo que mencione «veredicto»; dio \u003cnil\u003e"
+    }
+  },
   "relacion": "nueva"
 }

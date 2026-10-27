@@ -312,7 +312,7 @@ func Estado(raiz, id, estado string) (Ficha, error) {
 		}
 	}
 	if estado == "CERRADO" {
-		if err := cierre(f); err != nil {
+		if err := cierre(raiz, f); err != nil {
 			return Ficha{}, err
 		}
 		if err := selloCompleto(raiz, f); err != nil {

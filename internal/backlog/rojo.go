@@ -31,6 +31,8 @@ type Registro struct {
 	Resultado map[string]string `json:"resultado,omitempty"`
 	// X02: slice cerrado del que una feature heredó este rojo; "" = rojo propio.
 	Origen string `json:"origen,omitempty"`
+	// E001/F014/S001: SHA-256 de los .go del alcance al registrar el verde; nil = verde anterior a E001/F014; vacía = alcance sin código.
+	Huella *map[string]string `json:"huella,omitempty"`
 }
 
 var reNombrePrueba = regexp.MustCompile(`^\./[\w.-]+(/[\w.-]+)*:Test([A-Z0-9_]\w*)?$`)
@@ -206,6 +208,9 @@ func Verde(raiz, id string, ahora time.Time) (Ficha, error) {
 	if err != nil {
 		return Ficha{}, err
 	}
+	if r.Huella, err = huellaVerde(raiz, f); err != nil {
+		return Ficha{}, err
+	}
 	f.Verde = r
 	return f, escribir(raiz, Activo, f)
 }
@@ -328,8 +333,8 @@ func head(raiz string) string {
 	return strings.TrimSpace(string(b))
 }
 
-// cierre: CERRADO exige pruebas, rojo y verde.
-func cierre(f Ficha) error {
+// cierre: CERRADO exige pruebas, rojo, verde y, si el verde trae huella, el mismo código Go.
+func cierre(raiz string, f Ficha) error {
 	switch {
 	case len(f.Pruebas) == 0:
 		return fmt.Errorf("%s no cierra sin pruebas: aquas backlog pruebas %s %s", f.ID, f.ID, formatoPrueba)
@@ -337,6 +342,15 @@ func cierre(f Ficha) error {
 		return fmt.Errorf("%s no cierra sin rojo: aquas backlog rojo %s", f.ID, f.ID)
 	case f.Verde == nil:
 		return fmt.Errorf("%s no cierra sin verde: aquas backlog verde %s", f.ID, f.ID)
+	}
+	if f.Verde.Huella != nil { // E001/F014/S001: el código del alcance sigue igual que en el verde
+		cambio, err := codigoCambio(raiz, f)
+		if err != nil {
+			return fmt.Errorf("%s no cierra: %w", f.ID, err)
+		}
+		if len(cambio) > 0 {
+			return fmt.Errorf("%s no cierra: el código cambió desde el verde: %s; corre aquas backlog verde %s", f.ID, strings.Join(cambio, ", "), f.ID)
+		}
 	}
 	return nil
 }

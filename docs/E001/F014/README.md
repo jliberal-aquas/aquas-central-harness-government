@@ -79,7 +79,7 @@ Prueba integral: `TestCierreHonesto` (pendiente).
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | Verde vigente al cerrar | Planeado |
+| [S001](S001.md) | Verde vigente al cerrar | En curso |
 | S002 | Veredicto del auditor en la ficha | Planeado |
 
 <!-- /GENERADO -->
