@@ -2,7 +2,7 @@
   "id": "E001/F014",
   "tipo": "feature",
   "titulo": "Cierre honesto",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "cerrar no comprueba que el verde siga vigente ni que el auditor aprobó (D000047, D000049; auditoría externa 2026-10-26)",
   "padre": "E001",
@@ -22,6 +22,11 @@
     "resultado": {
       "./internal/backlog:TestCierreHonesto": "cierre_vigente_test.go:125: cerrar sin veredicto del auditor: se esperaba rechazo que mencione «veredicto»; dio \u003cnil\u003e"
     }
+  },
+  "verde": {
+    "fecha": "2026-10-27T23:31:13Z",
+    "head": "441cdfb426c4bfea464c4a9f687159188661f14e",
+    "huella": {}
   },
   "relacion": "nueva"
 }
