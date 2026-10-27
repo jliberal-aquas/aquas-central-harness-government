@@ -1,0 +1,25 @@
+{
+  "id": "E002/F002/S005",
+  "tipo": "slice",
+  "titulo": "el principio de Go como lenguaje único queda solo en la central",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "D000054: el hijo hereda un principio sobre el módulo de la central que no lo gobierna",
+  "padre": "E002/F002",
+  "bloqueado_por": [],
+  "secuencia": 118,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestGoSoloEnCentral",
+      "intencion": "valida que el CLAUDE.md armado del hijo no trae el principio de Go y la constitución central sí",
+      "rojo_cuando": "rojo cuando el CLAUDE.md del hijo contiene «lenguaje único»",
+      "verde_cuando": "verde cuando el hijo no lo contiene y la central lo conserva"
+    }
+  ],
+  "alcance": [
+    "gobierno/canonico/constitucion.md",
+    "internal/hijo/**",
+    "docs/E002/**"
+  ],
+  "relacion": "nueva"
+}

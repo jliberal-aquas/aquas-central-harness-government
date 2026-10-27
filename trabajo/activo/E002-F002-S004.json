@@ -1,0 +1,25 @@
+{
+  "id": "E002/F002/S004",
+  "tipo": "slice",
+  "titulo": "el gate del hijo falla mientras un hueco diga PENDIENTE",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "D000054: un hijo recién instalado pasa su gate con título, misión y mapa sin llenar",
+  "padre": "E002/F002",
+  "bloqueado_por": [],
+  "secuencia": 117,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestVerificarHuecoPendiente",
+      "intencion": "valida que verificar del hijo falla mientras un hueco conserve el texto PENDIENTE",
+      "rojo_cuando": "rojo cuando verificar pasa con un hueco PENDIENTE o no nombra cuál",
+      "verde_cuando": "verde cuando falla nombrando cada hueco pendiente y pasa con los huecos escritos"
+    }
+  ],
+  "alcance": [
+    "internal/hijo/**",
+    "cmd/aquas/**",
+    "docs/E002/**"
+  ],
+  "relacion": "nueva"
+}
