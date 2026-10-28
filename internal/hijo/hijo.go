@@ -93,3 +93,9 @@ func copiarCentral(dest string, central fs.FS, version string) error {
 	}
 	return os.WriteFile(filepath.Join(dest, Carpeta, "lock.json"), append(b, '\n'), 0o644)
 }
+
+// AMedias (E002/F002/S002): error de install cuando la central ya quedó copiada y falló lo siguiente.
+// Reintentar es update, no install: install rechaza una carpeta que ya tiene .aquas/.
+func AMedias(err error) error {
+	return fmt.Errorf("install quedó a medias (la central ya está copiada): %w; tras corregirlo corre aquas update", err)
+}

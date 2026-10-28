@@ -5,13 +5,12 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
-	"sort"
 	"strings"
 	"testing"
 	"testing/fstest"
 )
 
-// foto devuelve ruta relativa → contenido de cada archivo bajo dir.
+// foto devuelve ruta relativa → contenido de cada archivo bajo dir; las carpetas van con «/» final.
 func foto(t *testing.T, dir string) map[string]string {
 	t.Helper()
 	m := map[string]string{}
@@ -32,20 +31,6 @@ func foto(t *testing.T, dir string) map[string]string {
 		t.Fatal(err)
 	}
 	return m
-}
-
-// nombresHuecos: los huecos de la constitución de prueba, ordenados, como los nombra el aviso.
-func nombresHuecos() string {
-	vistos := map[string]bool{}
-	var ns []string
-	for _, m := range reHueco.FindAllStringSubmatch(constitucionConHuecos, -1) {
-		if !vistos[m[1]] {
-			vistos[m[1]] = true
-			ns = append(ns, m[1]+".md")
-		}
-	}
-	sort.Strings(ns)
-	return strings.Join(ns, ", ")
 }
 
 // carpeta crea dir con los archivos dados.
@@ -69,6 +54,9 @@ func carpeta(t *testing.T, archivos map[string]string) string {
 // Verde cuando: instala con lo previo idéntico y ante cada conflicto falla sin escribir.
 func TestInstallEnCarpetaConCodigo(t *testing.T) {
 	central := fstest.MapFS{"gobierno/canonico/constitucion.md": {Data: []byte(constitucionConHuecos)}}
+	// Tres huecos y uno repetido: el aviso debe nombrarlos ordenados, separados por «, » y sin repetir.
+	repetido := "\n<!-- hueco: mision -->\n- Otra vez.\n<!-- /hueco -->\n"
+	central3 := fstest.MapFS{"gobierno/canonico/constitucion.md": {Data: []byte(constitucionTresHuecos + repetido)}}
 	previo := map[string]string{".git/HEAD": "ref: refs/heads/main\n", "index.html": "<h1>hola</h1>\n"}
 	// Criterio 1: carpeta con .git y código → instala; lo previo idéntico.
 	dir := carpeta(t, previo)
@@ -94,7 +82,7 @@ func TestInstallEnCarpetaConCodigo(t *testing.T) {
 		aviso  string
 	}{
 		{"ya es hijo", map[string]string{Carpeta + "/lock.json": "{}"}, "aquas update"},
-		{"CLAUDE.md propio", map[string]string{"CLAUDE.md": "# Mis reglas\n"}, CarpetaHuecos + "/: " + nombresHuecos()},
+		{"CLAUDE.md propio", map[string]string{"CLAUDE.md": "# Mis reglas\n"}, CarpetaHuecos + "/: mapa.md, mision.md, titulo.md"},
 	} {
 		arch := map[string]string{}
 		for p, txt := range previo {
@@ -105,12 +93,24 @@ func TestInstallEnCarpetaConCodigo(t *testing.T) {
 		}
 		dir := carpeta(t, arch)
 		antes := foto(t, dir)
-		err := Install(dir, central, "v1.0.0")
+		err := Install(dir, central3, "v1.0.0")
 		if err == nil || !strings.Contains(err.Error(), c.aviso) {
 			t.Errorf("%s: se esperaba error que nombre %q; dio %v", c.nombre, c.aviso, err)
 		}
 		if despues := foto(t, dir); !reflect.DeepEqual(antes, despues) {
 			t.Errorf("%s: install escribió pese al conflicto", c.nombre)
 		}
+	}
+	// Install a medias (settings inválido tras copiar la central): el aviso manda a update, no a repetir.
+	dir = carpeta(t, map[string]string{".claude/settings.json": "{ roto"})
+	if err := Install(dir, central, "v1.0.0"); err != nil {
+		t.Fatal(err)
+	}
+	err := Listo(dir)
+	if err == nil {
+		t.Fatal("settings inválido: Listo debió fallar")
+	}
+	if m := AMedias(err).Error(); !strings.Contains(m, "corre aquas update") || strings.Contains(m, "repite") {
+		t.Errorf("install a medias debe mandar a aquas update y no a repetir; dice %q", m)
 	}
 }

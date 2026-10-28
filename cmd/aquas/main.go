@@ -239,7 +239,7 @@ func main() {
 			fmt.Printf("restaurado (estaba alterado; repórtalo a la central): %s\n", p)
 		}
 		if err := hijo.Listo(raiz); err != nil {
-			fallar(1, err)
+			fallar(1, fmt.Errorf("%w; tras corregirlo repite aquas update", err))
 		}
 		fmt.Printf("gobierno central %s en %s; CLAUDE.md armado\n", versionBinario(), raiz)
 	case "install": // instala el gobierno central en un proyecto hijo
@@ -255,7 +255,7 @@ func main() {
 			fallar(1, err)
 		}
 		if err := hijo.Listo(raiz); err != nil { // E002/F002/S002: la central ya quedó; reintentar es update
-			fallar(1, fmt.Errorf("install quedó a medias (la central ya está copiada): %w; tras corregirlo corre aquas update", err))
+			fallar(1, hijo.AMedias(err))
 		}
 		fmt.Printf("gobierno central %s instalado en %s; CLAUDE.md armado con huecos PENDIENTE en %s\n", v, raiz, hijo.CarpetaHuecos)
 	case "cierre-agente": // hook SubagentStop: exit 2 + stderr = el subagente reescribe su cierre

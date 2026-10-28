@@ -27,7 +27,7 @@ func AsegurarHook(dir string) error {
 		d.UseNumber() // conserva enteros grandes tal cual
 		var v any
 		if err := d.Decode(&v); err != nil {
-			return fmt.Errorf("%s inválido; corrígelo y repite: %w", p, err)
+			return fmt.Errorf("%s inválido; corrígelo: %w", p, err)
 		}
 		if s, _ = v.(map[string]any); s == nil {
 			return fmt.Errorf("%s: debe ser un objeto JSON", p)
