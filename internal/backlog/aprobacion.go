@@ -117,6 +117,7 @@ func Aprobar(raiz, id, mensaje string, ahora time.Time) (Ficha, error) {
 // aprobada: nil si el slice puede avanzar (EN_CURSO, rojo, verde, cierre); si no, el paso que falta.
 // Sin aprobación: se rechaza mientras la ficha no tenga rojo (desde cualquier estado). Con rojo y sin aprobación
 // es un slice anterior a F010: exento. Con aprobación: la huella actual debe ser la aprobada, también en EN_CURSO.
+// E001/F015: vale primero la aprobación propia vigente; si no, la foto de la feature aprobada (cubiertaPorFeature).
 // Protege contra errores y deriva del contrato, no contra un agente que quiera engañar (para eso, auditor y diff).
 func aprobada(raiz string, f Ficha) error {
 	if f.Tipo != "slice" {
@@ -148,8 +149,9 @@ func aprobada(raiz string, f Ficha) error {
 	return nil
 }
 
-// reConPush: la primera línea del mensaje dice «apruebo <id> con push» (E001/F015/S001).
-var reConPush = regexp.MustCompile(`(?i)^\s*apruebo\s+\S+\s+con\s+push\b`)
+// reConPush: la primera línea del mensaje es «apruebo <id> …» y dice «con push» en cualquier lugar tras el id,
+// también después de «tope N» (E001/F015/S001, S003).
+var reConPush = regexp.MustCompile(`(?i)^\s*apruebo\s+\S+\s.*\bcon\s+push\b`)
 
 // cubiertaPorFeature (E001/F015/S001): el slice avanza si el contrato de su feature no cambió y cada prueba
 // aprobada sigue idéntica. Agregar pruebas o cambiar el alcance del slice no invalida la aprobación.

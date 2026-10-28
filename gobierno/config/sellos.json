@@ -10,9 +10,9 @@
       }
     },
     ".claude/agents/orchestrator.md": {
-      "sha256": "f7ca4e581bb8020c0d425f0383350c0e21db249a79a9ffe3a59b7810e79c5fcc",
+      "sha256": "9cb880400447c7689b1aea3a77a407054924423e12b93f3615ab3c1ccab9b7b9",
       "fuentes": {
-        "gobierno/canonico/agentes/orquestador.md": "fec82bd071570c1713cf8b190b0f51a4e8c1e0f396114d7747f9f0e763cb9a68",
+        "gobierno/canonico/agentes/orquestador.md": "3a4d89eebfc87123e69b7ec6daef2e1aeda831c6f8befd668d7cdf6142bf70c9",
         "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md": "08a3028fe7a5e84ba6847fa9f1790d8076e3ed2f96ee7b33262ec9026745451c",
         "gobierno/canonico/comunicacion/02_PEDAGOGIA_CHAT.md": "04793b3914f29bedb875fcd43dc154a893d3e8535c0a5274cd9ff4be19c7eca6",
         "gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md": "a1f498624ced9d2f222f78bfd7d4a143420fb377d833d41d43312e8c4c9994b3",

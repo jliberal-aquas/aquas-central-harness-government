@@ -2,7 +2,7 @@
   "id": "E001/F015",
   "tipo": "feature",
   "titulo": "Gate humano por feature",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "el humano aprueba cada slice por separado y pierde tiempo y contexto en apruebo y dale",
   "padre": "E001",
@@ -22,6 +22,11 @@
     "resultado": {
       "./cmd/aquas:TestGateHumanoPorFeature": "aprobacion_feature_test.go:65: apruebo de feature: {out: err:aquas: aprobacion E001/F002: E001/F002: la aprobación es de slices"
     }
+  },
+  "verde": {
+    "fecha": "2026-10-28T20:06:31Z",
+    "head": "19266ed2b8d6e2496e7bd78e90e98570e8a7aeb6",
+    "huella": {}
   },
   "aprobacion": {
     "fecha": "2026-10-28T18:25:35Z",

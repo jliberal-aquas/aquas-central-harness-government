@@ -56,6 +56,9 @@ func TestAprobacionDeFeatureCubreSusSlices(t *testing.T) {
 	if f.Aprobacion.Push {
 		t.Error("sin «con push» la aprobación no lleva push")
 	}
+	if f, err = Aprobar(raiz, "E007/F001", "apruebo E007/F001 tope 50 con push", hora); err != nil || !f.Aprobacion.Push {
+		t.Fatalf("«con push» después de «tope N» también vale; dio %v", err)
+	}
 	if f, err = Aprobar(raiz, "E007/F001", "apruebo E007/F001 con push\nsigue", hora); err != nil || !f.Aprobacion.Push {
 		t.Fatalf("«con push» queda en la aprobación; dio %v", err)
 	}

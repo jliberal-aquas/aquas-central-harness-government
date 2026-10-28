@@ -84,7 +84,7 @@ Prueba integral: `TestGateHumanoPorFeature` (pendiente).
 |---|---|---|
 | [S001](S001.md) | Aprobación por feature | Hecho |
 | [S002](S002.md) | Presupuesto por feature en aquas | Hecho |
-| [S003](S003.md) | Reglas del orquestador para el gate por feature | Planeado |
+| [S003](S003.md) | Reglas del orquestador para el gate por feature | Hecho |
 
 <!-- /GENERADO -->
 

@@ -1,0 +1,301 @@
+{
+  "id": "E001/F015/S003",
+  "tipo": "slice",
+  "titulo": "Reglas del orquestador para el gate por feature",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "el orquestador debe trabajar la feature aprobada sin pedir dale en cada paso",
+  "padre": "E001/F015",
+  "bloqueado_por": [
+    "E001/F015/S001"
+  ],
+  "secuencia": 123,
+  "pruebas": [
+    {
+      "prueba": "./internal/compilador:TestOrquestadorGateHumanoPorFeature",
+      "intencion": "valida que el orquestador compilado trae las reglas del gate por feature",
+      "rojo_cuando": "rojo cuando falta push por slice, arreglar y reportar o los cuatro casos de volver al humano",
+      "verde_cuando": "verde cuando el orquestador compilado nombra las tres reglas"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-28T19:55:35Z",
+    "head": "19266ed2b8d6e2496e7bd78e90e98570e8a7aeb6",
+    "resultado": {
+      "./internal/compilador:TestOrquestadorGateHumanoPorFeature": "gate_feature_test.go:25: orquestador compilado sin \"feature terminada\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-28T20:02:23Z",
+    "head": "19266ed2b8d6e2496e7bd78e90e98570e8a7aeb6",
+    "huella": {
+      "internal/backlog/aprobacion.go": "d355fc60fb03c65e368a6c019c226d883a5e2b59cd619c8f7ad2a993ec2240b1",
+      "internal/backlog/aprobacion_feature_test.go": "469530e44ca77d773adee52e82fb89c67fa929470beed8558c677ff177e5d4f7",
+      "internal/compilador/gate_feature_test.go": "2b088d3ff96d904380c2ad80725c14cbb3764d17ee1bc89cd103c06d84b87557"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-28T20:06:08Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "internal/backlog/aprobacion.go": "d355fc60fb03c65e368a6c019c226d883a5e2b59cd619c8f7ad2a993ec2240b1",
+      "internal/backlog/aprobacion_feature_test.go": "469530e44ca77d773adee52e82fb89c67fa929470beed8558c677ff177e5d4f7",
+      "internal/compilador/gate_feature_test.go": "2b088d3ff96d904380c2ad80725c14cbb3764d17ee1bc89cd103c06d84b87557"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F015",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "pagina:docs/E001/F015/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "pagina:docs/E001/F015/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:README.md\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/compilador",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:cmd/aquas/presupuesto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/README.md\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003einternal/backlog/aprobacion.go",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S001.md\u003einternal/backlog/aprobacion.go",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:docs/README.md\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003einternal/backlog/aprobacion.go",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/backlog/sello.go\u003einternal/compilador",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:internal/wiki/integral_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S003 cambia reglas del orquestador; esta pieza no"
+    }
+  ],
+  "alcance": [
+    "internal/compilador/gate_feature_test.go",
+    "internal/backlog/aprobacion.go",
+    "gobierno/canonico/agentes/orquestador.md",
+    ".claude/agents/**",
+    "CLAUDE.md",
+    "gobierno/config/sellos.json",
+    "docs/E001/F015/**",
+    "docs/ref/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "docs/E001/README.md",
+      "motivo": "dice que la puerta humana es solo por slice; F015 agrega la de feature"
+    },
+    {
+      "ruta": "gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "motivo": "misma contradicción en la metodología"
+    },
+    {
+      "ruta": "internal/backlog/aprobacion_feature_test.go",
+      "motivo": "caso de con push después de tope N"
+    }
+  ],
+  "codigo": [
+    "internal/backlog/aprobacion.go"
+  ],
+  "relacion": "nueva"
+}

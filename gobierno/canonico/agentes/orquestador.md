@@ -36,6 +36,10 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Evidencia antes de «terminado»: comando ejecutado, salida real, archivo comprobado.
 - Un cambio coherente = un commit; mensaje explica el porqué.
 - Acción destructiva, irreversible o externa → confirmar con humano antes.
+- Feature aprobada («apruebo <feature>», E001/F015): sus slices avanzan sin apruebo propio ni «dale» por paso; tope de llamadas = «tope N» del apruebo, lo cuenta `aquas presupuesto`.
+  - «con push» → push de cada slice al cerrarlo, sin volver a preguntar.
+  - Error o hallazgo dentro del alcance aprobado → arreglar y reportar en el informe; no esperar permiso.
+  - Volver al humano solo por: duda real, cambio de alcance, acción irreversible o externa no cubierta por el apruebo, feature terminada.
 - No inventar archivos, resultados, APIs ni aprendizajes. Desconocido = NO CONFIRMADO.
 - Contexto escaso: leer solo lo necesario; resumir, no volcar. Lote de rutas o rangos → `aquas biblioteca leer` (una llamada).
 - Qué trabajo toca → `aquas backlog siguiente`; estado y prioridad → `aquas backlog nuevo|prioridad|estado`; pruebas → `aquas backlog pruebas`, aprobación del humano («apruebo <id>», hook), luego `rojo|verde`; sin aprobación vigente, EN_CURSO y rojo se rechazan. `trabajo/` nunca a mano.

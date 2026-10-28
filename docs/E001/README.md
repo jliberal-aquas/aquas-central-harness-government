@@ -24,7 +24,7 @@ Cada cosa que pides se anota y se parte en pedacitos que se pueden probar. No se
 - Cada slice nace con una [prueba en rojo](../glosario.md#prueba-en-rojo) y termina con la misma [prueba en verde](../glosario.md#prueba-en-verde).
 - Al cerrar, un **[sello](../glosario.md#sello)** obliga a revisar todo lo que el cambio pudo afectar.
 
-Tu puerta humana es la ronda de refinamiento. Antes del rojo escribes «apruebo <id>» sobre el contrato del slice (ver [F010](F010/README.md)). Fuera de eso, solo respondes ante una duda real.
+Tu puerta humana es la ronda de refinamiento. Antes del rojo escribes «apruebo <id>» sobre el contrato del slice (ver [F010](F010/README.md)). Otra opción es aprobar la feature entera una vez (ver [F015](F015/README.md)). Fuera de eso, solo respondes ante una duda real.
 
 ## Analogía
 
@@ -132,7 +132,7 @@ flowchart LR
 
 Decisiones de Jesús (2026-10-20):
 
-- La puerta humana es la ronda de refinamiento más «apruebo <id>» del contrato antes del rojo (F010, 2026-10-23). Antes no había aprobaciones formales.
+- La puerta humana es la ronda de refinamiento más «apruebo <id>» del contrato antes del rojo (F010, 2026-10-23). Antes no había aprobaciones formales. Desde F015 (2026-10-28), un «apruebo» de la feature cubre todos sus slices.
 - Un solo slice activo por repositorio, sin agentes en paralelo salvo pedido.
 - El backlog se guarda en JSON, un archivo por elemento, versionado en git.
 - Un pedido urgente o que protege el repo pausa el slice activo y entra por E000.
@@ -160,7 +160,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | F012 | Prevención activa | Planeado |
 | [F013](F013/README.md) | Calidad Go en el gate | Planeado |
 | [F014](F014/README.md) | Cierre honesto | Hecho |
-| [F015](F015/README.md) | Gate humano por feature | Planeado |
+| [F015](F015/README.md) | Gate humano por feature | Hecho |
 
 <!-- /GENERADO -->
 
