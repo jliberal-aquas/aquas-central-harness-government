@@ -1,0 +1,10 @@
+{
+  "id": "D000062",
+  "firma": "commit-sin-derivado-compilado",
+  "que": "el commit de S003 subió el canónico del orquestador sin .claude/agents/orchestrator.md; hubo que subirlo en un commit aparte",
+  "causa": "git add con lista de rutas que no incluía .claude/; el gate mira el disco, no lo preparado para el commit",
+  "arreglo": "pre-commit compara contra sellos lo preparado (index), no el disco",
+  "como_me_cercioro": "commit con canónico preparado y derivado sin preparar es rechazado",
+  "ocurrencias": [],
+  "relacion": "E001/F015/S003"
+}
