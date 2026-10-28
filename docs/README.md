@@ -76,7 +76,7 @@ Cada paso lo hace o lo revisa un programa. El agente no tiene que acordarse.
 Para entender el repositorio, léelo en este orden:
 
 1. Lee esta página completa.
-2. Lee la [constitución explicada](ref/constitucion.md). Son nueve principios cortos.
+2. Lee la [constitución explicada](ref/constitucion.md). Son ocho principios cortos.
 3. Baja a la iniciativa [E001 Gobierno del trabajo](E001/README.md). Ahí está cómo se organiza cada pedido.
 4. Sigue bajando por las features y los slices. Cada página continúa el ejemplo de su página de arriba.
 

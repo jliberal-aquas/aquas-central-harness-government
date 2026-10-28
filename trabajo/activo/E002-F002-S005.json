@@ -49,6 +49,16 @@
     "internal/hijo/**",
     "docs/E002/**"
   ],
+  "ampliaciones": [
+    {
+      "ruta": "docs/ref/constitucion.md",
+      "motivo": "la wiki de referencia describe nueve principios con Go; hallazgo A1"
+    },
+    {
+      "ruta": "docs/README.md",
+      "motivo": "dice nueve principios; hallazgo A1"
+    }
+  ],
   "aprobacion": {
     "fecha": "2026-10-28T07:44:10Z",
     "huella": "0ef6a32d23ef5cb77bbb82387ad430cd6ecd6f6b06c1ae6dc8aaee114c2d085e",

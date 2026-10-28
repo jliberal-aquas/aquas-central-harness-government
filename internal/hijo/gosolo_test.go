@@ -38,9 +38,22 @@ func TestGoSoloEnCentral(t *testing.T) {
 	if !strings.Contains(string(central), "lenguaje único") {
 		t.Error("el CLAUDE.md de la central debe conservar la regla de Go")
 	}
-	for _, txt := range []string{string(central), string(hijo)} {
-		if !strings.Contains(txt, "\n8. ") || strings.Contains(txt, "\n9. ") {
-			t.Error("los principios deben ir del 1 al 8")
+	for nombre, txt := range map[string]string{"central": string(central), "hijo": string(hijo)} {
+		if got := numeros(txt); got != "1,2,3,4,5,6,7,8" {
+			t.Errorf("%s: los principios deben ir del 1 al 8 seguidos; van %s", nombre, got)
 		}
 	}
+}
+
+// numeros devuelve los números de la lista de «## Principios», en orden.
+func numeros(txt string) string {
+	_, resto, _ := strings.Cut(txt, "## Principios\n")
+	resto, _, _ = strings.Cut(resto, "\n## ")
+	var ns []string
+	for _, l := range strings.Split(resto, "\n") {
+		if n, _, ok := strings.Cut(l, ". "); ok && n != "" && strings.Trim(n, "0123456789") == "" {
+			ns = append(ns, n)
+		}
+	}
+	return strings.Join(ns, ",")
 }
