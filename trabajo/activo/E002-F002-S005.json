@@ -18,6 +18,7 @@
   ],
   "alcance": [
     "gobierno/canonico/constitucion.md",
+    "gobierno/canonico/metodologias/**",
     "internal/hijo/**",
     "docs/E002/**"
   ],
