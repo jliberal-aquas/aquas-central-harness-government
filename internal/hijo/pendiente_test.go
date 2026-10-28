@@ -51,7 +51,7 @@ func TestVerificarHuecoPendiente(t *testing.T) {
 			t.Fatal(err)
 		}
 	}
-	// Solo mision pendiente; «pendiente» en minúscula no cuenta.
+	// Solo mision pendiente; «pendiente» en minúscula o «PENDIENTE» sin dos puntos no cuentan.
 	escribir("titulo", "# CONSTITUCIÓN · landing · v0.1\n")
 	escribir("mapa", "- `web/` → sitio; queda una tarea pendiente.\n")
 	if err := Build(dir); err != nil {

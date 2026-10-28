@@ -22,5 +22,10 @@
     "internal/hijo/**",
     "docs/E002/**"
   ],
+  "aprobacion": {
+    "fecha": "2026-10-28T07:44:10Z",
+    "huella": "0ef6a32d23ef5cb77bbb82387ad430cd6ecd6f6b06c1ae6dc8aaee114c2d085e",
+    "mensaje": "apruebo E002/F002/S005 y s006 y lo recomendado"
+  },
   "relacion": "nueva"
 }

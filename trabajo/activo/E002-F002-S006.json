@@ -21,5 +21,10 @@
     "cmd/aquas/**",
     "docs/E002/**"
   ],
+  "aprobacion": {
+    "fecha": "2026-10-28T07:44:57Z",
+    "huella": "6cc55d3588568c2bf8df0d3878d3e38eae3409c696ff634b13ad1f8e4db69acd",
+    "mensaje": "apruebo E002/F002/S006"
+  },
   "relacion": "nueva"
 }
