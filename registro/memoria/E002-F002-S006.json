@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E002",
+    "feature": "F002",
+    "slice": "S006",
+    "tarea": "S006: rojo y verde registrados (b21a447, push); auditor A2 en curso"
+  },
+  "siguiente": "si A2 APROBADO: verificar veredicto en ficha, sello, archivar, CERRADO, commit, push",
+  "pendientes": [
+    "D000041: re-auditar S009 junto con S011"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "3c36cf2366bf1b684b7b4fbc15b43f08a4ba52a30df8fc49a25190327b228517",
+  "actualizado": "2026-10-28T11:47:38Z",
+  "sello": "a0a5c7b9f65ab9728c0acbb909e7a7a858d7173468204beb2004ec40311bf08d"
+}
