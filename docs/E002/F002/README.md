@@ -87,7 +87,7 @@ Evidencia real: la instalación en la landing aquas.cl, copiada aquí al cerrar.
 | [S003](S003.md) | aviso de versión: el hijo pide aquas update cuando su lock es más viejo | Hecho |
 | [S004](S004.md) | el gate del hijo falla mientras un hueco diga PENDIENTE | En curso |
 | [S005](S005.md) | el principio de Go como lenguaje único queda solo en la central | Planeado |
-| S006 | el hijo recompila su CLAUDE.md al editar un hueco | Planeado |
+| [S006](S006.md) | el hijo recompila su CLAUDE.md al editar un hueco | Planeado |
 
 <!-- /GENERADO -->
 
