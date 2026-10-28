@@ -137,6 +137,8 @@ func main() {
 		turnoCLI(raiz, os.Args[2:])
 	case "aprobacion": // hook UserPromptSubmit (E001/F010/S001): «apruebo <id>» del humano sella el contrato
 		aprobacionCLI(raiz)
+	case "presupuesto": // hooks UserPromptSubmit y PreToolUse (E001/F015/S002): tope por feature y freno por turno
+		presupuestoCLI(raiz, os.Args[2:])
 	case "propuesta": // hook Stop (E001/F002/S006): PROPUESTA sin diagrama → exit 2 + stderr = el agente lo agrega
 		var e struct {
 			Respuesta string `json:"last_assistant_message"`

@@ -6,6 +6,8 @@
     {"evento": "SessionStart", "matcher": "startup|resume|clear|compact", "orden": "memoria inicio"},
     {"evento": "UserPromptSubmit", "orden": "turno abrir"},
     {"evento": "UserPromptSubmit", "orden": "aprobacion"},
+    {"evento": "UserPromptSubmit", "orden": "presupuesto prompt"},
+    {"evento": "PreToolUse", "orden": "presupuesto herramienta"},
     {"evento": "Stop", "orden": "turno cerrar"},
     {"evento": "Stop", "orden": "memoria cierre"},
     {"evento": "Stop", "orden": "propuesta"},

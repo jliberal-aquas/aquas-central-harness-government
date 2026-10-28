@@ -1,0 +1,10 @@
+{
+  "id": "D000061",
+  "firma": "dos-frenos-de-presupuesto-se-pisan",
+  "que": "presupuesto.py global y aquas presupuesto cuentan a la vez; el global de 40 llamadas y plan por mensaje obliga a pedir dale dentro de una feature aprobada",
+  "causa": "presupuesto.py sigue activo en ~/.claude sin ceder a proyectos con aquas",
+  "arreglo": "agregar .claude/hooks/aquas.sh a cede_a en ~/.claude/hooks/presupuesto.json (lo hace el humano)",
+  "como_me_cercioro": "en este repo una llamada no anota en ~/.claude/state/presupuesto y no se pide plan",
+  "ocurrencias": [],
+  "relacion": "E001/F015/S002"
+}

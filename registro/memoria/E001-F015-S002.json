@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F015",
+    "slice": "S002",
+    "tarea": "S002 cerrado"
+  },
+  "siguiente": "S003 reglas del orquestador",
+  "pendientes": [
+    "D000041: re-auditar S009 junto con S011"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "e15a896e364367177982e64bb77437309c8bdef9e28a6d3acb2233ed8aaf695a",
+  "actualizado": "2026-10-28T19:54:48Z",
+  "sello": "dca0a6b27ce675195878bd9c50fd7993eb80322cddefedd4e00814d2f9012f4c"
+}

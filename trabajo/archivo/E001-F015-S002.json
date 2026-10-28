@@ -1,0 +1,452 @@
+{
+  "id": "E001/F015/S002",
+  "tipo": "slice",
+  "titulo": "Presupuesto por feature en aquas",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "presupuesto.py vive fuera del repo y cuenta por turno, no por feature",
+  "padre": "E001/F015",
+  "bloqueado_por": [
+    "E001/F015/S001"
+  ],
+  "secuencia": 122,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestPresupuestoPorFeature",
+      "intencion": "valida que aquas presupuesto cuenta llamadas contra el tope de la feature aprobada y frena cada turno desbocado",
+      "rojo_cuando": "rojo cuando se pasa del tope de la feature o del freno por turno sin bloquear",
+      "verde_cuando": "verde cuando bloquea al pasar cualquiera de los dos topes y deja pasar dentro de ellos"
+    },
+    {
+      "prueba": "./cmd/aquas:TestPresupuestoAvisaContexto",
+      "intencion": "valida que aquas presupuesto avisa cerca de 200000 tokens de contexto",
+      "rojo_cuando": "rojo cuando el contexto pasa el umbral sin aviso o avisa por debajo",
+      "verde_cuando": "verde cuando avisa solo desde el umbral y pide compact"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-28T19:04:09Z",
+    "head": "a5700e7ad846afddd16d85e0314453c3c1d335c2",
+    "resultado": {
+      "./cmd/aquas:TestPresupuestoAvisaContexto": "presupuesto_test.go:95: el aviso de contexto no bloquea; dio {out: err:aquas: subcomando desconocido: presupuesto",
+      "./cmd/aquas:TestPresupuestoPorFeature": "presupuesto_test.go:43: presupuesto prompt: {out: err:aquas: subcomando desconocido: presupuesto"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-28T19:52:42Z",
+    "head": "a5700e7ad846afddd16d85e0314453c3c1d335c2",
+    "huella": {
+      "cmd/aquas/aprobacion.go": "27fca17829b036152e9ebfc49cb7fdf8455326ac706a46e597a35ef04325ba32",
+      "cmd/aquas/aprobacion_feature_test.go": "da0421ae6a85517443ea8d770def357540859fa9be3be46ae14717dbbaa123f8",
+      "cmd/aquas/aprobacion_test.go": "ea2b8e6b399141ea9bbc9329c5787c246fa68dfdb5cc733030852adbfa5bb2a9",
+      "cmd/aquas/arranque_test.go": "e3aa46e912bcb80c31303aeb6e4253652aa237ddba8214dbe273a124e99775cd",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "80f120a1530fc4ce7333bbf59eab15caf4accc6f619128a16fb116b0db3af45c",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/cierre_agente_test.go": "a28581f101d88fed4e032808fc007973992877bc7745b3bfac1efaba1ab176b4",
+      "cmd/aquas/cierre_test.go": "8386fbba0789c965beda66e5d7679577992cff7cc1e289e155029a37cd663c3d",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/gancho_veredicto_test.go": "d28a3e6c6caa4ff3c28c6ba6ad711400400a06e4312306547cb38ef3db05bf41",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "6014bb0e67d3508847c39eb1808173a522d491c8ff1b0b5ad637881bc6e924d8",
+      "cmd/aquas/hijos_test.go": "44f67913400f1b02c781cd02a39ea463cfac55d8b1fb85785a0d94064c79dd75",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "469f9d3e71bc96826b1454870eb089e374d44b5437577720601360d32dfaade6",
+      "cmd/aquas/limpiar_conectado_test.go": "490a5e2b181eb6bff7266a852751dcaf53f4d49e36bedf1f8ffa82a302c987fb",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "4d2450519bce057054edb769a681c871237adb1226d2d42379932320b1402b58",
+      "cmd/aquas/precommit_test.go": "da0ac0f4acbf73546ec58827c5a57709ba39d5b84b0a03473a3e660de29335e9",
+      "cmd/aquas/presupuesto.go": "7c0ae5cae754fd14835377028194400111378c0290abf0605e96b6d344ef0461",
+      "cmd/aquas/presupuesto_test.go": "7e1a53c3634d1ad207b1c91e74656fa2b9cf6b3d2dfcb151ea27b20235d98452",
+      "cmd/aquas/punta_test.go": "b108aa8e21bb7cdb1041d0467c22f7dd93c4fbb4b77c48e67c5fdf343250d313",
+      "cmd/aquas/rojo_test.go": "3ccde5dd6fb8a66f6ba5476fb9ea5215531140f6a8a35f8cdc098d79ad377f5c",
+      "cmd/aquas/sello_test.go": "9c1561bd72e033798f7d9eb815cdd8f9b8788046696fc002cd7cccba5675169c",
+      "cmd/aquas/tabla_integral_test.go": "105d2c9919a9fe6331fa2109149aa67c02486b0130cffc13c3cafc5ad2772e72",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-28T19:54:18Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/aprobacion.go": "27fca17829b036152e9ebfc49cb7fdf8455326ac706a46e597a35ef04325ba32",
+      "cmd/aquas/aprobacion_feature_test.go": "da0421ae6a85517443ea8d770def357540859fa9be3be46ae14717dbbaa123f8",
+      "cmd/aquas/aprobacion_test.go": "ea2b8e6b399141ea9bbc9329c5787c246fa68dfdb5cc733030852adbfa5bb2a9",
+      "cmd/aquas/arranque_test.go": "e3aa46e912bcb80c31303aeb6e4253652aa237ddba8214dbe273a124e99775cd",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "80f120a1530fc4ce7333bbf59eab15caf4accc6f619128a16fb116b0db3af45c",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/cierre_agente_test.go": "a28581f101d88fed4e032808fc007973992877bc7745b3bfac1efaba1ab176b4",
+      "cmd/aquas/cierre_test.go": "8386fbba0789c965beda66e5d7679577992cff7cc1e289e155029a37cd663c3d",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/gancho_veredicto_test.go": "d28a3e6c6caa4ff3c28c6ba6ad711400400a06e4312306547cb38ef3db05bf41",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "6014bb0e67d3508847c39eb1808173a522d491c8ff1b0b5ad637881bc6e924d8",
+      "cmd/aquas/hijos_test.go": "44f67913400f1b02c781cd02a39ea463cfac55d8b1fb85785a0d94064c79dd75",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "469f9d3e71bc96826b1454870eb089e374d44b5437577720601360d32dfaade6",
+      "cmd/aquas/limpiar_conectado_test.go": "490a5e2b181eb6bff7266a852751dcaf53f4d49e36bedf1f8ffa82a302c987fb",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "4d2450519bce057054edb769a681c871237adb1226d2d42379932320b1402b58",
+      "cmd/aquas/precommit_test.go": "da0ac0f4acbf73546ec58827c5a57709ba39d5b84b0a03473a3e660de29335e9",
+      "cmd/aquas/presupuesto.go": "7c0ae5cae754fd14835377028194400111378c0290abf0605e96b6d344ef0461",
+      "cmd/aquas/presupuesto_test.go": "7e1a53c3634d1ad207b1c91e74656fa2b9cf6b3d2dfcb151ea27b20235d98452",
+      "cmd/aquas/punta_test.go": "b108aa8e21bb7cdb1041d0467c22f7dd93c4fbb4b77c48e67c5fdf343250d313",
+      "cmd/aquas/rojo_test.go": "3ccde5dd6fb8a66f6ba5476fb9ea5215531140f6a8a35f8cdc098d79ad377f5c",
+      "cmd/aquas/sello_test.go": "9c1561bd72e033798f7d9eb815cdd8f9b8788046696fc002cd7cccba5675169c",
+      "cmd/aquas/tabla_integral_test.go": "105d2c9919a9fe6331fa2109149aa67c02486b0130cffc13c3cafc5ad2772e72",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F015",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "pagina:docs/E001/F015/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "pagina:docs/E001/F015/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:CLAUDE.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E001/F014/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/constitucion.md\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:internal/entorno/entorno.go\u003egobierno/config/claude_settings.json",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S002 no cambia esta pieza: el comando nuevo vive en su propia página"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/**",
+    "docs/E001/F015/**",
+    "gobierno/config/claude_settings.json",
+    ".claude/settings.json",
+    "gobierno/config/sellos.json"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "cmd/aquas/presupuesto.go",
+    "gobierno/config/claude_settings.json"
+  ],
+  "relacion": "nueva"
+}
