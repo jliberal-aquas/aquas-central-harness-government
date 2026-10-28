@@ -2,7 +2,7 @@
   "id": "E002/F002/S002",
   "tipo": "slice",
   "titulo": "install sobre una carpeta con código sin tocar lo existente",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P2",
   "motivo": "un repo de producto ya tiene código o git al instalar; hoy install exige carpeta vacía",
   "padre": "E002/F002",
@@ -86,8 +86,8 @@
     }
   },
   "auditoria": {
-    "fecha": "2026-10-28T15:17:30Z",
-    "veredicto": "CON_HALLAZGOS",
+    "fecha": "2026-10-28T15:50:12Z",
+    "veredicto": "APROBADO",
     "huella": {
       "cmd/aquas/aprobacion.go": "27fca17829b036152e9ebfc49cb7fdf8455326ac706a46e597a35ef04325ba32",
       "cmd/aquas/aprobacion_test.go": "ea2b8e6b399141ea9bbc9329c5787c246fa68dfdb5cc733030852adbfa5bb2a9",
@@ -106,6 +106,7 @@
       "cmd/aquas/hijos_test.go": "44f67913400f1b02c781cd02a39ea463cfac55d8b1fb85785a0d94064c79dd75",
       "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
       "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
       "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
       "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
       "cmd/aquas/limpiar.go": "469f9d3e71bc96826b1454870eb089e374d44b5437577720601360d32dfaade6",
@@ -139,6 +140,33 @@
       "internal/hijo/verificar_test.go": "ccb9b38401b3f112fb9808f54c98fbd05ec3e21dac96671afab448e8911e0025"
     }
   },
+  "sello": [
+    {
+      "clave": "ficha:E002/F002",
+      "marca": "sin_cambio",
+      "motivo": "S002 solo toca install del hijo; no afecta esta regla"
+    },
+    {
+      "clave": "ficha:E002",
+      "marca": "sin_cambio",
+      "motivo": "S002 solo toca install del hijo; no afecta esta regla"
+    },
+    {
+      "clave": "pagina:docs/E002/F002/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "S002 solo toca install del hijo; no afecta esta regla"
+    },
+    {
+      "clave": "pagina:docs/E002/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S002 solo toca install del hijo; no afecta esta regla"
+    },
+    {
+      "clave": "pagina:docs/E002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S002 solo toca install del hijo; no afecta esta regla"
+    }
+  ],
   "alcance": [
     "internal/hijo/**",
     "cmd/aquas/**",
