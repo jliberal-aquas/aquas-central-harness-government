@@ -85,7 +85,7 @@ Evidencia real: la instalación en la landing aquas.cl, copiada aquí al cerrar.
 | [S001](S001.md) | install y update desde la carpeta del hijo crean huecos PENDIENTE y arman CLAUDE.md | Hecho |
 | S002 | install sobre una carpeta con código sin tocar lo existente | Planeado |
 | [S003](S003.md) | aviso de versión: el hijo pide aquas update cuando su lock es más viejo | Hecho |
-| [S004](S004.md) | el gate del hijo falla mientras un hueco diga PENDIENTE | En curso |
+| [S004](S004.md) | el gate del hijo falla mientras un hueco diga PENDIENTE | Hecho |
 | [S005](S005.md) | el principio de Go como lenguaje único queda solo en la central | Planeado |
 | [S006](S006.md) | el hijo recompila su CLAUDE.md al editar un hueco | Planeado |
 
