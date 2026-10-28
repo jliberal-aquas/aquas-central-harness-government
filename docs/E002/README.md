@@ -61,7 +61,7 @@ continúa: [EJ-INICIO](../README.md#EJ-INICIO)
 
 ## Cómo se usa
 
-- Instalar: en la carpeta vacía del hijo, `aquas install`.
+- Instalar: en la carpeta del hijo, con o sin código, `aquas install`.
 
 ## Contrato y evidencia
 

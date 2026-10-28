@@ -10,6 +10,8 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"sort"
+	"strings"
 )
 
 // Carpeta del gobierno heredado dentro del hijo.
@@ -27,9 +29,21 @@ func Install(dest string, central fs.FS, version string) error {
 	if version == "" {
 		return errors.New("install: falta la versión de la central")
 	}
+	var huecos []string
+	if b, err := fs.ReadFile(central, "gobierno/canonico/constitucion.md"); err == nil {
+		vistos := map[string]bool{}
+		for _, m := range reHueco.FindAllStringSubmatch(string(b), -1) {
+			if !vistos[m[1]] {
+				vistos[m[1]] = true
+				huecos = append(huecos, m[1]+".md")
+			}
+		}
+		sort.Strings(huecos)
+	}
 	conflictos := []struct{ ruta, aviso string }{
 		{Carpeta, "ya tiene gobierno instalado; usa aquas update"},
-		{"CLAUDE.md", "ya tiene un CLAUDE.md propio; pasa su contenido a " + CarpetaHuecos + "/ y bórralo, luego repite aquas install"},
+		{"CLAUDE.md", "ya tiene un CLAUDE.md propio; sácalo de la carpeta (p. ej. renómbralo CLAUDE.previo.md), corre aquas install y pasa su contenido a los huecos de " +
+			CarpetaHuecos + "/: " + strings.Join(huecos, ", ")},
 	}
 	for _, c := range conflictos {
 		_, err := os.Lstat(filepath.Join(dest, c.ruta))

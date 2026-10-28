@@ -254,8 +254,8 @@ func main() {
 		if err := hijo.Install(raiz, gobcentral.Central, v); err != nil {
 			fallar(1, err)
 		}
-		if err := hijo.Listo(raiz); err != nil {
-			fallar(1, err)
+		if err := hijo.Listo(raiz); err != nil { // E002/F002/S002: la central ya quedó; reintentar es update
+			fallar(1, fmt.Errorf("install quedó a medias (la central ya está copiada): %w; tras corregirlo corre aquas update", err))
 		}
 		fmt.Printf("gobierno central %s instalado en %s; CLAUDE.md armado con huecos PENDIENTE en %s\n", v, raiz, hijo.CarpetaHuecos)
 	case "cierre-agente": // hook SubagentStop: exit 2 + stderr = el subagente reescribe su cierre

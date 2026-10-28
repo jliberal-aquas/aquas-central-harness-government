@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"sort"
 	"strings"
 	"testing"
 	"testing/fstest"
@@ -15,11 +16,15 @@ func foto(t *testing.T, dir string) map[string]string {
 	t.Helper()
 	m := map[string]string{}
 	err := filepath.WalkDir(dir, func(p string, d fs.DirEntry, err error) error {
-		if err != nil || d.IsDir() {
+		if err != nil {
 			return err
 		}
-		b, err := os.ReadFile(p)
 		rel, _ := filepath.Rel(dir, p)
+		if d.IsDir() { // también las carpetas: un conflicto no debe crear ni una vacía
+			m[filepath.ToSlash(rel)+"/"] = ""
+			return nil
+		}
+		b, err := os.ReadFile(p)
 		m[filepath.ToSlash(rel)] = string(b)
 		return err
 	})
@@ -27,6 +32,20 @@ func foto(t *testing.T, dir string) map[string]string {
 		t.Fatal(err)
 	}
 	return m
+}
+
+// nombresHuecos: los huecos de la constitución de prueba, ordenados, como los nombra el aviso.
+func nombresHuecos() string {
+	vistos := map[string]bool{}
+	var ns []string
+	for _, m := range reHueco.FindAllStringSubmatch(constitucionConHuecos, -1) {
+		if !vistos[m[1]] {
+			vistos[m[1]] = true
+			ns = append(ns, m[1]+".md")
+		}
+	}
+	sort.Strings(ns)
+	return strings.Join(ns, ", ")
 }
 
 // carpeta crea dir con los archivos dados.
@@ -75,7 +94,7 @@ func TestInstallEnCarpetaConCodigo(t *testing.T) {
 		aviso  string
 	}{
 		{"ya es hijo", map[string]string{Carpeta + "/lock.json": "{}"}, "aquas update"},
-		{"CLAUDE.md propio", map[string]string{"CLAUDE.md": "# Mis reglas\n"}, CarpetaHuecos},
+		{"CLAUDE.md propio", map[string]string{"CLAUDE.md": "# Mis reglas\n"}, CarpetaHuecos + "/: " + nombresHuecos()},
 	} {
 		arch := map[string]string{}
 		for p, txt := range previo {
