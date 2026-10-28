@@ -42,13 +42,6 @@ func TestInstallCopiaCentralConLock(t *testing.T) {
 	if err := Install(dest, central, "v0.1.0"); err == nil {
 		t.Fatal("instalar dos veces en la misma carpeta debe fallar (eso es update)")
 	}
-	lleno := t.TempDir()
-	if err := os.WriteFile(filepath.Join(lleno, "x.txt"), []byte("x"), 0o644); err != nil {
-		t.Fatal(err)
-	}
-	if err := Install(lleno, central, "v0.1.0"); err == nil {
-		t.Fatal("carpeta con contenido debe fallar")
-	}
 	if err := Install(filepath.Join(t.TempDir(), "otro"), central, ""); err == nil {
 		t.Fatal("sin versión debe fallar")
 	}

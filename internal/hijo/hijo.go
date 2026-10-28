@@ -22,17 +22,23 @@ type Lock struct {
 }
 
 // Install copia la central sellada en dest/.aquas/central y escribe dest/.aquas/lock.json.
-// Solo instala en una carpeta vacía o inexistente; sobre una instalación previa toca update.
+// E002/F002/S002: acepta una carpeta con código sin tocarlo; ante un conflicto falla sin escribir nada.
 func Install(dest string, central fs.FS, version string) error {
 	if version == "" {
 		return errors.New("install: falta la versión de la central")
 	}
-	es, err := os.ReadDir(dest)
-	switch {
-	case err == nil && len(es) > 0:
-		return fmt.Errorf("install: %s no está vacía (sobre una instalación previa usa update)", dest)
-	case err != nil && !errors.Is(err, fs.ErrNotExist):
-		return err
+	conflictos := []struct{ ruta, aviso string }{
+		{Carpeta, "ya tiene gobierno instalado; usa aquas update"},
+		{"CLAUDE.md", "ya tiene un CLAUDE.md propio; pasa su contenido a " + CarpetaHuecos + "/ y bórralo, luego repite aquas install"},
+	}
+	for _, c := range conflictos {
+		_, err := os.Lstat(filepath.Join(dest, c.ruta))
+		switch {
+		case err == nil:
+			return fmt.Errorf("install: %s %s", dest, c.aviso)
+		case !errors.Is(err, fs.ErrNotExist):
+			return err
+		}
 	}
 	return copiarCentral(dest, central, version)
 }
