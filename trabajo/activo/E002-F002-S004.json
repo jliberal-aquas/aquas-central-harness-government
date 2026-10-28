@@ -24,8 +24,8 @@
     }
   },
   "verde": {
-    "fecha": "2026-10-28T07:49:31Z",
-    "head": "c7c064f58d78e0594611b74cc5ab6bb54a9513cd",
+    "fecha": "2026-10-28T07:50:00Z",
+    "head": "ccf7bb18d22d96e2e3e29bf6a4cc9d6d6955c45d",
     "huella": {
       "cmd/aquas/aprobacion.go": "27fca17829b036152e9ebfc49cb7fdf8455326ac706a46e597a35ef04325ba32",
       "cmd/aquas/aprobacion_test.go": "ea2b8e6b399141ea9bbc9329c5787c246fa68dfdb5cc733030852adbfa5bb2a9",
@@ -64,7 +64,7 @@
       "internal/hijo/hijo.go": "12f92fb30088b4888bc80b7a9159e3ee47f70f1fdb97467bfdaa110ddc1d1e56",
       "internal/hijo/hijo_test.go": "10481d1b7eac65e0c567ff675863784b71e5f14a9b4126ef93d13cbea4448461",
       "internal/hijo/huecos.go": "f53295a56f459be58c168bc582f4bbfda0602481b36867b0c6000b7798c175be",
-      "internal/hijo/pendiente_test.go": "d485f8986f2a7afdcd3f3811f39061f3bf61459273c1b7433b4f02b9150f4b84",
+      "internal/hijo/pendiente_test.go": "8ed098f57c1d425f2e91112176278ff9082834275dd18073fbfa037711d32729",
       "internal/hijo/report.go": "378ec0816eb8c9b160590ca83d13d1d808203f44b7152446862f1e5bbc69d49a",
       "internal/hijo/report_test.go": "523f66710d13d02c8366c310980af05f4f7b66ea19c5127cbb75f51c5a4070a9",
       "internal/hijo/update.go": "2a4ff1ba901d60a728617c4ec2741e2a0079523f5b381fc0f09dd55ef36c3b9e",
