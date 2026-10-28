@@ -82,7 +82,7 @@ Prueba integral: `TestGateHumanoPorFeature` (pendiente).
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | Aprobación por feature | Planeado |
+| [S001](S001.md) | Aprobación por feature | Hecho |
 | [S002](S002.md) | Presupuesto por feature en aquas | Planeado |
 | [S003](S003.md) | Reglas del orquestador para el gate por feature | Planeado |
 

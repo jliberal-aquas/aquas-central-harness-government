@@ -1,0 +1,10 @@
+{
+  "id": "D000060",
+  "firma": "aprobacion-pedida-con-gate-rojo",
+  "que": "pedí apruebo de E001/F015/S001 con el gate en rojo; corregir la wiki después cambió la huella y el rojo se rechazó",
+  "causa": "la sección Para qué existe entra en la huella y el gate no corre antes de pedir la aprobación",
+  "arreglo": "exigir GATE OK antes de pedir apruebo; o que Aprobar rechace si el gate de la wiki falla para esa página",
+  "como_me_cercioro": "aprobar con la página fuera del gate debe fallar; con GATE OK debe pasar",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

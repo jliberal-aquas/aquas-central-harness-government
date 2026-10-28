@@ -1,0 +1,329 @@
+{
+  "id": "E001/F015/S001",
+  "tipo": "slice",
+  "titulo": "Aprobación por feature",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "una aprobación por feature, no por slice",
+  "padre": "E001/F015",
+  "bloqueado_por": [],
+  "secuencia": 121,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestAprobacionDeFeatureCubreSusSlices",
+      "intencion": "valida que la aprobación de la feature cubre los slices de su foto",
+      "rojo_cuando": "rojo cuando un slice de la foto exige apruebo propio, avanza con una prueba aprobada cambiada o quitada, o avanza un slice nuevo fuera de la foto",
+      "verde_cuando": "verde cuando agregar pruebas o cambiar alcance mantiene la aprobación y cambiar o quitar una prueba aprobada la invalida"
+    },
+    {
+      "prueba": "./cmd/aquas:TestApruebaFeatureDesdeElChat",
+      "intencion": "valida que el hook registra apruebo de una feature y la marca con push",
+      "rojo_cuando": "rojo cuando apruebo E001/F015 no se registra o con push no queda anotado",
+      "verde_cuando": "verde cuando el mensaje registra la aprobación de la feature y con push queda en la ficha"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-28T18:25:46Z",
+    "head": "8ecf8f7f81b9ebeaee2175a426f2d06eb69c269c",
+    "resultado": {
+      "./cmd/aquas:TestApruebaFeatureDesdeElChat": "aprobacion_feature_test.go:41: apruebo de feature: {out: err:aquas: aprobacion E001/F002: E001/F002: se aprueban slices o features",
+      "./internal/backlog:TestAprobacionDeFeatureCubreSusSlices": "aprobacion_feature_test.go:54: E007/F001: se aprueban slices o features"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-28T18:36:14Z",
+    "head": "8ecf8f7f81b9ebeaee2175a426f2d06eb69c269c",
+    "huella": {
+      "cmd/aquas/aprobacion.go": "27fca17829b036152e9ebfc49cb7fdf8455326ac706a46e597a35ef04325ba32",
+      "cmd/aquas/aprobacion_feature_test.go": "da0421ae6a85517443ea8d770def357540859fa9be3be46ae14717dbbaa123f8",
+      "cmd/aquas/aprobacion_test.go": "ea2b8e6b399141ea9bbc9329c5787c246fa68dfdb5cc733030852adbfa5bb2a9",
+      "cmd/aquas/arranque_test.go": "e3aa46e912bcb80c31303aeb6e4253652aa237ddba8214dbe273a124e99775cd",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "80f120a1530fc4ce7333bbf59eab15caf4accc6f619128a16fb116b0db3af45c",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/cierre_agente_test.go": "a28581f101d88fed4e032808fc007973992877bc7745b3bfac1efaba1ab176b4",
+      "cmd/aquas/cierre_test.go": "8386fbba0789c965beda66e5d7679577992cff7cc1e289e155029a37cd663c3d",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/gancho_veredicto_test.go": "d28a3e6c6caa4ff3c28c6ba6ad711400400a06e4312306547cb38ef3db05bf41",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "6014bb0e67d3508847c39eb1808173a522d491c8ff1b0b5ad637881bc6e924d8",
+      "cmd/aquas/hijos_test.go": "44f67913400f1b02c781cd02a39ea463cfac55d8b1fb85785a0d94064c79dd75",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "469f9d3e71bc96826b1454870eb089e374d44b5437577720601360d32dfaade6",
+      "cmd/aquas/limpiar_conectado_test.go": "490a5e2b181eb6bff7266a852751dcaf53f4d49e36bedf1f8ffa82a302c987fb",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "00314ba7ce7e3ef67471c0a8afc217bfc96dd3aa67e95e2e6d383ca028ff68c5",
+      "cmd/aquas/precommit_test.go": "da0ac0f4acbf73546ec58827c5a57709ba39d5b84b0a03473a3e660de29335e9",
+      "cmd/aquas/punta_test.go": "b108aa8e21bb7cdb1041d0467c22f7dd93c4fbb4b77c48e67c5fdf343250d313",
+      "cmd/aquas/rojo_test.go": "3ccde5dd6fb8a66f6ba5476fb9ea5215531140f6a8a35f8cdc098d79ad377f5c",
+      "cmd/aquas/sello_test.go": "9c1561bd72e033798f7d9eb815cdd8f9b8788046696fc002cd7cccba5675169c",
+      "cmd/aquas/tabla_integral_test.go": "105d2c9919a9fe6331fa2109149aa67c02486b0130cffc13c3cafc5ad2772e72",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "internal/backlog/alcance.go": "dda7bcaa4e9a23435347ebfdd3f78a26e43a3f25bf3bf5b068122eaf19234c52",
+      "internal/backlog/alcance_test.go": "f36403294ce92fe206f040888e93fe16315c0ad4456e7c6eb12bc055f8b1b9a7",
+      "internal/backlog/aprobacion.go": "bf35d559106b1eea511f0c974535846fdc6be0225acf6820567c9f9c51582ddc",
+      "internal/backlog/aprobacion_feature_test.go": "85a0f88b81255ab3a6b1a983461ea83ece5bbd886442807d46158fd25751663b",
+      "internal/backlog/aprobacion_test.go": "1240100db67a830b95f849bec5f219458c23cc0f66260c7c87cfbc885e8afd9e",
+      "internal/backlog/arranque_test.go": "2e9817613b5e1e265b64b35f0e4b71afecb1ae3fc8208e07752bc4947865d9d9",
+      "internal/backlog/arreglo.go": "724e0c840a6c6b04354f3c7adad1ff0a025dbedae3611f5f193749d774d341d1",
+      "internal/backlog/arreglo_pruebas.go": "8a98412cb223a4008dc7db7cba627a16eb88b923077a70264fe27e35e8c90b06",
+      "internal/backlog/arreglo_pruebas_test.go": "2b1ad1e979dc3c705b7432ec28b2df3483fccba4088fe15671a3f6fd851a4e64",
+      "internal/backlog/arreglo_test.go": "8f78480cc786ae6a54df5ce81d3b85b5c6193641eb2359a40a691c2897153233",
+      "internal/backlog/auditoria.go": "ecd268691bf2bbe3bb9dde57abe31185f3bc66b4d2cfa19ccea5de33d4eac5a3",
+      "internal/backlog/auditoria_test.go": "fcb41d1c80c9f498427971c87398e905ee733441c7c737664c23d54c92482ccf",
+      "internal/backlog/backlog.go": "4f99db1d8309f572b886163b1cc3577d572cdcce41a7c890f24595fb48052927",
+      "internal/backlog/backlog_padre_test.go": "37851c0b8fab768b21ad1dd6c14df572011d8cb07987ff424e33a3aaeee5aa6b",
+      "internal/backlog/backlog_test.go": "07eb47ed167e42a4beb9a92b6857e72495d644e2ed092868b3f0f4641c44c1bd",
+      "internal/backlog/campos_test.go": "3f79ebd0cdcca08653d4b677272a7613e91445d443085bc5c7c9b8f5522f2df7",
+      "internal/backlog/cierre_vigente_test.go": "4eaf046855f764e70c0f53beb36c7350682c757d55e15674a0a42d1bd336fa68",
+      "internal/backlog/codigo.go": "66c3080508457849f61020b415a38cadb9292ece14d17053c19a9319fd9b368e",
+      "internal/backlog/codigo_test.go": "3705ffe4a27e52413d7996e176ca06837c02905fcd58cd3acf0a4ca2687db098",
+      "internal/backlog/documentar.go": "771e448ed568fdc4243641320ed1e7552fb25fb87648fa425c901b1e388fb037",
+      "internal/backlog/documentar_test.go": "9336f43e2ab0536d2ecae00f27c8a4273c709a896badb9e6f3c53c59faeac7d4",
+      "internal/backlog/editar.go": "be6f1afba04ebe706ddfcc76c6ee8d38a634b77f7d3a11cbd5edfb52ea233500",
+      "internal/backlog/editar_test.go": "400b05c84288b7c1ce5dc807a2d3441a527fc75e267c0e4ef5978c33985ae9f5",
+      "internal/backlog/huella_codigo.go": "7e95b852afb66968e99c1698dc6da5fd63460d0e49e14f9b4547b97662a14aa3",
+      "internal/backlog/pruebas_arreglo_test.go": "16fadf22f3e520e3e9473755c0eed0ad6aeb0a60de8bcab1d66c9eaeb2e11c15",
+      "internal/backlog/relacion.go": "79056ac6a600e3632b1b74c6dd88dbfc72f456c8536e3446d9aa3c228cec8c2d",
+      "internal/backlog/relacion_test.go": "ba3a871dba568a9bbe219b282e0e93c95b9e9d29e94fa6841173b556b00591af",
+      "internal/backlog/repetidos_test.go": "894b744b218c827535ba16f46df0014558a1a68b72deb0df3bf09ecbaaee28aa",
+      "internal/backlog/rojo.go": "af715dab99da05765d6985c49d7c1cc65077d111c27233fb071a87bc32bc0096",
+      "internal/backlog/rojo_cancelado_test.go": "77d97e9e1f768990414314355b3f5cd5646619abc83701f391673c855a95ee41",
+      "internal/backlog/rojo_heredado_test.go": "9a28dada52517f62990949bb37e2c1624dac579fda4572ae029ee422392ef8e3",
+      "internal/backlog/rojo_subtest_test.go": "74fa62b2e7c3ef7e3eaccf91d42ba71322f0e35e282a6c5b1fe909266e5e23ff",
+      "internal/backlog/rojo_test.go": "24a7418b2eef7911fd083996289b7af1369a2971e7edc90e27b716b1c4fb87b1",
+      "internal/backlog/sello.go": "a1dfe49762bd24ff89e21d4f08e319197744c9f25f7dac4fc26e86708557476d",
+      "internal/backlog/sello_test.go": "bdc33ffc1c8a3049c5e3b8b3225566151a10a1f5b4b46d696fa2b49b97b4328f",
+      "internal/backlog/siguiente_test.go": "d4790312346971702359d1b1f1fe42cc3a44347135995a0b14ca0202c533e829"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-28T18:39:27Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/aprobacion.go": "27fca17829b036152e9ebfc49cb7fdf8455326ac706a46e597a35ef04325ba32",
+      "cmd/aquas/aprobacion_feature_test.go": "da0421ae6a85517443ea8d770def357540859fa9be3be46ae14717dbbaa123f8",
+      "cmd/aquas/aprobacion_test.go": "ea2b8e6b399141ea9bbc9329c5787c246fa68dfdb5cc733030852adbfa5bb2a9",
+      "cmd/aquas/arranque_test.go": "e3aa46e912bcb80c31303aeb6e4253652aa237ddba8214dbe273a124e99775cd",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "80f120a1530fc4ce7333bbf59eab15caf4accc6f619128a16fb116b0db3af45c",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/cierre_agente_test.go": "a28581f101d88fed4e032808fc007973992877bc7745b3bfac1efaba1ab176b4",
+      "cmd/aquas/cierre_test.go": "8386fbba0789c965beda66e5d7679577992cff7cc1e289e155029a37cd663c3d",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/gancho_veredicto_test.go": "d28a3e6c6caa4ff3c28c6ba6ad711400400a06e4312306547cb38ef3db05bf41",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "6014bb0e67d3508847c39eb1808173a522d491c8ff1b0b5ad637881bc6e924d8",
+      "cmd/aquas/hijos_test.go": "44f67913400f1b02c781cd02a39ea463cfac55d8b1fb85785a0d94064c79dd75",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "469f9d3e71bc96826b1454870eb089e374d44b5437577720601360d32dfaade6",
+      "cmd/aquas/limpiar_conectado_test.go": "490a5e2b181eb6bff7266a852751dcaf53f4d49e36bedf1f8ffa82a302c987fb",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "00314ba7ce7e3ef67471c0a8afc217bfc96dd3aa67e95e2e6d383ca028ff68c5",
+      "cmd/aquas/precommit_test.go": "da0ac0f4acbf73546ec58827c5a57709ba39d5b84b0a03473a3e660de29335e9",
+      "cmd/aquas/punta_test.go": "b108aa8e21bb7cdb1041d0467c22f7dd93c4fbb4b77c48e67c5fdf343250d313",
+      "cmd/aquas/rojo_test.go": "3ccde5dd6fb8a66f6ba5476fb9ea5215531140f6a8a35f8cdc098d79ad377f5c",
+      "cmd/aquas/sello_test.go": "9c1561bd72e033798f7d9eb815cdd8f9b8788046696fc002cd7cccba5675169c",
+      "cmd/aquas/tabla_integral_test.go": "105d2c9919a9fe6331fa2109149aa67c02486b0130cffc13c3cafc5ad2772e72",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "internal/backlog/alcance.go": "dda7bcaa4e9a23435347ebfdd3f78a26e43a3f25bf3bf5b068122eaf19234c52",
+      "internal/backlog/alcance_test.go": "f36403294ce92fe206f040888e93fe16315c0ad4456e7c6eb12bc055f8b1b9a7",
+      "internal/backlog/aprobacion.go": "bf35d559106b1eea511f0c974535846fdc6be0225acf6820567c9f9c51582ddc",
+      "internal/backlog/aprobacion_feature_test.go": "85a0f88b81255ab3a6b1a983461ea83ece5bbd886442807d46158fd25751663b",
+      "internal/backlog/aprobacion_test.go": "1240100db67a830b95f849bec5f219458c23cc0f66260c7c87cfbc885e8afd9e",
+      "internal/backlog/arranque_test.go": "2e9817613b5e1e265b64b35f0e4b71afecb1ae3fc8208e07752bc4947865d9d9",
+      "internal/backlog/arreglo.go": "724e0c840a6c6b04354f3c7adad1ff0a025dbedae3611f5f193749d774d341d1",
+      "internal/backlog/arreglo_pruebas.go": "8a98412cb223a4008dc7db7cba627a16eb88b923077a70264fe27e35e8c90b06",
+      "internal/backlog/arreglo_pruebas_test.go": "2b1ad1e979dc3c705b7432ec28b2df3483fccba4088fe15671a3f6fd851a4e64",
+      "internal/backlog/arreglo_test.go": "8f78480cc786ae6a54df5ce81d3b85b5c6193641eb2359a40a691c2897153233",
+      "internal/backlog/auditoria.go": "ecd268691bf2bbe3bb9dde57abe31185f3bc66b4d2cfa19ccea5de33d4eac5a3",
+      "internal/backlog/auditoria_test.go": "fcb41d1c80c9f498427971c87398e905ee733441c7c737664c23d54c92482ccf",
+      "internal/backlog/backlog.go": "4f99db1d8309f572b886163b1cc3577d572cdcce41a7c890f24595fb48052927",
+      "internal/backlog/backlog_padre_test.go": "37851c0b8fab768b21ad1dd6c14df572011d8cb07987ff424e33a3aaeee5aa6b",
+      "internal/backlog/backlog_test.go": "07eb47ed167e42a4beb9a92b6857e72495d644e2ed092868b3f0f4641c44c1bd",
+      "internal/backlog/campos_test.go": "3f79ebd0cdcca08653d4b677272a7613e91445d443085bc5c7c9b8f5522f2df7",
+      "internal/backlog/cierre_vigente_test.go": "4eaf046855f764e70c0f53beb36c7350682c757d55e15674a0a42d1bd336fa68",
+      "internal/backlog/codigo.go": "66c3080508457849f61020b415a38cadb9292ece14d17053c19a9319fd9b368e",
+      "internal/backlog/codigo_test.go": "3705ffe4a27e52413d7996e176ca06837c02905fcd58cd3acf0a4ca2687db098",
+      "internal/backlog/documentar.go": "771e448ed568fdc4243641320ed1e7552fb25fb87648fa425c901b1e388fb037",
+      "internal/backlog/documentar_test.go": "9336f43e2ab0536d2ecae00f27c8a4273c709a896badb9e6f3c53c59faeac7d4",
+      "internal/backlog/editar.go": "be6f1afba04ebe706ddfcc76c6ee8d38a634b77f7d3a11cbd5edfb52ea233500",
+      "internal/backlog/editar_test.go": "400b05c84288b7c1ce5dc807a2d3441a527fc75e267c0e4ef5978c33985ae9f5",
+      "internal/backlog/huella_codigo.go": "7e95b852afb66968e99c1698dc6da5fd63460d0e49e14f9b4547b97662a14aa3",
+      "internal/backlog/pruebas_arreglo_test.go": "16fadf22f3e520e3e9473755c0eed0ad6aeb0a60de8bcab1d66c9eaeb2e11c15",
+      "internal/backlog/relacion.go": "79056ac6a600e3632b1b74c6dd88dbfc72f456c8536e3446d9aa3c228cec8c2d",
+      "internal/backlog/relacion_test.go": "ba3a871dba568a9bbe219b282e0e93c95b9e9d29e94fa6841173b556b00591af",
+      "internal/backlog/repetidos_test.go": "894b744b218c827535ba16f46df0014558a1a68b72deb0df3bf09ecbaaee28aa",
+      "internal/backlog/rojo.go": "af715dab99da05765d6985c49d7c1cc65077d111c27233fb071a87bc32bc0096",
+      "internal/backlog/rojo_cancelado_test.go": "77d97e9e1f768990414314355b3f5cd5646619abc83701f391673c855a95ee41",
+      "internal/backlog/rojo_heredado_test.go": "9a28dada52517f62990949bb37e2c1624dac579fda4572ae029ee422392ef8e3",
+      "internal/backlog/rojo_subtest_test.go": "74fa62b2e7c3ef7e3eaccf91d42ba71322f0e35e282a6c5b1fe909266e5e23ff",
+      "internal/backlog/rojo_test.go": "24a7418b2eef7911fd083996289b7af1369a2971e7edc90e27b716b1c4fb87b1",
+      "internal/backlog/sello.go": "a1dfe49762bd24ff89e21d4f08e319197744c9f25f7dac4fc26e86708557476d",
+      "internal/backlog/sello_test.go": "bdc33ffc1c8a3049c5e3b8b3225566151a10a1f5b4b46d696fa2b49b97b4328f",
+      "internal/backlog/siguiente_test.go": "d4790312346971702359d1b1f1fe42cc3a44347135995a0b14ca0202c533e829"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F015",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "ficha:E001/F015/S002",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "ficha:E001/F015/S003",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "pagina:docs/E001/F015/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "pagina:docs/E001/F015/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la aprobación por feature no cambia esta página ni regla"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/E001/**"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-28T17:36:22Z",
+    "huella": "30e375a9f721b15d4406f342e20329e2dac7f8778d124e9cb91dce658690d59a",
+    "mensaje": "apruebo E001/F015/S001"
+  },
+  "codigo": [
+    "internal/backlog/aprobacion.go"
+  ],
+  "relacion": "nueva"
+}
