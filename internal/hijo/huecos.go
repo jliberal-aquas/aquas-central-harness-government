@@ -41,9 +41,12 @@ func PrepararHuecos(dir string) error {
 	return nil
 }
 
-// Listo deja al hijo con sus huecos y su CLAUDE.md armado.
+// Listo deja al hijo con sus huecos, su hook de build (S006) y su CLAUDE.md armado.
 func Listo(dir string) error {
 	if err := PrepararHuecos(dir); err != nil {
+		return err
+	}
+	if err := AsegurarHook(dir); err != nil {
 		return err
 	}
 	return Build(dir)
