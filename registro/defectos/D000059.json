@@ -1,0 +1,10 @@
+{
+  "id": "D000059",
+  "firma": "tabla-generada-editada-a-mano",
+  "que": "edité a mano la tabla de pruebas de docs/E002/F002/S006.md; compilar la regeneró desde la ficha y el gate siguió fallando",
+  "causa": "la sección «Contrato y evidencia» la genera internal/wiki/hijos.go:90 desde la ficha; no lo comprobé antes de editar",
+  "arreglo": "registrar la prueba con aquas backlog pruebas; propuesto: el gate o la página marquen las secciones generadas",
+  "como_me_cercioro": "gate OK tras backlog pruebas (commit c5a8b5c)",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
