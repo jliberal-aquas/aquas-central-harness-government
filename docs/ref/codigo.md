@@ -240,6 +240,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/hijo/build.go](../../internal/hijo/build.go) | `pendientes` | `(dir string) ([]string, error)` | pendientes (E002/F002/S004): un problema por hueco que conserva la marca de relleno, en orden. |
 | [internal/hijo/hijo.go](../../internal/hijo/hijo.go) | `Install` | `(dest string, central fs.FS, version string) error` | Install copia la central sellada en dest/.aquas/central y escribe dest/.aquas/lock.json. |
 | [internal/hijo/hijo.go](../../internal/hijo/hijo.go) | `copiarCentral` | `(dest string, central fs.FS, version string) error` | copiarCentral escribe la central como solo lectura y su lock con versión y hashes. |
+| [internal/hijo/hijo.go](../../internal/hijo/hijo.go) | `AMedias` | `(err error) error` | AMedias (E002/F002/S002): error de install cuando la central ya quedó copiada y falló lo siguiente. |
 | [internal/hijo/huecos.go](../../internal/hijo/huecos.go) | `PrepararHuecos` | `(dir string) error` | PrepararHuecos (E002/F002/S001): crea con texto PENDIENTE los huecos de la central |
 | [internal/hijo/huecos.go](../../internal/hijo/huecos.go) | `Listo` | `(dir string) error` | Listo deja al hijo con sus huecos, su hook de build (S006) y su CLAUDE.md armado. |
 | [internal/hijo/report.go](../../internal/hijo/report.go) | `Report` | `(dir, quePaso, repro string) (string, error)` | Report arma el borrador de issue para la central: firma del hijo, versión |
