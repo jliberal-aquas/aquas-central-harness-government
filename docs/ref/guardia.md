@@ -30,7 +30,7 @@ Qué deja pasar: leer fuera del repo, `/dev/null` y `2>&1`.
 
 El gate `aquas verificar` revisa la lista. Falla si el archivo está roto, si falta un motivo o si una ruta permite todo un disco.
 
-**Entorno declarado.** Antes de revisar nada, la guardia mira `gobierno/config/entorno.local.json`. Ese archivo dice el sistema operativo y la raíz del repo en esta máquina. Lo escribe `aquas iniciar` y no se versiona.
+**Entorno declarado.** Antes de revisar nada, la guardia mira `gobierno/config/entorno.local.json`. Ese archivo dice el sistema operativo y la raíz del repo en esta máquina. También puede decir el shell del humano (`shell_humano`: powershell o bash). Lo escribe `aquas iniciar` y no se versiona.
 
 - Si el archivo falta, bloquea todo.
 - Si el sistema o la raíz no coinciden con la realidad, también bloquea todo. Por ejemplo, si el repo se movió de carpeta.

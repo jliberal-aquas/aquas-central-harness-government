@@ -147,7 +147,13 @@ func main() {
 		if err := json.Unmarshal(datos, &e); err != nil {
 			fallar(1, fmt.Errorf("propuesta: entrada del hook ilegible: %w", err))
 		}
-		for _, m := range []string{propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta)} { // S016: insight PROPUESTO exige defecto
+		// E001/F016/S001: sin entorno legible no hay shell declarado y no se revisa (el cierre no depende del entorno;
+		// un entorno roto ya lo frena la guardia). Un shell_humano inválido lo frena RevisarShell.
+		en, err := entorno.Leer(raiz)
+		if err != nil { // Leer devuelve lo decodificado junto al error: no usar un entorno inválido
+			en = entorno.Entorno{}
+		}
+		for _, m := range []string{propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta), propuesta.RevisarShell(e.Respuesta, en.ShellHumano)} { // S016: insight PROPUESTO exige defecto
 			if m != "" {
 				_, _ = fmt.Fprintln(os.Stderr, m)
 				os.Exit(2)

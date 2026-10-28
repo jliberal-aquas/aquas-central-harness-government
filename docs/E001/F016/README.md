@@ -73,7 +73,7 @@ Prueba integral: `TestHookFrenaShellAjeno`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | Shell del humano en el hook de cierre | Planeado |
+| [S001](S001.md) | Shell del humano en el hook de cierre | Hecho |
 
 <!-- /GENERADO -->
 

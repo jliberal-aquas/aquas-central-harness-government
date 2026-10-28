@@ -82,7 +82,7 @@ Antes de enviar un mensaje, el orquestador revisa:
 
 - Leer las reglas completas: [comunicación](../../gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md), [pedagogía](../../gobierno/canonico/comunicacion/02_PEDAGOGIA_CHAT.md) e [insights](../../gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md).
 - Cambiarlas: edita el [canónico](../glosario.md#canónico). El [compilador](../glosario.md#compilador) las copia al archivo del orquestador.
-- Límite: ningún gate de este repositorio revisa el formato del mensaje. Hay un [hook](../glosario.md#hook) de tu usuario, fuera del repo, que frena algunas fallas. Lo demás es criterio humano: si un mensaje no se entiende, dilo.
+- Límite: el [hook](../glosario.md#hook) de cierre revisa poco del mensaje. Frena propuestas sin diagrama e insights propuestos sin defecto. También frena comandos en un shell que no es el tuyo. Hay un [hook](../glosario.md#hook) de tu usuario, fuera del repo, que frena algunas fallas. Lo demás es criterio humano: si un mensaje no se entiende, dilo.
 
 ## Navegación
 

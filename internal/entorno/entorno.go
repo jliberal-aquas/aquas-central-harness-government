@@ -30,6 +30,8 @@ type Entorno struct {
 	Version int    `json:"version"`
 	SO      string `json:"so"`
 	Raiz    string `json:"raiz"`
+	// ShellHumano (E001/F016/S001): shell donde el humano corre los comandos que le da el agente: powershell o bash.
+	ShellHumano string `json:"shell_humano,omitempty"`
 }
 
 // Leer carga el entorno declarado.

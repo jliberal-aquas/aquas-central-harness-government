@@ -274,6 +274,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/propuesta/propuesta.go](../../internal/propuesta/propuesta.go) | `diagrama` | `(c string) bool` | diagrama: el texto trae algún trazo de diagrama (flechas o cajas). |
 | [internal/propuesta/propuesta.go](../../internal/propuesta/propuesta.go) | `cercaDe` | `(t string) (byte, int)` | cercaDe: el carácter y el largo de una cerca de bloque (``` o ~~~), o largo 0 si no es cerca. |
 | [internal/propuesta/propuesta.go](../../internal/propuesta/propuesta.go) | `Revisar` | `(msg string) string` | Revisar devuelve "" si pasa; si no, el motivo del freno con las propuestas sin diagrama. |
+| [internal/propuesta/shell.go](../../internal/propuesta/shell.go) | `RevisarShell` | `(msg, shell string) string` | RevisarShell (E001/F016/S001): "" si ningún bloque de código marcado es de un shell ajeno al declarado; |
 | [internal/turno/turno.go](../../internal/turno/turno.go) | `siguiente` | `(raiz string) (int, error)` | siguiente: el mayor número existente + 1; un hueco no se rellena (los ID no se reutilizan). |
 | [internal/turno/turno.go](../../internal/turno/turno.go) | `leerEstado` | `(raiz string) (map[string]abierto, error)` | leerEstado carga los turnos abiertos; vacío si el archivo no existe. |
 | [internal/turno/turno.go](../../internal/turno/turno.go) | `escribir` | `(raiz, rel string, b []byte) error` | escribir guarda bytes en la ruta relativa, creando sus carpetas. |

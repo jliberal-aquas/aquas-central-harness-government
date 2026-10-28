@@ -1,0 +1,369 @@
+{
+  "id": "E001/F016/S001",
+  "tipo": "slice",
+  "titulo": "Shell del humano en el hook de cierre",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "ninguna regla ni gate fija el shell del humano",
+  "padre": "E001/F016",
+  "bloqueado_por": [],
+  "secuencia": 125,
+  "pruebas": [
+    {
+      "prueba": "./internal/propuesta:TestShellDelHumano",
+      "intencion": "valida que la revision frena bloques de otro shell y deja pasar los demas",
+      "rojo_cuando": "rojo cuando un bloque ajeno pasa o uno propio, sin marca o sin shell declarado frena",
+      "verde_cuando": "verde cuando solo frena el bloque marcado de otro shell"
+    },
+    {
+      "prueba": "./cmd/aquas:TestHookFrenaShellAjeno",
+      "intencion": "valida que el hook de cierre frena un bloque de otro shell segun el entorno",
+      "rojo_cuando": "rojo cuando un bloque bash pasa con shell_humano powershell",
+      "verde_cuando": "verde cuando frena el bloque ajeno y deja pasar el del shell declarado"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-28T21:54:28Z",
+    "head": "d13b527f52600faddc562c612b66e1f4ae6e8c1b",
+    "resultado": {
+      "./cmd/aquas:TestHookFrenaShellAjeno": "shell_humano_test.go:21: bloque bash con shell_humano powershell: frena y nombra el shell; dio {out: err: codigo:0}",
+      "./internal/propuesta:TestShellDelHumano": "shell_test.go:22: shell powershell, mensaje \"Texto.\\n\\n```powershell\\ndir\\n```\\n\\nFin.\\nTexto.\\n\\n```bash\\nls\\n```\\n\\nFin.\": debe frenar nombrando el shell; dio \"\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-28T22:16:29Z",
+    "head": "d13b527f52600faddc562c612b66e1f4ae6e8c1b",
+    "huella": {
+      "cmd/aquas/main.go": "9face04110226be6e22336d2d126c697273c826ad0212b059ee88a1f9ddd0c46",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "internal/entorno/entorno.go": "f2b7130fad528a5566fb1501ace1c2b56eae6d75f3d182b43d8565770ddaba14",
+      "internal/propuesta/insight.go": "c1c7f77b2ef8f7d895c896380bdd4421793d6cf185f521c3dc768d097ecfbf77",
+      "internal/propuesta/insight_test.go": "4f3d4031c81c966352a26e8bb3d46c7b0e4ad97bbe4d236e108128e49b42a07b",
+      "internal/propuesta/propuesta.go": "4f38948bc04ad7828dfdb4e8c42992f08b410c3c7f3e12f53d02117672e90df8",
+      "internal/propuesta/propuesta_test.go": "3219379ad6cf7c84c444192d538a5de915977c230e38e51a2db4b836134e4392",
+      "internal/propuesta/shell.go": "d0d0a639adf8fb8ef028380a8657f7355774cd4a172bee1eb5f06957b65ee1e7",
+      "internal/propuesta/shell_test.go": "3b012009469c0b46b024ed8be6e38adc5a90322e819c495ddde821e146e818e2"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-28T22:19:35Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/main.go": "9face04110226be6e22336d2d126c697273c826ad0212b059ee88a1f9ddd0c46",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "internal/entorno/entorno.go": "f2b7130fad528a5566fb1501ace1c2b56eae6d75f3d182b43d8565770ddaba14",
+      "internal/propuesta/insight.go": "c1c7f77b2ef8f7d895c896380bdd4421793d6cf185f521c3dc768d097ecfbf77",
+      "internal/propuesta/insight_test.go": "4f3d4031c81c966352a26e8bb3d46c7b0e4ad97bbe4d236e108128e49b42a07b",
+      "internal/propuesta/propuesta.go": "4f38948bc04ad7828dfdb4e8c42992f08b410c3c7f3e12f53d02117672e90df8",
+      "internal/propuesta/propuesta_test.go": "3219379ad6cf7c84c444192d538a5de915977c230e38e51a2db4b836134e4392",
+      "internal/propuesta/shell.go": "d0d0a639adf8fb8ef028380a8657f7355774cd4a172bee1eb5f06957b65ee1e7",
+      "internal/propuesta/shell_test.go": "3b012009469c0b46b024ed8be6e38adc5a90322e819c495ddde821e146e818e2"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F016",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "pagina:docs/E001/F016/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "pagina:docs/E001/F016/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003einternal/entorno/entorno.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003einternal/entorno/entorno.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/entorno/entorno.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F014/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "S001 agrega el shell del humano; esta pieza no cambia"
+    }
+  ],
+  "alcance": [
+    "internal/propuesta/**",
+    "internal/entorno/entorno.go",
+    "cmd/aquas/main.go",
+    "cmd/aquas/shell_humano_test.go",
+    "docs/E001/F016/**",
+    "docs/ref/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/entorno/entorno.go",
+    "internal/propuesta/shell.go"
+  ],
+  "relacion": "nueva"
+}

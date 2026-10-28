@@ -1,0 +1,54 @@
+{
+  "id": "E001/F016",
+  "tipo": "feature",
+  "titulo": "Shell del humano",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "el agente dio comandos de Git Bash a un humano en PowerShell (D000063)",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 124,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHookFrenaShellAjeno",
+      "intencion": "valida que el hook de cierre frena un bloque de otro shell segun el entorno",
+      "rojo_cuando": "rojo cuando un bloque bash pasa con shell_humano powershell",
+      "verde_cuando": "verde cuando frena el bloque ajeno y deja pasar el del shell declarado"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-28T21:54:11Z",
+    "head": "d13b527f52600faddc562c612b66e1f4ae6e8c1b",
+    "resultado": {
+      "./cmd/aquas:TestHookFrenaShellAjeno": "shell_humano_test.go:21: bloque bash con shell_humano powershell: frena y nombra el shell; dio {out: err: codigo:0}"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-28T22:20:01Z",
+    "head": "d13b527f52600faddc562c612b66e1f4ae6e8c1b",
+    "huella": {}
+  },
+  "aprobacion": {
+    "fecha": "2026-10-28T21:53:18Z",
+    "huella": "88ec43705b12f75ab5957afb8bb8f1929b52909f13569e9f6caccf2c3490cdfe",
+    "mensaje": "apruebo E001/F016 con push",
+    "push": true,
+    "foto": {
+      "E001/F016/S001": [
+        {
+          "prueba": "./internal/propuesta:TestShellDelHumano",
+          "intencion": "valida que la revision frena bloques de otro shell y deja pasar los demas",
+          "rojo_cuando": "rojo cuando un bloque ajeno pasa o uno propio, sin marca o sin shell declarado frena",
+          "verde_cuando": "verde cuando solo frena el bloque marcado de otro shell"
+        },
+        {
+          "prueba": "./cmd/aquas:TestHookFrenaShellAjeno",
+          "intencion": "valida que el hook de cierre frena un bloque de otro shell segun el entorno",
+          "rojo_cuando": "rojo cuando un bloque bash pasa con shell_humano powershell",
+          "verde_cuando": "verde cuando frena el bloque ajeno y deja pasar el del shell declarado"
+        }
+      ]
+    }
+  },
+  "relacion": "nueva"
+}
