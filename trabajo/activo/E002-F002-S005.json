@@ -2,7 +2,7 @@
   "id": "E002/F002/S005",
   "tipo": "slice",
   "titulo": "el principio de Go como lenguaje único queda solo en la central",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P2",
   "motivo": "D000054: el hijo hereda un principio sobre el módulo de la central que no lo gobierna",
   "padre": "E002/F002",
@@ -16,6 +16,33 @@
       "verde_cuando": "verde cuando el hijo no lo contiene y la central lo conserva"
     }
   ],
+  "rojo": {
+    "fecha": "2026-10-28T08:33:03Z",
+    "head": "22c3f8a0ef4d4ad9b9a77e610efb34906eba49c5",
+    "resultado": {
+      "./internal/hijo:TestGoSoloEnCentral": "gosolo_test.go:43: los principios deben ir del 1 al 8"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-28T08:33:27Z",
+    "head": "22c3f8a0ef4d4ad9b9a77e610efb34906eba49c5",
+    "huella": {
+      "internal/hijo/aviso.go": "9bc3269b0223b93f0d7e1663c610cb378cb085c787562801e59b6f11f6049e8a",
+      "internal/hijo/aviso_test.go": "f3c5814551c1270543db9fed713e7d2a0cb6155227810e2c54524bd9addb9ef2",
+      "internal/hijo/build.go": "4e82056f046f814d213f191094823855f6299b903699f8bc365a9d600dc14e1a",
+      "internal/hijo/build_test.go": "0e826abe8780e5e4398e8f2f8679f9508286ad34797f72f387b005421f80cac8",
+      "internal/hijo/gosolo_test.go": "19b1d4a377b01896782af7c6818870a8e0fd6050125c421ed9538f952445692c",
+      "internal/hijo/hijo.go": "12f92fb30088b4888bc80b7a9159e3ee47f70f1fdb97467bfdaa110ddc1d1e56",
+      "internal/hijo/hijo_test.go": "10481d1b7eac65e0c567ff675863784b71e5f14a9b4126ef93d13cbea4448461",
+      "internal/hijo/huecos.go": "f53295a56f459be58c168bc582f4bbfda0602481b36867b0c6000b7798c175be",
+      "internal/hijo/pendiente_test.go": "8ed098f57c1d425f2e91112176278ff9082834275dd18073fbfa037711d32729",
+      "internal/hijo/report.go": "378ec0816eb8c9b160590ca83d13d1d808203f44b7152446862f1e5bbc69d49a",
+      "internal/hijo/report_test.go": "523f66710d13d02c8366c310980af05f4f7b66ea19c5127cbb75f51c5a4070a9",
+      "internal/hijo/update.go": "2a4ff1ba901d60a728617c4ec2741e2a0079523f5b381fc0f09dd55ef36c3b9e",
+      "internal/hijo/update_test.go": "b269170f2929298165fa1a36951564a9d9c5d3762006f6655f08244a97c8d734",
+      "internal/hijo/verificar_test.go": "ccb9b38401b3f112fb9808f54c98fbd05ec3e21dac96671afab448e8911e0025"
+    }
+  },
   "alcance": [
     "gobierno/canonico/constitucion.md",
     "gobierno/canonico/metodologias/**",

@@ -14,12 +14,11 @@
 1. Gobierno incremental: se construye poco a poco. Regla no escrita en un canónico = regla no vigente.
 2. Determinismo primero: toda regla verificable se valida con un programa (gate), no con juicio del modelo.
 3. Lo no verificable por programa se marca explícitamente como «criterio humano» o «probabilístico».
-4. Go = lenguaje único de gates, validadores y herramientas. Módulo: `github.com/jliberal-aquas/aquas-central-harness-government`.
-5. Un cambio coherente = un commit. Git local obligatorio. Mensaje explica el porqué.
-6. Evidencia antes de afirmar: no declarar «hecho» sin prueba ejecutada.
-7. Contexto permanente en formato Caveman: corto, denso, sin relleno. Detalle extenso va en archivos bajo demanda.
-8. Fuente canónica → compilado: se edita solo el canónico; todo derivado se regenera y se sella.
-9. Calidad primero; economía de tokens segundo. Token = moneda de todo uso agéntico: medir y justificar cada gasto.
+4. Un cambio coherente = un commit. Git local obligatorio. Mensaje explica el porqué.
+5. Evidencia antes de afirmar: no declarar «hecho» sin prueba ejecutada.
+6. Contexto permanente en formato Caveman: corto, denso, sin relleno. Detalle extenso va en archivos bajo demanda.
+7. Fuente canónica → compilado: se edita solo el canónico; todo derivado se regenera y se sella.
+8. Calidad primero; economía de tokens segundo. Token = moneda de todo uso agéntico: medir y justificar cada gasto.
 
 ## Canónicos y compilación
 <!-- solo-hijo
@@ -29,6 +28,7 @@
 - Defecto del gobierno → se reporta a la central; no se corrige en el hijo.
 -->
 <!-- solo-central -->
+- Go = lenguaje único de gates, validadores y herramientas. Módulo: `github.com/jliberal-aquas/aquas-central-harness-government`.
 - Canónicos: `gobierno/canonico/**`. Únicos archivos editables de gobierno.
 - Config: `gobierno/config/agentes.json` (agentes) y `gobierno/config/documentos.json` (documentos como este).
 - Compilados: `CLAUDE.md`, `.claude/agents/*.md`. Llevan marca «GENERADO»; NO editar a mano.

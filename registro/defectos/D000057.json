@@ -1,0 +1,10 @@
+{
+  "id": "D000057",
+  "firma": "marca-pendiente-bordes",
+  "que": "el gate del hijo cuenta «pendiente:» en minúscula como marca y revisa cualquier .md de huecos/, no solo los de la central",
+  "causa": "pendientes usa leerHuecos sobre toda la carpeta y la prueba no tiene caso «pendiente:» en minúscula ni .md extra",
+  "arreglo": "filtrar por los huecos declarados en la central y agregar los dos casos a TestVerificarHuecoPendiente",
+  "como_me_cercioro": "mutante ToUpper en pendientes y un .md extra con PENDIENTE: hacen fallar la prueba",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
