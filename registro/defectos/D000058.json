@@ -1,0 +1,10 @@
+{
+  "id": "D000058",
+  "firma": "cierre-auditor-rechazado-en-silencio",
+  "que": "los cierres de los auditores A1 y A2 de E002/F002/S005 fueron rechazados por formato y el veredicto no se anotó; nadie se enteró hasta que CERRADO falló",
+  "causa": "el auditor termina con SubagentHandback (toolEndsTurn): el exit 2 del hook SubagentStop no le llega para reescribir, y el orquestador solo ve el informe",
+  "arreglo": "que el rechazo quede visible al orquestador (p. ej. cierre-agente guarda el último rechazo y CERRADO lo cita) y que el brief del auditor fije el formato de una línea por hallazgo",
+  "como_me_cercioro": "prueba con un cierre inválido: CERRADO dice el motivo del rechazo; replay de los transcripts reales de A1 y A2 reproduce el rechazo",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

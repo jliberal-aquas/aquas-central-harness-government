@@ -43,6 +43,228 @@
       "internal/hijo/verificar_test.go": "ccb9b38401b3f112fb9808f54c98fbd05ec3e21dac96671afab448e8911e0025"
     }
   },
+  "sello": [
+    {
+      "clave": "ficha:E002/F002",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "ficha:E002",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "pagina:docs/E002/F002/S005.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "pagina:docs/E002/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "pagina:docs/E002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:README.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "importa:cmd/aquas/aviso.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "importa:cmd/aquas/aviso_test.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:cmd/aquas/punta_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S005.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S002.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S004.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S003.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:gobierno/config/documentos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/biblioteca/biblioteca.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/compilador/modulo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/hijo/build_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/hijo/pendiente_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/hijo/report_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/hijo/update_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/ref/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S005 solo mueve la regla de Go al bloque solo-central; este documento no la trata"
+    }
+  ],
   "alcance": [
     "gobierno/canonico/constitucion.md",
     "gobierno/canonico/metodologias/**",
