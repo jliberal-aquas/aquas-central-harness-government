@@ -24,14 +24,14 @@
     }
   },
   "verde": {
-    "fecha": "2026-10-28T08:33:27Z",
-    "head": "22c3f8a0ef4d4ad9b9a77e610efb34906eba49c5",
+    "fecha": "2026-10-28T08:41:56Z",
+    "head": "5faad35fb1ebbc2991a95ccc3eb89e89f04bb4ef",
     "huella": {
       "internal/hijo/aviso.go": "9bc3269b0223b93f0d7e1663c610cb378cb085c787562801e59b6f11f6049e8a",
       "internal/hijo/aviso_test.go": "f3c5814551c1270543db9fed713e7d2a0cb6155227810e2c54524bd9addb9ef2",
       "internal/hijo/build.go": "4e82056f046f814d213f191094823855f6299b903699f8bc365a9d600dc14e1a",
       "internal/hijo/build_test.go": "0e826abe8780e5e4398e8f2f8679f9508286ad34797f72f387b005421f80cac8",
-      "internal/hijo/gosolo_test.go": "19b1d4a377b01896782af7c6818870a8e0fd6050125c421ed9538f952445692c",
+      "internal/hijo/gosolo_test.go": "502c4276cfad3a470a22a6424fdff38fda42ca55ccf3f18a3aba878c55a8e8e3",
       "internal/hijo/hijo.go": "12f92fb30088b4888bc80b7a9159e3ee47f70f1fdb97467bfdaa110ddc1d1e56",
       "internal/hijo/hijo_test.go": "10481d1b7eac65e0c567ff675863784b71e5f14a9b4126ef93d13cbea4448461",
       "internal/hijo/huecos.go": "f53295a56f459be58c168bc582f4bbfda0602481b36867b0c6000b7798c175be",
@@ -60,9 +60,9 @@
     }
   ],
   "aprobacion": {
-    "fecha": "2026-10-28T07:44:10Z",
-    "huella": "0ef6a32d23ef5cb77bbb82387ad430cd6ecd6f6b06c1ae6dc8aaee114c2d085e",
-    "mensaje": "apruebo E002/F002/S005 y s006 y lo recomendado"
+    "fecha": "2026-10-28T08:41:51Z",
+    "huella": "ac47ad3e412e4c7d64d624307901c09094ba4a2170cb25606f84787c629acce5",
+    "mensaje": "apruebo E002/F002/S005"
   },
   "relacion": "nueva"
 }
