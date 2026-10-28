@@ -1,0 +1,20 @@
+{
+  "id": "E001/F015",
+  "tipo": "feature",
+  "titulo": "Gate humano por feature",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "el humano aprueba cada slice por separado y pierde tiempo y contexto en apruebo y dale",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 120,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestGateHumanoPorFeature",
+      "intencion": "valida que una sola aprobación de la feature deja avanzar todos sus slices aprobados",
+      "rojo_cuando": "rojo cuando un slice de la feature aprobada exige su propio apruebo o un slice con una prueba aprobada cambiada avanza",
+      "verde_cuando": "verde cuando los slices aprobados avanzan, agregar pruebas no invalida y cambiar una aprobada sí"
+    }
+  ],
+  "relacion": "nueva"
+}

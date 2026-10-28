@@ -1,0 +1,22 @@
+{
+  "id": "E001/F015/S003",
+  "tipo": "slice",
+  "titulo": "Reglas del orquestador para el gate por feature",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "el orquestador debe trabajar la feature aprobada sin pedir dale en cada paso",
+  "padre": "E001/F015",
+  "bloqueado_por": [
+    "E001/F015/S001"
+  ],
+  "secuencia": 123,
+  "pruebas": [
+    {
+      "prueba": "./internal/compilador:TestOrquestadorGateHumanoPorFeature",
+      "intencion": "valida que el orquestador compilado trae las reglas del gate por feature",
+      "rojo_cuando": "rojo cuando falta push por slice, arreglar y reportar o los cuatro casos de volver al humano",
+      "verde_cuando": "verde cuando el orquestador compilado nombra las tres reglas"
+    }
+  ],
+  "relacion": "nueva"
+}

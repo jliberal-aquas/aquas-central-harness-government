@@ -1,0 +1,36 @@
+{
+  "id": "E001/F015/S001",
+  "tipo": "slice",
+  "titulo": "Aprobación por feature",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "una aprobación por feature, no por slice",
+  "padre": "E001/F015",
+  "bloqueado_por": [],
+  "secuencia": 121,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestAprobacionDeFeatureCubreSusSlices",
+      "intencion": "valida que la aprobación de la feature cubre los slices de su foto",
+      "rojo_cuando": "rojo cuando un slice de la foto exige apruebo propio, avanza con una prueba aprobada cambiada o quitada, o avanza un slice nuevo fuera de la foto",
+      "verde_cuando": "verde cuando agregar pruebas o cambiar alcance mantiene la aprobación y cambiar o quitar una prueba aprobada la invalida"
+    },
+    {
+      "prueba": "./cmd/aquas:TestApruebaFeatureDesdeElChat",
+      "intencion": "valida que el hook registra apruebo de una feature y la marca con push",
+      "rojo_cuando": "rojo cuando apruebo E001/F015 no se registra o con push no queda anotado",
+      "verde_cuando": "verde cuando el mensaje registra la aprobación de la feature y con push queda en la ficha"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/E001/**"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-28T17:36:22Z",
+    "huella": "30e375a9f721b15d4406f342e20329e2dac7f8778d124e9cb91dce658690d59a",
+    "mensaje": "apruebo E001/F015/S001"
+  },
+  "relacion": "nueva"
+}
