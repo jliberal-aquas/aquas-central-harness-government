@@ -11,9 +11,9 @@
   "pruebas": [
     {
       "prueba": "./internal/hijo:TestInstallEnCarpetaConCodigo",
-      "intencion": "valida que install acepta una carpeta con archivos y no los toca",
-      "rojo_cuando": "rojo cuando rechaza la carpeta o altera un archivo existente",
-      "verde_cuando": "verde cuando instala y los archivos previos quedan idénticos"
+      "intencion": "valida que install acepta una carpeta con .git y código sin tocarlos, y falla sin escribir si ya hay .aquas o un CLAUDE.md propio",
+      "rojo_cuando": "rojo cuando install rechaza la carpeta con código, altera un archivo previo o escribe algo ante un conflicto",
+      "verde_cuando": "verde cuando instala con lo previo idéntico y ante cada conflicto falla sin escribir"
     }
   ],
   "relacion": "nueva"
