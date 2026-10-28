@@ -1,0 +1,10 @@
+{
+  "id": "D000056",
+  "firma": "prueba-casos-borde-sin-datos",
+  "que": "TestVerificarHuecoPendiente usa una constitución de un solo hueco y un aviso que repite «aquas build»; mutantes de S004 sobreviven",
+  "causa": "los datos de la prueba no activan los casos de varios huecos y el texto esperado no distingue un aviso del otro",
+  "arreglo": "constitución de prueba con tres huecos, texto exacto por aviso, caso titulo y constante compartida en huecos.go",
+  "como_me_cercioro": "los mutantes del auditor A1 (minúscula, return temprano, marca de titulo) hacen fallar la prueba",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

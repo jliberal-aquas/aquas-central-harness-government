@@ -130,20 +130,47 @@ func leerHuecos(dir string) (map[string]string, error) {
 	return m, nil
 }
 
-// Verificar (X02): gate del hijo; nil si su central sellada y su CLAUDE.md están al día.
+// Verificar (X02, E002/F002/S004): gate del hijo; nil si su central sellada, sus huecos sin PENDIENTE y su CLAUDE.md están al día.
 func Verificar(dir string) []string {
 	quiero, err := armar(dir)
 	if err != nil {
 		return []string{err.Error()}
 	}
-	if hay, err := os.ReadFile(filepath.Join(dir, "CLAUDE.md")); err != nil || string(hay) != quiero {
-		return []string{"CLAUDE.md desfasado o ausente: corre aquas build " + dir}
+	prob, err := pendientes(dir)
+	if err != nil {
+		return []string{err.Error()}
 	}
-	return nil
+	if hay, err := os.ReadFile(filepath.Join(dir, "CLAUDE.md")); err != nil || string(hay) != quiero {
+		prob = append(prob, "CLAUDE.md desfasado o ausente: corre aquas build "+dir)
+	}
+	return prob
 }
 
 // EsHijo: dir tiene un gobierno central instalado (lock.json de aquas install).
 func EsHijo(dir string) bool {
 	_, err := os.Stat(filepath.Join(dir, Carpeta, "lock.json"))
 	return err == nil
+}
+
+// MarcaPendiente: texto de relleno que PrepararHuecos escribe en cada hueco nuevo.
+const MarcaPendiente = "PENDIENTE:"
+
+// pendientes (E002/F002/S004): un problema por hueco que conserva la marca de relleno, en orden.
+func pendientes(dir string) ([]string, error) {
+	hs, err := leerHuecos(filepath.Join(dir, filepath.FromSlash(CarpetaHuecos)))
+	if err != nil {
+		return nil, err
+	}
+	nombres := make([]string, 0, len(hs))
+	for n, txt := range hs {
+		if strings.Contains(txt, MarcaPendiente) {
+			nombres = append(nombres, n)
+		}
+	}
+	sort.Strings(nombres)
+	var prob []string
+	for _, n := range nombres {
+		prob = append(prob, "hueco pendiente: llena "+CarpetaHuecos+"/"+n+".md y corre aquas build")
+	}
+	return prob, nil
 }

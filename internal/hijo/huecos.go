@@ -30,9 +30,9 @@ func PrepararHuecos(dir string) error {
 		} else if !errors.Is(err, fs.ErrNotExist) {
 			return err
 		}
-		txt := "- PENDIENTE: escribe aquí el hueco «" + n + "» de este proyecto.\n"
+		txt := "- " + MarcaPendiente + " escribe aquí el hueco «" + n + "» de este proyecto.\n"
 		if n == "titulo" {
-			txt = "# CONSTITUCIÓN · PENDIENTE: nombre del proyecto\n"
+			txt = "# CONSTITUCIÓN · " + MarcaPendiente + " nombre del proyecto\n"
 		}
 		if err := os.WriteFile(p, []byte(txt), 0o644); err != nil {
 			return err
