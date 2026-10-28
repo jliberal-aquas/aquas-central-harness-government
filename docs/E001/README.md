@@ -161,6 +161,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F013](F013/README.md) | Calidad Go en el gate | Planeado |
 | [F014](F014/README.md) | Cierre honesto | Hecho |
 | [F015](F015/README.md) | Gate humano por feature | Hecho |
+| [F016](F016/README.md) | Shell del humano | Planeado |
 
 <!-- /GENERADO -->
 

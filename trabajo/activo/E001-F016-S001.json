@@ -1,0 +1,26 @@
+{
+  "id": "E001/F016/S001",
+  "tipo": "slice",
+  "titulo": "Shell del humano en el hook de cierre",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "ninguna regla ni gate fija el shell del humano",
+  "padre": "E001/F016",
+  "bloqueado_por": [],
+  "secuencia": 125,
+  "pruebas": [
+    {
+      "prueba": "./internal/propuesta:TestShellDelHumano",
+      "intencion": "valida que la revision frena bloques de otro shell y deja pasar los demas",
+      "rojo_cuando": "rojo cuando un bloque ajeno pasa o uno propio, sin marca o sin shell declarado frena",
+      "verde_cuando": "verde cuando solo frena el bloque marcado de otro shell"
+    },
+    {
+      "prueba": "./cmd/aquas:TestHookFrenaShellAjeno",
+      "intencion": "valida que el hook de cierre frena un bloque de otro shell segun el entorno",
+      "rojo_cuando": "rojo cuando un bloque bash pasa con shell_humano powershell",
+      "verde_cuando": "verde cuando frena el bloque ajeno y deja pasar el del shell declarado"
+    }
+  ],
+  "relacion": "nueva"
+}

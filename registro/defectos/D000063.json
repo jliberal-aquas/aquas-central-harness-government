@@ -1,0 +1,10 @@
+{
+  "id": "D000063",
+  "firma": "comando-para-humano-en-shell-equivocado",
+  "que": "el orquestador dio al humano comandos de Git Bash dos turnos seguidos; el humano usa PowerShell",
+  "causa": "el entorno declara SO y el shell de los hooks (bash), pero ninguna regla ni gate fija el shell del humano; el agente ignoró el dato del sistema (PowerShell primario)",
+  "arreglo": "declarar shell_humano en el entorno y que el hook Stop rechace bloques bash dirigidos al humano si el shell declarado es powershell",
+  "como_me_cercioro": "respuesta con bloque bash y shell_humano=powershell -\u003e exit 2; con bloque powershell -\u003e pasa",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "E001/F016",
+  "tipo": "feature",
+  "titulo": "Shell del humano",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "el agente dio comandos de Git Bash a un humano en PowerShell (D000063)",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 124,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHookFrenaShellAjeno",
+      "intencion": "valida que el hook de cierre frena un bloque de otro shell segun el entorno",
+      "rojo_cuando": "rojo cuando un bloque bash pasa con shell_humano powershell",
+      "verde_cuando": "verde cuando frena el bloque ajeno y deja pasar el del shell declarado"
+    }
+  ],
+  "relacion": "nueva"
+}
