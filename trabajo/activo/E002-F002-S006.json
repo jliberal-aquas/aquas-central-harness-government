@@ -14,18 +14,17 @@
       "intencion": "valida que install deja en el hijo un hook PostToolUse que corre aquas build y no pisa settings previos",
       "rojo_cuando": "rojo cuando el hijo queda sin ese hook o pierde su settings previo",
       "verde_cuando": "verde cuando el hook existe y tras editar un hueco el CLAUDE.md queda al día"
+    },
+    {
+      "prueba": "./cmd/aquas:TestHookDelHijoCorreBuild",
+      "intencion": "valida que el comando real del hook, en bash y desde otra carpeta, rearma el CLAUDE.md",
+      "rojo_cuando": "rojo cuando el hook no rearma o un build fallido no sale 2",
+      "verde_cuando": "verde cuando rearma y el fallo sale 2 con el error"
     }
   ],
-  "rojo": {
-    "fecha": "2026-10-28T09:18:31Z",
-    "head": "2d300f33e76403685406e981eee85b7a93cc008d",
-    "resultado": {
-      "./internal/hijo:TestHijoRecompilaAlEditarHueco": "ajustes_test.go:64: el hijo debe tener .claude/settings.json: open D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestHijoRecompilaAlEditarHueco2360395807\\001\\hijo\\.claude\\settings.json: El sistema no puede encontrar la ruta especificada."
-    }
-  },
-  "verde": {
-    "fecha": "2026-10-28T09:21:08Z",
-    "head": "2d300f33e76403685406e981eee85b7a93cc008d",
+  "auditoria": {
+    "fecha": "2026-10-28T09:29:10Z",
+    "veredicto": "CON_HALLAZGOS",
     "huella": {
       "cmd/aquas/aprobacion.go": "27fca17829b036152e9ebfc49cb7fdf8455326ac706a46e597a35ef04325ba32",
       "cmd/aquas/aprobacion_test.go": "ea2b8e6b399141ea9bbc9329c5787c246fa68dfdb5cc733030852adbfa5bb2a9",
@@ -81,8 +80,8 @@
     "docs/E002/**"
   ],
   "aprobacion": {
-    "fecha": "2026-10-28T07:44:57Z",
-    "huella": "6cc55d3588568c2bf8df0d3878d3e38eae3409c696ff634b13ad1f8e4db69acd",
+    "fecha": "2026-10-28T10:36:47Z",
+    "huella": "c04af71e6246feae876c5d92b98ca6ad15de215804350c1fc216fcb96114be9c",
     "mensaje": "apruebo E002/F002/S006"
   },
   "relacion": "nueva"

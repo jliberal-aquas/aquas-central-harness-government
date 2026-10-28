@@ -14,7 +14,7 @@
 
 **Por qué importa.** Cada paso manual es un paso que alguien olvida. Un hijo sin `CLAUDE.md` trabaja sin reglas.
 
-**La solución.** Install crea los huecos con texto PENDIENTE y arma el `CLAUDE.md`. Acepta carpetas con código sin tocar lo existente. Update rearma el `CLAUDE.md` al final.
+**La solución.** Install crea los huecos con texto PENDIENTE y arma el `CLAUDE.md`. Acepta carpetas con código sin tocar lo existente. Update rearma el `CLAUDE.md` al final. Ambos dejan un [hook](../../glosario.md#hook) que lo rearma al editar un hueco.
 
 **Límite.** Este repositorio no construye productos. La landing vive en su propio repositorio; aquí solo se cuida su gobierno.
 

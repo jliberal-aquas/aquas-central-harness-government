@@ -209,7 +209,7 @@ func main() {
 			fallar(1, errors.New("uso: aquas build <carpeta-del-hijo>"))
 		}
 		if err := hijo.Build(os.Args[2]); err != nil {
-			fallar(1, err)
+			fallar(2, err) // exit 2: Claude Code muestra el error al modelo (E002/F002/S006)
 		}
 		fmt.Printf("CLAUDE.md armado en %s\n", os.Args[2])
 	case "report": // borrador de issue para la central; no envía: lo decide el humano
