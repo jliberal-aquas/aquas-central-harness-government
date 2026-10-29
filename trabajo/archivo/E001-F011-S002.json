@@ -1,0 +1,89 @@
+{
+  "id": "E001/F011/S002",
+  "tipo": "slice",
+  "titulo": "el freno de aquas deja pasar memoria fijar",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "D000029 reapareció en aquas presupuesto (E001/F015/S002): al frenar bloquea memoria fijar, que el cierre exige",
+  "padre": "E001/F011",
+  "bloqueado_por": [],
+  "secuencia": 126,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestFrenoDejaPasarMemoria",
+      "intencion": "valida que con el freno activo memoria fijar suelta pasa sin contar y lo demás se frena",
+      "rojo_cuando": "rojo cuando memoria fijar se frena con el turno o la feature desbordados",
+      "verde_cuando": "verde cuando memoria fijar suelta pasa y encadenada u otro comando se frena"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-29T01:42:21Z",
+    "head": "efa2d0c202af566103b2592b2034a7e93b45a956",
+    "resultado": {
+      "./cmd/aquas:TestFrenoDejaPasarMemoria": "frenos_propios_test.go:116: turno desbordado: \"D:\\\\x\\\\aquas.exe memoria fijar slice=\" pasa; dio {out: err:Presupuesto: 66 llamadas en este turno (freno 60). No sigas: informa al humano qué hiciste y qué falta."
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-29T01:56:19Z",
+    "head": "efa2d0c202af566103b2592b2034a7e93b45a956",
+    "huella": {
+      "cmd/aquas/frenos_propios_test.go": "817c8911d0dc76e9f25f7f10b7101ec0bcdd1bb8cd3db7c7aa14374ae16a9c91",
+      "cmd/aquas/presupuesto.go": "bf4d706f1da9047494a5c992dbaad1dadc0ec833ce7fda3f9e40f6be1c40d646"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-29T01:59:38Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/frenos_propios_test.go": "817c8911d0dc76e9f25f7f10b7101ec0bcdd1bb8cd3db7c7aa14374ae16a9c91",
+      "cmd/aquas/presupuesto.go": "bf4d706f1da9047494a5c992dbaad1dadc0ec833ce7fda3f9e40f6be1c40d646"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F011",
+      "marca": "sin_cambio",
+      "motivo": "contrato vigente tras A4 APROBADO"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "contrato vigente tras A4 APROBADO"
+    },
+    {
+      "clave": "pagina:docs/E001/F011/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "contrato vigente tras A4 APROBADO"
+    },
+    {
+      "clave": "pagina:docs/E001/F011/README.md",
+      "marca": "sin_cambio",
+      "motivo": "contrato vigente tras A4 APROBADO"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "contrato vigente tras A4 APROBADO"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "contrato vigente tras A4 APROBADO"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "contrato vigente tras A4 APROBADO"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/presupuesto.go",
+    "cmd/aquas/frenos_propios_test.go",
+    "docs/E001/F011/README.md",
+    "docs/E001/F011/S002.md"
+  ],
+  "codigo": [
+    "cmd/aquas/presupuesto.go"
+  ],
+  "relacion": "nueva"
+}

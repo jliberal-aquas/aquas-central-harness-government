@@ -33,6 +33,38 @@ type entradaPresupuesto struct {
 	Prompt     string `json:"prompt"`
 	Agente     string `json:"agent_id"`
 	Transcript string `json:"transcript_path"`
+	Tool       string `json:"tool_name"`
+	Input      struct {
+		Command string `json:"command"`
+	} `json:"tool_input"`
+}
+
+// E001/F011/S002 (D000029): `aquas memoria fijar` suelta, la orden que exige el cierre, no se frena ni cuenta.
+// Lista blanca: el comando entero debe ser binario conocido + `memoria fijar` + campo=valor; nada se cuela detrás.
+// Binario: `aquas`, `go run ./cmd/aquas` o el del repo en .tmp/ (con o sin comillas). Valor: sin espacios ni
+// metacaracteres de shell, entre comillas simples, o entre dobles sin dólar, acento grave, barra invertida ni comilla doble.
+// Una ruta entre comillas solo vale si es el binario de .tmp/ de este repo.
+var reMemoriaFijar = regexp.MustCompile(`^\s*` +
+	`(aquas(\.exe)?|go run \./cmd/aquas|(\./)?\.tmp/aquas(\.exe)?|"([^"$` + "`" + `\\]*)")` +
+	`\s+memoria\s+fijar` +
+	`(\s+[a-z_]+=([^\s"'$` + "`" + `\\;&|<>()]*|'[^']*'|"[^"$` + "`" + `\\]*"))*\s*$`)
+
+// exentaDelFreno: true si la llamada es Bash y su comando entero es `aquas memoria fijar campo=valor…`.
+func exentaDelFreno(raiz string, e entradaPresupuesto) bool {
+	m := reMemoriaFijar.FindStringSubmatch(e.Input.Command)
+	if e.Tool != "Bash" || m == nil {
+		return false
+	}
+	if !strings.HasPrefix(m[1], `"`) {
+		return true
+	}
+	ruta := filepath.ToSlash(filepath.Clean(m[5]))
+	for _, b := range []string{"aquas", "aquas.exe"} {
+		if strings.EqualFold(ruta, filepath.ToSlash(filepath.Join(raiz, ".tmp", b))) || ruta == ".tmp/"+b {
+			return true
+		}
+	}
+	return false
 }
 
 // presupuestoCLI: «prompt» reinicia el turno; «herramienta» cuenta la llamada y bloquea con exit 2 al pasar un tope.
@@ -58,6 +90,9 @@ func presupuestoCLI(raiz string, args []string) {
 		_ = os.Remove(turno)
 		_ = os.Remove(marca)
 	case "herramienta":
+		if exentaDelFreno(raiz, e) {
+			return
+		}
 		if e.Agente == "" { // el turno va primero: una llamada que frena el turno no gasta tope de la feature
 			if n := anotar(turno); n > frenoTurno {
 				_, _ = fmt.Fprintf(os.Stderr, "Presupuesto: %d llamadas en este turno (freno %d). No sigas: informa al humano qué hiciste y qué falta.\n", n, frenoTurno)

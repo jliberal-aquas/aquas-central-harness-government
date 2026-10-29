@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F011",
+    "slice": "S002",
+    "tarea": "S002 aprobado; cerrando"
+  },
+  "siguiente": "cerrar F011 y push",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "3f086c9c158ae466e948a40add04b971e88ce0266c280de811b79f87beb0d7eb",
+  "actualizado": "2026-10-29T01:59:49Z",
+  "sello": "0d39facaeb0ec0a7f89afc3b1576ac852efeced760c2cb5d4a6f7f13bb514212"
+}

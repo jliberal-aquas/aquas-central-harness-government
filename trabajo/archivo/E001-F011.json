@@ -1,0 +1,48 @@
+{
+  "id": "E001/F011",
+  "tipo": "feature",
+  "titulo": "Frenos propios del gobierno",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "el freno global choca con los cierres de aquas (D000029)",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 94,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestFrenosPropiosGobernados",
+      "intencion": "el freno de este repo es de aquas y nunca bloquea lo que exige un cierre",
+      "rojo_cuando": "memoria fijar se bloquea con plan desbordado",
+      "verde_cuando": "memoria fijar pasa y otro comando se frena"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-29T01:42:17Z",
+    "head": "efa2d0c202af566103b2592b2034a7e93b45a956",
+    "resultado": {
+      "./cmd/aquas:TestFrenosPropiosGobernados": "frenos_propios_test.go:32: con el turno desbordado, memoria fijar pasa; dio {out: err:Presupuesto: 61 llamadas en este turno (freno 60). No sigas: informa al humano qué hiciste y qué falta."
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-29T01:59:57Z",
+    "head": "efa2d0c202af566103b2592b2034a7e93b45a956",
+    "huella": {}
+  },
+  "aprobacion": {
+    "fecha": "2026-10-29T01:41:12Z",
+    "huella": "02e0bdc3b8db15eafaa7a05ab344e1deaec94d746965896cd4071bada8b8f493",
+    "mensaje": "apruebo E001/F011 con push",
+    "push": true,
+    "foto": {
+      "E001/F011/S002": [
+        {
+          "prueba": "./cmd/aquas:TestFrenoDejaPasarMemoria",
+          "intencion": "valida que con el freno activo memoria fijar suelta pasa sin contar y lo demás se frena",
+          "rojo_cuando": "rojo cuando memoria fijar se frena con el turno o la feature desbordados",
+          "verde_cuando": "verde cuando memoria fijar suelta pasa y encadenada u otro comando se frena"
+        }
+      ]
+    }
+  },
+  "relacion": "nueva"
+}

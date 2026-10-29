@@ -76,7 +76,7 @@ Prueba integral: `TestFrenosPropiosGobernados`.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | S001 | Interruptor de hooks globales | Cancelado |
-| [S002](S002.md) | el freno de aquas deja pasar memoria fijar | Planeado |
+| [S002](S002.md) | el freno de aquas deja pasar memoria fijar | Hecho |
 
 <!-- /GENERADO -->
 
