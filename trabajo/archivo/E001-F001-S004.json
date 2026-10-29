@@ -33,6 +33,31 @@
         "fecha": "2026-10-23T13:12:29Z",
         "head": "ac6dc131021c669364d9b76471a47803cfb090a2"
       }
+    },
+    {
+      "id": "E001/F001/S004/X02",
+      "titulo": "la integral de una iniciativa tiene dueño en el README de su iniciativa",
+      "motivo": "D000065: TestCicloDeVidaDelHijo de E002 quedaba sin dueño",
+      "fecha": "2026-10-29T01:20:58Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/wiki:TestIntegralConDuenoEnSuIniciativa",
+          "intencion": "valida que la integral de una iniciativa tiene dueño en el README de su iniciativa",
+          "rojo_cuando": "rojo cuando el gate la da sin slice dueño",
+          "verde_cuando": "verde cuando nombrada en el Contrato de su iniciativa el gate queda limpio"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-29T01:21:26Z",
+        "head": "c4d6d1cc4813e08acc30fd6f02e53b1a9b6a949e",
+        "resultado": {
+          "./internal/wiki:TestIntegralConDuenoEnSuIniciativa": "contrato_test.go:84: la integral nombrada en su iniciativa debió tener dueño; problemas: [\"x/x_test.go: prueba sin slice dueño: TestNombrada (nómbrala en «Contrato y evidencia» de su slice)\"]"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-29T01:27:27Z",
+        "head": "c4d6d1cc4813e08acc30fd6f02e53b1a9b6a949e"
+      }
     }
   ],
   "codigo": [

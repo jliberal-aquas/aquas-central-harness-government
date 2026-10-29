@@ -2,7 +2,7 @@
   "id": "E002",
   "tipo": "iniciativa",
   "titulo": "Proyectos hijos",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "misión: GENERA la estructura de todo proyecto",
   "padre": "",
@@ -15,5 +15,17 @@
       "rojo_cuando": "algún paso del ciclo (install, build, update o report) sale con error o no deja el efecto esperado",
       "verde_cuando": "los cuatro pasos corren sobre un hijo de prueba con exit 0 y su efecto visible"
     }
-  ]
+  ],
+  "rojo": {
+    "fecha": "2026-10-29T01:19:30Z",
+    "head": "c4d6d1cc4813e08acc30fd6f02e53b1a9b6a949e",
+    "resultado": {
+      "./cmd/aquas:TestCicloDeVidaDelHijo": "ciclo_hijo_test.go:59: update: el lock debió pasar a la versión del binario"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-29T01:19:47Z",
+    "head": "c4d6d1cc4813e08acc30fd6f02e53b1a9b6a949e",
+    "huella": {}
+  }
 }

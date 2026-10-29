@@ -73,7 +73,8 @@ func revisarTrazabilidad(raiz string, paginas map[string]*pagina, orden []string
 	}
 	for _, rel := range orden {
 		pg := paginas[rel]
-		if pg.nivel == nF { // D000025: la feature es dueña solo de las pruebas que declara su ficha (su integral)
+		// D000025: la feature es dueña solo de las pruebas que declara su ficha (su integral); D000065: la iniciativa también.
+		if pg.nivel == nF || pg.nivel == nE {
 			for _, n := range integralesDe(raiz, pg.rel) {
 				for _, x := range pg.pruebas {
 					if x == n {
@@ -122,13 +123,17 @@ func prevista(raiz, rel, n string) bool {
 	return false
 }
 
-// integralesDe: nombres de las func Test que declara la ficha de la feature de la página rel; ninguno si no hay ficha.
+// integralesDe: nombres de las func Test que declara la ficha de la feature o iniciativa de la página rel; ninguno si no hay ficha.
 func integralesDe(raiz, rel string) []string {
-	m := reF.FindStringSubmatch(rel)
-	if m == nil {
+	id := ""
+	if m := reF.FindStringSubmatch(rel); m != nil {
+		id = m[1] + "/" + m[2]
+	} else if m := reE.FindStringSubmatch(rel); m != nil {
+		id = m[1]
+	} else {
 		return nil
 	}
-	f, _, err := backlog.Ver(raiz, m[1]+"/"+m[2])
+	f, _, err := backlog.Ver(raiz, id)
 	if err != nil {
 		return nil
 	}

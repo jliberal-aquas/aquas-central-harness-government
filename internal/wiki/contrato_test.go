@@ -1,6 +1,7 @@
 package wiki
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
@@ -66,6 +67,29 @@ func TestIntegralConDuenoEnSuFeature(t *testing.T) {
 	generar(t, raiz)
 	if p := verificar(t, raiz); len(p) > 0 {
 		t.Fatalf("la integral nombrada en su feature debió tener dueño; problemas: %q", p)
+	}
+}
+
+// TestIntegralConDuenoEnSuIniciativa (E001/F001/S004/X02, D000065): la integral de una iniciativa vive en el README de su iniciativa.
+// Rojo cuando: el gate da «prueba sin slice dueño» a la prueba que la ficha de la iniciativa declara.
+// Verde cuando: nombrada en «Contrato y evidencia» de su iniciativa, el gate queda limpio.
+func TestIntegralConDuenoEnSuIniciativa(t *testing.T) {
+	raiz := conFichas(t)
+	escribir(t, raiz, "README.md", "- [E001](docs/E001/README.md)\n")
+	ficha(t, raiz, backlog.Ficha{ID: "E001", Titulo: "Gobierno", Estado: "EN_CURSO", Secuencia: 1,
+		Pruebas: []backlog.Prueba{{Nombre: "./x:TestNombrada", Intencion: "integral"}}})
+	escribir(t, raiz, "x/x_test.go", "package x\n\nimport \"testing\"\n\nfunc TestA(t *testing.T) {}\n\nfunc TestB(t *testing.T) {}\n\nfunc TestNombrada(t *testing.T) {}\n")
+	reemplazar(t, raiz, tE001, "Lo prometido y su prueba.", "Integral: `TestNombrada`.")
+	generar(t, raiz)
+	if p := verificar(t, raiz); len(p) > 0 {
+		t.Fatalf("la integral nombrada en su iniciativa debió tener dueño; problemas: %q", p)
+	}
+	// Una prueba que la ficha de la iniciativa no declara sigue sin dueño aunque su página la nombre.
+	escribir(t, raiz, "x/x_test.go", "package x\n\nimport \"testing\"\n\nfunc TestA(t *testing.T) {}\n\nfunc TestB(t *testing.T) {}\n\nfunc TestNombrada(t *testing.T) {}\n\nfunc TestAjena(t *testing.T) {}\n")
+	reemplazar(t, raiz, tE001, "Integral: `TestNombrada`.", "Integral: `TestNombrada` y `TestAjena`.")
+	generar(t, raiz)
+	if p := verificar(t, raiz); !strings.Contains(strings.Join(p, " | "), "sin slice dueño: TestAjena") {
+		t.Errorf("una prueba que la ficha no declara debió seguir sin dueño; problemas: %q", p)
 	}
 }
 

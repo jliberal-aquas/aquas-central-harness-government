@@ -67,7 +67,9 @@ continúa: [EJ-INICIO](../README.md#EJ-INICIO)
 
 **Objetivo.** Que cualquier producto de Aquas trabaje con el gobierno central, sin copiarlo a mano.
 
-Prueba integral: `TestCicloDeVidaDelHijo` (pendiente).
+Prueba integral: `TestCicloDeVidaDelHijo` recorre install, build, update y report en un hijo de prueba.
+
+Evidencia: la prueba se escribió con las cuatro órdenes ya hechas. El rojo se tomó rompiendo `update` adrede: en `cmd/aquas/main.go` se quitó la llamada a `hijo.Update`, por decisión del humano el 2026-10-28. Dio `update: el lock debió pasar a la versión del binario`. Se revirtió el daño y quedó en verde el 2026-10-29.
 
 ## Navegación
 

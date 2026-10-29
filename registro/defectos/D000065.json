@@ -1,0 +1,10 @@
+{
+  "id": "D000065",
+  "firma": "wiki-integral-iniciativa-sin-dueno",
+  "que": "la integral de E002 (TestCicloDeVidaDelHijo) da «prueba sin slice dueño» aunque está en el Contrato de docs/E002/README.md",
+  "causa": "revisarTrazabilidad (internal/wiki/contrato.go) solo da dueño a integrales de feature (nivel nF), no de iniciativa",
+  "arreglo": "la iniciativa también es dueña de las pruebas que declara su ficha",
+  "como_me_cercioro": "prueba wiki: integral nombrada en el README de su iniciativa deja el gate limpio",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
