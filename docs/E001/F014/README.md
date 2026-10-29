@@ -81,6 +81,7 @@ Prueba integral: `TestCierreHonesto` (pendiente).
 |---|---|---|
 | [S001](S001.md) | Verde vigente al cerrar | Hecho |
 | [S002](S002.md) | Veredicto del auditor en la ficha | Hecho |
+| S003 | El gancho del veredicto no falla en silencio | Cancelado |
 
 <!-- /GENERADO -->
 

@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F004",
+    "slice": "S005",
+    "tarea": "E001/F004/S005 cerrado: gancho del veredicto con registro y freno"
+  },
+  "siguiente": "aquas backlog siguiente",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "ea15ffa8525133a39b432d1794fdb8bb537e11916baef2bc3e1429e6dc782fc5",
+  "actualizado": "2026-10-29T15:01:58Z",
+  "sello": "982fac70c60426e76b567102d39b2bdaa026c0d6aad43b3e796532dc411a42d7"
+}

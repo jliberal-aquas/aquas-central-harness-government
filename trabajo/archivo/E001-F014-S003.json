@@ -1,0 +1,31 @@
+{
+  "id": "E001/F014/S003",
+  "tipo": "slice",
+  "titulo": "El gancho del veredicto no falla en silencio",
+  "estado": "CANCELADO",
+  "prioridad": "P1",
+  "motivo": "D000068: dos auditores aprobaron E001/F012/S001 y la ficha quedó sin veredicto, sin aviso; humano 2026-10-29 eligió registro más frenar",
+  "padre": "E001/F014",
+  "bloqueado_por": [],
+  "secuencia": 127,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestCierreAgenteTipoDesconocido",
+      "intencion": "valida que un tipo de agente desconocido frena el gancho",
+      "rojo_cuando": "rojo cuando el gancho sale 0 con agent_type desconocido",
+      "verde_cuando": "verde cuando sale 2 y nombra el tipo"
+    },
+    {
+      "prueba": "./cmd/aquas:TestCierreAgenteRegistra",
+      "intencion": "valida que el gancho guarda en .tmp lo recibido y lo hecho",
+      "rojo_cuando": "rojo cuando no queda registro en .tmp",
+      "verde_cuando": "verde cuando cada llamada deja una línea con tipo, ruta y resultado"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/main.go",
+    "cmd/aquas/cierre_agente_test.go",
+    "docs/E001/F014/S003.md"
+  ],
+  "relacion": "nueva"
+}

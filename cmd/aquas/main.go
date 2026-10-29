@@ -274,25 +274,48 @@ func main() {
 			Agente  string `json:"agent_transcript_path"`
 		}
 		datos, _ := io.ReadAll(os.Stdin)
-		_ = json.Unmarshal(datos, &e)
+		if err := json.Unmarshal(datos, &e); err != nil {
+			registrarCierre(raiz, e.Tipo, e.Agente, "", "entrada ilegible") // deja cerrar: un fallo de entrada no traba a los agentes
+			return
+		}
 		if e.Mensaje == "" && e.Agente != "" { // D000053: el cierre real vive en el transcript del subagente
 			e.Mensaje = ultimoMensaje(e.Agente)
 		}
+		primera, _, _ := strings.Cut(strings.TrimSpace(strings.ReplaceAll(e.Mensaje, "\r\n", "\n")), "\n")
+		anotar := func(resultado string) { registrarCierre(raiz, e.Tipo, e.Agente, primera, resultado) }
+		// E001/F004/S005 (D000068): un tipo que encargo no conoce pasaba en silencio. Revisar con cierre vacío
+		// solo da "" para un tipo desconocido; así la lista de tipos sigue en un único lugar (encargo).
+		if encargo.Revisar(e.Tipo, "", false) == "" {
+			anotar("tipo desconocido")
+			if !e.Activo {
+				_, _ = fmt.Fprintf(os.Stderr, "aquas cierre-agente: tipo de agente desconocido «%s»; el gancho no sabe revisar su cierre\n", e.Tipo)
+				os.Exit(2)
+			}
+			return
+		}
 		if m := encargo.Revisar(e.Tipo, e.Mensaje, e.Activo); m != "" {
+			anotar("rechazado: " + m)
 			_, _ = fmt.Fprintln(os.Stderr, m)
 			os.Exit(2)
 		}
+		resultado := "aceptado"
 		if e.Tipo == "auditor" { // E001/F014/S002: el veredicto queda en la ficha; CERRADO lo exige
 			// Sin id y veredicto válidos (stop_hook_active dejó pasar un cierre malo) no se anota nada.
 			if id, v, ok := encargo.Veredicto(e.Mensaje); ok {
 				if err := backlog.AnotarAuditoria(raiz, id, v, time.Now()); err != nil {
+					anotar("rechazado: " + err.Error())
 					_, _ = fmt.Fprintf(os.Stderr, "aquas cierre-agente: el veredicto de %s no quedó anotado: %v\n", id, err)
 					if !e.Activo { // con stop_hook_active nunca se atrapa al auditor: aviso y sale
 						os.Exit(2)
 					}
+					return
 				}
+				resultado = "anotado " + id + " " + v
+			} else {
+				resultado = "sin anotar: el cierre no trae id de tramo y veredicto válidos" // id: — o cierre malo que dejó pasar stop_hook_active
 			}
 		}
+		anotar(resultado)
 	case "guardia":
 		datos, _ := io.ReadAll(os.Stdin)
 		if m := entorno.Validar(raiz); m != "" {
@@ -690,4 +713,25 @@ func versionBinario() string {
 		return bi.Main.Version
 	}
 	return "devel"
+}
+
+// registrarCierre (E001/F004/S005, D000068) anota cada llamada del gancho cierre-agente en .tmp/hooks/cierre-agente.jsonl.
+// Sin línea tras un subagente = Claude Code no invocó el gancho.
+// Un registro que no se puede escribir no cambia la respuesta del gancho.
+func registrarCierre(raiz, tipo, transcript, primera, resultado string) {
+	dir := filepath.Join(raiz, ".tmp", "hooks")
+	if os.MkdirAll(dir, 0o755) != nil {
+		return
+	}
+	l, err := json.Marshal(map[string]string{"fecha": time.Now().UTC().Format(time.RFC3339), "tipo": tipo,
+		"transcript": transcript, "primera": primera, "resultado": resultado})
+	if err != nil {
+		return
+	}
+	f, err := os.OpenFile(filepath.Join(dir, "cierre-agente.jsonl"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
+	if err != nil {
+		return
+	}
+	_, _ = f.Write(append(l, '\n'))
+	_ = f.Close()
 }

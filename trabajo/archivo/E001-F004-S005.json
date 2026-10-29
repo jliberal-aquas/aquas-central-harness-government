@@ -1,0 +1,196 @@
+{
+  "id": "E001/F004/S005",
+  "tipo": "slice",
+  "titulo": "El gancho del veredicto no falla en silencio",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "D000068: dos auditores aprobaron E001/F012/S001 y la ficha quedó sin veredicto, sin aviso; humano 2026-10-29 eligió registro más frenar; F014 archivada no admite hijos",
+  "padre": "E001/F004",
+  "bloqueado_por": [],
+  "secuencia": 128,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestCierreAgenteTipoDesconocido",
+      "intencion": "valida que un tipo de agente desconocido frena el gancho",
+      "rojo_cuando": "rojo cuando el gancho sale 0 con agent_type desconocido",
+      "verde_cuando": "verde cuando sale 2 y nombra el tipo"
+    },
+    {
+      "prueba": "./cmd/aquas:TestCierreAgenteRegistra",
+      "intencion": "valida que el gancho guarda en .tmp lo recibido y lo hecho",
+      "rojo_cuando": "rojo cuando no queda registro en .tmp",
+      "verde_cuando": "verde cuando cada llamada deja una línea con tipo, ruta y resultado"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-29T14:28:53Z",
+    "head": "a7a752caa21c04707df6f45c26d85b6fdb7fee71",
+    "resultado": {
+      "./cmd/aquas:TestCierreAgenteRegistra": "cierre_agente_test.go:69: no hay registro del gancho: open D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestCierreAgenteRegistra476135045\\001\\.tmp\\hooks\\cierre-agente.jsonl: El sistema no puede encontrar la ruta especificada.",
+      "./cmd/aquas:TestCierreAgenteTipoDesconocido": "cierre_agente_test.go:43: no hay registro del gancho: open D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestCierreAgenteTipoDesconocido3875109314\\001\\.tmp\\hooks\\cierre-agente.jsonl: El sistema no puede encontrar la ruta especificada."
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-29T14:58:03Z",
+    "head": "a7a752caa21c04707df6f45c26d85b6fdb7fee71",
+    "huella": {
+      "cmd/aquas/cierre_agente_test.go": "5a20ada7c6a9acf51b61a085b6ee9d2d53378ebc1926fb21ae9e2ed6d75ed018",
+      "cmd/aquas/main.go": "81e16217874777c21fa5b7dfb2517b3d0f1d893c62037dcabd33ed5e91fa94bb"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-29T15:01:36Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/cierre_agente_test.go": "5a20ada7c6a9acf51b61a085b6ee9d2d53378ebc1926fb21ae9e2ed6d75ed018",
+      "cmd/aquas/main.go": "81e16217874777c21fa5b7dfb2517b3d0f1d893c62037dcabd33ed5e91fa94bb"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F004",
+      "marca": "sin_cambio",
+      "motivo": "el slice no cambia la ficha padre"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "el slice no cambia la ficha padre"
+    },
+    {
+      "clave": "pagina:docs/E001/F004/S005.md",
+      "marca": "actualizado",
+      "motivo": "página escrita en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "página escrita en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el slice no cambia esta página"
+    },
+    {
+      "clave": "nombra:.claude/agents/auditor.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:.claude/agents/orchestrator.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-haiku.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-sonnet.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:cmd/aquas/aprobacion_test.go\u003edocs/E001/F002/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:cmd/aquas/arranque_test.go\u003edocs/E001/F005/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/backlog/aprobacion_test.go\u003edocs/E001/F002/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/S004.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/F005/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/main.go",
+    "cmd/aquas/cierre_agente_test.go",
+    "docs/E001/F004/S005.md",
+    "docs/E001/F004/README.md"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-29T14:50:32Z",
+    "huella": "929cf83b35a45693f912fa48176d92d2fac908e9b2913c909c1a5da19c778b87",
+    "mensaje": "apruebo E001/F004/S005 con push"
+  },
+  "codigo": [
+    "cmd/aquas/main.go"
+  ],
+  "relacion": "nueva"
+}

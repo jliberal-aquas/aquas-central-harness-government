@@ -75,6 +75,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 1. Registro de defectos (S001).
 2. Freno en el cierre del turno (S002).
 3. Reincidencia que crea trabajo (S003).
+4. El gancho del veredicto no falla en silencio ([S005](S005.md)).
 
 ## Cómo se usa
 
@@ -97,6 +98,7 @@ Prueba de S001: `TestRegistroDeDefectos`.
 | S002 | Stop frena fallo sin defecto | Planeado |
 | S003 | Reincidencia crea slice E000 | Planeado |
 | S004 | Stop frena pedido de dale sin plan | Planeado |
+| [S005](S005.md) | El gancho del veredicto no falla en silencio | Hecho |
 
 <!-- /GENERADO -->
 
