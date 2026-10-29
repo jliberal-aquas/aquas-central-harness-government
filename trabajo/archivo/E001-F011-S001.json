@@ -2,7 +2,7 @@
   "id": "E001/F011/S001",
   "tipo": "slice",
   "titulo": "Interruptor de hooks globales",
-  "estado": "BORRADOR",
+  "estado": "CANCELADO",
   "prioridad": "P1",
   "motivo": "el repo no puede apagar un hook global que choca con el gobierno",
   "padre": "E001/F011",

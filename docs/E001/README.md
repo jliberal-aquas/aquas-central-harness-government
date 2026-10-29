@@ -156,7 +156,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F008](F008/README.md) | Documentación verificable de pruebas, código y arreglos | Hecho |
 | [F009](F009/README.md) | Backlog sin fichas repetidas | Hecho |
 | [F010](F010/README.md) | Contrato aprobado antes de construir | Hecho |
-| F011 | Frenos propios del gobierno | Planeado |
+| [F011](F011/README.md) | Frenos propios del gobierno | Planeado |
 | F012 | Prevención activa | Planeado |
 | [F013](F013/README.md) | Calidad Go en el gate | Planeado |
 | [F014](F014/README.md) | Cierre honesto | Hecho |

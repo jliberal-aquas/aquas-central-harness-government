@@ -1,0 +1,20 @@
+{
+  "id": "E001/F011/S002",
+  "tipo": "slice",
+  "titulo": "el freno de aquas deja pasar memoria fijar",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "D000029 reapareció en aquas presupuesto (E001/F015/S002): al frenar bloquea memoria fijar, que el cierre exige",
+  "padre": "E001/F011",
+  "bloqueado_por": [],
+  "secuencia": 126,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestFrenoDejaPasarMemoria",
+      "intencion": "valida que con el freno activo memoria fijar suelta pasa sin contar y lo demás se frena",
+      "rojo_cuando": "rojo cuando memoria fijar se frena con el turno o la feature desbordados",
+      "verde_cuando": "verde cuando memoria fijar suelta pasa y encadenada u otro comando se frena"
+    }
+  ],
+  "relacion": "nueva"
+}
