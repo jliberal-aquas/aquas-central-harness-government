@@ -157,7 +157,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F009](F009/README.md) | Backlog sin fichas repetidas | Hecho |
 | [F010](F010/README.md) | Contrato aprobado antes de construir | Hecho |
 | [F011](F011/README.md) | Frenos propios del gobierno | Hecho |
-| F012 | Prevención activa | Planeado |
+| [F012](F012/README.md) | Prevención activa | Planeado |
 | [F013](F013/README.md) | Calidad Go en el gate | Planeado |
 | [F014](F014/README.md) | Cierre honesto | Hecho |
 | [F015](F015/README.md) | Gate humano por feature | Hecho |
