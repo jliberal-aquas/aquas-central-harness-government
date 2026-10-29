@@ -10,10 +10,10 @@ import (
 func TestCerrarExigeMemoriaArchivada(t *testing.T) {
 	raiz := t.TempDir()
 	for _, args := range [][]string{
-		{"nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"},
-		{"nuevo", "id=E001/F002", "titulo=B", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"},
-		{"nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"},
-		{"nuevo", "id=E001/F002/S004", "titulo=Q", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"},
+		{"nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"},
+		{"nuevo", "id=E001/F002", "titulo=B", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"},
+		{"nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"},
+		{"nuevo", "id=E001/F002/S004", "titulo=Q", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"},
 		{"estado", "E001/F002/S003", "EN_CURSO"},
 	} {
 		if args[0] == "estado" {

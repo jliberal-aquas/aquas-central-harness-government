@@ -21,7 +21,7 @@ func TestNuevoExigeRelacion(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(raiz, "registro", "defectos", "D000007.json"), []byte(`{"id":"D000007","que":"exportar a CSV pierde acentos"}`), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	ok := []string{"id=E001/F002/S002", "titulo=Exportar backlog en CSV", "prioridad=P1", "motivo=m", "prueba=./p:TestFalla=f|r|v"}
+	ok := []string{"id=E001/F002/S002", "titulo=Exportar backlog en CSV", "prioridad=P1", "motivo=m", "que_hace=hace algo", "prueba=./p:TestFalla=f|r|v"}
 	casos := []struct {
 		nombre, relacion string
 		dice             []string

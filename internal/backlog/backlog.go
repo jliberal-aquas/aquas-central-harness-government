@@ -49,7 +49,11 @@ type Ficha struct {
 	Codigo    []string  `json:"codigo,omitempty"`
 	Relacion  string    `json:"relacion,omitempty"`  // E001/F009/S001: nueva, amplia:<id> o corrige:<id>
 	Ediciones []Edicion `json:"ediciones,omitempty"` // E001/F009/S003: cambios antes de arrancar
+	QueHace   string    `json:"que_hace,omitempty"`  // E001/F002/S011: una oración que dice qué hace
 }
+
+// MaxPalabrasQueHace: tope de que_hace; igual a wiki.MaxPalabrasOracion (backlog no puede importar wiki).
+const MaxPalabrasQueHace = 20
 
 // Estados y prioridades del canónico E001 (sección Backlog).
 var (
@@ -162,14 +166,14 @@ func escribir(raiz, dir string, f Ficha) error {
 	return os.WriteFile(filepath.Join(d, nombre(f.ID)), append(b, '\n'), 0o644)
 }
 
-// Nuevo crea una ficha desde campos id=… titulo=… prioridad=… motivo=… relacion=… [bloqueado_por=A,B].
+// Nuevo crea una ficha desde campos id=… titulo=… que_hace=… prioridad=… motivo=… relacion=… [bloqueado_por=A,B].
 func Nuevo(raiz string, campos []string) (Ficha, error) {
 	v := map[string]string{}
 	var pruebas []string
 	for _, c := range campos {
 		k, val, ok := strings.Cut(c, "=")
-		if !ok || !esta([]string{"id", "titulo", "prioridad", "motivo", "bloqueado_por", "prueba", "relacion"}, k) {
-			return Ficha{}, fmt.Errorf("campo desconocido %q: usa id, titulo, prioridad, motivo, bloqueado_por, prueba, relacion", c)
+		if !ok || !esta([]string{"id", "titulo", "prioridad", "motivo", "bloqueado_por", "prueba", "relacion", "que_hace"}, k) {
+			return Ficha{}, fmt.Errorf("campo desconocido %q: usa id, titulo, prioridad, motivo, que_hace, bloqueado_por, prueba, relacion", c)
 		}
 		if k == "prueba" { // se repite: una por prueba
 			pruebas = append(pruebas, val)
@@ -188,6 +192,12 @@ func Nuevo(raiz string, campos []string) (Ficha, error) {
 		if v[k] == "" {
 			return Ficha{}, fmt.Errorf("falta %s", k)
 		}
+	}
+	if v["que_hace"] == "" {
+		return Ficha{}, errors.New("falta que_hace: una oración que diga qué hace (que_hace=…)")
+	}
+	if n := len(strings.Fields(v["que_hace"])); n > MaxPalabrasQueHace {
+		return Ficha{}, fmt.Errorf("que_hace tiene %d palabras: el máximo es %d", n, MaxPalabrasQueHace)
 	}
 	if !esta(prioridades, v["prioridad"]) {
 		return Ficha{}, fmt.Errorf("prioridad %q inválida: %s", v["prioridad"], strings.Join(prioridades, " | "))
@@ -233,7 +243,7 @@ func Nuevo(raiz string, campos []string) (Ficha, error) {
 	}
 	f := Ficha{ID: id, Tipo: tipo, Titulo: v["titulo"], Estado: "BORRADOR", Prioridad: v["prioridad"],
 		Motivo: v["motivo"], Padre: padre, BloqueadoPor: bloq, Secuencia: sec + 1}
-	f.Pruebas, f.Relacion = ps, v["relacion"]
+	f.Pruebas, f.Relacion, f.QueHace = ps, v["relacion"], v["que_hace"]
 	return f, escribir(raiz, Activo, f)
 }
 

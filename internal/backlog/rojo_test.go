@@ -100,7 +100,7 @@ func conRojoYVerde(t *testing.T, raiz, id string) {
 
 func TestNuevoExigePruebas(t *testing.T) {
 	raiz := base(t)
-	ok := []string{"id=E001/F002/S001", "titulo=T", "prioridad=P1", "motivo=m"}
+	ok := []string{"id=E001/F002/S001", "titulo=T", "prioridad=P1", "motivo=m", "que_hace=hace algo"}
 	for _, c := range []struct {
 		nombre string
 		campos []string

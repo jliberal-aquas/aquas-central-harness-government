@@ -1,0 +1,498 @@
+{
+  "id": "E001/F002/S011",
+  "tipo": "slice",
+  "titulo": "La ficha dice qué hace",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "las tablas de hijos aún llevan la descripción a mano; decisión humana 2026-10-21, después de E000/F005/S004",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 49,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestFichaGuardaQueHace",
+      "intencion": "nuevo exige que_hace y lo guarda; una ficha vieja sin ese campo sigue legible",
+      "rojo_cuando": "nuevo acepta una ficha sin que_hace o la ficha vieja deja de leerse",
+      "verde_cuando": "nuevo guarda que_hace y la ficha sin el campo se lee bien"
+    },
+    {
+      "prueba": "./internal/wiki:TestHijosMuestranQueHace",
+      "intencion": "la tabla generada de hijos muestra el que_hace de cada hijo",
+      "rojo_cuando": "la tabla de hijos omite el que_hace de un hijo o muestra otro texto",
+      "verde_cuando": "cada fila de la tabla generada trae el que_hace de su ficha"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-29T15:37:58Z",
+    "head": "3d15797a0b48ab6365bcd9b5c608a5b47b47147f",
+    "resultado": {
+      "./internal/backlog:TestFichaGuardaQueHace": "que_hace_test.go:54: E001 con 20 palabras debe pasar: campo desconocido \"que_hace=palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra\": usa id, titulo, prioridad, motivo, bloqueado_por, prueba, relacion",
+      "./internal/wiki:TestHijosMuestranQueHace": "que_hace_test.go:38: con que_hace, la tabla no debe mostrar el título:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-29T16:04:34Z",
+    "head": "3d15797a0b48ab6365bcd9b5c608a5b47b47147f",
+    "huella": {
+      "cmd/aquas/aprobacion_test.go": "b5b5794cfae8c75a5626356b4b7aca150dd2604ed797147b87364f4625a2aea7",
+      "cmd/aquas/arranque_test.go": "4bd8f693b0070370f2fe1f4d234d88ba1eb5c0e1ee65096f6042c8c62c891095",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/cierre_test.go": "f1e0d79b5d6ab0df25634a3b29b5b972d3ee9937816b404fe5c60bf3a69b847d",
+      "cmd/aquas/hijos_test.go": "c1685f32b9c1d05e85947a2b9fdd1b797da7bd567b294ee39e03edf8bdd4c991",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/main.go": "537ef9ac6e970144082825ccb5a8dea9a93d7bcc88f20868cab2ba5d82a1ea18",
+      "cmd/aquas/rojo_test.go": "60a2594aa52d7325ba094cdc6feb59a1eac349750c775562510e9b5a91268cd7",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "internal/backlog/backlog.go": "50a1735acfc812be8649e3131268fa406e6dd3bddef591df10300450f361676e",
+      "internal/backlog/backlog_test.go": "634bdfa7b58e6a108e4aa9b672902e4912cb403b3eba69eb8fb247efe7ce995f",
+      "internal/backlog/que_hace_test.go": "3216577d7219c8845d5ef7e6fbe24f09562cf407993f2a8702e6c548e6943970",
+      "internal/backlog/relacion_test.go": "b7ff81cc746d8c5edfc827680f32e92e9c77c631b88b821f36f3963a1d12183b",
+      "internal/backlog/repetidos_test.go": "8be26b48525ce377a8f108bef244b3ec1858baf984d4e163eca64d23b80c8026",
+      "internal/backlog/rojo_test.go": "5b3936e4d28aaff049185b61a82cdbe54288c653f50872e21b1ac0ee8873fb97",
+      "internal/defecto/defecto_test.go": "2d4476d6c83a3c12ba31be66c194882e7734e55d19f5665726e1ded2fa765435",
+      "internal/defecto/relacion_test.go": "13b4d959297f0234fe5d24f963899ca040656292d469f9b09852f8e2b7f30f9c",
+      "internal/wiki/hijos.go": "a62613accfaf5edbde2d42e1da15a3017e448b618736822873800d2d37ec9f3d",
+      "internal/wiki/que_hace_test.go": "0f6261944a5c28a2369a128ca7355db9477e7b34bc3fe8b5a1dc2cff0ace04a8"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-29T16:06:55Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/aprobacion_test.go": "b5b5794cfae8c75a5626356b4b7aca150dd2604ed797147b87364f4625a2aea7",
+      "cmd/aquas/arranque_test.go": "4bd8f693b0070370f2fe1f4d234d88ba1eb5c0e1ee65096f6042c8c62c891095",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/cierre_test.go": "f1e0d79b5d6ab0df25634a3b29b5b972d3ee9937816b404fe5c60bf3a69b847d",
+      "cmd/aquas/hijos_test.go": "c1685f32b9c1d05e85947a2b9fdd1b797da7bd567b294ee39e03edf8bdd4c991",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/main.go": "537ef9ac6e970144082825ccb5a8dea9a93d7bcc88f20868cab2ba5d82a1ea18",
+      "cmd/aquas/rojo_test.go": "60a2594aa52d7325ba094cdc6feb59a1eac349750c775562510e9b5a91268cd7",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "internal/backlog/backlog.go": "50a1735acfc812be8649e3131268fa406e6dd3bddef591df10300450f361676e",
+      "internal/backlog/backlog_test.go": "634bdfa7b58e6a108e4aa9b672902e4912cb403b3eba69eb8fb247efe7ce995f",
+      "internal/backlog/que_hace_test.go": "3216577d7219c8845d5ef7e6fbe24f09562cf407993f2a8702e6c548e6943970",
+      "internal/backlog/relacion_test.go": "b7ff81cc746d8c5edfc827680f32e92e9c77c631b88b821f36f3963a1d12183b",
+      "internal/backlog/repetidos_test.go": "8be26b48525ce377a8f108bef244b3ec1858baf984d4e163eca64d23b80c8026",
+      "internal/backlog/rojo_test.go": "5b3936e4d28aaff049185b61a82cdbe54288c653f50872e21b1ac0ee8873fb97",
+      "internal/defecto/defecto_test.go": "2d4476d6c83a3c12ba31be66c194882e7734e55d19f5665726e1ded2fa765435",
+      "internal/defecto/relacion_test.go": "13b4d959297f0234fe5d24f963899ca040656292d469f9b09852f8e2b7f30f9c",
+      "internal/wiki/hijos.go": "a62613accfaf5edbde2d42e1da15a3017e448b618736822873800d2d37ec9f3d",
+      "internal/wiki/que_hace_test.go": "0f6261944a5c28a2369a128ca7355db9477e7b34bc3fe8b5a1dc2cff0ace04a8"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F002",
+      "marca": "sin_cambio",
+      "motivo": "el slice no cambia la ficha padre"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "el slice no cambia la ficha padre"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/S011.md",
+      "marca": "actualizado",
+      "motivo": "página escrita o regenerada en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "página escrita o regenerada en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "el slice no cambia esta página"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:cmd/aquas/aprobacion_feature_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:cmd/aquas/presupuesto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003einternal/backlog/backlog.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/cierre_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/README.md\u003ecmd/aquas/arranque_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/arranque_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003einternal/wiki/hijos.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F016/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003ecmd/aquas/arranque_test.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/backlog/aprobacion_test.go\u003edocs/E001/F002/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/S004.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/casos_borde_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F002/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/backlog.go",
+    "internal/backlog/que_hace_test.go",
+    "internal/wiki/hijos.go",
+    "internal/wiki/que_hace_test.go",
+    "cmd/aquas/main.go",
+    "docs/E001/F002/S011.md",
+    "docs/E001/F002/README.md",
+    "cmd/aquas/aprobacion_test.go",
+    "cmd/aquas/arranque_test.go",
+    "cmd/aquas/backlog_test.go",
+    "cmd/aquas/cierre_test.go",
+    "cmd/aquas/hijos_test.go",
+    "cmd/aquas/integral_test.go",
+    "cmd/aquas/rojo_test.go",
+    "cmd/aquas/tabla_integral_test.go",
+    "internal/backlog/backlog_test.go",
+    "internal/backlog/relacion_test.go",
+    "internal/backlog/repetidos_test.go",
+    "internal/backlog/rojo_test.go",
+    "internal/defecto/defecto_test.go",
+    "internal/defecto/relacion_test.go"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-29T15:35:42Z",
+    "huella": "64e79f1dfbe336a52fec464d6961e36d87233012517cadf092b3fa0d22db921b",
+    "mensaje": "apruebo E001/F002/S011 con push"
+  },
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/backlog.go",
+    "internal/wiki/hijos.go"
+  ]
+}

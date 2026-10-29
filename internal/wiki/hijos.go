@@ -65,7 +65,11 @@ func tablaHijos(raiz, padreRel string, hijos []backlog.Ficha) string {
 			rel, _ := filepath.Rel(filepath.Dir(filepath.FromSlash(padreRel)), filepath.FromSlash(dest))
 			nombre = "[" + corto + "](" + filepath.ToSlash(rel) + ")"
 		}
-		fmt.Fprintf(&b, "| %s | %s | %s |\n", nombre, celda(h.Titulo), estadoVisible[h.Estado])
+		que := h.Titulo
+		if strings.TrimSpace(h.QueHace) != "" {
+			que = h.QueHace
+		}
+		fmt.Fprintf(&b, "| %s | %s | %s |\n", nombre, celda(que), estadoVisible[h.Estado])
 	}
 	return b.String()
 }

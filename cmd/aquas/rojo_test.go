@@ -27,9 +27,9 @@ func fichaEnDisco(t *testing.T, raiz, rel string) map[string]json.RawMessage {
 func TestMemoriaSegunBacklog(t *testing.T) {
 	raiz := t.TempDir()
 	for _, args := range [][]string{
-		{"nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"},
-		{"nuevo", "id=E001/F002", "titulo=B", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"},
-		{"nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"},
+		{"nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"},
+		{"nuevo", "id=E001/F002", "titulo=B", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"},
+		{"nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"},
 	} {
 		if s := aquas(t, raiz, "", append([]string{"backlog"}, args...)...); s.codigo != 0 {
 			t.Fatalf("backlog %v: %+v", args, s)
@@ -76,10 +76,10 @@ func TestCerrarSliceDePuntaAPunta(t *testing.T) {
 			t.Fatalf("backlog %v: se esperaba exit %d con %q; dio %+v", args, codigo, want, s)
 		}
 	}
-	paso(0, "E001", "nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestBandera=pide el arreglo|r|v")
-	paso(0, "E001/F002", "nuevo", "id=E001/F002", "titulo=B", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestBandera=pide el arreglo|r|v")
+	paso(0, "E001", "nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestBandera=pide el arreglo|r|v")
+	paso(0, "E001/F002", "nuevo", "id=E001/F002", "titulo=B", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestBandera=pide el arreglo|r|v")
 	rojoIntegral(t, raiz, []string{"nuevo", "id=E001/F002"})
-	paso(0, "E001/F002/S003", "nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestOtra=otra|r|v")
+	paso(0, "E001/F002/S003", "nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestOtra=otra|r|v")
 	paso(0, "TestBandera · pide el arreglo", "pruebas", "E001/F002/S003", "./p:TestBandera=pide el arreglo|r|v")
 	aprobarCLI(t, raiz, "E001/F002/S003")
 	paso(0, "EN_CURSO", "estado", "E001/F002/S003", "EN_CURSO")

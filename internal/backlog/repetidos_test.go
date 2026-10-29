@@ -11,23 +11,23 @@ import (
 // Verde cuando: las tres reglas se cumplen de punta a punta.
 func TestBacklogSinRepetidos(t *testing.T) {
 	raiz := base(t)
-	nuevo(t, raiz, "id=E001/F002/S001", "titulo=Exportar el backlog a CSV", "prioridad=P1", "motivo=reportes", "relacion=nueva")
+	nuevo(t, raiz, "id=E001/F002/S001", "titulo=Exportar el backlog a CSV", "prioridad=P1", "motivo=reportes", "que_hace=hace algo", "relacion=nueva")
 	pisar(t, raiz, Archivo, Ficha{ID: "E001/F003", Tipo: "feature", Titulo: "Guardia de rutas", Estado: "CERRADO", Prioridad: "P1",
 		Motivo: "m", Padre: "E001", BloqueadoPor: []string{}, Secuencia: 9})
 	prueba := "prueba=./p:TestFalla=falla a propósito|r|v"
 
 	// 1. Una ficha parecida sin relacion se niega y nombra la parecida.
-	_, err := Nuevo(raiz, []string{"id=E001/F002/S002", "titulo=Exportar backlog en CSV", "prioridad=P1", "motivo=reportes", prueba})
+	_, err := Nuevo(raiz, []string{"id=E001/F002/S002", "titulo=Exportar backlog en CSV", "prioridad=P1", "motivo=reportes", "que_hace=hace algo", prueba})
 	if err == nil || !strings.Contains(err.Error(), "relacion") || !strings.Contains(err.Error(), "E001/F002/S001") {
 		t.Errorf("parecida sin relacion: debió negarse nombrando E001/F002/S001; dio %v", err)
 	}
 	// 2. Ampliar algo cerrado se niega y remite a una feature nueva.
-	_, err = Nuevo(raiz, []string{"id=E001/F002/S002", "titulo=Guardia también en Bash", "prioridad=P1", "motivo=m", "relacion=amplia:E001/F003", prueba})
+	_, err = Nuevo(raiz, []string{"id=E001/F002/S002", "titulo=Guardia también en Bash", "prioridad=P1", "motivo=m", "que_hace=hace algo", "relacion=amplia:E001/F003", prueba})
 	if err == nil || !strings.Contains(err.Error(), "feature nueva") {
 		t.Errorf("ampliar lo cerrado: debió remitir a feature nueva; dio %v", err)
 	}
 	// 3. Con relacion declarada nace.
-	if _, err := Nuevo(raiz, []string{"id=E001/F002/S002", "titulo=Exportar backlog en CSV", "prioridad=P1", "motivo=reportes", "relacion=amplia:E001/F002/S001", prueba}); err != nil {
+	if _, err := Nuevo(raiz, []string{"id=E001/F002/S002", "titulo=Exportar backlog en CSV", "prioridad=P1", "motivo=reportes", "que_hace=hace algo", "relacion=amplia:E001/F002/S001", prueba}); err != nil {
 		t.Fatalf("con relacion debió nacer: %v", err)
 	}
 	// 4. Editar antes de arrancar guarda lo anterior y el porqué.

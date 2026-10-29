@@ -17,7 +17,7 @@ func TestTablaBacklog(t *testing.T) {
 		{"id=E009/F001/S001", "titulo=Slice de prueba"},
 	} {
 		args := append([]string{"backlog", "nuevo"}, a...)
-		args = append(args, "prioridad=P2", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v")
+		args = append(args, "prioridad=P2", "motivo=m", "que_hace=hace algo", "relacion=nueva", "prueba=./p:TestA=a|r|v")
 		if s := aquas(t, raiz, "", args...); s.codigo != 0 {
 			t.Fatalf("aquas %v: exit %d\n%s%s", args, s.codigo, s.out, s.err)
 		}

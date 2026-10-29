@@ -53,7 +53,7 @@ func TestCompilarRegeneraHijos(t *testing.T) {
 	if err := os.WriteFile(inicio, []byte("# Inicio\n\n## Navegación\n\n- Glosario\n"), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	if s := aquas(t, raiz, "", "backlog", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestA=a|r|v"); s.codigo != 0 {
+	if s := aquas(t, raiz, "", "backlog", "nuevo", "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"); s.codigo != 0 {
 		t.Fatalf("backlog nuevo: %+v", s)
 	}
 	pagina := func() string {
@@ -64,7 +64,7 @@ func TestCompilarRegeneraHijos(t *testing.T) {
 	if s.codigo != 0 || !strings.Contains(s.out, "docs/README.md") {
 		t.Fatalf("compilar escribe el inicio y lo informa; dio %+v", s)
 	}
-	if !strings.Contains(pagina(), "## Navegación\n\n<!-- GENERADO") || !strings.Contains(pagina(), "| E001 | Gobierno | Planeado |\n") {
+	if !strings.Contains(pagina(), "## Navegación\n\n<!-- GENERADO") || !strings.Contains(pagina(), "| E001 | hace algo | Planeado |\n") {
 		t.Fatalf("el inicio lista E001 como Planeado, sin enlace (no tiene página):\n%s", pagina())
 	}
 	if s := aquas(t, raiz, "", "backlog", "estado", "E001", "EN_CURSO"); s.codigo != 0 {
@@ -73,7 +73,7 @@ func TestCompilarRegeneraHijos(t *testing.T) {
 	if s := aquas(t, raiz, "", "compilar"); s.codigo != 0 || !strings.Contains(s.out, "docs/README.md") {
 		t.Fatalf("tras cambiar la ficha, compilar reescribe el inicio; dio %+v", s)
 	}
-	if c := pagina(); !strings.Contains(c, "| E001 | Gobierno | En curso |\n") || strings.Contains(c, "Planeado") || !strings.Contains(c, "- Glosario\n") {
+	if c := pagina(); !strings.Contains(c, "| E001 | hace algo | En curso |\n") || strings.Contains(c, "Planeado") || !strings.Contains(c, "- Glosario\n") {
 		t.Fatalf("el bloque cambia a En curso y lo escrito a mano se conserva:\n%s", c)
 	}
 	if s := aquas(t, raiz, "", "compilar"); strings.Contains(s.out, "docs/README.md") {

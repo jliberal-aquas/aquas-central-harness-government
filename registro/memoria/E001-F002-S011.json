@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F002",
+    "slice": "S011",
+    "tarea": "E001/F002/S011 cerrado: la ficha dice qué hace"
+  },
+  "siguiente": "definir arreglo D000068",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "80202d90281c2b9d10583a378b70de845e53acd7277683c8a6f90cd51e4140bc",
+  "actualizado": "2026-10-29T16:07:54Z",
+  "sello": "8f9db2f35453955522c4d1147620876bc9c271c54473cddcdafd753d78d80bcf"
+}

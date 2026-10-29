@@ -21,9 +21,9 @@ func repoContrato(t *testing.T) string {
 	escribir(t, raiz, "p/p_test.go", "package p\n\nimport \"testing\"\n\nfunc TestBandera(t *testing.T) { t.Fatal(\"falta el arreglo\") }\n")
 	escribir(t, raiz, "docs/E001/F002/S003.md", paginaS003)
 	for _, args := range [][]string{
-		{"nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestBandera=pide el arreglo|r|v"},
-		{"nuevo", "id=E001/F002", "titulo=B", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestBandera=pide el arreglo|r|v"},
-		{"nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "prueba=./p:TestBandera=pide el arreglo|r|v"},
+		{"nuevo", "id=E001", "titulo=G", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestBandera=pide el arreglo|r|v"},
+		{"nuevo", "id=E001/F002", "titulo=B", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestBandera=pide el arreglo|r|v"},
+		{"nuevo", "id=E001/F002/S003", "titulo=R", "prioridad=P1", "motivo=m", "relacion=nueva", "que_hace=hace algo", "prueba=./p:TestBandera=pide el arreglo|r|v"},
 	} {
 		if s := aquas(t, raiz, "", append([]string{"backlog"}, args...)...); s.codigo != 0 {
 			t.Fatalf("backlog %v: %+v", args, s)

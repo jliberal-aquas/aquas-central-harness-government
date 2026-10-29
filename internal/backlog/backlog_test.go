@@ -18,6 +18,9 @@ func nuevo(t *testing.T, raiz string, campos ...string) Ficha {
 	if !strings.Contains(strings.Join(campos, " "), "relacion=") {
 		campos = append(campos, "relacion=nueva") // desde E001/F009/S001 toda ficha declara su relación
 	}
+	if !strings.Contains(strings.Join(campos, " "), "que_hace=") {
+		campos = append(campos, "que_hace=hace algo") // desde E001/F002/S011 toda ficha dice qué hace
+	}
 	f, err := Nuevo(raiz, campos)
 	if err != nil {
 		t.Fatalf("Nuevo(%v): %v", campos, err)
@@ -80,7 +83,7 @@ func TestNuevoCreaFicha(t *testing.T) {
 
 func TestNuevoRechaza(t *testing.T) {
 	raiz := base(t)
-	ok := []string{"titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a|r|v"}
+	ok := []string{"titulo=T", "prioridad=P1", "motivo=m", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"}
 	for _, c := range []struct {
 		nombre string
 		campos []string
@@ -89,7 +92,7 @@ func TestNuevoRechaza(t *testing.T) {
 		{"id mal formado", append([]string{"id=E1/F2"}, ok...), "id"},
 		{"padre inexistente", append([]string{"id=E001/F009/S001"}, ok...), "padre"},
 		{"id repetido", append([]string{"id=E001/F002"}, ok...), "ya existe"},
-		{"prioridad inválida", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P9", "motivo=m", "prueba=./p:TestA=a|r|v"}, "prioridad"},
+		{"prioridad inválida", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P9", "motivo=m", "que_hace=hace algo", "prueba=./p:TestA=a|r|v"}, "prioridad"},
 		{"sin motivo", []string{"id=E001/F002/S001", "titulo=T", "prioridad=P1", "prueba=./p:TestA=a|r|v"}, "motivo"},
 		{"sin título", []string{"id=E001/F002/S001", "prioridad=P1", "motivo=m", "prueba=./p:TestA=a|r|v"}, "titulo"},
 		{"campo desconocido", append([]string{"id=E001/F002/S001", "color=rojo"}, ok...), "color"},

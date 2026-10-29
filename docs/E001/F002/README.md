@@ -96,6 +96,7 @@ En la iniciativa, el pedido de Jesús ya es trabajo. Ahora hay que ubicarlo en l
 8. S008: definir antes de ejecutar.
 9. S009: cerrar exige memoria archivada.
 10. S010: [wiki](../../glosario.md#wiki) por niveles, generada desde las fichas.
+11. [S011](S011.md): la ficha dice qué hace.
 
 ## Cómo se usa
 
@@ -145,7 +146,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | [S008](S008.md) | siguiente avisa features sin slices | Hecho |
 | [S009](S009.md) | Cerrar exige memoria archivada | Hecho |
 | [S010](S010.md) | Wiki por niveles generada desde las fichas | Hecho |
-| S011 | La ficha dice qué hace | Planeado |
+| [S011](S011.md) | La ficha dice qué hace | Hecho |
 | S012 | Sello: nivel trabajo | Planeado |
 | [S013](S013.md) | Sello sin commit base | Hecho |
 | [S014](S014.md) | Sello sin ruido de derivados | Hecho |
