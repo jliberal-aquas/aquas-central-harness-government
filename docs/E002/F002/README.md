@@ -61,7 +61,12 @@ continúa: [EJ-E002](../README.md#EJ-E002)
 
 ## Paso a paso
 
-1. [Slices](../../glosario.md#slice) por definir con el humano.
+1. Install y update corren desde la carpeta del hijo ([S001](S001.md)).
+2. Install acepta una carpeta con código ([S002](S002.md)).
+3. El hijo avisa si su lock quedó atrás ([S003](S003.md)).
+4. El [gate](../../glosario.md#gate) del hijo frena huecos PENDIENTE ([S004](S004.md)).
+5. La regla de [Go](../../glosario.md#go) queda solo en la central ([S005](S005.md)).
+6. Un [hook](../../glosario.md#hook) recompila el `CLAUDE.md` al editar un hueco ([S006](S006.md)).
 
 ## Cómo se usa
 
@@ -72,9 +77,9 @@ continúa: [EJ-E002](../README.md#EJ-E002)
 
 **Objetivo.** Instalar o actualizar un hijo es un comando, y el hijo queda con `CLAUDE.md`.
 
-Prueba integral: `TestHijoEnUnComando` (pendiente).
+Prueba integral: `TestHijoEnUnComando`. Rojo el 2026-10-25 (`install: exit status 1`); verde el 2026-10-29.
 
-Evidencia real: la instalación en la landing aquas.cl, copiada aquí al cerrar.
+Evidencia real: la salida de la instalación en la landing aquas.cl no se copió. El humano decidió cerrar sin ella el 2026-10-28.
 
 ## Navegación
 

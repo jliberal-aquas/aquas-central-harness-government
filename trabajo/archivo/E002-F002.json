@@ -2,7 +2,7 @@
   "id": "E002/F002",
   "tipo": "feature",
   "titulo": "Instalar y actualizar un hijo con un comando cada uno",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "instalar la landing aquas.cl exigió install, escribir 3 huecos a mano y build; install rechaza carpetas con código",
   "padre": "E002",
@@ -22,6 +22,11 @@
     "resultado": {
       "./cmd/aquas:TestHijoEnUnComando": "hijo_comando_test.go:34: install: exit status 1"
     }
+  },
+  "verde": {
+    "fecha": "2026-10-29T00:58:31Z",
+    "head": "53264262884f6063a9a687b6aaece6c74b07d7ed",
+    "huella": {}
   },
   "relacion": "nueva"
 }
