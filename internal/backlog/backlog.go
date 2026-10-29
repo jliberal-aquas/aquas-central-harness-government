@@ -454,10 +454,19 @@ func sinDefinir(act map[string]Ficha) (Ficha, bool) {
 }
 
 // Definir: qué hacer con lo que `siguiente` saca sin definir; "" para un slice.
-func Definir(f Ficha) string {
+// E001/F002/S008/X01 (D000064): con algún hijo CERRADO en el archivo no falta definirla sino cerrarla;
+// hijos solo cancelados no la definen.
+func Definir(raiz string, f Ficha) string {
 	hijos := map[string]string{"iniciativa": "features", "feature": "slices"}[f.Tipo]
 	if hijos == "" {
 		return ""
+	}
+	if _, arc, err := todas(raiz); err == nil {
+		for _, h := range arc {
+			if h.Padre == f.ID && h.Estado == "CERRADO" {
+				return fmt.Sprintf("cerrar %s: sus %s ya pasaron al archivo; registra su rojo y su verde si faltan y ciérrala, o agrégale más\n", f.ID, hijos)
+			}
+		}
 	}
 	return fmt.Sprintf("definir %s: crea sus %s y reprioriza el backlog antes de seguir con slices\n", f.ID, hijos)
 }

@@ -1,0 +1,10 @@
+{
+  "id": "D000064",
+  "firma": "backlog-siguiente-ignora-archivados",
+  "que": "backlog siguiente pide definir E002/F002 aunque sus 6 slices están cerrados",
+  "causa": "sinDefinir (internal/backlog/backlog.go:437) solo mira hijos activos; los archivados no cuentan",
+  "arreglo": "si todos los hijos están archivados, siguiente pide cerrar la feature en vez de definirla",
+  "como_me_cercioro": "prueba con feature BORRADOR y todos sus slices en archivo: siguiente dice cerrar",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

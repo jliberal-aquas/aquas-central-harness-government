@@ -125,6 +125,33 @@
     "docs/E001/F002/**",
     "gobierno/canonico/**"
   ],
+  "arreglos": [
+    {
+      "id": "E001/F002/S008/X01",
+      "titulo": "siguiente pide cerrar, no definir, la feature con todos sus hijos archivados",
+      "motivo": "D000064: E002/F002 tenía 6 slices cerrados y siguiente pedía definirla",
+      "fecha": "2026-10-29T00:59:47Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/backlog:TestSiguientePideCerrarConHijosArchivados",
+          "intencion": "valida que siguiente pide cerrar la feature con todos sus hijos archivados",
+          "rojo_cuando": "rojo cuando pide definir una feature con todos sus slices archivados",
+          "verde_cuando": "verde cuando pide cerrarla y sigue pidiendo definir la feature sin hijos"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-29T01:01:00Z",
+        "head": "97cf0730435c9377bfbba2370ea5d1c3df78dd2c",
+        "resultado": {
+          "./internal/backlog:TestSiguientePideCerrarConHijosArchivados": "siguiente_test.go:74: feature con sus slices archivados: pide cerrarla; dio \"definir E001/F003: crea sus slices y reprioriza el backlog antes de seguir con slices\\n\""
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-29T01:14:21Z",
+        "head": "97cf0730435c9377bfbba2370ea5d1c3df78dd2c"
+      }
+    }
+  ],
   "codigo": [
     "cmd/aquas/main.go",
     "internal/backlog/backlog.go"

@@ -1,6 +1,8 @@
 package backlog
 
 import (
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 )
@@ -33,13 +35,13 @@ func TestSiguienteExigeDefinirAntes(t *testing.T) {
 	nuevo(t, raiz, "id=E001/F003/S001", "titulo=T", "prioridad=P3", "motivo=m")
 	pide("E002/F001") // E001/F003 ya tiene slice; la bloqueada también exige definirse
 
-	if m := Definir(Ficha{ID: "E002", Tipo: "iniciativa"}); !strings.Contains(m, "definir E002") || !strings.Contains(m, "features") || !strings.Contains(m, "reprioriza") {
+	if m := Definir(raiz, Ficha{ID: "E002", Tipo: "iniciativa"}); !strings.Contains(m, "definir E002") || !strings.Contains(m, "features") || !strings.Contains(m, "reprioriza") {
 		t.Errorf("mensaje de iniciativa: %q", m)
 	}
-	if m := Definir(Ficha{ID: "E002/F001", Tipo: "feature"}); !strings.Contains(m, "definir E002/F001") || !strings.Contains(m, "slices") {
+	if m := Definir(raiz, Ficha{ID: "E002/F001", Tipo: "feature"}); !strings.Contains(m, "definir E002/F001") || !strings.Contains(m, "slices") {
 		t.Errorf("mensaje de feature: %q", m)
 	}
-	if m := Definir(Ficha{ID: "E001/F002/S001", Tipo: "slice"}); m != "" {
+	if m := Definir(raiz, Ficha{ID: "E001/F002/S001", Tipo: "slice"}); m != "" {
 		t.Errorf("un slice no se define: %q", m)
 	}
 
@@ -47,4 +49,45 @@ func TestSiguienteExigeDefinirAntes(t *testing.T) {
 		t.Fatal(err)
 	}
 	pide("E001/F002/S001") // el slice en curso no se interrumpe
+}
+
+// TestSiguientePideCerrarConHijosArchivados (E001/F002/S008/X01, D000064): una feature o iniciativa
+// activa sin hijos activos y con algún hijo CERRADO en el archivo no está «sin definir»: siguiente pide cerrarla.
+// Rojo cuando: el mensaje dice «definir» para la feature con todos sus slices archivados.
+// Verde cuando: dice «cerrar» con esos hijos y sigue diciendo «definir» sin ningún hijo.
+func TestSiguientePideCerrarConHijosArchivados(t *testing.T) {
+	raiz := base(t)
+	nuevo(t, raiz, "id=E001/F003", "titulo=T", "prioridad=P1", "motivo=m")
+	s := nuevo(t, raiz, "id=E001/F003/S001", "titulo=T", "prioridad=P1", "motivo=m")
+	s.Estado = "CERRADO"
+	if err := escribir(raiz, Archivo, s); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Remove(filepath.Join(raiz, filepath.FromSlash(Activo), nombre(s.ID))); err != nil {
+		t.Fatal(err)
+	}
+	f, _, err := Ver(raiz, "E001/F003")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if m := Definir(raiz, f); !strings.Contains(m, "cerrar E001/F003") || strings.Contains(m, "definir") {
+		t.Errorf("feature con sus slices archivados: pide cerrarla; dio %q", m)
+	}
+	if m := Definir(raiz, Ficha{ID: "E001/F004", Tipo: "feature"}); !strings.Contains(m, "definir E001/F004") {
+		t.Errorf("feature sin ningún hijo: pide definirla; dio %q", m)
+	}
+	c := Ficha{ID: "E001/F005/S001", Tipo: "slice", Padre: "E001/F005", Estado: "CANCELADO", Titulo: "T", Prioridad: "P1", Motivo: "m"}
+	if err := escribir(raiz, Archivo, c); err != nil {
+		t.Fatal(err)
+	}
+	if m := Definir(raiz, Ficha{ID: "E001/F005", Tipo: "feature"}); !strings.Contains(m, "definir E001/F005") {
+		t.Errorf("feature con solo slices cancelados: pide definirla; dio %q", m)
+	}
+	g := Ficha{ID: "E009/F001", Tipo: "feature", Padre: "E009", Estado: "CERRADO", Titulo: "T", Prioridad: "P1", Motivo: "m"}
+	if err := escribir(raiz, Archivo, g); err != nil {
+		t.Fatal(err)
+	}
+	if m := Definir(raiz, Ficha{ID: "E009", Tipo: "iniciativa"}); !strings.Contains(m, "cerrar E009") || !strings.Contains(m, "features") {
+		t.Errorf("iniciativa con sus features cerradas: pide cerrarla; dio %q", m)
+	}
 }
