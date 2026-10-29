@@ -1,0 +1,10 @@
+{
+  "id": "D000066",
+  "firma": "pagina-slice-sin-ficha",
+  "que": "una página docs/E/F/S.md sin ficha en trabajo/ pasa todo el gate, incluida la tabla Casos borde (hallazgo 9 de E001/F012/S001-A1)",
+  "causa": "ningún control ata cada página de slice a su ficha; revisarCasosBorde y prevista salen en silencio si backlog.Ver falla",
+  "arreglo": "el gate exige ficha para cada página de slice",
+  "como_me_cercioro": "página de slice sin ficha hace fallar verificar; con ficha pasa",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

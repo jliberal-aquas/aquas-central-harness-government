@@ -74,7 +74,7 @@ Prueba integral: `TestPrevencionActivaGobernada`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | Casos borde y vigencia en el contrato | Planeado |
+| [S001](S001.md) | Casos borde y vigencia en el contrato | Hecho |
 
 <!-- /GENERADO -->
 

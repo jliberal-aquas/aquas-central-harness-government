@@ -1,0 +1,493 @@
+{
+  "id": "E001/F012/S001",
+  "tipo": "slice",
+  "titulo": "Casos borde y vigencia en el contrato",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-23: aprobó con a los 4 textos (ciclo, principios 11 y 12, regla 04)",
+  "padre": "E001/F012",
+  "bloqueado_por": [],
+  "secuencia": 98,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestContratoExigeCasosBorde",
+      "intencion": "valida que la página del slice trae la tabla de casos borde con las 7 categorías",
+      "rojo_cuando": "rojo cuando falta una categoría y el gate da OK",
+      "verde_cuando": "verde cuando el gate nombra la categoría que falta"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-29T02:42:36Z",
+    "head": "f2e2202334889d6ae269cb309ea288935ea90443",
+    "resultado": {
+      "./internal/wiki:TestContratoExigeCasosBorde": "casos_borde_test.go:105: se esperaba problema con \"docs/E001/F001/S002.md: prueba nombrada no existe en el código: TestFantasma\"; hubo: []"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-29T03:29:08Z",
+    "head": "f2e2202334889d6ae269cb309ea288935ea90443",
+    "huella": {
+      "internal/hijo/gosolo_test.go": "b1ca4e27da7cc7d64c8ebef95ccd21988e2dcfb76a8413aa41769849c831e807",
+      "internal/wiki/casos_borde.go": "e298eda3d7883dd572f7a1637b78c20bcecc7da08832ec109bed5469e3630b23",
+      "internal/wiki/casos_borde_test.go": "22798fe8c2977e0dbf0f6e330e1c7cf1af997d64c85921d1cbcbf8e18efb3714",
+      "internal/wiki/contrato.go": "78fad206ce0b84afe1745af3b41d2ba98ac1396e673f453885a759f58df37a1d"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-29T07:46:56Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "internal/hijo/gosolo_test.go": "b1ca4e27da7cc7d64c8ebef95ccd21988e2dcfb76a8413aa41769849c831e807",
+      "internal/wiki/casos_borde.go": "e298eda3d7883dd572f7a1637b78c20bcecc7da08832ec109bed5469e3630b23",
+      "internal/wiki/casos_borde_test.go": "22798fe8c2977e0dbf0f6e330e1c7cf1af997d64c85921d1cbcbf8e18efb3714",
+      "internal/wiki/contrato.go": "78fad206ce0b84afe1745af3b41d2ba98ac1396e673f453885a759f58df37a1d"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F012",
+      "marca": "actualizado",
+      "motivo": "feature F012 se cierra con este slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "el slice no lo afecta"
+    },
+    {
+      "clave": "pagina:docs/E001/F012/S001.md",
+      "marca": "actualizado",
+      "motivo": "página escrita en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F012/README.md",
+      "marca": "actualizado",
+      "motivo": "página escrita en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "página escrita en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/auditor.md\u003egobierno/config/agentes.json",
+      "marca": "actualizado",
+      "motivo": "recompilado o ajustado en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/orchestrator.md\u003egobierno/config/agentes.json",
+      "marca": "actualizado",
+      "motivo": "recompilado o ajustado en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-haiku.md\u003egobierno/config/agentes.json",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-sonnet.md\u003egobierno/config/agentes.json",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:CLAUDE.md\u003egobierno/config/agentes.json",
+      "marca": "actualizado",
+      "motivo": "recompilado o ajustado en este slice"
+    },
+    {
+      "clave": "nombra:README.md\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:README.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:cmd/aquas/aviso.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:cmd/aquas/aviso_test.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:cmd/aquas/hook_hijo_test.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/wiki",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:cmd/aquas/punta_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S005.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/README.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S002.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S004.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S004.md\u003einternal/wiki/contrato.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S001.md\u003egobierno/config/agentes.json",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003egobierno/config/agentes.json",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S003.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/wiki/contrato.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003egobierno/config/agentes.json",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003einternal/wiki/contrato.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S002.md\u003einternal/wiki/contrato.go",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003egobierno/config/agentes.json",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/config/agentes.json",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:gobierno/config/documentos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "recompilado o ajustado en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/reglas/04_CASOS_BORDE.md",
+      "marca": "actualizado",
+      "motivo": "recompilado o ajustado en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/config/agentes.json",
+      "marca": "actualizado",
+      "motivo": "recompilado o ajustado en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/biblioteca/biblioteca.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador.go\u003egobierno/config/agentes.json",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/compilador/modulo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/hijo/build_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo_test.go\u003egobierno/config/agentes.json",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/hijo/instalar_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/hijo/pendiente_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/hijo/report_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/hijo/update_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/integral_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/ref/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la referencia sigue válida; el slice no cambia su sentido"
+    }
+  ],
+  "alcance": [
+    "internal/wiki/casos_borde.go",
+    "internal/wiki/casos_borde_test.go",
+    "internal/wiki/contrato.go",
+    "docs/E001/F012",
+    "gobierno/canonico/constitucion.md",
+    "gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+    "gobierno/canonico/reglas/04_CASOS_BORDE.md",
+    "gobierno/config/agentes.json",
+    "gobierno/config/documentos.json"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "docs/E001/F012/S001.md",
+      "motivo": "la carpeta docs/E001/F012 no cubre sus páginas; compilar reescribe E001 y ref/codigo"
+    },
+    {
+      "ruta": "docs/E001/F012/README.md",
+      "motivo": "la carpeta docs/E001/F012 no cubre sus páginas; compilar reescribe E001 y ref/codigo"
+    },
+    {
+      "ruta": "docs/E001/README.md",
+      "motivo": "la carpeta docs/E001/F012 no cubre sus páginas; compilar reescribe E001 y ref/codigo"
+    },
+    {
+      "ruta": "docs/ref/codigo.md",
+      "motivo": "la carpeta docs/E001/F012 no cubre sus páginas; compilar reescribe E001 y ref/codigo"
+    },
+    {
+      "ruta": "internal/hijo/gosolo_test.go",
+      "motivo": "TestGoSoloEnCentral fija 8 principios; su intención es numeración seguida, y los principios 9 y 10 la rompen"
+    },
+    {
+      "ruta": "docs/ref/constitucion.md",
+      "motivo": "hallazgos A1: textos que contaban 8 principios y metodología sin la tabla"
+    },
+    {
+      "ruta": "docs/README.md",
+      "motivo": "hallazgos A1: textos que contaban 8 principios y metodología sin la tabla"
+    },
+    {
+      "ruta": "docs/E002/F002/S005.md",
+      "motivo": "hallazgos A1: textos que contaban 8 principios y metodología sin la tabla"
+    },
+    {
+      "ruta": "gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "motivo": "hallazgos A1: textos que contaban 8 principios y metodología sin la tabla"
+    }
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-29T03:29:00Z",
+    "huella": "59cb9d28d40fa6c3ab165fea69a5c2b6f75523d3dea0b8199ff7adf3a4acec33",
+    "mensaje": "apruebo E001/F012/S001 con push"
+  },
+  "codigo": [
+    "gobierno/config/agentes.json",
+    "internal/wiki/casos_borde.go",
+    "internal/wiki/contrato.go"
+  ],
+  "relacion": "nueva"
+}

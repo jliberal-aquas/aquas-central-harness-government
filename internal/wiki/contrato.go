@@ -87,6 +87,7 @@ func revisarTrazabilidad(raiz string, paginas map[string]*pagina, orden []string
 		if pg.nivel != nS {
 			continue
 		}
+		ps = append(ps, revisarCasosBorde(raiz, rel, enCodigo)...)
 		for _, n := range pg.pruebas {
 			nombradas[n] = true
 			if enCodigo[n] == "" && !prevista(raiz, rel, n) {

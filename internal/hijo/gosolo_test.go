@@ -3,6 +3,7 @@ package hijo
 import (
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"testing"
 	"testing/fstest"
@@ -10,7 +11,7 @@ import (
 
 // TestGoSoloEnCentral (E002/F002/S005): la regla de Go como lenguaje único gobierna solo a la central.
 // Rojo cuando: el CLAUDE.md del hijo, armado con la constitución real, contiene «lenguaje único».
-// Verde cuando: el hijo no la trae, la central la conserva y sus principios van del 1 al 8.
+// Verde cuando: el hijo no la trae, la central la conserva y sus principios van seguidos desde 1.
 func TestGoSoloEnCentral(t *testing.T) {
 	raiz := filepath.Join("..", "..")
 	b, err := os.ReadFile(filepath.Join(raiz, "gobierno", "canonico", "constitucion.md"))
@@ -38,10 +39,23 @@ func TestGoSoloEnCentral(t *testing.T) {
 	if !strings.Contains(string(central), "lenguaje único") {
 		t.Error("el CLAUDE.md de la central debe conservar la regla de Go")
 	}
-	for nombre, txt := range map[string]string{"central": string(central), "hijo": string(hijo)} {
-		if got := numeros(txt); got != "1,2,3,4,5,6,7,8" {
-			t.Errorf("%s: los principios deben ir del 1 al 8 seguidos; van %s", nombre, got)
+	// E001/F012/S001: la cuenta crece con la constitución; lo que se exige es que vayan seguidos desde 1 y que hijo y central coincidan.
+	seguidos := func(got string) bool {
+		ns := strings.Split(got, ",")
+		for i, n := range ns {
+			if n != strconv.Itoa(i+1) {
+				return false
+			}
 		}
+		return len(ns) >= 8
+	}
+	for nombre, txt := range map[string]string{"central": string(central), "hijo": string(hijo)} {
+		if got := numeros(txt); !seguidos(got) {
+			t.Errorf("%s: los principios deben ir seguidos desde 1 (al menos 8); van %s", nombre, got)
+		}
+	}
+	if c, h := numeros(string(central)), numeros(string(hijo)); c != h {
+		t.Errorf("hijo y central deben tener los mismos principios; central %s, hijo %s", c, h)
 	}
 }
 

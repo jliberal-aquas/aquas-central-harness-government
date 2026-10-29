@@ -4,7 +4,7 @@ Referencia de la ley principal del repositorio. Vive en `gobierno/canonico/const
 
 ## En una frase
 
-La constitución son las ocho reglas que todo [agente](../glosario.md#agente) lee al empezar a trabajar aquí.
+La constitución son las reglas que todo [agente](../glosario.md#agente) lee al empezar a trabajar aquí.
 
 ## Para qué existe
 
@@ -17,7 +17,7 @@ Qué contiene:
 | Parte | Qué dice |
 |---|---|
 | Misión | Este repo gobierna y genera la base de todo proyecto con Claude Code |
-| Principios | Ocho reglas: lo escrito manda, la máquina revisa, un cambio por commit… Go como único lenguaje es regla solo de la central, en «Canónicos y compilación» |
+| Principios | Diez reglas: lo escrito manda, la máquina revisa, un cambio por commit… Go como único lenguaje es regla solo de la central, en «Canónicos y compilación» |
 | Canónicos y compilación | Qué archivos se editan, cuáles se generan y cómo se sellan |
 | Mapa del repo | Qué guarda cada carpeta |
 

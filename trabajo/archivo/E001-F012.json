@@ -2,7 +2,7 @@
   "id": "E001/F012",
   "tipo": "feature",
   "titulo": "Prevención activa",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "humano 2026-10-23: gobierno activo, no reactivo; casos borde y vigencia antes de construir",
   "padre": "E001",
@@ -16,5 +16,17 @@
       "verde_cuando": "verde cuando el gate lo rechaza y el contrato completo pasa"
     }
   ],
+  "rojo": {
+    "fecha": "2026-10-29T02:42:34Z",
+    "head": "f2e2202334889d6ae269cb309ea288935ea90443",
+    "resultado": {
+      "./internal/wiki:TestPrevencionActivaGobernada": "casos_borde_test.go:57: se esperaba problema con \"docs/E001/F001/S002.md: falta la tabla «Casos borde»\"; hubo: []"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-29T03:29:10Z",
+    "head": "f2e2202334889d6ae269cb309ea288935ea90443",
+    "huella": {}
+  },
   "relacion": "nueva"
 }

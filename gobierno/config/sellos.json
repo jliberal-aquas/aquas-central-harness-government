@@ -1,16 +1,17 @@
 {
   "salidas": {
     ".claude/agents/auditor.md": {
-      "sha256": "10193c8bd8f2f7f17e9c76c8accdc07ddf22a0d6c846d094a3d5b6b28f83d4ac",
+      "sha256": "a5300c5f5370a50d7d83fe54957794a64a6f75bafa426c067ccc20c5b8115f38",
       "fuentes": {
         "gobierno/canonico/agentes/auditor.md": "26ed53205bd326fe4277cd1e10687d7c43f7052429a73d8bf2d62fe4d9045e6f",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
         "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "ede968491ed72b0a2d180ecbada6204bbccaf6a031d2d872010ef8313c5e4baa",
-        "gobierno/config/agentes.json": "26f60352364209889e1dc4003312e2ca78f95a9f91c8388119831af5f08a383e"
+        "gobierno/canonico/reglas/04_CASOS_BORDE.md": "3a32e4dbb094362f20a4cc4bbda8fd181e12a0575fecf8bfc3cac8a94cec5efe",
+        "gobierno/config/agentes.json": "ce0126a4993d69a151440a15230039e5068a8cf0c66aad2ac17b9872819fd0f7"
       }
     },
     ".claude/agents/orchestrator.md": {
-      "sha256": "9cb880400447c7689b1aea3a77a407054924423e12b93f3615ab3c1ccab9b7b9",
+      "sha256": "a39609c63601537833e0cde7142dd6519c12ea4715d9095f3f00738f6c438eff",
       "fuentes": {
         "gobierno/canonico/agentes/orquestador.md": "3a4d89eebfc87123e69b7ec6daef2e1aeda831c6f8befd668d7cdf6142bf70c9",
         "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md": "08a3028fe7a5e84ba6847fa9f1790d8076e3ed2f96ee7b33262ec9026745451c",
@@ -19,7 +20,8 @@
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
         "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "ede968491ed72b0a2d180ecbada6204bbccaf6a031d2d872010ef8313c5e4baa",
         "gobierno/canonico/reglas/03_DOD_COMUN.md": "c81754ac7822aaaf880b0646695f05cf0abc942c53d47b88969be0036d4efc06",
-        "gobierno/config/agentes.json": "26f60352364209889e1dc4003312e2ca78f95a9f91c8388119831af5f08a383e"
+        "gobierno/canonico/reglas/04_CASOS_BORDE.md": "3a32e4dbb094362f20a4cc4bbda8fd181e12a0575fecf8bfc3cac8a94cec5efe",
+        "gobierno/config/agentes.json": "ce0126a4993d69a151440a15230039e5068a8cf0c66aad2ac17b9872819fd0f7"
       }
     },
     ".claude/agents/worker-haiku.md": {
@@ -28,7 +30,7 @@
         "gobierno/canonico/agentes/worker.md": "462cf913e7c52c0fccd25bb56d668396dab6dfaf296fc6e2b4bfc23cb9ea39eb",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
         "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "ede968491ed72b0a2d180ecbada6204bbccaf6a031d2d872010ef8313c5e4baa",
-        "gobierno/config/agentes.json": "26f60352364209889e1dc4003312e2ca78f95a9f91c8388119831af5f08a383e"
+        "gobierno/config/agentes.json": "ce0126a4993d69a151440a15230039e5068a8cf0c66aad2ac17b9872819fd0f7"
       }
     },
     ".claude/agents/worker-sonnet.md": {
@@ -37,13 +39,13 @@
         "gobierno/canonico/agentes/worker.md": "462cf913e7c52c0fccd25bb56d668396dab6dfaf296fc6e2b4bfc23cb9ea39eb",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
         "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "ede968491ed72b0a2d180ecbada6204bbccaf6a031d2d872010ef8313c5e4baa",
-        "gobierno/config/agentes.json": "26f60352364209889e1dc4003312e2ca78f95a9f91c8388119831af5f08a383e"
+        "gobierno/config/agentes.json": "ce0126a4993d69a151440a15230039e5068a8cf0c66aad2ac17b9872819fd0f7"
       }
     },
     "CLAUDE.md": {
-      "sha256": "f3796af468d459ff61dd356c3e574ef9c2b310783f41718723e0d482ac8647d3",
+      "sha256": "65913d383113e99208f466be13b799b310bfb001a040459a3d5f1885b33ed2af",
       "fuentes": {
-        "gobierno/canonico/constitucion.md": "1b9a7845a9c3a9ba61f65a37410f2364760d0425d4b607764f930c985e916fc1",
+        "gobierno/canonico/constitucion.md": "5e9a6fee466d386749e223619b71473e9095fe3245a169465cd9a895a87e11a1",
         "gobierno/config/documentos.json": "8725c5c1c167976365eafc575bb74ad42840bffc0bfba3123ded26f2574bb6dd"
       }
     }

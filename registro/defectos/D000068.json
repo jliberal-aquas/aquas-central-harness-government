@@ -1,0 +1,10 @@
+{
+  "id": "D000068",
+  "firma": "gancho-veredicto-no-anota",
+  "que": "auditor A4 terminó normal con cierre válido (id E001-F012-S001-A4, APROBADO) y la ficha quedó sin auditoria; tampoco hubo exit 2 que lo frenara",
+  "causa": "no confirmada: SubagentStop no corrió, no halló el cierre en el transcript o encargo.Veredicto no lo reconoció; el transcript vive fuera del repo y la regla de sandbox impide leerlo",
+  "arreglo": "registrar en .tmp la entrada del hook cierre-agente y el motivo cuando no anota, para diagnosticar",
+  "como_me_cercioro": "lanzar un auditor sobre un slice EN_CURSO y ver la ficha con auditoria",
+  "ocurrencias": [],
+  "relacion": "E001/F012/S001"
+}

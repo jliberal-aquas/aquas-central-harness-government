@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F012",
+    "slice": "S001",
+    "tarea": "F012/S001 cerrado: casos borde y principios 9-10"
+  },
+  "siguiente": "aquas backlog siguiente",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "f41e1af9466f2188931e9e9025f4a18bddd66c3941624e9b16c366edcd902b1f",
+  "actualizado": "2026-10-29T03:42:19Z",
+  "sello": "1c317757de832c2440f0b6827c2c9b68e287982ac98a090a4a37a24dbc8bc8d8"
+}

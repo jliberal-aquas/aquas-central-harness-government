@@ -19,6 +19,8 @@
 6. Contexto permanente en formato Caveman: corto, denso, sin relleno. Detalle extenso va en archivos bajo demanda.
 7. Fuente canónica → compilado: se edita solo el canónico; todo derivado se regenera y se sella.
 8. Calidad primero; economía de tokens segundo. Token = moneda de todo uso agéntico: medir y justificar cada gasto.
+9. Prevención activa: cada contrato busca sus fallos antes del rojo, por categoría de caso borde, con una prueba por caso que aplique. Cada defecto se cierra con su causa y con la búsqueda del mismo hueco en otros lugares.
+10. Vigencia: todo claim técnico se valida contra la documentación oficial vigente antes de usarlo.
 
 ## Canónicos y compilación
 <!-- solo-hijo

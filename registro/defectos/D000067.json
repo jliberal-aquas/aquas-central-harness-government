@@ -1,0 +1,10 @@
+{
+  "id": "D000067",
+  "firma": "veredicto-auditor-sin-anotar",
+  "que": "el auditor entregó APROBADO por SubagentHandback y siguió vivo; SubagentStop no corrió y la ficha quedó sin veredicto",
+  "causa": "un comando del auditor en segundo plano quedó esperando entrada; el gancho cierre-agente solo corre al terminar el agente",
+  "arreglo": "la regla del auditor prohíbe procesos en segundo plano e intérpretes interactivos",
+  "como_me_cercioro": "lanzar un auditor y comprobar que su veredicto queda en la ficha",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
