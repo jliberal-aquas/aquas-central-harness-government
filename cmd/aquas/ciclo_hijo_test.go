@@ -33,6 +33,10 @@ func TestCicloDeVidaDelHijo(t *testing.T) {
 	if !strings.Contains(leer("CLAUDE.md"), "PENDIENTE") {
 		t.Error("install: CLAUDE.md debió armarse con los huecos PENDIENTE")
 	}
+	// E001/F007/S003: install por la CLI deja /backlog con el aquas instalado.
+	if s := leer(".claude/skills/backlog/SKILL.md"); !strings.Contains(s, "aquas backlog tabla") || strings.Contains(s, "aquas.sh") {
+		t.Errorf("install: /backlog del hijo debió correr el aquas instalado:\n%s", s)
+	}
 
 	// build: un hueco escrito entra al CLAUDE.md.
 	mision := "- Misión de la prueba del ciclo.\n"

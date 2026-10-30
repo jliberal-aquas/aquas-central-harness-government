@@ -256,6 +256,8 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/hijo/huecos.go](../../internal/hijo/huecos.go) | `PrepararHuecos` | `(dir string) error` | PrepararHuecos (E002/F002/S001): crea con texto PENDIENTE los huecos de la central |
 | [internal/hijo/huecos.go](../../internal/hijo/huecos.go) | `Listo` | `(dir string) error` | Listo deja al hijo con sus huecos, su hook de build (S006) y su CLAUDE.md armado. |
 | [internal/hijo/report.go](../../internal/hijo/report.go) | `Report` | `(dir, quePaso, repro string) (string, error)` | Report arma el borrador de issue para la central: firma del hijo, versión |
+| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `skillPropio` | `(dir string) error` | skillPropio (hallazgo A1.1): error si el hijo ya tiene un SKILL.md de /backlog que no generó aquas; build no lo pisa. |
+| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `armarSkill` | `(dir string) (txt string, hay bool, err error)` | armarSkill devuelve el SKILL.md del hijo. hay=false si la central sellada no trae el skill (central anterior |
 | [internal/hijo/update.go](../../internal/hijo/update.go) | `Update` | `(dest string, central fs.FS, version string) ([]string, error)` | Update reemplaza la central sellada por otra versión y reescribe el lock. |
 | [internal/hijo/update.go](../../internal/hijo/update.go) | `alterados` | `(dest string) ([]string, error)` | alterados lista los archivos sellados que ya no coinciden con el lock. |
 | [internal/memoria/archivar.go](../../internal/memoria/archivar.go) | `RutaArchivo` | `(f Foco) string` | RutaArchivo: registro/memoria/<E>-<F>-<S>.json; "" si el foco no llega a slice. |

@@ -26,7 +26,7 @@
 <!-- solo-hijo
 - Gobierno central sellado: `.aquas/central/` (solo lectura; lo verifica `.aquas/lock.json`). NO editar.
 - Lo propio del hijo: `gobierno/canonico/huecos/<nombre>.md`, uno por hueco de la central.
-- Compilar: `aquas build .` → regenera este `CLAUDE.md`. NO editarlo a mano.
+- Compilar: `aquas build .` → regenera este `CLAUDE.md` y `.claude/skills/backlog/SKILL.md` (`/backlog`). NO editarlos a mano.
 - Defecto del gobierno → se reporta a la central; no se corrige en el hijo.
 -->
 <!-- solo-central -->

@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F007",
+    "slice": "S003",
+    "tarea": "S003 aprobado (A4) y sellado; cerrando"
+  },
+  "siguiente": "corregir F007 README:15 → cerrar F007 → commit y push",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "9c4479da2e1409c2411765d1040c21c0edee847959e641b15cae1c4f4a36ee06",
+  "actualizado": "2026-10-30T16:05:33Z",
+  "sello": "83499a5cb81d00b028ccf8eaa8ac19ee8fddb0ac4ec6494c0c622b8b23fb0d76"
+}

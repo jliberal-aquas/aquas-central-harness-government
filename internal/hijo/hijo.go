@@ -45,6 +45,11 @@ func Install(dest string, central fs.FS, version string) error {
 		{"CLAUDE.md", "ya tiene un CLAUDE.md propio; sácalo de la carpeta (p. ej. renómbralo CLAUDE.previo.md), corre aquas install y pasa su contenido a los huecos de " +
 			CarpetaHuecos + "/: " + strings.Join(huecos, ", ")},
 	}
+	// E001/F007/S003 (hallazgo A2.1): si la central trae /backlog, un SKILL.md previo del hijo es conflicto.
+	if _, err := fs.Stat(central, FuenteSkill); err == nil {
+		conflictos = append(conflictos, struct{ ruta, aviso string }{RutaSkill,
+			"ya tiene un /backlog propio en " + RutaSkill + "; renómbralo o muévelo y corre aquas install"})
+	}
 	for _, c := range conflictos {
 		_, err := os.Lstat(filepath.Join(dest, c.ruta))
 		switch {

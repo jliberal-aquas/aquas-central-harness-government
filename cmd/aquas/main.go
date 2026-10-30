@@ -87,7 +87,7 @@ func main() {
 				listar("GATE FALLIDO · hijo:", m)
 				os.Exit(1)
 			}
-			fmt.Println("GATE OK · hijo: central sellada y CLAUDE.md al día")
+			fmt.Println("GATE OK · hijo: central sellada, CLAUDE.md y /backlog al día")
 			return
 		}
 		calidadGo := revisarGo(raiz) // E001/F013/S001: primero, para que se vea aunque otro chequeo corte
@@ -219,7 +219,7 @@ func main() {
 		if err := hijo.Build(os.Args[2]); err != nil {
 			fallar(2, err) // exit 2: Claude Code muestra el error al modelo (E002/F002/S006)
 		}
-		fmt.Printf("CLAUDE.md armado en %s\n", os.Args[2])
+		fmt.Printf("CLAUDE.md y /backlog armados en %s\n", os.Args[2])
 	case "report": // borrador de issue para la central; no envía: lo decide el humano
 		if len(os.Args) != 5 {
 			fallar(1, errors.New("uso: aquas report <carpeta-del-hijo> \"<qué pasó>\" \"<cómo reproducirlo>\""))

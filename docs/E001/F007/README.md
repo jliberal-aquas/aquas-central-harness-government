@@ -12,7 +12,7 @@ El comando «backlog tabla» pone cada ficha activa en una fila con su [iniciati
 
 **El problema.** Para ver qué falta hay que recorrer carpetas y fichas una por una.
 
-**La solución.** Un [slice](../../glosario.md#slice) agrega `backlog tabla`, ordenable por prioridad, iniciativa o feature.
+**La solución.** `backlog tabla` muestra las fichas activas en el orden en que se trabajarán. `/backlog` la muestra en el chat del central y de cada hijo.
 
 ## Analogía
 
@@ -71,7 +71,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 |---|---|---|
 | S001 | Tabla de pendientes ordenable, con histórico opcional | Cancelado |
 | [S002](S002.md) | aquas backlog tabla imprime las fichas activas en columnas, en el orden de siguiente; /backlog la muestra | Hecho |
-| S003 | aquas build escribe el skill /backlog en el hijo para mostrar el backlog de ese repo | Planeado |
+| [S003](S003.md) | aquas build escribe el skill /backlog en el hijo para mostrar el backlog de ese repo | Hecho |
 
 <!-- /GENERADO -->
 

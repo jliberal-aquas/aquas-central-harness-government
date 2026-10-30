@@ -32,7 +32,26 @@ func Build(dir string) error {
 	if err != nil {
 		return err
 	}
-	return os.WriteFile(filepath.Join(dir, "CLAUDE.md"), []byte(txt), 0o644)
+	skill, hay, err := armarSkill(dir) // E001/F007/S003: todo se arma antes de escribir
+	if err != nil {
+		return err
+	}
+	if hay {
+		if err := skillPropio(dir); err != nil {
+			return err
+		}
+	}
+	if err := os.WriteFile(filepath.Join(dir, "CLAUDE.md"), []byte(txt), 0o644); err != nil {
+		return err
+	}
+	if !hay {
+		return nil
+	}
+	p := filepath.Join(dir, filepath.FromSlash(RutaSkill))
+	if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+		return err
+	}
+	return os.WriteFile(p, []byte(skill), 0o644)
 }
 
 // armar devuelve el CLAUDE.md que Build escribiría, sin escribirlo.
@@ -142,6 +161,18 @@ func Verificar(dir string) []string {
 	}
 	if hay, err := os.ReadFile(filepath.Join(dir, "CLAUDE.md")); err != nil || string(hay) != quiero {
 		prob = append(prob, "CLAUDE.md desfasado o ausente: corre aquas build "+dir)
+	}
+	skill, hay, err := armarSkill(dir) // E001/F007/S003
+	if err != nil {
+		return append(prob, err.Error())
+	}
+	if hay {
+		if err := skillPropio(dir); err != nil { // hallazgo A2.4: build se negaría; no pedirle build
+			return append(prob, err.Error())
+		}
+		if b, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(RutaSkill))); err != nil || string(b) != skill {
+			prob = append(prob, RutaSkill+" desfasado o ausente: corre aquas build "+dir)
+		}
 	}
 	return prob
 }

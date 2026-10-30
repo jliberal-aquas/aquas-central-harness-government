@@ -50,9 +50,9 @@
       }
     },
     "CLAUDE.md": {
-      "sha256": "10abcf5c872bcb4dc2ce8eed3fe760e7ed4a2599673e5c6862c444e2e69351ec",
+      "sha256": "22701c48d27e05bad15bb29fd4269d7365f2c3464e44f76caa68fb5569b12de5",
       "fuentes": {
-        "gobierno/canonico/constitucion.md": "981486efbbc9df06ae7632de8661fe1eedd6df0d91a141c7b81029e0cf7f97ff",
+        "gobierno/canonico/constitucion.md": "b4ebf8df6c3b27eac0305b1634383843e3bff7a5dea1473a7c2ec5198b60e5a4",
         "gobierno/config/documentos.json": "c1dfa7f4438f1932fccf86b39d4d355bae7cf3cd63f1a4431e33d8e67c0cdd78"
       }
     }
