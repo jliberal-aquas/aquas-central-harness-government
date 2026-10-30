@@ -11,7 +11,7 @@ import (
 // TestBuildEscribeSkillBacklog (E001/F007/S003): build deja /backlog en el hijo, sacado de la central sellada y
 // apuntando al aquas instalado; update lo renueva; sin fuente no hay skill ni error.
 // Rojo cuando: build no escribe el skill, deja el comando del central o Verificar no ve un SKILL.md editado.
-// Verde cuando: el skill corre `aquas backlog tabla`, conserva el frontmatter y Verificar lo cuida como a CLAUDE.md.
+// Verde cuando: el skill corre `aquas backlog table`, conserva el frontmatter y Verificar lo cuida como a CLAUDE.md.
 func TestBuildEscribeSkillBacklog(t *testing.T) {
 	canon, err := os.ReadFile("../../gobierno/canonico/skills/backlog.md")
 	if err != nil {
@@ -57,7 +57,7 @@ func TestBuildEscribeSkillBacklog(t *testing.T) {
 	if !strings.Contains(fm, "disable-model-invocation: true") {
 		t.Errorf("el skill del hijo debe seguir siendo solo del humano:\n%s", fm)
 	}
-	if !strings.Contains(resto, "!`cd \"${CLAUDE_PROJECT_DIR}\" && aquas backlog tabla`") || strings.Contains(s, "aquas.sh") {
+	if !strings.Contains(resto, "!`cd \"${CLAUDE_PROJECT_DIR}\" && aquas backlog table`") || strings.Contains(s, "aquas.sh") {
 		t.Errorf("el skill del hijo debe correr el aquas instalado:\n%s", s)
 	}
 	if m := Verificar(dir); len(m) != 0 {
@@ -110,7 +110,7 @@ func TestBuildEscribeSkillBacklog(t *testing.T) {
 	if _, err := Update(viejo, central(string(canon)), "v1.1.0"); err != nil {
 		t.Fatal(err)
 	}
-	if err := Build(viejo); err != nil || !strings.Contains(leer(viejo), "aquas backlog tabla") {
+	if err := Build(viejo); err != nil || !strings.Contains(leer(viejo), "aquas backlog table") {
 		t.Errorf("tras update, el hijo viejo debió recibir /backlog: %v", err)
 	}
 
@@ -168,7 +168,7 @@ func TestBuildEscribeSkillBacklog(t *testing.T) {
 
 	// Fuente CRLF: se normaliza; sale igual que la LF.
 	crlf := instalar(central(strings.ReplaceAll(string(canon), "\n", "\r\n")))
-	if err := Build(crlf); err != nil || !strings.Contains(leer(crlf), "aquas backlog tabla") || strings.Contains(leer(crlf), "\r") {
+	if err := Build(crlf); err != nil || !strings.Contains(leer(crlf), "aquas backlog table") || strings.Contains(leer(crlf), "\r") {
 		t.Errorf("fuente CRLF: %v\n%q", err, leer(crlf))
 	}
 	// Fuente con el comando pero sin frontmatter: build falla.

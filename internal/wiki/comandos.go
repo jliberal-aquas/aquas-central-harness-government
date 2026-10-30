@@ -14,6 +14,9 @@ var (
 	reCase    = regexp.MustCompile(`case\s+"[^:]*:`)
 	reLiteral = regexp.MustCompile(`"([a-z][a-z-]*)"`)
 	rePalabra = regexp.MustCompile(`^[a-z][a-z-]*$`)
+	// E000/F006/S006: la tabla de nombres en inglés de cmd/aquas; cada llave es un comando.
+	reIngles = regexp.MustCompile(`(?s)var comandos = map\[string\]string\{(.*?)\n\}`)
+	reLlave  = regexp.MustCompile(`"([a-z][a-z-]*)":`)
 )
 
 // RevisarComandos: todo `aquas X [Y]` citado entre comillas invertidas en docs/ y en
@@ -44,6 +47,11 @@ func RevisarComandos(raiz string) ([]string, error) {
 			if filepath.ToSlash(filepath.Dir(p)) == filepath.ToSlash(filepath.Join(raiz, "cmd", "aquas")) {
 				for _, c := range reCase.FindAllString(string(b), -1) {
 					for _, m := range reLiteral.FindAllStringSubmatch(c, -1) {
+						comandos[m[1]] = true
+					}
+				}
+				for _, t := range reIngles.FindAllStringSubmatch(string(b), -1) {
+					for _, m := range reLlave.FindAllStringSubmatch(t[1], -1) {
 						comandos[m[1]] = true
 					}
 				}

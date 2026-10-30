@@ -1,17 +1,17 @@
 {
   "agent": "orchestrator",
   "hooks": [
-    {"evento": "PreToolUse", "herramientas": ["Write", "Edit", "MultiEdit", "NotebookEdit"], "con_shell": true, "orden": "guardia"},
+    {"evento": "PreToolUse", "herramientas": ["Write", "Edit", "MultiEdit", "NotebookEdit"], "con_shell": true, "orden": "guard"},
     {"evento": "PostToolUse", "herramientas": ["Edit", "Write"], "orden": "hook"},
-    {"evento": "SessionStart", "matcher": "startup|resume|clear|compact", "orden": "memoria inicio"},
-    {"evento": "UserPromptSubmit", "orden": "turno abrir"},
-    {"evento": "UserPromptSubmit", "orden": "aprobacion"},
-    {"evento": "UserPromptSubmit", "orden": "presupuesto prompt"},
-    {"evento": "PreToolUse", "orden": "presupuesto herramienta"},
-    {"evento": "Stop", "orden": "turno cerrar"},
-    {"evento": "Stop", "orden": "memoria cierre"},
-    {"evento": "Stop", "orden": "propuesta"},
-    {"evento": "SubagentStop", "matcher": "worker-sonnet|worker-haiku|auditor", "orden": "cierre-agente"}
+    {"evento": "SessionStart", "matcher": "startup|resume|clear|compact", "orden": "memory start"},
+    {"evento": "UserPromptSubmit", "orden": "turn open"},
+    {"evento": "UserPromptSubmit", "orden": "approval"},
+    {"evento": "UserPromptSubmit", "orden": "budget prompt"},
+    {"evento": "PreToolUse", "orden": "budget tool"},
+    {"evento": "Stop", "orden": "turn close"},
+    {"evento": "Stop", "orden": "memory close"},
+    {"evento": "Stop", "orden": "proposal"},
+    {"evento": "SubagentStop", "matcher": "worker-sonnet|worker-haiku|auditor", "orden": "agent-close"}
   ],
   "por_so": {
     "windows": {"shell": "bash", "herramientas_shell": ["Bash", "PowerShell"]},

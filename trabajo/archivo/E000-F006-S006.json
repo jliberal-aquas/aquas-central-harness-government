@@ -1,0 +1,627 @@
+{
+  "id": "E000/F006/S006",
+  "tipo": "slice",
+  "titulo": "CLI en inglés",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: comandos en inglés por convención",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 66,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestComandosEnIngles",
+      "intencion": "los comandos en inglés responden y los nombres viejos avisan el nuevo",
+      "rojo_cuando": "un comando en inglés no responde o un nombre viejo no indica el comando nuevo",
+      "verde_cuando": "build, verify y backlog responden y cada nombre viejo avisa su reemplazo"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T17:46:36Z",
+    "head": "f0ac06c7a974de08420ba28e8553d20885dcbd15",
+    "resultado": {
+      "./cmd/aquas:TestComandosEnIngles": "ingles_test.go:23: library read debe responder igual que biblioteca leer:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T19:46:25Z",
+    "head": "f0ac06c7a974de08420ba28e8553d20885dcbd15",
+    "huella": {
+      "cmd/aquas/arranque_test.go": "4bd8f693b0070370f2fe1f4d234d88ba1eb5c0e1ee65096f6042c8c62c891095",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/frenos_propios_test.go": "ee86d77fef8e954b77a5341009629bf73d6435640c7c5d527c99c782effa6e3d",
+      "cmd/aquas/gancho_veredicto_test.go": "e31a02c037a27b5a8ad6991300db5ceab2948747fcfb71de3d5c40b16ce473b7",
+      "cmd/aquas/ingles.go": "84f8c7bcea435c0df8694ba8f1b57f1eeddd6ec04a741b732c57b1046461db9c",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/main.go": "319de5f07b2b47de378c52f0d8724e43961000fd0355bf9394799f3c3dce8752",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "3049d886dd44094675b4bee38373ab22eee1ce755c4d9000d066f497240e01cf",
+      "cmd/aquas/presupuesto_test.go": "6cf244ac111f03f1d00decc6096be53290ac20d11d23016f9d452e59357f09af",
+      "internal/compilador/skill_test.go": "57002fac03d3dc2e0fac1997ce3e41c7cd40e0c82366998cff0758ae02d05df6",
+      "internal/entorno/hooks_test.go": "79ef1f52014da5f9aceba35a233da58b3fe1d86b554dc869e6e2d0c06ca9bc9f",
+      "internal/hijo/skill.go": "1cc759c875e4415484c4c2e529c5f599a88b2530ee156b9335e5a86cf9b397a1",
+      "internal/hijo/skill_test.go": "59bbd5cac72ffd2e017261355430aa0ce56ee739b11bf31f883d3be9e2e1b776",
+      "internal/propuesta/propuesta_test.go": "edeafc3f1ae1d92bb324b668861cd8bb4a4f6938e88e23e6b6945bc996c5a650",
+      "internal/vueltas/vueltas.go": "b3335b847e7308335c3d8e9fc07f4fdf986e99f394a60f53469ad36688fdcd44",
+      "internal/vueltas/vueltas_test.go": "71f10caf5f5639a42e7aea378a72ac82a79491c4178a5d5cb6b24eba54531e20",
+      "internal/wiki/comandos.go": "24383b92fc40e232749fb97eaed4b40b4469f494230a3ea881a5fed9ca3983e8",
+      "internal/wiki/comandos_test.go": "664ac98c7552c49ebe006c0103883a4dce676b7e807b820beab135c2a124a9d6"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-30T19:49:59Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/arranque_test.go": "4bd8f693b0070370f2fe1f4d234d88ba1eb5c0e1ee65096f6042c8c62c891095",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/frenos_propios_test.go": "ee86d77fef8e954b77a5341009629bf73d6435640c7c5d527c99c782effa6e3d",
+      "cmd/aquas/gancho_veredicto_test.go": "e31a02c037a27b5a8ad6991300db5ceab2948747fcfb71de3d5c40b16ce473b7",
+      "cmd/aquas/ingles.go": "84f8c7bcea435c0df8694ba8f1b57f1eeddd6ec04a741b732c57b1046461db9c",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/main.go": "319de5f07b2b47de378c52f0d8724e43961000fd0355bf9394799f3c3dce8752",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "3049d886dd44094675b4bee38373ab22eee1ce755c4d9000d066f497240e01cf",
+      "cmd/aquas/presupuesto_test.go": "6cf244ac111f03f1d00decc6096be53290ac20d11d23016f9d452e59357f09af",
+      "internal/compilador/skill_test.go": "57002fac03d3dc2e0fac1997ce3e41c7cd40e0c82366998cff0758ae02d05df6",
+      "internal/entorno/hooks_test.go": "79ef1f52014da5f9aceba35a233da58b3fe1d86b554dc869e6e2d0c06ca9bc9f",
+      "internal/hijo/skill.go": "1cc759c875e4415484c4c2e529c5f599a88b2530ee156b9335e5a86cf9b397a1",
+      "internal/hijo/skill_test.go": "59bbd5cac72ffd2e017261355430aa0ce56ee739b11bf31f883d3be9e2e1b776",
+      "internal/propuesta/propuesta_test.go": "edeafc3f1ae1d92bb324b668861cd8bb4a4f6938e88e23e6b6945bc996c5a650",
+      "internal/vueltas/vueltas.go": "b3335b847e7308335c3d8e9fc07f4fdf986e99f394a60f53469ad36688fdcd44",
+      "internal/vueltas/vueltas_test.go": "71f10caf5f5639a42e7aea378a72ac82a79491c4178a5d5cb6b24eba54531e20",
+      "internal/wiki/comandos.go": "24383b92fc40e232749fb97eaed4b40b4469f494230a3ea881a5fed9ca3983e8",
+      "internal/wiki/comandos_test.go": "664ac98c7552c49ebe006c0103883a4dce676b7e807b820beab135c2a124a9d6"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E000/F006/S012",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S006.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:CLAUDE.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/aviso.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:cmd/aquas/aviso_test.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/hook_hijo_test.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003einternal/vueltas/vueltas.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S002.md\u003einternal/vueltas/vueltas.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S005.md\u003einternal/wiki/comandos.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003e.githooks/pre-commit",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S011.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S005.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003einternal/entorno/hooks_test.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003einternal/entorno/hooks_test.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S002.md\u003egobierno/canonico/skills/backlog.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S002.md\u003einternal/compilador/skill_test.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S003.md\u003ecmd/aquas/ciclo_hijo_test.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S003.md\u003egobierno/canonico/skills/backlog.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S003.md\u003einternal/hijo/skill_test.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F011/S002.md\u003ecmd/aquas/presupuesto.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003einternal/vueltas/vueltas.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F014/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S002.md\u003ecmd/aquas/presupuesto.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S002.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F016/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/guardia.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/constitucion.md\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/documentos.json\u003egobierno/canonico/skills/backlog.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/skills/backlog.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/backlog/sello.go\u003einternal/compilador",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/entorno/entorno.go\u003egobierno/config/claude_settings.json",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/skill.go\u003egobierno/canonico/skills/backlog.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/ingles.go",
+    "cmd/aquas/ingles_test.go",
+    "cmd/aquas/main.go",
+    "gobierno/config/claude_settings.json",
+    ".claude/settings.json",
+    ".githooks/pre-commit",
+    "gobierno/canonico/skills/backlog.md",
+    ".claude/skills/backlog/SKILL.md",
+    "internal/vueltas/vueltas.go",
+    "internal/vueltas/vueltas_test.go",
+    "internal/entorno/hooks_test.go",
+    "internal/hijo/skill.go",
+    "internal/hijo/skill_test.go",
+    "cmd/aquas/arranque_test.go",
+    "docs/E000/F006/S006.md",
+    "docs/E000/F006/README.md"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "cmd/aquas/ciclo_hijo_test.go",
+      "motivo": "prueba que fijaba nombres viejos de hooks, pre-commit o skill"
+    },
+    {
+      "ruta": "cmd/aquas/gancho_veredicto_test.go",
+      "motivo": "prueba que fijaba nombres viejos de hooks, pre-commit o skill"
+    },
+    {
+      "ruta": "cmd/aquas/precommit_test.go",
+      "motivo": "prueba que fijaba nombres viejos de hooks, pre-commit o skill"
+    },
+    {
+      "ruta": "cmd/aquas/presupuesto_test.go",
+      "motivo": "prueba que fijaba nombres viejos de hooks, pre-commit o skill"
+    },
+    {
+      "ruta": "internal/compilador/skill_test.go",
+      "motivo": "prueba que fijaba backlog tabla en el skill"
+    },
+    {
+      "ruta": "internal/wiki/comandos.go",
+      "motivo": "el gate de la wiki debe reconocer los nombres en inglés citados en docs"
+    },
+    {
+      "ruta": "internal/wiki/comandos_test.go",
+      "motivo": "el gate de la wiki debe reconocer los nombres en inglés citados en docs"
+    },
+    {
+      "ruta": "internal/propuesta/propuesta_test.go",
+      "motivo": "prueba que fijaba el nombre viejo del hook propuesta"
+    },
+    {
+      "ruta": "cmd/aquas/presupuesto.go",
+      "motivo": "hallazgo A1.2: el freno debe eximir memory set igual que memoria fijar"
+    },
+    {
+      "ruta": "cmd/aquas/frenos_propios_test.go",
+      "motivo": "hallazgo A1.2: el freno debe eximir memory set igual que memoria fijar"
+    }
+  ],
+  "codigo": [
+    ".githooks/pre-commit",
+    "cmd/aquas/ingles.go",
+    "cmd/aquas/main.go",
+    "cmd/aquas/presupuesto.go",
+    "gobierno/config/claude_settings.json",
+    "internal/vueltas/vueltas.go",
+    "internal/wiki/comandos.go"
+  ]
+}

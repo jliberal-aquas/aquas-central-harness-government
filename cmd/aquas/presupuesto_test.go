@@ -48,7 +48,7 @@ func TestPresupuestoPorFeature(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, want := range []string{`{"evento": "UserPromptSubmit", "orden": "presupuesto prompt"}`, `{"evento": "PreToolUse", "orden": "presupuesto herramienta"}`} {
+	for _, want := range []string{`{"evento": "UserPromptSubmit", "orden": "budget prompt"}`, `{"evento": "PreToolUse", "orden": "budget tool"}`} {
 		if !strings.Contains(string(cfg), want) {
 			t.Errorf("claude_settings.json no conecta el hook %s", want)
 		}

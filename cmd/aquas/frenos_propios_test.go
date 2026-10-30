@@ -64,9 +64,12 @@ func TestFrenoDejaPasarMemoria(t *testing.T) {
 		`"./.tmp/aquas.exe" memoria fijar slice=`,
 		"go run ./cmd/aquas memoria fijar tarea='a; b'",
 		`aquas memoria fijar tarea="a; b | c"`,
+		"aquas memory set tarea=x",            // E000/F006/S006 A1.2: el nombre nuevo también pasa
+		"./.tmp/aquas.exe memory set tarea=x", // ídem con el binario del repo
 	}
 	frenadas := []struct{ herramienta, comando string }{
 		{"Bash", "aquas memoria fijar tarea=x && git push"},
+		{"Bash", "aquas memory set tarea=x && git push"},
 		{"Bash", "aquas memoria fijar tarea=x; git push"},
 		{"Bash", "aquas memoria fijar tarea=x | tee y"},
 		{"Bash", "aquas memoria fijar tarea=x\ngit push"},

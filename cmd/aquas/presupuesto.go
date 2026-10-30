@@ -46,7 +46,7 @@ type entradaPresupuesto struct {
 // Una ruta entre comillas solo vale si es el binario de .tmp/ de este repo.
 var reMemoriaFijar = regexp.MustCompile(`^\s*` +
 	`(aquas(\.exe)?|go run \./cmd/aquas|(\./)?\.tmp/aquas(\.exe)?|"([^"$` + "`" + `\\]*)")` +
-	`\s+memoria\s+fijar` +
+	`\s+(memoria\s+fijar|memory\s+set)` + // E000/F006/S006: nombre viejo y nuevo
 	`(\s+[a-z_]+=([^\s"'$` + "`" + `\\;&|<>()]*|'[^']*'|"[^"$` + "`" + `\\]*"))*\s*$`)
 
 // exentaDelFreno: true si la llamada es Bash y su comando entero es `aquas memoria fijar campo=valor…`.

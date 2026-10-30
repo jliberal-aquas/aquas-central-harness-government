@@ -27,7 +27,7 @@ var tipos = []struct {
 	cmd    *regexp.Regexp
 }{
 	{"go test", regexp.MustCompile(`\bgo test\b`)},
-	{"verificar", regexp.MustCompile(`(aquas|aq\.exe)\s+verificar\b`)},
+	{"verificar", regexp.MustCompile(`(aquas(\.exe)?|aq\.exe)\s+(verificar|verify)\b`)},
 }
 
 var (

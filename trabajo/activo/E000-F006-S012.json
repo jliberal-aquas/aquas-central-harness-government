@@ -1,0 +1,23 @@
+{
+  "id": "E000/F006/S012",
+  "tipo": "slice",
+  "titulo": "Wiki y canónicos con comandos en inglés",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-30, decisión 3a: S006 se parte; este tramo migra las referencias",
+  "padre": "E000/F006",
+  "bloqueado_por": [
+    "E000/F006/S006"
+  ],
+  "secuencia": 133,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestSinComandosViejos",
+      "intencion": "valida que el repo ya no nombra comandos viejos",
+      "rojo_cuando": "rojo cuando una página, canónico o mensaje nombra un comando viejo",
+      "verde_cuando": "verde cuando solo quedan los nombres en inglés y el alias"
+    }
+  ],
+  "relacion": "amplia:E000/F006/S006",
+  "que_hace": "Cambia los nombres viejos de comandos por los nuevos en wiki, canónicos, skills y mensajes de uso."
+}

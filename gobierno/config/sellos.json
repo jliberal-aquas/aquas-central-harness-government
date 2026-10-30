@@ -43,9 +43,9 @@
       }
     },
     ".claude/skills/backlog/SKILL.md": {
-      "sha256": "13442429b28c22bb1a6be71a44538d8baca42d404a09ae5c9d4c8537a300bd14",
+      "sha256": "e5d0e78b1e4a964bac7423423b86e9009cf61afcfa56a93021a525fc992da8ce",
       "fuentes": {
-        "gobierno/canonico/skills/backlog.md": "178e2c3839e952f3b55d2e1237216ff9a9d07b2e472aac04d97f6b3310696c6b",
+        "gobierno/canonico/skills/backlog.md": "7a9c654c126dfb2caaea1721472e2c198514e0cab36a37f68d0c8a0a66f8d103",
         "gobierno/config/documentos.json": "c1dfa7f4438f1932fccf86b39d4d355bae7cf3cd63f1a4431e33d8e67c0cdd78"
       }
     },

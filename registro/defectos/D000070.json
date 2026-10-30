@@ -1,0 +1,10 @@
+{
+  "id": "D000070",
+  "firma": "freno-turno-corta-trabajo-a-medias",
+  "que": "el freno de 60 llamadas por turno cortó S006 entre pruebas rojas y su arreglo, y bloqueó también memoria fijar",
+  "causa": "el orquestador no midió las llamadas usadas antes de abrir otra tanda de cambios; memoria fijar encadenada tras cd no cuenta como exenta",
+  "arreglo": "cerrar la tanda abierta en el turno siguiente y guardar memoria con la orden suelta",
+  "como_me_cercioro": "antes de cada tanda de cambios mirar el contador de presupuesto y dejar margen de 10 llamadas para cerrar",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

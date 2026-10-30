@@ -44,8 +44,14 @@ import (
 // main despacha el subcomando de aquas (compilar, verificar, backlog, hooks…) y sale con su código.
 func main() {
 	if len(os.Args) < 2 {
-		_, _ = fmt.Fprintln(os.Stderr, "uso: aquas iniciar | compilar | verificar | hook | guardia | memoria | backlog | cierre-agente | biblioteca")
+		_, _ = fmt.Fprintln(os.Stderr, "uso: aquas init | compile | verify | hook | guard | memory | backlog | agent-close | library")
 		os.Exit(64)
+	}
+	// E000/F006/S006: nombres en inglés → nombres internos; el nombre viejo anda pero avisa.
+	args, avisos := traducir(os.Args[1:])
+	os.Args = append(os.Args[:1], args...)
+	for _, a := range avisos {
+		_, _ = fmt.Fprintf(os.Stderr, "aquas: %s; el nombre viejo dejará de existir más adelante\n", a)
 	}
 	raiz, err := os.Getwd()
 	if err != nil {

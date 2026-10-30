@@ -34,8 +34,8 @@ func problemaPreCommit(script string) string {
 	if !tiene("go build -o " + binPreCommit + " ./cmd/aquas || exit 1") {
 		return "debe construir con `go build -o " + binPreCommit + " ./cmd/aquas || exit 1` (el fallo de compilación bloquea)"
 	}
-	if !tiene("exec " + binPreCommit + " verificar") {
-		return "debe hacer `exec " + binPreCommit + " verificar`"
+	if !tiene("exec " + binPreCommit + " verify") {
+		return "debe hacer `exec " + binPreCommit + " verify`"
 	}
 	return ""
 }
@@ -53,9 +53,9 @@ func TestPreCommitNoUsaGoRun(t *testing.T) {
 	}
 	// La revisión no se deja engañar por comentarios ni por quitar `|| exit 1`.
 	for nombre, malo := range map[string]string{
-		"comentado": "# go build -o " + binPreCommit + " ./cmd/aquas || exit 1\n# exec " + binPreCommit + " verificar\n",
-		"sin exit":  "go build -o " + binPreCommit + " ./cmd/aquas\nexec " + binPreCommit + " verificar\n",
-		"go run":    "go build -o " + binPreCommit + " ./cmd/aquas || exit 1\nexec " + binPreCommit + " verificar\ngo run ./cmd/aquas verificar\n",
+		"comentado": "# go build -o " + binPreCommit + " ./cmd/aquas || exit 1\n# exec " + binPreCommit + " verify\n",
+		"sin exit":  "go build -o " + binPreCommit + " ./cmd/aquas\nexec " + binPreCommit + " verify\n",
+		"go run":    "go build -o " + binPreCommit + " ./cmd/aquas || exit 1\nexec " + binPreCommit + " verify\ngo run ./cmd/aquas verify\n",
 	} {
 		if problemaPreCommit(malo) == "" {
 			t.Errorf("script %s debió rechazarse", nombre)

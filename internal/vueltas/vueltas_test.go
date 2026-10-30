@@ -29,6 +29,7 @@ func TestCuentaVueltasPorMotivo(t *testing.T) {
 		uso("e", ".tmp/aq.exe verificar"), res("e", "GATE FALLIDO · wiki docs/ incompleta:\\n- a\\nGATE FALLIDO · backlog trabajo/ (fichas):\\n- b", true),
 		uso("f", "go run ./cmd/aquas verificar"), res("f", "GATE OK", false),
 		uso("g", "grep -n verificar main.go"), res("g", "GATE FALLIDO", false),
+		uso("i", "./.tmp/aquas.exe verify"), res("i", "GATE FALLIDO · wiki docs/ incompleta", true), // E000/F006/S006: el nombre nuevo y el binario aquas.exe cuentan igual
 		`línea que no es JSON`,
 	}, "\n")
 
@@ -38,7 +39,7 @@ func TestCuentaVueltasPorMotivo(t *testing.T) {
 	}
 	want := map[string]Conteo{
 		"go test":   {Corridas: 5, Fallas: 4, Motivos: map[string]int{"TestA": 2, "compilación": 1, "otro": 1}},
-		"verificar": {Corridas: 2, Fallas: 1, Motivos: map[string]int{"wiki": 1, "backlog": 1}},
+		"verificar": {Corridas: 3, Fallas: 2, Motivos: map[string]int{"wiki": 2, "backlog": 1}},
 	}
 	if !reflect.DeepEqual(got, want) {
 		t.Fatalf("conteo\n got %+v\nwant %+v", got, want)

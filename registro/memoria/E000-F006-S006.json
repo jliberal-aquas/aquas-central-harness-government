@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F006",
+    "slice": "S006",
+    "tarea": "S006 aprobado por auditor A2; cerrando"
+  },
+  "siguiente": "commit y push de S006; luego S012",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "7b9c661927808df35e540d1c28f5206c64dad0fe9590378858009b0568c73514",
+  "actualizado": "2026-10-30T19:51:05Z",
+  "sello": "84032fd6bcf7c04651a55d8fc75a261613bfa6a1832239dea786963a2b8dc3da"
+}

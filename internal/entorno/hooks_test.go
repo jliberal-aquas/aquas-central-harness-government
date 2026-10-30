@@ -45,7 +45,7 @@ func TestSettingsRealTraeHooksDeMemoria(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, quiero := range []string{`"matcher": "startup|resume|clear|compact"`, `memoria inicio`, `memoria cierre`} {
+	for _, quiero := range []string{`"matcher": "startup|resume|clear|compact"`, `memory start`, `memory close`} {
 		if !strings.Contains(string(b), quiero) {
 			t.Errorf("la plantilla real debe declarar %s", quiero)
 		}
@@ -84,7 +84,7 @@ func TestSettingsRealTraeGuardiaYHook(t *testing.T) {
 			}
 			t.Errorf("%s: falta %s con matcher %q y orden %q; hay %+v", c.so, evento, matcher, sufijo, s.Hooks[evento])
 		}
-		tiene("PreToolUse", c.preMatcher, "guardia")
+		tiene("PreToolUse", c.preMatcher, "guard")
 		tiene("PostToolUse", "Edit|Write", "hook")
 	}
 }
@@ -99,7 +99,7 @@ func TestSettingsRealTraeHookDeCierreDeAgente(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, quiero := range []string{`"SubagentStop"`, `"matcher": "worker-sonnet|worker-haiku|auditor"`, `cierre-agente`} {
+	for _, quiero := range []string{`"SubagentStop"`, `"matcher": "worker-sonnet|worker-haiku|auditor"`, `agent-close`} {
 		if !strings.Contains(string(b), quiero) {
 			t.Errorf("la plantilla real debe declarar %s", quiero)
 		}
@@ -135,17 +135,17 @@ func TestSettingsRealTraeHooksDeTurno(t *testing.T) {
 		}
 		return false
 	}
-	if !tiene("UserPromptSubmit", "turno abrir") {
-		t.Errorf("falta UserPromptSubmit → turno abrir; hay %+v", s.Hooks["UserPromptSubmit"])
+	if !tiene("UserPromptSubmit", "turn open") {
+		t.Errorf("falta UserPromptSubmit → turn open; hay %+v", s.Hooks["UserPromptSubmit"])
 	}
-	if !tiene("Stop", "turno cerrar") || !tiene("Stop", "memoria cierre") {
-		t.Errorf("Stop debe traer turno cerrar sin perder memoria cierre; hay %+v", s.Hooks["Stop"])
+	if !tiene("Stop", "turn close") || !tiene("Stop", "memory close") {
+		t.Errorf("Stop debe traer turn close sin perder memory close; hay %+v", s.Hooks["Stop"])
 	}
 }
 
 // E001/F010/S001: el hook del mensaje del humano que registra «apruebo <id>» llega a la plantilla de settings.
-// Rojo cuando: la plantilla real no trae UserPromptSubmit → aprobacion, y entonces nadie registra aprobaciones.
-// Verde cuando: el settings generado trae la orden `aquas.sh" aprobacion` en UserPromptSubmit.
+// Rojo cuando: la plantilla real no trae UserPromptSubmit → approval, y entonces nadie registra aprobaciones.
+// Verde cuando: el settings generado trae la orden `aquas.sh" approval` en UserPromptSubmit.
 func TestSettingsRealTraeHookAprobacion(t *testing.T) {
 	fuente, err := os.ReadFile(filepath.Join("..", "..", filepath.FromSlash(RutaPlantilla)))
 	if err != nil {
@@ -165,10 +165,10 @@ func TestSettingsRealTraeHookAprobacion(t *testing.T) {
 	}
 	for _, h := range s.Hooks["UserPromptSubmit"] {
 		for _, c := range h.Hooks {
-			if strings.HasSuffix(c.Command, `aquas.sh" aprobacion`) {
+			if strings.HasSuffix(c.Command, `aquas.sh" approval`) {
 				return
 			}
 		}
 	}
-	t.Errorf("falta UserPromptSubmit → aprobacion; hay %+v", s.Hooks["UserPromptSubmit"])
+	t.Errorf("falta UserPromptSubmit → approval; hay %+v", s.Hooks["UserPromptSubmit"])
 }

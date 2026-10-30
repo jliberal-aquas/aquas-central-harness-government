@@ -4,4 +4,4 @@
 mkdir -p ./.tmp
 export GOTMPDIR="$PWD/.tmp" TMP="$PWD/.tmp" TEMP="$PWD/.tmp"
 go build -o ./.tmp/aquas-precommit.exe ./cmd/aquas || exit 1
-exec ./.tmp/aquas-precommit.exe verificar
+exec ./.tmp/aquas-precommit.exe verify

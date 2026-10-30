@@ -76,9 +76,9 @@ func TestPlantillaTraeHookDePropuesta(t *testing.T) {
 		t.Fatal(err)
 	}
 	for _, h := range p.Hooks {
-		if h.Evento == "Stop" && h.Orden == "propuesta" {
+		if h.Evento == "Stop" && h.Orden == "proposal" {
 			return
 		}
 	}
-	t.Errorf("falta {evento: Stop, orden: propuesta} en la plantilla; hay %+v", p.Hooks)
+	t.Errorf("falta {evento: Stop, orden: proposal} en la plantilla; hay %+v", p.Hooks)
 }

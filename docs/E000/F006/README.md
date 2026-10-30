@@ -67,6 +67,7 @@ continúa: [EJ-E000](../README.md#EJ-E000)
 5. [Wiki](../../glosario.md#wiki) y metodología al día (S005).
 6. CLI en inglés (S006).
 7. Biblioteca cuenta bien lo devuelto (S007).
+8. Wiki y [canónicos](../../glosario.md#canónico) con comandos en inglés (S012).
 
 ## Cómo se usa
 
@@ -90,12 +91,13 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 | [S003](S003.md) | Siguiente no exige definir Reincidencias vacía | Hecho |
 | [S004](S004.md) | Avisar oración larga al guardar | Hecho |
 | [S005](S005.md) | Wiki y metodología al día | Hecho |
-| S006 | CLI en inglés | Planeado |
+| [S006](S006.md) | CLI en inglés | Hecho |
 | [S007](S007.md) | Biblioteca cuenta bien lo devuelto | Hecho |
 | [S008](S008.md) | Guardia sin falso binario viejo con go run | Hecho |
 | [S009](S009.md) | aquas limpiar temporales del encargo | Hecho |
 | [S010](S010.md) | Instrucciones sin go run para verificar | Hecho |
 | [S011](S011.md) | aquas limpiar conectado: CLI y regla de encargos | Hecho |
+| S012 | Cambia los nombres viejos de comandos por los nuevos en wiki, canónicos, skills y mensajes de uso. | Planeado |
 
 <!-- /GENERADO -->
 

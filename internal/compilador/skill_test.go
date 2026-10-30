@@ -6,7 +6,7 @@ import (
 )
 
 // TestSkillBacklog (E001/F007/S002): el compilador genera /backlog con su frontmatter primero; solo lo invoca
-// el humano y corre `aquas backlog tabla`.
+// el humano y corre `aquas backlog table`.
 // Rojo cuando: no hay salida .claude/skills/backlog/SKILL.md, la marca GENERADO va antes del frontmatter
 // o falta disable-model-invocation.
 // Verde cuando: el skill empieza con frontmatter, sigue la marca y su cuerpo corre la tabla.
@@ -34,8 +34,8 @@ func TestSkillBacklog(t *testing.T) {
 	if !strings.HasPrefix(resto, "<!-- GENERADO") {
 		t.Errorf("la marca GENERADO debe seguir al frontmatter:\n%s", resto)
 	}
-	if !strings.Contains(resto, "!`") || !strings.Contains(resto, "backlog tabla") {
-		t.Errorf("el cuerpo debe correr `backlog tabla`:\n%s", resto)
+	if !strings.Contains(resto, "!`") || !strings.Contains(resto, "backlog table") {
+		t.Errorf("el cuerpo debe correr `backlog table`:\n%s", resto)
 	}
 	// Choque con el sello: un SKILL.md editado a mano lo detecta Verificar, igual que CLAUDE.md.
 	raiz := repoMinimo(t)

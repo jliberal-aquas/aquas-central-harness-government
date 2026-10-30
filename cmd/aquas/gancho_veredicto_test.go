@@ -58,7 +58,7 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 		if strings.Contains(entrada, "last_assistant_message") {
 			t.Fatal("la entrada debe tener la forma real, sin last_assistant_message")
 		}
-		if s := aquas(t, raiz, entrada, "cierre-agente"); s.codigo != 0 {
+		if s := aquas(t, raiz, entrada, "agent-close"); s.codigo != 0 {
 			t.Fatalf("exit 0; dio %+v", s)
 		}
 		if a := auditoriaDe(t, raiz, "E001/F014/S002"); a == nil || a["veredicto"] != "APROBADO" {
@@ -78,7 +78,7 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 	}
 	t.Run("auditor con id anota fecha, veredicto y huella; gana el último", func(t *testing.T) {
 		raiz := nuevo()
-		if s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: E001-F014-S002-A1\n", "CON_HALLAZGOS"), false), "cierre-agente"); s.codigo != 0 {
+		if s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: E001-F014-S002-A1\n", "CON_HALLAZGOS"), false), "agent-close"); s.codigo != 0 {
 			t.Fatalf("cierre válido: exit 0; dio %+v", s)
 		}
 		a := auditoriaDe(t, raiz, id)
@@ -86,7 +86,7 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 		if a == nil || a["veredicto"] != "CON_HALLAZGOS" || a["fecha"] == "" || huella["p/p.go"] == nil {
 			t.Fatalf("ficha: se esperaba CON_HALLAZGOS con fecha y huella de p/p.go; dio %v", a)
 		}
-		if s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: E001-F014-S002-A2\n", "APROBADO"), false), "cierre-agente"); s.codigo != 0 {
+		if s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: E001-F014-S002-A2\n", "APROBADO"), false), "agent-close"); s.codigo != 0 {
 			t.Fatalf("segundo cierre: exit 0; dio %+v", s)
 		}
 		if a := auditoriaDe(t, raiz, id); a["veredicto"] != "APROBADO" {
@@ -96,7 +96,7 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 	t.Run("cierre de worker no anota", func(t *testing.T) {
 		raiz := nuevo()
 		w := "estado: HECHO\narchivos: —\nevidencia: —\nbloqueo: —\nfuera_de_alcance: —"
-		if s := aquas(t, raiz, cierreAuditor(t, "worker-sonnet", w, false), "cierre-agente"); s.codigo != 0 {
+		if s := aquas(t, raiz, cierreAuditor(t, "worker-sonnet", w, false), "agent-close"); s.codigo != 0 {
 			t.Fatalf("cierre de worker: exit 0; dio %+v", s)
 		}
 		if a := auditoriaDe(t, raiz, id); a != nil {
@@ -105,7 +105,7 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 	})
 	t.Run("cierre de auditor sin id se rechaza y no anota", func(t *testing.T) {
 		raiz := nuevo()
-		s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("", "APROBADO"), false), "cierre-agente")
+		s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("", "APROBADO"), false), "agent-close")
 		if s.codigo != 2 || !strings.Contains(s.err, "cierre inválido") || !strings.Contains(s.err, "id:") {
 			t.Errorf("sin id: exit 2, «cierre inválido» y pide la línea id:; dio %+v", s)
 		}
@@ -117,7 +117,7 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 		raiz := nuevo()
 		fichaSlice(t, raiz, "E001/F014/S003", "BORRADOR")
 		for _, otro := range []string{"E001-F014-S003-A1", "E001-F014-S099-A1"} {
-			s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: "+otro+"\n", "APROBADO"), false), "cierre-agente")
+			s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: "+otro+"\n", "APROBADO"), false), "agent-close")
 			want := strings.ReplaceAll(strings.TrimSuffix(otro, "-A1"), "-", "/")
 			if s.codigo != 2 || !strings.Contains(s.err, want) {
 				t.Errorf("id %s: exit 2 nombrando %s; dio %+v", otro, want, s)
@@ -129,7 +129,7 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 	})
 	t.Run("stop_hook_active con cierre inválido deja cerrar sin anotar", func(t *testing.T) {
 		raiz := nuevo()
-		if s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("", "APROBADO"), true), "cierre-agente"); s.codigo != 0 {
+		if s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("", "APROBADO"), true), "agent-close"); s.codigo != 0 {
 			t.Fatalf("ya pedido una vez: exit 0; dio %+v", s)
 		}
 		if a := auditoriaDe(t, raiz, id); a != nil {
@@ -139,14 +139,14 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 	t.Run("stop_hook_active y anotar falla: avisa en stderr y deja cerrar (H1)", func(t *testing.T) {
 		raiz := nuevo()
 		escribir(t, raiz, "trabajo/activo/E001-F014-S002.json", "{roto")
-		s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: E001-F014-S002-A1\n", "APROBADO"), true), "cierre-agente")
+		s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: E001-F014-S002-A1\n", "APROBADO"), true), "agent-close")
 		if s.codigo != 0 || !strings.Contains(s.err, "no quedó anotado") || !strings.Contains(s.err, id) {
 			t.Errorf("activo + ficha rota: exit 0 con aviso nombrando %s; dio %+v", id, s)
 		}
 	})
 	t.Run("id: — es válido y no anota (H2)", func(t *testing.T) {
 		raiz := nuevo()
-		s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: —\n", "APROBADO"), false), "cierre-agente")
+		s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: —\n", "APROBADO"), false), "agent-close")
 		if s.codigo != 0 || s.err != "" {
 			t.Errorf("id: —: exit 0 y sin aviso; dio %+v", s)
 		}
@@ -157,18 +157,18 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 	t.Run("auditor con mensaje vacío o ausente no pasa en silencio (D000053)", func(t *testing.T) {
 		raiz := nuevo()
 		for _, entrada := range []string{cierreAuditor(t, "auditor", "", false), `{"agent_type":"auditor"}`} {
-			if s := aquas(t, raiz, entrada, "cierre-agente"); s.codigo != 2 || !strings.Contains(s.err, "cierre vacío") {
+			if s := aquas(t, raiz, entrada, "agent-close"); s.codigo != 2 || !strings.Contains(s.err, "cierre vacío") {
 				t.Errorf("entrada %s: exit 2 «cierre vacío»; dio %+v", entrada, s)
 			}
 		}
-		if s := aquas(t, raiz, cierreAuditor(t, "auditor", "", true), "cierre-agente"); s.codigo != 0 {
+		if s := aquas(t, raiz, cierreAuditor(t, "auditor", "", true), "agent-close"); s.codigo != 0 {
 			t.Errorf("vacío con stop_hook_active: exit 0; dio %+v", s)
 		}
 	})
 	t.Run("ficha ilegible: el gancho lo dice y no da el veredicto por anotado", func(t *testing.T) {
 		raiz := nuevo()
 		escribir(t, raiz, "trabajo/activo/E001-F014-S002.json", "{roto")
-		s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: E001-F014-S002-A1\n", "APROBADO"), false), "cierre-agente")
+		s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo("id: E001-F014-S002-A1\n", "APROBADO"), false), "agent-close")
 		if s.codigo != 2 || !strings.Contains(s.err, id) {
 			t.Errorf("ficha rota: exit 2 nombrando %s; dio %+v", id, s)
 		}
@@ -179,7 +179,7 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 func aprobarGancho(t *testing.T, raiz, id string) {
 	t.Helper()
 	cuerpo := "id: " + strings.ReplaceAll(id, "/", "-") + "-A1\nveredicto: APROBADO\nhallazgos: —\nno_revisado: —"
-	if s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo, false), "cierre-agente"); s.codigo != 0 {
+	if s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo, false), "agent-close"); s.codigo != 0 {
 		t.Fatalf("auditor APROBADO de %s: %+v", id, s)
 	}
 }
