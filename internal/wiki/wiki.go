@@ -76,6 +76,7 @@ type pagina struct {
 	anclas         map[string]bool
 	enlaces        []enlace
 	prosa          []string // líneas medibles por legibilidad; "" = corte de párrafo
+	prosaLinea     []int    // E000/F006/S004: línea del archivo de cada entrada de prosa
 	migas          string   // primera línea no vacía bajo el título H1
 	pruebas        []string // pruebas nombradas en «Contrato y evidencia»
 }
@@ -205,6 +206,12 @@ func clasificar(rel string) *pagina {
 	return nil
 }
 
+// agregarProsa suma una entrada de prosa con su línea en el archivo (E000/F006/S004).
+func (pg *pagina) agregarProsa(texto string, linea int) {
+	pg.prosa = append(pg.prosa, texto)
+	pg.prosaLinea = append(pg.prosaLinea, linea)
+}
+
 // analizar lee la página: secciones H2, diagramas, anclas (id HTML y títulos) y enlaces fuera de código.
 func analizar(raiz string, pg *pagina) error {
 	b, err := os.ReadFile(filepath.Join(raiz, filepath.FromSlash(pg.rel)))
@@ -216,7 +223,7 @@ func analizar(raiz string, pg *pagina) error {
 	actual := -1
 	cerca, mermaid, primera := "", false, false
 	vistaPrimera := false
-	for _, l := range strings.Split(strings.ReplaceAll(string(b), "\r\n", "\n"), "\n") {
+	for i, l := range strings.Split(strings.ReplaceAll(string(b), "\r\n", "\n"), "\n") {
 		t := strings.TrimSpace(l)
 		if cerca != "" { // dentro de bloque de código
 			if strings.HasPrefix(t, cerca) && strings.Trim(t, cerca[:1]) == "" {
@@ -231,7 +238,7 @@ func analizar(raiz string, pg *pagina) error {
 			continue
 		}
 		if strings.HasPrefix(t, "```") || strings.HasPrefix(t, "~~~") {
-			pg.prosa = append(pg.prosa, "")
+			pg.agregarProsa("", i+1)
 			cerca = t[:3]
 			mermaid = strings.TrimSpace(strings.Trim(t, "`~")) == "mermaid"
 			primera = true
@@ -252,7 +259,7 @@ func analizar(raiz string, pg *pagina) error {
 				pg.secciones = append(pg.secciones, seccion{titulo: m[2]})
 				actual = len(pg.secciones) - 1
 			}
-			pg.prosa = append(pg.prosa, "")
+			pg.agregarProsa("", i+1)
 			if len(m[1]) == 2 {
 				continue
 			}
@@ -278,9 +285,9 @@ func analizar(raiz string, pg *pagina) error {
 			}
 		}
 		if reTitulo.MatchString(t) || titulo == secNav || strings.HasPrefix(t, "|") || strings.HasPrefix(t, "continúa:") || strings.HasPrefix(t, "<!--") {
-			pg.prosa = append(pg.prosa, "")
+			pg.agregarProsa("", i+1)
 		} else {
-			pg.prosa = append(pg.prosa, limpia)
+			pg.agregarProsa(limpia, i+1)
 		}
 		for _, e := range reEnlace.FindAllStringSubmatch(limpia, -1) {
 			pg.enlaces = append(pg.enlaces, enlace{seccion: titulo, linea: limpia, destino: e[1]})

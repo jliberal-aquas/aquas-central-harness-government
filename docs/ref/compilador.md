@@ -55,6 +55,9 @@ sequenceDiagram
     else la ruta es un archivo generado
         K->>D: recompila y deshace la edición
         K-->>A: es GENERADO, edita el canónico
+    else la ruta es una página de docs/
+        K->>D: enlaza el glosario, salvo en el glosario mismo
+        K-->>A: enlaces puestos y oraciones largas con su línea
     else cualquier otra ruta
         K-->>A: nada
     end

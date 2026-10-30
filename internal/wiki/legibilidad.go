@@ -74,34 +74,91 @@ func hiato(a, b rune) bool {
 // oraciones parte la prosa en oraciones de palabras. Línea vacía o ítem de lista
 // cierra el párrafo; el párrafo también cierra oración.
 func oraciones(lineas []string) [][]string {
+	ors, _ := oracionesConLinea(lineas, nil)
+	return ors
+}
+
+// palabrasDe: palabras de un texto de prosa, sin enlaces ni HTML.
+func palabrasDe(texto string) []string {
+	texto = reEnlaceTexto.ReplaceAllString(texto, "$1")
+	texto = reHTML.ReplaceAllString(texto, " ")
+	return strings.FieldsFunc(texto, func(r rune) bool { return !unicode.IsLetter(r) && !unicode.IsDigit(r) })
+}
+
+// sinAbierto quita del final de s una etiqueta HTML o un enlace que cierra en la línea siguiente:
+// sus palabras cuentan donde cierran. Un «<» o «[» suelto, que no cierra ahí, no se toca (hallazgo A2.1).
+func sinAbierto(s, siguiente string) string {
+	if i := strings.LastIndex(s, "<"); i > strings.LastIndex(s, ">") && strings.Contains(siguiente, ">") {
+		s = s[:i]
+	}
+	i := strings.LastIndex(s, "[")
+	switch {
+	case i < 0:
+	case i > strings.LastIndex(s, "]") && strings.Contains(siguiente, "]("):
+		s = s[:i]
+	case strings.LastIndex(s, "](") > i && strings.LastIndex(s, "](") > strings.LastIndex(s, ")") && strings.Contains(siguiente, ")"):
+		s = s[:i]
+	}
+	return s
+}
+
+// oracionesConLinea (E000/F006/S004): como oraciones, y además la línea donde empieza cada una,
+// tomada de nums (una por entrada de lineas). Sin nums, las líneas salen en 0.
+func oracionesConLinea(lineas []string, nums []int) ([][]string, []int) {
 	var res [][]string
+	var donde []int
 	var parrafo []string
+	var parrafoLin []int
 	cerrar := func() {
 		texto := strings.Join(parrafo, " ")
-		parrafo = nil
+		// palabras acumuladas hasta cada fragmento, limpiando el prefijo entero: un enlace
+		// partido en dos líneas se reconoce igual que en el texto unido (hallazgo A1.2).
+		var hasta []int
+		for j := range parrafo {
+			siguiente := ""
+			if j+1 < len(parrafo) {
+				siguiente = parrafo[j+1]
+			}
+			hasta = append(hasta, len(palabrasDe(sinAbierto(strings.Join(parrafo[:j+1], " "), siguiente))))
+		}
 		texto = reEnlaceTexto.ReplaceAllString(texto, "$1")
 		texto = reHTML.ReplaceAllString(texto, " ")
+		vistas := 0
 		for _, o := range reFinOracion.Split(texto, -1) {
 			ps := strings.FieldsFunc(o, func(r rune) bool { return !unicode.IsLetter(r) && !unicode.IsDigit(r) })
-			if len(ps) > 0 {
-				res = append(res, ps)
+			if len(ps) == 0 {
+				continue
 			}
+			linea := parrafoLin[len(parrafoLin)-1] // red: nunca línea 0 si la cuenta no cuadra
+			for j, h := range hasta {
+				if vistas < h {
+					linea = parrafoLin[j]
+					break
+				}
+			}
+			res, donde = append(res, ps), append(donde, linea)
+			vistas += len(ps)
 		}
+		parrafo, parrafoLin = nil, nil
 	}
-	for _, l := range lineas {
+	for i, l := range lineas {
+		n := 0
+		if i < len(nums) {
+			n = nums[i]
+		}
 		t := strings.TrimSpace(l)
 		switch {
 		case t == "":
 			cerrar()
 		case reItem.MatchString(t):
 			cerrar()
-			parrafo = append(parrafo, reItem.ReplaceAllString(t, ""))
+			parrafo, parrafoLin = append(parrafo, reItem.ReplaceAllString(t, "")), append(parrafoLin, n)
 		default:
-			parrafo = append(parrafo, t)
+			parrafo, parrafoLin = append(parrafo, t), append(parrafoLin, n)
 		}
 	}
 	cerrar()
-	return res
+	return res, donde
 }
 
 // Perspicuidad calcula el índice Szigriszt-Pazos; 0 si no hay palabras.
@@ -122,14 +179,8 @@ func Perspicuidad(ors [][]string) float64 {
 
 // revisarLegibilidad: avisos por oraciones largas o prosa difícil de leer.
 func revisarLegibilidad(pg *pagina) []string {
-	var ps []string
+	ps := largas(pg)
 	ors := oraciones(pg.prosa)
-	for _, o := range ors {
-		if len(o) > MaxPalabrasOracion {
-			ps = append(ps, fmt.Sprintf("%s: oración de %d palabras (máx. %d): «%s…»",
-				pg.rel, len(o), MaxPalabrasOracion, strings.Join(o[:6], " ")))
-		}
-	}
 	if len(ors) == 0 {
 		return ps
 	}
@@ -138,6 +189,28 @@ func revisarLegibilidad(pg *pagina) []string {
 			pg.rel, coma(p), coma(PisoLegibilidad)))
 	}
 	return ps
+}
+
+// largas: un aviso por oración de más de MaxPalabrasOracion, con la línea donde empieza.
+func largas(pg *pagina) []string {
+	var ps []string
+	ors, lin := oracionesConLinea(pg.prosa, pg.prosaLinea)
+	for i, o := range ors {
+		if len(o) > MaxPalabrasOracion {
+			ps = append(ps, fmt.Sprintf("%s:%d: oración de %d palabras (máx. %d): «%s…»",
+				pg.rel, lin[i], len(o), MaxPalabrasOracion, strings.Join(o[:6], " ")))
+		}
+	}
+	return ps
+}
+
+// OracionesLargas (E000/F006/S004): avisos de oración larga de una página de docs/, para el hook al guardar.
+func OracionesLargas(raiz, rel string) ([]string, error) {
+	pg := &pagina{rel: rel}
+	if err := analizar(raiz, pg); err != nil {
+		return nil, err
+	}
+	return largas(pg), nil
 }
 
 // coma formatea un número con un decimal y coma decimal.

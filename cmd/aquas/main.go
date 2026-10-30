@@ -361,9 +361,20 @@ func hook(raiz string) {
 
 	// E000/F004/S004: página de docs/ → enlaces al glosario que pide el gate, sin depender del agente.
 	// Error (p. ej. enlace equivocado previo) no frena aquí: el gate lo reporta.
-	if strings.HasPrefix(rel, "docs/") && strings.HasSuffix(rel, ".md") && rel != "docs/glosario.md" {
-		if n, err := wiki.Enlazar(raiz, rel); err == nil && n > 0 {
-			fmt.Fprintf(os.Stderr, "%s: %d enlaces al glosario puestos por aquas (relee el archivo antes de editarlo otra vez)\n", rel, n)
+	if strings.HasPrefix(rel, "docs/") && strings.HasSuffix(rel, ".md") {
+		avisar := false
+		if rel != "docs/glosario.md" {
+			if n, err := wiki.Enlazar(raiz, rel); err == nil && n > 0 {
+				fmt.Fprintf(os.Stderr, "%s: %d enlaces al glosario puestos por aquas (relee el archivo antes de editarlo otra vez)\n", rel, n)
+				avisar = true
+			}
+		}
+		// E000/F006/S004: la oración larga se avisa al guardar, no recién en el gate.
+		if ps, err := wiki.OracionesLargas(raiz, rel); err == nil && len(ps) > 0 {
+			listar("Oraciones largas (el gate las rechaza): parte cada una en dos", ps)
+			avisar = true
+		}
+		if avisar {
 			os.Exit(2)
 		}
 		return

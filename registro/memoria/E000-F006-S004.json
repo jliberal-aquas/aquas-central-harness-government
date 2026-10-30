@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F006",
+    "slice": "S004",
+    "tarea": "S004 aprobado (A3) y sellado; cerrando"
+  },
+  "siguiente": "commit S004 → S007 biblioteca → S003 reenfocado → S006 inglés de último → cerrar F006",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "0d7d0009fc7891528a980d2f6f9085dec8a3054e14ebe3f8928d2342d0286811",
+  "actualizado": "2026-10-30T16:53:06Z",
+  "sello": "9901a6dd2c74b689081b72239745fd835d4fa0c77bef3feb5686a24e6de6cf4f"
+}

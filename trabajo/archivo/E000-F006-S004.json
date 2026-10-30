@@ -1,0 +1,385 @@
+{
+  "id": "E000/F006/S004",
+  "tipo": "slice",
+  "titulo": "Avisar oración larga al guardar",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "Fable #7: 50 caídas del gate",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 64,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHookAvisaOracionLarga",
+      "intencion": "el hook avisa la línea de una oración larga al guardar una página de docs/",
+      "rojo_cuando": "se guarda docs/ con una oración de más de 20 palabras y el hook no avisa su línea",
+      "verde_cuando": "el hook avisa la línea de la oración larga y no avisa si todas son cortas"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T16:37:08Z",
+    "head": "e64b19edf308f962731eccbcd8b80deb84011ba1",
+    "resultado": {
+      "./cmd/aquas:TestHookAvisaOracionLarga": "oracion_hook_test.go:31: oración larga: el hook debe salir 2 para que Claude lo vea; exit 0, stderr \"\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T16:49:06Z",
+    "head": "e64b19edf308f962731eccbcd8b80deb84011ba1",
+    "huella": {
+      "cmd/aquas/main.go": "d624047d51096fc90c7f86e48867cbb838674e46fed9d8bfe3df2fefedb06ae9",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "internal/wiki/legibilidad.go": "bd98b6511d47db60ae0af32267ee5d1c660ce4af0b6e41c0aa8dba3d64141bdf",
+      "internal/wiki/legibilidad_test.go": "c9fd29c6a87e142b0216ea4faa2b34fdce11d97ce63a1815b02ca920d3d225a3",
+      "internal/wiki/wiki.go": "9d70660fcb43b1bdb9ddaa186ed79da089b5ee2eb5409a3c8a7dbd8b922051d5"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-30T16:51:58Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/main.go": "d624047d51096fc90c7f86e48867cbb838674e46fed9d8bfe3df2fefedb06ae9",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "internal/wiki/legibilidad.go": "bd98b6511d47db60ae0af32267ee5d1c660ce4af0b6e41c0aa8dba3d64141bdf",
+      "internal/wiki/legibilidad_test.go": "c9fd29c6a87e142b0216ea4faa2b34fdce11d97ce63a1815b02ca920d3d225a3",
+      "internal/wiki/wiki.go": "9d70660fcb43b1bdb9ddaa186ed79da089b5ee2eb5409a3c8a7dbd8b922051d5"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S004.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S011.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S005.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F014/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F016/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md\u003einternal/wiki/legibilidad.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/casos_borde_test.go\u003edocs/E001/F001/S002.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/S002.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S002.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/oracion_hook_test.go",
+    "cmd/aquas/main.go",
+    "internal/wiki/legibilidad.go",
+    "internal/wiki/wiki.go",
+    "internal/wiki/legibilidad_test.go",
+    "docs/E000/F006/S004.md",
+    "docs/E000/F006/README.md"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "docs/ref/compilador.md",
+      "motivo": "hallazgo A1.5: el diagrama del hook omite docs/"
+    }
+  ]
+}

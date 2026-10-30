@@ -87,7 +87,7 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 | [S001](S001.md) | Hooks fallan cerrados | Hecho |
 | [S002](S002.md) | Ruta del módulo igual al remoto | Hecho |
 | S003 | Features con prueba propia y siguiente | Planeado |
-| S004 | Avisar oración larga al guardar | Planeado |
+| [S004](S004.md) | Avisar oración larga al guardar | Hecho |
 | [S005](S005.md) | Wiki y metodología al día | Hecho |
 | S006 | CLI en inglés | Planeado |
 | S007 | Biblioteca cuenta bien lo devuelto | Planeado |

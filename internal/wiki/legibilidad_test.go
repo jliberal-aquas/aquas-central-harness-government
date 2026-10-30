@@ -1,6 +1,7 @@
 package wiki
 
 import (
+	"fmt"
 	"math"
 	"strings"
 	"testing"
@@ -84,5 +85,32 @@ func TestFallasLegibilidad(t *testing.T) {
 			reemplazar(t, raiz, tS001, "Se lee.", c.nuevo)
 			exigeProblema(t, raiz, c.espera)
 		})
+	}
+}
+
+// TestOracionesConLinea (E000/F006/S004, hallazgos A1.1 y A1.2): cada oración sabe en qué línea empieza,
+// también si no es la primera del párrafo o si antes hay un enlace partido en dos líneas.
+func TestOracionesConLinea(t *testing.T) {
+	lineas := []string{"Corta.", "Segunda empieza aquí", "y sigue.", "", "Uno dos [tres", "cuatro](../../a/b/c/d/e.md) fin.", "Otra.", "<b", ">Final.</b> Y [un](../../x/y", "z.md) cierre."}
+	nums := []int{3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+	_, got := oracionesConLinea(lineas, nums)
+	want := []int{3, 4, 7, 9, 11, 11}
+	if len(got) != len(want) {
+		t.Fatalf("líneas = %v; esperado %v", got, want)
+	}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Errorf("oración %d empieza en %d; esperado %d", i, got[i], want[i])
+		}
+	}
+	// Hallazgo A2.1: «<» o «[» sueltos en prosa no son etiqueta ni enlace; no desplazan la línea.
+	sueltos := []string{"Si n < 3 sale.", "Sigue aquí.", "Un nombre con «<» y [sin cerrar.", "Final."}
+	_, got = oracionesConLinea(sueltos, []int{20, 21, 22, 23})
+	if fmt.Sprint(got) != "[20 21 22 23]" {
+		t.Errorf("sueltos: líneas = %v; esperado [20 21 22 23]", got)
+	}
+	_, got = oracionesConLinea([]string{"Si n < 3 sale. Otra más."}, []int{30})
+	if fmt.Sprint(got) != "[30 30]" {
+		t.Errorf("suelto en una sola línea: %v", got)
 	}
 }
