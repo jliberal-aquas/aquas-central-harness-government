@@ -8,7 +8,7 @@ Aplica a orquestador → worker/auditor y vuelta. No aplica a mensajes al humano
 - Sin analogías ni pedagogía.
 - Único texto emitido: el CIERRE. Resto = llamadas a herramientas.
 - Cada texto emitido se reenvía en cada turno siguiente → brevedad = menos gasto.
-- Gate: hook `SubagentStop` → `aquas cierre-agente` rechaza cierre sin sus campos fijos. Con cierre de auditor válido, anota su veredicto en la ficha.
+- Gate: hook `SubagentStop` → `aquas cierre-agente` rechaza cierre sin sus campos fijos. Si las dos primeras líneas del cierre de auditor traen id y veredicto válidos, anota el veredicto en la ficha aunque el resto del cierre se rechace (E001/F004/S006).
 
 ## ENCARGO (orquestador → agente; campos fijos, en este orden)
 ```

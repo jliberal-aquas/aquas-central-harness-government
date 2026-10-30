@@ -1,44 +1,44 @@
 {
   "salidas": {
     ".claude/agents/auditor.md": {
-      "sha256": "a5300c5f5370a50d7d83fe54957794a64a6f75bafa426c067ccc20c5b8115f38",
+      "sha256": "60759f1ff7cd7ef5186a31d005a27f581539a50125bd90643342bcf1a59721f7",
       "fuentes": {
         "gobierno/canonico/agentes/auditor.md": "26ed53205bd326fe4277cd1e10687d7c43f7052429a73d8bf2d62fe4d9045e6f",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "ede968491ed72b0a2d180ecbada6204bbccaf6a031d2d872010ef8313c5e4baa",
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "c7dcb49e299f1c4e807a121caad2a6fecd01fb41850c97e22b1876aaf6b9ae57",
         "gobierno/canonico/reglas/04_CASOS_BORDE.md": "3a32e4dbb094362f20a4cc4bbda8fd181e12a0575fecf8bfc3cac8a94cec5efe",
         "gobierno/config/agentes.json": "ce0126a4993d69a151440a15230039e5068a8cf0c66aad2ac17b9872819fd0f7"
       }
     },
     ".claude/agents/orchestrator.md": {
-      "sha256": "a39609c63601537833e0cde7142dd6519c12ea4715d9095f3f00738f6c438eff",
+      "sha256": "961bf609568620d4d6be0593306c6656d55ea0838e22013c078974e19e5f3356",
       "fuentes": {
         "gobierno/canonico/agentes/orquestador.md": "3a4d89eebfc87123e69b7ec6daef2e1aeda831c6f8befd668d7cdf6142bf70c9",
         "gobierno/canonico/comunicacion/01_COMUNICACION_HUMANO.md": "08a3028fe7a5e84ba6847fa9f1790d8076e3ed2f96ee7b33262ec9026745451c",
         "gobierno/canonico/comunicacion/02_PEDAGOGIA_CHAT.md": "04793b3914f29bedb875fcd43dc154a893d3e8535c0a5274cd9ff4be19c7eca6",
         "gobierno/canonico/comunicacion/03_INSIGHTS_ANTI_REINCIDENCIA.md": "a1f498624ced9d2f222f78bfd7d4a143420fb377d833d41d43312e8c4c9994b3",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "ede968491ed72b0a2d180ecbada6204bbccaf6a031d2d872010ef8313c5e4baa",
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "c7dcb49e299f1c4e807a121caad2a6fecd01fb41850c97e22b1876aaf6b9ae57",
         "gobierno/canonico/reglas/03_DOD_COMUN.md": "c81754ac7822aaaf880b0646695f05cf0abc942c53d47b88969be0036d4efc06",
         "gobierno/canonico/reglas/04_CASOS_BORDE.md": "3a32e4dbb094362f20a4cc4bbda8fd181e12a0575fecf8bfc3cac8a94cec5efe",
         "gobierno/config/agentes.json": "ce0126a4993d69a151440a15230039e5068a8cf0c66aad2ac17b9872819fd0f7"
       }
     },
     ".claude/agents/worker-haiku.md": {
-      "sha256": "d726c67486456a4233485b79cfff143a0e8008d8964560a53db735976b4237e2",
+      "sha256": "6fd137228d40a129f31e38387d9274eaa39b926ba3d867af4d9567a577c9429d",
       "fuentes": {
         "gobierno/canonico/agentes/worker.md": "462cf913e7c52c0fccd25bb56d668396dab6dfaf296fc6e2b4bfc23cb9ea39eb",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "ede968491ed72b0a2d180ecbada6204bbccaf6a031d2d872010ef8313c5e4baa",
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "c7dcb49e299f1c4e807a121caad2a6fecd01fb41850c97e22b1876aaf6b9ae57",
         "gobierno/config/agentes.json": "ce0126a4993d69a151440a15230039e5068a8cf0c66aad2ac17b9872819fd0f7"
       }
     },
     ".claude/agents/worker-sonnet.md": {
-      "sha256": "54b8aead8bb71c611ef4b9b2443c6c8eacced7e220a06b7d41bbb9dddb081f3e",
+      "sha256": "a1c1ee55192a4db5d47080ea2aff36fd5466e50330548d9d355b7425087d0f8d",
       "fuentes": {
         "gobierno/canonico/agentes/worker.md": "462cf913e7c52c0fccd25bb56d668396dab6dfaf296fc6e2b4bfc23cb9ea39eb",
         "gobierno/canonico/reglas/01_VALIDAR_VIGENCIA.md": "1cf768f0189649c25ff6b6a21e80774ac4c0077a0bf7ac36dfb93a9a8e609674",
-        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "ede968491ed72b0a2d180ecbada6204bbccaf6a031d2d872010ef8313c5e4baa",
+        "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md": "c7dcb49e299f1c4e807a121caad2a6fecd01fb41850c97e22b1876aaf6b9ae57",
         "gobierno/config/agentes.json": "ce0126a4993d69a151440a15230039e5068a8cf0c66aad2ac17b9872819fd0f7"
       }
     },
