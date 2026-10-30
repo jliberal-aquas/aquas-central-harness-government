@@ -137,6 +137,9 @@ func aprobada(raiz string, f Ficha) error {
 		if f.Rojo != nil {
 			return nil
 		}
+		if n := abiertos(raiz, f.Padre); n >= 2 { // E001/F015/X01 (D000069): una aprobación de feature cubre a todos
+			return fmt.Errorf("%s sin aprobación del contrato: su feature tiene %d slices abiertos; pide una sola vez «apruebo %s con push» (cubre todos; el hook la registra)", f.ID, n, f.Padre)
+		}
 		return fmt.Errorf("%s sin aprobación del contrato: el humano debe escribir «apruebo %s» en el chat (el hook la registra)", f.ID, f.ID)
 	}
 	h, err := Huella(raiz, f)
@@ -147,6 +150,21 @@ func aprobada(raiz string, f Ficha) error {
 		return fmt.Errorf("el contrato de %s cambió desde su aprobación (pruebas, alcance o «Para qué existe»): el humano debe escribir «apruebo %s» otra vez", f.ID, f.ID)
 	}
 	return nil
+}
+
+// abiertos (E001/F015/X01): slices activos (ni CERRADO ni CANCELADO) de la feature; error de lectura = 0.
+func abiertos(raiz, feature string) int {
+	act, _, err := todas(raiz)
+	if err != nil {
+		return 0
+	}
+	n := 0
+	for _, f := range act {
+		if f.Tipo == "slice" && f.Padre == feature {
+			n++
+		}
+	}
+	return n
 }
 
 // reConPush: la primera línea del mensaje es «apruebo <id> …» y dice «con push» en cualquier lugar tras el id,

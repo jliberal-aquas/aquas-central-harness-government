@@ -72,5 +72,32 @@
       ]
     }
   },
+  "arreglos": [
+    {
+      "id": "E001/F015/X01",
+      "titulo": "El aviso de falta de aprobación pide aprobar la feature",
+      "motivo": "D000069: el orquestador pidió apruebo por slice aunque la feature podía aprobarse una vez (humano 2026-10-30)",
+      "fecha": "2026-10-30T13:18:46Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/backlog:TestAvisoPideAprobarFeature",
+          "intencion": "valida que el aviso de falta de aprobación nombra la feature cuando tiene dos o más slices abiertos",
+          "rojo_cuando": "rojo cuando con dos slices abiertos el aviso pide «apruebo \u003cslice\u003e»",
+          "verde_cuando": "verde cuando con dos o más abiertos pide «apruebo \u003cfeature\u003e con push» y con uno solo pide el slice"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-10-30T13:19:09Z",
+        "head": "f8a70cc3f07a41bb4cfae195759df65825c2ff91",
+        "resultado": {
+          "./internal/backlog:TestAvisoPideAprobarFeature": "aviso_feature_test.go:34: dos slices abiertos: debe pedir la feature con push; dio E009/F001/S001 sin aprobación del contrato: el humano debe escribir «apruebo E009/F001/S001» en el chat (el hook la registra)"
+        }
+      },
+      "verde": {
+        "fecha": "2026-10-30T13:23:17Z",
+        "head": "f8a70cc3f07a41bb4cfae195759df65825c2ff91"
+      }
+    }
+  ],
   "relacion": "nueva"
 }

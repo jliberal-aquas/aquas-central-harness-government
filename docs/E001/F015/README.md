@@ -76,6 +76,8 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 Prueba integral: `TestGateHumanoPorFeature` (pendiente).
 
+Arreglo X01 (D000069): `TestAvisoPideAprobarFeature`. Con dos o más [slices](../../glosario.md#slice) abiertos, el aviso de falta de aprobación pide «apruebo <feature> con push».
+
 ## Navegación
 
 <!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
@@ -85,6 +87,12 @@ Prueba integral: `TestGateHumanoPorFeature` (pendiente).
 | [S001](S001.md) | Aprobación por feature | Hecho |
 | [S002](S002.md) | Presupuesto por feature en aquas | Hecho |
 | [S003](S003.md) | Reglas del orquestador para el gate por feature | Hecho |
+
+### Arreglos
+
+| Arreglo | Qué arregla | Por qué | Pruebas | Fecha | Rojo | Verde |
+|---|---|---|---|---|---|---|
+| X01 | El aviso de falta de aprobación pide aprobar la feature | D000069: el orquestador pidió apruebo por slice aunque la feature podía aprobarse una vez (humano 2026-10-30) | `TestAvisoPideAprobarFeature` | 2026-10-30 | 2026-10-30 | 2026-10-30 |
 
 <!-- /GENERADO -->
 
