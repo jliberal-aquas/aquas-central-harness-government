@@ -1,4 +1,4 @@
-// Package compilador genera los archivos derivados (CLAUDE.md, agentes) a partir
+// Package compilador genera los archivos derivados (CLAUDE.md, agentes, skills) a partir
 // de los canónicos de gobierno/ y los sella con SHA-256.
 package compilador
 
@@ -95,6 +95,11 @@ func Planificar(raiz string) ([]Salida, error) {
 			return nil, err
 		}
 		contenido := marca(RutaDocumentos) + "\n\n" + strings.Join(partes, "\n\n") + "\n"
+		// E001/F007/S002: si el canónico abre con frontmatter (skills), el frontmatter va primero y la marca después.
+		if fm, resto, ok := strings.Cut(strings.TrimPrefix(partes[0], "---\n"), "\n---\n"); ok && strings.HasPrefix(partes[0], "---\n") {
+			partes[0] = strings.TrimLeft(resto, "\n")
+			contenido = "---\n" + fm + "\n---\n" + marca(RutaDocumentos) + "\n\n" + strings.Join(partes, "\n\n") + "\n"
+		}
 		salidas = append(salidas, Salida{
 			Ruta:      d.Salida,
 			Contenido: []byte(contenido),

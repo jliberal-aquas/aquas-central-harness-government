@@ -3,8 +3,8 @@
   "tipo": "feature",
   "titulo": "Tabla del backlog en la terminal",
   "estado": "BORRADOR",
-  "prioridad": "P3",
-  "motivo": "humano 2026-10-22: ver iniciativa, feature y slice en una sola tabla, sin navegar",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-30: pidió /backlog",
   "padre": "E001",
   "bloqueado_por": [],
   "secuencia": 76,
@@ -21,6 +21,44 @@
     "head": "e383a60d5dffae6364ba6b230b7a10b47856c5f0",
     "resultado": {
       "./cmd/aquas:TestTablaBacklog": "tabla_integral_test.go:30: aquas backlog tabla: exit 64; quiero 0"
+    }
+  },
+  "aprobacion": {
+    "fecha": "2026-10-30T14:54:49Z",
+    "huella": "8dfe504361bad055809771c1b420e546a1063ded3e0019df0faf0db7e7b076a7",
+    "mensaje": "apruebo E001/F007 con push. 1, 2 y 3 como recomiendas. Una consulta. Eso que me estás diciendo del rojo conocido, ¿es que está descartado, o que está en la lista para tratarlo después? Porque depende de tu respuesta, es preocupante o no preocupante.",
+    "push": true,
+    "foto": {
+      "E001/F007/S001": [
+        {
+          "prueba": "./internal/backlog:TestTablaOrdenaYCargaHistorico",
+          "intencion": "la tabla ordena por prioridad, iniciativa o feature y con histórico suma lo archivado",
+          "rojo_cuando": "el orden pedido no se respeta o el histórico no suma las fichas archivadas",
+          "verde_cuando": "la tabla sale en el orden pedido y con histórico incluye lo archivado"
+        }
+      ],
+      "E001/F007/S002": [
+        {
+          "prueba": "./internal/backlog:TestTablaEnOrden",
+          "intencion": "valida que la tabla trae columnas fijas y sigue el orden de siguiente con solo fichas activas",
+          "rojo_cuando": "rojo cuando falta una columna, aparece una archivada o el orden difiere de siguiente",
+          "verde_cuando": "verde cuando encabezado y filas salen alineados en el orden de siguiente"
+        },
+        {
+          "prueba": "./internal/compilador:TestSkillBacklog",
+          "intencion": "valida que /backlog existe, solo lo invoca el humano y corre aquas backlog tabla",
+          "rojo_cuando": "rojo cuando falta el skill o no corre la tabla o el modelo puede invocarlo",
+          "verde_cuando": "verde cuando el skill compilado corre la tabla con disable-model-invocation"
+        }
+      ],
+      "E001/F007/S003": [
+        {
+          "prueba": "./internal/hijo:TestBuildEscribeSkillBacklog",
+          "intencion": "valida que build deja /backlog en el hijo apuntando al aquas instalado",
+          "rojo_cuando": "rojo cuando el hijo queda sin /backlog o el skill apunta al código de la central",
+          "verde_cuando": "verde cuando build escribe el skill y update lo mantiene"
+        }
+      ]
     }
   }
 }

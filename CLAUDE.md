@@ -35,7 +35,7 @@
 - Go = lenguaje único de gates, validadores y herramientas. Módulo: `github.com/jliberal-aquas/aquas-central-harness-government`.
 - Canónicos: `gobierno/canonico/**`. Únicos archivos editables de gobierno.
 - Config: `gobierno/config/agentes.json` (agentes) y `gobierno/config/documentos.json` (documentos como este).
-- Compilados: `CLAUDE.md`, `.claude/agents/*.md`. Llevan marca «GENERADO»; NO editar a mano.
+- Compilados: `CLAUDE.md`, `.claude/agents/*.md`, `.claude/skills/*/SKILL.md`. Llevan marca «GENERADO»; NO editar a mano.
 - Presupuesto: `max_caracteres` obligatorio por salida en config; gate falla si se excede.
 - Tope = freno de desborde extremo, con holgura amplia; no es meta. Nunca condensar una regla hasta perder contexto para caber: se sube el tope.
 - Sello: `gobierno/config/sellos.json` guarda SHA-256 de cada fuente y cada salida.
@@ -51,5 +51,6 @@
 - `.claude/settings.json` → local, generado de `gobierno/config/claude_settings.json`.
 - `gobierno/canonico/agentes/` → cuerpo de cada agente. `gobierno/canonico/reglas/` → reglas enlazables.
 - `gobierno/canonico/comunicacion/` → reglas agente → humano; solo las carga el orquestador.
+- `gobierno/canonico/skills/` → comandos del chat, como `/backlog`.
 - `metodologias/` = specs. Futuro: `plantillas/`, más gates.
 <!-- /hueco -->

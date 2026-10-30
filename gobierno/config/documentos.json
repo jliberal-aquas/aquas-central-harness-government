@@ -6,6 +6,13 @@
         "gobierno/canonico/constitucion.md"
       ],
       "max_caracteres": 5000
+    },
+    {
+      "salida": ".claude/skills/backlog/SKILL.md",
+      "fuentes": [
+        "gobierno/canonico/skills/backlog.md"
+      ],
+      "max_caracteres": 1500
     }
   ]
 }

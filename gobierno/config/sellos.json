@@ -42,11 +42,18 @@
         "gobierno/config/agentes.json": "ce0126a4993d69a151440a15230039e5068a8cf0c66aad2ac17b9872819fd0f7"
       }
     },
-    "CLAUDE.md": {
-      "sha256": "65913d383113e99208f466be13b799b310bfb001a040459a3d5f1885b33ed2af",
+    ".claude/skills/backlog/SKILL.md": {
+      "sha256": "13442429b28c22bb1a6be71a44538d8baca42d404a09ae5c9d4c8537a300bd14",
       "fuentes": {
-        "gobierno/canonico/constitucion.md": "5e9a6fee466d386749e223619b71473e9095fe3245a169465cd9a895a87e11a1",
-        "gobierno/config/documentos.json": "8725c5c1c167976365eafc575bb74ad42840bffc0bfba3123ded26f2574bb6dd"
+        "gobierno/canonico/skills/backlog.md": "178e2c3839e952f3b55d2e1237216ff9a9d07b2e472aac04d97f6b3310696c6b",
+        "gobierno/config/documentos.json": "c1dfa7f4438f1932fccf86b39d4d355bae7cf3cd63f1a4431e33d8e67c0cdd78"
+      }
+    },
+    "CLAUDE.md": {
+      "sha256": "10abcf5c872bcb4dc2ce8eed3fe760e7ed4a2599673e5c6862c444e2e69351ec",
+      "fuentes": {
+        "gobierno/canonico/constitucion.md": "981486efbbc9df06ae7632de8661fe1eedd6df0d91a141c7b81029e0cf7f97ff",
+        "gobierno/config/documentos.json": "c1dfa7f4438f1932fccf86b39d4d355bae7cf3cd63f1a4431e33d8e67c0cdd78"
       }
     }
   }

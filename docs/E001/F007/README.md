@@ -6,7 +6,7 @@
 
 ## En una frase
 
-El comando «backlog tabla» pondrá cada ficha en una fila con su [iniciativa](../../glosario.md#iniciativa), feature, [slice](../../glosario.md#slice) y descripción.
+El comando «backlog tabla» pone cada ficha activa en una fila con su [iniciativa](../../glosario.md#iniciativa), feature, [slice](../../glosario.md#slice) y descripción.
 
 ## Para qué existe
 
@@ -34,7 +34,7 @@ flowchart LR
 stateDiagram-v2
     [*] --> Fichas: trabajo/activo
     Fichas --> Tabla: aquas backlog tabla
-    Tabla --> Ordenada: por prioridad, iniciativa o feature
+    Tabla --> Ordenada: en el orden de siguiente
     Ordenada --> [*]
 ```
 
@@ -50,11 +50,14 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 ## Paso a paso
 
-1. Tabla ordenable, con histórico opcional (S001).
+1. Tabla ordenable con histórico (S001): cancelada el 2026-10-30; el humano eligió el orden de `siguiente`.
+2. [Tabla del backlog y comando /backlog](S002.md) (S002).
+3. Comando /backlog en los hijos (S003).
 
 ## Cómo se usa
 
-- Aún sin comando: lo entrega S001.
+- En el chat: `/backlog`.
+- En la terminal: `aquas backlog tabla`.
 
 ## Contrato y evidencia
 
@@ -66,7 +69,9 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| S001 | Tabla de pendientes ordenable, con histórico opcional | Planeado |
+| S001 | Tabla de pendientes ordenable, con histórico opcional | Cancelado |
+| [S002](S002.md) | aquas backlog tabla imprime las fichas activas en columnas, en el orden de siguiente; /backlog la muestra | Hecho |
+| S003 | aquas build escribe el skill /backlog en el hijo para mostrar el backlog de ese repo | Planeado |
 
 <!-- /GENERADO -->
 

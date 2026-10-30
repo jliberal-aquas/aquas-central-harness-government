@@ -73,7 +73,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `memoriaCLI` | `(raiz string, args []string)` | memoriaCLI: `ver` imprime la memoria; `fijar campo=valor…` la actualiza y la sella. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `memoriaArchivada` | `(raiz, id string) error` | memoriaArchivada: CERRADO exige el archivo de memoria del slice, apunte o no la memoria a él (E001/F002/S009, X01). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `focoEnBacklog` | `(raiz string, f memoria.Foco) error` | focoEnBacklog: la memoria solo fija el slice que el backlog tiene en curso (S003). |
-| [cmd/aquas/main.go](../../cmd/aquas/main.go) | `backlogCLI` | `(raiz string, args []string)` | backlogCLI: nuevo \\| ver [id] \\| prioridad \\| estado \\| siguiente \\| pruebas \\| rojo \\| verde. |
+| [cmd/aquas/main.go](../../cmd/aquas/main.go) | `backlogCLI` | `(raiz string, args []string)` | backlogCLI: nuevo \\| ver [id] \\| tabla \\| prioridad \\| estado \\| siguiente \\| pruebas \\| rojo \\| verde. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `turnoCLI` | `(raiz string, args []string)` | turnoCLI: auditoría de turnos (E001/F002/S001). Lee el JSON del hook por stdin. No imprime nada |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `defectoCLI` | `(raiz string, args []string) error` | defectoCLI: nuevo \\| ocurre \\| ver (E001/F004/S001). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `versionBinario` | `() string` | versionBinario: versión del módulo con que se compiló el binario (= versión del gobierno embebido). |
@@ -175,6 +175,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/backlog/sello.go](../../internal/backlog/sello.go) | `selloCompleto` | `(raiz string, f Ficha) error` | selloCompleto: CERRADO exige marca en cada ítem, haya o no commit base (S013). |
 | [internal/backlog/sello.go](../../internal/backlog/sello.go) | `Marcar` | `(raiz, id, clave, marca, motivo string) (Ficha, error)` | Marcar guarda la revisión de un ítem del sello de un slice activo. |
 | [internal/backlog/sello.go](../../internal/backlog/sello.go) | `TextoSello` | `(xs []Item) string` | TextoSello: una línea por ítem; [ ] pendiente, [x] marcado con su marca y motivo. |
+| [internal/backlog/tabla.go](../../internal/backlog/tabla.go) | `Tabla` | `(fs []Ficha) string` | Tabla (E001/F007/S002): las fichas en columnas alineadas, en el orden recibido (el de Activas). |
 | [internal/biblioteca/biblioteca.go](../../internal/biblioteca/biblioteca.go) | `Leer` | `(raiz string, p Pedido) (texto string, devueltos, completos int)` | Leer devuelve el texto para el agente y cuántos caracteres devolvió de cuántos tiene |
 | [internal/calidad/calidad.go](../../internal/calidad/calidad.go) | `Revisar` | `(dir, config string) ([]string, error)` | Revisar corre golangci-lint con config sobre dir y devuelve un hallazgo por línea. |
 | [internal/calidad/calidad.go](../../internal/calidad/calidad.go) | `chequearVersion` | `(salida string) error` | chequearVersion falla si la salida de `golangci-lint version` no es la versión fija. |

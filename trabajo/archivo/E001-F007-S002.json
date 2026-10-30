@@ -1,0 +1,448 @@
+{
+  "id": "E001/F007/S002",
+  "tipo": "slice",
+  "titulo": "Tabla del backlog y comando /backlog",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "humano 2026-10-30: /backlog muestra el backlog del repo actual en columnas y en orden",
+  "padre": "E001/F007",
+  "bloqueado_por": [],
+  "secuencia": 131,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestTablaEnOrden",
+      "intencion": "valida que la tabla trae columnas fijas y sigue el orden de siguiente con solo fichas activas",
+      "rojo_cuando": "rojo cuando falta una columna, aparece una archivada o el orden difiere de siguiente",
+      "verde_cuando": "verde cuando encabezado y filas salen alineados en el orden de siguiente"
+    },
+    {
+      "prueba": "./internal/compilador:TestSkillBacklog",
+      "intencion": "valida que /backlog existe, solo lo invoca el humano y corre aquas backlog tabla",
+      "rojo_cuando": "rojo cuando falta el skill o no corre la tabla o el modelo puede invocarlo",
+      "verde_cuando": "verde cuando el skill compilado corre la tabla con disable-model-invocation"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T15:01:39Z",
+    "head": "3b59ed3f3474c23a91e75e9f0a7cd43524b573cf",
+    "resultado": {
+      "./internal/backlog:TestTablaEnOrden": "tabla_test.go:14: backlog vacío: solo el encabezado; dio \"\"",
+      "./internal/compilador:TestSkillBacklog": "skill_test.go:25: no hay salida .claude/skills/backlog/SKILL.md"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T15:14:48Z",
+    "head": "3b59ed3f3474c23a91e75e9f0a7cd43524b573cf",
+    "huella": {
+      "cmd/aquas/main.go": "fc17e97eaf30bd96943986f18b84eeba6307897f841bff3059da832a1ec5cfc5",
+      "internal/backlog/tabla.go": "643d68b64c71c2b2f3d59195295e1403d77b14e10ae59b1260019a1611276e6f",
+      "internal/backlog/tabla_test.go": "ff0d980aac364d2c193d0fcb28f31b90f9ab131598cb691a1ed9478bf5eb26b4",
+      "internal/compilador/compilador.go": "9b0c5d7cc668ce5c40e81f3f80a2ef8d2b9a9fcf1a07063ed90425f2853ca2ee",
+      "internal/compilador/skill_test.go": "7f218d895e8e7a08dbbc2e0f520848464060ac522aa925e59d8e90309176af73"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-30T15:18:34Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/main.go": "fc17e97eaf30bd96943986f18b84eeba6307897f841bff3059da832a1ec5cfc5",
+      "internal/backlog/tabla.go": "643d68b64c71c2b2f3d59195295e1403d77b14e10ae59b1260019a1611276e6f",
+      "internal/backlog/tabla_test.go": "ff0d980aac364d2c193d0fcb28f31b90f9ab131598cb691a1ed9478bf5eb26b4",
+      "internal/compilador/compilador.go": "9b0c5d7cc668ce5c40e81f3f80a2ef8d2b9a9fcf1a07063ed90425f2853ca2ee",
+      "internal/compilador/skill_test.go": "7f218d895e8e7a08dbbc2e0f520848464060ac522aa925e59d8e90309176af73"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F007",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F007/S002.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/F007/README.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:.claude/skills/backlog/SKILL.md\u003egobierno/config/documentos.json",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/auditor.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/orchestrator.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-haiku.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-sonnet.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:CLAUDE.md\u003egobierno/config/documentos.json",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:cmd/aquas/aprobacion_test.go\u003edocs/E001/F002/S003.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/arranque_test.go\u003edocs/E001/F005/S003.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/presupuesto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/S002.md\u003egobierno/config/documentos.json",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S001.md\u003einternal/compilador/compilador.go",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S005.md\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/config/documentos.json",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003einternal/compilador/compilador.go",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/constitucion.md\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/constitucion.md\u003egobierno/config/documentos.json",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/skills/backlog.md",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/config/documentos.json",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/aprobacion_test.go\u003edocs/E001/F002/S002.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:internal/backlog/sello.go\u003einternal/compilador",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/S004.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/compilador/modulo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/defecto/reincidencia_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:internal/hijo/build_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/gosolo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/instalar_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/pendiente_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/report_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/update_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/F005/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/que_hace_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "no lo afecta la tabla ni el skill /backlog"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en este slice"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/tabla.go",
+    "internal/backlog/tabla_test.go",
+    "cmd/aquas/main.go",
+    "internal/compilador/compilador.go",
+    "internal/compilador/skill_test.go",
+    "gobierno/canonico/skills/backlog.md",
+    "gobierno/config/documentos.json",
+    "gobierno/config/sellos.json",
+    ".claude/skills/backlog/SKILL.md",
+    "docs/E001/F007/S002.md",
+    "docs/E001/F007/README.md"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "gobierno/canonico/constitucion.md",
+      "motivo": "hallazgo A1.4: la constitución nombra los compilados y el mapa"
+    },
+    {
+      "ruta": "CLAUDE.md",
+      "motivo": "hallazgo A1.4: compilado de la constitución"
+    }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "gobierno/config/documentos.json",
+    "internal/backlog/tabla.go",
+    "internal/compilador/compilador.go"
+  ],
+  "relacion": "amplia:E001/F007",
+  "que_hace": "aquas backlog tabla imprime las fichas activas en columnas, en el orden de siguiente; /backlog la muestra"
+}

@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F007",
+    "slice": "S002",
+    "tarea": "S002 listo para cerrar: A3 APROBADO, sellos al día"
+  },
+  "siguiente": "cerrar S002, commit, push → S003 EN_CURSO → página (incluye corregir F007 README:15 al final) → rojo TestBuildEscribeSkillBacklog → hijo.Build → auditor → cerrar F007 → push",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "01b75a2dc428338a85d4756918b89f26fe5fefc0c8f0d74e96420f899357d0e9",
+  "actualizado": "2026-10-30T15:19:44Z",
+  "sello": "fcede324f0eaa925badfaa55146c73ace38521b196281a248d1bcbba0c4a2a5a"
+}

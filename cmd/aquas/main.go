@@ -534,9 +534,9 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 	return nil
 }
 
-// backlogCLI: nuevo | ver [id] | prioridad | estado | siguiente | pruebas | rojo | verde.
+// backlogCLI: nuevo | ver [id] | tabla | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… que_hace=<una oración, máx. 20 palabras> relacion=nueva|amplia:<id>|corrige:<id> prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | documentar <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=… | arreglo <slice|feature> titulo=… motivo=… [absorbe=<slice>] | codigo <id> [commit…] | editar <id> [titulo=…] [bloqueado_por=A,B] motivo=…")
+	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… que_hace=<una oración, máx. 20 palabras> relacion=nueva|amplia:<id>|corrige:<id> prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | tabla | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | documentar <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=… | arreglo <slice|feature> titulo=… motivo=… [absorbe=<slice>] | codigo <id> [commit…] | editar <id> [titulo=…] [bloqueado_por=A,B] motivo=…")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}
@@ -554,6 +554,13 @@ func backlogCLI(raiz string, args []string) {
 		for _, f := range fs {
 			fmt.Print(backlog.Texto(f))
 		}
+		return
+	case args[0] == "tabla" && len(args) == 1: // E001/F007/S002: columnas en el orden de siguiente
+		fs, err := backlog.Activas(raiz)
+		if err != nil {
+			fallar(1, err)
+		}
+		fmt.Print(backlog.Tabla(fs))
 		return
 	case args[0] == "ver" && len(args) == 2:
 		var archivada bool
