@@ -153,7 +153,7 @@ func main() {
 		if err != nil { // Leer devuelve lo decodificado junto al error: no usar un entorno inválido
 			en = entorno.Entorno{}
 		}
-		for _, m := range []string{propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta), propuesta.RevisarShell(e.Respuesta, en.ShellHumano)} { // S016: insight PROPUESTO exige defecto
+		for _, m := range []string{propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta), propuesta.RevisarShell(e.Respuesta, en.ShellHumano), defecto.RevisarFallo(raiz, e.Respuesta)} { // S016: insight PROPUESTO exige defecto; E001/F004/S002: fallo exige defecto
 			if m != "" {
 				_, _ = fmt.Fprintln(os.Stderr, m)
 				os.Exit(2)

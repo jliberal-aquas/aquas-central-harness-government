@@ -7,5 +7,43 @@
   "motivo": "no bloquea hoy",
   "padre": "E001",
   "bloqueado_por": [],
-  "secuencia": 30
+  "secuencia": 30,
+  "aprobacion": {
+    "fecha": "2026-10-30T09:53:36Z",
+    "huella": "31d6a673d6acf9da2032c621ecc58535d290294da83cb952aa690aba2c5cd2fc",
+    "mensaje": "apruebo E001/F004 con push",
+    "push": true,
+    "foto": {
+      "E001/F004/S002": [
+        {
+          "prueba": "./internal/defecto:TestStopFrenaFalloSinDefecto",
+          "intencion": "valida que un fallo contado en el cierre trae un defecto que existe",
+          "rojo_cuando": "rojo cuando un ¿Salió algo mal? sin defecto no frena el cierre",
+          "verde_cuando": "verde cuando sin defecto o con uno inexistente frena; con No, con — o con un defecto que existe pasa"
+        },
+        {
+          "prueba": "./cmd/aquas:TestHookFrenaFalloSinDefecto",
+          "intencion": "valida que el gancho Stop aplica el freno de fallo sin defecto",
+          "rojo_cuando": "rojo cuando aquas propuesta sale 0 con un fallo sin defecto",
+          "verde_cuando": "verde cuando sale 2 con el aviso y sale 0 con No o con un defecto que existe"
+        }
+      ],
+      "E001/F004/S003": [
+        {
+          "prueba": "./internal/defecto:TestReincidenciaCreaSlice",
+          "intencion": "la reincidencia crea un slice P1 una sola vez",
+          "rojo_cuando": "al llegar al umbral no crea el slice, o lo crea repetido",
+          "verde_cuando": "crea un slice P1 en el umbral; debajo no crea nada"
+        }
+      ],
+      "E001/F004/S004": [
+        {
+          "prueba": "./internal/defecto:TestStopFrenaDaleSinPlan",
+          "intencion": "invitar a seguir sin línea Plan frena el cierre",
+          "rojo_cuando": "un mensaje que invita a seguir sin Plan: pasa",
+          "verde_cuando": "el mensaje sin línea Plan: se bloquea"
+        }
+      ]
+    }
+  }
 }

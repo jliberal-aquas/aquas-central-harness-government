@@ -96,7 +96,7 @@ Prueba de S001: `TestRegistroDeDefectos`.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | Registro de defectos | Hecho |
-| S002 | Stop frena fallo sin defecto | Planeado |
+| [S002](S002.md) | Stop frena fallo sin defecto | Hecho |
 | S003 | Reincidencia crea slice E000 | Planeado |
 | S004 | Stop frena pedido de dale sin plan | Planeado |
 | [S005](S005.md) | El gancho del veredicto no falla en silencio | Hecho |

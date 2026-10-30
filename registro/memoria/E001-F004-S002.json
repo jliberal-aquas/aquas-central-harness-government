@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F004",
+    "slice": "S002",
+    "tarea": "E001/F004/S002 cerrado: Stop frena fallo sin defecto"
+  },
+  "siguiente": "respuestas humano: S003 umbral, S004 cancelar",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "c86f6d9d681bb4f7ef96f844930ea4e4c8b2c66e6078d1f3fccdd7a91c03c812",
+  "actualizado": "2026-10-30T10:08:56Z",
+  "sello": "ddf66241d37064632249f31c7de5bbcaf0e9b7e20f4fa3295a2fcc876e628ce8"
+}

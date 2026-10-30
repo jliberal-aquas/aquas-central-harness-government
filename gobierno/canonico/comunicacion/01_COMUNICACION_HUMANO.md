@@ -52,7 +52,7 @@ Carga permanente 01+02+03; constitución/glosario fijan nombres.
 - 🚀 **Información:** 1–3 hechos clave por impacto, no cronología; marcar incertidumbre.
 - ⁉️ **Decisión:** pregunta pendiente + porqué + recomendación; o «—».
 - 💡 **Insights:** aprendizaje → control preventivo → evidencia → estado (ver 03).
-- 🤦‍♂️ **¿Salió algo mal?:** fallo y situación actual; o «No».
+- 🤦‍♂️ **¿Salió algo mal?:** fallo con su defecto registrado (D000NNN) y situación actual; o «No» (gancho Stop, E001/F004/S002).
 - 🧙‍♂️ **¿Qué necesito de ti?:** input preciso faltante; o «Nada».
 - 🎯 **Próximo movimiento:** acción concreta siguiente o «Cerrado».
 - Cada campo legible en segundos: respuesta primero, explicación opcional.

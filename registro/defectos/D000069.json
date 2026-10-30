@@ -1,0 +1,10 @@
+{
+  "id": "D000069",
+  "firma": "apruebo-por-slice-con-feature",
+  "que": "el orquestador pidió «apruebo \u003cslice\u003e» en S006 y S002 (y re-aprobación tras cada cambio de contrato) aunque E001/F015 permite aprobar la feature una vez",
+  "causa": "el orquestador siguió el patrón de sesiones previas sin revisar si la feature podía aprobarse; nada lo frena",
+  "arreglo": "pedir «apruebo \u003cfeature\u003e con push» al empezar una feature con varios slices pendientes",
+  "como_me_cercioro": "en la próxima feature, el primer pedido de aprobación nombra la feature, no el slice",
+  "ocurrencias": [],
+  "relacion": "E001/F004/S002"
+}
