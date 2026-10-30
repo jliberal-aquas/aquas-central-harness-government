@@ -91,3 +91,38 @@ func TestSiguientePideCerrarConHijosArchivados(t *testing.T) {
 		t.Errorf("iniciativa con sus features cerradas: pide cerrarla; dio %q", m)
 	}
 }
+
+// TestSiguienteNoExigeDefinirReincidenciasVacia (E000/F006/S003, decisión del humano 2026-10-30):
+// la feature de reincidencias nace vacía y se llena sola con `aquas defecto`; vacía no traba siguiente.
+// Rojo cuando: siguiente responde E000/F007 con la feature vacía.
+// Verde cuando: la salta vacía y sigue pidiendo definir otras features sin slices.
+func TestSiguienteNoExigeDefinirReincidenciasVacia(t *testing.T) {
+	raiz := base(t)
+	nuevo(t, raiz, "id=E001/F002/S001", "titulo=T", "prioridad=P0", "motivo=m")
+	nuevo(t, raiz, "id=E000", "titulo=Mantenimiento", "prioridad=P1", "motivo=m")
+	nuevo(t, raiz, "id=E000/F001", "titulo=Otra", "prioridad=P1", "motivo=m")
+	nuevo(t, raiz, "id=E000/F001/S001", "titulo=T", "prioridad=P1", "motivo=m")
+	nuevo(t, raiz, "id="+FeatureReincidencias, "titulo=Reincidencias", "prioridad=P1", "motivo=m")
+	if f, hay, err := Siguiente(raiz); err != nil || !hay || f.ID != "E001/F002/S001" {
+		t.Fatalf("reincidencias vacía no se exige definir: siguiente = %q (%v, %v)", f.ID, hay, err)
+	}
+	// Hallazgo A1.1: con sus slices CERRADOS en el archivo tampoco se pide cerrarla; es un
+	// contenedor permanente (cerrada, `aquas defecto` ya no podría crear slices en ella).
+	s := nuevo(t, raiz, "id="+FeatureReincidencias+"/S001", "titulo=T", "prioridad=P1", "motivo=m")
+	s.Estado = "CERRADO"
+	if err := escribir(raiz, Archivo, s); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Remove(filepath.Join(raiz, filepath.FromSlash(Activo), nombre(s.ID))); err != nil {
+		t.Fatal(err)
+	}
+	if f, _, _ := Siguiente(raiz); f.ID != "E001/F002/S001" {
+		t.Fatalf("reincidencias con slices archivados no se pide cerrar: siguiente = %q", f.ID)
+	}
+	// Hallazgo A1.3: otra feature vacía, con el mismo padre y la misma prioridad, sí se exige:
+	// la excepción es solo por el ID.
+	nuevo(t, raiz, "id=E000/F008", "titulo=T", "prioridad=P1", "motivo=m")
+	if f, _, _ := Siguiente(raiz); f.ID != "E000/F008" {
+		t.Errorf("otra feature vacía debe pedirse: siguiente = %q", f.ID)
+	}
+}

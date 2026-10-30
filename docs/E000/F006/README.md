@@ -62,7 +62,7 @@ continúa: [EJ-E000](../README.md#EJ-E000)
 
 1. Hooks fallan cerrados (S001).
 2. Ruta del módulo igual al remoto (S002).
-3. Features con prueba propia (S003).
+3. Siguiente no exige definir Reincidencias vacía (S003).
 4. Avisar oración larga al guardar (S004).
 5. [Wiki](../../glosario.md#wiki) y metodología al día (S005).
 6. CLI en inglés (S006).
@@ -87,7 +87,7 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 |---|---|---|
 | [S001](S001.md) | Hooks fallan cerrados | Hecho |
 | [S002](S002.md) | Ruta del módulo igual al remoto | Hecho |
-| S003 | Features con prueba propia y siguiente | Planeado |
+| [S003](S003.md) | Siguiente no exige definir Reincidencias vacía | Hecho |
 | [S004](S004.md) | Avisar oración larga al guardar | Hecho |
 | [S005](S005.md) | Wiki y metodología al día | Hecho |
 | S006 | CLI en inglés | Planeado |

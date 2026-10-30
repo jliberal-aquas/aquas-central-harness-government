@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F006",
+    "slice": "S003",
+    "tarea": "S003 cerrado"
+  },
+  "siguiente": "S006 CLI en inglés → cerrar F006",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "1e33acc90f7218963330fbf4887b638511d98e93f9441d8eb8659eaf2a1d9512",
+  "actualizado": "2026-10-30T17:29:57Z",
+  "sello": "be979c43b67cfb33480add47616066a9fca60ee125ae87c19b1810b2449d8b1f"
+}

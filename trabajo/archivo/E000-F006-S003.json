@@ -1,0 +1,326 @@
+{
+  "id": "E000/F006/S003",
+  "tipo": "slice",
+  "titulo": "Siguiente no exige definir Reincidencias vacía",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "Fable #2: 7 de 8 features sin pruebas",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 63,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSiguienteNoExigeDefinirReincidenciasVacia",
+      "intencion": "valida que siguiente no pide definir la feature de reincidencias mientras no tiene slices",
+      "rojo_cuando": "rojo cuando siguiente responde definir E000/F007 con la feature vacía",
+      "verde_cuando": "verde cuando siguiente la salta vacía y la pide definir otras features sin slices"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T17:19:33Z",
+    "head": "04ec4047a0359f8eea598193f0824cbbd624e57b",
+    "resultado": {
+      "./internal/backlog:TestSiguienteNoExigeDefinirReincidenciasVacia": "siguiente_test.go:107: reincidencias vacía no se exige definir: siguiente = \"E000/F007\" (true, \u003cnil\u003e)"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T17:28:23Z",
+    "head": "04ec4047a0359f8eea598193f0824cbbd624e57b",
+    "huella": {
+      "internal/backlog/backlog.go": "fe0108e931506a53249a7375e10ae5a3f23531fcb266c918cf23182b45abbe7a",
+      "internal/backlog/siguiente_test.go": "adf33dd0d25546ee66fa995d77443dff1d59d85357084b02d217989d7d974387",
+      "internal/defecto/defecto.go": "e5b2bd7225b6e66e5f158b72e1785af7204367504b52c747ef0c5c9774ee9005"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-30T17:29:30Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "internal/backlog/backlog.go": "fe0108e931506a53249a7375e10ae5a3f23531fcb266c918cf23182b45abbe7a",
+      "internal/backlog/siguiente_test.go": "adf33dd0d25546ee66fa995d77443dff1d59d85357084b02d217989d7d974387",
+      "internal/defecto/defecto.go": "e5b2bd7225b6e66e5f158b72e1785af7204367504b52c747ef0c5c9774ee9005"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S003.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/defecto",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:cmd/aquas/presupuesto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S007.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S011.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S017.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003einternal/defecto/defecto.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S003.md\u003einternal/defecto/defecto.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/defecto/defecto.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003einternal/defecto/defecto.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F014/S001.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E001/F014/S002.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003einternal/backlog/backlog.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003einternal/defecto/defecto.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/defecto/reincidencia_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/que_hace_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/backlog.go",
+    "internal/backlog/siguiente_test.go",
+    "internal/defecto/defecto.go",
+    "docs/E000/F006/S003.md",
+    "docs/E000/F006/README.md"
+  ],
+  "codigo": [
+    "internal/backlog/backlog.go",
+    "internal/defecto/defecto.go"
+  ],
+  "ediciones": [
+    {
+      "fecha": "2026-10-30T17:14:41Z",
+      "campo": "titulo",
+      "antes": "Features con prueba propia y siguiente",
+      "despues": "Siguiente no exige definir Reincidencias vacía",
+      "motivo": "humano 2026-10-30, decisión 1: X01 se queda; S003 = solo el arreglo de E000/F007"
+    }
+  ]
+}

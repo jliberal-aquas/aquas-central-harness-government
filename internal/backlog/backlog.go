@@ -441,9 +441,13 @@ func Siguiente(raiz string) (Ficha, bool, error) {
 	return Ficha{}, false, nil
 }
 
+// FeatureReincidencias: donde `aquas defecto` crea los slices de reincidencia (E001/F004/S003).
+// Nace vacía y se llena sola; vacía no se exige definir (E000/F006/S003).
+const FeatureReincidencias = "E000/F007"
+
 // sinDefinir (E001/F002/S008, regla del humano 2026-10-21): iniciativa o feature activa sin hijos
 // activos. Va antes que cualquier slice, sin mirar prioridad ni bloqueo: iniciativas primero,
-// luego features, cada grupo por secuencia de ingreso.
+// luego features, cada grupo por secuencia de ingreso. Salta FeatureReincidencias (E000/F006/S003).
 func sinDefinir(act map[string]Ficha) (Ficha, bool) {
 	conHijos := map[string]bool{}
 	for _, f := range act {
@@ -452,7 +456,7 @@ func sinDefinir(act map[string]Ficha) (Ficha, bool) {
 	var mejor Ficha
 	hay := false
 	for _, f := range act {
-		if f.Tipo == "slice" || conHijos[f.ID] {
+		if f.Tipo == "slice" || conHijos[f.ID] || f.ID == FeatureReincidencias {
 			continue
 		}
 		if !hay || (f.Tipo == "iniciativa") != (mejor.Tipo == "iniciativa") && f.Tipo == "iniciativa" ||

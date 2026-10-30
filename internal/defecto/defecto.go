@@ -111,8 +111,8 @@ func Ocurre(raiz, id, turno string) (Defecto, error) {
 // Umbral (E001/F004/S003): apariciones (registro + ocurrencias) que convierten un defecto en slice de Feature.
 const Umbral = 3
 
-// Feature: donde nacen los slices de reincidencia.
-const Feature = "E000/F007"
+// Feature: donde nacen los slices de reincidencia; vive en backlog, que la salta mientras esté vacía.
+const Feature = backlog.FeatureReincidencias
 
 // sliceReincidencia devuelve el slice del defecto: el que ya lleve su título o uno nuevo P1 en Feature.
 // Reusa el existente (activo o archivado) tras un fallo a mitad; si no, toma el SNNN siguiente al mayor.
