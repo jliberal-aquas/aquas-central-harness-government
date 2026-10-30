@@ -1,0 +1,136 @@
+{
+  "id": "E001/F004/S003",
+  "tipo": "slice",
+  "titulo": "Reincidencia crea slice E000",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-22: definir E001/F004",
+  "padre": "E001/F004",
+  "bloqueado_por": [
+    "E001/F004/S001"
+  ],
+  "secuencia": 56,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestReincidenciaCreaSlice",
+      "intencion": "la reincidencia crea un slice P1 una sola vez",
+      "rojo_cuando": "al llegar al umbral no crea el slice, o lo crea repetido",
+      "verde_cuando": "crea un slice P1 en el umbral; debajo no crea nada"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T10:57:00Z",
+    "head": "c5c5928943717269a7489192373abb18222bceec",
+    "resultado": {
+      "./internal/defecto:TestReincidenciaCreaSlice": "reincidencia_test.go:52: sin E000/F007 debe fallar nombrándola; dio \u003cnil\u003e"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T11:07:22Z",
+    "head": "c5c5928943717269a7489192373abb18222bceec",
+    "huella": {
+      "internal/defecto/defecto.go": "52504dd3804454a42b54cf292dff2974b539ccbba39d961dc4b4526ec18ead1c",
+      "internal/defecto/reincidencia_test.go": "df474f98931aca15fde8ae87e837b3a5fb30886e2eb06853d86ec94219bde222"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-30T11:11:36Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "internal/defecto/defecto.go": "52504dd3804454a42b54cf292dff2974b539ccbba39d961dc4b4526ec18ead1c",
+      "internal/defecto/reincidencia_test.go": "df474f98931aca15fde8ae87e837b3a5fb30886e2eb06853d86ec94219bde222"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F004",
+      "marca": "sin_cambio",
+      "motivo": "no cambia por S003"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "no cambia por S003"
+    },
+    {
+      "clave": "pagina:docs/E001/F004/S003.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "pagina:docs/E001/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "no cambia por S003"
+    },
+    {
+      "clave": "nombra:README.md\u003edocs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/defecto",
+      "marca": "sin_cambio",
+      "motivo": "no cambia por S003"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S002.md\u003edocs/E001/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S002.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S005.md\u003edocs/E001/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S006.md\u003edocs/E001/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "actualizado en S003"
+    }
+  ],
+  "alcance": [
+    "internal/defecto/defecto.go",
+    "internal/defecto/reincidencia_test.go",
+    "docs/E001/F004/S003.md",
+    "docs/E001/F004/README.md"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "motivo": "hallazgo A1.2: el canónico decía ocurrencias ≥ umbral (config, 3)"
+    }
+  ],
+  "codigo": [
+    "internal/defecto/defecto.go"
+  ]
+}

@@ -149,7 +149,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F001](F001/README.md) | Wiki + gate | Hecho |
 | [F002](F002/README.md) | Turnos, backlog y sello | En curso |
 | [F003](F003/README.md) | Bibliotecario | Hecho |
-| [F004](F004/README.md) | Defectos y reincidencia | Planeado |
+| [F004](F004/README.md) | Defectos y reincidencia | Hecho |
 | [F005](F005/README.md) | Memoria caliente | Hecho |
 | [F006](F006/README.md) | Workers y auditor | Hecho |
 | [F007](F007/README.md) | Tabla del backlog en la terminal | Planeado |

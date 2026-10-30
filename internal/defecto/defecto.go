@@ -28,6 +28,7 @@ type Defecto struct {
 	Cercioro    string   `json:"como_me_cercioro"`
 	Ocurrencias []string `json:"ocurrencias"`
 	Relacion    string   `json:"relacion,omitempty"` // E001/F009/S002: nuevo o el id de una ficha
+	Slice       string   `json:"slice,omitempty"`    // E001/F004/S003: slice de reincidencia ya creado
 }
 
 // Campos que pide `nuevo`, en orden.
@@ -84,11 +85,68 @@ func Ocurre(raiz, id, turno string) (Defecto, error) {
 	if err != nil {
 		return Defecto{}, err
 	}
+	// Hallazgo A1.6: con el umbral alcanzado y sin slice, repetir el mismo turno reintenta sin sumar ocurrencia.
+	pendiente := 1+len(d.Ocurrencias) >= Umbral && d.Slice == ""
 	if slices.Contains(d.Ocurrencias, turno) {
-		return Defecto{}, fmt.Errorf("%s ya tiene el turno %s", id, turno)
+		if !pendiente {
+			return Defecto{}, fmt.Errorf("%s ya tiene el turno %s", id, turno)
+		}
+	} else {
+		d.Ocurrencias = append(d.Ocurrencias, turno)
+		if err := escribir(raiz, d); err != nil {
+			return Defecto{}, err
+		}
 	}
-	d.Ocurrencias = append(d.Ocurrencias, turno)
+	if 1+len(d.Ocurrencias) < Umbral || d.Slice != "" {
+		return d, nil
+	}
+	s, err := sliceReincidencia(raiz, d)
+	if err != nil {
+		return Defecto{}, fmt.Errorf("%s llegó a %d apariciones y su slice no nació; la ocurrencia quedó guardada; arregla la causa y repite `aquas defecto ocurre %s %s`: %w", id, 1+len(d.Ocurrencias), id, turno, err)
+	}
+	d.Slice = s
 	return d, escribir(raiz, d)
+}
+
+// Umbral (E001/F004/S003): apariciones (registro + ocurrencias) que convierten un defecto en slice de Feature.
+const Umbral = 3
+
+// Feature: donde nacen los slices de reincidencia.
+const Feature = "E000/F007"
+
+// sliceReincidencia devuelve el slice del defecto: el que ya lleve su título o uno nuevo P1 en Feature.
+// Reusa el existente (activo o archivado) tras un fallo a mitad; si no, toma el SNNN siguiente al mayor.
+// Feature archivada se niega: un hijo activo de padre archivado rompe el gate (hallazgo A1.1).
+func sliceReincidencia(raiz string, d Defecto) (string, error) {
+	titulo := "Reincidencia " + d.ID + ": " + d.Firma
+	if f, archivada, err := backlog.Ver(raiz, Feature); err != nil {
+		return "", err
+	} else if archivada {
+		return "", fmt.Errorf("%s está archivada (%s): un slice activo bajo ella rompe el gate", Feature, f.Estado)
+	}
+	fs, err := backlog.Todas(raiz)
+	if err != nil {
+		return "", err
+	}
+	n := 0
+	for _, f := range fs {
+		if f.Padre != Feature {
+			continue
+		}
+		if f.Titulo == titulo {
+			return f.ID, nil
+		}
+		var k int
+		if _, err := fmt.Sscanf(strings.TrimPrefix(f.ID, Feature+"/S"), "%d", &k); err == nil && k > n {
+			n = k
+		}
+	}
+	id := fmt.Sprintf("%s/S%03d", Feature, n+1)
+	_, err = backlog.Nuevo(raiz, []string{"id=" + id, "titulo=" + titulo, "prioridad=P1", "relacion=nueva",
+		fmt.Sprintf("motivo=%s apareció %d veces (E001/F004/S003)", d.ID, 1+len(d.Ocurrencias)),
+		"que_hace=ataca la causa de " + d.ID + " para que no vuelva a ocurrir",
+		"prueba=./internal/defecto:TestReincidencia" + d.ID + "=valida que " + d.ID + " no vuelve|rojo cuando " + d.Firma + " se reproduce|verde cuando el control lo impide"})
+	return id, err
 }
 
 // Leer devuelve todos los defectos, ordenados por ID. Sin carpeta = registro vacío.
@@ -147,6 +205,9 @@ func escribir(raiz string, d Defecto) error {
 
 // Texto: una línea por defecto para `aquas defecto ver`.
 func Texto(d Defecto) string {
+	if d.Slice != "" {
+		return fmt.Sprintf("%s · %s · %d ocurrencias · slice %s · %s\n", d.ID, d.Firma, len(d.Ocurrencias), d.Slice, d.Que)
+	}
 	return fmt.Sprintf("%s · %s · %d ocurrencias · %s\n", d.ID, d.Firma, len(d.Ocurrencias), d.Que)
 }
 

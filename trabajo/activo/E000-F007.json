@@ -1,0 +1,33 @@
+{
+  "id": "E000/F007",
+  "tipo": "feature",
+  "titulo": "Reincidencias de defectos",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "E001/F004/S003: destino de los tramos de reincidencia (humano 2026-10-30)",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 130,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestReincidenciaCreaSlice",
+      "intencion": "valida que un defecto en su tercera aparición crea su tramo aquí",
+      "rojo_cuando": "al llegar al umbral no crea el slice, o lo crea repetido",
+      "verde_cuando": "crea un slice P1 en el umbral; debajo no crea nada"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T10:57:02Z",
+    "head": "c5c5928943717269a7489192373abb18222bceec",
+    "resultado": {
+      "./internal/defecto:TestReincidenciaCreaSlice": "reincidencia_test.go:52: sin E000/F007 debe fallar nombrándola; dio \u003cnil\u003e"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T11:07:23Z",
+    "head": "c5c5928943717269a7489192373abb18222bceec",
+    "huella": {}
+  },
+  "relacion": "nueva",
+  "que_hace": "agrupa los tramos que nacen cuando un defecto aparece tres veces"
+}

@@ -18,7 +18,7 @@ Ejemplo real: un [hook](../../glosario.md#hook) corrido con `go run` perdía su 
 
 - S001 crea el registro `registro/defectos/`, en Git.
 - S002 hace que el cierre del turno frene si hubo un fallo sin registrar.
-- S003 crea un slice de mantenimiento cuando un defecto se repite tres veces.
+- S003 crea un slice de mantenimiento cuando un defecto aparece por tercera vez.
 
 Decisión de Jesús, 2026-10-22: el registro va en Git porque es conocimiento que evita repetir.
 
@@ -38,7 +38,7 @@ flowchart LR
     F["Fallo en un turno"] --> R{"¿Firma ya existe?"}
     R -- "no" --> N["aquas defecto nuevo"]
     R -- "sí" --> O["aquas defecto ocurre"]
-    O --> U{"¿3 ocurrencias?"}
+    O --> U{"¿3 apariciones? registro + 2 ocurre"}
     U -- "sí" --> S["Slice E000 P1"]
 ```
 
@@ -56,8 +56,8 @@ stateDiagram-v2
 | Slice | Qué entrega |
 |---|---|
 | [S001 Registro de defectos](S001.md) | `aquas defecto nuevo`, `ocurre` y `ver` |
-| S002 Stop frena fallo sin defecto | Cierre que exige registrar el fallo |
-| S003 Reincidencia crea slice E000 | Trabajo automático al repetirse |
+| [S002 Stop frena fallo sin defecto](S002.md) | Cierre que exige registrar el fallo |
+| [S003 Reincidencia crea slice E000](S003.md) | Trabajo automático al repetirse |
 
 ## Ejemplo de punta a punta
 
@@ -87,7 +87,9 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 **Objetivo.** Ningún fallo repetido queda sin registro ni sin tarea.
 
-Prueba de S001: `TestRegistroDeDefectos`.
+Prueba integral: `TestDefectosDePuntaAPunta` (registro → cierre que exige el número → tercera aparición → slice P1 en E000/F007, uno solo). Rojo contra el código sin S003, verde el 2026-10-30.
+
+Pruebas de los slices: `TestRegistroDeDefectos`, `TestStopFrenaFalloSinDefecto`, `TestHookFrenaFalloSinDefecto`, `TestReincidenciaCreaSlice`.
 
 ## Navegación
 
@@ -97,8 +99,8 @@ Prueba de S001: `TestRegistroDeDefectos`.
 |---|---|---|
 | [S001](S001.md) | Registro de defectos | Hecho |
 | [S002](S002.md) | Stop frena fallo sin defecto | Hecho |
-| S003 | Reincidencia crea slice E000 | Planeado |
-| S004 | Stop frena pedido de dale sin plan | Planeado |
+| [S003](S003.md) | Reincidencia crea slice E000 | Hecho |
+| S004 | Stop frena pedido de dale sin plan | Cancelado |
 | [S005](S005.md) | El gancho del veredicto no falla en silencio | Hecho |
 | [S006](S006.md) | anota el veredicto del auditor aunque su cierre traiga texto de más | Hecho |
 

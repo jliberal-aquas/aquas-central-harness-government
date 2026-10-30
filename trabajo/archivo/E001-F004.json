@@ -2,12 +2,32 @@
   "id": "E001/F004",
   "tipo": "feature",
   "titulo": "Defectos y reincidencia",
-  "estado": "BORRADOR",
+  "estado": "CERRADO",
   "prioridad": "P2",
   "motivo": "no bloquea hoy",
   "padre": "E001",
   "bloqueado_por": [],
   "secuencia": 30,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestDefectosDePuntaAPunta",
+      "intencion": "valida que un fallo se registra, se repite y a la tercera aparición nace su slice",
+      "rojo_cuando": "rojo cuando la tercera aparición no crea el slice o el cierre no exige el defecto",
+      "verde_cuando": "verde cuando nace un solo slice P1 en E000/F007 y el cierre solo pasa citando un defecto que existe"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T11:13:16Z",
+    "head": "c5c5928943717269a7489192373abb18222bceec",
+    "resultado": {
+      "./cmd/aquas:TestDefectosDePuntaAPunta": "defectos_integral_test.go:49: tercera aparición debe nombrar su slice: {out:D000001 · json-salto-crudo · 2 ocurrencias · salto crudo en JSON"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T11:13:24Z",
+    "head": "c5c5928943717269a7489192373abb18222bceec",
+    "huella": {}
+  },
   "aprobacion": {
     "fecha": "2026-10-30T09:53:36Z",
     "huella": "31d6a673d6acf9da2032c621ecc58535d290294da83cb952aa690aba2c5cd2fc",
