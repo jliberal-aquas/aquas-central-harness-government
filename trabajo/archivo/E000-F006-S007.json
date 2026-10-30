@@ -1,0 +1,120 @@
+{
+  "id": "E000/F006/S007",
+  "tipo": "slice",
+  "titulo": "Biblioteca cuenta bien lo devuelto",
+  "estado": "CERRADO",
+  "prioridad": "P3",
+  "motivo": "recreado de E001/F003/S005 (humano 2026-10-23, a): Fable #10, devueltos 60081 de 56670",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 99,
+  "pruebas": [
+    {
+      "prueba": "./internal/biblioteca:TestCuentaDevueltos",
+      "intencion": "valida que la biblioteca informa lo que de verdad devolvió",
+      "rojo_cuando": "rojo cuando el total devuelto supera lo pedido",
+      "verde_cuando": "verde cuando el total coincide con lo devuelto"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T16:57:27Z",
+    "head": "b02f07c07454a44502b318e1efef15836e83a423",
+    "resultado": {
+      "./internal/biblioteca:TestCuentaDevueltos": "biblioteca_test.go:173: entero y error: lectura entera debe dar devueltos = completos: 83 de 23"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T17:13:17Z",
+    "head": "b02f07c07454a44502b318e1efef15836e83a423",
+    "huella": {
+      "internal/biblioteca/biblioteca.go": "479f56695051f13427c2255803c6d1d29cf7a4d48d33d9c09b120f68f4b58e93",
+      "internal/biblioteca/biblioteca_test.go": "9efb324ce2e7043e983f04b5b5846151d4b5ffea3ec19cf185813fcede18fb19"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-30T17:13:45Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "internal/biblioteca/biblioteca.go": "479f56695051f13427c2255803c6d1d29cf7a4d48d33d9c09b120f68f4b58e93",
+      "internal/biblioteca/biblioteca_test.go": "9efb324ce2e7043e983f04b5b5846151d4b5ffea3ec19cf185813fcede18fb19"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S007.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:.claude/agents/auditor.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/orchestrator.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-haiku.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-sonnet.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/biblioteca",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    }
+  ],
+  "alcance": [
+    "internal/biblioteca/biblioteca.go",
+    "internal/biblioteca/biblioteca_test.go",
+    "docs/E000/F006/S007.md",
+    "docs/E000/F006/README.md"
+  ],
+  "codigo": [
+    "internal/backlog/backlog.go",
+    "internal/biblioteca/biblioteca.go"
+  ],
+  "relacion": "nueva"
+}

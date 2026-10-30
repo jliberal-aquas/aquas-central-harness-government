@@ -177,6 +177,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/backlog/sello.go](../../internal/backlog/sello.go) | `TextoSello` | `(xs []Item) string` | TextoSello: una línea por ítem; [ ] pendiente, [x] marcado con su marca y motivo. |
 | [internal/backlog/tabla.go](../../internal/backlog/tabla.go) | `Tabla` | `(fs []Ficha) string` | Tabla (E001/F007/S002): las fichas en columnas alineadas, en el orden recibido (el de Activas). |
 | [internal/biblioteca/biblioteca.go](../../internal/biblioteca/biblioteca.go) | `Leer` | `(raiz string, p Pedido) (texto string, devueltos, completos int)` | Leer devuelve el texto para el agente y cuántos caracteres devolvió de cuántos tiene |
+| [internal/biblioteca/biblioteca.go](../../internal/biblioteca/biblioteca.go) | `bloque` | `(rel string, lineas []string, desde, hasta int) string` | bloque: lo que Leer devuelve de las líneas desde-hasta de un archivo, cabecera incluida. |
 | [internal/calidad/calidad.go](../../internal/calidad/calidad.go) | `Revisar` | `(dir, config string) ([]string, error)` | Revisar corre golangci-lint con config sobre dir y devuelve un hallazgo por línea. |
 | [internal/calidad/calidad.go](../../internal/calidad/calidad.go) | `chequearVersion` | `(salida string) error` | chequearVersion falla si la salida de `golangci-lint version` no es la versión fija. |
 | [internal/calidad/calidad.go](../../internal/calidad/calidad.go) | `RevisarCentral` | `(raiz string) []string` | RevisarCentral corre la calidad Go de raiz con la config del gate; sin go.mod no hay código que revisar. |

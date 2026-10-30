@@ -119,7 +119,8 @@ func TestLeerCasosBorde(t *testing.T) {
 	if !strings.HasPrefix(txt, "== "+ilegible+" · error: no se pudo leer\n== devueltos ") || strings.Contains(txt, raiz) {
 		t.Errorf("archivo ilegible: una línea con «no se pudo leer» y sin ruta absoluta; dio:\n%s", txt)
 	}
-	if completos != utf8.RuneCountInString("package a\n\nfunc A() {}\n") {
+	// S007: completos = lo que da leer entero, una vez, cada ruta distinta del pedido.
+	if _, entero, _ := Leer(raiz, Pedido{Rutas: []string{"vacio.txt", "docs", "a.go"}}); completos != entero {
 		t.Errorf("a.go pedido tres veces, con otra grafía, cuenta una sola vez en completos: %d", completos)
 	}
 }
@@ -138,15 +139,70 @@ func TestTopeCortaYLoDice(t *testing.T) {
 func TestCuentaDeAhorro(t *testing.T) {
 	raiz := repo(t)
 	txt, devueltos, completos := Leer(raiz, Pedido{Rutas: []string{"largo.txt:1-5"}})
-	b, _ := os.ReadFile(filepath.Join(raiz, "largo.txt"))
-	if completos != utf8.RuneCount(b) {
-		t.Errorf("completos = caracteres del archivo entero: %d, se esperaba %d", completos, utf8.RuneCount(b))
+	if _, entero, _ := Leer(raiz, Pedido{Rutas: []string{"largo.txt"}}); completos != entero {
+		t.Errorf("completos = lo que devuelve leer el archivo entero: %d, se esperaba %d", completos, entero)
 	}
 	if devueltos == 0 || devueltos >= completos {
 		t.Errorf("devueltos debe ser menor que completos: %d de %d", devueltos, completos)
 	}
 	if !strings.HasSuffix(txt, fmt.Sprintf("== devueltos %d de %d caracteres\n", devueltos, completos)) {
 		t.Errorf("la última línea dice la cuenta:\n%s", txt)
+	}
+}
+
+// TestCuentaDevueltos (E000/F006/S007, Fable #10 «devueltos 60081 de 56670»): devueltos y completos
+// se miden en el mismo formato, cabecera y números de línea incluidos.
+// Rojo cuando: el total devuelto supera lo pedido. Verde cuando: el total coincide con lo devuelto.
+func TestCuentaDevueltos(t *testing.T) {
+	raiz := repo(t)
+	cuerpo := func(txt string) int { // lo devuelto sin la línea final de la cuenta
+		return utf8.RuneCountInString(txt[:strings.LastIndex(txt, "== devueltos")])
+	}
+	casos := []struct {
+		nombre string
+		rutas  []string
+	}{
+		{"un archivo entero", []string{"largo.txt"}},
+		{"varios enteros, con CRLF", []string{"a.go", "docs/b.md", "largo.txt"}},
+		{"vacío", []string{"vacio.txt"}},
+		{"solo errores", []string{"no-existe.go", "docs", "../fuera.go", "a.go:5-2"}},
+		{"entero y error", []string{"a.go", "no-existe.go"}},
+	}
+	for _, c := range casos {
+		txt, devueltos, completos := Leer(raiz, Pedido{Rutas: c.rutas})
+		if devueltos != completos {
+			t.Errorf("%s: lectura entera debe dar devueltos = completos: %d de %d", c.nombre, devueltos, completos)
+		}
+		if n := cuerpo(txt); devueltos != n {
+			t.Errorf("%s: devueltos = %d pero el texto trae %d caracteres", c.nombre, devueltos, n)
+		}
+	}
+	// Rango y archivo repetido: el archivo cuenta una vez en completos; devueltos ≤ completos.
+	txt, devueltos, completos := Leer(raiz, Pedido{Rutas: []string{"largo.txt:1-5", "./largo.txt:10-12", "a.go"}})
+	if devueltos >= completos || devueltos != cuerpo(txt) {
+		t.Errorf("rangos: devueltos %d de %d; el texto trae %d", devueltos, completos, cuerpo(txt))
+	}
+	// Hallazgo A1.4: un error repetido cuenta una vez en completos, como un archivo repetido.
+	if _, d, c := Leer(raiz, Pedido{Rutas: []string{"no.go", "no.go"}}); c*2 != d {
+		t.Errorf("error repetido: devueltos %d, completos %d; esperaba completos = mitad", d, c)
+	}
+	// Hallazgos A1.1 y A2.1: rangos chicos disjuntos, repetidos o solapados, o un error repetido,
+	// devuelven más que la lectura entera; la nota lo explica sin culpar a una sola causa.
+	for _, rutas := range [][]string{{"a.go:1-1", "a.go:3-3"}, {"a.go", "a.go"}, {"largo.txt:1-200", "largo.txt:100-300"}, {"no.go", "no.go"}} {
+		txt, d, c := Leer(raiz, Pedido{Rutas: rutas})
+		if d <= c || d != cuerpo(txt) || !strings.HasSuffix(txt, "(más que leer entero de una vez: cada rango o aviso suma su cabecera y lo repetido cuenta doble)\n") {
+			t.Errorf("%v: devueltos %d de %d sin explicar el exceso:\n%s", rutas, d, c, txt[strings.LastIndex(txt, "== devueltos"):])
+		}
+	}
+	// Hallazgo A1.2: rango que empieza después del final; su aviso cuenta solo en devueltos.
+	txt, d, c := Leer(raiz, Pedido{Rutas: []string{"a.go:9-9"}})
+	if _, entero, _ := Leer(raiz, Pedido{Rutas: []string{"a.go"}}); c != entero || d != cuerpo(txt) || !strings.Contains(txt, "error: el archivo tiene 3 líneas") {
+		t.Errorf("rango fuera del archivo: devueltos %d, completos %d (entero %d):\n%s", d, c, entero, txt)
+	}
+	// Hallazgo A1.3: con corte por tope, devueltos = tope y completos sigue siendo el archivo entero.
+	txt, d, c = Leer(raiz, Pedido{Rutas: []string{"largo.txt"}, Tope: 500})
+	if _, entero, _ := Leer(raiz, Pedido{Rutas: []string{"largo.txt"}}); d != 500 || c != entero || !strings.HasSuffix(txt, fmt.Sprintf("== devueltos 500 de %d caracteres\n", entero)) {
+		t.Errorf("tope: devueltos %d de %d (entero %d)", d, c, entero)
 	}
 }
 

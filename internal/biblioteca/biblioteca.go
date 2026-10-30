@@ -51,6 +51,16 @@ func Leer(raiz string, p Pedido) (texto string, devueltos, completos int) {
 		b.WriteString(s)
 		devueltos += utf8.RuneCountInString(s)
 	}
+	// avisar: línea de error; la lectura entera también la traería, así que cuenta en completos,
+	// una vez por línea distinta, igual que cada archivo (hallazgo A1.4).
+	avisos := map[string]bool{}
+	avisar := func(s string) {
+		if !avisos[s] {
+			avisos[s] = true
+			completos += utf8.RuneCountInString(s)
+		}
+		escribir(s)
+	}
 	leidos := map[string][]string{} // cada archivo se lee y se cuenta una sola vez
 	for _, ruta := range p.Rutas {
 		rel, desde, hasta := ruta, 0, 0
@@ -59,12 +69,12 @@ func Leer(raiz string, p Pedido) (texto string, devueltos, completos int) {
 			desde, _ = strconv.Atoi(m[2])
 			hasta, _ = strconv.Atoi(m[3])
 			if desde < 1 || hasta < desde {
-				escribir("== " + ruta + " · error: rango inválido (desde-hasta, desde ≥ 1)\n")
+				avisar("== " + ruta + " · error: rango inválido (desde-hasta, desde ≥ 1)\n")
 				continue
 			}
 		}
 		if !filepath.IsLocal(filepath.FromSlash(rel)) {
-			escribir("== " + ruta + " · error: fuera del repo (solo rutas relativas a la raíz)\n")
+			avisar("== " + ruta + " · error: fuera del repo (solo rutas relativas a la raíz)\n")
 			continue
 		}
 		rel = filepath.ToSlash(filepath.Clean(filepath.FromSlash(rel))) // «./a.go» y «a.go» = mismo archivo
@@ -72,7 +82,7 @@ func Leer(raiz string, p Pedido) (texto string, devueltos, completos int) {
 		if !ok {
 			abs := filepath.Join(raiz, filepath.FromSlash(rel))
 			if info, err := os.Stat(abs); err == nil && info.IsDir() {
-				escribir("== " + ruta + " · error: es una carpeta\n")
+				avisar("== " + ruta + " · error: es una carpeta\n")
 				continue
 			}
 			datos, err := os.ReadFile(abs)
@@ -81,19 +91,19 @@ func Leer(raiz string, p Pedido) (texto string, devueltos, completos int) {
 				if errors.Is(err, os.ErrNotExist) {
 					motivo = "no existe"
 				}
-				escribir("== " + ruta + " · error: " + motivo + "\n")
+				avisar("== " + ruta + " · error: " + motivo + "\n")
 				continue
 			}
-			completos += utf8.RuneCount(datos)
 			s := strings.TrimSuffix(strings.ReplaceAll(string(datos), "\r\n", "\n"), "\n")
 			lineas = []string{}
 			if s != "" {
 				lineas = strings.Split(s, "\n")
 			}
+			completos += utf8.RuneCountInString(bloque(rel, lineas, 1, len(lineas))) // mismo formato que lo devuelto (S007)
 			leidos[rel] = lineas
 		}
 		if len(lineas) == 0 {
-			escribir("== " + rel + " · vacío (0 líneas)\n")
+			escribir(bloque(rel, lineas, 0, 0))
 			continue
 		}
 		if desde == 0 {
@@ -106,13 +116,26 @@ func Leer(raiz string, p Pedido) (texto string, devueltos, completos int) {
 			escribir(fmt.Sprintf("== %s · error: el archivo tiene %d líneas\n", ruta, len(lineas)))
 			continue
 		}
-		var blq strings.Builder
-		fmt.Fprintf(&blq, "== %s · %d-%d de %d\n", rel, desde, hasta, len(lineas))
-		for i := desde; i <= hasta; i++ {
-			fmt.Fprintf(&blq, "%d\t%s\n", i, lineas[i-1])
-		}
-		escribir(blq.String())
+		escribir(bloque(rel, lineas, desde, hasta))
 	}
-	fmt.Fprintf(&b, "== devueltos %d de %d caracteres\n", devueltos, completos)
+	fmt.Fprintf(&b, "== devueltos %d de %d caracteres", devueltos, completos)
+	if devueltos > completos { // hallazgos A1.1 y A2.1: muchos bloques chicos o repetidos cuestan más que leer entero
+		b.WriteString(" (más que leer entero de una vez: cada rango o aviso suma su cabecera y lo repetido cuenta doble)")
+	}
+	b.WriteString("\n")
 	return b.String(), devueltos, completos
+}
+
+// bloque: lo que Leer devuelve de las líneas desde-hasta de un archivo, cabecera incluida.
+// Sirve también para contar completos en el mismo formato (E000/F006/S007).
+func bloque(rel string, lineas []string, desde, hasta int) string {
+	if len(lineas) == 0 {
+		return "== " + rel + " · vacío (0 líneas)\n"
+	}
+	var b strings.Builder
+	fmt.Fprintf(&b, "== %s · %d-%d de %d\n", rel, desde, hasta, len(lineas))
+	for i := desde; i <= hasta; i++ {
+		fmt.Fprintf(&b, "%d\t%s\n", i, lineas[i-1])
+	}
+	return b.String()
 }
