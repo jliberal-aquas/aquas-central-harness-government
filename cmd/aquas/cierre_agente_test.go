@@ -123,3 +123,58 @@ func TestCierreAgenteCLI(t *testing.T) {
 		t.Fatalf("JSON ilegible: deja cerrar; dio %+v", s)
 	}
 }
+
+// TestCierreAgenteAnotaConTextoDeMas (E001/F004/S006, D000068): el veredicto se anota antes de revisar el formato.
+// Rojo cuando: un cierre con id y veredicto válidos y un campo de más no deja veredicto en la ficha.
+// Verde cuando: la ficha tiene el veredicto, el gancho sale 2 con el aviso de formato y el registro dice anotado.
+func TestCierreAgenteAnotaConTextoDeMas(t *testing.T) {
+	raiz := t.TempDir()
+	fichaSlice(t, raiz, "E001/F014/S002", "EN_CURSO")
+	cierre := func(id, v, extra string) string {
+		return `{"agent_type":"auditor","last_assistant_message":"` + extra + `id: ` + id + `\nveredicto: ` + v +
+			`\nhallazgos: —\nno_revisado: —\nevidencia: go test ok","stop_hook_active":false}`
+	}
+	// Campo de más: anota, avisa con exit 2 y el registro lo dice.
+	s := aquas(t, raiz, cierre("E001-F014-S002-A1", "CON_HALLAZGOS", ""), "cierre-agente")
+	if s.codigo != 2 || !strings.Contains(s.err, "texto fuera del cierre") {
+		t.Errorf("campo de más: exit 2 con el aviso de formato; dio %+v", s)
+	}
+	if a := auditoriaDe(t, raiz, "E001/F014/S002"); a == nil || a["veredicto"] != "CON_HALLAZGOS" {
+		t.Fatalf("campo de más: el veredicto debe quedar en la ficha; quedó %v", a)
+	}
+	// Prosa antes del id: no hay veredicto anotable; la ficha conserva el anterior.
+	s = aquas(t, raiz, cierre("E001-F014-S002-A2", "APROBADO", `Listo.\n`), "cierre-agente")
+	if s.codigo != 2 {
+		t.Errorf("prosa antes del id: exit 2; dio %+v", s)
+	}
+	// Veredicto inválido: tampoco se anota.
+	_ = aquas(t, raiz, cierre("E001-F014-S002-A3", "OK", ""), "cierre-agente")
+	if a := auditoriaDe(t, raiz, "E001/F014/S002"); a["veredicto"] != "CON_HALLAZGOS" {
+		t.Errorf("sin id o veredicto válidos no se anota; quedó %v", a)
+	}
+	// Tramo sin ficha en curso: no anota, exit 2, una línea rechazado.
+	// Hallazgo A1.2: también lleva el aviso de formato, para que el auditor sepa qué reescribir.
+	if s := aquas(t, raiz, cierre("E009-F001-S001-A1", "APROBADO", ""), "cierre-agente"); s.codigo != 2 || !strings.Contains(s.err, "no quedó anotado") || !strings.Contains(s.err, "texto fuera del cierre") {
+		t.Errorf("tramo sin ficha: exit 2 avisando que no se anotó y el formato; dio %+v", s)
+	}
+	// Hallazgo A1.1: un worker con líneas id y veredicto nunca escribe veredicto en la ficha.
+	worker := strings.Replace(cierre("E001-F014-S002-A4", "APROBADO", ""), `"auditor"`, `"worker-sonnet"`, 1)
+	if s := aquas(t, raiz, worker, "cierre-agente"); s.codigo != 2 {
+		t.Errorf("worker con cierre de auditor: exit 2; dio %+v", s)
+	}
+	if a := auditoriaDe(t, raiz, "E001/F014/S002"); a["veredicto"] != "CON_HALLAZGOS" {
+		t.Errorf("un worker no anota veredicto; quedó %v", a)
+	}
+	ls := lineasRegistro(t, raiz)
+	if len(ls) != 5 {
+		t.Fatalf("una línea por llamada: %d líneas: %v", len(ls), ls)
+	}
+	if r := ls[0]["resultado"]; !strings.HasPrefix(r, "anotado E001/F014/S002 CON_HALLAZGOS · cierre inválido: ") {
+		t.Errorf("campo de más: registro «anotado … · cierre inválido: …»; quedó %q", r)
+	}
+	for i := 1; i < 5; i++ {
+		if r := ls[i]["resultado"]; !strings.HasPrefix(r, "rechazado: ") || strings.Contains(r, "anotado E") {
+			t.Errorf("llamada %d: registro «rechazado: …» sin anotado; quedó %q", i, r)
+		}
+	}
+}

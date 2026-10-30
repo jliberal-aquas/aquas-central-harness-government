@@ -1,0 +1,360 @@
+{
+  "id": "E001/F004/S006",
+  "tipo": "slice",
+  "titulo": "El veredicto se anota aunque sobre texto",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "D000068: el gancho rechaza el cierre con texto de más, el auditor no reintenta y el veredicto se pierde",
+  "padre": "E001/F004",
+  "bloqueado_por": [],
+  "secuencia": 129,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestCierreAgenteAnotaConTextoDeMas",
+      "intencion": "valida que el veredicto se anota aunque el cierre traiga texto de más",
+      "rojo_cuando": "rojo cuando un cierre con id y veredicto válidos y un campo de más no deja veredicto en la ficha",
+      "verde_cuando": "verde cuando la ficha tiene el veredicto, el gancho sale 2 con el aviso de formato y el registro dice anotado"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T01:08:48Z",
+    "head": "55364707bc87417230fd91b937c5b554ddbfce51",
+    "resultado": {
+      "./cmd/aquas:TestCierreAgenteAnotaConTextoDeMas": "cierre_agente_test.go:143: campo de más: el veredicto debe quedar en la ficha; quedó map[]"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T01:21:14Z",
+    "head": "55364707bc87417230fd91b937c5b554ddbfce51",
+    "huella": {
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/main.go": "598f36ed8385335cdbaaafc19583551277b62530b414319e57a71b8be0c76f12"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-30T01:24:33Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/main.go": "598f36ed8385335cdbaaafc19583551277b62530b414319e57a71b8be0c76f12"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F004",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "pagina:docs/E001/F004/S006.md",
+      "marca": "actualizado",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "pagina:docs/E001/F004/README.md",
+      "marca": "actualizado",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S005.md\u003ecmd/aquas/cierre_agente_test.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S005.md\u003edocs/E001/F004/README.md",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F014/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F016/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/ref/codigo.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "revisado al cerrar S006"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/main.go",
+    "cmd/aquas/cierre_agente_test.go",
+    "docs/E001/F004/S006.md",
+    "docs/E001/F004/README.md"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-30T01:21:10Z",
+    "huella": "7471e828b841d3bbe9db5aa9a1ea75fcf2be9518406c16ed57c38dae297fdae3",
+    "mensaje": "apruebo E001/F004/S006 con push"
+  },
+  "codigo": [
+    "cmd/aquas/main.go"
+  ],
+  "relacion": "nueva",
+  "que_hace": "anota el veredicto del auditor aunque su cierre traiga texto de más"
+}

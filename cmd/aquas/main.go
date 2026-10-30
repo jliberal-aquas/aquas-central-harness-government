@@ -294,6 +294,17 @@ func main() {
 			return
 		}
 		if m := encargo.Revisar(e.Tipo, e.Mensaje, e.Activo); m != "" {
+			// E001/F004/S006 (D000068): tras el rechazo el auditor no reintenta; el veredicto se anota antes de quejarse.
+			if id, v, ok := encargo.Veredicto(e.Mensaje); ok && e.Tipo == "auditor" {
+				if err := backlog.AnotarAuditoria(raiz, id, v, time.Now()); err != nil {
+					anotar("rechazado: " + err.Error())
+					_, _ = fmt.Fprintf(os.Stderr, "aquas cierre-agente: el veredicto de %s no quedó anotado: %v\n%s\n", id, err, m)
+					os.Exit(2)
+				}
+				anotar("anotado " + id + " " + v + " · " + m)
+				_, _ = fmt.Fprintln(os.Stderr, m)
+				os.Exit(2)
+			}
 			anotar("rechazado: " + m)
 			_, _ = fmt.Fprintln(os.Stderr, m)
 			os.Exit(2)

@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F004",
+    "slice": "S006",
+    "tarea": "E001/F004/S006 cerrado: el veredicto se anota aunque sobre texto (D000068)"
+  },
+  "siguiente": "tarea aparte: regla canónica 02 línea 11 (anota también con cierre inválido)",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "mecanismo de ataque al cerrar feature: ronda de preguntas abierta"
+  ],
+  "huella_git": "a9558e669086f1d7f172f49bffad98844aeb5fb5f06c0f427ad99e51813c2a89",
+  "actualizado": "2026-10-30T01:25:16Z",
+  "sello": "8f8877469d7f3c7bd64611e977039d6ae2391c5496b3b6e9a1448e3aee114105"
+}
