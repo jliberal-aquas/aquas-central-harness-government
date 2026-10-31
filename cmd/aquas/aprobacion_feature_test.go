@@ -37,13 +37,13 @@ func aprobacionFeature(t *testing.T, raiz string) (ap struct {
 // Verde cuando: el mensaje registra la aprobación de la feature y con push queda en la ficha.
 func TestApruebaFeatureDesdeElChat(t *testing.T) {
 	raiz := repoFeature(t)
-	if s := aquas(t, raiz, mensajeHumano("apruebo E001/F002"), "aprobacion"); s.codigo != 0 {
+	if s := aquas(t, raiz, mensajeHumano(t, "apruebo E001/F002"), "aprobacion"); s.codigo != 0 {
 		t.Fatalf("apruebo de feature: %+v", s)
 	}
 	if ap := aprobacionFeature(t, raiz); ap.Push || ap.Foto["E001/F002/S003"] == nil {
 		t.Errorf("sin «con push»: push falso y foto con S003; dio %+v", ap)
 	}
-	if s := aquas(t, raiz, mensajeHumano("apruebo E001/F002 con push"), "aprobacion"); s.codigo != 0 {
+	if s := aquas(t, raiz, mensajeHumano(t, "apruebo E001/F002 con push"), "aprobacion"); s.codigo != 0 {
 		t.Fatalf("apruebo con push: %+v", s)
 	}
 	if ap := aprobacionFeature(t, raiz); !ap.Push {
@@ -61,7 +61,7 @@ func TestGateHumanoPorFeature(t *testing.T) {
 		t.Helper()
 		return aquas(t, raiz, "", append([]string{"backlog"}, args...)...)
 	}
-	if s := aquas(t, raiz, mensajeHumano("apruebo E001/F002 con push"), "aprobacion"); s.codigo != 0 {
+	if s := aquas(t, raiz, mensajeHumano(t, "apruebo E001/F002 con push"), "aprobacion"); s.codigo != 0 {
 		t.Fatalf("apruebo de feature: %+v", s)
 	}
 	if s := backlogOK("pruebas", "E001/F002/S003", "./p:TestBandera=pide el arreglo|r|v", "./p:TestOtra=otra|r|v"); s.codigo != 0 {

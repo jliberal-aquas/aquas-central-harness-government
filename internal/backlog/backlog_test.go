@@ -189,8 +189,9 @@ func TestSiguienteOrdenFijo(t *testing.T) {
 	cambia := func(id, e string) {
 		t.Helper()
 		if e == "CERRADO" {
-			conRojoYVerde(t, raiz, id) // desde S003 cerrar exige rojo y verde
-			marcarTodo(t, raiz, id)    // desde S004 cerrar exige el sello marcado
+			sembrarAprobacion(t, raiz, id) // E000/F008/S002: cerrar exige aprobación con respaldo
+			conRojoYVerde(t, raiz, id)     // desde S003 cerrar exige rojo y verde
+			marcarTodo(t, raiz, id)        // desde S004 cerrar exige el sello marcado
 		}
 		if e == "EN_CURSO" {
 			sembrarAprobacion(t, raiz, id) // E001/F010/S001: arrancar exige la aprobación humana

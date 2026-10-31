@@ -76,7 +76,7 @@ func TestRojoExigeAprobacion(t *testing.T) {
 	if _, err := Rojo(raiz, id, hora); err == nil || !strings.Contains(err.Error(), "apruebo "+id) {
 		t.Fatalf("rojo sin aprobación: error que pide «apruebo %s»; dio %v", id, err)
 	}
-	if _, err := Aprobar(raiz, id, "apruebo "+id, hora); err != nil {
+	if _, err := Aprobar(raiz, id, "apruebo "+id, respaldo(t, "apruebo "+id), hora); err != nil {
 		t.Fatal(err)
 	}
 	if _, err := Estado(raiz, id, "EN_CURSO"); err != nil {
@@ -108,7 +108,7 @@ func TestAprobacionAtadaAHuella(t *testing.T) {
 	}
 	for nombre, cambiar := range cambios {
 		raiz := conExigencia(t)
-		if _, err := Aprobar(raiz, id, "apruebo "+id, hora); err != nil {
+		if _, err := Aprobar(raiz, id, "apruebo "+id, respaldo(t, "apruebo "+id), hora); err != nil {
 			t.Fatal(err)
 		}
 		editarPagina(t, raiz, "| `TestFalla` | — | — |", "| `TestFalla` | 2026-10-23 | — |") // bloque generado: no cuenta
@@ -122,7 +122,7 @@ func TestAprobacionAtadaAHuella(t *testing.T) {
 		if _, err := Estado(raiz, id, "EN_CURSO"); err == nil || !strings.Contains(err.Error(), "apruebo "+id) {
 			t.Errorf("cambio de %s tras aprobar: EN_CURSO se rechaza y pide «apruebo %s»; dio %v", nombre, id, err)
 		}
-		if _, err := Aprobar(raiz, id, "apruebo "+id, hora); err != nil {
+		if _, err := Aprobar(raiz, id, "apruebo "+id, respaldo(t, "apruebo "+id), hora); err != nil {
 			t.Fatal(err)
 		}
 		if _, err := Estado(raiz, id, "EN_CURSO"); err != nil {
@@ -131,8 +131,8 @@ func TestAprobacionAtadaAHuella(t *testing.T) {
 	}
 }
 
-// Rojo cuando: un slice BORRADOR, LISTO, BLOQUEADO o EN_CURSO sin rojo ni aprobación arranca o registra rojo sin ella; o uno con rojo previo y sin aprobación (anterior a F010) pide «apruebo».
-// Verde cuando: todos esos estados piden «apruebo» (el desvío por BLOQUEADO también); el slice con rojo previo sigue exento.
+// Rojo cuando: un slice BORRADOR, LISTO, BLOQUEADO o EN_CURSO sin aprobación arranca o registra rojo sin ella.
+// Verde cuando: todos esos estados piden «apruebo» (el desvío por BLOQUEADO también), también con rojo previo (E000/F008/S002).
 func TestExigenciaPorEstado(t *testing.T) {
 	const id = "E001/F002/S002"
 	raiz := conExigencia(t) // BORRADOR sin aprobación
@@ -155,10 +155,10 @@ func TestExigenciaPorEstado(t *testing.T) {
 	if _, err := Rojo(raiz, id, hora); err == nil || !strings.Contains(err.Error(), "apruebo "+id) {
 		t.Fatalf("EN_CURSO sin rojo ni aprobación: el rojo pide «apruebo %s»; dio %v", id, err)
 	}
-	f.Rojo = &Registro{Fecha: "2026-10-01", Head: "abc"} // slice anterior a F010: rojo previo, sin aprobación
+	f.Rojo = &Registro{Fecha: "2026-10-01", Head: "abc"} // E000/F008/S002: un rojo previo ya no exime; se finge a mano
 	pisar(t, raiz, Activo, f)
-	if _, err := Verde(raiz, id, hora); err != nil && strings.Contains(err.Error(), "apruebo") {
-		t.Fatalf("slice con rojo previo y sin aprobación: exento; dio %v", err)
+	if _, err := Verde(raiz, id, hora); err == nil || !strings.Contains(err.Error(), "apruebo "+id) {
+		t.Fatalf("slice con rojo previo y sin aprobación: pide «apruebo %s»; dio %v", id, err)
 	}
 }
 
@@ -187,7 +187,7 @@ func TestDerivaEnCursoAnulaAprobacion(t *testing.T) {
 		if _, err := Pruebas(raiz, id, []string{"./p:TestFalla=intención|r|v"}); err != nil {
 			t.Fatal(err)
 		}
-		if _, err := Aprobar(raiz, id, "apruebo "+id, hora); err != nil {
+		if _, err := Aprobar(raiz, id, "apruebo "+id, respaldo(t, "apruebo "+id), hora); err != nil {
 			t.Fatal(err)
 		}
 		if _, err := Estado(raiz, id, "EN_CURSO"); err != nil {
@@ -215,7 +215,7 @@ func TestDerivaEnCursoAnulaAprobacion(t *testing.T) {
 func TestAmpliarAnulaAprobacion(t *testing.T) {
 	const id = "E001/F002/S002"
 	raiz := conExigencia(t)
-	if _, err := Aprobar(raiz, id, "apruebo "+id, hora); err != nil {
+	if _, err := Aprobar(raiz, id, "apruebo "+id, respaldo(t, "apruebo "+id), hora); err != nil {
 		t.Fatal(err)
 	}
 	if _, err := Ampliar(raiz, id, "q/**", "hace falta q"); err != nil {
@@ -252,7 +252,7 @@ func sembrarAprobacion(t *testing.T, raiz, id string) {
 			t.Fatal(err)
 		}
 	}
-	if _, err := Aprobar(raiz, id, "apruebo "+id, hora); err != nil {
+	if _, err := Aprobar(raiz, id, "apruebo "+id, respaldo(t, "apruebo "+id), hora); err != nil {
 		t.Fatal(err)
 	}
 }

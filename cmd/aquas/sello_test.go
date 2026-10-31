@@ -55,6 +55,12 @@ func TestSelloCLIDePuntaAPunta(t *testing.T) {
 			t.Fatal(err)
 		}
 	}
+	if _, err := os.Stat(filepath.Join(raiz, "docs", "E001", "F001", "S001.md")); err != nil { // E000/F008/S002: cerrar exige aprobación con respaldo
+		escribir(t, raiz, "docs/E001/F001/S001.md", "# S001\n\n## Para qué existe\n\nContrato de prueba.\n")
+	}
+	if s := aquas(t, raiz, mensajeHumano(t, "apruebo E001/F001/S001"), "approval"); s.codigo != 0 {
+		t.Fatalf("aprobación: %+v", s)
+	}
 	s := aquas(t, raiz, "", "backlog", "sello", "E001/F001/S001")
 	if s.codigo != 0 || !strings.Contains(s.out, "  [ ] ficha:E001/F001 · ") {
 		t.Fatalf("sello lista los ítems pendientes con [ ]; dio %+v", s)

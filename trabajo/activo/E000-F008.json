@@ -24,22 +24,31 @@
     }
   },
   "verde": {
-    "fecha": "2026-10-31T19:04:15Z",
-    "head": "f3612b64affe96bd766b930c9c4ea6bcdcdc1092",
+    "fecha": "2026-10-31T20:21:12Z",
+    "head": "fbad448e1cf0176185b604895fe6dcb42d1f799b",
     "huella": {}
   },
   "aprobacion": {
-    "fecha": "2026-10-31T16:52:55Z",
+    "fecha": "2026-10-31T20:10:19Z",
     "huella": "60d402584ec518b27ed177df68231fd224e72c4bfaefc26fbad265dc0a943db7",
     "mensaje": "apruebo E000/F008 con push",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
     "push": true,
     "foto": {
-      "E000/F008/S001": [
+      "E000/F008/S002": [
         {
-          "prueba": "./internal/guardia:TestGanchoAManoBloqueado",
-          "intencion": "valida que la guardia bloquea por Bash las órdenes de hook y deja pasar las libres",
-          "rojo_cuando": "rojo cuando aquas approval por Bash pasa",
-          "verde_cuando": "verde cuando cada orden de hook da exit 2 y memory set pasa"
+          "prueba": "./internal/backlog:TestApruebaSoloConMensajeHumano",
+          "intencion": "valida que una aprobación sin mensaje humano en el registro no deja avanzar",
+          "rojo_cuando": "rojo cuando una aprobación sin registro deja pasar a EN_CURSO",
+          "verde_cuando": "verde cuando solo pasa la que tiene el mensaje humano exacto"
+        }
+      ],
+      "E000/F008/S003": [
+        {
+          "prueba": "./internal/entorno:TestAislamientoEstricto",
+          "intencion": "valida que sin ajustes estrictos de aislamiento el gate falla o avisa según el sistema",
+          "rojo_cuando": "rojo cuando sin sandbox estricto en Linux el gate pasa",
+          "verde_cuando": "verde cuando falla en Linux sin ajustes y solo avisa en Windows nativo"
         }
       ]
     }

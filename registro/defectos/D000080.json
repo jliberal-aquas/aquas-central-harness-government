@@ -1,0 +1,10 @@
+{
+  "id": "D000080",
+  "firma": "respaldo-sin-atar-al-id",
+  "que": "S002 aceptaba cualquier mensaje humano real del registro como respaldo de una aprobación, aunque no aprobara ese id ni dijera con push",
+  "causa": "respaldada comprobaba que el texto existiera, no que ese texto aprobara la ficha usada",
+  "arreglo": "respaldada exige IDAprobado(mensaje)==id y con push si la aprobación dice push",
+  "como_me_cercioro": "TestApruebaSoloConMensajeHumano: dale, otro id, pregunta, no apruebo y push a mano fallan",
+  "ocurrencias": [],
+  "relacion": "E000/F008/S002"
+}

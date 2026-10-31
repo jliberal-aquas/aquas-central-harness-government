@@ -43,23 +43,23 @@ func TestAprobacionDeFeatureCubreSusSlices(t *testing.T) {
 	if revisar("E007/F001/S001") == nil {
 		t.Fatal("sin aprobación de nadie, el slice no avanza")
 	}
-	if _, err := Aprobar(raiz, "E007", "apruebo E007", hora); err == nil || !strings.Contains(err.Error(), "se aprueban slices o features") {
+	if _, err := Aprobar(raiz, "E007", "apruebo E007", respaldo(t, "apruebo E007"), hora); err == nil || !strings.Contains(err.Error(), "se aprueban slices o features") {
 		t.Error("una iniciativa no se aprueba")
 	}
-	if _, err := Aprobar(raiz, "E007/F002", "apruebo E007/F002", hora); err == nil {
+	if _, err := Aprobar(raiz, "E007/F002", "apruebo E007/F002", respaldo(t, "apruebo E007/F002"), hora); err == nil {
 		t.Error("una feature sin slices no se aprueba")
 	}
-	f, err := Aprobar(raiz, "E007/F001", "apruebo E007/F001", hora)
+	f, err := Aprobar(raiz, "E007/F001", "apruebo E007/F001", respaldo(t, "apruebo E007/F001"), hora)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if f.Aprobacion.Push {
 		t.Error("sin «con push» la aprobación no lleva push")
 	}
-	if f, err = Aprobar(raiz, "E007/F001", "apruebo E007/F001 tope 50 con push", hora); err != nil || !f.Aprobacion.Push {
+	if f, err = Aprobar(raiz, "E007/F001", "apruebo E007/F001 tope 50 con push", respaldo(t, "apruebo E007/F001 tope 50 con push"), hora); err != nil || !f.Aprobacion.Push {
 		t.Fatalf("«con push» después de «tope N» también vale; dio %v", err)
 	}
-	if f, err = Aprobar(raiz, "E007/F001", "apruebo E007/F001 con push\nsigue", hora); err != nil || !f.Aprobacion.Push {
+	if f, err = Aprobar(raiz, "E007/F001", "apruebo E007/F001 con push\nsigue", respaldo(t, "apruebo E007/F001 con push\nsigue"), hora); err != nil || !f.Aprobacion.Push {
 		t.Fatalf("«con push» queda en la aprobación; dio %v", err)
 	}
 	for _, id := range []string{"E007/F001/S001", "E007/F001/S002"} {
@@ -82,7 +82,7 @@ func TestAprobacionDeFeatureCubreSusSlices(t *testing.T) {
 	if err := revisar("E007/F001/S002"); err == nil || !strings.Contains(err.Error(), "apruebo E007/F001") {
 		t.Errorf("quitar una prueba aprobada pide «apruebo E007/F001»; dio %v", err)
 	}
-	if _, err := Aprobar(raiz, "E007/F001/S002", "apruebo E007/F001/S002", hora); err != nil {
+	if _, err := Aprobar(raiz, "E007/F001/S002", "apruebo E007/F001/S002", respaldo(t, "apruebo E007/F001/S002"), hora); err != nil {
 		t.Fatal(err)
 	}
 	if err := revisar("E007/F001/S002"); err != nil {
@@ -92,7 +92,7 @@ func TestAprobacionDeFeatureCubreSusSlices(t *testing.T) {
 	if err := revisar("E007/F001/S003"); err == nil {
 		t.Error("un slice creado después de la aprobación no avanza")
 	}
-	if f, err = Aprobar(raiz, "E007/F001", "apruebo E007/F001\ncon push", hora); err != nil || f.Aprobacion.Push {
+	if f, err = Aprobar(raiz, "E007/F001", "apruebo E007/F001\ncon push", respaldo(t, "apruebo E007/F001\ncon push"), hora); err != nil || f.Aprobacion.Push {
 		t.Errorf("«con push» fuera de la primera línea no cuenta; dio push=%v, %v", f.Aprobacion != nil && f.Aprobacion.Push, err)
 	}
 	if err := revisar("E007/F001/S003"); err != nil {

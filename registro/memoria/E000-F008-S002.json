@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F008",
+    "slice": "S002",
+    "tarea": "S002 aprobado por auditor A2; cerrando"
+  },
+  "siguiente": "S003 aislamiento de Bash: rojo de TestAislamientoEstricto",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "d007c2affbabbd09a0673304f9542fa5a3ea56fd25966f40a49f6ccdd7ef577f",
+  "actualizado": "2026-10-31T20:25:11Z",
+  "sello": "65b05cda61c874c205898e715a4f63e1ba8f2d02557d9d02b7021336c22d621a"
+}

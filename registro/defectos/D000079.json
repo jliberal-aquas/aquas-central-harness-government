@@ -1,0 +1,10 @@
+{
+  "id": "D000079",
+  "firma": "sin-aislamiento-del-so",
+  "que": "en Windows nativo Claude Code corre Bash sin sandbox; todo freno contra el agente depende de la guardia textual",
+  "causa": "la doc oficial (sandboxing, 2026-10-31) limita el sandbox a macOS, Linux y WSL2",
+  "arreglo": "F008/S002 verifica el aislamiento al arrancar: avisa en Windows nativo, bloquea si falta en WSL2",
+  "como_me_cercioro": "prueba que arranca sin sandbox y espera aviso o bloqueo según el SO",
+  "ocurrencias": [],
+  "relacion": "E000/F008"
+}

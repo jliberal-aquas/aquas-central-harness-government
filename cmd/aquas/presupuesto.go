@@ -82,7 +82,7 @@ func presupuestoCLI(raiz string, args []string) {
 	turno, marca := filepath.Join(dir, "turno-"+sesion+".log"), filepath.Join(dir, "contexto-"+sesion)
 	switch strings.Join(args, " ") {
 	case "prompt":
-		for _, m := range marcasDeAgente { // un aviso de agente no es un mensaje del humano: no da turno nuevo
+		for _, m := range backlog.MarcasDeAgente { // un aviso de agente no es un mensaje del humano: no da turno nuevo
 			if strings.Contains(e.Prompt, m) {
 				return
 			}

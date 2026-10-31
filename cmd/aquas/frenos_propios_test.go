@@ -48,7 +48,7 @@ func TestFrenoDejaPasarMemoria(t *testing.T) {
 	turno := func(prompt string) {
 		t.Helper()
 		for _, orden := range [][]string{{"aprobacion"}, {"presupuesto", "prompt"}} {
-			if s := aquas(t, raiz, mensajeHumano(prompt), orden...); s.codigo != 0 {
+			if s := aquas(t, raiz, mensajeHumano(t, prompt), orden...); s.codigo != 0 {
 				t.Fatalf("%v: %+v", orden, s)
 			}
 		}

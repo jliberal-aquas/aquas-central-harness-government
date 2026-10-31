@@ -59,10 +59,10 @@ func TestPresupuestoPorFeature(t *testing.T) {
 	}
 	turno := func(prompt string) {
 		t.Helper()
-		if s := aquas(t, raiz, mensajeHumano(prompt), "aprobacion"); s.codigo != 0 {
+		if s := aquas(t, raiz, mensajeHumano(t, prompt), "aprobacion"); s.codigo != 0 {
 			t.Fatalf("aprobacion: %+v", s)
 		}
-		if s := aquas(t, raiz, mensajeHumano(prompt), "presupuesto", "prompt"); s.codigo != 0 {
+		if s := aquas(t, raiz, mensajeHumano(t, prompt), "presupuesto", "prompt"); s.codigo != 0 {
 			t.Fatalf("presupuesto prompt: %+v", s)
 		}
 	}
@@ -124,7 +124,7 @@ func TestPresupuestoPorFeature(t *testing.T) {
 	if _, despues := cuentaFeature(t, raiz); despues != antes {
 		t.Errorf("la llamada que frena el turno no gasta tope de la feature: %d → %d", antes, despues)
 	}
-	aquas(t, raiz, mensajeHumano("<task-notification>agente terminó</task-notification>"), "presupuesto", "prompt")
+	aquas(t, raiz, mensajeHumano(t, "<task-notification>agente terminó</task-notification>"), "presupuesto", "prompt")
 	if s := usar(""); s.codigo != 2 {
 		t.Errorf("un aviso de agente no reinicia el turno; dio %+v", s)
 	}
@@ -154,7 +154,7 @@ func TestPresupuestoAvisaContexto(t *testing.T) {
 		}
 		return s
 	}
-	aquas(t, raiz, mensajeHumano("sigue"), "presupuesto", "prompt")
+	aquas(t, raiz, mensajeHumano(t, "sigue"), "presupuesto", "prompt")
 	escribir(t, raiz, "transcript.jsonl", medida(199_999))
 	if s := usar(); strings.Contains(s.out, "compact") {
 		t.Errorf("por debajo de 200000 no avisa; dio %+v", s)
@@ -166,11 +166,11 @@ func TestPresupuestoAvisaContexto(t *testing.T) {
 	if s := usar(); strings.Contains(s.out, "compact") {
 		t.Errorf("avisa una vez por turno; dio %+v", s)
 	}
-	aquas(t, raiz, mensajeHumano("sigue"), "presupuesto", "prompt")
+	aquas(t, raiz, mensajeHumano(t, "sigue"), "presupuesto", "prompt")
 	if s := usar(); !strings.Contains(s.out, "/compact") {
 		t.Errorf("cada turno nuevo vuelve a avisar; dio %+v", s)
 	}
-	aquas(t, raiz, mensajeHumano("sigue"), "presupuesto", "prompt")
+	aquas(t, raiz, mensajeHumano(t, "sigue"), "presupuesto", "prompt")
 	escribir(t, raiz, "transcript.jsonl", medida(250_000)+`{"type":"system","subtype":"compact_boundary"}`+"\n")
 	if s := usar(); strings.Contains(s.out, "compact") {
 		t.Errorf("tras compactar la medida vieja no cuenta; dio %+v", s)

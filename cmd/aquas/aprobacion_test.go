@@ -36,8 +36,30 @@ func repoContrato(t *testing.T) string {
 	return raiz
 }
 
-func mensajeHumano(prompt string) string {
-	b, _ := json.Marshal(map[string]string{"session_id": "s1", "hook_event_name": "UserPromptSubmit", "prompt": prompt})
+// mensajeHumano: entrada del hook UserPromptSubmit. Como Claude Code, deja el mensaje en el registro de la sesión
+// (CLAUDE_CONFIG_DIR/projects/…/sesion.jsonl, propio de la prueba) y pasa su ruta en transcript_path (E000/F008/S002).
+func mensajeHumano(t *testing.T, prompt string) string {
+	t.Helper()
+	ruta := os.Getenv("AQUAS_PRUEBA_REGISTRO")
+	if ruta == "" {
+		dir := filepath.Join(t.TempDir(), "claude")
+		ruta = filepath.Join(dir, "projects", "repo", "sesion.jsonl")
+		if err := os.MkdirAll(filepath.Dir(ruta), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		t.Setenv("CLAUDE_CONFIG_DIR", dir)
+		t.Setenv("AQUAS_PRUEBA_REGISTRO", ruta)
+	}
+	l, _ := json.Marshal(map[string]any{"type": "user", "message": map[string]string{"role": "user", "content": prompt}, "origin": map[string]string{"kind": "human"}})
+	fh, err := os.OpenFile(ruta, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = fh.Close() }()
+	if _, err := fh.Write(append(l, '\n')); err != nil {
+		t.Fatal(err)
+	}
+	b, _ := json.Marshal(map[string]string{"session_id": "s1", "hook_event_name": "UserPromptSubmit", "prompt": prompt, "transcript_path": ruta})
 	return string(b)
 }
 
@@ -57,13 +79,13 @@ func TestHookRegistraApruebo(t *testing.T) {
 			t.Fatalf("la entrada %s no es un mensaje del humano: no registra aprobación", in)
 		}
 	}
-	if s := aquas(t, raiz, mensajeHumano("apruebo E001/F002/S004, otro slice"), "aprobacion"); s.codigo != 0 {
+	if s := aquas(t, raiz, mensajeHumano(t, "apruebo E001/F002/S004, otro slice"), "aprobacion"); s.codigo != 0 {
 		t.Fatalf("id sin ficha: no bloquea el mensaje; dio %+v", s)
 	}
 	if _, hay := fichaEnDisco(t, raiz, ficha)["aprobacion"]; hay {
 		t.Fatal("aprobar otro id no aprueba S003")
 	}
-	if s := aquas(t, raiz, mensajeHumano("  apruebo E001/F002/S003 y sigue.\nGracias."), "aprobacion"); s.codigo != 0 || s.out != "" {
+	if s := aquas(t, raiz, mensajeHumano(t, "  apruebo E001/F002/S003 y sigue.\nGracias."), "aprobacion"); s.codigo != 0 || s.out != "" {
 		t.Fatalf("mensaje del humano: exit 0 sin stdout; dio %+v", s)
 	}
 	var ap struct{ Fecha, Huella, Mensaje string }
@@ -86,12 +108,12 @@ func TestContratoAprobadoAntesDeConstruir(t *testing.T) {
 	if s := aquas(t, raiz, "", "backlog", "rojo", id); s.codigo != 1 || !strings.Contains(s.err, "apruebo "+id) {
 		t.Fatalf("sin aprobación: el rojo se rechaza y pide «apruebo %s»; dio %+v", id, s)
 	}
-	aquas(t, raiz, mensajeHumano("apruebo "+id), "aprobacion")
+	aquas(t, raiz, mensajeHumano(t, "apruebo "+id), "aprobacion")
 	escribir(t, raiz, "docs/E001/F002/S003.md", strings.Replace(paginaS003, "lo que se va a construir", "otra cosa", 1))
 	if s := aquas(t, raiz, "", "backlog", "estado", id, "EN_CURSO"); s.codigo != 1 || !strings.Contains(s.err, "apruebo "+id) {
 		t.Fatalf("contrato cambiado: EN_CURSO se rechaza y pide aprobar de nuevo; dio %+v", s)
 	}
-	aquas(t, raiz, mensajeHumano("apruebo "+id), "aprobacion")
+	aquas(t, raiz, mensajeHumano(t, "apruebo "+id), "aprobacion")
 	if s := aquas(t, raiz, "", "backlog", "estado", id, "EN_CURSO"); s.codigo != 0 {
 		t.Fatalf("con aprobación vigente: EN_CURSO se acepta; dio %+v", s)
 	}
@@ -112,12 +134,12 @@ func TestApruebaSoloLineaAfirmativa(t *testing.T) {
 		"¿apruebo E001/F002/S003?",
 		"si apruebo E001/F002/S003 qué pasa",
 	} {
-		aquas(t, raiz, mensajeHumano(p), "aprobacion")
+		aquas(t, raiz, mensajeHumano(t, p), "aprobacion")
 		if _, hay := fichaEnDisco(t, raiz, ficha)["aprobacion"]; hay {
 			t.Fatalf("%q no es una aprobación: no se registra", p)
 		}
 	}
-	aquas(t, raiz, mensajeHumano("\n apruebo E001/F002/S003\n¿Seguro?"), "aprobacion")
+	aquas(t, raiz, mensajeHumano(t, "\n apruebo E001/F002/S003\n¿Seguro?"), "aprobacion")
 	if _, hay := fichaEnDisco(t, raiz, ficha)["aprobacion"]; !hay {
 		t.Fatal("la primera línea «apruebo E001/F002/S003» sí aprueba, aunque otra línea sea una pregunta")
 	}
@@ -134,12 +156,12 @@ func TestHookIgnoraMensajeDeAgente(t *testing.T) {
 		"apruebo E001/F002/S003\n<task-notification>fin</task-notification>",
 		"Lo leí.\napruebo E001/F002/S003",
 	} {
-		aquas(t, raiz, mensajeHumano(p), "aprobacion")
+		aquas(t, raiz, mensajeHumano(t, p), "aprobacion")
 		if _, hay := fichaEnDisco(t, raiz, ficha)["aprobacion"]; hay {
 			t.Fatalf("%q no es un mensaje del humano con apruebo en su primera línea: no se registra", p)
 		}
 	}
-	aquas(t, raiz, mensajeHumano("apruebo E001/F002/S003\nLo leí."), "aprobacion")
+	aquas(t, raiz, mensajeHumano(t, "apruebo E001/F002/S003\nLo leí."), "aprobacion")
 	if _, hay := fichaEnDisco(t, raiz, ficha)["aprobacion"]; !hay {
 		t.Fatal("«apruebo E001/F002/S003» en la primera línea sí aprueba")
 	}
@@ -152,7 +174,7 @@ func aprobarCLI(t *testing.T, raiz, id string) {
 	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(rel))); err != nil {
 		escribir(t, raiz, rel, "# "+id+"\n\n## Para qué existe\n\nContrato de prueba.\n")
 	}
-	if s := aquas(t, raiz, mensajeHumano("apruebo "+id), "aprobacion"); s.codigo != 0 {
+	if s := aquas(t, raiz, mensajeHumano(t, "apruebo "+id), "aprobacion"); s.codigo != 0 {
 		t.Fatalf("aprobacion %s: %+v", id, s)
 	}
 }
