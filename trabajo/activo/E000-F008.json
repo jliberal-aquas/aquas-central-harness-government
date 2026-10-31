@@ -24,31 +24,29 @@
     }
   },
   "verde": {
-    "fecha": "2026-10-31T20:21:12Z",
-    "head": "fbad448e1cf0176185b604895fe6dcb42d1f799b",
+    "fecha": "2026-10-31T23:19:16Z",
+    "head": "abff1605e3f38169a2fb86cfed6339f811b35c48",
     "huella": {}
   },
   "aprobacion": {
-    "fecha": "2026-10-31T20:10:19Z",
+    "fecha": "2026-10-31T23:11:12Z",
     "huella": "60d402584ec518b27ed177df68231fd224e72c4bfaefc26fbad265dc0a943db7",
     "mensaje": "apruebo E000/F008 con push",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
     "push": true,
     "foto": {
-      "E000/F008/S002": [
-        {
-          "prueba": "./internal/backlog:TestApruebaSoloConMensajeHumano",
-          "intencion": "valida que una aprobación sin mensaje humano en el registro no deja avanzar",
-          "rojo_cuando": "rojo cuando una aprobación sin registro deja pasar a EN_CURSO",
-          "verde_cuando": "verde cuando solo pasa la que tiene el mensaje humano exacto"
-        }
-      ],
       "E000/F008/S003": [
         {
           "prueba": "./internal/entorno:TestAislamientoEstricto",
-          "intencion": "valida que sin ajustes estrictos de aislamiento el gate falla o avisa según el sistema",
+          "intencion": "valida que sin ajustes gestionados estrictos de aislamiento el gate falla o avisa según el sistema",
           "rojo_cuando": "rojo cuando sin sandbox estricto en Linux el gate pasa",
-          "verde_cuando": "verde cuando falla en Linux sin ajustes y solo avisa en Windows nativo"
+          "verde_cuando": "verde cuando falla en Linux sin ajustes gestionados y solo avisa en Windows nativo"
+        },
+        {
+          "prueba": "./cmd/aquas:TestVerifyExigeAislamiento",
+          "intencion": "valida que verify central e hijo y el arranque usan la revisión del aislamiento",
+          "rojo_cuando": "rojo cuando verify en Linux sin ajustes gestionados no nombra el aislamiento",
+          "verde_cuando": "verde cuando verify falla y el arranque avisa sin ellos, y callan con ellos"
         }
       ]
     }

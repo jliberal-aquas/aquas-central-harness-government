@@ -71,6 +71,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `listar` | `(titulo string, problemas []string)` | listar imprime en stderr un título y cada problema en su viñeta. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `lista` | `(xs []string) string` | lista une los textos con comas, o «—» si no hay ninguno. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `fallar` | `(codigo int, err error)` | fallar imprime el error en stderr y termina con el código dado. |
+| [cmd/aquas/main.go](../../cmd/aquas/main.go) | `revisarAislamiento` | `() (fallo, aviso string)` | revisarAislamiento: fallo para el gate y aviso para el arranque (E000/F008/S003, D000079). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `memoriaCLI` | `(raiz string, args []string)` | memoriaCLI: `ver` imprime la memoria; `fijar campo=valor…` la actualiza y la sella. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `memoriaArchivada` | `(raiz, id string) error` | memoriaArchivada: CERRADO exige el archivo de memoria del slice, apunte o no la memoria a él (E001/F002/S009, X01). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `focoEnBacklog` | `(raiz string, f memoria.Foco) error` | focoEnBacklog: la memoria solo fija el slice que el backlog tiene en curso (S003). |
@@ -221,6 +222,9 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/encargo/encargo.go](../../internal/encargo/encargo.go) | `Revisar` | `(tipo, mensaje string, stopHookActive bool) string` | Revisar decide el hook SubagentStop: "" deja cerrar; si no, qué falta en el cierre. |
 | [internal/encargo/encargo.go](../../internal/encargo/encargo.go) | `Veredicto` | `(mensaje string) (id, veredicto string, ok bool)` | Veredicto extrae del cierre de un auditor ya válido el id del tramo («E001/F014/S002») y su veredicto. |
 | [internal/encargo/encargo.go](../../internal/encargo/encargo.go) | `falla` | `(motivo string) string` | falla: mensaje de cierre inválido que pide reescribirlo según el canónico. |
+| [internal/entorno/aislamiento.go](../../internal/entorno/aislamiento.go) | `ArchivosReales` | `(goos string) ArchivosAjustes` | ArchivosReales: las rutas de esta máquina según el sistema operativo. |
+| [internal/entorno/aislamiento.go](../../internal/entorno/aislamiento.go) | `sandbox` | `(ruta string) (map[string]any, error)` | sandbox: el objeto `sandbox` de un archivo de ajustes; archivo ausente = vacío. |
+| [internal/entorno/aislamiento.go](../../internal/entorno/aislamiento.go) | `Aislamiento` | `(goos string, a ArchivosAjustes) (fallo, aviso string)` | Aislamiento: fallo para el gate y aviso para el arranque; "" = nada que decir. En Windows nativo no hay |
 | [internal/entorno/binario.go](../../internal/entorno/binario.go) | `BinarioViejo` | `(raiz, exe string) string` | BinarioViejo (D000026): aviso si algún .go de producción es más nuevo que el binario exe; "" si está al día. |
 | [internal/entorno/entorno.go](../../internal/entorno/entorno.go) | `Leer` | `(raiz string) (Entorno, error)` | Leer carga el entorno declarado. |
 | [internal/entorno/entorno.go](../../internal/entorno/entorno.go) | `Validar` | `(raiz string) string` | Validar compara el entorno declarado con el real; "" = coincide, si no, el motivo del bloqueo. |

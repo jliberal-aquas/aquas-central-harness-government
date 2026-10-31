@@ -86,7 +86,7 @@ Pruebas de los slices: `TestGanchoAManoBloqueado`.
 |---|---|---|
 | [S001](S001.md) | la guardia frena por Bash cada orden reservada a los hooks | Hecho |
 | [S002](S002.md) | Una aprobación vale solo si su mensaje humano está en el registro de la sesión | Hecho |
-| [S003](S003.md) | El gate exige aislamiento estricto donde existe y el arranque avisa en Windows nativo | Planeado |
+| [S003](S003.md) | El gate exige aislamiento estricto donde existe y el arranque avisa en Windows nativo | Hecho |
 
 <!-- /GENERADO -->
 

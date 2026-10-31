@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F008",
+    "slice": "S003",
+    "tarea": "S003 A3 APROBADO; cerrando"
+  },
+  "siguiente": "archivar, sellar, CERRADO, commit, push; luego S004 (veredicto desde agent_transcript_path)",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "33d7a628a72fdb557a265d47b18f2f19485977d7370f03a58c6b04c1bb7ce7ee",
+  "actualizado": "2026-10-31T23:20:51Z",
+  "sello": "2dceb3b12d93cc3a131b6c2568afc5f6ce8da6290e591773ed7164c1eb6b2cfb"
+}

@@ -21,6 +21,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"runtime"
 	"runtime/debug"
 	"strings"
 	"time"
@@ -88,8 +89,14 @@ func main() {
 		fmt.Printf("Entorno declarado en %s · so=%s · raiz=%s\nConfírmalo: si no es esta máquina y esta carpeta, bórralo.\n", entorno.RutaEntorno, e.SO, e.Raiz)
 		compilarSettings(os.Stdout)
 	case "verificar":
+		// E000/F008/S003 (D000079): aislamiento de Bash estricto donde existe; central e hijos por igual.
+		aislamiento, _ := revisarAislamiento()
 		if hijo.EsHijo(raiz) { // E002/F001/S002/X02: un hijo no tiene la config de la central
-			if m := hijo.Verificar(raiz); len(m) > 0 {
+			m := hijo.Verificar(raiz)
+			if aislamiento != "" {
+				m = append(m, aislamiento)
+			}
+			if len(m) > 0 {
 				listar("GATE FALLIDO · hijo:", m)
 				os.Exit(1)
 			}
@@ -99,6 +106,10 @@ func main() {
 		calidadGo := revisarGo(raiz) // E001/F013/S001: primero, para que se vea aunque otro chequeo corte
 		if len(calidadGo) > 0 {
 			listar("GATE FALLIDO · calidad Go:", calidadGo)
+		}
+		if aislamiento != "" { // E000/F008/S003: también antes de que otro chequeo corte
+			listar("GATE FALLIDO · aislamiento:", []string{aislamiento})
+			calidadGo = append(calidadGo, aislamiento) // cuenta para el exit 1 final
 		}
 		derivados, err := compilador.Verificar(raiz)
 		if err != nil {
@@ -451,12 +462,26 @@ func fallar(codigo int, err error) {
 	os.Exit(codigo)
 }
 
+// sistema y ajustesGestionados: SO y ajustes que mira el aislamiento; solo TestMain los cambia (E000/F008/S003).
+var (
+	sistema            = runtime.GOOS
+	ajustesGestionados = entorno.ArchivosReales
+)
+
+// revisarAislamiento: fallo para el gate y aviso para el arranque (E000/F008/S003, D000079).
+func revisarAislamiento() (fallo, aviso string) {
+	return entorno.Aislamiento(sistema, ajustesGestionados(sistema))
+}
+
 // memoriaCLI: `ver` imprime la memoria; `fijar campo=valor…` la actualiza y la sella.
 func memoriaCLI(raiz string, args []string) {
 	switch {
 	case len(args) == 0:
 	case args[0] == "inicio": // hook SessionStart: stdout entra al contexto; nunca bloquea
 		fmt.Print(memoria.Inicio(raiz))
+		if _, aviso := revisarAislamiento(); aviso != "" { // E000/F008/S003
+			fmt.Println("\n" + aviso)
+		}
 		return
 	case args[0] == "cierre": // hook Stop: exit 2 + stderr = seguir trabajando
 		var e struct {

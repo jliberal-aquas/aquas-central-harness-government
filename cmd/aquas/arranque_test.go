@@ -6,8 +6,11 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
+
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/entorno"
 )
 
 // E001/F005/S003: arranque en frío. Una sesión nueva, sin historial de chat, recupera el foco
@@ -17,6 +20,15 @@ import (
 
 func TestMain(m *testing.M) {
 	if os.Getenv("AQUAS_COMO_CLI") == "1" {
+		// E000/F008/S003: solo el binario de prueba puede fingir SO y ajustes gestionados; el real no lee esto.
+		if g := os.Getenv("AQUAS_PRUEBA_GOOS"); g != "" {
+			sistema = g
+		}
+		if d := os.Getenv("AQUAS_PRUEBA_GESTION"); d != "" {
+			ajustesGestionados = func(string) entorno.ArchivosAjustes {
+				return entorno.ArchivosAjustes{Gestionado: filepath.Join(d, "managed-settings.json"), GestionadoD: filepath.Join(d, "managed-settings.d")}
+			}
+		}
 		main()
 		os.Exit(0)
 	}
@@ -131,6 +143,9 @@ func TestArranqueEnFrio(t *testing.T) {
 	inicio := aquas(t, raiz, `{"source":"startup"}`, ordenDeInicio(t)...)
 	if inicio.codigo != 0 {
 		t.Fatalf("el hook de inicio nunca bloquea: %+v", inicio)
+	}
+	if runtime.GOOS == "windows" && !strings.Contains(inicio.out, "D000079") { // E000/F008/S003
+		t.Errorf("en Windows nativo el arranque avisa que Bash corre sin aislamiento; recibió:\n%s", inicio.out)
 	}
 	for _, w := range []string{"foco: E001 › F005 › S003", "tarea: archivo al cerrar",
 		"siguiente: probar arranque en frío", "- limpiar .tmp", "slice: docs/E001/F005/S003.md"} {
