@@ -1,0 +1,12 @@
+{
+  "id": "D000078",
+  "firma": "here-string-como-heredoc",
+  "que": "la guardia tomaba \u003c\u003c\u003cx como heredoc y dejaba sin revisar las líneas siguientes: escritura fuera y orden de hook sin freno",
+  "causa": "reHeredoc encajaba desde el segundo \u003c de \u003c\u003c\u003c",
+  "arreglo": "reHeredoc exige que antes de \u003c\u003c no haya otro \u003c; prueba en gancho_test",
+  "como_me_cercioro": "cat \u003c\u003c\u003cx + salto + rm fuera → bloqueado",
+  "ocurrencias": [
+    "T000501"
+  ],
+  "relacion": "E000/F008/S001"
+}

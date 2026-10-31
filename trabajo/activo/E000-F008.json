@@ -2,7 +2,7 @@
   "id": "E000/F008",
   "tipo": "feature",
   "titulo": "Frenos que el agente no puede falsificar",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P0",
   "motivo": "auditoría general 2026-10-30 G1 y D000077; humano aprobó orden recomendado 2026-10-31",
   "padre": "E000",
@@ -16,6 +16,34 @@
       "verde_cuando": "verde cuando la guardia lo bloquea con exit 2"
     }
   ],
+  "rojo": {
+    "fecha": "2026-10-31T16:53:27Z",
+    "head": "f3612b64affe96bd766b930c9c4ea6bcdcdc1092",
+    "resultado": {
+      "./cmd/aquas:TestFrenosNoFalsificables": "frenos_test.go:27: aquas budget prompt: exit 2 y «solo la lanza Claude Code»; dio {out: err: codigo:0}"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-31T19:04:15Z",
+    "head": "f3612b64affe96bd766b930c9c4ea6bcdcdc1092",
+    "huella": {}
+  },
+  "aprobacion": {
+    "fecha": "2026-10-31T16:52:55Z",
+    "huella": "60d402584ec518b27ed177df68231fd224e72c4bfaefc26fbad265dc0a943db7",
+    "mensaje": "apruebo E000/F008 con push",
+    "push": true,
+    "foto": {
+      "E000/F008/S001": [
+        {
+          "prueba": "./internal/guardia:TestGanchoAManoBloqueado",
+          "intencion": "valida que la guardia bloquea por Bash las órdenes de hook y deja pasar las libres",
+          "rojo_cuando": "rojo cuando aquas approval por Bash pasa",
+          "verde_cuando": "verde cuando cada orden de hook da exit 2 y memory set pasa"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "impide que el agente lance por su cuenta las órdenes reservadas a los hooks"
 }

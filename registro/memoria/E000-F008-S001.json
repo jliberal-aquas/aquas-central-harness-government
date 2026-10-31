@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F008",
+    "slice": "S001",
+    "tarea": "S001 aprobado en A9; cierre de slice y feature, commit y push"
+  },
+  "siguiente": "F008/S002: apruebo y voto contra registro de sesión; luego D000050 y E003 herencia",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "d6662fdcd2cc885eb05bd4b5c9c2ab0e01c6fdac7f2aba5b23257103f43f3b5c",
+  "actualizado": "2026-10-31T19:31:27Z",
+  "sello": "d56e4f5dba6ac0c04585de4d8b941c579793a7e12d47785152d473165e9ff241"
+}

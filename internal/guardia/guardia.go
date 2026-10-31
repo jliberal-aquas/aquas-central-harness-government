@@ -144,22 +144,76 @@ type palabra struct {
 	op       bool   // separador de comandos (&&, ||, ;, |, &, salto)
 }
 
-var reHeredoc = regexp.MustCompile(`<<-?\s*(?:'([^']+)'|"([^"]+)"|\\?([A-Za-z_][A-Za-z0-9_]*))`)
+// Heredocs (E000/F008/S001-A6): imitar la gramática de bash dejó huecos en cada auditoría
+// (A3 a A6). Ahora la guardia oculta un cuerpo de heredoc solo si entiende cada línea por
+// completo. Línea simple = palabras sin `$(`, backticks, `(`, `)`, `#`, `\`, `<` ni comillas
+// de varias líneas; `$VAR` y comillas balanceadas en la línea, sí. Apertura = línea simple
+// con un solo `<<FIN`, `<<'FIN'` o `<<"FIN"`. Ante la primera línea que no entiende, deja
+// todo lo que sigue a la vista: revisa de más, nunca de menos.
+var (
+	reSimple      = `(?:[^'"` + "`" + `$#()\\<\n]|\$[A-Za-z_][A-Za-z0-9_]*|"(?:[^"$` + "`" + `\\\n]|\$[A-Za-z_][A-Za-z0-9_]*)*"|'[^'\n]*')*`
+	reLineaSimple = regexp.MustCompile(`^` + reSimple + `$`)
+	reApertura    = regexp.MustCompile(`^` + reSimple + `<<(-?)[ \t]*(?:'([A-Za-z_][\w.-]*)'|"([A-Za-z_][\w.-]*)"|([A-Za-z_][\w.-]*))(?:[ \t;&|>]` + reSimple + `)?$`)
+)
 
-// sinHeredocs quita el cuerpo de cada heredoc: su contenido es texto, no comandos.
-func sinHeredocs(c string) string {
-	var out []string
-	fin := ""
-	for _, l := range strings.Split(strings.ReplaceAll(c, "\r\n", "\n"), "\n") {
-		if fin != "" {
-			if strings.TrimSpace(l) == fin {
-				fin = ""
+// lectorDeTexto: el cuerpo va a `cat`, `tee` o `git commit` y su salida no sigue por una tubería.
+// Cualquier otro lector (sh, bash -s, source, python…) puede ejecutar el cuerpo (S001-A7).
+// A8: comillas neutralizadas antes de partir (`sh -c 'x; cat'`); delante solo `cd … &&`, así nadie
+// redefine `cat` (función, alias) antes del heredoc. sinHeredocs además exige la primera línea.
+func lectorDeTexto(antes, despues string) bool {
+	if strings.Contains(reComillas.ReplaceAllString(despues, "Q"), "|") {
+		return false
+	}
+	segs := strings.Split(reComillas.ReplaceAllString(antes, "Q"), "&&")
+	for k, s := range segs {
+		fs := strings.Fields(s)
+		if len(fs) == 0 || strings.ContainsAny(s, ";|&{}") {
+			return false
+		}
+		if k < len(segs)-1 {
+			if fs[0] != "cd" {
+				return false
 			}
 			continue
 		}
-		if m := reHeredoc.FindStringSubmatch(l); m != nil {
-			fin = m[1] + m[2] + m[3]
-			l = reHeredoc.ReplaceAllString(l, " ")
+		return fs[0] == "cat" || fs[0] == "tee" || (fs[0] == "git" && len(fs) > 1 && fs[1] == "commit")
+	}
+	return false
+}
+
+var reComillas = regexp.MustCompile(`"[^"]*"|'[^']*'`)
+
+// sinHeredocs quita el cuerpo de cada heredoc que entiende: su contenido es texto, no comandos.
+func sinHeredocs(c string) string {
+	ls := strings.Split(strings.ReplaceAll(c, "\r\n", "\n"), "\n")
+	var out []string
+	for i := 0; i < len(ls); i++ {
+		l := ls[i]
+		if x := reApertura.FindStringSubmatchIndex(l); x != nil && i == 0 {
+			fin, e := "", 0
+			switch {
+			case x[4] >= 0:
+				fin, e = l[x[4]:x[5]], x[5]+1
+			case x[6] >= 0:
+				fin, e = l[x[6]:x[7]], x[7]+1
+			default:
+				fin, e = l[x[8]:x[9]], x[9]
+			}
+			antes := l[:strings.Index(l, "<<")]
+			if !lectorDeTexto(antes, l[e:]) { // un shell que lee el cuerpo lo ejecuta (A7)
+				return strings.Join(append(out, ls[i:]...), "\n")
+			}
+			out = append(out, antes+" "+l[e:])
+			guion := x[3] > x[2]
+			for i++; i < len(ls); i++ { // cuerpo hasta la línea de cierre exacta, como bash
+				if f := ls[i]; f == fin || (guion && strings.TrimLeft(f, "\t") == fin) {
+					break
+				}
+			}
+			continue
+		}
+		if !reLineaSimple.MatchString(l) {
+			return strings.Join(append(out, ls[i:]...), "\n")
 		}
 		out = append(out, l)
 	}
@@ -193,6 +247,15 @@ func lexear(c string) []palabra {
 		case ch == '\\' && i+1 < len(r):
 			i++
 			b.WriteRune(r[i])
+			hay = true
+			continue
+		case ch == '$' && !doble && i+1 < len(r) && r[i+1] == '\'': // $'…': \' no cierra (S001-A7)
+			for i += 2; i < len(r) && r[i] != '\''; i++ {
+				if r[i] == '\\' && i+1 < len(r) {
+					i++
+				}
+				b.WriteRune(r[i])
+			}
 			hay = true
 			continue
 		case ch == '\'' && !doble:
@@ -335,6 +398,9 @@ func RevisarBash(raiz, cwd, comando string) string {
 	// D000027: dentro de un heredoc, «\\n» llega como salto real y rompe los strings de Go.
 	if strings.Contains(comando, "<<") && strings.Contains(comando, `\\n`) && reArchivoGo.MatchString(comando) {
 		return "heredoc con «\\\\n» que toca un .go: llega como salto real y rompe los strings de Go (D000027); edita ese .go con la herramienta Edit o Write"
+	}
+	if m := RevisarHook(comando); m != "" {
+		return m
 	}
 	vars := map[string]string{}
 	actual, cwdOK := cwd, true

@@ -74,13 +74,17 @@ continúa: [EJ-E000](../README.md#EJ-E000)
 
 **Objetivo.** Ninguna orden reservada a los hooks corre por Bash.
 
+Prueba integral: `TestFrenosNoFalsificables` (el agente lanza `approval`, `agent-close` o `budget` por Bash → exit 2; `memory set` pasa). Rojo contra el código sin S001.
+
+Pruebas de los slices: `TestGanchoAManoBloqueado`.
+
 ## Navegación
 
 <!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | la guardia frena por Bash cada orden reservada a los hooks | Planeado |
+| [S001](S001.md) | la guardia frena por Bash cada orden reservada a los hooks | Hecho |
 
 <!-- /GENERADO -->
 

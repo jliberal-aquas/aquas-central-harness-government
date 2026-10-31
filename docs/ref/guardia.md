@@ -85,12 +85,13 @@ sequenceDiagram
 
 Así decide la guardia con un comando de Bash:
 
-1. Quita el texto de los heredocs, porque es contenido y no comandos.
-2. Corta el comando en partes, en cada `&&`, `;` o `|`.
-3. Sigue cada `cd` para saber en qué carpeta está.
-4. Busca los destinos de escritura de cada parte.
-5. Si un destino usa una variable que no conoce, bloquea: no puede probar que esté dentro.
-6. Si algún destino queda fuera de la raíz del repo, bloquea con el motivo.
+1. Si el comando lanza una orden reservada a los hooks, bloquea (D000077, [S001](../E000/F008/S001.md)).
+2. Quita el texto de un heredoc solo si lo entiende entero. Debe abrir en la primera línea, con solo `cd … &&` delante. Su lector debe ser `cat`, `tee` o `git commit`. Si no, revisa todo.
+3. Corta el comando en partes, en cada `&&`, `;` o `|`.
+4. Sigue cada `cd` para saber en qué carpeta está.
+5. Busca los destinos de escritura de cada parte.
+6. Si un destino usa una variable que no conoce, bloquea: no puede probar que esté dentro.
+7. Si algún destino queda fuera de la raíz del repo, bloquea con el motivo.
 
 ## Cómo se usa
 

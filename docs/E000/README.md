@@ -130,7 +130,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.e
 | [F005](F005/README.md) | Calidad de las pruebas | Hecho |
 | [F006](F006/README.md) | Correcciones de la revisión externa | Hecho |
 | F007 | agrupa los tramos que nacen cuando un defecto aparece tres veces | Planeado |
-| [F008](F008/README.md) | impide que el agente lance por su cuenta las órdenes reservadas a los hooks | Planeado |
+| [F008](F008/README.md) | impide que el agente lance por su cuenta las órdenes reservadas a los hooks | En curso |
 
 <!-- /GENERADO -->
 
