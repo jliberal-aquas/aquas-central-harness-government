@@ -128,7 +128,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.e
 | F003 | Hooks globales (inventario) | Cancelado |
 | [F004](F004/README.md) | Vueltas de pruebas y gate | Hecho |
 | [F005](F005/README.md) | Calidad de las pruebas | Hecho |
-| [F006](F006/README.md) | Correcciones de la revisión externa | En curso |
+| [F006](F006/README.md) | Correcciones de la revisión externa | Hecho |
 | F007 | agrupa los tramos que nacen cuando un defecto aparece tres veces | Planeado |
 
 <!-- /GENERADO -->
