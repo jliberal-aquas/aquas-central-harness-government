@@ -139,14 +139,14 @@ func TestCierreDiceComoArreglar(t *testing.T) {
 	raiz := repoGit(t)
 	fijar(t, raiz, "iniciativa=E001", "tarea=x")
 	escribirArchivo(t, raiz, "b.txt", "nuevo\n")
-	if got := Cierre(raiz, false); !strings.Contains(got, "aquas memoria fijar") {
+	if got := Cierre(raiz, false); !strings.Contains(got, "aquas memory set") {
 		t.Fatalf("el bloqueo debe decir el comando que lo resuelve: %q", got)
 	}
 }
 
 func TestInicio(t *testing.T) {
 	raiz := repoGit(t)
-	if got := Inicio(raiz); !strings.Contains(got, "sin memoria caliente") || !strings.Contains(got, "aquas memoria fijar") {
+	if got := Inicio(raiz); !strings.Contains(got, "sin memoria caliente") || !strings.Contains(got, "aquas memory set") {
 		t.Fatalf("sin memoria: aviso con el comando; dio %q", got)
 	}
 	fijar(t, raiz, "iniciativa=E001", "feature=F005", "tarea=hooks")

@@ -53,7 +53,7 @@ stateDiagram-v2
 continúa: [EJ-E001](../README.md#EJ-E001)
 
 1. El [agente](../../glosario.md#agente) escribe el contrato de un [slice](../../glosario.md#slice) nuevo sin la fila «choque con otro control».
-2. `aquas verificar` falla y nombra esa categoría.
+2. `aquas verify` falla y nombra esa categoría.
 3. El agente la agrega con su prueba, y el gate pasa.
 
 ## Paso a paso
@@ -70,7 +70,7 @@ Prueba integral: `TestPrevencionActivaGobernada`.
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

@@ -121,7 +121,7 @@ func tablaCodigo(raiz string, f backlog.Ficha) (string, error) {
 		return "", nil // en curso: el código se registra al cerrar
 	}
 	if len(f.Codigo) == 0 { // D000022: en un slice cerrado la sección vacía queda a la vista
-		return "\n### Código\n\nSin código registrado: sus cambios no tocaron código ni configuración, o no nombran el ID (`aquas backlog codigo " + f.ID + " <commit>…` los asigna).\n", nil
+		return "\n### Código\n\nSin código registrado: sus cambios no tocaron código ni configuración, o no nombran el ID (`aquas backlog code " + f.ID + " <commit>…` los asigna).\n", nil
 	}
 	fs, err := funcionesGo(raiz)
 	if err != nil {

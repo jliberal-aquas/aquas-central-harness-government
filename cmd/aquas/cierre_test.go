@@ -39,7 +39,7 @@ func TestCerrarExigeMemoriaArchivada(t *testing.T) {
 	// 1 · Memoria en el slice, sin archivar: CERRADO se niega por la memoria y dice cómo salir.
 	fijar("iniciativa=E001", "feature=F002", "slice=S003", "tarea=t")
 	if s := cerrar("E001/F002/S003"); s.codigo != 1 || !strings.Contains(s.err, "memoria apunta a E001/F002/S003") ||
-		!strings.Contains(s.err, "aquas memoria archivar") {
+		!strings.Contains(s.err, "aquas memory archive") {
 		t.Errorf("memoria sin archivar: CERRADO da exit 1, nombra el slice y pide archivar; dio %+v", s)
 	}
 

@@ -23,8 +23,8 @@ Tres órdenes:
 
 | Orden | Qué hace |
 |---|---|
-| `aquas compilar` | Escribe los archivos que cambiaron y actualiza el sello |
-| `aquas verificar` | No escribe nada. Avisa si algo está desfasado, pasa el tope o falla la wiki |
+| `aquas compile` | Escribe los archivos que cambiaron y actualiza el sello |
+| `aquas verify` | No escribe nada. Avisa si algo está desfasado, pasa el tope o falla la wiki |
 | `aquas hook` | Corre solo cuando Claude Code edita un archivo |
 
 ## Analogía
@@ -74,13 +74,13 @@ sequenceDiagram
 3. La ruta está en `gobierno/canonico/`, así que el compilador regenera `.claude/agents/orchestrator.md`.
 4. El sello cambia en `gobierno/config/sellos.json`. Guarda la huella nueva del canónico y del archivo generado.
 5. El agente recibe el aviso: «Recompilado · fuentes cambiadas».
-6. Al hacer [commit](../glosario.md#commit), el [pre-commit](../glosario.md#pre-commit) corre `aquas verificar`. Todo cuadra y el commit entra.
+6. Al hacer [commit](../glosario.md#commit), el [pre-commit](../glosario.md#pre-commit) corre `aquas verify`. Todo cuadra y el commit entra.
 
 **¿Y si edita a mano el archivo generado?** El compilador lo reescribe al instante. El aviso dice: «es GENERADO; tu edición se revirtió».
 
 ## Paso a paso
 
-Así trabaja `aquas compilar`:
+Así trabaja `aquas compile`:
 
 1. Lee `gobierno/config/documentos.json` y `gobierno/config/agentes.json`.
 2. Para cada salida, junta sus canónicos en orden.
@@ -89,7 +89,7 @@ Así trabaja `aquas compilar`:
 5. Escribe solo los archivos que cambiaron.
 6. Calcula la huella de cada fuente y cada salida. Las guarda en el sello.
 
-Así revisa `aquas verificar`:
+Así revisa `aquas verify`:
 
 1. Arma todo en memoria, sin escribir.
 2. Compara cada archivo del disco con lo que debería ser.
@@ -99,11 +99,11 @@ Así revisa `aquas verificar`:
 
 ## Cómo se usa
 
-- Después de editar un canónico a mano fuera de Claude Code: `go run ./cmd/aquas compilar`.
-- Antes de guardar: `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar`.
-- Si sale «desfasado o editado a mano», ejecuta `compilar` y revisa el cambio.
+- Después de editar un canónico a mano fuera de Claude Code: `go run ./cmd/aquas compile`.
+- Antes de guardar: `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verify`.
+- Si sale «desfasado o editado a mano», ejecuta `compile` y revisa el cambio.
 - Si sale «excede presupuesto», recorta el canónico.
-- Si sale «sello desfasado», ejecuta `compilar`.
+- Si sale «sello desfasado», ejecuta `compile`.
 - Código: [compilador.go](../../internal/compilador/compilador.go) y [main.go](../../cmd/aquas/main.go).
 
 ## Navegación

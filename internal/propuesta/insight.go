@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// defecto: número de un defecto registrado con `aquas defecto nuevo`.
+// defecto: número de un defecto registrado con `aquas defect new`.
 var defecto = regexp.MustCompile(`\bD\d{6}\b`)
 
 // RevisarInsight devuelve "" si pasa; si no, el motivo del freno: insight PROPUESTO sin defecto registrado (E001/F002/S016).
@@ -20,7 +20,7 @@ func RevisarInsight(msg string) string {
 			continue
 		}
 		return "Insight PROPUESTO sin defecto: un control no implementado se pierde en el chat. Regístralo con " +
-			"`aquas defecto nuevo firma=… que=… causa=… arreglo=… cercioro=… relacion=…` y nombra su número (D000NNN) en el campo Insights."
+			"`aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=…` y nombra su número (D000NNN) en el campo Insights."
 	}
 	return ""
 }

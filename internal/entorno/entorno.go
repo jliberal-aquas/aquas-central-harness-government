@@ -1,10 +1,10 @@
 // Package entorno declara dónde corre el harness: sistema operativo y raíz del repo.
 //
-//	gobierno/config/entorno.local.json   local, no versionado; lo escribe `aquas iniciar`
+//	gobierno/config/entorno.local.json   local, no versionado; lo escribe `aquas init`
 //	gobierno/config/claude_settings.json canónico versionado → .claude/settings.json (local)
 //
 // La guardia bloquea todo si el entorno falta o no coincide con la realidad:
-// mover el repo de carpeta o cambiar de SO exige volver a correr `aquas iniciar`.
+// mover el repo de carpeta o cambiar de SO exige volver a correr `aquas init`.
 package entorno
 
 import (
@@ -54,7 +54,7 @@ func Leer(raiz string) (Entorno, error) {
 
 // Validar compara el entorno declarado con el real; "" = coincide, si no, el motivo del bloqueo.
 func Validar(raiz string) string {
-	const arreglo = " → corre `go run ./cmd/aquas iniciar` en la raíz del repo"
+	const arreglo = " → corre `go run ./cmd/aquas init` en la raíz del repo"
 	e, err := Leer(raiz)
 	if os.IsNotExist(err) {
 		return "falta " + RutaEntorno + arreglo
@@ -79,7 +79,7 @@ func Iniciar(raiz string) (Entorno, error) {
 	}
 	top := strings.TrimSpace(string(out))
 	if !mismaRuta(top, raiz) {
-		return Entorno{}, fmt.Errorf("corre `aquas iniciar` desde la raíz del repo (%s), no desde %s", top, raiz)
+		return Entorno{}, fmt.Errorf("corre `aquas init` desde la raíz del repo (%s), no desde %s", top, raiz)
 	}
 	e := Entorno{Version: version, SO: runtime.GOOS, Raiz: filepath.ToSlash(filepath.Clean(top))}
 	b, _ := json.MarshalIndent(e, "", "  ")
@@ -208,7 +208,7 @@ func VerificarSettings(raiz string) string {
 	}
 	actual, err := os.ReadFile(filepath.Join(raiz, RutaSettings))
 	if err != nil || !bytes.Equal(actual, b) {
-		return RutaSettings + " desfasado o editado a mano → go run ./cmd/aquas compilar"
+		return RutaSettings + " desfasado o editado a mano → go run ./cmd/aquas compile"
 	}
 	return ""
 }

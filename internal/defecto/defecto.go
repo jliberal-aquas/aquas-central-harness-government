@@ -1,5 +1,5 @@
 // Package defecto: registro de defectos D000001 por repo, en Git (E001/F004/S001).
-// Un archivo por defecto en registro/defectos/; solo se escribe con `aquas defecto`.
+// Un archivo por defecto en registro/defectos/; solo se escribe con `aquas defect`.
 package defecto
 
 import (
@@ -61,7 +61,7 @@ func Nuevo(raiz string, c map[string]string) (Defecto, error) {
 	}
 	for _, d := range todos {
 		if d.Firma == c["firma"] {
-			return Defecto{}, fmt.Errorf("la firma %s ya existe en %s: usa `aquas defecto ocurre %s T000NNN`", d.Firma, d.ID, d.ID)
+			return Defecto{}, fmt.Errorf("la firma %s ya existe en %s: usa `aquas defect occur %s T000NNN`", d.Firma, d.ID, d.ID)
 		}
 	}
 	if err := revisarRelacion(raiz, c["relacion"], c["que"], todos); err != nil {
@@ -102,7 +102,7 @@ func Ocurre(raiz, id, turno string) (Defecto, error) {
 	}
 	s, err := sliceReincidencia(raiz, d)
 	if err != nil {
-		return Defecto{}, fmt.Errorf("%s llegó a %d apariciones y su slice no nació; la ocurrencia quedó guardada; arregla la causa y repite `aquas defecto ocurre %s %s`: %w", id, 1+len(d.Ocurrencias), id, turno, err)
+		return Defecto{}, fmt.Errorf("%s llegó a %d apariciones y su slice no nació; la ocurrencia quedó guardada; arregla la causa y repite `aquas defect occur %s %s`: %w", id, 1+len(d.Ocurrencias), id, turno, err)
 	}
 	d.Slice = s
 	return d, escribir(raiz, d)
@@ -203,7 +203,7 @@ func escribir(raiz string, d Defecto) error {
 	return os.WriteFile(filepath.Join(dir, d.ID+".json"), append(b, '\n'), 0o644)
 }
 
-// Texto: una línea por defecto para `aquas defecto ver`.
+// Texto: una línea por defecto para `aquas defect show`.
 func Texto(d Defecto) string {
 	if d.Slice != "" {
 		return fmt.Sprintf("%s · %s · %d ocurrencias · slice %s · %s\n", d.ID, d.Firma, len(d.Ocurrencias), d.Slice, d.Que)
@@ -212,7 +212,7 @@ func Texto(d Defecto) string {
 }
 
 // revisarRelacion (E001/F009/S002): relacion=nuevo o el id de una ficha; sin ella, lista defectos y fichas parecidos.
-// repite:<D> se niega: el mismo defecto se cuenta con `aquas defecto ocurre`.
+// repite:<D> se niega: el mismo defecto se cuenta con `aquas defect occur`.
 func revisarRelacion(raiz, rel, que string, todos []Defecto) error {
 	switch {
 	case rel == "":
@@ -234,7 +234,7 @@ func revisarRelacion(raiz, rel, que string, todos []Defecto) error {
 		id := strings.TrimPrefix(rel, "repite:")
 		for _, d := range todos {
 			if d.ID == id {
-				return fmt.Errorf("es el mismo defecto: suma la ocurrencia con `aquas defecto ocurre %s T000NNN`", id)
+				return fmt.Errorf("es el mismo defecto: suma la ocurrencia con `aquas defect occur %s T000NNN`", id)
 			}
 		}
 		return fmt.Errorf("relacion: el defecto %s no existe", id)

@@ -36,8 +36,8 @@ Límite de la analogía: aquí la libreta la exige un programa, no el jefe del t
 ```mermaid
 flowchart LR
     F["Fallo en un turno"] --> R{"¿Firma ya existe?"}
-    R -- "no" --> N["aquas defecto nuevo"]
-    R -- "sí" --> O["aquas defecto ocurre"]
+    R -- "no" --> N["aquas defect new"]
+    R -- "sí" --> O["aquas defect occur"]
     O --> U{"¿3 apariciones? registro + 2 ocurre"}
     U -- "sí" --> S["Slice E000 P1"]
 ```
@@ -46,8 +46,8 @@ Estados de un defecto:
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Registrado: aquas defecto nuevo
-    Registrado --> Repetido: aquas defecto ocurre
+    [*] --> Registrado: aquas defect new
+    Registrado --> Repetido: aquas defect occur
     Repetido --> Repetido: otra ocurrencia
     Repetido --> EnBacklog: llega al umbral
     EnBacklog --> [*]
@@ -55,7 +55,7 @@ stateDiagram-v2
 
 | Slice | Qué entrega |
 |---|---|
-| [S001 Registro de defectos](S001.md) | `aquas defecto nuevo`, `ocurre` y `ver` |
+| [S001 Registro de defectos](S001.md) | `aquas defect new`, `ocurre` y `ver` |
 | [S002 Stop frena fallo sin defecto](S002.md) | Cierre que exige registrar el fallo |
 | [S003 Reincidencia crea slice E000](S003.md) | Trabajo automático al repetirse |
 
@@ -67,7 +67,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 1. Un hook pierde su exit 2 por `go run`.
 2. Se registra D000001 `hook-exit-go-run`.
-3. Vuelve a pasar: `aquas defecto ocurre D000001 T000120`.
+3. Vuelve a pasar: `aquas defect occur D000001 T000120`.
 4. A la tercera, nace un slice de mantenimiento en la [iniciativa](../../glosario.md#iniciativa) E000.
 
 ## Paso a paso
@@ -80,8 +80,8 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 ## Cómo se usa
 
-- Ver el registro: `aquas defecto ver`.
-- Ver las fichas: `aquas backlog ver E001/F004`.
+- Ver el registro: `aquas defect show`.
+- Ver las fichas: `aquas backlog show E001/F004`.
 
 ## Contrato y evidencia
 
@@ -93,7 +93,7 @@ Pruebas de los slices: `TestRegistroDeDefectos`, `TestStopFrenaFalloSinDefecto`,
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

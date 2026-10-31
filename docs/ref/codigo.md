@@ -1,6 +1,6 @@
 # Código
 
-Índice de cada función del harness, con lo que dice su comentario. Lo genera `aquas compilar` desde el código en `cmd/` e `internal/`.
+Índice de cada función del harness, con lo que dice su comentario. Lo genera `aquas compile` desde el código en `cmd/` e `internal/`.
 
 ## En una frase
 
@@ -26,8 +26,8 @@ Límite de la analogía: aquí el índice lo escribe un programa a partir del co
 ```mermaid
 sequenceDiagram
     participant C as Código Go
-    participant A as aquas compilar
-    participant G as aquas verificar
+    participant A as aquas compile
+    participant G as aquas verify
     participant P as docs/ref/codigo.md
     A->>C: lee cada función y su comentario
     A->>P: reescribe la tabla
@@ -39,9 +39,9 @@ sequenceDiagram
 
 <a id="EJ-REF-codigo"></a>
 
-1. Al activar el gate, `aquas verificar` nombró 69 funciones sin comentario, por ejemplo `internal/wiki/hijos.go:43: función celda sin comentario`.
+1. Al activar el gate, `aquas verify` nombró 69 funciones sin comentario, por ejemplo `internal/wiki/hijos.go:43: función celda sin comentario`.
 2. Cada una recibió una línea que dice qué hace.
-3. `aquas compilar` llenó la tabla de abajo y el gate volvió a pasar.
+3. `aquas compile` llenó la tabla de abajo y el gate volvió a pasar.
 
 ## Paso a paso
 
@@ -54,7 +54,7 @@ sequenceDiagram
 
 Busca el archivo o la función; la última columna dice qué hace.
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Archivo | Función | Parámetros | Qué hace |
 |---|---|---|---|
@@ -80,7 +80,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `defectoCLI` | `(raiz string, args []string) error` | defectoCLI: nuevo \\| ocurre \\| ver (E001/F004/S001). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `versionBinario` | `() string` | versionBinario: versión del módulo con que se compiló el binario (= versión del gobierno embebido). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `registrarCierre` | `(raiz, tipo, transcript, primera, resultado string)` | registrarCierre (E001/F004/S005, D000068) anota cada llamada del gancho cierre-agente en .tmp/hooks/cierre-agente.jsonl. |
-| [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `exentaDelFreno` | `(raiz string, e entradaPresupuesto) bool` | exentaDelFreno: true si la llamada es Bash y su comando entero es `aquas memoria fijar campo=valor…`. |
+| [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `exentaDelFreno` | `(raiz string, e entradaPresupuesto) bool` | exentaDelFreno: true si la llamada es Bash y su comando entero es `aquas memory set campo=valor…`. |
 | [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `presupuestoCLI` | `(raiz string, args []string)` | presupuestoCLI: «prompt» reinicia el turno; «herramienta» cuenta la llamada y bloquea con exit 2 al pasar un tope. |
 | [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `frenoFeature` | `(raiz, dir string) string` | frenoFeature cuenta la llamada contra la feature del foco si está aprobada; "" si puede seguir. |
 | [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `anotar` | `(ruta string) int` | anotar suma una línea al archivo y devuelve el total. |
@@ -208,7 +208,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `Leer` | `(raiz string) ([]Defecto, error)` | Leer devuelve todos los defectos, ordenados por ID. Sin carpeta = registro vacío. |
 | [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `leerUno` | `(raiz, id string) (Defecto, error)` | leerUno carga el defecto con ese ID; valida el formato D000001. |
 | [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `escribir` | `(raiz string, d Defecto) error` | escribir guarda el defecto como JSON en su carpeta. |
-| [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `Texto` | `(d Defecto) string` | Texto: una línea por defecto para `aquas defecto ver`. |
+| [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `Texto` | `(d Defecto) string` | Texto: una línea por defecto para `aquas defect show`. |
 | [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `revisarRelacion` | `(raiz, rel, que string, todos []Defecto) error` | revisarRelacion (E001/F009/S002): relacion=nuevo o el id de una ficha; sin ella, lista defectos y fichas parecidos. |
 | [internal/defecto/fallo.go](../../internal/defecto/fallo.go) | `RevisarFallo` | `(raiz, msg string) string` | RevisarFallo (E001/F004/S002) devuelve "" si pasa; si no, el motivo del freno. El campo «¿Salió algo mal?» |
 | [internal/defecto/fallo.go](../../internal/defecto/fallo.go) | `registrados` | `(raiz string) map[string]bool` | registrados: números con archivo en el registro. Registro ausente o ilegible = ninguno (hallazgo A1.2). |
@@ -242,7 +242,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/guardia/permitidos.go](../../internal/guardia/permitidos.go) | `cargar` | `(raiz string) ([]string, []string)` | cargar devuelve las carpetas permitidas ya resueltas y los problemas de la config. |
 | [internal/guardia/permitidos.go](../../internal/guardia/permitidos.go) | `expandirConfig` | `(s string) (string, bool)` | expandirConfig sustituye variables de entorno ${X} de la config; ok falso si falta alguna. |
 | [internal/guardia/permitidos.go](../../internal/guardia/permitidos.go) | `permitido` | `(raiz, abs string) bool` | permitido: abs cae dentro de alguna carpeta de la lista. |
-| [internal/guardia/permitidos.go](../../internal/guardia/permitidos.go) | `ValidarConfig` | `(raiz string) []string` | ValidarConfig es el gate de la lista de permitidos (lo llama `aquas verificar`). |
+| [internal/guardia/permitidos.go](../../internal/guardia/permitidos.go) | `ValidarConfig` | `(raiz string) []string` | ValidarConfig es el gate de la lista de permitidos (lo llama `aquas verify`). |
 | [internal/guardia/permitidos.go](../../internal/guardia/permitidos.go) | `itoa` | `(i int) string` | itoa convierte un entero a texto. |
 | [internal/hijo/ajustes.go](../../internal/hijo/ajustes.go) | `AsegurarHook` | `(dir string) error` | AsegurarHook (E002/F002/S006) agrega a .claude/settings.json del hijo un hook PostToolUse |
 | [internal/hijo/aviso.go](../../internal/hijo/aviso.go) | `AvisoVersion` | `(dir, binario string) string` | AvisoVersion (E002/F002/S003) devuelve el aviso de versión del hijo, o "" si no hay nada que avisar. |
@@ -271,7 +271,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `Leer` | `(raiz string) (Memoria, error)` | Leer carga la memoria y comprueba su sello. |
 | [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `decodificar` | `(b []byte) (Memoria, error)` | decodificar: campos fijos y sello sobre los bytes tal como se escribieron. |
 | [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `Rutas` | `(f Foco) Mapa` | Rutas: páginas wiki de la iniciativa, feature y slice del foco, más el backlog. |
-| [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `Texto` | `(m Memoria) string` | Texto: lo que imprime `aquas memoria ver` (y, en S002, el hook de inicio de sesión). |
+| [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `Texto` | `(m Memoria) string` | Texto: lo que imprime `aquas memory show` (y, en S002, el hook de inicio de sesión). |
 | [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `guion` | `(s string) string` | guion devuelve «—» si el texto está vacío. |
 | [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `lista` | `(b *strings.Builder, titulo string, xs []string)` | lista escribe un título y sus viñetas, o «—» si no hay ninguna. |
 | [internal/memoria/memoria.go](../../internal/memoria/memoria.go) | `codificar` | `(m Memoria) []byte` | codificar serializa la memoria como JSON indentado con salto final. |

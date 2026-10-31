@@ -1,6 +1,6 @@
 package main
 
-// E001/F015/S002: hooks UserPromptSubmit («aquas presupuesto prompt») y PreToolUse («aquas presupuesto herramienta»).
+// E001/F015/S002: hooks UserPromptSubmit («aquas budget prompt») y PreToolUse («aquas budget tool»).
 // Frena el gasto por feature (tope aprobado con la feature) y por turno (bucles desbocados); avisa del contexto.
 // Las cuentas viven en .tmp/presupuesto-cuentas/: son estado de la sesión, no historia del repo.
 
@@ -39,8 +39,8 @@ type entradaPresupuesto struct {
 	} `json:"tool_input"`
 }
 
-// E001/F011/S002 (D000029): `aquas memoria fijar` suelta, la orden que exige el cierre, no se frena ni cuenta.
-// Lista blanca: el comando entero debe ser binario conocido + `memoria fijar` + campo=valor; nada se cuela detrás.
+// E001/F011/S002 (D000029): `aquas memory set` suelta, la orden que exige el cierre, no se frena ni cuenta.
+// Lista blanca: el comando entero debe ser binario conocido + `memory set` (o el viejo `memoria fijar`) + campo=valor; nada se cuela detrás.
 // Binario: `aquas`, `go run ./cmd/aquas` o el del repo en .tmp/ (con o sin comillas). Valor: sin espacios ni
 // metacaracteres de shell, entre comillas simples, o entre dobles sin dólar, acento grave, barra invertida ni comilla doble.
 // Una ruta entre comillas solo vale si es el binario de .tmp/ de este repo.
@@ -49,7 +49,7 @@ var reMemoriaFijar = regexp.MustCompile(`^\s*` +
 	`\s+(memoria\s+fijar|memory\s+set)` + // E000/F006/S006: nombre viejo y nuevo
 	`(\s+[a-z_]+=([^\s"'$` + "`" + `\\;&|<>()]*|'[^']*'|"[^"$` + "`" + `\\]*"))*\s*$`)
 
-// exentaDelFreno: true si la llamada es Bash y su comando entero es `aquas memoria fijar campo=valor…`.
+// exentaDelFreno: true si la llamada es Bash y su comando entero es `aquas memory set campo=valor…`.
 func exentaDelFreno(raiz string, e entradaPresupuesto) bool {
 	m := reMemoriaFijar.FindStringSubmatch(e.Input.Command)
 	if e.Tool != "Bash" || m == nil {
@@ -112,7 +112,7 @@ func presupuestoCLI(raiz string, args []string) {
 			}
 		}
 	default:
-		fallar(64, fmt.Errorf("uso: aquas presupuesto prompt|herramienta"))
+		fallar(64, fmt.Errorf("uso: aquas budget prompt|tool"))
 	}
 }
 

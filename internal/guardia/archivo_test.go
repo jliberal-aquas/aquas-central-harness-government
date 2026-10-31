@@ -10,7 +10,7 @@ import (
 func TestArchivoMemoriaSoloPorAquas(t *testing.T) {
 	raiz := raizPrueba(t)
 	for _, p := range []string{"registro/memoria/E001-F005-S003.json", "registro/memoria/nuevo.json"} {
-		if m := RevisarArchivo(raiz, p); !strings.Contains(m, "aquas memoria archivar") {
+		if m := RevisarArchivo(raiz, p); !strings.Contains(m, "aquas memory archive") {
 			t.Errorf("Write/Edit a %s debe bloquearse; dio %q", p, m)
 		}
 	}
@@ -18,7 +18,7 @@ func TestArchivoMemoriaSoloPorAquas(t *testing.T) {
 		`echo {} > registro/memoria/E001-F005-S003.json`,
 		`rm -rf registro/memoria`,
 	} {
-		if m := RevisarBash(raiz, raiz, c); !strings.Contains(m, "aquas memoria archivar") {
+		if m := RevisarBash(raiz, raiz, c); !strings.Contains(m, "aquas memory archive") {
 			t.Errorf("%q debe bloquearse; dio %q", c, m)
 		}
 	}

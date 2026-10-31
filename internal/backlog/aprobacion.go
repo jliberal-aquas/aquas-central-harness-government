@@ -2,7 +2,7 @@ package backlog
 
 // E001/F010/S001: aprobación humana del contrato de un slice, atada a su huella. El rojo y el paso
 // a EN_CURSO exigen una aprobación vigente (desde cualquier estado, mientras no haya rojo); rojo, verde y cierre
-// comparan la huella con la aprobada. Solo el hook del mensaje del humano (`aquas aprobacion`) registra aprobaciones.
+// comparan la huella con la aprobada. Solo el hook del mensaje del humano (`aquas approval`) registra aprobaciones.
 
 import (
 	"crypto/sha256"

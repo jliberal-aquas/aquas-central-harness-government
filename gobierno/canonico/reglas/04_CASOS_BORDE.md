@@ -11,6 +11,6 @@ Motivo: 5 defectos del 2026-10-23 eran previsibles; cada uno, una categoría que
   - fallo a mitad de camino.
 - Aplica `sí` → nombrar prueba (`` `TestX` ``) que cubre el caso. `no` → por qué, sin celda vacía.
 - Integral de la feature cubre casos entre slices; pruebas del slice, los suyos.
-- Gate (`aquas verificar`) exige tabla completa en página de slice con ficha activa. Archivada: no se revisa.
+- Gate (`aquas verify`) exige tabla completa en página de slice con ficha activa. Archivada: no se revisa.
 - Auditor juzga calidad: caso real omitido, `no` sin razón válida, prueba que no cubre el caso → hallazgo.
 - Defecto nuevo → causa → buscar el mismo hueco en otros lugares; cada otro caso al backlog.

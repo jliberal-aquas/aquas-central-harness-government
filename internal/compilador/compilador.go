@@ -67,7 +67,7 @@ type Informe struct {
 
 // marca: comentario «GENERADO» que encabeza cada derivado y nombra su config.
 func marca(config string) string {
-	return fmt.Sprintf("<!-- GENERADO por `aquas compilar` desde %s. NO EDITAR: edita los canónicos y recompila. -->", config)
+	return fmt.Sprintf("<!-- GENERADO por `aquas compile` desde %s. NO EDITAR: edita los canónicos y recompila. -->", config)
 }
 
 // Planificar lee la config y calcula todas las salidas sin tocar el disco.

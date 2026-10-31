@@ -59,7 +59,7 @@ func rojoDe(raiz string, ps []Prueba, ahora time.Time) (*Registro, error) {
 // verdeDe corre las pruebas juntas tras el rojo; exige que todas pasen.
 func verdeDe(raiz, id string, ps []Prueba, rojo *Registro, ahora time.Time) (*Registro, error) {
 	if rojo == nil {
-		return nil, fmt.Errorf("%s sin rojo: primero aquas backlog rojo %s", id, id)
+		return nil, fmt.Errorf("%s sin rojo: primero aquas backlog red %s", id, id)
 	}
 	r, err := correr(raiz, ps)
 	if err != nil {
@@ -89,7 +89,7 @@ func pruebasArreglo(raiz, id string, ps []Prueba) (Ficha, error) {
 				nuevas = append(nuevas, p.Nombre)
 			}
 			if strings.Join(ya, ",") != strings.Join(nuevas, ",") {
-				return fmt.Errorf("%s ya tiene prueba %s: ¿es el arreglo correcto? usa el id que devolvió aquas backlog arreglo (D000028)", id, strings.Join(ya, ", "))
+				return fmt.Errorf("%s ya tiene prueba %s: ¿es el arreglo correcto? usa el id que devolvió aquas backlog fix (D000028)", id, strings.Join(ya, ", "))
 			}
 		}
 		a.Pruebas, a.Rojo, a.Verde = ps, nil, nil
@@ -101,7 +101,7 @@ func pruebasArreglo(raiz, id string, ps []Prueba) (Ficha, error) {
 func rojoArreglo(raiz, id string, ahora time.Time) (Ficha, error) {
 	return cambiarArreglo(raiz, id, func(a *Arreglo) error {
 		if len(a.Pruebas) == 0 {
-			return fmt.Errorf("%s sin pruebas: aquas backlog pruebas %s …", id, id)
+			return fmt.Errorf("%s sin pruebas: aquas backlog tests %s …", id, id)
 		}
 		r, err := rojoDe(raiz, a.Pruebas, ahora)
 		if err == nil {

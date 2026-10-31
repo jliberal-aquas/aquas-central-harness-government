@@ -69,7 +69,7 @@ Prueba integral: `TestHookFrenaShellAjeno`.
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

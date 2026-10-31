@@ -12,7 +12,7 @@ Si construimos algo y no lo explicamos con dibujos y ejemplos, la máquina no no
 
 **El problema.** La documentación casi siempre se queda atrás. El [agente](../../glosario.md#agente) programa, prueba y hace commit, pero olvida explicar. Pedirle «documenta» no basta: es una promesa, no un control.
 
-**La solución.** Un gate revisa la wiki en cada `aquas verificar`, y por tanto en cada commit. Exige:
+**La solución.** Un gate revisa la wiki en cada `aquas verify`, y por tanto en cada commit. Exige:
 
 - cada página en su ruta fija: inicio, [iniciativa](../../glosario.md#iniciativa), feature o [slice](../../glosario.md#slice);
 - las mismas ocho secciones en el mismo orden, más una en E, F y S;
@@ -41,7 +41,7 @@ Proceso: qué pasa con la wiki en cada commit.
 ```mermaid
 flowchart LR
     E["Agente cambia código<br/>o reglas"] --> W["Escribe o actualiza<br/>su página en docs/"]
-    W --> G{"aquas verificar<br/>revisa la wiki"}
+    W --> G{"aquas verify<br/>revisa la wiki"}
     G -- "falta algo" --> L["Lista exacta de problemas<br/>archivo: problema"]
     L --> W
     G -- "completa" --> C["Commit permitido"]
@@ -93,12 +93,12 @@ Para agregar documentación de algo nuevo:
 4. Agrega el diagrama del nivel.
 5. En el ejemplo, pon el [ancla](../../glosario.md#ancla) propia y la línea `continúa:` hacia la página de arriba.
 6. Enlaza la página nueva desde la «Navegación» de su página padre.
-7. Ejecuta `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar` y corrige hasta ver «GATE OK».
+7. Ejecuta `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verify` y corrige hasta ver «GATE OK».
 
 ## Cómo se usa
 
 - Leer: abre `docs/README.md` en VS Code y pulsa Ctrl+Shift+V.
-- Revisar: `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar`. Cada problema sale como `archivo: problema`.
+- Revisar: `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verify`. Cada problema sale como `archivo: problema`.
 - El [pre-commit](../../glosario.md#pre-commit) ejecuta lo mismo; no hace falta acordarse.
 - Límite: el gate revisa el tipo de cada diagrama, no si está bien escrito. Un diagrama roto pasa. Míralo en la vista previa antes de guardar.
 
@@ -138,7 +138,7 @@ flowchart LR
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

@@ -96,7 +96,7 @@ func permitido(raiz, abs string) bool {
 	return false
 }
 
-// ValidarConfig es el gate de la lista de permitidos (lo llama `aquas verificar`).
+// ValidarConfig es el gate de la lista de permitidos (lo llama `aquas verify`).
 func ValidarConfig(raiz string) []string {
 	_, ps := cargar(raiz)
 	return ps

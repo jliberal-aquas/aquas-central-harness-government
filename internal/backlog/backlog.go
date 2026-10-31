@@ -96,7 +96,7 @@ func todas(raiz string) (act, arc map[string]Ficha, err error) {
 		for _, a := range archivos {
 			f, e := leer(a)
 			if e != nil {
-				return nil, nil, fmt.Errorf("%s/%s ilegible: %v (corre `aquas verificar`)", c.dir, filepath.Base(a), e)
+				return nil, nil, fmt.Errorf("%s/%s ilegible: %v (corre `aquas verify`)", c.dir, filepath.Base(a), e)
 			}
 			c.m[f.ID] = f
 		}
@@ -315,7 +315,7 @@ func Estado(raiz, id, estado string) (Ficha, error) {
 	}
 	if estado == "EN_CURSO" && f.Tipo == "slice" { // D000023: la integral de la feature va en rojo antes de sus slices
 		if p, _, err := Ver(raiz, f.Padre); err == nil && len(p.Pruebas) > 0 && p.Rojo == nil {
-			return Ficha{}, fmt.Errorf("%s no arranca: la integral de su feature %s no tiene rojo; regístralo antes con aquas backlog rojo %s", id, p.ID, p.ID)
+			return Ficha{}, fmt.Errorf("%s no arranca: la integral de su feature %s no tiene rojo; regístralo antes con aquas backlog red %s", id, p.ID, p.ID)
 		}
 	}
 	if estado == "CERRADO" && f.Tipo == "slice" { // E001/F010/S001: el cierre compara la huella aprobada
@@ -441,7 +441,7 @@ func Siguiente(raiz string) (Ficha, bool, error) {
 	return Ficha{}, false, nil
 }
 
-// FeatureReincidencias: donde `aquas defecto` crea los slices de reincidencia (E001/F004/S003).
+// FeatureReincidencias: donde `aquas defect` crea los slices de reincidencia (E001/F004/S003).
 // Nace vacía y se llena sola; vacía no se exige definir (E000/F006/S003).
 const FeatureReincidencias = "E000/F007"
 

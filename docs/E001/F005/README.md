@@ -14,7 +14,7 @@ El agente apunta en una libreta qué está haciendo y qué sigue, y la relee al 
 
 **La solución.** Un archivo con campos fijos: foco, tarea, siguiente paso, pendientes y decisiones abiertas. Tres reglas lo cuidan:
 
-- Solo lo escribe `aquas memoria fijar`. La guardia frena cualquier edición a mano.
+- Solo lo escribe `aquas memory set`. La guardia frena cualquier edición a mano.
 - Un [hook](../../glosario.md#hook) lo muestra al empezar la sesión y después de compactar.
 - Otro hook no deja cerrar el turno si hubo cambios y la memoria quedó vieja.
 
@@ -38,7 +38,7 @@ Proceso: cómo se usa la memoria en cada sesión.
 flowchart LR
     I["Sesión empieza<br/>o se compacta"] --> V["Hook muestra<br/>la memoria"]
     V --> T["Agente trabaja"]
-    T --> F["aquas memoria fijar"]
+    T --> F["aquas memory set"]
     F --> C{"¿Turno puede cerrar?"}
     C -- "memoria vieja" --> F
     C -- "al día" --> X["Turno cerrado"]
@@ -49,9 +49,9 @@ Estados de la memoria:
 ```mermaid
 stateDiagram-v2
     [*] --> Vacia
-    Vacia --> AlDia: aquas memoria fijar
+    Vacia --> AlDia: aquas memory set
     AlDia --> Vieja: hay cambios nuevos
-    Vieja --> AlDia: aquas memoria fijar
+    Vieja --> AlDia: aquas memory set
     AlDia --> Rota: alguien la edita a mano
     AlDia --> Archivada: se cierra el slice
     Archivada --> [*]
@@ -80,14 +80,14 @@ En la [iniciativa](../../glosario.md#iniciativa), el pedido de Jesús avanzó ha
 
 ## Paso a paso
 
-1. S001: el archivo, el comando `aquas memoria` y el bloqueo de la guardia.
+1. S001: el archivo, el comando `aquas memory` y el bloqueo de la guardia.
 2. S002: los hooks que la muestran y la exigen.
 3. S003: el archivo al cerrar el slice y la prueba de arranque en frío.
 
 ## Cómo se usa
 
-- Ver la memoria: `aquas memoria ver`.
-- Cambiarla: `aquas memoria fijar tarea=… siguiente=… pendiente=…`.
+- Ver la memoria: `aquas memory show`.
+- Cambiarla: `aquas memory set tarea=… siguiente=… pendiente=…`.
 - No se edita el archivo `.aquas/memoria.json` a mano. La guardia lo frena y el [sello](../../glosario.md#sello) lo delata.
 
 ## Contrato y evidencia
@@ -115,7 +115,7 @@ Prueba integral de la feature: `TestArranqueEnFrio`, en `cmd/aquas/arranque_test
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

@@ -37,9 +37,9 @@
 - Presupuesto: `max_caracteres` obligatorio por salida en config; gate falla si se excede.
 - Tope = freno de desborde extremo, con holgura amplia; no es meta. Nunca condensar una regla hasta perder contexto para caber: se sube el tope.
 - Sello: `gobierno/config/sellos.json` guarda SHA-256 de cada fuente y cada salida.
-- Compilar: `go run ./cmd/aquas compilar`. Verificar (gate): `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar`.
+- Compilar: `go run ./cmd/aquas compile`. Verificar (gate): `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verify`.
 - Disparadores: hook PostToolUse de Claude Code (recompila al editar) + git pre-commit (bloquea si hay desfase).
-- Clon nuevo: `git config core.hooksPath .githooks` + `aquas iniciar` (SO y raíz) + `go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.15.0` (sin él, el gate falla).
+- Clon nuevo: `git config core.hooksPath .githooks` + `aquas init` (SO y raíz) + `go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.15.0` (sin él, el gate falla).
 <!-- /solo-central -->
 
 ## Mapa del repo

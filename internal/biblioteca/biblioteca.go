@@ -16,7 +16,7 @@ import (
 // TopeDefecto: freno de desborde extremo, no meta (constitución: topes con holgura amplia).
 const TopeDefecto = 200000
 
-// Pedido: lo que llega por stdin a `aquas biblioteca leer`.
+// Pedido: lo que llega por stdin a `aquas library read`.
 //
 //	{"rutas": ["internal/x.go", "docs/README.md:10-40"], "tope": 0}
 type Pedido struct {

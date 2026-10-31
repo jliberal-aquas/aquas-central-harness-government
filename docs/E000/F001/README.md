@@ -50,9 +50,9 @@ Estados de la guardia en una máquina:
 ```mermaid
 stateDiagram-v2
     [*] --> SinEntorno: clon nuevo
-    SinEntorno --> Activa: aquas iniciar
+    SinEntorno --> Activa: aquas init
     Activa --> Bloqueada: el repo se movió de carpeta
-    Bloqueada --> Activa: aquas iniciar en la carpeta nueva
+    Bloqueada --> Activa: aquas init en la carpeta nueva
     Activa --> Apagada: el hook no arranca
     Apagada --> Activa: arreglo de S003
 ```
@@ -78,14 +78,14 @@ En la [iniciativa](../../glosario.md#iniciativa), Jesús pidió que nada se escr
 2. S002 agrega la caché de Go a la lista. Sigue Activa.
 3. Jesús prueba `echo x > "$NOEXISTE"` y pasa. La guardia estaba **Apagada** desde el principio.
 4. S003 arregla el arranque. El mismo comando ahora se bloquea.
-5. S004 pregunta: ¿en qué máquina y carpeta estamos? Un clon nuevo queda en **SinEntorno** hasta correr `aquas iniciar`.
+5. S004 pregunta: ¿en qué máquina y carpeta estamos? Un clon nuevo queda en **SinEntorno** hasta correr `aquas init`.
 
 ## Paso a paso
 
 Orden en que se construyó:
 
 1. Pruebas de comandos que deben fallar y que deben pasar.
-2. El programa `aquas guardia`, conectado como hook.
+2. El programa `aquas guard`, conectado como hook.
 3. La lista de permitidos en `gobierno/config/guardia.json`.
 4. El arranque con Git Bash.
 5. El entorno declarado y los ajustes generados.
@@ -122,7 +122,7 @@ Límite que sigue abierto: la guardia no ve programas que escriben por su cuenta
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

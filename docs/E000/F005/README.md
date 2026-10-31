@@ -17,14 +17,14 @@ Ejemplo real: la prueba de «fuente fuera de los [canónicos](../../glosario.md#
 **La solución.** Seis [slices](../../glosario.md#slice), cada uno con sus pruebas y su intención:
 
 - S001 a S003 corrigen pruebas que miran «hubo un error» y no cuál.
-- S004 prueba el programa entero: `aquas verificar`, `aquas guardia` y los [hooks](../../glosario.md#hook) reales.
+- S004 prueba el programa entero: `aquas verify`, `aquas guard` y los [hooks](../../glosario.md#hook) reales.
 - S005 saca de un solo lugar las carpetas que protege la guardia.
 - S006 muestra el rojo de cuatro slices viejos que se cerraron sin él.
 
 **Rojo por mutación.** Aquí el código funciona; lo débil es la prueba. Por eso el rojo se ve así:
 
 1. Se rompe a propósito la regla que vigila la prueba. Eso es una mutación.
-2. `aquas backlog rojo` corre cada prueba. Cada una debe fallar por su mutación.
+2. `aquas backlog red` corre cada prueba. Cada una debe fallar por su mutación.
 3. Se restaura el código y se registra el verde.
 
 Decisión de Jesús, 2026-10-21.
@@ -70,7 +70,7 @@ Slices de esta feature:
 | [S001 Pruebas del compilador](S001.md) | Tres pruebas que miden la causa |
 | [S002 Bloqueos con su motivo](S002.md) | Cinco pruebas de guardia y entorno |
 | [S003 Aserciones aisladas](S003.md) | Seis pruebas que pasaban por otra entrada |
-| [S004 Cableado de punta a punta](S004.md) | `verificar`, `guardia` y hooks reales |
+| [S004 Cableado de punta a punta](S004.md) | `verify`, `guard` y hooks reales |
 | [S005 Carpetas protegidas](S005.md) | Una sola fuente para sus rutas |
 | [S006 Rojo de slices viejos](S006.md) | Rojo de cuatro slices sin evidencia |
 
@@ -98,7 +98,7 @@ En la [iniciativa](../../glosario.md#iniciativa), el [compilador](../../glosario
 
 ## Cómo se usa
 
-- Ver las fichas: `aquas backlog ver E000/F005`.
+- Ver las fichas: `aquas backlog show E000/F005`.
 - Probar: `go test ./...`.
 
 ## Contrato y evidencia
@@ -109,7 +109,7 @@ Prueba integral: `TestVerificarDePuntaAPunta`, en S004. Corre el binario real so
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

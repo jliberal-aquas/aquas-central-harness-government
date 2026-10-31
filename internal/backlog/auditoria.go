@@ -48,7 +48,7 @@ func veredictoVigente(f Ficha) error {
 	fa, errA := time.Parse(time.RFC3339, a.Fecha)
 	fv, errV := time.Parse(time.RFC3339, f.Verde.Fecha)
 	if errV != nil {
-		return fmt.Errorf("%s no cierra: fecha del verde ilegible (%q), no se puede comparar el veredicto; corre aquas backlog verde %s", f.ID, f.Verde.Fecha, f.ID)
+		return fmt.Errorf("%s no cierra: fecha del verde ilegible (%q), no se puede comparar el veredicto; corre aquas backlog green %s", f.ID, f.Verde.Fecha, f.ID)
 	}
 	if errA != nil {
 		return fmt.Errorf("%s no cierra: fecha del veredicto ilegible (%q); lanza otra auditoría", f.ID, a.Fecha)

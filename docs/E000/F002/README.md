@@ -37,7 +37,7 @@ Proceso: de la regla al archivo sellado.
 
 ```mermaid
 flowchart LR
-    C["Canónico editado"] --> K["aquas compilar"]
+    C["Canónico editado"] --> K["aquas compile"]
     K --> T{"¿Cabe en el tope?"}
     T -- "no" --> X["Gate falla"]
     T -- "sí" --> S["Archivo generado y sellado"]
@@ -47,7 +47,7 @@ Estados de un archivo generado:
 
 ```mermaid
 stateDiagram-v2
-    [*] --> AlDia: aquas compilar
+    [*] --> AlDia: aquas compile
     AlDia --> Desfasado: se edita el canónico
     Desfasado --> AlDia: el hook recompila
     AlDia --> Tocado: alguien lo edita a mano
@@ -111,7 +111,7 @@ flowchart LR
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

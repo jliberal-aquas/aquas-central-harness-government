@@ -48,7 +48,7 @@ func problemaPrueba(p Prueba) string {
 		return fmt.Sprintf("prueba %s sin intención: di qué demuestra (%s)", p.Nombre, formatoPrueba)
 	}
 	if p.RojoCuando == "" || p.VerdeCuando == "" { // E001/F008/S007: sin excepción para pruebas viejas
-		return fmt.Sprintf("prueba %s sin «rojo cuando» o «verde cuando»: aquas backlog documentar (%s)", p.Nombre, formatoPrueba)
+		return fmt.Sprintf("prueba %s sin «rojo cuando» o «verde cuando»: aquas backlog document (%s)", p.Nombre, formatoPrueba)
 	}
 	return ""
 }
@@ -134,7 +134,7 @@ func corrible(raiz, id string) (Ficha, error) {
 		return Ficha{}, fmt.Errorf("%s no está en curso (%s): rojo y verde son del slice en curso", id, f.Estado)
 	}
 	if len(f.Pruebas) == 0 {
-		return Ficha{}, fmt.Errorf("%s sin pruebas: aquas backlog pruebas %s %s", id, id, formatoPrueba)
+		return Ficha{}, fmt.Errorf("%s sin pruebas: aquas backlog tests %s %s", id, id, formatoPrueba)
 	}
 	return f, nil
 }
@@ -337,11 +337,11 @@ func head(raiz string) string {
 func cierre(raiz string, f Ficha) error {
 	switch {
 	case len(f.Pruebas) == 0:
-		return fmt.Errorf("%s no cierra sin pruebas: aquas backlog pruebas %s %s", f.ID, f.ID, formatoPrueba)
+		return fmt.Errorf("%s no cierra sin pruebas: aquas backlog tests %s %s", f.ID, f.ID, formatoPrueba)
 	case f.Rojo == nil:
-		return fmt.Errorf("%s no cierra sin rojo: aquas backlog rojo %s", f.ID, f.ID)
+		return fmt.Errorf("%s no cierra sin rojo: aquas backlog red %s", f.ID, f.ID)
 	case f.Verde == nil:
-		return fmt.Errorf("%s no cierra sin verde: aquas backlog verde %s", f.ID, f.ID)
+		return fmt.Errorf("%s no cierra sin verde: aquas backlog green %s", f.ID, f.ID)
 	}
 	if f.Verde.Huella != nil { // E001/F014/S001: el código del alcance sigue igual que en el verde
 		cambio, err := codigoCambio(raiz, f)
@@ -349,7 +349,7 @@ func cierre(raiz string, f Ficha) error {
 			return fmt.Errorf("%s no cierra: %w", f.ID, err)
 		}
 		if len(cambio) > 0 {
-			return fmt.Errorf("%s no cierra: el código cambió desde el verde: %s; corre aquas backlog verde %s", f.ID, strings.Join(cambio, ", "), f.ID)
+			return fmt.Errorf("%s no cierra: el código cambió desde el verde: %s; corre aquas backlog green %s", f.ID, strings.Join(cambio, ", "), f.ID)
 		}
 	}
 	if f.Tipo == "slice" { // E001/F014/S002: el auditor aprobó este verde y este código

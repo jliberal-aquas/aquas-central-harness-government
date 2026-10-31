@@ -1,0 +1,10 @@
+{
+  "id": "D000072",
+  "firma": "memoria-set-comillas-antes-del-campo",
+  "que": "con el freno activo, memory set con el argumento entero entre comillas (\"tarea=…\") se bloqueó; la lista blanca solo acepta campo=\"valor\"",
+  "causa": "reMemoriaFijar exige [a-z_]+= antes de la comilla; el mensaje del freno no dice la forma aceptada",
+  "arreglo": "propuesto: aceptar también \"campo=valor\" entre comillas, o que el aviso del freno muestre la forma exenta",
+  "como_me_cercioro": "caso en TestFrenoDejaPasarMemoria con \"tarea=x\" entre comillas",
+  "ocurrencias": [],
+  "relacion": "E001/F011/S002"
+}

@@ -27,7 +27,7 @@ Límite de la analogía: aquí la libreta la llena un programa, no una persona.
 
 ```mermaid
 flowchart LR
-    H["Historial .jsonl"] --> M["aquas medir vueltas"]
+    H["Historial .jsonl"] --> M["aquas measure runs"]
     M --> C["Corridas y fallas por tipo"]
     C --> T["Cinco motivos principales"]
 ```
@@ -45,9 +45,9 @@ stateDiagram-v2
 
 | Slice | Qué entrega |
 |---|---|
-| [S001 Medir vueltas](S001.md) | `aquas medir vueltas` con motivos |
+| [S001 Medir vueltas](S001.md) | `aquas measure runs` con motivos |
 | [S002 Por qué cae la wiki](S002.md) | Caídas de la wiki por regla |
-| [S003 Enlazar el glosario solo](S003.md) | `aquas wiki enlazar` |
+| [S003 Enlazar el glosario solo](S003.md) | `aquas wiki link` |
 | [S004 Enlazar al guardar](S004.md) | El hook enlaza al guardar |
 
 ## Ejemplo de punta a punta
@@ -56,7 +56,7 @@ stateDiagram-v2
 
 continúa: [EJ-E000](../README.md#EJ-E000)
 
-1. Se corre `aquas medir vueltas`.
+1. Se corre `aquas measure runs`.
 2. Sale `verificar 417/166 (wiki 143, derivados 22, …)`.
 3. Se ve que la [wiki](../../glosario.md#wiki) causa casi todas las caídas del gate.
 
@@ -69,8 +69,8 @@ continúa: [EJ-E000](../README.md#EJ-E000)
 
 ## Cómo se usa
 
-- Medir: `aquas medir vueltas`.
-- Ver las fichas: `aquas backlog ver E000/F004`.
+- Medir: `aquas measure runs`.
+- Ver las fichas: `aquas backlog show E000/F004`.
 
 ## Contrato y evidencia
 
@@ -80,7 +80,7 @@ Prueba integral: `TestCuentaVueltasPorMotivo`, en S001.
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

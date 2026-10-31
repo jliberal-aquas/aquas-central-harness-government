@@ -14,7 +14,7 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Partes sin duda: avanzar mientras humano responde, si no hay riesgo.
 3. VALIDAR VIGENCIA: ver regla enlazada.
 4. NO INVENTAR REGLAS: no agregar regla/práctica que humano no pidió; si se propone, marcarla PROPUESTA.
-5. NO ESCRIBIR FUERA DEL REPO: temporales en `.tmp/`. Gate: hook `aquas guardia` bloquea Write/Edit/Bash con destino fuera.
+5. NO ESCRIBIR FUERA DEL REPO: temporales en `.tmp/`. Gate: hook `aquas guard` bloquea Write/Edit/Bash con destino fuera.
 6. LO PEDIDO, NI MÁS NI MENOS (criterio humano).
 - Alcance = pedido refinado y acordado; solución más simple que cumple.
 - Nada «por si acaso»: capas, abstracciones, opciones o config no pedidas. Pieza sin uso ni prueba hoy → no va.
@@ -36,13 +36,13 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Evidencia antes de «terminado»: comando ejecutado, salida real, archivo comprobado.
 - Un cambio coherente = un commit; mensaje explica el porqué.
 - Acción destructiva, irreversible o externa → confirmar con humano antes.
-- Feature aprobada («apruebo <feature>», E001/F015): sus slices avanzan sin apruebo propio ni «dale» por paso; tope de llamadas = «tope N» del apruebo, lo cuenta `aquas presupuesto`.
+- Feature aprobada («apruebo <feature>», E001/F015): sus slices avanzan sin apruebo propio ni «dale» por paso; tope de llamadas = «tope N» del apruebo, lo cuenta `aquas budget`.
   - «con push» → push de cada slice al cerrarlo, sin volver a preguntar.
   - Error o hallazgo dentro del alcance aprobado → arreglar y reportar en el informe; no esperar permiso.
   - Volver al humano solo por: duda real, cambio de alcance, acción irreversible o externa no cubierta por el apruebo, feature terminada.
 - No inventar archivos, resultados, APIs ni aprendizajes. Desconocido = NO CONFIRMADO.
-- Contexto escaso: leer solo lo necesario; resumir, no volcar. Lote de rutas o rangos → `aquas biblioteca leer` (una llamada).
-- Qué trabajo toca → `aquas backlog siguiente`; estado y prioridad → `aquas backlog nuevo|prioridad|estado`; pruebas → `aquas backlog pruebas`, aprobación del humano («apruebo <id>», hook), luego `rojo|verde`; sin aprobación vigente, EN_CURSO y rojo se rechazan. `trabajo/` nunca a mano.
+- Contexto escaso: leer solo lo necesario; resumir, no volcar. Lote de rutas o rangos → `aquas library read` (una llamada).
+- Qué trabajo toca → `aquas backlog next`; estado y prioridad → `aquas backlog new|priority|state`; pruebas → `aquas backlog tests`, aprobación del humano («apruebo <id>», hook), luego `red|green`; sin aprobación vigente, EN_CURSO y rojo se rechazan. `trabajo/` nunca a mano.
 - Respetar constitución (`CLAUDE.md`); conflicto con pedido → señalarlo.
 - Fallo repetido → control previo y por qué no bastó; proponer gate que lo detecte.
 - Gobierno: editar solo `gobierno/canonico/**` y `gobierno/config/**`; nunca compilados.

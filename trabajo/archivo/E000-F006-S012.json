@@ -1,0 +1,1053 @@
+{
+  "id": "E000/F006/S012",
+  "tipo": "slice",
+  "titulo": "Wiki y canónicos con comandos en inglés",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "humano 2026-10-30, decisión 3a: S006 se parte; este tramo migra las referencias",
+  "padre": "E000/F006",
+  "bloqueado_por": [
+    "E000/F006/S006"
+  ],
+  "secuencia": 133,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestSinComandosViejos",
+      "intencion": "valida que el repo ya no nombra comandos viejos",
+      "rojo_cuando": "rojo cuando una página, canónico o mensaje nombra un comando viejo",
+      "verde_cuando": "verde cuando solo quedan los nombres en inglés y el alias"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-10-30T22:11:33Z",
+    "head": "dfbbd07a18b8c43be27ece0e2c139b807f24fa3c",
+    "resultado": {
+      "./cmd/aquas:TestSinComandosViejos": "sinviejos_test.go:84: 783 llamadas con nombre viejo:"
+    }
+  },
+  "verde": {
+    "fecha": "2026-10-30T22:47:09Z",
+    "head": "dfbbd07a18b8c43be27ece0e2c139b807f24fa3c",
+    "huella": {
+      "cmd/aquas/aprobacion.go": "27fca17829b036152e9ebfc49cb7fdf8455326ac706a46e597a35ef04325ba32",
+      "cmd/aquas/aprobacion_feature_test.go": "da0421ae6a85517443ea8d770def357540859fa9be3be46ae14717dbbaa123f8",
+      "cmd/aquas/aprobacion_test.go": "b5b5794cfae8c75a5626356b4b7aca150dd2604ed797147b87364f4625a2aea7",
+      "cmd/aquas/arranque_test.go": "4bd8f693b0070370f2fe1f4d234d88ba1eb5c0e1ee65096f6042c8c62c891095",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/defectos_integral_test.go": "5cfed803d30204f6260735ce2e8996878436359ff1dd1af0c2953d6f2461c9c9",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/frenos_propios_test.go": "ee86d77fef8e954b77a5341009629bf73d6435640c7c5d527c99c782effa6e3d",
+      "cmd/aquas/gancho_veredicto_test.go": "e31a02c037a27b5a8ad6991300db5ceab2948747fcfb71de3d5c40b16ce473b7",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "6014bb0e67d3508847c39eb1808173a522d491c8ff1b0b5ad637881bc6e924d8",
+      "cmd/aquas/hijos_test.go": "c1685f32b9c1d05e85947a2b9fdd1b797da7bd567b294ee39e03edf8bdd4c991",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles.go": "84f8c7bcea435c0df8694ba8f1b57f1eeddd6ec04a741b732c57b1046461db9c",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "a88007b549f3c3faaa13f4b1f19a4268ce65419655c25855701d781ac4779984",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "ee42a9a0e8ea67bff24e145f28e87a07258709c55b5ac46c96de0037ee164fc9",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "c39c1f5745b4c7ff7af06636589533d3219a744c587eba4c50c44facc9661b14",
+      "cmd/aquas/presupuesto_test.go": "6cf244ac111f03f1d00decc6096be53290ac20d11d23016f9d452e59357f09af",
+      "cmd/aquas/punta_test.go": "8f476e7af4d54d164eacb890943aef061195ee5d419dcb6660dad8d98fd0444d",
+      "cmd/aquas/rojo_test.go": "0a46871b8d6384704ecffd04f8889f2593a6949d8c0b1b3caadd04c4e05bb0e8",
+      "cmd/aquas/sello_test.go": "9c1561bd72e033798f7d9eb815cdd8f9b8788046696fc002cd7cccba5675169c",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "internal/backlog/alcance.go": "7e0bc38849c507f18afb0461bb0034e45298689d7ad82ef56cd087bef91da2ad",
+      "internal/backlog/alcance_test.go": "ef7cf766576693d6d739b78cd51af50493ec6483b00760d3fcf263151ed72ad4",
+      "internal/backlog/aprobacion.go": "8adb3d833819617463313a434aa293beb0b4365de4bb3731f15dd5fc0c51944f",
+      "internal/backlog/aprobacion_feature_test.go": "469530e44ca77d773adee52e82fb89c67fa929470beed8558c677ff177e5d4f7",
+      "internal/backlog/aprobacion_test.go": "1240100db67a830b95f849bec5f219458c23cc0f66260c7c87cfbc885e8afd9e",
+      "internal/backlog/arranque_test.go": "fd2ed5775eca23d246cd530774a96ffed5a896731ba97db355371cb217e4b3ad",
+      "internal/backlog/arreglo.go": "1305f722c30c71b300d9462595acb0b831f411990cab6dd9595f2dd01ff3b508",
+      "internal/backlog/arreglo_pruebas.go": "7e8a1662e1bdec781d373638a8e285be991513ca03cf188cbe6c4f1c3024107c",
+      "internal/backlog/arreglo_pruebas_test.go": "2b1ad1e979dc3c705b7432ec28b2df3483fccba4088fe15671a3f6fd851a4e64",
+      "internal/backlog/arreglo_test.go": "8f78480cc786ae6a54df5ce81d3b85b5c6193641eb2359a40a691c2897153233",
+      "internal/backlog/auditoria.go": "567ec9bd63a8002eb485f529abf3edb89702f4e8ac3011b2d15205afba6d777c",
+      "internal/backlog/auditoria_test.go": "fcb41d1c80c9f498427971c87398e905ee733441c7c737664c23d54c92482ccf",
+      "internal/backlog/aviso_feature_test.go": "55b164c37b1ae834c6326cd12ac379e3a592a88719aadf888ef4b9337c288b77",
+      "internal/backlog/backlog.go": "deab5b1fba597f299a5258d507006fe393032740ef779150e9c5a4e4304719d0",
+      "internal/backlog/backlog_padre_test.go": "37851c0b8fab768b21ad1dd6c14df572011d8cb07987ff424e33a3aaeee5aa6b",
+      "internal/backlog/backlog_test.go": "634bdfa7b58e6a108e4aa9b672902e4912cb403b3eba69eb8fb247efe7ce995f",
+      "internal/backlog/campos_test.go": "3f79ebd0cdcca08653d4b677272a7613e91445d443085bc5c7c9b8f5522f2df7",
+      "internal/backlog/cierre_vigente_test.go": "4eaf046855f764e70c0f53beb36c7350682c757d55e15674a0a42d1bd336fa68",
+      "internal/backlog/codigo.go": "66c3080508457849f61020b415a38cadb9292ece14d17053c19a9319fd9b368e",
+      "internal/backlog/codigo_test.go": "3705ffe4a27e52413d7996e176ca06837c02905fcd58cd3acf0a4ca2687db098",
+      "internal/backlog/documentar.go": "771e448ed568fdc4243641320ed1e7552fb25fb87648fa425c901b1e388fb037",
+      "internal/backlog/documentar_test.go": "9336f43e2ab0536d2ecae00f27c8a4273c709a896badb9e6f3c53c59faeac7d4",
+      "internal/backlog/editar.go": "0fccc9828c084668fec4b5a9ba7506c55ed45a6fb2948cce0f4c4f702d8781bd",
+      "internal/backlog/editar_test.go": "400b05c84288b7c1ce5dc807a2d3441a527fc75e267c0e4ef5978c33985ae9f5",
+      "internal/backlog/huella_codigo.go": "7e95b852afb66968e99c1698dc6da5fd63460d0e49e14f9b4547b97662a14aa3",
+      "internal/backlog/pruebas_arreglo_test.go": "16fadf22f3e520e3e9473755c0eed0ad6aeb0a60de8bcab1d66c9eaeb2e11c15",
+      "internal/backlog/que_hace_test.go": "3216577d7219c8845d5ef7e6fbe24f09562cf407993f2a8702e6c548e6943970",
+      "internal/backlog/relacion.go": "a03ea8c1fd2b4b91e044c1cb6eea55908db06748521ad3ab46bddfd9d3aeab1e",
+      "internal/backlog/relacion_test.go": "431fe7d54f9f23b706f0ccead1004b7ef865b46e11a513453b05d61a74760f32",
+      "internal/backlog/repetidos_test.go": "8be26b48525ce377a8f108bef244b3ec1858baf984d4e163eca64d23b80c8026",
+      "internal/backlog/rojo.go": "c0ac5b347e97478d41a59e22f7d93f28c0768ac876f6e80b5f9517c07293108f",
+      "internal/backlog/rojo_cancelado_test.go": "77d97e9e1f768990414314355b3f5cd5646619abc83701f391673c855a95ee41",
+      "internal/backlog/rojo_heredado_test.go": "9a28dada52517f62990949bb37e2c1624dac579fda4572ae029ee422392ef8e3",
+      "internal/backlog/rojo_subtest_test.go": "74fa62b2e7c3ef7e3eaccf91d42ba71322f0e35e282a6c5b1fe909266e5e23ff",
+      "internal/backlog/rojo_test.go": "5b3936e4d28aaff049185b61a82cdbe54288c653f50872e21b1ac0ee8873fb97",
+      "internal/backlog/sello.go": "0b42da1d12d685e463b555c185e5f6b19c406f20b7b2ce72e547670a476d290a",
+      "internal/backlog/sello_test.go": "bdc33ffc1c8a3049c5e3b8b3225566151a10a1f5b4b46d696fa2b49b97b4328f",
+      "internal/backlog/siguiente_test.go": "adf33dd0d25546ee66fa995d77443dff1d59d85357084b02d217989d7d974387",
+      "internal/backlog/tabla.go": "643d68b64c71c2b2f3d59195295e1403d77b14e10ae59b1260019a1611276e6f",
+      "internal/backlog/tabla_test.go": "ff0d980aac364d2c193d0fcb28f31b90f9ab131598cb691a1ed9478bf5eb26b4",
+      "internal/biblioteca/biblioteca.go": "0f6b287b75e0ea58ec0ba137e719351a96f9e663546303bf774ae993077826a1",
+      "internal/biblioteca/biblioteca_test.go": "9efb324ce2e7043e983f04b5b5846151d4b5ffea3ec19cf185813fcede18fb19",
+      "internal/calidad/calidad.go": "d0e3c0bf1898e764e6b83cd979e858bd4aeb60ec62e35fdb8ea3b4b35d07047f",
+      "internal/calidad/calidad_test.go": "97f4821f243ca10c398b5db441540d0e47767a4c0a9865327015a546f0a762bc",
+      "internal/calidad/dependencias.go": "18816ca9a6d8f080da357c4c01288b78d75c4269446a2ef844d702a84671773d",
+      "internal/calidad/dependencias_test.go": "5bfc1d482bbeb8298dab65e15bbccf56f8fa778ee05d99434ebff84501a52e33",
+      "internal/calidad/integral_test.go": "3074c77dc99ee47b52ff07256c80d74e1201a4e2fabf020f9b195c7ca1941186",
+      "internal/compilador/compilador.go": "8caa3d6ee68010684f5a54b0e1605eccbe04140016f3aff4e082a745399ef104",
+      "internal/compilador/compilador_test.go": "5d0b2c7aa5c69da7c575e26f53cec4b46625d31456de18851667763e7decabbc",
+      "internal/compilador/dod_test.go": "4e3f951000724ca31fa9c5099ea5fc39bf6230df09a8b311f0392147edd8af75",
+      "internal/compilador/gate_feature_test.go": "2b088d3ff96d904380c2ad80725c14cbb3764d17ee1bc89cd103c06d84b87557",
+      "internal/compilador/herramientas_test.go": "ab168b152610e5ef36a3689cdecbab0d26ce2fa459b3ba49a749ad08c3503693",
+      "internal/compilador/modulo_test.go": "3b4f0bcb934cb4ad92496deb53e70e9cd7d12f002baed8310fac88380860e678",
+      "internal/compilador/skill_test.go": "57002fac03d3dc2e0fac1997ce3e41c7cd40e0c82366998cff0758ae02d05df6",
+      "internal/defecto/defecto.go": "1cb048795229c0eb755faf0fe2fec57965caea2b0a46ae47b05ebedd62816ee6",
+      "internal/defecto/defecto_test.go": "2d4476d6c83a3c12ba31be66c194882e7734e55d19f5665726e1ded2fa765435",
+      "internal/defecto/fallo.go": "3451cdd69e22fb39f37ab5ccf393f9b237e4d973fab120621b9423bd6fe9e8f1",
+      "internal/defecto/fallo_test.go": "a48938a5bbc25c59d19f1fd6656dba4a0b8c460b95a4e0ec4d0a45ea878391d0",
+      "internal/defecto/reincidencia_test.go": "df474f98931aca15fde8ae87e837b3a5fb30886e2eb06853d86ec94219bde222",
+      "internal/defecto/relacion_test.go": "d6c9f17924f0f939c50481d8f5dd0a8393bec090902e52d0a295da6c22126958",
+      "internal/encargo/encargo.go": "3bd7b1136c8eff5bb5e6e0823b8ac038309f62760246997a480ac36f476a0d75",
+      "internal/encargo/encargo_test.go": "37f15c5fe78382be35fdab18ebad3e148f62206d90340c1c6483f7848fbf9e56",
+      "internal/entorno/binario.go": "98ae3a43134f53369a37472d1f5cc1af5a40b5919bee2de5102eb2e84610530e",
+      "internal/entorno/binario_test.go": "84177fa12bbd88b6f69e660174bbd57d8c8e0cfcd498e2753c475928e313a4a6",
+      "internal/entorno/entorno.go": "f9861b6699d4a88e31c4599fc5454dec7fde80b87f08df56385e7bd7742522d6",
+      "internal/entorno/entorno_test.go": "920b8c0b6fb7df0956afc93ccd9628cf67f2a2cfb9ec57199c715920cbe96bdc",
+      "internal/entorno/hooks_test.go": "79ef1f52014da5f9aceba35a233da58b3fe1d86b554dc869e6e2d0c06ca9bc9f",
+      "internal/guardia/alcance_test.go": "5b6642805a6334e2ca67ddcf9b6dca30831cf1587b35efdb37f1c7115be8d7c2",
+      "internal/guardia/archivo_test.go": "9215c414f07e3f1c991749092bfcb59954f6197fd5b0e3b725a1eeced2465fb6",
+      "internal/guardia/auditoria_test.go": "d3c87ca4476677b13c0c7f886e8d402e294cb8a00f15229a557d7d9c6b404df0",
+      "internal/guardia/carpetas_test.go": "96a3d5de48a7e4b210b040909f4b3c2f6594942b6c69f031dfbad453706777bf",
+      "internal/guardia/guardia.go": "a0dfca4caa2d1048bef3d062bf9ba90b2140d8d2d5ebaffccffb4e0f45d3e393",
+      "internal/guardia/guardia_test.go": "ad61df70933f6b1f65570156b8e00110dc1b292f14c1411cee01a2a84579c00a",
+      "internal/guardia/heredoc_test.go": "a7da63f49c1fdd5a8620a28dc3ff48d3fcfdce80eb4b02d3b7a62ad445c296dd",
+      "internal/guardia/memoria_test.go": "97a9494d4bc36bab39a20c2d8158c4686e330f2a9df7eee99494712f30fb9353",
+      "internal/guardia/permitidos.go": "795885e6b5990aa5f570c73717ba895077f4cabcc030ac63d8dbb409a2acc58b",
+      "internal/guardia/permitidos_test.go": "0261a3e176d90c673ee45758f4c0fa7fb52ecf6afc1850ee712b7c7353ce9af0",
+      "internal/guardia/trabajo_test.go": "b0ab6843fbfc2afcd81dea13f1094730a0375b10f7cadc96919e6b6efb83fd44",
+      "internal/hijo/ajustes.go": "50f73a7dc5df072dc0d2828512a7a58957221b4b8997fe1eadfe5892c4ea94e2",
+      "internal/hijo/ajustes_test.go": "aef3e5d683f2e4e5315f0a298c0515f4de41f621f8c069f5544c9e2e8628c11c",
+      "internal/hijo/aviso.go": "9bc3269b0223b93f0d7e1663c610cb378cb085c787562801e59b6f11f6049e8a",
+      "internal/hijo/aviso_test.go": "f3c5814551c1270543db9fed713e7d2a0cb6155227810e2c54524bd9addb9ef2",
+      "internal/hijo/build.go": "ab398b18bfa29fdd339fd6de58d8b35789daa03827fbcc0e9ae6adb69db3a7d7",
+      "internal/hijo/build_test.go": "0e826abe8780e5e4398e8f2f8679f9508286ad34797f72f387b005421f80cac8",
+      "internal/hijo/gosolo_test.go": "b1ca4e27da7cc7d64c8ebef95ccd21988e2dcfb76a8413aa41769849c831e807",
+      "internal/hijo/hijo.go": "7faff0da7304188e6a71c4e87ae3c48e45dcda7cc3df4cfcb4118155ac53c83b",
+      "internal/hijo/hijo_test.go": "f69026a6c4d25d69e6c7991437ead733d6a8c0d7ff2053e592b3b4e48dfa99cc",
+      "internal/hijo/huecos.go": "567462284d7c9d09e8091e8dc05a9db60f675d88fd1f0a8fbb5e1f58e7bdbfdc",
+      "internal/hijo/instalar_test.go": "7c8005de28542646813d43331365311868559e21201fa808a3868e954f36029f",
+      "internal/hijo/pendiente_test.go": "8ed098f57c1d425f2e91112176278ff9082834275dd18073fbfa037711d32729",
+      "internal/hijo/report.go": "378ec0816eb8c9b160590ca83d13d1d808203f44b7152446862f1e5bbc69d49a",
+      "internal/hijo/report_test.go": "523f66710d13d02c8366c310980af05f4f7b66ea19c5127cbb75f51c5a4070a9",
+      "internal/hijo/skill.go": "1cc759c875e4415484c4c2e529c5f599a88b2530ee156b9335e5a86cf9b397a1",
+      "internal/hijo/skill_test.go": "59bbd5cac72ffd2e017261355430aa0ce56ee739b11bf31f883d3be9e2e1b776",
+      "internal/hijo/update.go": "2a4ff1ba901d60a728617c4ec2741e2a0079523f5b381fc0f09dd55ef36c3b9e",
+      "internal/hijo/update_test.go": "b269170f2929298165fa1a36951564a9d9c5d3762006f6655f08244a97c8d734",
+      "internal/hijo/verificar_test.go": "ccb9b38401b3f112fb9808f54c98fbd05ec3e21dac96671afab448e8911e0025",
+      "internal/memoria/archivar.go": "fbf9bd3b829677322a2d0783cfcea13d45f3ba3f354b684c7ab95229815be21a",
+      "internal/memoria/archivar_test.go": "305e973db408d41d1949d08fdc15f911435e0fbed16e62821996bb345da62fa6",
+      "internal/memoria/hooks_test.go": "7213487464a03953df2fb9d50e68ee776f119346f48d7662a0aae9b0622277a8",
+      "internal/memoria/memoria.go": "d93731b046f8daad6082821fe47654c0056c24187f4faf18d0530119f033b43b",
+      "internal/memoria/memoria_test.go": "a0a3aa9b2d0fd9de5f9d8c59a65aa8327431dcca75b0f1632242d5472ccdc1b0",
+      "internal/propuesta/insight.go": "0eba2687db96b90bb633c78c9d01bdbfcce756b73319de607c4de0b406df5351",
+      "internal/propuesta/insight_test.go": "4f3d4031c81c966352a26e8bb3d46c7b0e4ad97bbe4d236e108128e49b42a07b",
+      "internal/propuesta/propuesta.go": "4f38948bc04ad7828dfdb4e8c42992f08b410c3c7f3e12f53d02117672e90df8",
+      "internal/propuesta/propuesta_test.go": "edeafc3f1ae1d92bb324b668861cd8bb4a4f6938e88e23e6b6945bc996c5a650",
+      "internal/propuesta/shell.go": "d0d0a639adf8fb8ef028380a8657f7355774cd4a172bee1eb5f06957b65ee1e7",
+      "internal/propuesta/shell_test.go": "3b012009469c0b46b024ed8be6e38adc5a90322e819c495ddde821e146e818e2",
+      "internal/turno/turno.go": "1a375823e68842f604636e8d2e4f0e9b98b3f194d843ac7138dd91b33d8d0bad",
+      "internal/turno/turno_test.go": "8a8d5a6afbb036ea61743aae6aa234cde5ebd35e4743aa6852fbd0e87726aabb",
+      "internal/vueltas/vueltas.go": "b3335b847e7308335c3d8e9fc07f4fdf986e99f394a60f53469ad36688fdcd44",
+      "internal/vueltas/vueltas_test.go": "71f10caf5f5639a42e7aea378a72ac82a79491c4178a5d5cb6b24eba54531e20",
+      "internal/wiki/arreglos_test.go": "01dff1ba0ac5efbea74f31e4ebf3c61c9573f38663e93e601a2edfe8375ce86e",
+      "internal/wiki/casos_borde.go": "e298eda3d7883dd572f7a1637b78c20bcecc7da08832ec109bed5469e3630b23",
+      "internal/wiki/casos_borde_test.go": "22798fe8c2977e0dbf0f6e330e1c7cf1af997d64c85921d1cbcbf8e18efb3714",
+      "internal/wiki/codigo.go": "7e09189db010003f985855c4818a7bf278813969eada66c004a4730bba44d299",
+      "internal/wiki/codigo_test.go": "6d5ff08ae575f696f22128e4db1f8d7665983c721534b9966be70cb60b5bda0f",
+      "internal/wiki/comandos.go": "24383b92fc40e232749fb97eaed4b40b4469f494230a3ea881a5fed9ca3983e8",
+      "internal/wiki/comandos_test.go": "664ac98c7552c49ebe006c0103883a4dce676b7e807b820beab135c2a124a9d6",
+      "internal/wiki/contrato.go": "78fad206ce0b84afe1745af3b41d2ba98ac1396e673f453885a759f58df37a1d",
+      "internal/wiki/contrato_test.go": "dd5abb97cc5641ccf93f5247bbea6550f15bc35aad8df05c794987813ab7f96f",
+      "internal/wiki/cuando_test.go": "5774d1bd40856ada4ab90be000baea4b39088a8fcf318329faa82aa0790684f2",
+      "internal/wiki/enlazar.go": "912fa7f5e15d1f3bbe7d718a3e3e9e1c738c9f55d0de50504205e0a363c5a088",
+      "internal/wiki/enlazar_test.go": "e61411e5b30d89faf1d50b18f11622fc9e804daa07f62b34352d52096455e319",
+      "internal/wiki/glosario.go": "7905d39c155185c606d4988a6cf608defd910b4146de6f3927ece29fb08e887e",
+      "internal/wiki/glosario_test.go": "6b541ec9b30ace4da56d5430223613e07fb9145950406b4df74ad10b09747f22",
+      "internal/wiki/hijos.go": "fe960b2bd189a6eca75db8571ef7e060a01ea5e7cb8f9c3b403bf97ab1ca8365",
+      "internal/wiki/hijos_test.go": "655fdd9fee88aca94f9a501d50853431d24603fca5797c64b439102f706b2c69",
+      "internal/wiki/integral_test.go": "9b931bf856b9718a46b592e3081ad6a32fd65c5aa6a43f0bef4d7fd04adf90dc",
+      "internal/wiki/legibilidad.go": "bd98b6511d47db60ae0af32267ee5d1c660ce4af0b6e41c0aa8dba3d64141bdf",
+      "internal/wiki/legibilidad_test.go": "c9fd29c6a87e142b0216ea4faa2b34fdce11d97ce63a1815b02ca920d3d225a3",
+      "internal/wiki/mermaid.go": "2a03664cdbb9393d9ca59df2481ad8c4e2b6d85d327131ced1298b463839dcc8",
+      "internal/wiki/mermaid_test.go": "b60cfbf3b2565f27733c721b513ffa2f0ee405f92d039cbe3ca40c3bc59b9b4c",
+      "internal/wiki/portadas.go": "89987b8c78326ca7526846dfae29eed74ed35b3d9c2ba3c28744f013bec38db6",
+      "internal/wiki/portadas_test.go": "7c484fcebcc0e59c9e43447bd799901dc49a9003786ba07ab025bc72f6f844a1",
+      "internal/wiki/prevista_test.go": "3b5a8e2bd5853e07cd3a59015954d7b95f95ebeb399a65f14f752c153df82352",
+      "internal/wiki/que_hace_test.go": "0f6261944a5c28a2369a128ca7355db9477e7b34bc3fe8b5a1dc2cff0ace04a8",
+      "internal/wiki/ref_test.go": "a4edfe3ca424fc89e612988f4268c581b81cce1ac1abab222097b226e5b237b5",
+      "internal/wiki/seccioncodigo_test.go": "d922f95632cdd1efd0bb3ab6747b4abdd640ccf156395948a0122b7fdafaa261",
+      "internal/wiki/wiki.go": "9d70660fcb43b1bdb9ddaa186ed79da089b5ee2eb5409a3c8a7dbd8b922051d5",
+      "internal/wiki/wiki_test.go": "daee894db9577083cd3c0dbc9f091d0536f9ce3785a33564d8b7ac0360ac8d6a"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-10-31T00:31:03Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/aprobacion.go": "27fca17829b036152e9ebfc49cb7fdf8455326ac706a46e597a35ef04325ba32",
+      "cmd/aquas/aprobacion_feature_test.go": "da0421ae6a85517443ea8d770def357540859fa9be3be46ae14717dbbaa123f8",
+      "cmd/aquas/aprobacion_test.go": "b5b5794cfae8c75a5626356b4b7aca150dd2604ed797147b87364f4625a2aea7",
+      "cmd/aquas/arranque_test.go": "4bd8f693b0070370f2fe1f4d234d88ba1eb5c0e1ee65096f6042c8c62c891095",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/defectos_integral_test.go": "5cfed803d30204f6260735ce2e8996878436359ff1dd1af0c2953d6f2461c9c9",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/frenos_propios_test.go": "ee86d77fef8e954b77a5341009629bf73d6435640c7c5d527c99c782effa6e3d",
+      "cmd/aquas/gancho_veredicto_test.go": "e31a02c037a27b5a8ad6991300db5ceab2948747fcfb71de3d5c40b16ce473b7",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "6014bb0e67d3508847c39eb1808173a522d491c8ff1b0b5ad637881bc6e924d8",
+      "cmd/aquas/hijos_test.go": "c1685f32b9c1d05e85947a2b9fdd1b797da7bd567b294ee39e03edf8bdd4c991",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles.go": "84f8c7bcea435c0df8694ba8f1b57f1eeddd6ec04a741b732c57b1046461db9c",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "a88007b549f3c3faaa13f4b1f19a4268ce65419655c25855701d781ac4779984",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "ee42a9a0e8ea67bff24e145f28e87a07258709c55b5ac46c96de0037ee164fc9",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "c39c1f5745b4c7ff7af06636589533d3219a744c587eba4c50c44facc9661b14",
+      "cmd/aquas/presupuesto_test.go": "6cf244ac111f03f1d00decc6096be53290ac20d11d23016f9d452e59357f09af",
+      "cmd/aquas/punta_test.go": "8f476e7af4d54d164eacb890943aef061195ee5d419dcb6660dad8d98fd0444d",
+      "cmd/aquas/rojo_test.go": "0a46871b8d6384704ecffd04f8889f2593a6949d8c0b1b3caadd04c4e05bb0e8",
+      "cmd/aquas/sello_test.go": "9c1561bd72e033798f7d9eb815cdd8f9b8788046696fc002cd7cccba5675169c",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "internal/backlog/alcance.go": "7e0bc38849c507f18afb0461bb0034e45298689d7ad82ef56cd087bef91da2ad",
+      "internal/backlog/alcance_test.go": "ef7cf766576693d6d739b78cd51af50493ec6483b00760d3fcf263151ed72ad4",
+      "internal/backlog/aprobacion.go": "8adb3d833819617463313a434aa293beb0b4365de4bb3731f15dd5fc0c51944f",
+      "internal/backlog/aprobacion_feature_test.go": "469530e44ca77d773adee52e82fb89c67fa929470beed8558c677ff177e5d4f7",
+      "internal/backlog/aprobacion_test.go": "1240100db67a830b95f849bec5f219458c23cc0f66260c7c87cfbc885e8afd9e",
+      "internal/backlog/arranque_test.go": "fd2ed5775eca23d246cd530774a96ffed5a896731ba97db355371cb217e4b3ad",
+      "internal/backlog/arreglo.go": "1305f722c30c71b300d9462595acb0b831f411990cab6dd9595f2dd01ff3b508",
+      "internal/backlog/arreglo_pruebas.go": "7e8a1662e1bdec781d373638a8e285be991513ca03cf188cbe6c4f1c3024107c",
+      "internal/backlog/arreglo_pruebas_test.go": "2b1ad1e979dc3c705b7432ec28b2df3483fccba4088fe15671a3f6fd851a4e64",
+      "internal/backlog/arreglo_test.go": "8f78480cc786ae6a54df5ce81d3b85b5c6193641eb2359a40a691c2897153233",
+      "internal/backlog/auditoria.go": "567ec9bd63a8002eb485f529abf3edb89702f4e8ac3011b2d15205afba6d777c",
+      "internal/backlog/auditoria_test.go": "fcb41d1c80c9f498427971c87398e905ee733441c7c737664c23d54c92482ccf",
+      "internal/backlog/aviso_feature_test.go": "55b164c37b1ae834c6326cd12ac379e3a592a88719aadf888ef4b9337c288b77",
+      "internal/backlog/backlog.go": "deab5b1fba597f299a5258d507006fe393032740ef779150e9c5a4e4304719d0",
+      "internal/backlog/backlog_padre_test.go": "37851c0b8fab768b21ad1dd6c14df572011d8cb07987ff424e33a3aaeee5aa6b",
+      "internal/backlog/backlog_test.go": "634bdfa7b58e6a108e4aa9b672902e4912cb403b3eba69eb8fb247efe7ce995f",
+      "internal/backlog/campos_test.go": "3f79ebd0cdcca08653d4b677272a7613e91445d443085bc5c7c9b8f5522f2df7",
+      "internal/backlog/cierre_vigente_test.go": "4eaf046855f764e70c0f53beb36c7350682c757d55e15674a0a42d1bd336fa68",
+      "internal/backlog/codigo.go": "66c3080508457849f61020b415a38cadb9292ece14d17053c19a9319fd9b368e",
+      "internal/backlog/codigo_test.go": "3705ffe4a27e52413d7996e176ca06837c02905fcd58cd3acf0a4ca2687db098",
+      "internal/backlog/documentar.go": "771e448ed568fdc4243641320ed1e7552fb25fb87648fa425c901b1e388fb037",
+      "internal/backlog/documentar_test.go": "9336f43e2ab0536d2ecae00f27c8a4273c709a896badb9e6f3c53c59faeac7d4",
+      "internal/backlog/editar.go": "0fccc9828c084668fec4b5a9ba7506c55ed45a6fb2948cce0f4c4f702d8781bd",
+      "internal/backlog/editar_test.go": "400b05c84288b7c1ce5dc807a2d3441a527fc75e267c0e4ef5978c33985ae9f5",
+      "internal/backlog/huella_codigo.go": "7e95b852afb66968e99c1698dc6da5fd63460d0e49e14f9b4547b97662a14aa3",
+      "internal/backlog/pruebas_arreglo_test.go": "16fadf22f3e520e3e9473755c0eed0ad6aeb0a60de8bcab1d66c9eaeb2e11c15",
+      "internal/backlog/que_hace_test.go": "3216577d7219c8845d5ef7e6fbe24f09562cf407993f2a8702e6c548e6943970",
+      "internal/backlog/relacion.go": "a03ea8c1fd2b4b91e044c1cb6eea55908db06748521ad3ab46bddfd9d3aeab1e",
+      "internal/backlog/relacion_test.go": "431fe7d54f9f23b706f0ccead1004b7ef865b46e11a513453b05d61a74760f32",
+      "internal/backlog/repetidos_test.go": "8be26b48525ce377a8f108bef244b3ec1858baf984d4e163eca64d23b80c8026",
+      "internal/backlog/rojo.go": "c0ac5b347e97478d41a59e22f7d93f28c0768ac876f6e80b5f9517c07293108f",
+      "internal/backlog/rojo_cancelado_test.go": "77d97e9e1f768990414314355b3f5cd5646619abc83701f391673c855a95ee41",
+      "internal/backlog/rojo_heredado_test.go": "9a28dada52517f62990949bb37e2c1624dac579fda4572ae029ee422392ef8e3",
+      "internal/backlog/rojo_subtest_test.go": "74fa62b2e7c3ef7e3eaccf91d42ba71322f0e35e282a6c5b1fe909266e5e23ff",
+      "internal/backlog/rojo_test.go": "5b3936e4d28aaff049185b61a82cdbe54288c653f50872e21b1ac0ee8873fb97",
+      "internal/backlog/sello.go": "0b42da1d12d685e463b555c185e5f6b19c406f20b7b2ce72e547670a476d290a",
+      "internal/backlog/sello_test.go": "bdc33ffc1c8a3049c5e3b8b3225566151a10a1f5b4b46d696fa2b49b97b4328f",
+      "internal/backlog/siguiente_test.go": "adf33dd0d25546ee66fa995d77443dff1d59d85357084b02d217989d7d974387",
+      "internal/backlog/tabla.go": "643d68b64c71c2b2f3d59195295e1403d77b14e10ae59b1260019a1611276e6f",
+      "internal/backlog/tabla_test.go": "ff0d980aac364d2c193d0fcb28f31b90f9ab131598cb691a1ed9478bf5eb26b4",
+      "internal/biblioteca/biblioteca.go": "0f6b287b75e0ea58ec0ba137e719351a96f9e663546303bf774ae993077826a1",
+      "internal/biblioteca/biblioteca_test.go": "9efb324ce2e7043e983f04b5b5846151d4b5ffea3ec19cf185813fcede18fb19",
+      "internal/calidad/calidad.go": "d0e3c0bf1898e764e6b83cd979e858bd4aeb60ec62e35fdb8ea3b4b35d07047f",
+      "internal/calidad/calidad_test.go": "97f4821f243ca10c398b5db441540d0e47767a4c0a9865327015a546f0a762bc",
+      "internal/calidad/dependencias.go": "18816ca9a6d8f080da357c4c01288b78d75c4269446a2ef844d702a84671773d",
+      "internal/calidad/dependencias_test.go": "5bfc1d482bbeb8298dab65e15bbccf56f8fa778ee05d99434ebff84501a52e33",
+      "internal/calidad/integral_test.go": "3074c77dc99ee47b52ff07256c80d74e1201a4e2fabf020f9b195c7ca1941186",
+      "internal/compilador/compilador.go": "8caa3d6ee68010684f5a54b0e1605eccbe04140016f3aff4e082a745399ef104",
+      "internal/compilador/compilador_test.go": "5d0b2c7aa5c69da7c575e26f53cec4b46625d31456de18851667763e7decabbc",
+      "internal/compilador/dod_test.go": "4e3f951000724ca31fa9c5099ea5fc39bf6230df09a8b311f0392147edd8af75",
+      "internal/compilador/gate_feature_test.go": "2b088d3ff96d904380c2ad80725c14cbb3764d17ee1bc89cd103c06d84b87557",
+      "internal/compilador/herramientas_test.go": "ab168b152610e5ef36a3689cdecbab0d26ce2fa459b3ba49a749ad08c3503693",
+      "internal/compilador/modulo_test.go": "3b4f0bcb934cb4ad92496deb53e70e9cd7d12f002baed8310fac88380860e678",
+      "internal/compilador/skill_test.go": "57002fac03d3dc2e0fac1997ce3e41c7cd40e0c82366998cff0758ae02d05df6",
+      "internal/defecto/defecto.go": "1cb048795229c0eb755faf0fe2fec57965caea2b0a46ae47b05ebedd62816ee6",
+      "internal/defecto/defecto_test.go": "2d4476d6c83a3c12ba31be66c194882e7734e55d19f5665726e1ded2fa765435",
+      "internal/defecto/fallo.go": "3451cdd69e22fb39f37ab5ccf393f9b237e4d973fab120621b9423bd6fe9e8f1",
+      "internal/defecto/fallo_test.go": "a48938a5bbc25c59d19f1fd6656dba4a0b8c460b95a4e0ec4d0a45ea878391d0",
+      "internal/defecto/reincidencia_test.go": "df474f98931aca15fde8ae87e837b3a5fb30886e2eb06853d86ec94219bde222",
+      "internal/defecto/relacion_test.go": "d6c9f17924f0f939c50481d8f5dd0a8393bec090902e52d0a295da6c22126958",
+      "internal/encargo/encargo.go": "3bd7b1136c8eff5bb5e6e0823b8ac038309f62760246997a480ac36f476a0d75",
+      "internal/encargo/encargo_test.go": "37f15c5fe78382be35fdab18ebad3e148f62206d90340c1c6483f7848fbf9e56",
+      "internal/entorno/binario.go": "98ae3a43134f53369a37472d1f5cc1af5a40b5919bee2de5102eb2e84610530e",
+      "internal/entorno/binario_test.go": "84177fa12bbd88b6f69e660174bbd57d8c8e0cfcd498e2753c475928e313a4a6",
+      "internal/entorno/entorno.go": "f9861b6699d4a88e31c4599fc5454dec7fde80b87f08df56385e7bd7742522d6",
+      "internal/entorno/entorno_test.go": "920b8c0b6fb7df0956afc93ccd9628cf67f2a2cfb9ec57199c715920cbe96bdc",
+      "internal/entorno/hooks_test.go": "79ef1f52014da5f9aceba35a233da58b3fe1d86b554dc869e6e2d0c06ca9bc9f",
+      "internal/guardia/alcance_test.go": "5b6642805a6334e2ca67ddcf9b6dca30831cf1587b35efdb37f1c7115be8d7c2",
+      "internal/guardia/archivo_test.go": "9215c414f07e3f1c991749092bfcb59954f6197fd5b0e3b725a1eeced2465fb6",
+      "internal/guardia/auditoria_test.go": "d3c87ca4476677b13c0c7f886e8d402e294cb8a00f15229a557d7d9c6b404df0",
+      "internal/guardia/carpetas_test.go": "96a3d5de48a7e4b210b040909f4b3c2f6594942b6c69f031dfbad453706777bf",
+      "internal/guardia/guardia.go": "a0dfca4caa2d1048bef3d062bf9ba90b2140d8d2d5ebaffccffb4e0f45d3e393",
+      "internal/guardia/guardia_test.go": "ad61df70933f6b1f65570156b8e00110dc1b292f14c1411cee01a2a84579c00a",
+      "internal/guardia/heredoc_test.go": "a7da63f49c1fdd5a8620a28dc3ff48d3fcfdce80eb4b02d3b7a62ad445c296dd",
+      "internal/guardia/memoria_test.go": "97a9494d4bc36bab39a20c2d8158c4686e330f2a9df7eee99494712f30fb9353",
+      "internal/guardia/permitidos.go": "795885e6b5990aa5f570c73717ba895077f4cabcc030ac63d8dbb409a2acc58b",
+      "internal/guardia/permitidos_test.go": "0261a3e176d90c673ee45758f4c0fa7fb52ecf6afc1850ee712b7c7353ce9af0",
+      "internal/guardia/trabajo_test.go": "b0ab6843fbfc2afcd81dea13f1094730a0375b10f7cadc96919e6b6efb83fd44",
+      "internal/hijo/ajustes.go": "50f73a7dc5df072dc0d2828512a7a58957221b4b8997fe1eadfe5892c4ea94e2",
+      "internal/hijo/ajustes_test.go": "aef3e5d683f2e4e5315f0a298c0515f4de41f621f8c069f5544c9e2e8628c11c",
+      "internal/hijo/aviso.go": "9bc3269b0223b93f0d7e1663c610cb378cb085c787562801e59b6f11f6049e8a",
+      "internal/hijo/aviso_test.go": "f3c5814551c1270543db9fed713e7d2a0cb6155227810e2c54524bd9addb9ef2",
+      "internal/hijo/build.go": "ab398b18bfa29fdd339fd6de58d8b35789daa03827fbcc0e9ae6adb69db3a7d7",
+      "internal/hijo/build_test.go": "0e826abe8780e5e4398e8f2f8679f9508286ad34797f72f387b005421f80cac8",
+      "internal/hijo/gosolo_test.go": "b1ca4e27da7cc7d64c8ebef95ccd21988e2dcfb76a8413aa41769849c831e807",
+      "internal/hijo/hijo.go": "7faff0da7304188e6a71c4e87ae3c48e45dcda7cc3df4cfcb4118155ac53c83b",
+      "internal/hijo/hijo_test.go": "f69026a6c4d25d69e6c7991437ead733d6a8c0d7ff2053e592b3b4e48dfa99cc",
+      "internal/hijo/huecos.go": "567462284d7c9d09e8091e8dc05a9db60f675d88fd1f0a8fbb5e1f58e7bdbfdc",
+      "internal/hijo/instalar_test.go": "7c8005de28542646813d43331365311868559e21201fa808a3868e954f36029f",
+      "internal/hijo/pendiente_test.go": "8ed098f57c1d425f2e91112176278ff9082834275dd18073fbfa037711d32729",
+      "internal/hijo/report.go": "378ec0816eb8c9b160590ca83d13d1d808203f44b7152446862f1e5bbc69d49a",
+      "internal/hijo/report_test.go": "523f66710d13d02c8366c310980af05f4f7b66ea19c5127cbb75f51c5a4070a9",
+      "internal/hijo/skill.go": "1cc759c875e4415484c4c2e529c5f599a88b2530ee156b9335e5a86cf9b397a1",
+      "internal/hijo/skill_test.go": "59bbd5cac72ffd2e017261355430aa0ce56ee739b11bf31f883d3be9e2e1b776",
+      "internal/hijo/update.go": "2a4ff1ba901d60a728617c4ec2741e2a0079523f5b381fc0f09dd55ef36c3b9e",
+      "internal/hijo/update_test.go": "b269170f2929298165fa1a36951564a9d9c5d3762006f6655f08244a97c8d734",
+      "internal/hijo/verificar_test.go": "ccb9b38401b3f112fb9808f54c98fbd05ec3e21dac96671afab448e8911e0025",
+      "internal/memoria/archivar.go": "fbf9bd3b829677322a2d0783cfcea13d45f3ba3f354b684c7ab95229815be21a",
+      "internal/memoria/archivar_test.go": "305e973db408d41d1949d08fdc15f911435e0fbed16e62821996bb345da62fa6",
+      "internal/memoria/hooks_test.go": "7213487464a03953df2fb9d50e68ee776f119346f48d7662a0aae9b0622277a8",
+      "internal/memoria/memoria.go": "d93731b046f8daad6082821fe47654c0056c24187f4faf18d0530119f033b43b",
+      "internal/memoria/memoria_test.go": "a0a3aa9b2d0fd9de5f9d8c59a65aa8327431dcca75b0f1632242d5472ccdc1b0",
+      "internal/propuesta/insight.go": "0eba2687db96b90bb633c78c9d01bdbfcce756b73319de607c4de0b406df5351",
+      "internal/propuesta/insight_test.go": "4f3d4031c81c966352a26e8bb3d46c7b0e4ad97bbe4d236e108128e49b42a07b",
+      "internal/propuesta/propuesta.go": "4f38948bc04ad7828dfdb4e8c42992f08b410c3c7f3e12f53d02117672e90df8",
+      "internal/propuesta/propuesta_test.go": "edeafc3f1ae1d92bb324b668861cd8bb4a4f6938e88e23e6b6945bc996c5a650",
+      "internal/propuesta/shell.go": "d0d0a639adf8fb8ef028380a8657f7355774cd4a172bee1eb5f06957b65ee1e7",
+      "internal/propuesta/shell_test.go": "3b012009469c0b46b024ed8be6e38adc5a90322e819c495ddde821e146e818e2",
+      "internal/turno/turno.go": "1a375823e68842f604636e8d2e4f0e9b98b3f194d843ac7138dd91b33d8d0bad",
+      "internal/turno/turno_test.go": "8a8d5a6afbb036ea61743aae6aa234cde5ebd35e4743aa6852fbd0e87726aabb",
+      "internal/vueltas/vueltas.go": "b3335b847e7308335c3d8e9fc07f4fdf986e99f394a60f53469ad36688fdcd44",
+      "internal/vueltas/vueltas_test.go": "71f10caf5f5639a42e7aea378a72ac82a79491c4178a5d5cb6b24eba54531e20",
+      "internal/wiki/arreglos_test.go": "01dff1ba0ac5efbea74f31e4ebf3c61c9573f38663e93e601a2edfe8375ce86e",
+      "internal/wiki/casos_borde.go": "e298eda3d7883dd572f7a1637b78c20bcecc7da08832ec109bed5469e3630b23",
+      "internal/wiki/casos_borde_test.go": "22798fe8c2977e0dbf0f6e330e1c7cf1af997d64c85921d1cbcbf8e18efb3714",
+      "internal/wiki/codigo.go": "7e09189db010003f985855c4818a7bf278813969eada66c004a4730bba44d299",
+      "internal/wiki/codigo_test.go": "6d5ff08ae575f696f22128e4db1f8d7665983c721534b9966be70cb60b5bda0f",
+      "internal/wiki/comandos.go": "24383b92fc40e232749fb97eaed4b40b4469f494230a3ea881a5fed9ca3983e8",
+      "internal/wiki/comandos_test.go": "664ac98c7552c49ebe006c0103883a4dce676b7e807b820beab135c2a124a9d6",
+      "internal/wiki/contrato.go": "78fad206ce0b84afe1745af3b41d2ba98ac1396e673f453885a759f58df37a1d",
+      "internal/wiki/contrato_test.go": "dd5abb97cc5641ccf93f5247bbea6550f15bc35aad8df05c794987813ab7f96f",
+      "internal/wiki/cuando_test.go": "5774d1bd40856ada4ab90be000baea4b39088a8fcf318329faa82aa0790684f2",
+      "internal/wiki/enlazar.go": "912fa7f5e15d1f3bbe7d718a3e3e9e1c738c9f55d0de50504205e0a363c5a088",
+      "internal/wiki/enlazar_test.go": "e61411e5b30d89faf1d50b18f11622fc9e804daa07f62b34352d52096455e319",
+      "internal/wiki/glosario.go": "7905d39c155185c606d4988a6cf608defd910b4146de6f3927ece29fb08e887e",
+      "internal/wiki/glosario_test.go": "6b541ec9b30ace4da56d5430223613e07fb9145950406b4df74ad10b09747f22",
+      "internal/wiki/hijos.go": "fe960b2bd189a6eca75db8571ef7e060a01ea5e7cb8f9c3b403bf97ab1ca8365",
+      "internal/wiki/hijos_test.go": "655fdd9fee88aca94f9a501d50853431d24603fca5797c64b439102f706b2c69",
+      "internal/wiki/integral_test.go": "9b931bf856b9718a46b592e3081ad6a32fd65c5aa6a43f0bef4d7fd04adf90dc",
+      "internal/wiki/legibilidad.go": "bd98b6511d47db60ae0af32267ee5d1c660ce4af0b6e41c0aa8dba3d64141bdf",
+      "internal/wiki/legibilidad_test.go": "c9fd29c6a87e142b0216ea4faa2b34fdce11d97ce63a1815b02ca920d3d225a3",
+      "internal/wiki/mermaid.go": "2a03664cdbb9393d9ca59df2481ad8c4e2b6d85d327131ced1298b463839dcc8",
+      "internal/wiki/mermaid_test.go": "b60cfbf3b2565f27733c721b513ffa2f0ee405f92d039cbe3ca40c3bc59b9b4c",
+      "internal/wiki/portadas.go": "89987b8c78326ca7526846dfae29eed74ed35b3d9c2ba3c28744f013bec38db6",
+      "internal/wiki/portadas_test.go": "7c484fcebcc0e59c9e43447bd799901dc49a9003786ba07ab025bc72f6f844a1",
+      "internal/wiki/prevista_test.go": "3b5a8e2bd5853e07cd3a59015954d7b95f95ebeb399a65f14f752c153df82352",
+      "internal/wiki/que_hace_test.go": "0f6261944a5c28a2369a128ca7355db9477e7b34bc3fe8b5a1dc2cff0ace04a8",
+      "internal/wiki/ref_test.go": "a4edfe3ca424fc89e612988f4268c581b81cce1ac1abab222097b226e5b237b5",
+      "internal/wiki/seccioncodigo_test.go": "d922f95632cdd1efd0bb3ab6747b4abdd640ccf156395948a0122b7fdafaa261",
+      "internal/wiki/wiki.go": "9d70660fcb43b1bdb9ddaa186ed79da089b5ee2eb5409a3c8a7dbd8b922051d5",
+      "internal/wiki/wiki_test.go": "daee894db9577083cd3c0dbc9f091d0536f9ce3785a33564d8b7ac0360ac8d6a"
+    }
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F006",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "la ficha padre no cambia con este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/S012.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/F006/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/auditor.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/orchestrator.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-haiku.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-sonnet.md\u003edocs/E001/F003/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:cmd/aquas/aprobacion_feature_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/aprobacion_feature_test.go\u003edocs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/aprobacion_test.go\u003edocs/E001/F002/S003.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/arranque_test.go\u003edocs/E001/F005/S003.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/enlazar_hook_test.go\u003edocs/E000/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/enlazar_hook_test.go\u003edocs/glosario.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hijos_test.go\u003edocs/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/instrucciones_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/instrucciones_test.go\u003edocs/E000/F006/S008.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/instrucciones_test.go\u003edocs/E000/F006/S010.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/oracion_hook_test.go\u003edocs/E000/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/oracion_hook_test.go\u003edocs/E000/F001/S002.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/oracion_hook_test.go\u003edocs/E000/F001/S003.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:cmd/aquas/oracion_hook_test.go\u003edocs/glosario.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:docs/ref/comunicacion.md\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/agentes/auditor.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/agentes/worker.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/reglas/03_DOD_COMUN.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/reglas/04_CASOS_BORDE.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/documentos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/agentes/auditor.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/agentes/worker.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/reglas/03_DOD_COMUN.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/reglas/04_CASOS_BORDE.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/aprobacion_feature_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/aprobacion_test.go\u003edocs/E001/F002/S002.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/S004.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/compilador/herramientas_test.go\u003egobierno/canonico/agentes/worker.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/compilador/modulo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/compilador/skill_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/defecto/reincidencia_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/encargo/encargo.go\u003egobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/memoria",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/hijo/build_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/gosolo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/instalar_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/pendiente_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/report_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/skill_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/hijo/update_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/wiki/casos_borde_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/casos_borde_test.go\u003edocs/E001/F001/S002.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/casos_borde_test.go\u003edocs/E001/F002/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/casos_borde_test.go\u003edocs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/wiki/enlazar_test.go\u003edocs/E000/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario.go\u003edocs/glosario.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003edocs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/glosario_test.go\u003edocs/glosario.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/integral_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/integral_test.go\u003edocs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/wiki/legibilidad_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas.go\u003edocs/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/portadas_test.go\u003edocs/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/wiki/que_hace_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/que_hace_test.go\u003edocs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/que_hace_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/ref_test.go\u003edocs/ref/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "este slice no lo afecta"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E000/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/glosario.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003eREADME.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S002.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/README.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/glosario.md",
+      "marca": "actualizado",
+      "motivo": "cambió en este slice"
+    }
+  ],
+  "alcance": [
+    "docs/**",
+    "gobierno/canonico/**",
+    "cmd/aquas/**",
+    "internal/**",
+    "README.md"
+  ],
+  "aprobacion": {
+    "fecha": "2026-10-30T22:28:48Z",
+    "huella": "ae9057d3e317d2b6d63ca6c3a2d613893d6d781b77c1a9d9f422c3974c8f18f4",
+    "mensaje": "apruebo E000/F006/S012 con push"
+  },
+  "codigo": [
+    "cmd/aquas/limpiar.go",
+    "cmd/aquas/main.go",
+    "cmd/aquas/presupuesto.go",
+    "internal/backlog/alcance.go",
+    "internal/backlog/aprobacion.go",
+    "internal/backlog/arreglo.go",
+    "internal/backlog/arreglo_pruebas.go",
+    "internal/backlog/auditoria.go",
+    "internal/backlog/backlog.go",
+    "internal/backlog/editar.go",
+    "internal/backlog/relacion.go",
+    "internal/backlog/rojo.go",
+    "internal/backlog/sello.go",
+    "internal/biblioteca/biblioteca.go",
+    "internal/compilador/compilador.go",
+    "internal/defecto/defecto.go",
+    "internal/defecto/fallo.go",
+    "internal/entorno/entorno.go",
+    "internal/guardia/guardia.go",
+    "internal/guardia/permitidos.go",
+    "internal/memoria/archivar.go",
+    "internal/memoria/memoria.go",
+    "internal/propuesta/insight.go",
+    "internal/wiki/codigo.go",
+    "internal/wiki/hijos.go"
+  ],
+  "relacion": "amplia:E000/F006/S006",
+  "que_hace": "Cambia los nombres viejos de comandos por los nuevos en wiki, canónicos, skills y mensajes de uso."
+}

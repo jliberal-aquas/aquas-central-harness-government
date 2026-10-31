@@ -30,7 +30,7 @@ func TestNuevoExigeRelacion(t *testing.T) {
 		{"valor inválido", "relacion=quizas", []string{"relacion"}},
 		{"amplia inexistente", "relacion=amplia:E001/F002/S099", []string{"no existe"}},
 		{"amplia cerrada", "relacion=amplia:E001/F003", []string{"feature nueva"}},
-		{"corrige cerrada", "relacion=corrige:E001/F003", []string{"backlog arreglo E001/F003"}},
+		{"corrige cerrada", "relacion=corrige:E001/F003", []string{"backlog fix E001/F003"}},
 	}
 	for _, c := range casos {
 		campos := append([]string{}, ok...)

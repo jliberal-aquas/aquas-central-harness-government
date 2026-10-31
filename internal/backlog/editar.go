@@ -1,6 +1,6 @@
 package backlog
 
-// E001/F009/S003: backlog editar cambia una ficha que aún no arranca y guarda lo anterior.
+// E001/F009/S003: backlog edit cambia una ficha que aún no arranca y guarda lo anterior.
 
 import (
 	"fmt"
@@ -46,7 +46,7 @@ func Editar(raiz, id string, campos []string, ahora time.Time) (Ficha, error) {
 	}
 	f, hay := act[id]
 	if !hay || (f.Estado != "BORRADOR" && f.Estado != "LISTO") {
-		return Ficha{}, fmt.Errorf("%s solo se edita en BORRADOR o LISTO: si ya arrancó, usa backlog alcance; si cerró, backlog arreglo o una ficha nueva", id)
+		return Ficha{}, fmt.Errorf("%s solo se edita en BORRADOR o LISTO: si ya arrancó, usa backlog scope; si cerró, backlog fix o una ficha nueva", id)
 	}
 	existe := func(x string) bool { _, a := act[x]; _, b := arc[x]; return a || b }
 	fecha := ahora.UTC().Format(time.RFC3339)

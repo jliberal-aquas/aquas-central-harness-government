@@ -127,7 +127,7 @@ func TestGuardiaCLISinEntornoBloquea(t *testing.T) {
 		t.Fatal(err)
 	}
 	s := aquas(t, raiz, dentro, "guardia")
-	if s.codigo != 2 || !strings.Contains(s.err, "entorno no verificado, se bloquea todo") || !strings.Contains(s.err, "aquas iniciar") {
+	if s.codigo != 2 || !strings.Contains(s.err, "entorno no verificado, se bloquea todo") || !strings.Contains(s.err, "aquas init") {
 		t.Fatalf("sin entorno: hasta lo de dentro se bloquea (exit 2) y dice cómo arreglarlo; dio %+v", s)
 	}
 	raiz = repoSano(t)

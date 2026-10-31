@@ -6,15 +6,15 @@ Esta [feature](../../glosario.md#feature) hace que el freno de llamadas nunca bl
 
 ## En una frase
 
-Con el freno activo, `aquas memoria fijar` pasa y todo lo demás se frena.
+Con el freno activo, `aquas memory set` pasa y todo lo demás se frena.
 
 ## Para qué existe
 
-**El problema.** El freno de llamadas bloqueaba `aquas memoria fijar` al desbordar (D000029). El freno global ya cede en este repo, pero `aquas presupuesto` repite la falla.
+**El problema.** El freno de llamadas bloqueaba `aquas memory set` al desbordar (D000029). El freno global ya cede en este repo, pero `aquas budget` repite la falla.
 
 **Por qué importa.** El [hook](../../glosario.md#hook) de cierre exige la memoria al día. Si el freno la bloquea, el [agente](../../glosario.md#agente) queda atrapado entre los dos.
 
-**La solución.** El freno reconoce `aquas memoria fijar` como orden suelta. La deja pasar sin contarla.
+**La solución.** El freno reconoce `aquas memory set` como orden suelta. La deja pasar sin contarla.
 
 ## Analogía
 
@@ -29,7 +29,7 @@ Límite de la analogía: solo pasa la orden suelta, sin nada encadenado.
 
 ```mermaid
 flowchart LR
-    L["llamada"] --> M{"¿memoria fijar suelta?"}
+    L["llamada"] --> M{"¿memory set suelta?"}
     M -->|sí| P["pasa sin contar"]
     M -->|no| C{"¿freno desbordado?"}
     C -->|sí| F["se frena"]
@@ -42,7 +42,7 @@ Estados del turno:
 stateDiagram-v2
     [*] --> Libre
     Libre --> Frenado: pasa el tope
-    Frenado --> Frenado: memoria fijar pasa
+    Frenado --> Frenado: memory set pasa
     Frenado --> Libre: mensaje nuevo del humano
 ```
 
@@ -54,12 +54,12 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 1. El agente pasa las 60 llamadas del turno.
 2. El freno detiene el siguiente comando.
-3. El agente actualiza la memoria con `aquas memoria fijar` y cierra el turno.
+3. El agente actualiza la memoria con `aquas memory set` y cierra el turno.
 
 ## Paso a paso
 
 1. S001: interruptor de hooks globales. Cancelado: `cede_a` del freno global ya lo cubre.
-2. S002: el freno de aquas deja pasar `memoria fijar`.
+2. S002: el freno de aquas deja pasar `memory set`.
 
 ## Cómo se usa
 
@@ -71,7 +71,7 @@ Prueba integral: `TestFrenosPropiosGobernados`.
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

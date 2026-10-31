@@ -17,7 +17,7 @@ func TestArranqueExigeRojoDeLaIntegral(t *testing.T) {
 	f.Rojo = nil
 	pisar(t, raiz, Activo, f)
 	nuevo(t, raiz, "id=E001/F002/S001", "titulo=T", "prioridad=P1", "motivo=m")
-	if _, err := arrancar(t, raiz, "E001/F002/S001"); err == nil || !strings.Contains(err.Error(), "aquas backlog rojo E001/F002") {
+	if _, err := arrancar(t, raiz, "E001/F002/S001"); err == nil || !strings.Contains(err.Error(), "aquas backlog red E001/F002") {
 		t.Errorf("integral sin rojo: el slice debió negarse a arrancar; dio %v", err)
 	}
 	f.Rojo = &Registro{Fecha: "2026-10-21T12:00:00Z", Resultado: map[string]string{"./p:TestFalla": "x"}}

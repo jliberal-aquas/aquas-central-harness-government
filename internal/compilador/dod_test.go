@@ -46,7 +46,7 @@ func TestDoDComunCompilado(t *testing.T) {
 	if fin := strings.Index(bloque[len(titulo):], "\n# "); fin >= 0 { // el bloque llega hasta el siguiente título de primer nivel
 		bloque = bloque[:len(titulo)+fin]
 	}
-	for _, want := range []string{"prueba integral", "Gate (`aquas verificar`)", "APROBADO", "Commit con el porqué"} {
+	for _, want := range []string{"prueba integral", "Gate (`aquas verify`)", "APROBADO", "Commit con el porqué"} {
 		if !strings.Contains(bloque, want) {
 			t.Errorf("el bloque de la regla DoD en el orquestador compilado no trae %q", want)
 		}

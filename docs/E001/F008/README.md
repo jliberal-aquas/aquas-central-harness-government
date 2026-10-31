@@ -73,7 +73,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 ## Cómo se usa
 
-- `aquas backlog pruebas <id> "./paquete:TestNombre=valida|rojo cuando|verde cuando"`.
+- `aquas backlog tests <id> "./paquete:TestNombre=valida|rojo cuando|verde cuando"`.
 
 ## Contrato y evidencia
 
@@ -85,7 +85,7 @@ Arreglo X01 del feature (D000021): `TestMermaidSinPuntoYComa`.
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

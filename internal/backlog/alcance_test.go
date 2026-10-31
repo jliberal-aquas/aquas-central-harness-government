@@ -35,7 +35,7 @@ func TestAlcanceSeDeclaraYAmplia(t *testing.T) {
 	}
 	for _, p := range []string{"docs/y.md", "internal/ab/x.go", "docs/x.md.bak"} {
 		m := FueraDeAlcance(raiz, p)
-		if !strings.Contains(m, "fuera del alcance de "+id) || !strings.Contains(m, "aquas backlog alcance "+id+" ampliar "+p+" motivo=") {
+		if !strings.Contains(m, "fuera del alcance de "+id) || !strings.Contains(m, "aquas backlog scope "+id+" extend "+p+" motivo=") {
 			t.Errorf("%s está fuera: lo dice y cómo ampliar; dio %q", p, m)
 		}
 	}
@@ -47,7 +47,7 @@ func TestAlcanceSeDeclaraYAmplia(t *testing.T) {
 
 func TestSinAlcanceDeclaradoBloquea(t *testing.T) {
 	raiz, id := enCursoConAlcance(t)
-	if m := FueraDeAlcance(raiz, "docs/y.md"); !strings.Contains(m, "declara el alcance") || !strings.Contains(m, "aquas backlog alcance "+id) {
+	if m := FueraDeAlcance(raiz, "docs/y.md"); !strings.Contains(m, "declara el alcance") || !strings.Contains(m, "aquas backlog scope "+id) {
 		t.Errorf("slice en curso sin alcance: frena y dice cómo declararlo; dio %q", m)
 	}
 }

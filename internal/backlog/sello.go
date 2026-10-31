@@ -276,7 +276,7 @@ func selloCompleto(raiz string, f Ficha) error {
 	if len(muestra) > 5 {
 		muestra = append(muestra[:5:5], "…")
 	}
-	return fmt.Errorf("%s no cierra: sello incompleto, %d sin marca: %s → aquas backlog sello %s <clave> sin_cambio|actualizado motivo=…",
+	return fmt.Errorf("%s no cierra: sello incompleto, %d sin marca: %s → aquas backlog seal %s <clave> sin_cambio|actualizado motivo=…",
 		f.ID, len(faltan), strings.Join(muestra, ", "), f.ID)
 }
 
@@ -301,7 +301,7 @@ func Marcar(raiz, id, clave, marca, motivo string) (Ficha, error) {
 		hay = hay || x.Clave == clave
 	}
 	if !hay {
-		return Ficha{}, fmt.Errorf("%s no está en el sello de %s: aquas backlog sello %s", clave, id, id)
+		return Ficha{}, fmt.Errorf("%s no está en el sello de %s: aquas backlog seal %s", clave, id, id)
 	}
 	m := Marca{Clave: clave, Marca: marca, Motivo: motivo}
 	for i := range f.Sello {

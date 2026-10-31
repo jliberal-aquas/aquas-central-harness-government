@@ -30,25 +30,17 @@
     "huella": {}
   },
   "aprobacion": {
-    "fecha": "2026-10-30T17:18:35Z",
+    "fecha": "2026-10-31T00:28:28Z",
     "huella": "3f73acab4fc82157a18ac1fbf31665b8ad3427cc271398cb13174586ec1c2b42",
-    "mensaje": "apruebo E000/F006 con push, tope 300. Tú eres el que estás usando el comando ingestor estaba revisando la memoria y está utilizando mucha memoria. Espero que sea nada más para compilar y hacer pruebas o no eres tú.",
+    "mensaje": "apruebo E000/F006 tope 360 con push",
     "push": true,
     "foto": {
-      "E000/F006/S003": [
+      "E000/F006/S012": [
         {
-          "prueba": "./internal/backlog:TestSiguienteNoExigeDefinirReincidenciasVacia",
-          "intencion": "valida que siguiente no pide definir la feature de reincidencias mientras no tiene slices",
-          "rojo_cuando": "rojo cuando siguiente responde definir E000/F007 con la feature vacía",
-          "verde_cuando": "verde cuando siguiente la salta vacía y la pide definir otras features sin slices"
-        }
-      ],
-      "E000/F006/S006": [
-        {
-          "prueba": "./cmd/aquas:TestComandosEnIngles",
-          "intencion": "los comandos en inglés responden y los nombres viejos avisan el nuevo",
-          "rojo_cuando": "un comando en inglés no responde o un nombre viejo no indica el comando nuevo",
-          "verde_cuando": "build, verify y backlog responden y cada nombre viejo avisa su reemplazo"
+          "prueba": "./cmd/aquas:TestSinComandosViejos",
+          "intencion": "valida que el repo ya no nombra comandos viejos",
+          "rojo_cuando": "rojo cuando una página, canónico o mensaje nombra un comando viejo",
+          "verde_cuando": "verde cuando solo quedan los nombres en inglés y el alias"
         }
       ]
     }

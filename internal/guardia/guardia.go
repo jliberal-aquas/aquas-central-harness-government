@@ -1,6 +1,6 @@
 // Package guardia: regla de oro «no escribir fuera del repositorio», como gate determinista.
 //
-// Se ejecuta como hook PreToolUse de Claude Code (`aquas guardia`). Exit 2 bloquea la herramienta.
+// Se ejecuta como hook PreToolUse de Claude Code (`aquas guard`). Exit 2 bloquea la herramienta.
 //   - Write/Edit/MultiEdit/NotebookEdit: la ruta debe quedar dentro de la raíz del repo.
 //   - Bash: se analizan redirecciones (>, >>, &>), cd, y los destinos de rm, mv, cp, mkdir, touch,
 //     tee, ln, chmod, sed -i, perl -i, git clone/init/worktree add, curl -o, wget -O, dd of=, unzip -d.
@@ -82,16 +82,16 @@ func RevisarArchivo(raiz, p string) string {
 func protegida(raiz, abs, p string) string {
 	en := func(rel string) bool { return dentro(filepath.Join(raiz, filepath.FromSlash(rel)), abs) }
 	if en(path.Dir(mem.Ruta)) {
-		return fmt.Sprintf("memoria caliente: %s solo se escribe con `aquas memoria fijar campo=valor`", p)
+		return fmt.Sprintf("memoria caliente: %s solo se escribe con `aquas memory set campo=valor`", p)
 	}
 	if en(mem.Archivo) {
-		return fmt.Sprintf("archivo de memoria: %s solo se escribe con `aquas memoria archivar` al cerrar el slice", p)
+		return fmt.Sprintf("archivo de memoria: %s solo se escribe con `aquas memory archive` al cerrar el slice", p)
 	}
 	if en(turno.Carpeta) {
-		return fmt.Sprintf("auditoría: %s solo la escriben los hooks con `aquas turno abrir|cerrar`", p)
+		return fmt.Sprintf("auditoría: %s solo la escriben los hooks con `aquas turn open|close`", p)
 	}
 	if en(path.Dir(backlog.Activo)) || en(path.Dir(backlog.Archivo)) {
-		return fmt.Sprintf("backlog: %s solo se escribe con `aquas backlog nuevo|prioridad|estado|pruebas|rojo|verde`", p)
+		return fmt.Sprintf("backlog: %s solo se escribe con `aquas backlog new|priority|state|tests|red|green`", p)
 	}
 	// E001/F002/S007: alcance del slice en curso; solo rutas dentro del repo.
 	if rel, err := filepath.Rel(raiz, abs); err == nil && !strings.HasPrefix(filepath.ToSlash(rel), "../") {

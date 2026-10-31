@@ -15,7 +15,7 @@ La lista de tareas deja de estar en la cabeza del capataz y pasa a un tablero co
 **La solución.** Un archivo JSON por elemento, que solo escribe `aquas`:
 
 - Cada [iniciativa](../../glosario.md#iniciativa), feature y [slice](../../glosario.md#slice) tiene su ficha con estado y prioridad.
-- `aquas backlog siguiente` dice qué toca, con un orden fijo.
+- `aquas backlog next` dice qué toca, con un orden fijo.
 - Lo cerrado pasa al archivo, y queda la traza.
 
 ## Analogía
@@ -38,7 +38,7 @@ flowchart LR
     Z --> B["Quita las bloqueadas"]
     B --> C["Ordena por prioridad"]
     C --> D["Desempata por orden de ingreso"]
-    D --> E["aquas backlog siguiente"]
+    D --> E["aquas backlog next"]
 ```
 
 Estados de una ficha:
@@ -80,7 +80,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 En la iniciativa, el pedido de Jesús ya es trabajo. Ahora hay que ubicarlo en la cola.
 
 1. El agente crea la ficha del slice con prioridad P1 y su motivo.
-2. Pide `aquas backlog siguiente`.
+2. Pide `aquas backlog next`.
 3. `aquas` responde con el slice que toca, sin que el agente elija.
 4. Al cerrar el slice, su ficha pasa al archivo.
 
@@ -100,8 +100,8 @@ En la iniciativa, el pedido de Jesús ya es trabajo. Ahora hay que ubicarlo en l
 
 ## Cómo se usa
 
-- Ver lo activo: `go run ./cmd/aquas backlog ver`.
-- Qué toca: `go run ./cmd/aquas backlog siguiente`.
+- Ver lo activo: `go run ./cmd/aquas backlog show`.
+- Qué toca: `go run ./cmd/aquas backlog next`.
 - Los archivos viven en `trabajo/activo/` y `trabajo/archivo/`. No se editan a mano.
 
 ## Contrato y evidencia
@@ -132,7 +132,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

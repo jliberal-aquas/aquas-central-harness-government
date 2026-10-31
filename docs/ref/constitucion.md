@@ -40,10 +40,10 @@ Cómo llega la constitución a cada sesión.
 ```mermaid
 flowchart LR
     C["gobierno/canonico/<br/>constitucion.md"] --> D["gobierno/config/<br/>documentos.json<br/>tope 5.000"]
-    D --> K["Compilador<br/>aquas compilar"]
+    D --> K["Compilador<br/>aquas compile"]
     K --> M["CLAUDE.md<br/>marca GENERADO"]
     M --> S["Claude Code lo carga<br/>al abrir la sesión"]
-    K --> G{"aquas verificar"}
+    K --> G{"aquas verify"}
     G -- "editado a mano<br/>o pasa el tope" --> X["Commit bloqueado"]
 ```
 
@@ -66,8 +66,8 @@ Para cambiar la constitución:
 
 1. Edita `gobierno/canonico/constitucion.md`. Nunca `CLAUDE.md`.
 2. Escribe en formato corto: una idea por línea, sin relleno.
-3. Ejecuta `go run ./cmd/aquas compilar`.
-4. Ejecuta `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar` y busca «GATE OK».
+3. Ejecuta `go run ./cmd/aquas compile`.
+4. Ejecuta `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verify` y busca «GATE OK».
 
 ## Cómo se usa
 

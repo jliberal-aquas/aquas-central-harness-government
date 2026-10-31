@@ -84,7 +84,7 @@ Qué hace el [agente](../glosario.md#agente) con un fallo del gobierno:
 
 ## Cómo se usa
 
-- La lista de tareas vive en las fichas de `trabajo/`; se ve con `aquas backlog ver`. El diseño y las decisiones siguen en [E001_GOBIERNO_DEL_TRABAJO.md](../../gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md).
+- La lista de tareas vive en las fichas de `trabajo/`; se ve con `aquas backlog show`. El diseño y las decisiones siguen en [E001_GOBIERNO_DEL_TRABAJO.md](../../gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md).
 - Hoy esa lista se escribe a mano. Con F002 de E001 pasará a un archivo que lee la herramienta `aquas`.
 
 ## Contrato y evidencia
@@ -115,11 +115,11 @@ Decisiones de Jesús:
 - Un fallo se arregla antes de continuar, aunque cambie el orden del trabajo (2026-10-20).
 - Las pruebas del [compilador](../glosario.md#compilador), anteriores al método, viven en E000/F002 (2026-10-20).
 
-Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar`. Las dos pasaron en el commit `2c418d1`.
+Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verify`. Las dos pasaron en el commit `2c418d1`.
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

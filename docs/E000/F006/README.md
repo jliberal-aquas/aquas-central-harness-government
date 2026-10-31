@@ -71,7 +71,7 @@ continúa: [EJ-E000](../README.md#EJ-E000)
 
 ## Cómo se usa
 
-- Ver las fichas: `aquas backlog ver E000/F006`.
+- Ver las fichas: `aquas backlog show E000/F006`.
 - Informe de origen: [revisión de Fable](../../../registro/informes/2026-10-22-fable.md).
 
 ## Contrato y evidencia
@@ -82,7 +82,7 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|
@@ -97,7 +97,7 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 | [S009](S009.md) | aquas limpiar temporales del encargo | Hecho |
 | [S010](S010.md) | Instrucciones sin go run para verificar | Hecho |
 | [S011](S011.md) | aquas limpiar conectado: CLI y regla de encargos | Hecho |
-| S012 | Cambia los nombres viejos de comandos por los nuevos en wiki, canónicos, skills y mensajes de uso. | Planeado |
+| [S012](S012.md) | Cambia los nombres viejos de comandos por los nuevos en wiki, canónicos, skills y mensajes de uso. | Hecho |
 
 <!-- /GENERADO -->
 

@@ -12,7 +12,7 @@ El comando «backlog tabla» pone cada ficha activa en una fila con su [iniciati
 
 **El problema.** Para ver qué falta hay que recorrer carpetas y fichas una por una.
 
-**La solución.** `backlog tabla` muestra las fichas activas en el orden en que se trabajarán. `/backlog` la muestra en el chat del central y de cada hijo.
+**La solución.** `backlog table` muestra las fichas activas en el orden en que se trabajarán. `/backlog` la muestra en el chat del central y de cada hijo.
 
 ## Analogía
 
@@ -33,7 +33,7 @@ flowchart LR
 ```mermaid
 stateDiagram-v2
     [*] --> Fichas: trabajo/activo
-    Fichas --> Tabla: aquas backlog tabla
+    Fichas --> Tabla: aquas backlog table
     Tabla --> Ordenada: en el orden de siguiente
     Ordenada --> [*]
 ```
@@ -57,7 +57,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 ## Cómo se usa
 
 - En el chat: `/backlog`.
-- En la terminal: `aquas backlog tabla`.
+- En la terminal: `aquas backlog table`.
 
 ## Contrato y evidencia
 
@@ -65,7 +65,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

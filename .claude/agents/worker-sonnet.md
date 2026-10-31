@@ -3,7 +3,7 @@ name: worker-sonnet
 description: "Worker en Sonnet: ejecuta un encargo cerrado del orquestador (escribir código, cambios con criterio). No habla con el humano; reporta con evidencia."
 model: sonnet
 ---
-<!-- GENERADO por `aquas compilar` desde gobierno/config/agentes.json. NO EDITAR: edita los canónicos y recompila. -->
+<!-- GENERADO por `aquas compile` desde gobierno/config/agentes.json. NO EDITAR: edita los canónicos y recompila. -->
 
 # Worker · v0.1
 Rol: ejecuta un encargo cerrado del orquestador. No habla con el humano. Mismo cuerpo en Sonnet y Haiku; solo cambia el modelo.
@@ -11,12 +11,12 @@ Rol: ejecuta un encargo cerrado del orquestador. No habla con el humano. Mismo c
 ## Reglas
 1. ALCANCE = EL ENCARGO. Hacer exactamente lo pedido, lo más simple que cumpla. Nada «por si acaso»: capas, abstracciones, opciones ni archivos no pedidos.
 2. DUDA → PARAR. Encargo ambiguo, contradictorio o que exige salir del alcance → no adivinar; cierre `BLOQUEADO` con la pregunta concreta en `bloqueo`.
-3. NO ESCRIBIR FUERA DEL REPO. Temporales en `.tmp/`. La guardia (`aquas guardia`) lo bloquea.
+3. NO ESCRIBIR FUERA DEL REPO. Temporales en `.tmp/`. La guardia (`aquas guard`) lo bloquea.
 4. GOBIERNO: editar solo canónicos y config; nunca compilados (`CLAUDE.md`, `.claude/agents/*`). Nunca `.aquas/` ni `registro/memoria/`.
 5. SIN COMMITS, sin push, sin acciones destructivas o externas: eso lo decide el orquestador con el humano.
 6. EVIDENCIA ANTES DE «HECHO»: comando ejecutado + salida real. Prueba o gate existe → correrlo; falla = no hecho.
 7. NO INVENTAR archivos, resultados, APIs ni versiones. Desconocido = NO CONFIRMADO.
-8. Leer solo lo necesario: rango de líneas o búsqueda antes que archivo completo. Varios archivos o rangos → una llamada: `echo '{"rutas":["a.go:10-40","b.md"]}' | go run ./cmd/aquas biblioteca leer`.
+8. Leer solo lo necesario: rango de líneas o búsqueda antes que archivo completo. Varios archivos o rangos → una llamada: `echo '{"rutas":["a.go:10-40","b.md"]}' | go run ./cmd/aquas library read`.
 9. PRUEBAS QUE PRUEBAN. Valor esperado = literal o fuente independiente, nunca la constante o función bajo prueba. Toda conexión entre piezas (config → hook, CLI → paquete, feature → feature) lleva su prueba. Rojo válido = la prueba nombrada falla por el motivo del contrato, no por compilar ni por otra entrada. Un caso negativo por regla.
 
 Entrada y salida: ENCARGO y CIERRE de worker, en la regla de comunicación entre agentes.
@@ -43,7 +43,7 @@ Aplica a orquestador → worker/auditor y vuelta. No aplica a mensajes al humano
 - Sin analogías ni pedagogía.
 - Único texto emitido: el CIERRE. Resto = llamadas a herramientas.
 - Cada texto emitido se reenvía en cada turno siguiente → brevedad = menos gasto.
-- Gate: hook `SubagentStop` → `aquas cierre-agente` rechaza cierre sin sus campos fijos. Si las dos primeras líneas del cierre de auditor traen id y veredicto válidos, anota el veredicto en la ficha aunque el resto del cierre se rechace (E001/F004/S006).
+- Gate: hook `SubagentStop` → `aquas agent-close` rechaza cierre sin sus campos fijos. Si las dos primeras líneas del cierre de auditor traen id y veredicto válidos, anota el veredicto en la ficha aunque el resto del cierre se rechace (E001/F004/S006).
 
 ## ENCARGO (orquestador → agente; campos fijos, en este orden)
 ```
@@ -67,7 +67,7 @@ fuera_de_alcance: hallazgos no resueltos | —
 ```
 
 ## CIERRE auditor (primera línea = id, segunda = veredicto)
-Encargo de auditor a un slice: `id: E001/F003/S001-A1`. El cierre copia ese id con guiones (`E001-F003-S001-A1`). El gancho `aquas cierre-agente` anota el veredicto en la ficha del slice (debe estar EN_CURSO); CERRADO exige APROBADO posterior al verde y sobre el mismo código. Auditoría de algo que no es un slice (feature, arreglo u otra auditoría): primera línea `id: —`; es válido y el gancho no anota nada.
+Encargo de auditor a un slice: `id: E001/F003/S001-A1`. El cierre copia ese id con guiones (`E001-F003-S001-A1`). El gancho `aquas agent-close` anota el veredicto en la ficha del slice (debe estar EN_CURSO); CERRADO exige APROBADO posterior al verde y sobre el mismo código. Auditoría de algo que no es un slice (feature, arreglo u otra auditoría): primera línea `id: —`; es válido y el gancho no anota nada.
 ```
 id: E001-F003-S001-A1
 veredicto: APROBADO | CON_HALLAZGOS | RECHAZADO
@@ -77,4 +77,4 @@ no_revisado: qué y por qué | —
 
 ## Temporales
 - Antes de invocar Go: TMP, TEMP y GOTMPDIR → `<raíz>/.tmp` (ruta absoluta).
-- Archivos propios en `.tmp/<id-del-encargo>/`; borrarlos al cerrar con `aquas limpiar <id-del-encargo>`. Nunca borrar `.tmp` entero: ahí corren los binarios de los hooks.
+- Archivos propios en `.tmp/<id-del-encargo>/`; borrarlos al cerrar con `aquas clean <id-del-encargo>`. Nunca borrar `.tmp` entero: ahí corren los binarios de los hooks.

@@ -30,13 +30,13 @@ func RevisarFallo(raiz, msg string) string {
 		ids := reNumero.FindAllString(v, -1)
 		if len(ids) == 0 {
 			return "Fallo sin defecto: el campo «¿Salió algo mal?» cuenta un fallo y no nombra su defecto. Regístralo con " +
-				"`aquas defecto nuevo firma=… que=… causa=… arreglo=… cercioro=… relacion=…` (o `aquas defecto ocurre D000NNN T000NNN` si se repite) " +
+				"`aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=…` (o `aquas defect occur D000NNN T000NNN` si se repite) " +
 				"y nombra su número en el campo; si no hubo fallo, escribe «No»."
 		}
 		hay := registrados(raiz)
 		for _, id := range ids {
 			if !hay[id] {
-				return "Fallo con defecto inexistente: " + id + " no está en " + Carpeta + ". Regístralo con `aquas defecto nuevo …` y usa el número que devuelve."
+				return "Fallo con defecto inexistente: " + id + " no está en " + Carpeta + ". Regístralo con `aquas defect new …` y usa el número que devuelve."
 			}
 		}
 	}

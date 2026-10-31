@@ -39,7 +39,7 @@ func TestDefectoNuevoExigeRelacion(t *testing.T) {
 	}{
 		{"sin relacion", "", []string{"relacion=", "D000001", "E001/F002/S001"}},
 		{"valor inválido", "quizas", []string{"relacion"}},
-		{"repite existente", "repite:D000001", []string{"defecto ocurre D000001"}},
+		{"repite existente", "repite:D000001", []string{"defect occur D000001"}},
 		{"repite inexistente", "repite:D000099", []string{"no existe"}},
 		{"ficha inexistente", "E001/F002/S099", []string{"no existe"}},
 	} {

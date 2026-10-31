@@ -41,7 +41,7 @@ func dirDe(archivada bool) string {
 func Arreglar(raiz, padre, titulo, motivo, absorbe string, ahora time.Time) (Arreglo, error) {
 	titulo, motivo = strings.TrimSpace(titulo), strings.TrimSpace(motivo)
 	if titulo == "" || motivo == "" {
-		return Arreglo{}, errors.New("arreglo sin titulo o motivo: aquas backlog arreglo <slice|feature> titulo=… motivo=… [absorbe=<slice>]")
+		return Arreglo{}, errors.New("arreglo sin titulo o motivo: aquas backlog fix <slice|feature> titulo=… motivo=… [absorbe=<slice>]")
 	}
 	f, archivada, err := Ver(raiz, padre)
 	if err != nil {

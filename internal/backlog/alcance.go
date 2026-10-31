@@ -1,7 +1,7 @@
 package backlog
 
 // E001/F002/S007: alcance vigilado (opción B, decisión humana 2026-10-21). El slice en curso
-// declara sus rutas (`aquas backlog alcance <id> ruta…`; «dir/**» = todo lo de dentro). Tocar
+// declara sus rutas (`aquas backlog scope <id> ruta…`; «dir/**» = todo lo de dentro). Tocar
 // otra ruta exige ampliar el alcance con motivo de una línea, que queda en la ficha. Siempre
 // permitidos: derivados del compilador y datos que escribe aquas (trabajo/, registro/, …).
 // Sin slice en curso no se restringe. La guardia lo aplica a Write/Edit y a destinos de Bash.
@@ -27,7 +27,7 @@ func limpia(r string) string {
 // Alcance declara (reemplaza) las rutas del slice.
 func Alcance(raiz, id string, rutas []string) (Ficha, error) {
 	if len(rutas) == 0 {
-		return Ficha{}, errors.New("alcance vacío: aquas backlog alcance <id> ruta… («dir/**» = todo lo de dentro)")
+		return Ficha{}, errors.New("alcance vacío: aquas backlog scope <id> ruta… («dir/**» = todo lo de dentro)")
 	}
 	f, err := activa(raiz, id)
 	if err != nil {
@@ -80,7 +80,7 @@ func FueraDeAlcance(raiz, rel string) string {
 		return ""
 	}
 	if len(f.Alcance) == 0 {
-		return fmt.Sprintf("%s está en curso sin alcance declarado: declara el alcance con `aquas backlog alcance %s ruta…` antes de escribir %s", id, id, rel)
+		return fmt.Sprintf("%s está en curso sin alcance declarado: declara el alcance con `aquas backlog scope %s ruta…` antes de escribir %s", id, id, rel)
 	}
 	for _, p := range f.Alcance {
 		if cubre(p, rel) {
@@ -92,6 +92,6 @@ func FueraDeAlcance(raiz, rel string) string {
 			return ""
 		}
 	}
-	return fmt.Sprintf("%s fuera del alcance de %s (%s): si hace falta, `aquas backlog alcance %s ampliar %s motivo=…`; si es otro trabajo, va al backlog",
+	return fmt.Sprintf("%s fuera del alcance de %s (%s): si hace falta, `aquas backlog scope %s extend %s motivo=…`; si es otro trabajo, va al backlog",
 		rel, id, strings.Join(f.Alcance, ", "), id, rel)
 }

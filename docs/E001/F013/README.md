@@ -6,7 +6,7 @@
 
 ## En una frase
 
-`aquas verificar` corre linters con versión fija, y un canario prueba que no están ciegos.
+`aquas verify` corre linters con versión fija, y un canario prueba que no están ciegos.
 
 ## Para qué existe
 
@@ -56,7 +56,7 @@ stateDiagram-v2
 continúa: [EJ-E001](../README.md#EJ-E001)
 
 1. Un worker escribe `os.Chmod(ruta, 0o755)` sin revisar el error.
-2. El humano o el [pre-commit](../../glosario.md#pre-commit) corre `aquas verificar`.
+2. El humano o el [pre-commit](../../glosario.md#pre-commit) corre `aquas verify`.
 3. El gate falla y nombra archivo, línea y linter `errcheck`.
 
 ## Paso a paso
@@ -67,7 +67,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 ## Cómo se usa
 
-- Nada nuevo: corre dentro de `aquas verificar` y del pre-commit.
+- Nada nuevo: corre dentro de `aquas verify` y del pre-commit.
 
 ## Contrato y evidencia
 
@@ -77,7 +77,7 @@ Prueba integral: `TestCanarioFallaYRepoPasa` (pendiente).
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

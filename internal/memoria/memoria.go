@@ -1,6 +1,6 @@
 // Package memoria: memoria caliente del foco de trabajo (E001/F005).
 //
-// Vive en .aquas/memoria.json (oculto, no versionado). Solo la escribe `aquas memoria fijar`;
+// Vive en .aquas/memoria.json (oculto, no versionado). Solo la escribe `aquas memory set`;
 // la guardia bloquea Write/Edit/Bash hacia .aquas/. El sello SHA-256 delata una edición por
 // otra vía (un script): Leer devuelve ErrSelloRoto y Fijar se niega a taparla.
 package memoria
@@ -28,7 +28,7 @@ const (
 )
 
 var (
-	ErrSinMemoria = errors.New("sin memoria caliente: aún no se fijó un foco (aquas memoria fijar)")
+	ErrSinMemoria = errors.New("sin memoria caliente: aún no se fijó un foco (aquas memory set)")
 	ErrSelloRoto  = errors.New("memoria caliente editada fuera de aquas: el sello no coincide")
 )
 
@@ -173,7 +173,7 @@ func Rutas(f Foco) Mapa {
 	return r
 }
 
-// Texto: lo que imprime `aquas memoria ver` (y, en S002, el hook de inicio de sesión).
+// Texto: lo que imprime `aquas memory show` (y, en S002, el hook de inicio de sesión).
 func Texto(m Memoria) string {
 	var b strings.Builder
 	var ids []string
@@ -196,7 +196,7 @@ func Texto(m Memoria) string {
 			fmt.Fprintf(&b, "  %s: %s\n", p[0], p[1])
 		}
 	}
-	b.WriteString("Actualizar: aquas memoria fijar campo=valor … (no editar el archivo a mano)\n")
+	b.WriteString("Actualizar: aquas memory set campo=valor … (no editar el archivo a mano)\n")
 	return b.String()
 }
 
@@ -292,16 +292,16 @@ func Cierre(raiz string, stopHookActive bool) string {
 	case errors.Is(err, ErrSinMemoria):
 		return ""
 	case errors.Is(err, ErrSelloRoto):
-		return "aquas memoria cierre: " + err.Error() + ". No la rehagas: avisa al humano para que revise " + Ruta + "."
+		return "aquas memory close: " + err.Error() + ". No la rehagas: avisa al humano para que revise " + Ruta + "."
 	case err != nil:
-		return "aquas memoria cierre: " + err.Error()
+		return "aquas memory close: " + err.Error()
 	}
 	if m.Foco == (Foco{}) {
 		return ""
 	}
 	if HuellaGit(raiz) != m.HuellaGit {
 		return "memoria caliente vieja: el repo cambió desde la última actualización (" + m.Actualizado +
-			"). Antes de cerrar, actualiza foco, tarea y siguiente con: aquas memoria fijar tarea=… siguiente=…"
+			"). Antes de cerrar, actualiza foco, tarea y siguiente con: aquas memory set tarea=… siguiente=…"
 	}
 	return ""
 }

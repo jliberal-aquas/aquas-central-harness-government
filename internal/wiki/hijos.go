@@ -18,7 +18,7 @@ import (
 )
 
 const (
-	marcaIni = "<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->"
+	marcaIni = "<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->"
 	marcaFin = "<!-- /GENERADO -->"
 )
 
@@ -220,11 +220,11 @@ func revisarHijos(raiz string, paginas map[string]*pagina, orden []string) ([]st
 		c := strings.ReplaceAll(string(b), "\r\n", "\n")
 		switch ini, fin := bloqueActual(c); {
 		case ini < 0:
-			ps = append(ps, rel+": falta el bloque GENERADO de hijos (corre `aquas compilar`)")
+			ps = append(ps, rel+": falta el bloque GENERADO de hijos (corre `aquas compile`)")
 		case fin < 0:
 			ps = append(ps, rel+": bloque GENERADO sin cierre "+marcaFin)
 		case c[ini:fin] != e.bloque:
-			ps = append(ps, rel+": hijos desfasados con trabajo/ (corre `aquas compilar`)")
+			ps = append(ps, rel+": hijos desfasados con trabajo/ (corre `aquas compile`)")
 		}
 	}
 	for _, rel := range orden {

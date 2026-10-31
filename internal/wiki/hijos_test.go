@@ -66,7 +66,7 @@ func generar(t *testing.T, raiz string) []string {
 	return escritos
 }
 
-const aviso = "<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->\n\n"
+const aviso = "<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->\n\n"
 
 func TestHijosGeneradosDesdeFichas(t *testing.T) {
 	raiz := conFichas(t)
@@ -87,7 +87,7 @@ func TestHijosGeneradosDesdeFichas(t *testing.T) {
 		tS001: aviso + "| Prueba | Valida | Rojo cuando | Verde cuando | Rojo | Verde |\n|---|---|---|---|---|---|\n" +
 			"| `TestA` | bloquea fuera | — | — | 2026-10-21 | 2026-10-21 |\n" +
 			"| `TestB` | deja pasar | — | — | — | 2026-10-21 |\n" +
-			"\n### Código\n\nSin código registrado: sus cambios no tocaron código ni configuración, o no nombran el ID (`aquas backlog codigo E001/F001/S001 <commit>…` los asigna).\n" + // D000022
+			"\n### Código\n\nSin código registrado: sus cambios no tocaron código ni configuración, o no nombran el ID (`aquas backlog code E001/F001/S001 <commit>…` los asigna).\n" + // D000022
 			"\n<!-- /GENERADO -->",
 	}
 	seccionDe := map[string]string{tInicio: "## Navegación", tE001: "## Navegación", tF001: "## Navegación", tS001: "## Contrato y evidencia"}
@@ -117,13 +117,13 @@ func TestHijosDesfasadosFallan(t *testing.T) {
 		{"ficha cambió de estado", func(t *testing.T, r string) {
 			ficha(t, r, backlog.Ficha{ID: "E001/F002", Titulo: "Backlog", Estado: "LISTO", Secuencia: 4})
 			ficha(t, r, backlog.Ficha{ID: "E002", Titulo: "Otra | rara", Estado: "BLOQUEADO", Secuencia: 2})
-		}, "docs/README.md: hijos desfasados con trabajo/ (corre `aquas compilar`)"},
+		}, "docs/README.md: hijos desfasados con trabajo/ (corre `aquas compile`)"},
 		{"fila editada a mano", func(t *testing.T, r string) {
 			reemplazar(t, r, tE001, "| Guardia | Hecho |", "| Guardia | En curso |")
-		}, "docs/E001/README.md: hijos desfasados con trabajo/ (corre `aquas compilar`)"},
+		}, "docs/E001/README.md: hijos desfasados con trabajo/ (corre `aquas compile`)"},
 		{"pruebas del slice editadas", func(t *testing.T, r string) {
 			reemplazar(t, r, tS001, "| — | 2026-10-21 |", "| 2026-10-21 | 2026-10-21 |")
-		}, "docs/E001/F001/S001.md: hijos desfasados con trabajo/ (corre `aquas compilar`)"},
+		}, "docs/E001/F001/S001.md: hijos desfasados con trabajo/ (corre `aquas compile`)"},
 		{"bloque borrado", func(t *testing.T, r string) {
 			c := leer(t, r, tF001)
 			i, j := strings.Index(c, "<!-- GENERADO"), strings.Index(c, "<!-- /GENERADO -->")
@@ -131,7 +131,7 @@ func TestHijosDesfasadosFallan(t *testing.T) {
 				t.Fatalf("no hay bloque GENERADO que borrar:\n%s", c)
 			}
 			escribir(t, r, tF001, c[:i]+c[j+len("<!-- /GENERADO -->"):])
-		}, "docs/E001/F001/README.md: falta el bloque GENERADO de hijos (corre `aquas compilar`)"},
+		}, "docs/E001/F001/README.md: falta el bloque GENERADO de hijos (corre `aquas compile`)"},
 		{"bloque sin cierre", func(t *testing.T, r string) {
 			reemplazar(t, r, tE001, "<!-- /GENERADO -->", "")
 		}, "docs/E001/README.md: bloque GENERADO sin cierre <!-- /GENERADO -->"},

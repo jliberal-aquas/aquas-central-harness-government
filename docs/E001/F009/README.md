@@ -12,7 +12,7 @@ Antes de crear una ficha, el [backlog](../../glosario.md#backlog) muestra las pa
 
 **El problema.** Se creó E001/F008/S002 para una regla que el código ya cumplía. Nada comparó la ficha nueva con lo existente.
 
-**La solución.** Tres [slices](../../glosario.md#slice). `backlog nuevo` lista las parecidas y exige `relacion=`. `defecto nuevo` hace lo mismo con los defectos. `backlog editar` cambia una ficha que aún no arranca y guarda lo anterior.
+**La solución.** Tres [slices](../../glosario.md#slice). `backlog new` lista las parecidas y exige `relacion=`. `defect new` hace lo mismo con los defectos. `backlog edit` cambia una ficha que aún no arranca y guarda lo anterior.
 
 ## Analogía
 
@@ -60,7 +60,7 @@ stateDiagram-v2
 continúa: [EJ-E001](../README.md#EJ-E001)
 
 1. Alguien pide «exportar backlog en CSV» y ya existe «Exportar el backlog a CSV».
-2. `backlog nuevo` se niega y nombra la ficha parecida.
+2. `backlog new` se niega y nombra la ficha parecida.
 3. Con `relacion=amplia:<id>` la ficha nace; ampliar algo cerrado se niega.
 
 ## Paso a paso
@@ -71,7 +71,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 ## Cómo se usa
 
-- `aquas backlog nuevo id=… titulo=… … relacion=nueva|amplia:<id>|corrige:<id>`.
+- `aquas backlog new id=… titulo=… … relacion=nueva|amplia:<id>|corrige:<id>`.
 
 ## Contrato y evidencia
 
@@ -79,7 +79,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

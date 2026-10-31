@@ -80,7 +80,7 @@ Arreglo X01 (D000069): `TestAvisoPideAprobarFeature`. Con dos o más [slices](..
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

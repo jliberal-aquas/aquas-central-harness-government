@@ -55,7 +55,7 @@ func TestMemoriaSegunBacklog(t *testing.T) {
 	if s := aquas(t, raiz, "", "backlog", "estado", "E001/F002/S003", "CANCELADO"); s.codigo != 0 {
 		t.Fatalf("CANCELADO: %+v", s)
 	}
-	if s := aquas(t, raiz, "", "memoria", "fijar", "tarea=otra"); s.codigo != 1 || !strings.Contains(s.err, "memoria archivar") || !strings.Contains(s.err, "antes de cerrar") || !strings.Contains(s.err, "memoria fijar slice=") {
+	if s := aquas(t, raiz, "", "memoria", "fijar", "tarea=otra"); s.codigo != 1 || !strings.Contains(s.err, "memory archive") || !strings.Contains(s.err, "antes de cerrar") || !strings.Contains(s.err, "memory set slice=") {
 		t.Errorf("slice archivado en la memoria: exit 1 y dice cómo vaciarlo; dio %+v", s)
 	}
 	if s := aquas(t, raiz, "", "memoria", "fijar", "slice=", "tarea=otra"); s.codigo != 0 {

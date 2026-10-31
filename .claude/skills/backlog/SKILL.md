@@ -4,7 +4,7 @@ description: Muestra el backlog de este repo en columnas, en el orden en que se 
 disable-model-invocation: true
 allowed-tools: Bash(cd *) Bash(sh .claude/hooks/aquas.sh backlog table)
 ---
-<!-- GENERADO por `aquas compilar` desde gobierno/config/documentos.json. NO EDITAR: edita los canónicos y recompila. -->
+<!-- GENERADO por `aquas compile` desde gobierno/config/documentos.json. NO EDITAR: edita los canónicos y recompila. -->
 
 # /backlog · E001/F007/S002
 

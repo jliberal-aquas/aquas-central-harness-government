@@ -1,17 +1,17 @@
 // Comando aquas: harness de gobierno para proyectos Claude Code.
 //
-//	aquas compilar   regenera derivados y sello desde los canónicos
-//	aquas verificar  gate: falla (exit 1) si algún derivado o sello está desfasado o la wiki docs/ incumple
-//	aquas hook       modo hook PostToolUse de Claude Code (lee JSON por stdin)
-//	aquas guardia    hook PreToolUse: bloquea (exit 2) toda escritura fuera del repositorio
-//	aquas iniciar    declara SO y raíz de esta máquina (entorno.local.json) y genera .claude/settings.json
-//	aquas biblioteca leer  bibliotecario: JSON {"rutas":[…]} por stdin → solo lo pedido, numerado
-//	aquas cierre-agente  hook SubagentStop: exige el CIERRE fijo de worker y auditor (exit 2)
-//	aquas memoria    ver | fijar campo=valor… | inicio | cierre | archivar: memoria caliente del foco (.aquas/memoria.json)
-//	aquas medir vueltas  cuenta corridas, fallas y motivos de go test y verificar en el historial de Claude Code
-//	aquas wiki enlazar docs/x.md…  enlaza al glosario la primera aparición de cada término
-//	aquas limpiar <id>  borra .tmp/<id>/ de un encargo (E000/F006/S010-A1) y nada más
-//	aquas defecto    nuevo firma=… que=… causa=… arreglo=… cercioro=… | ocurre D000001 T000001 | ver [D000001]
+//	aquas compile   regenera derivados y sello desde los canónicos
+//	aquas verify   gate: falla (exit 1) si algún derivado o sello está desfasado o la wiki docs/ incumple
+//	aquas hook   modo hook PostToolUse de Claude Code (lee JSON por stdin)
+//	aquas guard   hook PreToolUse: bloquea (exit 2) toda escritura fuera del repositorio
+//	aquas init   declara SO y raíz de esta máquina (entorno.local.json) y genera .claude/settings.json
+//	aquas library read  bibliotecario: JSON {"rutas":[…]} por stdin → solo lo pedido, numerado
+//	aquas agent-close   hook SubagentStop: exige el CIERRE fijo de worker y auditor (exit 2)
+//	aquas memory   show | set campo=valor… | start | close | archive: memoria caliente del foco (.aquas/memoria.json)
+//	aquas measure runs  cuenta corridas, fallas y motivos de go test y verify en el historial de Claude Code
+//	aquas wiki link  docs/x.md…  enlaza al glosario la primera aparición de cada término
+//	aquas clean  <id>  borra .tmp/<id>/ de un encargo (E000/F006/S010-A1) y nada más
+//	aquas defect   new firma=… que=… causa=… arreglo=… cercioro=… | occur D000001 T000001 | show [D000001]
 package main
 
 import (
@@ -122,7 +122,7 @@ func main() {
 		}
 		if len(derivados) > 0 {
 			listar("GATE FALLIDO · derivados desfasados:", derivados)
-			_, _ = fmt.Fprintln(os.Stderr, "Desfase → go run ./cmd/aquas compilar · presupuesto → recortar canónico")
+			_, _ = fmt.Fprintln(os.Stderr, "Desfase → go run ./cmd/aquas compile · presupuesto → recortar canónico")
 		}
 		if len(docs) > 0 {
 			listar("GATE FALLIDO · wiki docs/ incompleta:", docs)
@@ -175,9 +175,9 @@ func main() {
 		if err := defectoCLI(raiz, os.Args[2:]); err != nil {
 			fallar(1, err)
 		}
-	case "wiki": // E000/F004/S003: aquas wiki enlazar docs/x.md… pone los enlaces al glosario que pide el gate
+	case "wiki": // E000/F004/S003: aquas wiki link docs/x.md… pone los enlaces al glosario que pide el gate
 		if len(os.Args) < 4 || os.Args[2] != "enlazar" {
-			fallar(64, errors.New("uso: aquas wiki enlazar docs/x.md…"))
+			fallar(64, errors.New("uso: aquas wiki link docs/x.md…"))
 		}
 		for _, rel := range os.Args[3:] {
 			n, err := wiki.Enlazar(raiz, filepath.ToSlash(rel))
@@ -188,7 +188,7 @@ func main() {
 		}
 	case "medir": // E000/F004/S001: corridas y fallas de pruebas y gate, solo lectura del historial
 		if len(os.Args) < 3 || os.Args[2] != "vueltas" {
-			fallar(64, errors.New("uso: aquas medir vueltas [historial.jsonl…]"))
+			fallar(64, errors.New("uso: aquas measure runs [historial.jsonl…]"))
 		}
 		home, err := os.UserHomeDir()
 		if err == nil {
@@ -203,7 +203,7 @@ func main() {
 		backlogCLI(raiz, os.Args[2:])
 	case "biblioteca": // bibliotecario: lote de rutas por stdin (JSON) → solo lo pedido
 		if len(os.Args) < 3 || os.Args[2] != "leer" {
-			fallar(64, fmt.Errorf(`uso: echo '{"rutas":["a.go","b.md:10-40"]}' | aquas biblioteca leer`))
+			fallar(64, fmt.Errorf(`uso: echo '{"rutas":["a.go","b.md:10-40"]}' | aquas library read`))
 		}
 		var p biblioteca.Pedido
 		datos, err := io.ReadAll(os.Stdin)
@@ -294,7 +294,7 @@ func main() {
 		if encargo.Revisar(e.Tipo, "", false) == "" {
 			anotar("tipo desconocido")
 			if !e.Activo {
-				_, _ = fmt.Fprintf(os.Stderr, "aquas cierre-agente: tipo de agente desconocido «%s»; el gancho no sabe revisar su cierre\n", e.Tipo)
+				_, _ = fmt.Fprintf(os.Stderr, "aquas agent-close: tipo de agente desconocido «%s»; el gancho no sabe revisar su cierre\n", e.Tipo)
 				os.Exit(2)
 			}
 			return
@@ -304,7 +304,7 @@ func main() {
 			if id, v, ok := encargo.Veredicto(e.Mensaje); ok && e.Tipo == "auditor" {
 				if err := backlog.AnotarAuditoria(raiz, id, v, time.Now()); err != nil {
 					anotar("rechazado: " + err.Error())
-					_, _ = fmt.Fprintf(os.Stderr, "aquas cierre-agente: el veredicto de %s no quedó anotado: %v\n%s\n", id, err, m)
+					_, _ = fmt.Fprintf(os.Stderr, "aquas agent-close: el veredicto de %s no quedó anotado: %v\n%s\n", id, err, m)
 					os.Exit(2)
 				}
 				anotar("anotado " + id + " " + v + " · " + m)
@@ -321,7 +321,7 @@ func main() {
 			if id, v, ok := encargo.Veredicto(e.Mensaje); ok {
 				if err := backlog.AnotarAuditoria(raiz, id, v, time.Now()); err != nil {
 					anotar("rechazado: " + err.Error())
-					_, _ = fmt.Fprintf(os.Stderr, "aquas cierre-agente: el veredicto de %s no quedó anotado: %v\n", id, err)
+					_, _ = fmt.Fprintf(os.Stderr, "aquas agent-close: el veredicto de %s no quedó anotado: %v\n", id, err)
 					if !e.Activo { // con stop_hook_active nunca se atrapa al auditor: aviso y sale
 						os.Exit(2)
 					}
@@ -336,11 +336,11 @@ func main() {
 	case "guardia":
 		datos, _ := io.ReadAll(os.Stdin)
 		if m := entorno.Validar(raiz); m != "" {
-			_, _ = fmt.Fprintln(os.Stderr, "aquas guardia: entorno no verificado, se bloquea todo: "+m)
+			_, _ = fmt.Fprintln(os.Stderr, "aquas guard: entorno no verificado, se bloquea todo: "+m)
 			os.Exit(2)
 		}
 		if m := guardia.Revisar(raiz, datos); m != "" {
-			_, _ = fmt.Fprintln(os.Stderr, "aquas guardia: "+m)
+			_, _ = fmt.Fprintln(os.Stderr, "aquas guard: "+m)
 			os.Exit(2)
 		}
 	default:
@@ -483,13 +483,13 @@ func memoriaCLI(raiz string, args []string) {
 		return
 	}
 	if len(args) == 0 || (args[0] != "ver" && args[0] != "fijar") {
-		fallar(64, fmt.Errorf("uso: aquas memoria ver | fijar campo=valor… | inicio | cierre | archivar"))
+		fallar(64, fmt.Errorf("uso: aquas memory show | set campo=valor… | start | close | archive"))
 	}
 	var m memoria.Memoria
 	var err error
 	if args[0] == "fijar" {
 		if len(args) == 1 {
-			fallar(64, fmt.Errorf("fijar sin campos: aquas memoria fijar tarea=… siguiente=…"))
+			fallar(64, fmt.Errorf("set sin campos: aquas memory set tarea=… siguiente=…"))
 		}
 		m, err = memoria.FijarCon(raiz, args[1:], time.Now(), func(f memoria.Foco) error { return focoEnBacklog(raiz, f) })
 	} else {
@@ -516,7 +516,7 @@ func memoriaArchivada(raiz, id string) error {
 		if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(memoria.RutaArchivo(f)))); err == nil {
 			return nil
 		}
-		return fmt.Errorf("la memoria apunta a %s y no está archivada: primero `aquas memoria fijar tarea=… siguiente=…`, luego `aquas memoria archivar`, y entonces cierra", id)
+		return fmt.Errorf("la memoria apunta a %s y no está archivada: primero `aquas memory set tarea=… siguiente=…`, luego `aquas memory archive`, y entonces cierra", id)
 	}
 	// X01 (D000010): con la memoria en otro foco, el slice igual necesita su archivo de memoria.
 	p := strings.Split(id, "/")
@@ -527,7 +527,7 @@ func memoriaArchivada(raiz, id string) error {
 	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(rel))); err == nil {
 		return nil
 	}
-	return fmt.Errorf("%s sin memoria archivada: `aquas memoria fijar slice=%s tarea=… siguiente=…`, luego `aquas memoria archivar`, y entonces cierra", id, p[2])
+	return fmt.Errorf("%s sin memoria archivada: `aquas memory set slice=%s tarea=… siguiente=…`, luego `aquas memory archive`, y entonces cierra", id, p[2])
 }
 
 // focoEnBacklog: la memoria solo fija el slice que el backlog tiene en curso (S003).
@@ -542,9 +542,9 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 		return err
 	case !hay:
 		if f, archivada, _ := backlog.Ver(raiz, id); archivada {
-			return fmt.Errorf("%s ya está archivado (%s): la memoria se archiva antes de cerrar (memoria fijar → memoria archivar → backlog estado CERRADO). Si la memoria sigue fresca, `aquas memoria archivar`; si no, vacía el slice con `aquas memoria fijar slice=` (queda sin archivo de memoria)", id, f.Estado)
+			return fmt.Errorf("%s ya está archivado (%s): la memoria se archiva antes de cerrar (memory set → memory archive → backlog state CERRADO). Si la memoria sigue fresca, `aquas memory archive`; si no, vacía el slice con `aquas memory set slice=` (queda sin archivo de memoria)", id, f.Estado)
 		}
-		return fmt.Errorf("ningún slice en curso en el backlog: la memoria no fija %s (aquas backlog estado %s EN_CURSO)", id, id)
+		return fmt.Errorf("ningún slice en curso en el backlog: la memoria no fija %s (aquas backlog state %s EN_CURSO)", id, id)
 	case cur != id:
 		return fmt.Errorf("el slice en curso es %s: la memoria no fija %s", cur, id)
 	}
@@ -553,7 +553,7 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 
 // backlogCLI: nuevo | ver [id] | tabla | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog nuevo id=… titulo=… prioridad=… motivo=… que_hace=<una oración, máx. 20 palabras> relacion=nueva|amplia:<id>|corrige:<id> prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | ver [id] | tabla | prioridad <id> <P0..P3|SIN_TRIAGE> motivo=… | estado <id> <ESTADO> | siguiente | pruebas <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | documentar <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | rojo <id> | verde <id> | sello <id> [<clave> sin_cambio|actualizado motivo=…] | alcance <id> ruta… | alcance <id> ampliar <ruta> motivo=… | arreglo <slice|feature> titulo=… motivo=… [absorbe=<slice>] | codigo <id> [commit…] | editar <id> [titulo=…] [bloqueado_por=A,B] motivo=…")
+	uso := fmt.Errorf("uso: aquas backlog new id=… titulo=… prioridad=… motivo=… que_hace=<una oración, máx. 20 palabras> relacion=nueva|amplia:<id>|corrige:<id> prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | show [id] | table | priority <id> <P0..P3|SIN_TRIAGE> motivo=… | state <id> <ESTADO> | next | tests <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | document <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | red <id> | green <id> | seal <id> [<clave> sin_cambio|actualizado motivo=…] | scope <id> ruta… | scope <id> extend <ruta> motivo=… | fix <slice|feature> titulo=… motivo=… [absorbe=<slice>] | code <id> [commit…] | edit <id> [titulo=…] [bloqueado_por=A,B] motivo=…")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}
@@ -670,7 +670,7 @@ func backlogCLI(raiz string, args []string) {
 // trata como error que no bloquea: el mensaje del humano sigue y el agente ve el aviso.
 func turnoCLI(raiz string, args []string) {
 	if len(args) != 1 || (args[0] != "abrir" && args[0] != "cerrar") {
-		fallar(64, fmt.Errorf("uso: aquas turno abrir|cerrar (JSON del hook por stdin)"))
+		fallar(64, fmt.Errorf("uso: aquas turn open|close (JSON del hook por stdin)"))
 	}
 	var e struct {
 		Sesion    string `json:"session_id"`
@@ -694,7 +694,7 @@ func turnoCLI(raiz string, args []string) {
 
 // defectoCLI: nuevo | ocurre | ver (E001/F004/S001).
 func defectoCLI(raiz string, args []string) error {
-	uso := errors.New("uso: aquas defecto nuevo firma=… que=… causa=… arreglo=… cercioro=… relacion=nuevo|repite:<D>|<id de ficha> | ocurre D000001 T000001 | ver [D000001]")
+	uso := errors.New("uso: aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=nuevo|repite:<D>|<id de ficha> | occur D000001 T000001 | show [D000001]")
 	if len(args) == 0 {
 		return uso
 	}

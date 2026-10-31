@@ -1,6 +1,6 @@
 package backlog
 
-// E001/F009/S001: toda ficha nueva declara su relación con lo existente; sin ella, backlog nuevo
+// E001/F009/S001: toda ficha nueva declara su relación con lo existente; sin ella, backlog new
 // se niega y muestra las fichas y defectos parecidos. Ampliar o corregir algo cerrado se niega.
 
 import (
@@ -13,7 +13,7 @@ import (
 	"unicode"
 )
 
-// maxParecidas: cuántas parecidas muestra backlog nuevo.
+// maxParecidas: cuántas parecidas muestra backlog new.
 const maxParecidas = 5
 
 // usoRelacion: forma válida del campo relacion.
@@ -100,7 +100,7 @@ func revisarRelacion(raiz, rel, titulo string, act, arc map[string]Ficha) error 
 		if tipo == "amplia" {
 			return fmt.Errorf("%s está cerrada: lo nuevo va en una feature nueva que la nombre (relacion=nueva)", id)
 		}
-		return fmt.Errorf("%s está cerrada: corrígela con aquas backlog arreglo %s titulo=… motivo=…", id, id)
+		return fmt.Errorf("%s está cerrada: corrígela con aquas backlog fix %s titulo=… motivo=…", id, id)
 	}
 	if _, enAct := act[id]; !enAct {
 		return fmt.Errorf("relacion: %s no existe", id)

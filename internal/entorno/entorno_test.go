@@ -24,8 +24,8 @@ func entornoJSON(so, raiz string) string {
 }
 
 func TestValidarSinArchivoBloquea(t *testing.T) {
-	if m := Validar(t.TempDir()); !strings.Contains(m, "aquas iniciar") {
-		t.Fatalf("sin entorno.local.json debe pedir `aquas iniciar`; obtuve %q", m)
+	if m := Validar(t.TempDir()); !strings.Contains(m, "aquas init") {
+		t.Fatalf("sin entorno.local.json debe pedir `aquas init`; obtuve %q", m)
 	}
 }
 
@@ -49,8 +49,8 @@ func TestValidarArchivoRotoBloquea(t *testing.T) {
 	raiz := t.TempDir()
 	escribirEntorno(t, raiz, `{roto`)
 	// E000/F005/S002: bloquea porque el archivo está roto, y dice cómo regenerarlo.
-	if m := Validar(raiz); !strings.Contains(m, RutaEntorno+" ilegible") || !strings.Contains(m, "aquas iniciar") {
-		t.Fatalf("entorno ilegible debe bloquear por ilegible y pedir `aquas iniciar`; obtuve %q", m)
+	if m := Validar(raiz); !strings.Contains(m, RutaEntorno+" ilegible") || !strings.Contains(m, "aquas init") {
+		t.Fatalf("entorno ilegible debe bloquear por ilegible y pedir `aquas init`; obtuve %q", m)
 	}
 }
 

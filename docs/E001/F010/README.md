@@ -45,7 +45,7 @@ stateDiagram-v2
     BORRADOR --> REFINADO: el agente escribe el contrato
     REFINADO --> APROBADO: el humano escribe apruebo id
     APROBADO --> REFINADO: el contrato cambia
-    APROBADO --> EN_CURSO: aquas backlog estado
+    APROBADO --> EN_CURSO: aquas backlog state
     EN_CURSO --> REFINADO: el contrato cambia
     EN_CURSO --> CERRADO: rojo, verde y auditor
     CERRADO --> [*]
@@ -78,7 +78,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

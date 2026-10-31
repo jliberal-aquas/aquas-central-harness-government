@@ -32,10 +32,10 @@ func Archivar(raiz string, ahora time.Time) (string, error) {
 	}
 	rel := RutaArchivo(m.Foco)
 	if rel == "" {
-		return "", errors.New("archivar exige foco con iniciativa, feature y slice: aquas memoria fijar slice=S…")
+		return "", errors.New("archive exige foco con iniciativa, feature y slice: aquas memory set slice=S…")
 	}
 	if HuellaGit(raiz) != m.HuellaGit {
-		return "", fmt.Errorf("memoria caliente vieja: el repo cambió desde %s; fija el estado final antes de archivar (aquas memoria fijar tarea=… siguiente=…)", m.Actualizado)
+		return "", fmt.Errorf("memoria caliente vieja: el repo cambió desde %s; fija el estado final antes de archivar (aquas memory set tarea=… siguiente=…)", m.Actualizado)
 	}
 	dest := filepath.Join(raiz, filepath.FromSlash(rel))
 	if _, err := os.Stat(dest); err == nil {

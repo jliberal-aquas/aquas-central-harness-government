@@ -1,0 +1,10 @@
+{
+  "id": "D000071",
+  "firma": "apruebo-sin-pagina-de-contrato",
+  "que": "el orquestador pidió el apruebo de S012 sin su página de contrato; el gancho no lo registró y el humano tuvo que repetirlo",
+  "causa": "la huella de aprobación lee la sección Para qué existe de la página; sin página la aprobación falla en silencio para el humano",
+  "arreglo": "escribir página y alcance antes de pedir apruebo y pedirlo de nuevo",
+  "como_me_cercioro": "antes de pedir apruebo de una ficha, comprobar que su página existe con la sección Para qué existe",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

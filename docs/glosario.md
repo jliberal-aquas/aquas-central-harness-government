@@ -44,7 +44,7 @@ Ejemplo: «E001/F001/S002: el gate mide la legibilidad de la wiki» es un commit
 
 El programa que lee los archivos canónicos y escribe los archivos generados, como `CLAUDE.md`.
 
-Ejemplo: `go run ./cmd/aquas compilar` ejecuta el compilador.
+Ejemplo: `go run ./cmd/aquas compile` ejecuta el compilador.
 
 ## derivado
 
@@ -68,7 +68,7 @@ Un programa que revisa algo y dice sí o no. Si dice no, el trabajo no avanza.
 
 Variantes: gates
 
-Ejemplo: `aquas verificar` es un gate; si falla, el commit no entra.
+Ejemplo: `aquas verify` es un gate; si falla, el commit no entra.
 
 ## Go
 

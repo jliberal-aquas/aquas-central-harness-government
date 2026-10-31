@@ -41,12 +41,12 @@ Así viaja un pedido hoy, desde que lo haces hasta que queda guardado en git.
 ```mermaid
 flowchart TD
     H["Humano pide algo"] --> O["Orquestador refina el pedido"]
-    O --> B["Ficha en el backlog<br/>aquas backlog nuevo"]
-    B --> R["Prueba en rojo<br/>aquas backlog rojo"]
+    O --> B["Ficha en el backlog<br/>aquas backlog new"]
+    B --> R["Prueba en rojo<br/>aquas backlog red"]
     R --> C["Código o canónico"]
-    C --> V["Prueba en verde<br/>aquas backlog verde"]
-    V --> K["aquas compilar<br/>derivados, sello y tablas de la wiki"]
-    K --> G{"Gate<br/>aquas verificar"}
+    C --> V["Prueba en verde<br/>aquas backlog green"]
+    V --> K["aquas compile<br/>derivados, sello y tablas de la wiki"]
+    K --> G{"Gate<br/>aquas verify"}
     G -- "todo en orden" --> M["Memoria archivada<br/>y slice cerrado"]
     M --> OK["Commit guardado en git"]
     G -- "algo falla" --> X["Commit bloqueado<br/>con la lista de problemas"]
@@ -66,7 +66,7 @@ Cada paso lo hace o lo revisa un programa. El agente no tiene que acordarse.
 2. El orquestador entiende el pedido. Edita el canónico `gobierno/canonico/agentes/orquestador.md` y agrega la regla «serie por defecto».
 3. Apenas guarda el archivo, un *[hook](glosario.md#hook)* de Claude Code ejecuta el [compilador](glosario.md#compilador). El compilador regenera `.claude/agents/orchestrator.md`.
 4. El compilador actualiza el [sello](glosario.md#sello): guarda la huella [SHA-256](glosario.md#sha-256) del canónico y del archivo generado.
-5. El orquestador hace [commit](glosario.md#commit). Antes de guardar, git ejecuta el gate `aquas verificar`.
+5. El orquestador hace [commit](glosario.md#commit). Antes de guardar, git ejecuta el gate `aquas verify`.
 6. El gate compara huellas, revisa el tamaño máximo y revisa esta wiki. Todo cuadra, así que el commit entra.
 
 **¿Y si alguien edita a mano el archivo generado?** El hook revierte la edición y avisa: «es GENERADO; edita el canónico». La regla vive en un solo lugar.
@@ -86,10 +86,10 @@ Comandos principales, desde la raíz del repositorio:
 
 | Quiero… | Comando |
 |---|---|
-| Regenerar archivos derivados y sello | `go run ./cmd/aquas compilar` |
-| Revisar que todo esté en orden | `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verificar` |
+| Regenerar archivos derivados y sello | `go run ./cmd/aquas compile` |
+| Revisar que todo esté en orden | `go build -o .tmp/aquas.exe ./cmd/aquas && ./.tmp/aquas.exe verify` |
 | Activar el gate en un clon nuevo | `git config core.hooksPath .githooks` |
-| Declarar sistema y carpeta en un clon nuevo | `go run ./cmd/aquas iniciar` |
+| Declarar sistema y carpeta en un clon nuevo | `go run ./cmd/aquas init` |
 
 Mapa rápido del repositorio:
 
@@ -112,13 +112,13 @@ Hoy el repositorio tiene tres iniciativas. Cada una tiene su página, con sus fe
 - **[E001 · Gobierno del trabajo](E001/README.md).** Define el camino fijo de cada pedido. Aquí están esta wiki, el [backlog](glosario.md#backlog), la memoria del agente y los workers.
 - **E002 · Proyectos hijos.** Instala y mantiene el gobierno en cada producto de Aquas. Planeada; arranca con la landing de Aquas.
 
-El estado de cada iniciativa está en la tabla de Navegación. La genera `aquas compilar` desde las fichas; nadie la escribe a mano. Si una ficha cambia y la tabla no, el [gate](glosario.md#gate) bloquea el commit.
+El estado de cada iniciativa está en la tabla de Navegación. La genera `aquas compile` desde las fichas; nadie la escribe a mano. Si una ficha cambia y la tabla no, el [gate](glosario.md#gate) bloquea el commit.
 
-El orden de ejecución lo dice `aquas backlog siguiente`.
+El orden de ejecución lo dice `aquas backlog next`.
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

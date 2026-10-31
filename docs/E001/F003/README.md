@@ -36,7 +36,7 @@ Proceso: cómo lee un agente.
 
 ```mermaid
 flowchart LR
-    A["Agente arma<br/>la lista de rutas"] --> B["aquas biblioteca leer"]
+    A["Agente arma<br/>la lista de rutas"] --> B["aquas library read"]
     B --> C["Solo los rangos pedidos,<br/>numerados"]
     C --> D["Cuenta: devueltos<br/>X de Y caracteres"]
 ```
@@ -116,7 +116,7 @@ Prueba integral de la feature: no hace falta. Con un solo slice, su prueba es la
 
 ## Navegación
 
-<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compilar` lo rehace. -->
+<!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
 
 | Hijo | Qué es | Estado |
 |---|---|---|

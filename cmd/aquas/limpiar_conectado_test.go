@@ -51,7 +51,7 @@ func TestLimpiarConectado(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !strings.Contains(string(b), "aquas limpiar") {
-		t.Error("la regla de encargos debió nombrar `aquas limpiar`")
+	if !strings.Contains(string(b), "aquas clean") {
+		t.Error("la regla de encargos debió nombrar `aquas clean`")
 	}
 }
