@@ -147,10 +147,10 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | [S009](S009.md) | Cerrar exige memoria archivada | Hecho |
 | [S010](S010.md) | Wiki por niveles generada desde las fichas | Hecho |
 | [S011](S011.md) | La ficha dice qué hace | Hecho |
-| S012 | Sello: nivel trabajo | Planeado |
+| S012 | Sello: nivel trabajo | Cancelado |
 | [S013](S013.md) | Sello sin commit base | Hecho |
 | [S014](S014.md) | Sello sin ruido de derivados | Hecho |
-| S015 | Sello rechaza el mismo motivo repetido en lote | Planeado |
+| [S015](S015.md) | Sello rechaza el mismo motivo repetido en lote | Planeado |
 | [S016](S016.md) | Insight PROPUESTO exige defecto registrado | Hecho |
 | [S017](S017.md) | Padre no cierra con hijos abiertos | Hecho |
 | [S018](S018.md) | Rojo heredado solo de slices cerrados | Hecho |

@@ -1,0 +1,10 @@
+{
+  "id": "D000073",
+  "firma": "sello-marcado-en-lote",
+  "que": "el orquestador marcó los 120 ítems del sello de E000/F006/S012 con un bucle y dos motivos repetidos, sin revisar ítem por ítem",
+  "causa": "el sello acepta cualquier motivo de una línea y la lista mezcla archivos tocados con referencias, así que es larga",
+  "arreglo": "E001/F002/S015: marca automática de tocados y motivo distinto por ítem",
+  "como_me_cercioro": "TestSelloRechazaMotivoEnLote",
+  "ocurrencias": [],
+  "relacion": "E001/F002/S015"
+}

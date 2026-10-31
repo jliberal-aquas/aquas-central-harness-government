@@ -1,0 +1,10 @@
+{
+  "id": "D000075",
+  "firma": "reincidencia-registrada-como-defecto-nuevo",
+  "que": "de 74 defectos solo uno tiene ocurrencias; repeticiones como aprobaciones mal pedidas (D000036, 39, 60, 69, 71) o freno contra memoria (D000029, 70, 72) se registraron como defectos nuevos",
+  "causa": "defect new no busca parecidos ni exige relacion=repite; nada obliga a usar defect occur",
+  "arreglo": "propuesto: defect new muestra defectos parecidos por firma y texto, como backlog new",
+  "como_me_cercioro": "prueba que registra un defecto parecido a uno existente y espera el aviso",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

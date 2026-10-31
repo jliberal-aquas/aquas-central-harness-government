@@ -1,0 +1,21 @@
+{
+  "id": "E000/F008/S001",
+  "tipo": "slice",
+  "titulo": "Órdenes de hook solo desde Claude Code",
+  "estado": "BORRADOR",
+  "prioridad": "P0",
+  "motivo": "D000077",
+  "padre": "E000/F008",
+  "bloqueado_por": [],
+  "secuencia": 135,
+  "pruebas": [
+    {
+      "prueba": "./internal/guardia:TestGanchoAManoBloqueado",
+      "intencion": "valida que la guardia bloquea por Bash las órdenes de hook y deja pasar las libres",
+      "rojo_cuando": "rojo cuando aquas approval por Bash pasa",
+      "verde_cuando": "verde cuando cada orden de hook da exit 2 y memory set pasa"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "la guardia frena por Bash cada orden reservada a los hooks"
+}

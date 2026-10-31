@@ -8,6 +8,30 @@
   "padre": "E001",
   "bloqueado_por": [],
   "secuencia": 18,
+  "aprobacion": {
+    "fecha": "2026-10-31T00:34:18Z",
+    "huella": "15c06c7be207b09b98c5405d620673b286d450091d5bc837c1baf0a046605c64",
+    "mensaje": "apruebo E001/F002 con push",
+    "push": true,
+    "foto": {
+      "E001/F002/S012": [
+        {
+          "prueba": "./internal/backlog:TestSelloNivelTrabajo",
+          "intencion": "el sello lista fichas de otras iniciativas que comparten archivos tocados",
+          "rojo_cuando": "el sello omite una ficha de otra iniciativa que comparte archivos tocados",
+          "verde_cuando": "el sello incluye esa ficha ajena entre sus ítems"
+        }
+      ],
+      "E001/F002/S015": [
+        {
+          "prueba": "./internal/backlog:TestSelloRechazaMotivoEnLote",
+          "intencion": "el sello exige revisión por archivo",
+          "rojo_cuando": "acepta el mismo motivo en muchas claves sin justificar",
+          "verde_cuando": "rechaza el lote y acepta motivos propios o un grupo justificado"
+        }
+      ]
+    }
+  },
   "arreglos": [
     {
       "id": "E001/F002/X01",

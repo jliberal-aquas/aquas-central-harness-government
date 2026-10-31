@@ -2,7 +2,7 @@
   "id": "E001/F002/S012",
   "tipo": "slice",
   "titulo": "Sello: nivel trabajo",
-  "estado": "BORRADOR",
+  "estado": "CANCELADO",
   "prioridad": "P3",
   "motivo": "Fable #8d: ampliar sello antes de ver uso",
   "padre": "E001/F002",

@@ -3,17 +3,23 @@
   "tipo": "slice",
   "titulo": "Sello rechaza el mismo motivo repetido en lote",
   "estado": "BORRADOR",
-  "prioridad": "P2",
-  "motivo": "humano 2026-10-22: el sello respondido en lote no prueba revisión",
+  "prioridad": "P3",
+  "motivo": "humano 2026-10-31: pausado tras frenos no falsificables y pruebas aisladas",
   "padre": "E001/F002",
   "bloqueado_por": [],
   "secuencia": 86,
   "pruebas": [
     {
       "prueba": "./internal/backlog:TestSelloRechazaMotivoEnLote",
-      "intencion": "el sello exige revisión por archivo",
-      "rojo_cuando": "acepta el mismo motivo en muchas claves sin justificar",
-      "verde_cuando": "rechaza el lote y acepta motivos propios o un grupo justificado"
+      "intencion": "valida que el sello rechaza un motivo ya usado en otro ítem del mismo slice",
+      "rojo_cuando": "rojo cuando dos ítems aceptan el mismo motivo",
+      "verde_cuando": "verde cuando el segundo se rechaza y nombra el ítem que ya lo usa"
+    },
+    {
+      "prueba": "./internal/backlog:TestSelloUnItemPorArchivo",
+      "intencion": "valida que el sello junta en un ítem todo lo que un archivo nombra o importa",
+      "rojo_cuando": "rojo cuando un archivo que cita dos tocados da dos ítems",
+      "verde_cuando": "verde cuando da un ítem que lista los dos"
     }
   ]
 }

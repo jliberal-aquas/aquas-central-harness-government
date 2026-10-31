@@ -1,0 +1,10 @@
+{
+  "id": "D000074",
+  "firma": "estimacion-sin-medir-en-decision",
+  "que": "el orquestador ofreció la opción 1B de S015 con una cifra estimada (10-20 ítems) sin medirla; el humano la eligió y era falsa (117 de 120)",
+  "causa": "el dato existía en trabajo/archivo/E000-F006-S012.json y no se consultó antes de preguntar",
+  "arreglo": "propuesto: medir antes de preguntar toda cifra que sostiene una opción cuando el dato existe en el repo",
+  "como_me_cercioro": "sin control automático: criterio humano en la revisión de cada DECISIÓN",
+  "ocurrencias": [],
+  "relacion": "E001/F002/S015"
+}

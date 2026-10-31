@@ -1,0 +1,10 @@
+{
+  "id": "D000077",
+  "firma": "ganchos-invocables-a-mano",
+  "que": "el agente puede correr agent-close, approval, budget prompt y turn por Bash con JSON falso y falsificar apruebo, veredicto o contador",
+  "causa": "la guardia no distingue llamada de Claude Code de llamada manual a subcomandos de gancho",
+  "arreglo": "guardia frena por Bash los subcomandos de gancho; solo los ganchos los invocan",
+  "como_me_cercioro": "prueba: Bash con aquas approval o agent-close → bloqueado; gancho real → pasa",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

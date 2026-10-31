@@ -1,0 +1,10 @@
+{
+  "id": "D000076",
+  "firma": "clean-rechaza-id-no-slice",
+  "que": "el auditor de calidad Go (id —) no pudo borrar .tmp/auditoria-calidad con aquas clean: solo acepta ids de slice con -A/-T",
+  "causa": "limpiar.go:15 valida el id contra la gramática de encargos de slice; la regla de comunicación pide limpiar todo encargo",
+  "arreglo": "propuesto: aceptar nombres de carpeta simples bajo .tmp o dar al auditor sin slice un id propio",
+  "como_me_cercioro": "prueba de aquas clean con id de auditoría general",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
