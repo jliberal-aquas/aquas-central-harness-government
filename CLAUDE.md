@@ -23,6 +23,7 @@
 8. Calidad primero; economía de tokens segundo. Token = moneda de todo uso agéntico: medir y justificar cada gasto.
 9. Prevención activa: cada contrato busca sus fallos antes del rojo, por categoría de caso borde, con una prueba por caso que aplique. Cada defecto se cierra con su causa y con la búsqueda del mismo hueco en otros lugares.
 10. Vigencia: todo claim técnico se valida contra la documentación oficial vigente antes de usarlo.
+11. Herencia obligatoria: todo control de la central se cumple en cada hijo por programa, no por texto. Los arneses del gobierno son Go y viajan en el binario `aquas`. El hijo elige libremente su stack, o ninguno, y agrega su gobierno propio en una capa inferior. Ningún hijo puede quitar ni rebajar un control central.
 
 ## Canónicos y compilación
 <!-- solo-hijo
