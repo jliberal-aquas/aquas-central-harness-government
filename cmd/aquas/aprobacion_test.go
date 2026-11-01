@@ -40,25 +40,8 @@ func repoContrato(t *testing.T) string {
 // (CLAUDE_CONFIG_DIR/projects/…/sesion.jsonl, propio de la prueba) y pasa su ruta en transcript_path (E000/F008/S002).
 func mensajeHumano(t *testing.T, prompt string) string {
 	t.Helper()
-	ruta := os.Getenv("AQUAS_PRUEBA_REGISTRO")
-	if ruta == "" {
-		dir := filepath.Join(t.TempDir(), "claude")
-		ruta = filepath.Join(dir, "projects", "repo", "sesion.jsonl")
-		if err := os.MkdirAll(filepath.Dir(ruta), 0o755); err != nil {
-			t.Fatal(err)
-		}
-		t.Setenv("CLAUDE_CONFIG_DIR", dir)
-		t.Setenv("AQUAS_PRUEBA_REGISTRO", ruta)
-	}
-	l, _ := json.Marshal(map[string]any{"type": "user", "message": map[string]string{"role": "user", "content": prompt}, "origin": map[string]string{"kind": "human"}})
-	fh, err := os.OpenFile(ruta, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer func() { _ = fh.Close() }()
-	if _, err := fh.Write(append(l, '\n')); err != nil {
-		t.Fatal(err)
-	}
+	ruta := registroSesion(t)
+	anexar(t, ruta, lineaHumana(prompt))
 	b, _ := json.Marshal(map[string]string{"session_id": "s1", "hook_event_name": "UserPromptSubmit", "prompt": prompt, "transcript_path": ruta})
 	return string(b)
 }

@@ -1,12 +1,16 @@
 package main
 
-// E001/F015/S002: hooks UserPromptSubmit («aquas budget prompt») y PreToolUse («aquas budget tool»).
-// Frena el gasto por feature (tope aprobado con la feature) y por turno (bucles desbocados); avisa del contexto.
-// Las cuentas viven en .tmp/presupuesto-cuentas/: son estado de la sesión, no historia del repo.
+// E001/F015/S002: hook PreToolUse («aquas budget tool»). Frena el gasto por feature (tope aprobado con la
+// feature) y por turno (bucles desbocados); avisa del contexto.
+// E000/F008/S005 (D000077, D000082): las llamadas, la feature, su tope y su hora salen del registro que escribe
+// Claude Code fuera del repo; nada sale de contadores, foco ni fichas, que el agente puede tocar. Determinista solo con el aislamiento de Bash (S003); en Windows
+// nativo es una segunda barrera, probabilística (D000079).
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -14,9 +18,9 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
-	"github.com/jliberal-aquas/aquas-central-harness-government/internal/memoria"
 )
 
 const (
@@ -30,7 +34,6 @@ var reTope = regexp.MustCompile(`(?i)\btope\s+(\d+)\b`)
 // entradaPresupuesto: lo que el hook trae por stdin.
 type entradaPresupuesto struct {
 	Sesion     string `json:"session_id"`
-	Prompt     string `json:"prompt"`
 	Agente     string `json:"agent_id"`
 	Transcript string `json:"transcript_path"`
 	Tool       string `json:"tool_name"`
@@ -49,10 +52,10 @@ var reMemoriaFijar = regexp.MustCompile(`^\s*` +
 	`\s+(memoria\s+fijar|memory\s+set)` + // E000/F006/S006: nombre viejo y nuevo
 	`(\s+[a-z_]+=([^\s"'$` + "`" + `\\;&|<>()]*|'[^']*'|"[^"$` + "`" + `\\]*"))*\s*$`)
 
-// exentaDelFreno: true si la llamada es Bash y su comando entero es `aquas memory set campo=valor…`.
-func exentaDelFreno(raiz string, e entradaPresupuesto) bool {
-	m := reMemoriaFijar.FindStringSubmatch(e.Input.Command)
-	if e.Tool != "Bash" || m == nil {
+// exentaDelFreno: true si la herramienta es Bash y su comando entero es `aquas memory set campo=valor…`.
+func exentaDelFreno(raiz, herramienta, comando string) bool {
+	m := reMemoriaFijar.FindStringSubmatch(comando)
+	if herramienta != "Bash" || m == nil {
 		return false
 	}
 	if !strings.HasPrefix(m[1], `"`) {
@@ -67,87 +70,271 @@ func exentaDelFreno(raiz string, e entradaPresupuesto) bool {
 	return false
 }
 
-// presupuestoCLI: «prompt» reinicia el turno; «herramienta» cuenta la llamada y bloquea con exit 2 al pasar un tope.
+// presupuestoCLI: «herramienta» cuenta las llamadas en el registro y bloquea con exit 2 al pasar un tope.
 func presupuestoCLI(raiz string, args []string) {
+	if strings.Join(args, " ") != "herramienta" {
+		fallar(64, fmt.Errorf("uso: aquas budget tool"))
+	}
 	var e entradaPresupuesto
 	datos, _ := io.ReadAll(os.Stdin)
 	if err := json.Unmarshal(datos, &e); err != nil {
 		fallar(1, fmt.Errorf("presupuesto: entrada del hook ilegible: %w", err))
 	}
-	dir := filepath.Join(raiz, ".tmp", "presupuesto-cuentas")
-	if err := os.MkdirAll(dir, 0o755); err != nil {
-		fallar(1, err)
+	if exentaDelFreno(raiz, e.Tool, e.Input.Command) {
+		return
 	}
-	sesion := regexp.MustCompile(`[^\w-]`).ReplaceAllString(e.Sesion, "_")
-	turno, marca := filepath.Join(dir, "turno-"+sesion+".log"), filepath.Join(dir, "contexto-"+sesion)
-	switch strings.Join(args, " ") {
-	case "prompt":
-		for _, m := range backlog.MarcasDeAgente { // un aviso de agente no es un mensaje del humano: no da turno nuevo
-			if strings.Contains(e.Prompt, m) {
-				return
+	sesiones, err := escanearProyecto(raiz, e.Transcript)
+	if err != nil {
+		frenar("Presupuesto: %v. Sin registro no hay cuenta: informa al humano.", err)
+	}
+	turno := ""
+	if e.Agente == "" { // el freno del turno es del hilo principal
+		propia, ok := sesiones[filepath.Clean(e.Transcript)]
+		if !ok { // registro fuera de la carpeta leída: se lee aparte
+			if propia, err = escanear(raiz, e.Transcript); err != nil {
+				frenar("Presupuesto: no se puede leer el registro de la sesión %s: %v.", e.Transcript, err)
 			}
 		}
-		_ = os.Remove(turno)
-		_ = os.Remove(marca)
-	case "herramienta":
-		if exentaDelFreno(raiz, e) {
+		if n := len(propia.turno); n > frenoTurno {
+			frenar("Presupuesto: %d llamadas en este turno (freno %d). No sigas: informa al humano qué hiciste y qué falta.", n, frenoTurno)
+		}
+		turno = strconv.FormatInt(propia.inicio, 10)
+	}
+	if msg := frenoFeature(raiz, e.Transcript, sesiones); msg != "" {
+		frenar("%s", msg)
+	}
+	avisarContexto(raiz, e, turno)
+}
+
+// frenar escribe el motivo en stderr y bloquea la llamada.
+func frenar(formato string, a ...any) {
+	_, _ = fmt.Fprintf(os.Stderr, formato+"\n", a...)
+	os.Exit(2)
+}
+
+// avisarContexto pide /compact una vez por turno cuando el contexto medido pasa el umbral; la marca guarda el
+// turno avisado (es solo un aviso: borrarla repite el aviso, no quita un freno).
+func avisarContexto(raiz string, e entradaPresupuesto, turno string) {
+	t := contextoMedido(e.Transcript)
+	if t < avisoContexto {
+		return
+	}
+	dir := filepath.Join(raiz, ".tmp", "presupuesto-cuentas")
+	marca := filepath.Join(dir, "contexto-"+regexp.MustCompile(`[^\w-]`).ReplaceAllString(e.Sesion, "_"))
+	if b, err := os.ReadFile(marca); err == nil && string(b) == turno {
+		return
+	}
+	_ = os.MkdirAll(dir, 0o755)
+	_ = os.WriteFile(marca, []byte(turno), 0o644)
+	msg := fmt.Sprintf("Contexto medido: %d tokens (umbral %d). Pide al humano /compact al terminar este turno.", t, avisoContexto)
+	b, _ := json.Marshal(map[string]any{"hookSpecificOutput": map[string]string{"hookEventName": "PreToolUse", "additionalContext": msg}})
+	fmt.Println(string(b))
+}
+
+// lineaLlamadas: lo que se lee de cada línea del registro (forma observada el 2026-10-31).
+type lineaLlamadas struct {
+	Type      string `json:"type"`
+	Timestamp string `json:"timestamp"`
+	Message   struct {
+		Content json.RawMessage `json:"content"`
+	} `json:"message"`
+	Origin struct {
+		Kind string `json:"kind"`
+	} `json:"origin"`
+}
+
+// bloqueRegistro: un bloque del contenido de un mensaje.
+type bloqueRegistro struct {
+	Type  string `json:"type"`
+	ID    string `json:"id"`
+	Name  string `json:"name"`
+	Text  string `json:"text"`
+	Input struct {
+		Command string `json:"command"`
+	} `json:"input"`
+}
+
+// recorrerRegistro abre un registro y entrega cada línea legible con su posición; las rotas se ignoran.
+// Solo se decodifican las líneas que traen una llamada o un mensaje humano.
+func recorrerRegistro(ruta string, f func(pos int64, l lineaLlamadas)) error {
+	fh, err := os.Open(ruta)
+	if err != nil {
+		return err
+	}
+	defer func() { _ = fh.Close() }()
+	rd := bufio.NewReader(fh)
+	var pos int64
+	for {
+		b, err := rd.ReadBytes('\n')
+		if len(b) > 0 && (bytes.Contains(b, []byte(`"tool_use"`)) || bytes.Contains(b, []byte(`"human"`))) {
+			var l lineaLlamadas
+			if json.Unmarshal(b, &l) == nil {
+				f(pos, l)
+			}
+		}
+		pos += int64(len(b))
+		if errors.Is(err, io.EOF) {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+	}
+}
+
+// llamadas: ids de los tool_use de una línea de asistente, sin las llamadas exentas.
+func llamadas(raiz string, l lineaLlamadas) []string {
+	if l.Type != "assistant" {
+		return nil
+	}
+	var bloques []bloqueRegistro
+	if json.Unmarshal(l.Message.Content, &bloques) != nil {
+		return nil
+	}
+	var ids []string
+	for _, b := range bloques {
+		if b.Type == "tool_use" && b.ID != "" && !exentaDelFreno(raiz, b.Name, b.Input.Command) {
+			ids = append(ids, b.ID)
+		}
+	}
+	return ids
+}
+
+// textoHumano: el texto de una línea de usuario con origen humano, sin marcas de aviso de agente; "" si no lo es.
+func textoHumano(l lineaLlamadas) string {
+	if l.Type != "user" || l.Origin.Kind != "human" {
+		return ""
+	}
+	var texto string
+	if json.Unmarshal(l.Message.Content, &texto) != nil {
+		var bloques []bloqueRegistro
+		if json.Unmarshal(l.Message.Content, &bloques) != nil {
+			return ""
+		}
+		for _, b := range bloques {
+			if b.Type == "text" {
+				texto += b.Text
+			}
+		}
+	}
+	for _, m := range backlog.MarcasDeAgente {
+		if strings.Contains(texto, m) {
+			return ""
+		}
+	}
+	return strings.TrimSpace(texto)
+}
+
+// apruebo: un «apruebo» de feature escrito por el humano en el registro.
+type apruebo struct {
+	feature string
+	tope    int
+	hora    time.Time
+}
+
+// escaneo: lo que deja un registro: cada llamada con su hora, las del turno abierto, dónde empieza ese turno y
+// el último apruebo de feature.
+type escaneo struct {
+	llamadas map[string]time.Time
+	turno    map[string]bool
+	inicio   int64
+	apruebo  *apruebo
+}
+
+var reFeature = regexp.MustCompile(`^E\d{3}/F\d{3}$`)
+
+// escanear lee un registro una vez.
+func escanear(raiz, ruta string) (escaneo, error) {
+	r := escaneo{llamadas: map[string]time.Time{}, turno: map[string]bool{}}
+	err := recorrerRegistro(ruta, func(pos int64, l lineaLlamadas) {
+		hora, _ := time.Parse(time.RFC3339, l.Timestamp)
+		if texto := textoHumano(l); texto != "" {
+			r.turno, r.inicio = map[string]bool{}, pos
+			if id, ok := backlog.IDAprobado(texto); ok && reFeature.MatchString(id) && !hora.IsZero() {
+				tope := topeFeaturePorDefecto
+				primera, _, _ := strings.Cut(texto, "\n")
+				if t := reTope.FindStringSubmatch(primera); t != nil {
+					tope, _ = strconv.Atoi(t[1])
+				}
+				r.apruebo = &apruebo{feature: id, tope: tope, hora: hora}
+			}
 			return
 		}
-		if e.Agente == "" { // el turno va primero: una llamada que frena el turno no gasta tope de la feature
-			if n := anotar(turno); n > frenoTurno {
-				_, _ = fmt.Fprintf(os.Stderr, "Presupuesto: %d llamadas en este turno (freno %d). No sigas: informa al humano qué hiciste y qué falta.\n", n, frenoTurno)
-				os.Exit(2)
-			}
+		for _, id := range llamadas(raiz, l) {
+			r.llamadas[id] = hora
+			r.turno[id] = true
 		}
-		if msg := frenoFeature(raiz, dir); msg != "" {
-			_, _ = fmt.Fprintln(os.Stderr, msg)
-			os.Exit(2)
-		}
-		if t := contextoMedido(e.Transcript); t >= avisoContexto {
-			if _, err := os.Stat(marca); err != nil {
-				_ = os.WriteFile(marca, []byte(strconv.Itoa(t)), 0o644)
-				msg := fmt.Sprintf("Contexto medido: %d tokens (umbral %d). Pide al humano /compact al terminar este turno.", t, avisoContexto)
-				b, _ := json.Marshal(map[string]any{"hookSpecificOutput": map[string]string{"hookEventName": "PreToolUse", "additionalContext": msg}})
-				fmt.Println(string(b))
-			}
-		}
-	default:
-		fallar(64, fmt.Errorf("uso: aquas budget prompt|tool"))
-	}
+	})
+	return r, err
 }
 
-// frenoFeature cuenta la llamada contra la feature del foco si está aprobada; "" si puede seguir.
-// La cuenta va por feature y fecha de aprobación: aprobar de nuevo empieza desde cero.
-func frenoFeature(raiz, dir string) string {
-	m, err := memoria.Leer(raiz)
-	if err != nil || m.Foco.Iniciativa == "" || m.Foco.Feature == "" {
+// carpetaProyecto: la carpeta de las sesiones del proyecto; desde un registro de subagente sube a ella.
+func carpetaProyecto(ruta string) string {
+	dir := filepath.Dir(ruta)
+	if filepath.Base(dir) == "subagents" {
+		return filepath.Dir(filepath.Dir(dir))
+	}
+	return dir
+}
+
+// escanearProyecto lee cada registro de sesión de la carpeta del proyecto; sin registro legible, error.
+func escanearProyecto(raiz, ruta string) (map[string]escaneo, error) {
+	if ruta == "" {
+		return nil, errors.New("el hook no trajo el registro de la sesión (transcript_path)")
+	}
+	if _, err := os.Stat(ruta); err != nil {
+		return nil, fmt.Errorf("no se puede leer el registro de la sesión %s", ruta)
+	}
+	rutas, _ := filepath.Glob(filepath.Join(carpetaProyecto(ruta), "*.jsonl"))
+	r := map[string]escaneo{}
+	for _, s := range rutas {
+		e, err := escanear(raiz, s)
+		if err != nil {
+			return nil, fmt.Errorf("no se puede leer el registro %s: %w", s, err)
+		}
+		r[filepath.Clean(s)] = e
+	}
+	return r, nil
+}
+
+// frenoFeature: el último apruebo de feature del humano fija feature, tope y hora; se cuentan las llamadas
+// distintas desde esa hora en las sesiones y en sus subagentes. "" si puede seguir o no hay apruebo de feature.
+func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) string {
+	var ap *apruebo
+	for _, s := range sesiones {
+		if s.apruebo != nil && (ap == nil || s.apruebo.hora.After(ap.hora)) {
+			ap = s.apruebo
+		}
+	}
+	if ap == nil {
 		return ""
 	}
-	id := m.Foco.Iniciativa + "/" + m.Foco.Feature
-	f, _, err := backlog.Ver(raiz, id)
-	if err != nil || f.Aprobacion == nil {
-		return ""
+	ids := map[string]bool{}
+	sumar := func(e escaneo) {
+		for id, hora := range e.llamadas {
+			if !hora.Before(ap.hora) {
+				ids[id] = true
+			}
+		}
 	}
-	tope := topeFeaturePorDefecto
-	primera, _, _ := strings.Cut(f.Aprobacion.Mensaje, "\n")
-	if t := reTope.FindStringSubmatch(primera); t != nil {
-		tope, _ = strconv.Atoi(t[1])
+	for _, s := range sesiones {
+		sumar(s)
 	}
-	clave := regexp.MustCompile(`[^\w-]`).ReplaceAllString(id+"-"+f.Aprobacion.Fecha, "_")
-	if n := anotar(filepath.Join(dir, "feature-"+clave+".log")); n > tope {
-		return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%d llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope N»).", id, tope, id)
+	subagentes, _ := filepath.Glob(filepath.Join(carpetaProyecto(ruta), "*", "subagents", "*.jsonl"))
+	for _, sub := range subagentes {
+		if st, err := os.Stat(sub); err != nil || st.ModTime().Before(ap.hora) {
+			continue
+		}
+		e, err := escanear(raiz, sub)
+		if err != nil {
+			return fmt.Sprintf("Presupuesto: no se puede leer el registro %s: %v.", sub, err)
+		}
+		sumar(e)
+	}
+	if len(ids) > ap.tope {
+		return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%d llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope N»).", ap.feature, ap.tope, ap.feature)
 	}
 	return ""
-}
-
-// anotar suma una línea al archivo y devuelve el total.
-func anotar(ruta string) int {
-	if f, err := os.OpenFile(ruta, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644); err == nil {
-		_, _ = f.WriteString(".\n")
-		_ = f.Close()
-	}
-	b, _ := os.ReadFile(ruta)
-	return bytes.Count(b, []byte("\n"))
 }
 
 // contextoMedido: tokens de entrada de la última llamada del modelo en el transcript; 0 si después

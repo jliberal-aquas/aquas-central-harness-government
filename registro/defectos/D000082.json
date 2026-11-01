@@ -1,0 +1,10 @@
+{
+  "id": "D000082",
+  "firma": "tope-desde-ficha-falsificable",
+  "que": "el tope de la feature sale del foco y de la aprobación de la ficha; el agente puede cambiar el foco con memory set o editar la ficha y apagarlo",
+  "causa": "S005 movió el conteo al registro pero dejó en la ficha qué feature y desde cuándo contar",
+  "arreglo": "PROPUESTO: tomar el último apruebo de feature de los mensajes humanos del registro",
+  "como_me_cercioro": "auditoría A1 de S005 (CON_HALLAZGOS 1 y 2)",
+  "ocurrencias": [],
+  "relacion": "E000/F008/S005"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "D000084",
+  "firma": "apruebo-pedido-sin-revisar-foto",
+  "que": "se pidió al humano apruebo de slice sin revisar si el apruebo de feature ya lo cubría; en F008 hubo unas 8 aprobaciones en vez de 1",
+  "causa": "los slices se crearon después del apruebo de la feature y quedan fuera de su foto; el agente no planificó todos los slices antes de pedirlo",
+  "arreglo": "PROPUESTO: crear las fichas de todos los slices con contrato y alcance antes de pedir el apruebo de la feature; antes de pedir un apruebo de slice, revisar si la foto lo cubre",
+  "como_me_cercioro": "reclamo del humano el 2026-11-01; aprobada() en internal/backlog/aprobacion.go:123",
+  "ocurrencias": [],
+  "relacion": "E000/F008"
+}

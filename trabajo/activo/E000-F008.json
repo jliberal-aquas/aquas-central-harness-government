@@ -24,29 +24,23 @@
     }
   },
   "verde": {
-    "fecha": "2026-11-01T01:08:21Z",
-    "head": "06e290a68d7bcfb8e5f3b75e92eacdce38db44a7",
+    "fecha": "2026-11-01T12:24:42Z",
+    "head": "76aa65cd2bfaac3ac68e4f9fd2812ed066767a77",
     "huella": {}
   },
   "aprobacion": {
-    "fecha": "2026-10-31T23:11:12Z",
+    "fecha": "2026-11-01T11:32:57Z",
     "huella": "60d402584ec518b27ed177df68231fd224e72c4bfaefc26fbad265dc0a943db7",
-    "mensaje": "apruebo E000/F008 con push",
+    "mensaje": "apruebo E000/F008 con push tope 200",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
     "push": true,
     "foto": {
-      "E000/F008/S003": [
+      "E000/F008/S005": [
         {
-          "prueba": "./internal/entorno:TestAislamientoEstricto",
-          "intencion": "valida que sin ajustes gestionados estrictos de aislamiento el gate falla o avisa según el sistema",
-          "rojo_cuando": "rojo cuando sin sandbox estricto en Linux el gate pasa",
-          "verde_cuando": "verde cuando falla en Linux sin ajustes gestionados y solo avisa en Windows nativo"
-        },
-        {
-          "prueba": "./cmd/aquas:TestVerifyExigeAislamiento",
-          "intencion": "valida que verify central e hijo y el arranque usan la revisión del aislamiento",
-          "rojo_cuando": "rojo cuando verify en Linux sin ajustes gestionados no nombra el aislamiento",
-          "verde_cuando": "verde cuando verify falla y el arranque avisa sin ellos, y callan con ellos"
+          "prueba": "./cmd/aquas:TestTopeDesdeElRegistro",
+          "intencion": "valida que el tope se cuenta desde el registro de Claude Code",
+          "rojo_cuando": "rojo cuando borrar .tmp/presupuesto-cuentas reinicia la cuenta",
+          "verde_cuando": "verde cuando el tope y el turno salen del registro y borrar .tmp no cambia nada"
         }
       ]
     }

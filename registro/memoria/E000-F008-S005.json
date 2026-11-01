@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F008",
+    "slice": "S005",
+    "tarea": "S005 en auditoría A2; D000084 registrado (apruebos de slice de más)"
+  },
+  "siguiente": "con A2 APROBADO: archive, seal, CERRADO, commit y push; luego regla: crear todos los slices antes del apruebo de feature, si el humano dice sí",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "2dda27f20ad314784bf656dbdc6bc160382b7cc672a794abe7fdf8bd66f8f12b",
+  "actualizado": "2026-11-01T12:27:38Z",
+  "sello": "ebfb81a023417aa2765e01fdb31ed7eab4d3b5152e63ea7df49421b4133027f4"
+}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -9,36 +10,8 @@ import (
 	"time"
 )
 
-// cuentaFeature: archivo y llamadas de la cuenta de feature más reciente.
-func cuentaFeature(t *testing.T, raiz string) (string, int) {
-	t.Helper()
-	ms, _ := filepath.Glob(filepath.Join(raiz, ".tmp", "presupuesto-cuentas", "feature-*.log"))
-	if len(ms) == 0 {
-		t.Fatal("no hay cuenta de feature")
-	}
-	ultima := ms[0]
-	for _, m := range ms {
-		a, _ := os.Stat(m)
-		b, _ := os.Stat(ultima)
-		if a.ModTime().After(b.ModTime()) {
-			ultima = m
-		}
-	}
-	b, _ := os.ReadFile(ultima)
-	return ultima, strings.Count(string(b), "\n")
-}
-
 // E001/F015/S002: aquas presupuesto, el freno de llamadas por feature y por turno, sobre el binario real.
-
-// usoHerramienta: entrada del hook PreToolUse; agente != "" es una llamada de un subagente.
-func usoHerramienta(agente, transcript string) string {
-	e := map[string]string{"session_id": "s1", "hook_event_name": "PreToolUse", "tool_name": "Bash", "transcript_path": transcript}
-	if agente != "" {
-		e["agent_id"] = agente
-	}
-	b, _ := json.Marshal(e)
-	return string(b)
-}
+// E000/F008/S005: las llamadas se cuentan en el registro de la sesión; usoHerramienta las escribe ahí.
 
 // TestPresupuestoPorFeature (E001/F015/S002).
 // Rojo cuando: se pasa del tope de la feature o del freno por turno sin bloquear.
@@ -48,10 +21,11 @@ func TestPresupuestoPorFeature(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, want := range []string{`{"evento": "UserPromptSubmit", "orden": "budget prompt"}`, `{"evento": "PreToolUse", "orden": "budget tool"}`} {
-		if !strings.Contains(string(cfg), want) {
-			t.Errorf("claude_settings.json no conecta el hook %s", want)
-		}
+	if !strings.Contains(string(cfg), `{"evento": "PreToolUse", "orden": "budget tool"}`) {
+		t.Errorf("claude_settings.json no conecta el hook budget tool")
+	}
+	if strings.Contains(string(cfg), "budget prompt") {
+		t.Errorf("claude_settings.json conecta budget prompt, que se retiró (E000/F008/S005)")
 	}
 	raiz := repoFeature(t)
 	if s := aquas(t, raiz, "", "memoria", "fijar", "iniciativa=E001", "feature=F002"); s.codigo != 0 {
@@ -62,13 +36,10 @@ func TestPresupuestoPorFeature(t *testing.T) {
 		if s := aquas(t, raiz, mensajeHumano(t, prompt), "aprobacion"); s.codigo != 0 {
 			t.Fatalf("aprobacion: %+v", s)
 		}
-		if s := aquas(t, raiz, mensajeHumano(t, prompt), "presupuesto", "prompt"); s.codigo != 0 {
-			t.Fatalf("presupuesto prompt: %+v", s)
-		}
 	}
 	usar := func(agente string) salida {
 		t.Helper()
-		return aquas(t, raiz, usoHerramienta(agente, ""), "presupuesto", "herramienta")
+		return aquas(t, raiz, usoHerramienta(t, agente, registroSesion(t)), "presupuesto", "herramienta")
 	}
 	turno("sigue")
 	for i := range 5 {
@@ -76,6 +47,7 @@ func TestPresupuestoPorFeature(t *testing.T) {
 			t.Fatalf("sin aprobación de la feature solo rige el turno; llamada %d dio %+v", i+1, s)
 		}
 	}
+	time.Sleep(1100 * time.Millisecond) // la fecha de aprobación va en segundos: lo anterior no debe caer en ella
 	turno("apruebo E001/F002 tope 5")
 	for i, agente := range []string{"", "", "a1", "a1", "a1"} {
 		if s := usar(agente); s.codigo != 0 {
@@ -97,9 +69,9 @@ func TestPresupuestoPorFeature(t *testing.T) {
 			t.Fatalf("«tope» fuera de la primera línea no cuenta: rige 300; llamada %d dio %+v", i+1, s)
 		}
 	}
-	ruta, _ := cuentaFeature(t, raiz)
-	if err := os.WriteFile(ruta, []byte(strings.Repeat(".\n", 299)), 0o644); err != nil {
-		t.Fatal(err)
+	sub := filepath.Join(filepath.Dir(registroSesion(t)), "sesion", "subagents", "agent-a1.jsonl")
+	for i := range 296 { // 3 llamadas ya hechas desde la aprobación + 296 = 299
+		anexar(t, sub, lineaLlamada(fmt.Sprintf("toolu_relleno_%d", i), "Bash", "ls", time.Now()))
 	}
 	if s := usar("a1"); s.codigo != 0 {
 		t.Errorf("sin «tope N» la llamada 300 pasa; dio %+v", s)
@@ -117,14 +89,10 @@ func TestPresupuestoPorFeature(t *testing.T) {
 	if s := usar("a2"); s.codigo != 0 {
 		t.Errorf("un subagente no cuenta en el freno del turno; dio %+v", s)
 	}
-	_, antes := cuentaFeature(t, raiz)
 	if s := usar(""); s.codigo != 2 || !strings.Contains(s.err, "turno") {
 		t.Errorf("la llamada 61 del turno: bloqueo; dio %+v", s)
 	}
-	if _, despues := cuentaFeature(t, raiz); despues != antes {
-		t.Errorf("la llamada que frena el turno no gasta tope de la feature: %d → %d", antes, despues)
-	}
-	aquas(t, raiz, mensajeHumano(t, "<task-notification>agente terminó</task-notification>"), "presupuesto", "prompt")
+	mensajeHumano(t, "<task-notification>agente terminó</task-notification>")
 	if s := usar(""); s.codigo != 2 {
 		t.Errorf("un aviso de agente no reinicia el turno; dio %+v", s)
 	}
@@ -148,13 +116,13 @@ func TestPresupuestoAvisaContexto(t *testing.T) {
 	}
 	usar := func() salida {
 		t.Helper()
-		s := aquas(t, raiz, usoHerramienta("", tr), "presupuesto", "herramienta")
+		s := aquas(t, raiz, usoHerramienta(t, "", tr), "presupuesto", "herramienta")
 		if s.codigo != 0 {
 			t.Fatalf("el aviso de contexto no bloquea; dio %+v", s)
 		}
 		return s
 	}
-	aquas(t, raiz, mensajeHumano(t, "sigue"), "presupuesto", "prompt")
+	anexar(t, tr, lineaHumana("sigue"))
 	escribir(t, raiz, "transcript.jsonl", medida(199_999))
 	if s := usar(); strings.Contains(s.out, "compact") {
 		t.Errorf("por debajo de 200000 no avisa; dio %+v", s)
@@ -166,11 +134,11 @@ func TestPresupuestoAvisaContexto(t *testing.T) {
 	if s := usar(); strings.Contains(s.out, "compact") {
 		t.Errorf("avisa una vez por turno; dio %+v", s)
 	}
-	aquas(t, raiz, mensajeHumano(t, "sigue"), "presupuesto", "prompt")
+	anexar(t, tr, lineaHumana("sigue"))
 	if s := usar(); !strings.Contains(s.out, "/compact") {
 		t.Errorf("cada turno nuevo vuelve a avisar; dio %+v", s)
 	}
-	aquas(t, raiz, mensajeHumano(t, "sigue"), "presupuesto", "prompt")
+	anexar(t, tr, lineaHumana("sigue"))
 	escribir(t, raiz, "transcript.jsonl", medida(250_000)+`{"type":"system","subtype":"compact_boundary"}`+"\n")
 	if s := usar(); strings.Contains(s.out, "compact") {
 		t.Errorf("tras compactar la medida vieja no cuenta; dio %+v", s)

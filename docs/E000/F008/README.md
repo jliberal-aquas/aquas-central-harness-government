@@ -88,6 +88,7 @@ Pruebas de los slices: `TestGanchoAManoBloqueado`.
 | [S002](S002.md) | Una aprobación vale solo si su mensaje humano está en el registro de la sesión | Hecho |
 | [S003](S003.md) | El gate exige aislamiento estricto donde existe y el arranque avisa en Windows nativo | Hecho |
 | [S004](S004.md) | Un slice cierra solo si el registro del auditor trae su APROBADO después del verde | Hecho |
+| [S005](S005.md) | El tope de la feature y el freno por turno se cuentan leyendo el registro de la sesión | Hecho |
 
 <!-- /GENERADO -->
 
