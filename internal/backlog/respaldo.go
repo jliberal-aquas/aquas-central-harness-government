@@ -57,9 +57,23 @@ func respaldada(raiz, id string, a *Aprobacion) error {
 	if a.Registro == "" {
 		return fmt.Errorf("la aprobación de %s no tiene registro de sesión: %s", id, pide)
 	}
-	reg, err := real(a.Registro)
+	reg, err := registroValido(raiz, a.Registro)
 	if err != nil {
-		return fmt.Errorf("el registro de sesión de la aprobación de %s no se puede leer: %s", id, pide)
+		return fmt.Errorf("el registro de la aprobación de %s %v: %s", id, err, pide)
+	}
+	ok, err := mensajeHumano(reg, a.Mensaje)
+	if err != nil || !ok {
+		return fmt.Errorf("el registro de sesión no tiene el mensaje humano «%s» que aprobó %s: %s", a.Mensaje, id, pide)
+	}
+	return nil
+}
+
+// registroValido: la ruta real de un registro de Claude Code, si es un .jsonl de la carpeta de registros y queda
+// fuera del repo, donde el agente escribe; si no, la causa (S002 y S004).
+func registroValido(raiz, ruta string) (string, error) {
+	reg, err := real(ruta)
+	if err != nil {
+		return "", errors.New("no se puede leer")
 	}
 	proy, err := carpetaRegistros()
 	if err == nil {
@@ -68,17 +82,13 @@ func respaldada(raiz, id string, a *Aprobacion) error {
 	r, errR := real(raiz)
 	switch {
 	case err != nil || errR != nil:
-		return fmt.Errorf("no se ubica la carpeta de registros de Claude Code para %s: %s", id, pide)
+		return "", errors.New("no se ubica: falta la carpeta de registros de Claude Code")
 	case !strings.EqualFold(filepath.Ext(reg), ".jsonl") || !bajo(proy, reg):
-		return fmt.Errorf("el registro de la aprobación de %s no es un .jsonl de %s: %s", id, proy, pide)
+		return "", fmt.Errorf("no es un .jsonl de %s", proy)
 	case bajo(r, reg) || bajo(r, proy):
-		return fmt.Errorf("el registro de la aprobación de %s está dentro del repo, donde el agente escribe: %s", id, pide)
+		return "", errors.New("está dentro del repo, donde el agente escribe")
 	}
-	ok, err := mensajeHumano(reg, a.Mensaje)
-	if err != nil || !ok {
-		return fmt.Errorf("el registro de sesión no tiene el mensaje humano «%s» que aprobó %s: %s", a.Mensaje, id, pide)
-	}
-	return nil
+	return reg, nil
 }
 
 // lineaRegistro: lo que se lee de cada línea del registro (forma observada el 2026-10-31).

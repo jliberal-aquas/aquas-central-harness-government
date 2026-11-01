@@ -8,10 +8,12 @@ import (
 	"time"
 )
 
-// aprobar anota un veredicto del auditor en la hora dada (mismo camino que el gancho cierre-agente).
+// aprobar anota un veredicto del auditor en la hora dada (mismo camino que el gancho cierre-agente), con su
+// registro de auditor que lo respalda (E000/F008/S004).
 func aprobar(t *testing.T, raiz, id, veredicto string, ahora time.Time) {
 	t.Helper()
-	if err := AnotarAuditoria(raiz, id, veredicto, ahora); err != nil {
+	reg := registroAuditor(t, lineaAuditor(t, cierreAuditor(id, veredicto), "auditor", ahora, false))
+	if err := AnotarAuditoria(raiz, id, veredicto, reg, ahora); err != nil {
 		t.Fatalf("anotar %s: %v", veredicto, err)
 	}
 }
@@ -107,7 +109,7 @@ func TestCierreExigeAuditorAprobado(t *testing.T) {
 		raiz := modulo(t)
 		nuevo(t, raiz, "id=E001/F002/S005", "titulo=T", "prioridad=P1", "motivo=m", "prueba=./p:TestBandera=a|r|v")
 		for _, id := range []string{"E001/F002/S005", "E001/F002/S099"} { // borrador; inexistente
-			if err := AnotarAuditoria(raiz, id, "APROBADO", hora); err == nil || !strings.Contains(err.Error(), id) {
+			if err := AnotarAuditoria(raiz, id, "APROBADO", "", hora); err == nil || !strings.Contains(err.Error(), id) {
 				t.Errorf("anotar en %s: se esperaba error que nombre el id; dio %v", id, err)
 			}
 		}

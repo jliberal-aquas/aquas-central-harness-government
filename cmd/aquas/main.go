@@ -313,7 +313,7 @@ func main() {
 		if m := encargo.Revisar(e.Tipo, e.Mensaje, e.Activo); m != "" {
 			// E001/F004/S006 (D000068): tras el rechazo el auditor no reintenta; el veredicto se anota antes de quejarse.
 			if id, v, ok := encargo.Veredicto(e.Mensaje); ok && e.Tipo == "auditor" {
-				if err := backlog.AnotarAuditoria(raiz, id, v, time.Now()); err != nil {
+				if err := backlog.AnotarAuditoria(raiz, id, v, e.Agente, time.Now()); err != nil {
 					anotar("rechazado: " + err.Error())
 					_, _ = fmt.Fprintf(os.Stderr, "aquas agent-close: el veredicto de %s no quedó anotado: %v\n%s\n", id, err, m)
 					os.Exit(2)
@@ -330,7 +330,7 @@ func main() {
 		if e.Tipo == "auditor" { // E001/F014/S002: el veredicto queda en la ficha; CERRADO lo exige
 			// Sin id y veredicto válidos (stop_hook_active dejó pasar un cierre malo) no se anota nada.
 			if id, v, ok := encargo.Veredicto(e.Mensaje); ok {
-				if err := backlog.AnotarAuditoria(raiz, id, v, time.Now()); err != nil {
+				if err := backlog.AnotarAuditoria(raiz, id, v, e.Agente, time.Now()); err != nil {
 					anotar("rechazado: " + err.Error())
 					_, _ = fmt.Fprintf(os.Stderr, "aquas agent-close: el veredicto de %s no quedó anotado: %v\n", id, err)
 					if !e.Activo { // con stop_hook_active nunca se atrapa al auditor: aviso y sale

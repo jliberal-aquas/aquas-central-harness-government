@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"testing"
 )
 
@@ -21,19 +22,45 @@ func lineaUsuario(texto, origen string, contenido any) string {
 	return string(b)
 }
 
-// registro: deja un .jsonl con esas líneas dentro de CLAUDE_CONFIG_DIR/projects y devuelve su ruta.
+// dirsClaude: un CLAUDE_CONFIG_DIR propio por prueba, compartido por los registros de sesión y de auditor.
+var dirsClaude sync.Map
+
+// dirClaude: el CLAUDE_CONFIG_DIR de esta prueba; lo crea y lo fija la primera vez.
+func dirClaude(t *testing.T) string {
+	t.Helper()
+	if d, ok := dirsClaude.Load(t); ok {
+		if os.Getenv("CLAUDE_CONFIG_DIR") != d.(string) { // un caso lo cambió a mano: se vuelve al de la prueba
+			t.Setenv("CLAUDE_CONFIG_DIR", d.(string))
+		}
+		return d.(string)
+	}
+	d := filepath.Join(t.TempDir(), "claude")
+	t.Setenv("CLAUDE_CONFIG_DIR", d)
+	dirsClaude.Store(t, d)
+	return d
+}
+
+// registro: deja un .jsonl nuevo con esas líneas dentro de CLAUDE_CONFIG_DIR/projects y devuelve su ruta.
 func registro(t *testing.T, lineas ...string) string {
 	t.Helper()
-	dir := filepath.Join(t.TempDir(), "claude")
-	t.Setenv("CLAUDE_CONFIG_DIR", dir)
-	ruta := filepath.Join(dir, "projects", "repo", "sesion.jsonl")
-	if err := os.MkdirAll(filepath.Dir(ruta), 0o755); err != nil {
+	return jsonlEn(t, filepath.Join(dirClaude(t), "projects", "repo"), "sesion-*.jsonl", lineas)
+}
+
+// jsonlEn: crea en dir un .jsonl nuevo (patrón de os.CreateTemp) con esas líneas y devuelve su ruta.
+func jsonlEn(t *testing.T, dir, patron string, lineas []string) string {
+	t.Helper()
+	if err := os.MkdirAll(dir, 0o755); err != nil {
 		t.Fatal(err)
 	}
-	if err := os.WriteFile(ruta, []byte(strings.Join(lineas, "\n")+"\n"), 0o644); err != nil {
+	f, err := os.CreateTemp(dir, patron)
+	if err != nil {
 		t.Fatal(err)
 	}
-	return ruta
+	defer func() { _ = f.Close() }()
+	if _, err := f.WriteString(strings.Join(lineas, "\n") + "\n"); err != nil {
+		t.Fatal(err)
+	}
+	return f.Name()
 }
 
 // TestApruebaSoloConMensajeHumano (E000/F008/S002, D000077): una aprobación vale solo si su mensaje humano

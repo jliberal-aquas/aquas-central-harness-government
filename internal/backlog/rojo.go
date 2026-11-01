@@ -353,7 +353,7 @@ func cierre(raiz string, f Ficha) error {
 		}
 	}
 	if f.Tipo == "slice" { // E001/F014/S002: el auditor aprobó este verde y este código
-		return veredictoVigente(f)
+		return veredictoVigente(raiz, f)
 	}
 	return nil
 }

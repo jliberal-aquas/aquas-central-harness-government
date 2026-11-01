@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F008",
+    "slice": "S004",
+    "tarea": "S004 A2 APROBADO; cerrando"
+  },
+  "siguiente": "con A2 APROBADO: memory archive, seal, CERRADO, commit, push",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "4abbed7d3be455fa533917f9ff22270036ddf4ef090bb0c2a27935301e30053e",
+  "actualizado": "2026-11-01T01:11:39Z",
+  "sello": "f3fc2f342e90160cad2f91d702ab57d4451112bf79bb2fef37832e1aa9b6184d"
+}

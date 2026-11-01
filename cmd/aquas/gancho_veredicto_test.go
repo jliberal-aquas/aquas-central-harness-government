@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+	"time"
 )
 
 // fichaSlice escribe la ficha activa de un slice en el estado dado, con alcance p/** y p/p.go.
@@ -179,7 +180,17 @@ func TestGanchoAnotaVeredicto(t *testing.T) {
 func aprobarGancho(t *testing.T, raiz, id string) {
 	t.Helper()
 	cuerpo := "id: " + strings.ReplaceAll(id, "/", "-") + "-A1\nveredicto: APROBADO\nhallazgos: —\nno_revisado: —"
-	if s := aquas(t, raiz, cierreAuditor(t, "auditor", cuerpo, false), "agent-close"); s.codigo != 0 {
+	// E000/F008/S004: el cierre del auditor queda en su registro, junto al de la sesión que respalda la aprobación.
+	sesion := os.Getenv("AQUAS_PRUEBA_REGISTRO")
+	if sesion == "" {
+		t.Fatal("aprobarGancho necesita antes una aprobación con registro (mensajeHumano)")
+	}
+	reg := filepath.Join(filepath.Dir(sesion), "subagents", "agent-"+strings.ReplaceAll(id, "/", "-")+".jsonl")
+	linea, _ := json.Marshal(map[string]any{"type": "assistant", "attributionAgent": "auditor", "timestamp": time.Now().UTC().Format(time.RFC3339Nano),
+		"message": map[string]any{"role": "assistant", "content": []any{map[string]string{"type": "text", "text": cuerpo}}}})
+	escribir(t, filepath.Dir(reg), filepath.Base(reg), string(linea)+"\n")
+	entrada, _ := json.Marshal(map[string]any{"agent_type": "auditor", "last_assistant_message": cuerpo, "stop_hook_active": false, "agent_transcript_path": reg})
+	if s := aquas(t, raiz, string(entrada), "agent-close"); s.codigo != 0 {
 		t.Fatalf("auditor APROBADO de %s: %+v", id, s)
 	}
 }

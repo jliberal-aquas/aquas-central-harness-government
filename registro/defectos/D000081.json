@@ -1,0 +1,10 @@
+{
+  "id": "D000081",
+  "firma": "alcance-tras-apruebo-propio",
+  "que": "fijé el alcance de S004 después de su «apruebo» propio y el rojo pidió aprobar otra vez",
+  "causa": "el alcance entra en la huella; la foto de la feature lo tolera, la aprobación propia del slice no",
+  "arreglo": "el humano repite «apruebo E000/F008/S004»; en slices nuevos, backlog scope va antes de pedir el apruebo",
+  "como_me_cercioro": "backlog red E000/F008/S004 pasa tras la nueva aprobación",
+  "ocurrencias": [],
+  "relacion": "E000/F008/S004"
+}

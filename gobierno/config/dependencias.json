@@ -17,7 +17,8 @@
     "internal/wiki"
   ],
   "internal/backlog": [
-    "internal/compilador"
+    "internal/compilador",
+    "internal/encargo"
   ],
   "internal/biblioteca": [],
   "internal/calidad": [],
