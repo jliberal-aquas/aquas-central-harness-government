@@ -66,6 +66,7 @@ func TestMemoriaSegunBacklog(t *testing.T) {
 // Prueba integral de F002: un slice nace con su prueba, ve su rojo, su verde, y cierra al archivo.
 func TestCerrarSliceDePuntaAPunta(t *testing.T) {
 	raiz := t.TempDir()
+	git(t, raiz, "init", "-q") // E000/F009/S001 (D000050): cerrar lee git; repo propio, no el de la central
 	escribir(t, raiz, "go.mod", "module juguete\n\ngo 1.26\n")
 	escribir(t, raiz, "p/p_test.go", "package p\n\nimport (\n\t\"os\"\n\t\"testing\"\n)\n\n"+
 		"func TestBandera(t *testing.T) {\n\tif _, err := os.Stat(\"arreglado\"); err != nil {\n\t\tt.Fatal(\"falta el arreglo\")\n\t}\n}\n")

@@ -1,0 +1,10 @@
+{
+  "id": "D000086",
+  "firma": "write-pisa-archivo-existente",
+  "que": "al crear cmd/aquas/aislamiento_test.go con Write se pisó un archivo existente del mismo nombre y se borró TestVerifyExigeAislamiento (S003)",
+  "causa": "no se comprobó si la ruta existía antes de Write; la herramienta lo permitió porque el archivo se había leído antes en la sesión (PROBABLE)",
+  "arreglo": "PROPUESTO: comprobar con ls o Glob que la ruta no existe antes de crear un archivo nuevo; recuperado con git checkout",
+  "como_me_cercioro": "el gate dio «prueba nombrada no existe en el código: TestVerifyExigeAislamiento»; git show HEAD:cmd/aquas/aislamiento_test.go la tenía",
+  "ocurrencias": [],
+  "relacion": "E000/F009/S001"
+}

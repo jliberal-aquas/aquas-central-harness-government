@@ -201,6 +201,7 @@ func TestSelloIgnoraDerivados(t *testing.T) {
 // igual; solo se omite el nivel archivos, y un aviso que también se marca lo deja a la vista.
 func TestSelloSinCommitBaseExigeArbol(t *testing.T) {
 	raiz := t.TempDir()
+	git(t, raiz, "init", "-q") // D000050: repo propio sin commits, no el de la central
 	id := "E001/F002/S004"
 	reg := &Registro{Fecha: "2026-10-21T10:00:00Z", Resultado: map[string]string{"./a:TestA": "falló"}}
 	fichaJSON(t, raiz, Ficha{ID: "E001", Titulo: "I", Estado: "EN_CURSO", Secuencia: 1})

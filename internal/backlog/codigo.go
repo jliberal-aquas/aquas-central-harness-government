@@ -8,8 +8,13 @@ import (
 
 // codigoTocado: .go de producción en cmd/ e internal/ que tocaron los commits del slice y, si sinCommit, los cambios pendientes (E001/F008/S005).
 func codigoTocado(raiz, id string, sinCommit bool) ([]string, error) {
-	log, err := gitLineas(raiz, "log", "--format=", "--name-only", "-E", "--grep="+regexp.QuoteMeta(id)+"([^0-9]|$)")
-	if err != nil {
+	var log []string
+	var err error
+	if head(raiz) == "" { // E000/F009/S001 (D000050): repo sin commits no tiene historial; fuera de un repo, error
+		if _, err = gitLineas(raiz, "rev-parse", "--git-dir"); err != nil {
+			return nil, err
+		}
+	} else if log, err = gitLineas(raiz, "log", "--format=", "--name-only", "-E", "--grep="+regexp.QuoteMeta(id)+"([^0-9]|$)"); err != nil {
 		return nil, err
 	}
 	var st []string

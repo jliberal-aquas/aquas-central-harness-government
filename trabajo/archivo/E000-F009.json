@@ -1,0 +1,56 @@
+{
+  "id": "E000/F009",
+  "tipo": "feature",
+  "titulo": "Pruebas aisladas del repo de la central",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "D000050: una prueba sin git init lee el git de la central y da falso verde",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 141,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestPruebasNoVenLaCentral",
+      "intencion": "valida que todo paquete con git en pruebas fija GIT_CEILING_DIRECTORIES",
+      "rojo_cuando": "rojo cuando un paquete con git en pruebas no fija el límite",
+      "verde_cuando": "verde cuando todos lo fijan"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-01T16:27:54Z",
+    "head": "753bb098b1bc30e1c170dc2305164dd30afd3a77",
+    "resultado": {
+      "./cmd/aquas:TestPruebasNoVenLaCentral": "aislamiento_test.go:91: paquetes que corren git en pruebas sin GIT_CEILING_DIRECTORIES en su TestMain: [cmd/aquas internal/backlog internal/memoria]"
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-01T17:32:58Z",
+    "head": "753bb098b1bc30e1c170dc2305164dd30afd3a77",
+    "huella": {}
+  },
+  "aprobacion": {
+    "fecha": "2026-11-01T17:28:49Z",
+    "huella": "da38ca124442afae2dedfb10840884d91d67e7acee78459598db45032ec35522",
+    "mensaje": "apruebo E000/F009 con push",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E000/F009/S001": [
+        {
+          "prueba": "./internal/backlog:TestGitNoSubeALaCentral",
+          "intencion": "valida que git en una carpeta temporal no ve la central",
+          "rojo_cuando": "rojo cuando git rev-parse en la carpeta temporal da la central",
+          "verde_cuando": "verde cuando da not a git repository y codigoTocado acepta repo sin commits"
+        },
+        {
+          "prueba": "./cmd/aquas:TestPruebasNoVenLaCentral",
+          "intencion": "valida que todo paquete con git en pruebas fija GIT_CEILING_DIRECTORIES",
+          "rojo_cuando": "rojo cuando un paquete con git en pruebas no fija el límite",
+          "verde_cuando": "verde cuando todos lo fijan"
+        }
+      ]
+    }
+  },
+  "relacion": "nueva",
+  "que_hace": "Impide que una prueba lea el git del repo de la central"
+}

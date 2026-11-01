@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F009",
+    "slice": "S001",
+    "tarea": "F009/S001 APROBADO por A2; cerrando"
+  },
+  "siguiente": "con APROBADO: memoria, sello, CERRADO S001 y F009, commit y push",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "33d8bdb10a77e98b7571a343e63b87f1fd89ef73f4b5749dda887408528aca54",
+  "actualizado": "2026-11-01T17:39:15Z",
+  "sello": "e39df96605b527275e4a834da41683e5b6e84a19809018087ac226f4314002ae"
+}

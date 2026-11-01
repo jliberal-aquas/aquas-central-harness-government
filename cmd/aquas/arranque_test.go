@@ -19,6 +19,10 @@ import (
 // El binario de prueba hace de `aquas`: con AQUAS_COMO_CLI=1 corre main() en la carpeta dada.
 
 func TestMain(m *testing.M) {
+	// E000/F009/S001 (D000050): git no sube desde la carpeta temporal de una prueba al repo que la contiene.
+	if err := os.Setenv("GIT_CEILING_DIRECTORIES", os.TempDir()); err != nil {
+		panic(err)
+	}
 	if os.Getenv("AQUAS_COMO_CLI") == "1" {
 		// E000/F008/S003: solo el binario de prueba puede fingir SO y ajustes gestionados; el real no lee esto.
 		if g := os.Getenv("AQUAS_PRUEBA_GOOS"); g != "" {

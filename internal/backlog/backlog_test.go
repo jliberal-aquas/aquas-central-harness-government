@@ -47,6 +47,7 @@ func archivo(raiz, nombre string) string { return filepath.Join(raiz, Archivo, n
 func base(t *testing.T) string {
 	t.Helper()
 	raiz := t.TempDir()
+	git(t, raiz, "init", "-q") // E000/F009/S001 (D000050): cerrar lee git; repo propio, no el de la central
 	nuevo(t, raiz, "id=E001", "titulo=Gobierno", "prioridad=P1", "motivo=raíz")
 	f := nuevo(t, raiz, "id=E001/F002", "titulo=Backlog", "prioridad=P1", "motivo=orden")
 	f.Rojo = &Registro{Fecha: "2026-10-21T00:00:00Z", Resultado: map[string]string{"./p:TestFalla": "falló"}} // D000023: sus slices lo exigen
