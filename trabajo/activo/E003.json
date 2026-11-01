@@ -1,0 +1,21 @@
+{
+  "id": "E003",
+  "tipo": "iniciativa",
+  "titulo": "Herencia obligatoria",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "principio 11: todo control central se cumple en cada hijo por programa",
+  "padre": "",
+  "bloqueado_por": [],
+  "secuencia": 143,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHijoCumpleLaCentral",
+      "intencion": "valida que un hijo instalado tiene activo cada control que viaja",
+      "rojo_cuando": "rojo cuando falta un control marcado todos en el hijo",
+      "verde_cuando": "verde cuando el hijo tiene todos los controles que viajan"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "hace cumplir en cada hijo, por programa, todo control de la central"
+}

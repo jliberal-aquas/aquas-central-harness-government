@@ -111,6 +111,7 @@ Hoy el repositorio tiene tres iniciativas. Cada una tiene su página, con sus fe
 - **[E000 · Mantenimiento del gobierno](E000/README.md).** Arregla y vigila este mismo repositorio. Aquí están la guardia, el compilador y la calidad de las pruebas.
 - **[E001 · Gobierno del trabajo](E001/README.md).** Define el camino fijo de cada pedido. Aquí están esta wiki, el [backlog](glosario.md#backlog), la memoria del agente y los workers.
 - **E002 · Proyectos hijos.** Instala y mantiene el gobierno en cada producto de Aquas. Planeada; arranca con la landing de Aquas.
+- **[E003 · Herencia obligatoria](E003/README.md).** Hace cumplir en cada hijo, por programa, todo control de la central.
 
 El estado de cada iniciativa está en la tabla de Navegación. La genera `aquas compile` desde las fichas; nadie la escribe a mano. Si una ficha cambia y la tabla no, el [gate](glosario.md#gate) bloquea el commit.
 
@@ -125,6 +126,7 @@ El orden de ejecución lo dice `aquas backlog next`.
 | [E000](E000/README.md) | Mantenimiento del gobierno | En curso |
 | [E001](E001/README.md) | Gobierno del trabajo | En curso |
 | [E002](E002/README.md) | Proyectos hijos | Hecho |
+| [E003](E003/README.md) | hace cumplir en cada hijo, por programa, todo control de la central | Planeado |
 
 <!-- /GENERADO -->
 

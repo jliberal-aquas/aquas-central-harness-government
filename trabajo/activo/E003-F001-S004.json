@@ -1,0 +1,28 @@
+{
+  "id": "E003/F001/S004",
+  "tipo": "slice",
+  "titulo": "Pruebas del hijo sin Go",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "rojo y verde corren siempre go test; un hijo sin Go no cierra slices",
+  "padre": "E003/F001",
+  "bloqueado_por": [
+    "E003/F001/S002"
+  ],
+  "secuencia": 148,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestPruebasDelHijoSinGo",
+      "intencion": "valida que rojo y verde corren la plantilla de pruebas.json",
+      "rojo_cuando": "rojo cuando se corre go test pese a pruebas.json",
+      "verde_cuando": "verde cuando la plantilla corre cada prueba y su salida decide"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/**"
+  ],
+  "relacion": "nueva",
+  "que_hace": "pruebas.json del hijo dice cómo correr una prueba para rojo y verde"
+}

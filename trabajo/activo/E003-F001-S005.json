@@ -1,0 +1,30 @@
+{
+  "id": "E003/F001/S005",
+  "tipo": "slice",
+  "titulo": "Gate y pre-commit en el hijo",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "verify del hijo no revisa fichas, wiki ni guardia, y no hay pre-commit",
+  "padre": "E003/F001",
+  "bloqueado_por": [
+    "E003/F001/S003"
+  ],
+  "secuencia": 149,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestVerifyEnElHijo",
+      "intencion": "valida que el gate del hijo corre los chequeos todos y el pre-commit lo exige",
+      "rojo_cuando": "rojo cuando un chequeo todos no corre en el hijo o falta el pre-commit",
+      "verde_cuando": "verde cuando el gate del hijo falla ante una ficha rota y el pre-commit lo corre"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/**",
+    "internal/hijo/**",
+    "internal/herencia/**",
+    "gobierno/config/herencia.json",
+    "docs/**"
+  ],
+  "relacion": "nueva",
+  "que_hace": "verify corre en el hijo los chequeos que viajan y install pone el pre-commit"
+}

@@ -23,6 +23,7 @@ Each initiative opens its own map in the wiki (in Spanish):
 - [E000 · Governance maintenance](docs/E000/README.md): guards, compiler and test quality of this repo.
 - [E001 · Work governance](docs/E001/README.md): the fixed path of every request, backlog, wiki, agent memory and workers.
 - [E002 · Child projects](docs/E002/README.md): install, build, update and report governance in each Aquas product.
+- [E003 · Mandatory inheritance](docs/E003/README.md): every central control enforced in each child by program, not by text.
 
 ## Quick start
 

@@ -1,0 +1,21 @@
+{
+  "id": "E003/F001",
+  "tipo": "feature",
+  "titulo": "Herencia de controles a cada hijo",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "al hijo le llega 1 gancho de 10, sin verify ni pre-commit",
+  "padre": "E003",
+  "bloqueado_por": [],
+  "secuencia": 144,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHerenciaDePuntaAPunta",
+      "intencion": "valida que install deja activo en el hijo cada control marcado todos",
+      "rojo_cuando": "rojo cuando un control marcado todos no queda activo en el hijo",
+      "verde_cuando": "verde cuando ganchos, pruebas, verify y pre-commit funcionan en el hijo"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "declara qué control viaja a los hijos y lo instala en cada uno"
+}

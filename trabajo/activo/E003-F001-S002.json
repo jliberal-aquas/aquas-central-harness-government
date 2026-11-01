@@ -1,0 +1,29 @@
+{
+  "id": "E003/F001/S002",
+  "tipo": "slice",
+  "titulo": "herencia.json y su gate",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "nadie tiene escrito qué control debe cumplirse en un hijo",
+  "padre": "E003/F001",
+  "bloqueado_por": [
+    "E003/F001/S001"
+  ],
+  "secuencia": 146,
+  "pruebas": [
+    {
+      "prueba": "./internal/herencia:TestCadaControlTieneFila",
+      "intencion": "valida que cada control tiene una fila válida en herencia.json",
+      "rojo_cuando": "rojo cuando un control no tiene fila o una fila es inválida",
+      "verde_cuando": "verde cuando controles y filas coinciden"
+    }
+  ],
+  "alcance": [
+    "internal/herencia/**",
+    "cmd/aquas/**",
+    "gobierno/config/herencia.json",
+    "docs/**"
+  ],
+  "relacion": "nueva",
+  "que_hace": "declara por control si viaja a los hijos y hace fallar el gate si falta uno"
+}

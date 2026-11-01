@@ -1,0 +1,26 @@
+{
+  "id": "E003/F001/S001",
+  "tipo": "slice",
+  "titulo": "Binario sin archivos locales",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "el binario embebe entorno.local.json de la máquina que compila",
+  "padre": "E003/F001",
+  "bloqueado_por": [],
+  "secuencia": 145,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestBinarioSinEntornoLocal",
+      "intencion": "valida que lo embebido es la config versionada sin archivos locales",
+      "rojo_cuando": "rojo cuando entra un local.json o falta un archivo versionado",
+      "verde_cuando": "verde cuando lo embebido coincide con la config versionada"
+    }
+  ],
+  "alcance": [
+    "central.go",
+    "cmd/aquas/**",
+    "docs/**"
+  ],
+  "relacion": "nueva",
+  "que_hace": "saca entorno.local.json de lo que el binario aquas lleva dentro"
+}
