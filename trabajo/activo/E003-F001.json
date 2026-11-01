@@ -16,6 +16,62 @@
       "verde_cuando": "verde cuando ganchos, pruebas, verify y pre-commit funcionan en el hijo"
     }
   ],
+  "rojo": {
+    "fecha": "2026-11-01T20:15:35Z",
+    "head": "ad44ca15a1767f1999f2a7e5f49fff9de35272fe",
+    "resultado": {
+      "./cmd/aquas:TestHerenciaDePuntaAPunta": "herencia_test.go:45: S002: la central debió tener gobierno/config/herencia.json: open ..\\..\\gobierno\\config\\herencia.json: El sistema no puede encontrar el archivo especificado."
+    }
+  },
+  "aprobacion": {
+    "fecha": "2026-11-01T20:14:21Z",
+    "huella": "9873fbaca52e162f2e36a9f829e4db364b114dbe4bc0983645d34363aa58a42e",
+    "mensaje": "apruebo E003/F001 con push",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E003/F001/S001": [
+        {
+          "prueba": "./cmd/aquas:TestBinarioSinEntornoLocal",
+          "intencion": "valida que lo embebido es la config versionada sin archivos locales",
+          "rojo_cuando": "rojo cuando entra un local.json o falta un archivo versionado",
+          "verde_cuando": "verde cuando lo embebido coincide con la config versionada"
+        }
+      ],
+      "E003/F001/S002": [
+        {
+          "prueba": "./internal/herencia:TestCadaControlTieneFila",
+          "intencion": "valida que cada control tiene una fila válida en herencia.json",
+          "rojo_cuando": "rojo cuando un control no tiene fila o una fila es inválida",
+          "verde_cuando": "verde cuando controles y filas coinciden"
+        }
+      ],
+      "E003/F001/S003": [
+        {
+          "prueba": "./internal/hijo:TestInstallPoneControlesQueViajan",
+          "intencion": "valida que install y update ponen cada gancho todos y los agentes",
+          "rojo_cuando": "rojo cuando falta un gancho todos o un agente en el hijo",
+          "verde_cuando": "verde cuando el hijo tiene cada gancho todos sin perder los suyos"
+        }
+      ],
+      "E003/F001/S004": [
+        {
+          "prueba": "./internal/backlog:TestPruebasDelHijoSinGo",
+          "intencion": "valida que rojo y verde corren la plantilla de pruebas.json",
+          "rojo_cuando": "rojo cuando se corre go test pese a pruebas.json",
+          "verde_cuando": "verde cuando la plantilla corre cada prueba y su salida decide"
+        }
+      ],
+      "E003/F001/S005": [
+        {
+          "prueba": "./cmd/aquas:TestVerifyEnElHijo",
+          "intencion": "valida que el gate del hijo corre los chequeos todos y el pre-commit lo exige",
+          "rojo_cuando": "rojo cuando un chequeo todos no corre en el hijo o falta el pre-commit",
+          "verde_cuando": "verde cuando el gate del hijo falla ante una ficha rota y el pre-commit lo corre"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "declara qué control viaja a los hijos y lo instala en cada uno"
 }

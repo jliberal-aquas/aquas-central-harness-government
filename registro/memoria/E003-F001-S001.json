@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E003",
+    "feature": "F001",
+    "slice": "S001",
+    "tarea": "S001 aprobado (A4); sello y cierre"
+  },
+  "siguiente": "S002 herencia.json y su gate",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "6508d6da45afd10af36a565132df463d3df4d16ebcc9b733e8c7392bf62538f9",
+  "actualizado": "2026-11-01T20:38:29Z",
+  "sello": "41a9c269b6f99b4a8d544b2ac4231915bfccabf0265231fbfad76a99a07dacb2"
+}
