@@ -2,7 +2,7 @@
   "id": "E000/F008",
   "tipo": "feature",
   "titulo": "Frenos que el agente no puede falsificar",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P0",
   "motivo": "auditoría general 2026-10-30 G1 y D000077; humano aprobó orden recomendado 2026-10-31",
   "padre": "E000",
