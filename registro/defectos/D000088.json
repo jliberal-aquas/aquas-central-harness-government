@@ -1,0 +1,10 @@
+{
+  "id": "D000088",
+  "firma": "lista-chequeos-verify-a-mano",
+  "que": "herencia.Chequeos olvidó el chequeo de herencia que el mismo slice agregó a verify",
+  "causa": "la lista de chequeos se escribe a mano, aparte del código de verify",
+  "arreglo": "E003/F001/S005: verify corre desde herencia.Chequeos, así un chequeo fuera de la lista no corre en ningún lado",
+  "como_me_cercioro": "PROPUESTO: prueba de S005 TestVerifyEnElHijo",
+  "ocurrencias": [],
+  "relacion": "E003/F001/S002"
+}

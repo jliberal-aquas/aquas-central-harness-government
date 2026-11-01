@@ -1,0 +1,10 @@
+{
+  "id": "D000087",
+  "firma": "auditor-reanudado-caro",
+  "que": "reanudar con SendMessage un auditor viejo costó 389 mil tokens contra unos 50 mil de uno nuevo",
+  "causa": "el agente reanudado recarga todo su historial de auditorías previas",
+  "arreglo": "cada auditoría de slice usa un auditor nuevo (Agent auditor); reanudar solo para corregir su propio cierre",
+  "como_me_cercioro": "PROPUESTO: el orquestador no tiene control determinista; revisar subagent_tokens de cada auditoría",
+  "ocurrencias": [],
+  "relacion": "E003/F001/S002"
+}

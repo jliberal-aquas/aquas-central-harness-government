@@ -1,0 +1,10 @@
+{
+  "id": "D000089",
+  "firma": "huella-sin-config",
+  "que": "la huella del verde solo guarda .go; un cambio de destino en herencia.json tras el APROBADO no lo detecta el cierre",
+  "causa": "diseño de E001/F014/S001: huella_codigo.go solo toma archivos .go",
+  "arreglo": "PROPUESTO: incluir en la huella los archivos de config dentro del alcance del slice",
+  "como_me_cercioro": "PROPUESTO: prueba que cambia herencia.json tras el veredicto y espera rechazo del CERRADO",
+  "ocurrencias": [],
+  "relacion": "E003/F001/S002"
+}

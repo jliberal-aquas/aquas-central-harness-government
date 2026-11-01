@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "controles": [
+    {"control": "gancho:guard", "destino": "todos", "motivo": "no escribir fuera del repo ni en derivados vale en cada hijo"},
+    {"control": "gancho:hook", "destino": "central", "motivo": "recompila la central, enlaza el glosario y avisa oraciones largas en docs; en el hijo, aquas build recompila y el enlazado y el aviso no llegan todavía"},
+    {"control": "gancho:memory start", "destino": "todos", "motivo": "la memoria caliente arranca cada sesión del hijo"},
+    {"control": "gancho:turn open", "destino": "todos", "motivo": "la auditoría de turnos vale en cada hijo"},
+    {"control": "gancho:approval", "destino": "todos", "motivo": "el apruebo del humano sella contratos en cada hijo"},
+    {"control": "gancho:budget tool", "destino": "todos", "motivo": "el tope de llamadas por feature vale en cada hijo"},
+    {"control": "gancho:turn close", "destino": "todos", "motivo": "el cierre de turno con defecto registrado vale en cada hijo"},
+    {"control": "gancho:memory close", "destino": "todos", "motivo": "la memoria al día antes de cerrar vale en cada hijo"},
+    {"control": "gancho:proposal", "destino": "todos", "motivo": "toda PROPUESTA lleva diagrama en cada hijo"},
+    {"control": "gancho:agent-close", "destino": "todos", "motivo": "el cierre fijo de worker y auditor vale en cada hijo"},
+    {"control": "git:pre-commit", "destino": "todos", "motivo": "ningún commit entra sin pasar el gate, en central e hijo"},
+    {"control": "gate:calidad-go", "destino": "central", "motivo": "el hijo elige su stack (principio 11); la calidad Go es de los arneses de la central"},
+    {"control": "gate:aislamiento", "destino": "todos", "motivo": "el aislamiento de Bash vale donde corra un agente"},
+    {"control": "gate:derivados", "destino": "central", "motivo": "derivados y sellos de la central; el hijo revisa los suyos con su gate propio"},
+    {"control": "gate:wiki", "destino": "todos", "motivo": "la wiki con contrato y evidencia vale en cada hijo"},
+    {"control": "gate:backlog", "destino": "todos", "motivo": "fichas válidas en trabajo/ valen en cada hijo"},
+    {"control": "gate:herencia", "destino": "central", "motivo": "herencia.json lo declara la central; el hijo recibe instalado lo que viaja (S003, S005)"},
+    {"control": "gate:guardia", "destino": "todos", "motivo": "permitidos, entorno y settings válidos valen en cada hijo"}
+  ]
+}

@@ -103,6 +103,22 @@ func TestVerificarDePuntaAPunta(t *testing.T) {
 	if s := aquas(t, raiz, "", "verificar"); s.codigo != 1 || !strings.Contains(s.err, "docs/README.md: falta sección «Paso a paso»") {
 		t.Fatalf("wiki rota: exit 1 y nombra la sección; dio %+v", s)
 	}
+	// E003/F001/S002 (A1 hallazgo 2): un control sin fila en herencia.json hace fallar verify.
+	if err := os.WriteFile(inicio, []byte(inicioMinimo), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	rutaH := filepath.Join(raiz, "gobierno", "config", "herencia.json")
+	h, err := os.ReadFile(rutaH)
+	if err != nil {
+		t.Fatal(err)
+	}
+	sinGuard := strings.Replace(string(h), `"control": "gancho:guard"`, `"control": "gancho:otro"`, 1)
+	if err := os.WriteFile(rutaH, []byte(sinGuard), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if s := aquas(t, raiz, "", "verificar"); s.codigo != 1 || !strings.Contains(s.err, "GATE FALLIDO · herencia") || !strings.Contains(s.err, "gancho:guard sin fila") {
+		t.Fatalf("herencia sin la fila de guard: exit 1 y lo nombra; dio %+v", s)
+	}
 }
 
 func TestGuardiaCLIBloquea(t *testing.T) {

@@ -34,6 +34,7 @@ import (
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/encargo"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/entorno"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/guardia"
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/herencia"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/hijo"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/memoria"
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/propuesta"
@@ -120,6 +121,10 @@ func main() {
 			fallar(1, err)
 		}
 		fichas := backlog.Validar(raiz)
+		if ps := herencia.Validar(raiz); len(ps) > 0 { // E003/F001/S002: cada control con su fila en herencia.json
+			listar("GATE FALLIDO · herencia:", ps)
+			calidadGo = append(calidadGo, ps...) // cuenta para el exit 1 final
+		}
 		permitidos := guardia.ValidarConfig(raiz)
 		if exe, err := os.Executable(); err == nil { // D000026: binario viejo = gate falso
 			if m := entorno.BinarioViejo(raiz, exe); m != "" {
@@ -147,7 +152,7 @@ func main() {
 		if len(derivados)+len(docs)+len(fichas)+len(permitidos)+len(calidadGo) > 0 {
 			os.Exit(1)
 		}
-		fmt.Println("GATE OK · derivados, sello, wiki, backlog y guardia al día")
+		fmt.Println("GATE OK · derivados, sello, wiki, backlog, herencia y guardia al día")
 	case "hook":
 		hook(raiz)
 	case "turno": // hooks UserPromptSubmit y Stop: nunca bloquean; fallo = exit 1 + stderr

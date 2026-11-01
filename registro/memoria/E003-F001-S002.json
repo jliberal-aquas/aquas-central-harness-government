@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E003",
+    "feature": "F001",
+    "slice": "S002",
+    "tarea": "S002 aprobado (A2); sello y cierre"
+  },
+  "siguiente": "S003 install de ganchos y agentes",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "be5f0ec48297ce6ecec2904905ec3ee39af1812cb0d99b1ae9748d59d52d5e6a",
+  "actualizado": "2026-11-01T21:27:42Z",
+  "sello": "906de71c5253d90d247fd3b3431cbec7d4287afc1e0457a678ed8c05d2904f7e"
+}

@@ -31,6 +31,12 @@ func copiarGobierno(t *testing.T, raiz string) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	// E003/F001/S002: herencia.json declara git:pre-commit; un repo sano trae su .githooks.
+	b, err := os.ReadFile(filepath.Join("..", "..", ".githooks", "pre-commit"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	escribir(t, raiz, ".githooks/pre-commit", string(b))
 }
 
 // E001/F002/S010: `aquas compilar` rehace el bloque de hijos cuando cambia una ficha.

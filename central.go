@@ -11,5 +11,5 @@ import "embed"
 //go:embed gobierno/canonico
 //go:embed gobierno/config/agentes.json gobierno/config/claude_settings.json gobierno/config/dependencias.json
 //go:embed gobierno/config/documentos.json gobierno/config/golangci.yml gobierno/config/guardia.json
-//go:embed gobierno/config/sellos.json
+//go:embed gobierno/config/sellos.json gobierno/config/herencia.json
 var Central embed.FS

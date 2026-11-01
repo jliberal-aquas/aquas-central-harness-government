@@ -268,6 +268,9 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/guardia/permitidos.go](../../internal/guardia/permitidos.go) | `permitido` | `(raiz, abs string) bool` | permitido: abs cae dentro de alguna carpeta de la lista. |
 | [internal/guardia/permitidos.go](../../internal/guardia/permitidos.go) | `ValidarConfig` | `(raiz string) []string` | ValidarConfig es el gate de la lista de permitidos (lo llama `aquas verify`). |
 | [internal/guardia/permitidos.go](../../internal/guardia/permitidos.go) | `itoa` | `(i int) string` | itoa convierte un entero a texto. |
+| [internal/herencia/herencia.go](../../internal/herencia/herencia.go) | `Controles` | `(raiz string) ([]string, error)` | Controles devuelve la lista real de controles de la central: ganchos en su orden, .githooks y Chequeos. |
+| [internal/herencia/herencia.go](../../internal/herencia/herencia.go) | `Leer` | `(raiz string) ([]Fila, error)` | Leer devuelve las filas de herencia.json. |
+| [internal/herencia/herencia.go](../../internal/herencia/herencia.go) | `Validar` | `(raiz string) []string` | Validar devuelve los problemas de herencia.json frente a los controles reales; vacío = al día. |
 | [internal/hijo/ajustes.go](../../internal/hijo/ajustes.go) | `AsegurarHook` | `(dir string) error` | AsegurarHook (E002/F002/S006) agrega a .claude/settings.json del hijo un hook PostToolUse |
 | [internal/hijo/aviso.go](../../internal/hijo/aviso.go) | `AvisoVersion` | `(dir, binario string) string` | AvisoVersion (E002/F002/S003) devuelve el aviso de versión del hijo, o "" si no hay nada que avisar. |
 | [internal/hijo/build.go](../../internal/hijo/build.go) | `Build` | `(dir string) error` | Build arma el CLAUDE.md del hijo: central sellada + huecos locales. |
