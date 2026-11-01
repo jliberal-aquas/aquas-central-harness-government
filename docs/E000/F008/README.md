@@ -89,6 +89,7 @@ Pruebas de los slices: `TestGanchoAManoBloqueado`.
 | [S003](S003.md) | El gate exige aislamiento estricto donde existe y el arranque avisa en Windows nativo | Hecho |
 | [S004](S004.md) | Un slice cierra solo si el registro del auditor trae su APROBADO después del verde | Hecho |
 | [S005](S005.md) | El tope de la feature y el freno por turno se cuentan leyendo el registro de la sesión | Hecho |
+| [S006](S006.md) | Si la feature ya está aprobada y no cubre el slice, pide apruebo de la feature | Hecho |
 
 <!-- /GENERADO -->
 

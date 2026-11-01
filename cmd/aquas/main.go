@@ -685,6 +685,9 @@ func backlogCLI(raiz string, args []string) {
 		fmt.Print(backlog.Definir(raiz, f)) // E001/F002/S008
 	}
 	fmt.Print(backlog.Texto(f))
+	if args[0] == "nuevo" {
+		fmt.Print(backlog.AvisoFeatureAprobada(raiz, f)) // E000/F008/S006
+	}
 	if detalle {
 		fmt.Print(backlog.Detalle(f))
 	}

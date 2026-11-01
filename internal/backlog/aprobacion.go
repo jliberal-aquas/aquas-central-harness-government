@@ -139,6 +139,8 @@ func aprobada(raiz string, f Ficha) error {
 			}
 			return cubiertaPorFeature(raiz, p, f, aprobadas)
 		}
+		// E000/F008/S006 (D000084): fuera de la foto de una feature aprobada se pide la feature, no el slice.
+		return fmt.Errorf("%s no está en la aprobación de %s (se creó después): el humano debe escribir %s otra vez (cubre todos sus slices; el hook la registra)", f.ID, p.ID, pideFeature(p))
 	}
 	if sinRespaldo != nil {
 		return sinRespaldo
@@ -194,4 +196,25 @@ func cubiertaPorFeature(raiz string, p, f Ficha, aprobadas []Prueba) error {
 		}
 	}
 	return nil
+}
+
+// AvisoFeatureAprobada: aviso al crear un slice cuya feature ya está aprobada; "" si no aplica.
+// E000/F008/S006 (D000084): la creación no se frena; el slice queda fuera de la foto hasta el apruebo nuevo.
+func AvisoFeatureAprobada(raiz string, f Ficha) string {
+	if f.Tipo != "slice" {
+		return ""
+	}
+	p, err := activa(raiz, f.Padre)
+	if err != nil || p.Aprobacion == nil {
+		return ""
+	}
+	return fmt.Sprintf("Aviso: %s ya está aprobada; %s necesitará %s otra vez.\n", p.ID, f.ID, pideFeature(p))
+}
+
+// pideFeature: el apruebo de la feature que hay que pedir, con «con push» si la aprobación anterior lo tenía.
+func pideFeature(p Ficha) string {
+	if p.Aprobacion != nil && p.Aprobacion.Push {
+		return fmt.Sprintf("«apruebo %s con push»", p.ID)
+	}
+	return fmt.Sprintf("«apruebo %s»", p.ID)
 }

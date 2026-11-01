@@ -1,0 +1,10 @@
+{
+  "id": "D000085",
+  "firma": "freno-recomendado-sin-revisar-flujo",
+  "que": "se recomendó frenar backlog new en features aprobadas sin ver que el slice quedaría sin poder aprobarse",
+  "causa": "no se revisó en el código cómo se toma la foto de la aprobación antes de recomendar",
+  "arreglo": "PROPUESTO: revisar el flujo completo en el código antes de recomendar un freno; mensaje de rechazo que pida apruebo de la feature",
+  "como_me_cercioro": "internal/backlog/aprobacion.go:123 y backlog.go:170",
+  "ocurrencias": [],
+  "relacion": "E000/F008"
+}

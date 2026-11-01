@@ -78,3 +78,28 @@ func TestGateHumanoPorFeature(t *testing.T) {
 		t.Errorf("prueba aprobada cambiada: rojo rechazado pidiendo «apruebo E001/F002»; dio %+v", s)
 	}
 }
+
+// TestAvisoAlCrearSlice (E000/F008/S006, D000084): aquas backlog new avisa al crear un slice en una feature aprobada.
+// Rojo cuando: la salida de backlog new no trae el aviso.
+// Verde cuando: con la feature aprobada avisa que pide «apruebo E001/F002 con push»; sin aprobar, no avisa.
+func TestAvisoAlCrearSlice(t *testing.T) {
+	raiz := repoFeature(t)
+	crear := func(id string) salida {
+		t.Helper()
+		s := aquas(t, raiz, "", "backlog", "new", "id="+id, "titulo=N", "prioridad=P1", "motivo=m", "relacion=nueva",
+			"que_hace=hace algo", "prueba=./p:TestBandera=pide el arreglo|r|v")
+		if s.codigo != 0 {
+			t.Fatalf("backlog new %s: %+v", id, s)
+		}
+		return s
+	}
+	if s := crear("E001/F002/S004"); strings.Contains(s.out, "Aviso") {
+		t.Errorf("feature sin aprobar: no avisa; dio %+v", s)
+	}
+	if s := aquas(t, raiz, mensajeHumano(t, "apruebo E001/F002 con push"), "aprobacion"); s.codigo != 0 {
+		t.Fatalf("apruebo de feature: %+v", s)
+	}
+	if s := crear("E001/F002/S005"); !strings.Contains(s.out, "«apruebo E001/F002 con push»") {
+		t.Errorf("feature aprobada: backlog new avisa que pide «apruebo E001/F002 con push»; dio %+v", s)
+	}
+}
