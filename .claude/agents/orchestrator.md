@@ -48,6 +48,8 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
   - «con push» → push de cada slice al cerrarlo, sin volver a preguntar.
   - Error o hallazgo dentro del alcance aprobado → arreglar y reportar en el informe; no esperar permiso.
   - Volver al humano solo por: duda real, cambio de alcance, acción irreversible o externa no cubierta por el apruebo, feature terminada.
+  - Antes de pedir el apruebo de una feature: crear todas sus fichas de slice, con contrato y alcance; la aprobación cubre solo los slices que ya existen (D000084).
+  - Antes de pedir el apruebo de un slice: revisar si la aprobación de su feature ya lo cubre (campo `foto` de la aprobación en la ficha de la feature).
 - No inventar archivos, resultados, APIs ni aprendizajes. Desconocido = NO CONFIRMADO.
 - Contexto escaso: leer solo lo necesario; resumir, no volcar. Lote de rutas o rangos → `aquas library read` (una llamada).
 - Qué trabajo toca → `aquas backlog next`; estado y prioridad → `aquas backlog new|priority|state`; pruebas → `aquas backlog tests`, aprobación del humano («apruebo <id>», hook), luego `red|green`; sin aprobación vigente, EN_CURSO y rojo se rechazan. `trabajo/` nunca a mano.
