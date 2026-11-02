@@ -1,0 +1,10 @@
+{
+  "id": "D000104",
+  "firma": "correccion-humana-sin-defecto",
+  "que": "19 de 41 correcciones del humano (2026-10-21 a 2026-11-02) no quedaron como defecto; entre ellas 5 sobre los hijos",
+  "causa": "El cierre solo exige defecto cuando el agente cuenta un fallo, no cuando el humano corrige",
+  "arreglo": "Tramo propuesto en E001/F017: una corrección del humano sin defecto frena el cierre del turno",
+  "como_me_cercioro": "Cruce en .tmp/revision/cruce.md: 19 filas con defecto «—»",
+  "ocurrencias": [],
+  "relacion": "E001/F017"
+}

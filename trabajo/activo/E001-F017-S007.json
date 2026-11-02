@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017/S007",
+  "tipo": "slice",
+  "titulo": "Corrección del humano exige defecto",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "D000104: 19 de 41 correcciones del humano no quedaron como defecto",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 162,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestCorreccionExigeDefecto",
+      "intencion": "valida que una corrección del humano exige defecto",
+      "rojo_cuando": "rojo cuando el humano corrige y el cierre pasa sin D000NNN",
+      "verde_cuando": "verde cuando el cierre nombra el defecto o el turno no trae corrección"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Si el turno del humano trae una corrección, el cierre frena hasta nombrar un defecto nuevo o repetido"
+}
