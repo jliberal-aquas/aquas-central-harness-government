@@ -281,6 +281,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/herencia/herencia.go](../../internal/herencia/herencia.go) | `Controles` | `(raiz string) ([]string, error)` | Controles devuelve la lista real de controles de la central: ganchos en su orden, .githooks y Chequeos. |
 | [internal/herencia/herencia.go](../../internal/herencia/herencia.go) | `Leer` | `(raiz string) ([]Fila, error)` | Leer devuelve las filas de herencia.json. |
 | [internal/herencia/herencia.go](../../internal/herencia/herencia.go) | `Validar` | `(raiz string) []string` | Validar devuelve los problemas de herencia.json frente a los controles reales; vacío = al día. |
+| [internal/herencia/herencia.go](../../internal/herencia/herencia.go) | `ParaHijo` | `(hijo string) (corren, problemas []string)` | ParaHijo (E003/F001/S005) devuelve los chequeos de verify que corren en un hijo: los que su copia |
 | [internal/hijo/ajustes.go](../../internal/hijo/ajustes.go) | `AsegurarHook` | `(dir string) error` | AsegurarHook (E002/F002/S006, E003/F001/S003) agrega a .claude/settings.json del hijo el hook |
 | [internal/hijo/ajustes.go](../../internal/hijo/ajustes.go) | `clave` | `(evento string, grupo, h map[string]any) string` | clave identifica un gancho por evento, filtro, shell y comando. |
 | [internal/hijo/ajustes.go](../../internal/hijo/ajustes.go) | `podar` | `(hooks map[string]any, gs []gancho) bool` | podar quita de hooks cada gancho puesto por aquas (PrefijoGancho) que no está en gs tal cual |
@@ -302,6 +303,9 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/hijo/hijo.go](../../internal/hijo/hijo.go) | `AMedias` | `(err error) error` | AMedias (E002/F002/S002): error de install cuando la central ya quedó copiada y falló lo siguiente. |
 | [internal/hijo/huecos.go](../../internal/hijo/huecos.go) | `PrepararHuecos` | `(dir string) error` | PrepararHuecos (E002/F002/S001): crea con texto PENDIENTE los huecos de la central |
 | [internal/hijo/huecos.go](../../internal/hijo/huecos.go) | `Listo` | `(dir string) error` | Listo deja al hijo con sus huecos, su hook de build (S006) y su CLAUDE.md armado. |
+| [internal/hijo/precommit.go](../../internal/hijo/precommit.go) | `correVerify` | `(contenido string) bool` | correVerify: el último renglón con comando del pre-commit (sin espacios, \r de CRLF ni comentarios) es |
+| [internal/hijo/precommit.go](../../internal/hijo/precommit.go) | `RevisarPreCommit` | `(dir string) string` | RevisarPreCommit (E003/F001/S005, hallazgos A1.2 y A1.3): problema si el hijo no tiene repo git propio, |
+| [internal/hijo/precommit.go](../../internal/hijo/precommit.go) | `AsegurarPreCommit` | `(dir string) error` | AsegurarPreCommit (E003/F001/S005) escribe .githooks/pre-commit con `aquas verify` y fija core.hooksPath. |
 | [internal/hijo/report.go](../../internal/hijo/report.go) | `Report` | `(dir, quePaso, repro string) (string, error)` | Report arma el borrador de issue para la central: firma del hijo, versión |
 | [internal/hijo/skill.go](../../internal/hijo/skill.go) | `skillPropio` | `(dir string) error` | skillPropio (hallazgo A1.1): error si el hijo ya tiene un SKILL.md de /backlog que no generó aquas; build no lo pisa. |
 | [internal/hijo/skill.go](../../internal/hijo/skill.go) | `armarSkill` | `(dir string) (txt string, hay bool, err error)` | armarSkill devuelve el SKILL.md del hijo. hay=false si la central sellada no trae el skill (central anterior |

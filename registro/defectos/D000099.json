@@ -1,0 +1,10 @@
+{
+  "id": "D000099",
+  "firma": "reporte-en-slice-no-feature",
+  "que": "el orquestador reporta y pide continuar por slice aunque se acordó hablar en features",
+  "causa": "hipótesis no confirmada: ningún control exige que el cierre nombre la feature y su avance",
+  "arreglo": "reportar feature con avance N de M tramos",
+  "como_me_cercioro": "revisión del gobierno: control en el cierre que exija feature y avance",
+  "ocurrencias": [],
+  "relacion": "E003/F001/S005"
+}

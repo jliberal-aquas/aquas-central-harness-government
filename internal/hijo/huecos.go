@@ -49,5 +49,8 @@ func Listo(dir string) error {
 	if err := AsegurarHook(dir); err != nil {
 		return err
 	}
-	return Build(dir)
+	if err := Build(dir); err != nil {
+		return err
+	}
+	return AsegurarPreCommit(dir) // E003/F001/S005
 }

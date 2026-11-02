@@ -26,5 +26,32 @@
   "verde": {
     "fecha": "2026-10-23T15:35:15Z",
     "head": "1bf16487245cef0543a316cbc89f2ca16c248f55"
-  }
+  },
+  "arreglos": [
+    {
+      "id": "E002/F001/X01",
+      "titulo": "el hijo recién instalado necesita una wiki mínima para pasar su gate",
+      "motivo": "D000098 y decisión humana 2026-11-02: la wiki es control todos; un hijo sin docs/ no se libra",
+      "fecha": "2026-11-02T18:57:29Z",
+      "pruebas": [
+        {
+          "prueba": "./cmd/aquas:TestHijoInstaladoPasaSuGate",
+          "intencion": "valida que un hijo instalado pasa su gate solo con wiki mínima",
+          "rojo_cuando": "rojo cuando sin docs/ el gate del hijo pasa",
+          "verde_cuando": "verde cuando sin docs/ falla y con wiki mínima pasa"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-11-02T18:57:42Z",
+        "head": "fc5d8b4c536cbb6998fed4be9b83d8476966d015",
+        "resultado": {
+          "./cmd/aquas:TestHijoInstaladoPasaSuGate": "hijo_integral_test.go:40: aquas verificar en un hijo sin wiki debió fallar por docs/README.md; dio exit 0"
+        }
+      },
+      "verde": {
+        "fecha": "2026-11-02T19:38:36Z",
+        "head": "fc5d8b4c536cbb6998fed4be9b83d8476966d015"
+      }
+    }
+  ]
 }

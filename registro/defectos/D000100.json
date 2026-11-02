@@ -1,0 +1,10 @@
+{
+  "id": "D000100",
+  "firma": "auditor-sin-informe",
+  "que": "el auditor de E003/F001/S005 terminó sin entregar su cierre",
+  "causa": "no confirmada",
+  "arreglo": "pedirle el informe por mensaje",
+  "como_me_cercioro": "aviso cuando un subagente cierra sin informe",
+  "ocurrencias": [],
+  "relacion": "E003/F001/S005"
+}

@@ -87,6 +87,12 @@ Prueba integral: `TestHijoInstaladoPasaSuGate` (pendiente).
 | [S003](S003.md) | aquas update sin pisar lo sellado | Hecho |
 | [S004](S004.md) | aquas report: defecto del hijo a la central | Hecho |
 
+### Arreglos
+
+| Arreglo | Qué arregla | Por qué | Pruebas | Fecha | Rojo | Verde |
+|---|---|---|---|---|---|---|
+| X01 | el hijo recién instalado necesita una wiki mínima para pasar su gate | D000098 y decisión humana 2026-11-02: la wiki es control todos; un hijo sin docs/ no se libra | `TestHijoInstaladoPasaSuGate` | 2026-11-02 | 2026-11-02 | 2026-11-02 |
+
 <!-- /GENERADO -->
 
 - ↑ Subir: [E002 · Proyectos hijos](../README.md)

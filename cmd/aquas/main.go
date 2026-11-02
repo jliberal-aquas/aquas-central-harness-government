@@ -97,11 +97,43 @@ func main() {
 			if aislamiento != "" {
 				m = append(m, aislamiento)
 			}
+			// E003/F001/S005: además corre cada chequeo que la herencia sellada marca «todos».
+			corren, probs := herencia.ParaHijo(raiz)
+			m = append(m, probs...)
+			if p := hijo.RevisarPreCommit(raiz); p != "" {
+				m = append(m, p)
+			}
+			for _, c := range corren {
+				switch c {
+				case "aislamiento": // ya revisado arriba
+				case "wiki": // corre siempre: un hijo sin docs/ no se libra de la wiki (D000098)
+					docs, err := wiki.Verificar(raiz)
+					if err != nil {
+						fallar(1, err)
+					}
+					for _, d := range docs {
+						m = append(m, "wiki: "+d)
+					}
+				case "backlog":
+					for _, f := range backlog.Validar(raiz) {
+						m = append(m, "backlog trabajo/: "+f)
+					}
+				case "guardia":
+					for _, p := range guardia.ValidarConfig(raiz) {
+						m = append(m, "guardia: "+p)
+					}
+					if p := entorno.Validar(raiz); p != "" { // sin salto: un hijo sin entorno no pasa (hallazgo A1.2)
+						m = append(m, "guardia · entorno: "+p)
+					}
+				default:
+					m = append(m, "gate:"+c+" marcado todos y este aquas no sabe correrlo en el hijo; actualiza aquas")
+				}
+			}
 			if len(m) > 0 {
 				listar("GATE FALLIDO · hijo:", m)
 				os.Exit(1)
 			}
-			fmt.Println("GATE OK · hijo: central sellada, CLAUDE.md y /backlog al día")
+			fmt.Println("GATE OK · hijo: central sellada, CLAUDE.md, /backlog y chequeos todos al día")
 			return
 		}
 		calidadGo := revisarGo(raiz) // E001/F013/S001: primero, para que se vea aunque otro chequeo corte

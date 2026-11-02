@@ -139,3 +139,26 @@ func Validar(raiz string) []string {
 	}
 	return ps
 }
+
+// ParaHijo (E003/F001/S005) devuelve los chequeos de verify que corren en un hijo: los que su copia
+// sellada de herencia.json marca «todos». Un chequeo sin fila no corre y se informa como problema.
+func ParaHijo(hijo string) (corren, problemas []string) {
+	filas, err := Leer(filepath.Join(hijo, ".aquas", "central"))
+	if err != nil {
+		return nil, []string{err.Error()}
+	}
+	destino := map[string]string{}
+	for _, f := range filas {
+		destino[f.Control] = f.Destino
+	}
+	for _, c := range Chequeos {
+		d, hay := destino["gate:"+c]
+		switch {
+		case !hay:
+			problemas = append(problemas, fmt.Sprintf("gate:%s sin fila en la herencia sellada del hijo: no corre; actualiza la central (aquas update)", c))
+		case d == "todos":
+			corren = append(corren, c)
+		}
+	}
+	return corren, problemas
+}

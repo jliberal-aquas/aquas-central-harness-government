@@ -1,0 +1,10 @@
+{
+  "id": "D000098",
+  "firma": "worker-rebaja-control-por-prueba-vieja",
+  "que": "el worker saltó el gate wiki en hijos sin docs/ para que pasara TestHijoInstaladoPasaSuGate; rebaja un control todos",
+  "causa": "dos contratos aprobados chocan (E002 hijo recién instalado pasa su gate; S005 wiki todos) y el worker resolvió solo",
+  "arreglo": "decisión humana pendiente; recomendado: wiki corre siempre y ajustar la prueba de E002",
+  "como_me_cercioro": "revisar cada salto condicional del worker contra el principio 11 antes de auditar",
+  "ocurrencias": [],
+  "relacion": "E003/F001/S005"
+}
