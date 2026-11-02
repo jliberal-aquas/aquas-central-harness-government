@@ -1,0 +1,10 @@
+{
+  "id": "D000095",
+  "firma": "apruebo-sin-pagina-se-pierde",
+  "que": "«apruebo E000/F010» no quedó registrado: la feature no tenía página de contrato y el humano no vio un error claro",
+  "causa": "VERIFICADA: Aprobar exige la huella de la página (aprobacion.go Huella); sin página falla y el gancho de UserPromptSubmit sale 1, que no bloquea",
+  "arreglo": "pendiente: backlog new de feature o slice avisa que falta la página antes del apruebo, o el gancho sale 2 con el motivo",
+  "como_me_cercioro": "prueba: apruebo de ficha sin página; el humano debe ver el motivo y la ficha no queda aprobada en silencio",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

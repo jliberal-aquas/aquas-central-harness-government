@@ -132,7 +132,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.e
 | F007 | agrupa los tramos que nacen cuando un defecto aparece tres veces | Planeado |
 | [F008](F008/README.md) | impide que el agente lance por su cuenta las órdenes reservadas a los hooks | Hecho |
 | [F009](F009/README.md) | Impide que una prueba lea el git del repo de la central | Hecho |
-| F010 | el cierre de turno frena si un pedido nuevo no trae bloque DESAFÍO completo | Planeado |
+| [F010](F010/README.md) | el cierre de turno frena si un pedido nuevo no trae bloque DESAFÍO completo | Planeado |
 
 <!-- /GENERADO -->
 
