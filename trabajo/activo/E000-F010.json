@@ -1,0 +1,21 @@
+{
+  "id": "E000/F010",
+  "tipo": "feature",
+  "titulo": "Gate del desafío en pedidos nuevos",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "decisión humana 2026-11-02: el orquestador desafía cada pedido nuevo; sin gate, la regla se olvida",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 153,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestDesafioEnPedidoNuevo",
+      "intencion": "valida que el gancho de cierre exige DESAFÍO solo en pedidos nuevos",
+      "rojo_cuando": "rojo cuando un pedido nuevo sin DESAFÍO pasa o un dale con DESAFÍO faltante frena",
+      "verde_cuando": "verde cuando frena el pedido nuevo sin bloque y deja pasar el operativo"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "el cierre de turno frena si un pedido nuevo no trae bloque DESAFÍO completo"
+}
