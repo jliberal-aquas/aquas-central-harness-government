@@ -44,7 +44,7 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 
 ## Slice y feature
 - Contrato slice: id, fuente (turnos), objetivo, alcance (incluye/excluye/rutas), comando de prueba, entrega esperada, docs enlazados, tabla «Casos borde» con las 7 categorías (regla `04_CASOS_BORDE.md`).
-- `aquas backlog red <id>`: Go corre cada prueba de la ficha sola (`go test -json`); exige que cada una falle por sí misma; lo registra con el motivo. `aquas backlog green <id>`: las corre juntas; exige que todas pasen, después del rojo. `aquas backlog tests <id> …`: cambia la lista y borra rojo y verde (decisión humana 2026-10-21: comandos bajo `backlog`, no `slice`, porque aplican a E, F y S).
+- `aquas backlog red <id>`: Go corre cada prueba de la ficha sola (`go test -json`; con `gobierno/config/pruebas.json`, su plantilla con `sh -c`, prueba `ruta:nombre`, E003/F001/S004); exige que cada una falle por sí misma; lo registra con el motivo. `aquas backlog green <id>`: las corre juntas; exige que todas pasen, después del rojo. `aquas backlog tests <id> …`: cambia la lista y borra rojo y verde (decisión humana 2026-10-21: comandos bajo `backlog`, no `slice`, porque aplican a E, F y S).
 - Worker no se declara terminado; Go cierra solo con rojo→verde registrados + sello completo.
 - Feature: prueba integral propia, roja al crear. Cierra = todos sus slices cerrados + integral verde.
 - Slice activo único (S003): con un slice EN_CURSO o VERIFICANDO, `aquas backlog state` niega cambiar otro slice; el gate marca dos en curso. No hay archivo de bloqueo ni `slice iniciar`.

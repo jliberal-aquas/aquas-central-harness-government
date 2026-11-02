@@ -1,0 +1,10 @@
+{
+  "id": "D000093",
+  "firma": "huella-verde-solo-go",
+  "que": "la huella del verde solo cuenta archivos .go; en un hijo sin Go queda vacía y CERRADO no ve código cambiado tras el verde",
+  "causa": "VERIFICADA: huella_codigo.go:84 filtra por sufijo .go",
+  "arreglo": "pendiente: con pruebas.json, la huella cuenta los archivos del alcance sin filtrar por .go",
+  "como_me_cercioro": "prueba: hijo con pruebas.json, cambiar un .py del alcance tras el verde; cerrar debe rechazarse",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

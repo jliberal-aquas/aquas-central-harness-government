@@ -10,7 +10,7 @@ import (
 // Documentar reescribe valida, rojo cuando y verde cuando de pruebas ya registradas.
 // Sirve en fichas archivadas y en arreglos (id padre/Xnn): no toca estado, rojo ni verde, solo los textos.
 func Documentar(raiz, id string, lista []string) (Ficha, error) {
-	ps, err := listaPruebas(lista)
+	ps, err := listaPruebasDe(raiz, lista)
 	if err != nil {
 		return Ficha{}, err
 	}

@@ -202,7 +202,7 @@ func Nuevo(raiz string, campos []string) (Ficha, error) {
 	if !esta(prioridades, v["prioridad"]) {
 		return Ficha{}, fmt.Errorf("prioridad %q inválida: %s", v["prioridad"], strings.Join(prioridades, " | "))
 	}
-	ps, err := listaPruebas(pruebas)
+	ps, err := listaPruebasDe(raiz, pruebas)
 	if err != nil {
 		return Ficha{}, err
 	}
@@ -502,6 +502,11 @@ func libre(f Ficha, arc map[string]Ficha) bool {
 // Validar: problemas de las fichas en disco (gate). Sin carpeta trabajo/ no hay problemas.
 func Validar(raiz string) []string {
 	var p []string
+	cmd, err := plantilla(raiz) // E003/F001/S004: con pruebas.json, las pruebas son ruta:nombre
+	if err != nil {
+		p = append(p, err.Error())
+	}
+	libre := cmd != ""
 	ids := map[string]string{}
 	secs := map[int]string{}
 	var fichas []Ficha
@@ -537,8 +542,8 @@ func Validar(raiz string) []string {
 				p = append(p, fmt.Sprintf("%s: id %s repite %s", rel, f.ID, otro))
 			}
 			ids[f.ID] = rel
-			p = append(p, problemasRojoVerde(rel, f)...)
-			p = append(p, problemasArreglos(rel, f)...)
+			p = append(p, problemasRojoVerde(rel, f, libre)...)
+			p = append(p, problemasArreglos(rel, f, libre)...)
 			if f.Tipo == "slice" && corriendo(f) && dir == Activo {
 				if primero != "" {
 					p = append(p, fmt.Sprintf("%s: otro slice en curso además de %s; solo uno a la vez", rel, primero))

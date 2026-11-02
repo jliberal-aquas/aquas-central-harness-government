@@ -585,7 +585,7 @@ func focoEnBacklog(raiz string, f memoria.Foco) error {
 
 // backlogCLI: nuevo | ver [id] | tabla | prioridad | estado | siguiente | pruebas | rojo | verde.
 func backlogCLI(raiz string, args []string) {
-	uso := fmt.Errorf("uso: aquas backlog new id=… titulo=… prioridad=… motivo=… que_hace=<una oración, máx. 20 palabras> relacion=nueva|amplia:<id>|corrige:<id> prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… [bloqueado_por=A,B] | show [id] | table | priority <id> <P0..P3|SIN_TRIAGE> motivo=… | state <id> <ESTADO> | next | tests <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | document <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | red <id> | green <id> | seal <id> [<clave> sin_cambio|actualizado motivo=…] | scope <id> ruta… | scope <id> extend <ruta> motivo=… | fix <slice|feature> titulo=… motivo=… [absorbe=<slice>] | code <id> [commit…] | edit <id> [titulo=…] [bloqueado_por=A,B] motivo=…")
+	uso := fmt.Errorf("uso: aquas backlog new id=… titulo=… prioridad=… motivo=… que_hace=<una oración, máx. 20 palabras> relacion=nueva|amplia:<id>|corrige:<id> prueba=./paquete:TestNombre=valida|rojo cuando|verde cuando… (con gobierno/config/pruebas.json: ruta:nombre=…) [bloqueado_por=A,B] | show [id] | table | priority <id> <P0..P3|SIN_TRIAGE> motivo=… | state <id> <ESTADO> | next | tests <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | document <id> ./paquete:TestNombre=valida|rojo cuando|verde cuando… | red <id> | green <id> | seal <id> [<clave> sin_cambio|actualizado motivo=…] | scope <id> ruta… | scope <id> extend <ruta> motivo=… | fix <slice|feature> titulo=… motivo=… [absorbe=<slice>] | code <id> [commit…] | edit <id> [titulo=…] [bloqueado_por=A,B] motivo=…")
 	if len(args) == 0 {
 		fallar(64, uso)
 	}

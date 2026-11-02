@@ -1,0 +1,10 @@
+{
+  "id": "D000092",
+  "firma": "contrato-slice-fuera-de-foto",
+  "que": "bajo aprobación de feature, cambiar la tabla de contrato de un slice (Para qué existe) no invalida su rojo ni su verde; pasó con E003/F001/S004",
+  "causa": "VERIFICADA: la foto de la feature guarda solo las pruebas de cada slice (aprobacion.go:95) y cubiertaPorFeature compara la huella de la feature, no la página del slice",
+  "arreglo": "pendiente: guardar en la foto la huella de cada slice y compararla en cubiertaPorFeature",
+  "como_me_cercioro": "prueba: aprobar feature, editar Para qué existe del slice, el verde debe pedir apruebo otra vez",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

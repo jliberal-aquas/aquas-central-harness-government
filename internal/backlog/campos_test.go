@@ -10,18 +10,18 @@ import (
 // Verde cuando: las incompletas fallan y la completa guarda sus tres campos; el gate señala la que trae uno solo.
 func TestPruebaExigeValidaRojoVerde(t *testing.T) {
 	for _, mala := range []string{"./x:TestA=valida", "./x:TestA=valida|rojo", "./x:TestA=valida||verde"} {
-		if _, err := listaPruebas([]string{mala}); err == nil {
+		if _, err := listaPruebas([]string{mala}, false); err == nil {
 			t.Errorf("%q: debió fallar por campo faltante", mala)
 		}
 	}
-	ps, err := listaPruebas([]string{"./x:TestA=valida algo|rojo si X|verde si Y"})
+	ps, err := listaPruebas([]string{"./x:TestA=valida algo|rojo si X|verde si Y"}, false)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if p := ps[0]; p.Intencion != "valida algo" || p.RojoCuando != "rojo si X" || p.VerdeCuando != "verde si Y" {
 		t.Errorf("campos mal guardados: %+v", p)
 	}
-	if m := problemaPrueba(Prueba{Nombre: "./x:TestA", Intencion: "v", RojoCuando: "r"}); m == "" {
+	if m := problemaPrueba(Prueba{Nombre: "./x:TestA", Intencion: "v", RojoCuando: "r"}, false); m == "" {
 		t.Error("el gate debió señalar que falta «verde cuando»")
 	}
 }
@@ -30,11 +30,11 @@ func TestPruebaExigeValidaRojoVerde(t *testing.T) {
 // Rojo cuando: el texto sobrante se pega a «verde cuando» y la prueba se registra sin aviso.
 // Verde cuando: cuatro partes caen con un mensaje que dice cuántas hay; tres partes pasan.
 func TestPruebaConPartesDeMasCae(t *testing.T) {
-	_, err := listaPruebas([]string{"./x:TestA=exige relacion=nueva|amplia|corrige|verde"})
+	_, err := listaPruebas([]string{"./x:TestA=exige relacion=nueva|amplia|corrige|verde"}, false)
 	if err == nil || !strings.Contains(err.Error(), "4 partes") {
 		t.Errorf("cuatro partes: debió caer diciendo cuántas hay; dio %v", err)
 	}
-	if _, err := listaPruebas([]string{"./x:TestA=valida|rojo|verde"}); err != nil {
+	if _, err := listaPruebas([]string{"./x:TestA=valida|rojo|verde"}, false); err != nil {
 		t.Errorf("tres partes: debió pasar; dio %v", err)
 	}
 }

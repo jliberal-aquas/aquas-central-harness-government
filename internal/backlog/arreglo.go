@@ -76,7 +76,7 @@ func Arreglar(raiz, padre, titulo, motivo, absorbe string, ahora time.Time) (Arr
 }
 
 // problemasArreglos: chequeo del gate: IDs en secuencia bajo su ficha, con título y motivo.
-func problemasArreglos(rel string, f Ficha) []string {
+func problemasArreglos(rel string, f Ficha, libre bool) []string {
 	var p []string
 	for i, a := range f.Arreglos {
 		if quiere := idArreglo(f.ID, i+1); a.ID != quiere {
@@ -86,7 +86,7 @@ func problemasArreglos(rel string, f Ficha) []string {
 			p = append(p, fmt.Sprintf("%s: arreglo %s sin título o motivo", rel, a.ID))
 		}
 		for _, x := range a.Pruebas {
-			if m := problemaPrueba(x); m != "" {
+			if m := problemaPrueba(x, libre); m != "" {
 				p = append(p, fmt.Sprintf("%s: arreglo %s: %s", rel, a.ID, m))
 			}
 		}

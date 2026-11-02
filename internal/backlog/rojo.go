@@ -40,23 +40,36 @@ var reNombrePrueba = regexp.MustCompile(`^\./[\w.-]+(/[\w.-]+)*:Test([A-Z0-9_]\w
 const formatoPrueba = "./paquete:TestNombre=valida|rojo cuando|verde cuando"
 
 // problemaPrueba: por qué una prueba de la ficha está mal escrita ("" si está bien).
-func problemaPrueba(p Prueba) string {
-	if !reNombrePrueba.MatchString(p.Nombre) {
+// libre (E003/F001/S004): el repo tiene pruebas.json y la prueba es ruta:nombre, no ./paquete:TestNombre.
+func problemaPrueba(p Prueba, libre bool) string {
+	if libre && (!reNombreLibre.MatchString(p.Nombre) || rutaPeligrosa(p.Nombre)) {
+		return fmt.Sprintf("prueba %q: usa %s (hay %s)", p.Nombre, formatoLibre, RutaPruebas)
+	}
+	if !libre && !reNombrePrueba.MatchString(p.Nombre) {
 		return fmt.Sprintf("prueba %q: usa %s", p.Nombre, formatoPrueba)
 	}
 	if strings.TrimSpace(p.Intencion) == "" {
-		return fmt.Sprintf("prueba %s sin intención: di qué demuestra (%s)", p.Nombre, formatoPrueba)
+		return fmt.Sprintf("prueba %s sin intención: di qué demuestra (%s)", p.Nombre, formato(libre))
 	}
 	if p.RojoCuando == "" || p.VerdeCuando == "" { // E001/F008/S007: sin excepción para pruebas viejas
-		return fmt.Sprintf("prueba %s sin «rojo cuando» o «verde cuando»: aquas backlog document (%s)", p.Nombre, formatoPrueba)
+		return fmt.Sprintf("prueba %s sin «rojo cuando» o «verde cuando»: aquas backlog document (%s)", p.Nombre, formato(libre))
 	}
 	return ""
 }
 
+// listaPruebasDe: listaPruebas con la forma de nombre que pide el repo (pruebas.json o go test).
+func listaPruebasDe(raiz string, xs []string) ([]Prueba, error) {
+	c, err := plantilla(raiz)
+	if err != nil {
+		return nil, err
+	}
+	return listaPruebas(xs, c != "")
+}
+
 // listaPruebas convierte "./paquete:TestNombre=intención" en pruebas válidas, sin repetidas.
-func listaPruebas(xs []string) ([]Prueba, error) {
+func listaPruebas(xs []string, libre bool) ([]Prueba, error) {
 	if len(xs) == 0 {
-		return nil, fmt.Errorf("falta al menos una prueba: prueba=%s", formatoPrueba)
+		return nil, fmt.Errorf("falta al menos una prueba: prueba=%s", formato(libre))
 	}
 	var ps []Prueba
 	for _, x := range xs {
@@ -66,7 +79,7 @@ func listaPruebas(xs []string) ([]Prueba, error) {
 		}
 		c := append(strings.SplitN(i, "|", 3), "", "")
 		p := Prueba{Nombre: strings.TrimSpace(n), Intencion: strings.TrimSpace(c[0]), RojoCuando: strings.TrimSpace(c[1]), VerdeCuando: strings.TrimSpace(c[2])}
-		if m := problemaPrueba(p); m != "" {
+		if m := problemaPrueba(p, libre); m != "" {
 			return nil, errors.New(m)
 		}
 		for _, q := range ps {
@@ -109,7 +122,7 @@ func SliceEnCurso(raiz string) (string, bool, error) {
 
 // Pruebas fija las pruebas de la ficha; cambiarlas borra rojo y verde.
 func Pruebas(raiz, id string, lista []string) (Ficha, error) {
-	ps, err := listaPruebas(lista)
+	ps, err := listaPruebasDe(raiz, lista)
 	if err != nil {
 		return Ficha{}, err
 	}
@@ -134,7 +147,7 @@ func corrible(raiz, id string) (Ficha, error) {
 		return Ficha{}, fmt.Errorf("%s no está en curso (%s): rojo y verde son del slice en curso", id, f.Estado)
 	}
 	if len(f.Pruebas) == 0 {
-		return Ficha{}, fmt.Errorf("%s sin pruebas: aquas backlog tests %s %s", id, id, formatoPrueba)
+		return Ficha{}, fmt.Errorf("%s sin pruebas: aquas backlog tests %s %s", id, id, formatoDe(raiz))
 	}
 	return f, nil
 }
@@ -220,6 +233,7 @@ type resultado struct {
 	accion, salida        string
 	lineas                []string
 	noCompila, sinPaquete bool
+	noCorre               bool // E003/F001/S004: el comando de la plantilla no existe o no se puede ejecutar
 }
 
 // motivo: texto que explica el resultado de una prueba; siPasa se usa cuando pasó.
@@ -237,12 +251,21 @@ func (r resultado) motivo(siPasa string) string {
 		return "paquete no existe: no cuenta"
 	case r.noCompila:
 		return "no compila: no cuenta"
+	case r.noCorre:
+		return "el comando de " + RutaPruebas + " no corrió (" + r.salida + "): no cuenta"
 	}
 	return "no existe en el paquete"
 }
 
 // correr: `go test -json -count=1 -run ^(A|B)$ ./paquete` por paquete; resultado por prueba.
+// Con pruebas.json (E003/F001/S004) corre su plantilla, una prueba a la vez.
 func correr(raiz string, ps []Prueba) (map[string]resultado, error) {
+	if c, err := plantilla(raiz); err != nil || c != "" {
+		if err != nil {
+			return nil, err
+		}
+		return correrPlantilla(raiz, c, ps)
+	}
 	porPaquete := map[string][]string{}
 	var paquetes []string
 	for _, p := range ps {
@@ -337,7 +360,7 @@ func head(raiz string) string {
 func cierre(raiz string, f Ficha) error {
 	switch {
 	case len(f.Pruebas) == 0:
-		return fmt.Errorf("%s no cierra sin pruebas: aquas backlog tests %s %s", f.ID, f.ID, formatoPrueba)
+		return fmt.Errorf("%s no cierra sin pruebas: aquas backlog tests %s %s", f.ID, f.ID, formatoDe(raiz))
 	case f.Rojo == nil:
 		return fmt.Errorf("%s no cierra sin rojo: aquas backlog red %s", f.ID, f.ID)
 	case f.Verde == nil:
@@ -359,11 +382,11 @@ func cierre(raiz string, f Ficha) error {
 }
 
 // problemasRojoVerde: chequeos del gate sobre pruebas, rojo y verde de una ficha.
-func problemasRojoVerde(rel string, f Ficha) []string {
+func problemasRojoVerde(rel string, f Ficha, libre bool) []string {
 	var p []string
 	vistas := map[string]bool{}
 	for _, x := range f.Pruebas {
-		if m := problemaPrueba(x); m != "" {
+		if m := problemaPrueba(x, libre); m != "" {
 			p = append(p, rel+": "+m)
 		}
 		if vistas[x.Nombre] {

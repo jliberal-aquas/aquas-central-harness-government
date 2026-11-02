@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E003",
+    "feature": "F001",
+    "slice": "S004",
+    "tarea": "S004 listo para cerrar: A3 APROBADO, sello completo"
+  },
+  "siguiente": "S005 gate y pre-commit en el hijo; analizar directriz de asesor del humano",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "54b62fdd70214d71b4c0be8133c631f588197f7463622894ee27cdbbd3d094be",
+  "actualizado": "2026-11-02T01:30:08Z",
+  "sello": "a4c4acbb0a231edc98c88ec5a91de7661d8c9daf87be1683d8ae2d5fe089e658"
+}

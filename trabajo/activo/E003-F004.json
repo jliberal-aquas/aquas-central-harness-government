@@ -1,0 +1,21 @@
+{
+  "id": "E003/F004",
+  "tipo": "feature",
+  "titulo": "Gate de wiki con pruebas libres",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "hallazgo A1.2 de S004: la wiki solo acepta pruebas TestX y toma el nombre tras el último dos puntos",
+  "padre": "E003",
+  "bloqueado_por": [],
+  "secuencia": 152,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestWikiConPruebasLibres",
+      "intencion": "valida casos borde y contrato con pruebas ruta:nombre",
+      "rojo_cuando": "rojo cuando una fila con test_y no pasa o dos pruebas se confunden",
+      "verde_cuando": "verde cuando la wiki acepta y distingue pruebas libres"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "la wiki acepta y distingue pruebas ruta:nombre de un hijo sin Go"
+}

@@ -38,7 +38,7 @@ func TestArregloCuelgaDeSlice(t *testing.T) {
 		t.Fatalf("la ficha no guardó los arreglos: %+v", g.Arreglos)
 	}
 	g.Arreglos[0].ID = "E002/F001/S002/X07"
-	if len(problemasArreglos("r", g)) == 0 {
+	if len(problemasArreglos("r", g, false)) == 0 {
 		t.Error("el gate debió señalar el ID fuera de secuencia")
 	}
 }

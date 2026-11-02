@@ -70,7 +70,7 @@ continúa: [EJ-E003](../README.md#EJ-E003)
 
 1. `herencia.json` marca `guard` con `todos`.
 2. Un hijo en Python corre `aquas install`; su `.claude/settings.json` trae el gancho `guard`.
-3. Su `pruebas.json` dice `pytest {prueba}`; `aquas backlog red` corre esa prueba.
+3. Su `pruebas.json` dice `pytest {ruta}::{nombre}`; `aquas backlog red` corre esa prueba.
 4. Un [commit](../../glosario.md#commit) con un [derivado](../../glosario.md#derivado) desfasado sale bloqueado por el pre-commit del hijo.
 
 ## Paso a paso
@@ -101,7 +101,7 @@ Prueba integral: `TestHerenciaDePuntaAPunta` (instala un hijo de prueba y revisa
 | [S001](S001.md) | saca entorno.local.json de lo que el binario aquas lleva dentro | Hecho |
 | [S002](S002.md) | declara por control si viaja a los hijos y hace fallar el gate si falta uno | Hecho |
 | [S003](S003.md) | install y update ponen en el hijo cada gancho que viaja y los agentes | Hecho |
-| [S004](S004.md) | pruebas.json del hijo dice cómo correr una prueba para rojo y verde | Planeado |
+| [S004](S004.md) | pruebas.json del hijo dice cómo correr una prueba para rojo y verde | Hecho |
 | [S005](S005.md) | verify corre en el hijo los chequeos que viajan y install pone el pre-commit | Planeado |
 
 <!-- /GENERADO -->

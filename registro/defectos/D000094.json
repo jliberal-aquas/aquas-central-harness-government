@@ -1,0 +1,10 @@
+{
+  "id": "D000094",
+  "firma": "freno-corta-memoria",
+  "que": "el freno de 60 llamadas cortó el turno y la memoria caliente quedó vieja; el cierre de turno no pudo ponerla al día",
+  "causa": "VERIFICADA: el freno de presupuesto bloquea toda Bash, también aquas memory set, que el cierre exige",
+  "arreglo": "pendiente: el freno deja pasar aquas memory set y aquas defect, o avisa antes (p. ej. a 55)",
+  "como_me_cercioro": "prueba: turno con 60 llamadas; memory set debe pasar y otra orden frenarse",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
