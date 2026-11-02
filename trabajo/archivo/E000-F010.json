@@ -44,6 +44,40 @@
       ]
     }
   },
+  "arreglos": [
+    {
+      "id": "E000/F010/X01",
+      "titulo": "Turno humano leído por hora",
+      "motivo": "D000096 y decisión humana 2026-11-02: el freno toma un turno viejo y palabras operativas reales frenaban de más",
+      "fecha": "2026-11-02T12:46:11Z",
+      "pruebas": [
+        {
+          "prueba": "./cmd/aquas:TestFrenoTurnoPorHora",
+          "intencion": "valida que el freno cuenta el turno desde el mensaje humano más reciente por hora",
+          "rojo_cuando": "rojo cuando cuenta llamadas de un turno viejo",
+          "verde_cuando": "verde cuando cuenta solo las del turno abierto"
+        },
+        {
+          "prueba": "./internal/propuesta:TestOperativoConPalabrasMedidas",
+          "intencion": "valida que lo recomendado, aprobado y sube son operativos",
+          "rojo_cuando": "rojo cuando alguno frena",
+          "verde_cuando": "verde cuando pasan y un pedido nuevo sigue frenando"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-11-02T12:48:03Z",
+        "head": "c975059231c862d82097613ef25b32e049b2bf07",
+        "resultado": {
+          "./cmd/aquas:TestFrenoTurnoPorHora": "freno_hora_test.go:43: el apruebo vigente es el de hora más reciente (E000/F002); dio \u0026{feature:E000/F001 tope:300 hora:{wall:0 ext:63929170800 loc:\u003cnil\u003e}}",
+          "./internal/propuesta:TestOperativoConPalabrasMedidas": "operativo_test.go:12: \"sube\": operativo"
+        }
+      },
+      "verde": {
+        "fecha": "2026-11-02T13:05:43Z",
+        "head": "c975059231c862d82097613ef25b32e049b2bf07"
+      }
+    }
+  ],
   "relacion": "nueva",
   "que_hace": "el cierre de turno frena si un pedido nuevo no trae bloque DESAFÍO completo"
 }

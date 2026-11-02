@@ -1,0 +1,10 @@
+{
+  "id": "D000097",
+  "firma": "arreglo-de-feature-sin-dueno",
+  "que": "el gate rechazó las pruebas del arreglo E000/F010/X01 como prueba sin slice dueño",
+  "causa": "integralesDe solo tomaba las pruebas de la ficha de la feature, no las de sus arreglos, aunque backlog fix acepta features",
+  "arreglo": "integralesDe suma las pruebas de los arreglos de la feature",
+  "como_me_cercioro": "aquas verify sobre el repo: falla antes del cambio, GATE OK después",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

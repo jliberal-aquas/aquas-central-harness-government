@@ -200,31 +200,6 @@ func llamadas(raiz string, l lineaLlamadas) []string {
 	return ids
 }
 
-// textoHumano: el texto de una línea de usuario con origen humano, sin marcas de aviso de agente; "" si no lo es.
-func textoHumano(l lineaLlamadas) string {
-	if l.Type != "user" || l.Origin.Kind != "human" {
-		return ""
-	}
-	var texto string
-	if json.Unmarshal(l.Message.Content, &texto) != nil {
-		var bloques []bloqueRegistro
-		if json.Unmarshal(l.Message.Content, &bloques) != nil {
-			return ""
-		}
-		for _, b := range bloques {
-			if b.Type == "text" {
-				texto += b.Text
-			}
-		}
-	}
-	for _, m := range backlog.MarcasDeAgente {
-		if strings.Contains(texto, m) {
-			return ""
-		}
-	}
-	return strings.TrimSpace(texto)
-}
-
 // apruebo: un «apruebo» de feature escrito por el humano en el registro.
 type apruebo struct {
 	feature string
@@ -232,7 +207,7 @@ type apruebo struct {
 	hora    time.Time
 }
 
-// escaneo: lo que deja un registro: cada llamada con su hora, las del turno abierto, dónde empieza ese turno y
+// escaneo: lo que deja un registro: cada llamada con su hora, las del turno abierto, la hora (UnixNano) en que empieza ese turno y
 // el último apruebo de feature.
 type escaneo struct {
 	llamadas map[string]time.Time
@@ -243,14 +218,19 @@ type escaneo struct {
 
 var reFeature = regexp.MustCompile(`^E\d{3}/F\d{3}$`)
 
-// escanear lee un registro una vez.
+// escanear lee un registro una vez. D000096: el turno y el apruebo vigente se eligen por hora, no por posición:
+// Claude Code escribe a veces el mensaje humano nuevo antes de líneas más viejas. El turno son las llamadas con hora
+// igual o posterior al mensaje humano más reciente; un mensaje sin hora no abre turno.
 func escanear(raiz, ruta string) (escaneo, error) {
 	r := escaneo{llamadas: map[string]time.Time{}, turno: map[string]bool{}}
-	err := recorrerRegistro(ruta, func(pos int64, l lineaLlamadas) {
+	var desde time.Time
+	err := recorrerRegistro(ruta, func(_ int64, l lineaLlamadas) {
 		hora, _ := time.Parse(time.RFC3339, l.Timestamp)
-		if texto := textoHumano(l); texto != "" {
-			r.turno, r.inicio = map[string]bool{}, pos
-			if id, ok := backlog.IDAprobado(texto); ok && reFeature.MatchString(id) && !hora.IsZero() {
+		if texto := backlog.TextoHumano(l.Type, l.Origin.Kind, l.Message.Content); texto != "" {
+			if hora.After(desde) {
+				desde = hora
+			}
+			if id, ok := backlog.IDAprobado(texto); ok && reFeature.MatchString(id) && !hora.IsZero() && (r.apruebo == nil || !hora.Before(r.apruebo.hora)) {
 				tope := topeFeaturePorDefecto
 				primera, _, _ := strings.Cut(texto, "\n")
 				if t := reTope.FindStringSubmatch(primera); t != nil {
@@ -262,9 +242,14 @@ func escanear(raiz, ruta string) (escaneo, error) {
 		}
 		for _, id := range llamadas(raiz, l) {
 			r.llamadas[id] = hora
-			r.turno[id] = true
 		}
 	})
+	for id, h := range r.llamadas {
+		if !h.Before(desde) {
+			r.turno[id] = true
+		}
+	}
+	r.inicio = desde.UnixNano()
 	return r, err
 }
 

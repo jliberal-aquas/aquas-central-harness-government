@@ -85,6 +85,8 @@ Prueba integral: `TestDesafioEnPedidoNuevo` (el gancho de cierre real frena un p
 
 Pruebas de los [slices](../../glosario.md#slice): `TestRevisarDesafio`.
 
+Pruebas del arreglo X01 (turno por hora y palabras medidas): `TestFrenoTurnoPorHora`, `TestOperativoConPalabrasMedidas`.
+
 ## Navegación
 
 <!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
@@ -92,6 +94,12 @@ Pruebas de los [slices](../../glosario.md#slice): `TestRevisarDesafio`.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | el gancho de cierre frena un pedido nuevo cuya respuesta no trae DESAFÍO | Hecho |
+
+### Arreglos
+
+| Arreglo | Qué arregla | Por qué | Pruebas | Fecha | Rojo | Verde |
+|---|---|---|---|---|---|---|
+| X01 | Turno humano leído por hora | D000096 y decisión humana 2026-11-02: el freno toma un turno viejo y palabras operativas reales frenaban de más | `TestFrenoTurnoPorHora`, `TestOperativoConPalabrasMedidas` | 2026-11-02 | 2026-11-02 | 2026-11-02 |
 
 <!-- /GENERADO -->
 

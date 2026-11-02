@@ -138,6 +138,20 @@ func UltimoMensajeHumano(ruta string) (string, error) {
 	}
 }
 
+// TextoHumano (E000/F010/X01): texto de una línea de usuario con origen humano, sin marcas de agente; "" si no lo
+// es. Lo usa el freno de presupuesto; el gate del desafío usa las mismas piezas (textoUsuario y deAgente) en
+// UltimoMensajeHumano, que además mira los orígenes de agentes.
+func TextoHumano(tipo, origen string, contenido json.RawMessage) string {
+	if tipo != "user" || origen != "human" {
+		return ""
+	}
+	t := strings.TrimSpace(textoUsuario(contenido))
+	if deAgente(t) {
+		return ""
+	}
+	return t
+}
+
 // deAgente: el texto trae alguna marca de mensaje de agente.
 func deAgente(t string) bool {
 	for _, m := range MarcasDeAgente {

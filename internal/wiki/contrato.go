@@ -139,7 +139,11 @@ func integralesDe(raiz, rel string) []string {
 		return nil
 	}
 	var ns []string
-	for _, p := range f.Pruebas {
+	ps := f.Pruebas
+	for _, a := range f.Arreglos { // D000097: `backlog fix <feature>` deja arreglos con pruebas propias en la feature
+		ps = append(ps, a.Pruebas...)
+	}
+	for _, p := range ps {
 		ns = append(ns, p.Nombre[strings.LastIndex(p.Nombre, ":")+1:])
 	}
 	return ns

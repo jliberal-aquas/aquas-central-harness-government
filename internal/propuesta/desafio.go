@@ -8,7 +8,8 @@ import (
 )
 
 // operativas: palabras que vuelven operativo un mensaje corto (contrato de E000/F010/S001).
-var operativas = map[string]bool{"sí": true, "si": true, "dale": true, "ok": true, "sigue": true, "continúa": true, "listo": true, "hazlo": true, "aplica": true}
+var operativas = map[string]bool{"sí": true, "si": true, "dale": true, "ok": true, "sigue": true, "continúa": true, "listo": true, "hazlo": true, "aplica": true,
+	"recomendado": true, "aprobado": true, "sube": true} // E000/F010/X01: medidas en el registro real, decisión humana 2026-11-02
 
 // partesDesafio: lo que el bloque nombra después de su línea DESAFÍO.
 var partesDesafio = []string{"Supuestos", "Contraargumentos", "Riesgos", "Recomendación"}
