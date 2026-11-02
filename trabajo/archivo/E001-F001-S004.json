@@ -58,6 +58,31 @@
         "fecha": "2026-10-29T01:27:27Z",
         "head": "c4d6d1cc4813e08acc30fd6f02e53b1a9b6a949e"
       }
+    },
+    {
+      "id": "E001/F001/S004/X03",
+      "titulo": "la prueba de un arreglo de feature tiene dueño en el README de su feature",
+      "motivo": "D000097: el arreglo del gate quedó sin prueba propia",
+      "fecha": "2026-11-02T18:01:05Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/wiki:TestPruebaDeArregloConDuenoEnSuFeature",
+          "intencion": "valida que la prueba de un arreglo de feature tiene dueño en su README",
+          "rojo_cuando": "rojo cuando el gate la da sin slice dueño",
+          "verde_cuando": "verde cuando nombrada en su feature el gate queda limpio y una ajena sigue sin dueño"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-11-02T18:01:17Z",
+        "head": "8d8729217761216eb37708a4e589e51d8c703882",
+        "resultado": {
+          "./internal/wiki:TestPruebaDeArregloConDuenoEnSuFeature": "contrato_test.go:109: la prueba del arreglo nombrada en su feature debió tener dueño; problemas: [\"x/x_test.go: prueba sin slice dueño: TestDelArreglo (nómbrala en «Contrato y evidencia» de su slice)\"]"
+        }
+      },
+      "verde": {
+        "fecha": "2026-11-02T18:01:48Z",
+        "head": "8d8729217761216eb37708a4e589e51d8c703882"
+      }
     }
   ],
   "codigo": [

@@ -93,6 +93,30 @@ func TestIntegralConDuenoEnSuIniciativa(t *testing.T) {
 	}
 }
 
+// TestPruebaDeArregloConDuenoEnSuFeature (E001/F001/S004/X03, D000097): la prueba de un arreglo de feature vive en el README de su feature.
+// Rojo cuando: el gate da «prueba sin slice dueño» a la prueba que declara un arreglo de la ficha de la feature.
+// Verde cuando: nombrada en «Contrato y evidencia» de su feature, el gate queda limpio; una prueba ajena sigue sin dueño.
+func TestPruebaDeArregloConDuenoEnSuFeature(t *testing.T) {
+	raiz := conFichas(t)
+	escribir(t, raiz, "README.md", "- [E001](docs/E001/README.md)\n")
+	ficha(t, raiz, backlog.Ficha{ID: "E001/F001", Titulo: "Guardia", Estado: "CERRADO", Secuencia: 3,
+		Arreglos: []backlog.Arreglo{{ID: "E001/F001/X01", Titulo: "Arreglo", Motivo: "D000097", Fecha: "2026-11-02T00:00:00Z",
+			Pruebas: []backlog.Prueba{{Nombre: "./x:TestDelArreglo", Intencion: "arreglo"}}}}})
+	escribir(t, raiz, "x/x_test.go", "package x\n\nimport \"testing\"\n\nfunc TestA(t *testing.T) {}\n\nfunc TestB(t *testing.T) {}\n\nfunc TestDelArreglo(t *testing.T) {}\n")
+	reemplazar(t, raiz, tF001, "Lo prometido y su prueba.", "Arreglo: `TestDelArreglo`.")
+	generar(t, raiz)
+	if p := verificar(t, raiz); len(p) > 0 {
+		t.Fatalf("la prueba del arreglo nombrada en su feature debió tener dueño; problemas: %q", p)
+	}
+	// Una prueba que ni la ficha ni sus arreglos declaran sigue sin dueño aunque la página la nombre.
+	escribir(t, raiz, "x/x_test.go", "package x\n\nimport \"testing\"\n\nfunc TestA(t *testing.T) {}\n\nfunc TestB(t *testing.T) {}\n\nfunc TestDelArreglo(t *testing.T) {}\n\nfunc TestAjena(t *testing.T) {}\n")
+	reemplazar(t, raiz, tF001, "Arreglo: `TestDelArreglo`.", "Arreglo: `TestDelArreglo` y `TestAjena`.")
+	generar(t, raiz)
+	if p := verificar(t, raiz); !strings.Contains(strings.Join(p, " | "), "sin slice dueño: TestAjena") {
+		t.Errorf("una prueba que la ficha no declara debió seguir sin dueño; problemas: %q", p)
+	}
+}
+
 func TestPruebaConDuenoPasa(t *testing.T) {
 	raiz := wikiValida(t)
 	escribir(t, raiz, "x/x_test.go", tPruebaGo)
