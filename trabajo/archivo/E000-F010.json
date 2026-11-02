@@ -1,0 +1,49 @@
+{
+  "id": "E000/F010",
+  "tipo": "feature",
+  "titulo": "Gate del desafío en pedidos nuevos",
+  "estado": "CERRADO",
+  "prioridad": "P2",
+  "motivo": "decisión humana 2026-11-02: el orquestador desafía cada pedido nuevo; sin gate, la regla se olvida",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 153,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestDesafioEnPedidoNuevo",
+      "intencion": "valida que el gancho de cierre exige DESAFÍO solo en pedidos nuevos",
+      "rojo_cuando": "rojo cuando un pedido nuevo sin DESAFÍO pasa o un dale con DESAFÍO faltante frena",
+      "verde_cuando": "verde cuando frena el pedido nuevo sin bloque y deja pasar el operativo"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-02T11:59:42Z",
+    "head": "b38fa6686f9a323fbcdbbc1c1e4b3eb599aca9ba",
+    "resultado": {
+      "./cmd/aquas:TestDesafioEnPedidoNuevo": "desafio_test.go:33: pedido nuevo sin bloque: frena nombrando DESAFÍO; dio {out: err:aquas: «propuesta» ahora se escribe «proposal»; el nombre viejo dejará de existir más adelante"
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-02T12:27:40Z",
+    "head": "b38fa6686f9a323fbcdbbc1c1e4b3eb599aca9ba",
+    "huella": {}
+  },
+  "aprobacion": {
+    "fecha": "2026-11-02T11:29:18Z",
+    "huella": "e251e0a0bd39b40bfa55e6eab5d29c38df68f82dc7c07ebcafe3e513c31262fb",
+    "mensaje": "apruebo E000/F010",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "foto": {
+      "E000/F010/S001": [
+        {
+          "prueba": "./internal/propuesta:TestRevisarDesafio",
+          "intencion": "valida que pedido nuevo sin DESAFÍO frena y operativo pasa",
+          "rojo_cuando": "rojo cuando un pedido nuevo sin bloque pasa o un dale frena",
+          "verde_cuando": "verde cuando solo el pedido nuevo sin bloque completo frena"
+        }
+      ]
+    }
+  },
+  "relacion": "nueva",
+  "que_hace": "el cierre de turno frena si un pedido nuevo no trae bloque DESAFÍO completo"
+}

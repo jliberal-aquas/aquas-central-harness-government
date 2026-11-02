@@ -100,6 +100,52 @@ type lineaRegistro struct {
 	Origin struct {
 		Kind string `json:"kind"`
 	} `json:"origin"`
+	Timestamp string `json:"timestamp"`
+}
+
+// UltimoMensajeHumano (E000/F010/S001): texto del mensaje que abrió el turno, si lo escribió el humano; "" si no.
+// El turno lo abre la línea de usuario con origen (human, peer, task-notification…) de hora más reciente: si es de
+// un agente, el turno no es del humano (hallazgo A1.1). Manda la hora, no la posición: Claude Code puede escribir
+// un mensaje antes de líneas más viejas (D000096). Sin origen (resultados de herramienta, avisos de ganchos),
+// rotas o vacías se saltan.
+func UltimoMensajeHumano(ruta string) (string, error) {
+	fh, err := os.Open(ruta)
+	if err != nil {
+		return "", err
+	}
+	defer func() { _ = fh.Close() }()
+	var ultimo, hora string
+	rd := bufio.NewReader(fh)
+	for {
+		l, err := rd.ReadBytes('\n')
+		if len(l) > 0 && bytes.Contains(l, []byte(`"origin"`)) {
+			var lr lineaRegistro
+			if json.Unmarshal(l, &lr) == nil && lr.Type == "user" && lr.Origin.Kind != "" && lr.Timestamp >= hora {
+				if t := strings.TrimSpace(textoUsuario(lr.Message.Content)); t != "" {
+					if lr.Origin.Kind != "human" || deAgente(t) {
+						t = ""
+					}
+					ultimo, hora = t, lr.Timestamp
+				}
+			}
+		}
+		if errors.Is(err, io.EOF) {
+			return ultimo, nil
+		}
+		if err != nil {
+			return "", err
+		}
+	}
+}
+
+// deAgente: el texto trae alguna marca de mensaje de agente.
+func deAgente(t string) bool {
+	for _, m := range MarcasDeAgente {
+		if strings.Contains(t, m) {
+			return true
+		}
+	}
+	return false
 }
 
 // mensajeHumano: alguna línea de usuario con origen humano trae ese texto exacto; un mensaje guardado con 300
@@ -163,10 +209,8 @@ var MarcasDeAgente = []string{"<agent-message", "[Subagent hand-back]", "<task-n
 // IDAprobado: id de la PRIMERA línea no vacía si es «apruebo <id>»; una línea que termina en «?» es pregunta.
 // Todo prompt con marcas de mensaje de agente se descarta.
 func IDAprobado(prompt string) (string, bool) {
-	for _, m := range MarcasDeAgente {
-		if strings.Contains(prompt, m) {
-			return "", false
-		}
+	if deAgente(prompt) {
+		return "", false
 	}
 	for _, l := range strings.Split(strings.ReplaceAll(prompt, "\r\n", "\n"), "\n") {
 		if strings.TrimSpace(l) == "" {

@@ -42,7 +42,7 @@
   "internal/memoria": [
     "internal/backlog"
   ],
-  "internal/propuesta": [],
+  "internal/propuesta": ["internal/backlog"],
   "internal/turno": [],
   "internal/vueltas": [],
   "internal/wiki": [

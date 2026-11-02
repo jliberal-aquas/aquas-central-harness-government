@@ -164,6 +164,8 @@ func main() {
 	case "propuesta": // hook Stop (E001/F002/S006): PROPUESTA sin diagrama → exit 2 + stderr = el agente lo agrega
 		var e struct {
 			Respuesta string `json:"last_assistant_message"`
+			Registro  string `json:"transcript_path"`  // E000/F010/S001: de ahí sale el último mensaje humano
+			Activo    bool   `json:"stop_hook_active"` // turno que corrige un freno: DESAFÍO no se revisa
 		}
 		datos, _ := io.ReadAll(os.Stdin)
 		if err := json.Unmarshal(datos, &e); err != nil {
@@ -175,7 +177,9 @@ func main() {
 		if err != nil { // Leer devuelve lo decodificado junto al error: no usar un entorno inválido
 			en = entorno.Entorno{}
 		}
-		for _, m := range []string{propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta), propuesta.RevisarShell(e.Respuesta, en.ShellHumano), defecto.RevisarFallo(raiz, e.Respuesta)} { // S016: insight PROPUESTO exige defecto; E001/F004/S002: fallo exige defecto
+		// E000/F010/S001 (A1.3): DESAFÍO va primero. Es la única revisión que se salta con stop_hook_active; si otra
+		// frenara antes, el turno de corrección cerraría sin DESAFÍO. Las demás corren igual en ese turno.
+		for _, m := range []string{propuesta.RevisarDesafio(e.Registro, e.Respuesta, e.Activo), propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta), propuesta.RevisarShell(e.Respuesta, en.ShellHumano), defecto.RevisarFallo(raiz, e.Respuesta)} { // S016: insight PROPUESTO exige defecto; E001/F004/S002: fallo exige defecto
 			if m != "" {
 				_, _ = fmt.Fprintln(os.Stderr, m)
 				os.Exit(2)

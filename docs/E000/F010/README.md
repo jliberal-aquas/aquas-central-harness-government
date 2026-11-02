@@ -91,7 +91,7 @@ Pruebas de los [slices](../../glosario.md#slice): `TestRevisarDesafio`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | el gancho de cierre frena un pedido nuevo cuya respuesta no trae DESAFÍO | Planeado |
+| [S001](S001.md) | el gancho de cierre frena un pedido nuevo cuya respuesta no trae DESAFÍO | Hecho |
 
 <!-- /GENERADO -->
 

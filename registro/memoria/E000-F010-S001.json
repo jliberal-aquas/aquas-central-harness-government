@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F010",
+    "slice": "S001",
+    "tarea": "S001 aprobado (A3) y sellado; cerrando S001 y F010"
+  },
+  "siguiente": "commit y push; decisiones del humano: palabras operativas y ficha D000096",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "a910ac652027cd24073477a18adf4c5ed3009bcdaada00649604cab9bb1b3b92",
+  "actualizado": "2026-11-02T12:34:02Z",
+  "sello": "5ac33a0bff31dedeeea0f005d2cfcfe36591d47e2558c24ceb73bb0a486b2cad"
+}

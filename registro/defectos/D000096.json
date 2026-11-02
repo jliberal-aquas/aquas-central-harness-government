@@ -1,0 +1,10 @@
+{
+  "id": "D000096",
+  "firma": "freno-turno-por-posicion",
+  "que": "el freno de presupuesto contó 61 llamadas en un turno de unas 16 y bloqueó Bash",
+  "causa": "escanear toma el turno por posición en el registro; Claude Code escribió el mensaje humano de las 11:29 antes de líneas de la víspera (línea 111267 vs 111290), así que el último humano por posición era viejo",
+  "arreglo": "elegir el inicio del turno por hora del mensaje humano, no por posición en el archivo",
+  "como_me_cercioro": "prueba con un registro cuyo último mensaje humano por hora está antes en el archivo",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
