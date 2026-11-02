@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E003",
+    "feature": "F001",
+    "slice": "S003",
+    "tarea": "S003 APROBADO en A4; sellando y cerrando"
+  },
+  "siguiente": "commit y push de S003; luego S004 pruebas del hijo sin Go",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "7e38e175b71df7ce49ee89e3f86a388d6fabdaf86d42aee36241f01f5571eeba",
+  "actualizado": "2026-11-02T00:43:47Z",
+  "sello": "b792b410c32b74eae89b43d0a6cbc70468518d0f62dfad2972719137d70751ff"
+}

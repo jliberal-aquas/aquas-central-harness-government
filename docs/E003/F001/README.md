@@ -100,7 +100,7 @@ Prueba integral: `TestHerenciaDePuntaAPunta` (instala un hijo de prueba y revisa
 |---|---|---|
 | [S001](S001.md) | saca entorno.local.json de lo que el binario aquas lleva dentro | Hecho |
 | [S002](S002.md) | declara por control si viaja a los hijos y hace fallar el gate si falta uno | Hecho |
-| [S003](S003.md) | install y update ponen en el hijo cada gancho que viaja y los agentes | Planeado |
+| [S003](S003.md) | install y update ponen en el hijo cada gancho que viaja y los agentes | Hecho |
 | [S004](S004.md) | pruebas.json del hijo dice cómo correr una prueba para rojo y verde | Planeado |
 | [S005](S005.md) | verify corre en el hijo los chequeos que viajan y install pone el pre-commit | Planeado |
 

@@ -1,0 +1,21 @@
+{
+  "id": "E003/F003",
+  "tipo": "feature",
+  "titulo": "Hallazgos leves de install en el hijo",
+  "estado": "BORRADOR",
+  "prioridad": "P3",
+  "motivo": "auditoría E003/F001/S003-A1: hallazgos 4, 6 y 7 quedan fuera del slice",
+  "padre": "E003",
+  "bloqueado_por": [],
+  "secuencia": 151,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestInstallSinHallazgosLeves",
+      "intencion": "valida plantilla única, agente propio y auditor del hijo",
+      "rojo_cuando": "rojo cuando central e hijo arman ganchos distintos o se pisa un agente propio sin aviso",
+      "verde_cuando": "verde cuando comparten plantilla y avisan"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Plantilla de ganchos única, aviso al pisar un agente propio y auditor útil en el hijo."
+}

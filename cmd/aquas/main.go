@@ -271,6 +271,7 @@ func main() {
 		if err := hijo.Listo(raiz); err != nil {
 			fallar(1, fmt.Errorf("%w; tras corregirlo repite aquas update", err))
 		}
+		entornoHijo(raiz)
 		fmt.Printf("gobierno central %s en %s; CLAUDE.md armado\n", versionBinario(), raiz)
 	case "install": // instala el gobierno central en un proyecto hijo
 		// E002/F002/S001: corre en la carpeta del hijo, sin ruta, como un paquete.
@@ -287,6 +288,7 @@ func main() {
 		if err := hijo.Listo(raiz); err != nil { // E002/F002/S002: la central ya quedó; reintentar es update
 			fallar(1, hijo.AMedias(err))
 		}
+		entornoHijo(raiz)
 		fmt.Printf("gobierno central %s instalado en %s; CLAUDE.md armado con huecos PENDIENTE en %s\n", v, raiz, hijo.CarpetaHuecos)
 	case "cierre-agente": // hook SubagentStop: exit 2 + stderr = el subagente reescribe su cierre
 		var e struct {
@@ -802,4 +804,17 @@ func registrarCierre(raiz, tipo, transcript, primera, resultado string) {
 	}
 	_, _ = f.Write(append(l, '\n'))
 	_ = f.Close()
+}
+
+// entornoHijo (E003/F001/S003) declara el entorno del hijo, como aquas init en la central:
+// la guardia del hijo lo exige. Install lo escribe; update lo repone si faltaba.
+// Si no puede (carpeta sin git o que no es su raíz), no frena: avisa. La guardia falla cerrada sin entorno (D000090).
+func entornoHijo(raiz string) {
+	err := os.MkdirAll(filepath.Dir(filepath.Join(raiz, entorno.RutaEntorno)), 0o755)
+	if err == nil {
+		_, err = entorno.Iniciar(raiz)
+	}
+	if err != nil {
+		fmt.Printf("AVISO: entorno sin declarar (%v); la guardia bloqueará todo hasta que la carpeta sea la raíz de un repo git y corras aquas update\n", err)
+	}
 }

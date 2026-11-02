@@ -1,0 +1,21 @@
+{
+  "id": "E003/F002",
+  "tipo": "feature",
+  "titulo": "Enlazado y aviso de docs en el hijo",
+  "estado": "BORRADOR",
+  "prioridad": "P3",
+  "motivo": "decisión A del humano 2026-11-01: el gancho hook queda en la central; el hijo no enlaza glosario ni avisa oraciones largas todavía",
+  "padre": "E003",
+  "bloqueado_por": [],
+  "secuencia": 150,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHijoEnlazaYAvisa",
+      "intencion": "valida que el hijo enlaza glosario y avisa oraciones largas",
+      "rojo_cuando": "rojo cuando una edición de docs del hijo no enlaza ni avisa",
+      "verde_cuando": "verde cuando el hijo enlaza y avisa igual que la central"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "El hijo enlaza su glosario y avisa oraciones largas al editar docs, como la central."
+}

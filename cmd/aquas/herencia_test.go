@@ -61,6 +61,26 @@ func TestHerenciaDePuntaAPunta(t *testing.T) {
 			t.Errorf("S003: el agente %s debió llegar al hijo: %v", a, err)
 		}
 	}
+	// S003 (D000090): sin git, install no falla; avisa que el entorno quedó sin declarar.
+	sinGit := t.TempDir()
+	if s := aquas(t, sinGit, "", "install"); s.codigo != 0 || !strings.Contains(s.out, "AVISO: entorno sin declarar") {
+		t.Errorf("S003: install sin git debe salir 0 y avisar del entorno; dio %+v", s)
+	}
+	// S003: la guardia funciona en el hijo (exige el entorno que install declara).
+	if s := aquas(t, dir, `{"tool_name":"Write","tool_input":{"file_path":"../fuera.txt"}}`, "guardia"); s.codigo != 2 || !strings.Contains(s.err, "bloqueada: ../fuera.txt") {
+		t.Errorf("S003: en el hijo, escribir fuera debe bloquearse (exit 2); dio %+v", s)
+	}
+	if s := aquas(t, dir, `{"tool_name":"Write","tool_input":{"file_path":"docs/a.md"}}`, "guardia"); s.codigo != 0 {
+		t.Errorf("S003: en el hijo, escribir dentro debe pasar; dio %+v", s)
+	}
+	for _, f := range h.Controles {
+		if orden, ok := strings.CutPrefix(f.Control, "gancho:"); ok && f.Destino == "todos" {
+			// Cada gancho corre en el hijo: 0 deja pasar, 2 frena con motivo; 1 sería un fallo interno (p. ej. falta un archivo).
+			if s := aquas(t, dir, `{"session_id":"s1","prompt":"hola","tool_name":"Read","tool_input":{}}`, strings.Fields(orden)...); s.codigo != 0 && s.codigo != 2 {
+				t.Errorf("S003: el gancho %q falla en el hijo: %+v", orden, s)
+			}
+		}
+	}
 
 	// S004: rojo y verde corren la plantilla de pruebas.json, sin Go.
 	escribir(t, dir, "gobierno/config/pruebas.json", `{"version": 1, "comando": "sh {ruta} {nombre}"}`)

@@ -1,0 +1,10 @@
+{
+  "id": "D000090",
+  "firma": "install-exige-git",
+  "que": "al escribir el entorno del hijo, aquas install falló en carpetas sin git; 5 pruebas previas cayeron",
+  "causa": "entorno.Iniciar exige que la carpeta sea raíz de un repo git; la prueba del slice no instala por el CLI",
+  "arreglo": "sin git, install termina y avisa; la guardia sin entorno bloquea todo (falla cerrada)",
+  "como_me_cercioro": "la suite completa de cmd/aquas en verde salvo la integral de la feature",
+  "ocurrencias": [],
+  "relacion": "E003/F001/S003"
+}

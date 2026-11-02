@@ -1,0 +1,10 @@
+{
+  "id": "D000091",
+  "firma": "presupuesto-feature-equivocada",
+  "que": "el gancho budget tool frenó por el tope de E000/F009 (300) mientras se trabajaba E003/F001, aprobada sin tope",
+  "causa": "hipótesis no confirmada: el contador toma el último apruebo de feature con tope, no el más reciente",
+  "arreglo": "pendiente: contar contra el último apruebo de feature del registro",
+  "como_me_cercioro": "prueba con apruebo con tope seguido de apruebo sin tope de otra feature",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

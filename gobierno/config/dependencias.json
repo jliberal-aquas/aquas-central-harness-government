@@ -35,7 +35,10 @@
     "internal/turno"
   ],
   "internal/herencia": [],
-  "internal/hijo": [],
+  "internal/hijo": [
+    "internal/compilador",
+    "internal/herencia"
+  ],
   "internal/memoria": [
     "internal/backlog"
   ],

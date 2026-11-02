@@ -41,8 +41,21 @@ func Build(dir string) error {
 			return err
 		}
 	}
+	ags, err := agentes(dir) // E003/F001/S003: los agentes de la central, compilados
+	if err != nil {
+		return err
+	}
 	if err := os.WriteFile(filepath.Join(dir, "CLAUDE.md"), []byte(txt), 0o644); err != nil {
 		return err
+	}
+	for ruta, b := range ags {
+		p := filepath.Join(dir, filepath.FromSlash(ruta))
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			return err
+		}
+		if err := os.WriteFile(p, b, 0o644); err != nil {
+			return err
+		}
 	}
 	if !hay {
 		return nil

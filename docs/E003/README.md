@@ -78,6 +78,8 @@ Prueba integral: `TestHijoCumpleLaCentral` (un hijo instalado tiene activo cada 
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [F001](F001/README.md) | declara qué control viaja a los hijos y lo instala en cada uno | Planeado |
+| F002 | El hijo enlaza su glosario y avisa oraciones largas al editar docs, como la central. | Planeado |
+| F003 | Plantilla de ganchos única, aviso al pisar un agente propio y auditor útil en el hijo. | Planeado |
 
 <!-- /GENERADO -->
 
