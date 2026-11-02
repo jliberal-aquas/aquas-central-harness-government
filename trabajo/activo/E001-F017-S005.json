@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017/S005",
+  "tipo": "slice",
+  "titulo": "Defecto nombra la prueba que lo cubre",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "Los 103 defectos describen el arreglo en texto; ninguno nombra su prueba",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 160,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestDefectoNombraPrueba",
+      "intencion": "valida que el defecto apunta a una prueba real",
+      "rojo_cuando": "rojo cuando el defecto nombra una prueba inexistente o ninguna",
+      "verde_cuando": "verde cuando la prueba nombrada existe"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Un defecto nuevo nombra la prueba de su control y el gate comprueba que existe"
+}

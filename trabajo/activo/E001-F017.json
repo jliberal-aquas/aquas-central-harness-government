@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017",
+  "tipo": "feature",
+  "titulo": "Controles de la retrospectiva del 2026-11-02",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "Retrospectiva de 597 turnos: 41 correcciones del humano, 19 sin defecto; 6 familias sin control determinista",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 155,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestRetrospectivaSinReincidencia",
+      "intencion": "valida que las 6 familias de la retrospectiva tienen control",
+      "rojo_cuando": "rojo cuando una familia repite sin que un gate la frene",
+      "verde_cuando": "verde cuando cada familia falla su caso malo y pasa su caso bueno"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Ata el freno al trabajo activo, frena apruebos de más, separa agentes, guarda refinado, nombra pruebas y vigila docs"
+}

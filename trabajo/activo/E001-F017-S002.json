@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017/S002",
+  "tipo": "slice",
+  "titulo": "No pedir apruebo ya cubierto",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "6 correcciones del humano (T000337 a T000590) y D000069, D000084, D000099",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 157,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestNoPideAprueboCubierto",
+      "intencion": "valida que el cierre frena pedir apruebo ya cubierto",
+      "rojo_cuando": "rojo cuando el agente pide apruebo de un slice con feature aprobada",
+      "verde_cuando": "verde cuando lo pide solo si la feature no tiene apruebo vigente"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "El cierre de turno frena si el agente pide apruebo o dale de un tramo con feature aprobada"
+}

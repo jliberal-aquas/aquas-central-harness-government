@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017/S006",
+  "tipo": "slice",
+  "titulo": "Página del tramo al día con su código",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "5 correcciones por documentación vieja o sin ejemplos; el gate solo ve presencia",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 161,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestPaginaAlDiaConCodigo",
+      "intencion": "valida que la página es posterior a su código",
+      "rojo_cuando": "rojo cuando el código cambia y la página no",
+      "verde_cuando": "verde cuando la página se actualiza después del código"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "El gate falla si el código de un tramo cambió después de la última edición de su página"
+}

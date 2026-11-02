@@ -5,6 +5,8 @@
   "causa": "no confirmada; probable: el comando exento no se reconoce con ./.tmp/aquas.exe o con cd delante",
   "arreglo": "prueba que reproduzca el bloqueo y corregir exentaDelFreno",
   "como_me_cercioro": "prueba con tope agotado y memory set por ruta del binario",
-  "ocurrencias": [],
+  "ocurrencias": [
+    "T000598"
+  ],
   "relacion": "E000/F008/S005"
 }

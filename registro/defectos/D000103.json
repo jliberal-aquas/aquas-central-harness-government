@@ -1,0 +1,10 @@
+{
+  "id": "D000103",
+  "firma": "extractor-cerco-cuatro-comillas",
+  "que": "El extractor de la revisión (.tmp/revision/lotes.py) dejó vacío el literal T000100 porque venía en un cerco de cuatro comillas invertidas",
+  "causa": "La expresión regular solo aceptaba un cerco de tres comillas",
+  "arreglo": "Aceptar un cerco de tres o más comillas con referencia al mismo cerco; T000100 clasificado a mano",
+  "como_me_cercioro": "Comparar literales vacíos del extractor viejo y del nuevo: solo T000100 cambia",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}

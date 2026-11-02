@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017/S003",
+  "tipo": "slice",
+  "titulo": "Turnos separan humano de agente",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "198 de 597 turnos guardados como del humano son informes de subagentes",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 158,
+  "pruebas": [
+    {
+      "prueba": "./internal/turno:TestTurnoMarcaOrigen",
+      "intencion": "valida que el turno guarda su origen",
+      "rojo_cuando": "rojo cuando un informe de subagente queda como mensaje del humano",
+      "verde_cuando": "verde cuando el informe queda con origen agente y el humano con origen humano"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "El gancho de turnos marca origen agente a informes y notificaciones, sin mezclarlos con el humano"
+}

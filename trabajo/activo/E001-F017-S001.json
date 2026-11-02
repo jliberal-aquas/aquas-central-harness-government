@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017/S001",
+  "tipo": "slice",
+  "titulo": "Freno atado al trabajo activo",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "D000091, D000101 (2 veces): el tope sigue la última aprobación y bloquea exentos",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 156,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestFrenoSigueAlTrabajoActivo",
+      "intencion": "valida que el tope es el de la feature en curso",
+      "rojo_cuando": "rojo cuando una feature cerrada frena el trabajo o bloquea memory set",
+      "verde_cuando": "verde cuando el tope es el de la feature activa y los exentos pasan"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "El tope cuenta contra la feature en curso y los comandos exentos pasan siempre, con prueba propia"
+}

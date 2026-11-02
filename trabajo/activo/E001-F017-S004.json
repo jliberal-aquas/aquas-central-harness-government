@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017/S004",
+  "tipo": "slice",
+  "titulo": "Turno guarda tipo y pedido refinado",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "El canónico promete el refinado y nunca se construyó; los hijos se perdieron entre pedido y contrato",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 159,
+  "pruebas": [
+    {
+      "prueba": "./internal/turno:TestTurnoGuardaRefinado",
+      "intencion": "valida que el turno guarda tipo y refinado",
+      "rojo_cuando": "rojo cuando la respuesta no trae refinado y el cierre pasa",
+      "verde_cuando": "verde cuando el refinado queda en el turno y su falta frena"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Cada respuesta declara tipo y pedido refinado; el cierre los copia al turno o frena si faltan"
+}

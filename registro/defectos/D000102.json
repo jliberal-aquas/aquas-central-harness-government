@@ -1,0 +1,10 @@
+{
+  "id": "D000102",
+  "firma": "auditoria-turnos-olvidada",
+  "que": "El agente pidió permiso para guardar los mensajes del humano como si no se guardaran; auditoria/turnos ya guarda 596 turnos (literal y respuesta) desde 2026-10-21",
+  "causa": "Tras compactar, el agente buscó en git y docs; auditoria/ está fuera de git por decisión del humano (T000001), así que no apareció; la memoria caliente no la nombra",
+  "arreglo": "Responder con la carpeta real; incluir auditoria/turnos en la revisión del gobierno",
+  "como_me_cercioro": "ls auditoria/turnos/*/ cuenta 596 archivos T00000N.md",
+  "ocurrencias": [],
+  "relacion": "nuevo"
+}
