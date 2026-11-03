@@ -17,15 +17,15 @@
     }
   ],
   "rojo": {
-    "fecha": "2026-11-03T03:14:35Z",
-    "head": "cbdddc1d5c26587c0e54dede10312d4d3a69fc24",
+    "fecha": "2026-11-03T12:53:55Z",
+    "head": "4e70f5852673a4e4d30d3abf1efbdc251fcc0e15",
     "resultado": {
-      "./cmd/aquas:TestRetrospectivaSinReincidencia": "retrospectiva_test.go:42: defect new [prueba=./p:TestP]: código 1, quiere 0; {out: err:aquas: campo desconocido \"prueba\": usa firma, que, causa, arreglo, cercioro, relacion"
+      "./cmd/aquas:TestRetrospectivaSinReincidencia": "correccion_test.go:48: corrección sin el campo: código 0, quiere 2; {out: err: codigo:0}"
     }
   },
   "verde": {
-    "fecha": "2026-11-03T03:36:26Z",
-    "head": "cbdddc1d5c26587c0e54dede10312d4d3a69fc24",
+    "fecha": "2026-11-03T13:09:21Z",
+    "head": "4e70f5852673a4e4d30d3abf1efbdc251fcc0e15",
     "huella": {}
   },
   "aprobacion": {

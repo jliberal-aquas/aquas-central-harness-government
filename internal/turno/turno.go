@@ -183,6 +183,20 @@ func RevisarRefinado(raiz, sesion, respuesta string) string {
 	return "respuesta a un mensaje del humano sin " + strings.Join(falta, " ni ") + " (E001/F017/S004). Agrega las líneas al comienzo de una línea, fuera de bloques de código."
 }
 
+// TipoHumano (E001/F017/S007): tipo del turno humano abierto de la sesión, el de la respuesta o, si falta, el
+// guardado; "" si el turno no existe o no es del humano.
+func TipoHumano(raiz, sesion, respuesta string) string {
+	e, err := leerEstado(raiz)
+	a, ok := e[sesion]
+	if err != nil || !ok || Origen(a.Literal) != "humano" {
+		return ""
+	}
+	if t, _ := Refinado(respuesta); t != "" {
+		return t
+	}
+	return a.Tipo
+}
+
 // guion: «—» si el valor está vacío.
 func guion(s string) string {
 	if s == "" {

@@ -43,6 +43,31 @@ func RevisarFallo(raiz, msg string) string {
 	return ""
 }
 
+// RevisarCorreccion (E001/F017/S007): en un turno humano de tipo corrección, el campo «¿Salió algo mal?» nombra
+// al menos un D000NNN y todos existen en el registro (nuevo o repetido con `aquas defect occur`). Otro tipo pasa.
+func RevisarCorreccion(raiz, tipo, msg string) string {
+	if tipo != "corrección" {
+		return ""
+	}
+	hay := registrados(raiz)
+	for _, l := range strings.Split(strings.ReplaceAll(msg, "\r\n", "\n"), "\n") {
+		m := reCampoFallo.FindStringSubmatch(l)
+		if m == nil {
+			continue
+		}
+		ids := reNumero.FindAllString(m[1], -1)
+		todos := len(ids) > 0
+		for _, id := range ids {
+			todos = todos && hay[id]
+		}
+		if todos {
+			return ""
+		}
+	}
+	return "Corrección sin defecto: el humano corrigió y el campo «¿Salió algo mal?» no nombra un defecto registrado (E001/F017/S007). " +
+		"Regístralo con `aquas defect new …` o suma la repetición con `aquas defect occur D000NNN T000NNN`, y nombra su número en el campo."
+}
+
 // registrados: números con archivo en el registro. Registro ausente o ilegible = ninguno (hallazgo A1.2).
 func registrados(raiz string) map[string]bool {
 	es, _ := os.ReadDir(filepath.Join(raiz, Carpeta))

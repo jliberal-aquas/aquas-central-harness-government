@@ -247,6 +247,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `Texto` | `(d Defecto) string` | Texto: una línea por defecto para `aquas defect show`. |
 | [internal/defecto/defecto.go](../../internal/defecto/defecto.go) | `revisarRelacion` | `(raiz, rel, que string, todos []Defecto) error` | revisarRelacion (E001/F009/S002): relacion=nuevo o el id de una ficha; sin ella, lista defectos y fichas parecidos. |
 | [internal/defecto/fallo.go](../../internal/defecto/fallo.go) | `RevisarFallo` | `(raiz, msg string) string` | RevisarFallo (E001/F004/S002) devuelve "" si pasa; si no, el motivo del freno. El campo «¿Salió algo mal?» |
+| [internal/defecto/fallo.go](../../internal/defecto/fallo.go) | `RevisarCorreccion` | `(raiz, tipo, msg string) string` | RevisarCorreccion (E001/F017/S007): en un turno humano de tipo corrección, el campo «¿Salió algo mal?» nombra |
 | [internal/defecto/fallo.go](../../internal/defecto/fallo.go) | `registrados` | `(raiz string) map[string]bool` | registrados: números con archivo en el registro. Registro ausente o ilegible = ninguno (hallazgo A1.2). |
 | [internal/defecto/prueba.go](../../internal/defecto/prueba.go) | `RevisarPrueba` | `(raiz, v string) error` | RevisarPrueba (E001/F017/S005): prueba=./paquete:TestNombre debe existir como func en un _test.go del paquete; |
 | [internal/defecto/prueba.go](../../internal/defecto/prueba.go) | `existePrueba` | `(dir, nombre string) bool` | existePrueba: algún _test.go de la carpeta declara func nombre(. |
@@ -356,6 +357,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/turno/turno.go](../../internal/turno/turno.go) | `Origen` | `(literal string) string` | Origen (E001/F017/S003): "agente" si el texto llega como informe de subagente o notificación de tarea; si no, "humano". |
 | [internal/turno/turno.go](../../internal/turno/turno.go) | `Refinado` | `(respuesta string) (tipo, refinado string)` | Refinado (E001/F017/S004): el tipo (en minúsculas, de la lista) y el pedido refinado que declara la respuesta. |
 | [internal/turno/turno.go](../../internal/turno/turno.go) | `RevisarRefinado` | `(raiz, sesion, respuesta string) string` | RevisarRefinado (E001/F017/S004): si el turno abierto de la sesión es de origen humano y ni la respuesta ni un |
+| [internal/turno/turno.go](../../internal/turno/turno.go) | `TipoHumano` | `(raiz, sesion, respuesta string) string` | TipoHumano (E001/F017/S007): tipo del turno humano abierto de la sesión, el de la respuesta o, si falta, el |
 | [internal/turno/turno.go](../../internal/turno/turno.go) | `guion` | `(s string) string` | guion: «—» si el valor está vacío. |
 | [internal/turno/turno.go](../../internal/turno/turno.go) | `render` | `(a abierto, respuesta, cerrado string) []byte` | render arma el Markdown del registro de un turno: literal recibido (del humano o de un agente) y respuesta. |
 | [internal/turno/turno.go](../../internal/turno/turno.go) | `Abrir` | `(raiz, sesion, literal string, ahora time.Time) (string, error)` | Abrir crea el turno siguiente con el literal y lo deja como el abierto de la sesión. |

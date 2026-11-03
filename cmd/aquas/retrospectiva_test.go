@@ -18,6 +18,7 @@ func TestRetrospectivaSinReincidencia(t *testing.T) {
 	t.Run("S003 turnos separan humano de agente", turnosSeparanOrigen)
 	t.Run("S004 turno guarda tipo y pedido refinado", turnoExigeRefinado)
 	t.Run("S005 defecto nombra la prueba", defectoExigePrueba)
+	t.Run("S007 corrección exige defecto", TestCorreccionExigeDefecto)
 }
 
 // defectoExigePrueba (S005) sobre el binario: `defect new` sin prueba o con una que no existe falla; con una real pasa.
