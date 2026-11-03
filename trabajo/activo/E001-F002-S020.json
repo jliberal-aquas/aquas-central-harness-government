@@ -1,0 +1,21 @@
+{
+  "id": "E001/F002/S020",
+  "tipo": "slice",
+  "titulo": "Guardia frena git que escribe en trabajo/",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "git clean borró trabajo/archivo sin freno (hallazgo 2026-11-03)",
+  "padre": "E001/F002",
+  "bloqueado_por": [],
+  "secuencia": 172,
+  "pruebas": [
+    {
+      "prueba": "./internal/guardia:TestGitNoEscribeTrabajo",
+      "intencion": "valida que git clean/checkout/restore sobre trabajo/ se frenan",
+      "rojo_cuando": "git clean -f trabajo/x pasa la guardia",
+      "verde_cuando": "se frena sobre trabajo/ y pasa sobre otras rutas"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "La guardia frena git clean, checkout y restore que tocan trabajo/ igual que rm"
+}

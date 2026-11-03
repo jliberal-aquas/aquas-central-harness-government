@@ -1,0 +1,21 @@
+{
+  "id": "E000/F011",
+  "tipo": "feature",
+  "titulo": "Triage del backlog",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "análisis skill triage de mattpocock (humano 2026-11-03)",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 169,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestTriageBacklog",
+      "intencion": "valida que crear una ficha parecida avisa y un contrato con archivo:línea falla el gate",
+      "rojo_cuando": "backlog new crea sin avisar o el gate acepta archivo:línea en Contrato",
+      "verde_cuando": "avisa con la ficha o descarte parecido y el gate rechaza archivo:línea"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Avisa ideas repetidas o descartadas al crear fichas y exige contratos que no caducan"
+}

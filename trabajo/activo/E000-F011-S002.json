@@ -1,0 +1,21 @@
+{
+  "id": "E000/F011/S002",
+  "tipo": "slice",
+  "titulo": "Contrato sin archivo:línea",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "triage: contratos de comportamiento que no caducan",
+  "padre": "E000/F011",
+  "bloqueado_por": [],
+  "secuencia": 171,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestContratoSinLineas",
+      "intencion": "valida que el gate rechaza archivo:línea en Contrato",
+      "rojo_cuando": "un Contrato con archivo.go:12 pasa el gate",
+      "verde_cuando": "falla con archivo:línea y pasa sin él o fuera de Contrato"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "El gate rechaza referencias archivo:línea dentro de la sección Contrato de una página de slice activa"
+}

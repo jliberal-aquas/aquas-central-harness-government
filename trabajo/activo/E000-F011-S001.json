@@ -1,0 +1,21 @@
+{
+  "id": "E000/F011/S001",
+  "tipo": "slice",
+  "titulo": "Aviso de parecidos y registro de descartes",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "triage: evitar re-proponer ideas rechazadas y duplicados (D000110)",
+  "padre": "E000/F011",
+  "bloqueado_por": [],
+  "secuencia": 170,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestNewAvisaParecidos",
+      "intencion": "valida que new avisa parecidos y CANCELADO rechazado registra el descarte",
+      "rojo_cuando": "new parecido no avisa o cancelar rechazado no deja descarte",
+      "verde_cuando": "avisa sin frenar y el descarte queda consultable"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "backlog new muestra fichas vivas y descartes parecidos; cancelar por rechazo guarda el descarte por concepto"
+}

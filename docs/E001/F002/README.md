@@ -155,6 +155,7 @@ Prueba integral de la feature: `TestCerrarSliceDePuntaAPunta`, en `cmd/aquas/roj
 | [S017](S017.md) | Padre no cierra con hijos abiertos | Hecho |
 | [S018](S018.md) | Rojo heredado solo de slices cerrados | Hecho |
 | [S019](S019.md) | Rojo de subtest guarda su motivo | Hecho |
+| S020 | La guardia frena git clean, checkout y restore que tocan trabajo/ igual que rm | Planeado |
 
 ### Arreglos
 
