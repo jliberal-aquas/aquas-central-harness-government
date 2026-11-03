@@ -1,0 +1,126 @@
+{
+  "id": "E001/F017/S003",
+  "tipo": "slice",
+  "titulo": "Turnos separan humano de agente",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "198 de 597 turnos guardados como del humano son informes de subagentes",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 158,
+  "pruebas": [
+    {
+      "prueba": "./internal/turno:TestTurnoMarcaOrigen",
+      "intencion": "valida que el turno guarda su origen",
+      "rojo_cuando": "rojo cuando un informe de subagente queda como mensaje del humano",
+      "verde_cuando": "verde cuando el informe queda con origen agente y el humano con origen humano"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-03T02:22:36Z",
+    "head": "ba011ccbe03fd63262d6c62c9386252a18b45f48",
+    "resultado": {
+      "./internal/turno:TestTurnoMarcaOrigen": "origen_test.go:37: Origen exportado para otros controles (S004, S007): dio \"humano\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-03T02:26:53Z",
+    "head": "ba011ccbe03fd63262d6c62c9386252a18b45f48",
+    "huella": {
+      "cmd/aquas/retrospectiva_test.go": "46167430c048e75fbbb49f720a7663ec98cc7b8a0e9fab7ca2da503d1c5d84a2",
+      "internal/turno/main_test.go": "a2f4751579c1fbdef8b3c64c302c764e507fab25e0630bddee6d554132eca464",
+      "internal/turno/origen_test.go": "d05bde22b6e72866a534cd7faf906b6eeb67f6ae829cca6241491e2cd68c23ea",
+      "internal/turno/turno.go": "b95d9f5bd0a5e47727fac69f402844e36a90a93e4f7a0246d06e1216d9d61a66",
+      "internal/turno/turno_test.go": "8a8d5a6afbb036ea61743aae6aa234cde5ebd35e4743aa6852fbd0e87726aabb"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-11-03T02:35:56Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/retrospectiva_test.go": "46167430c048e75fbbb49f720a7663ec98cc7b8a0e9fab7ca2da503d1c5d84a2",
+      "internal/turno/main_test.go": "a2f4751579c1fbdef8b3c64c302c764e507fab25e0630bddee6d554132eca464",
+      "internal/turno/origen_test.go": "d05bde22b6e72866a534cd7faf906b6eeb67f6ae829cca6241491e2cd68c23ea",
+      "internal/turno/turno.go": "b95d9f5bd0a5e47727fac69f402844e36a90a93e4f7a0246d06e1216d9d61a66",
+      "internal/turno/turno_test.go": "8a8d5a6afbb036ea61743aae6aa234cde5ebd35e4743aa6852fbd0e87726aabb"
+    },
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb\\subagents\\agent-a887ba6e8c6aea7a0.jsonl"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F017",
+      "marca": "sin_cambio",
+      "motivo": "la feature sigue en curso; S003 no cambia su alcance"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa no cambia por marcar el origen del turno"
+    },
+    {
+      "clave": "pagina:docs/E001/F017/S003.md",
+      "marca": "actualizado",
+      "motivo": "contrato auditado: dónde queda la línea, prefijo tras espacios, Origen exportado"
+    },
+    {
+      "clave": "pagina:docs/E001/F017/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la tabla de slices ya describe S003; el estado lo regenera compile"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la página de E001 no lista el formato del turno"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/turno",
+      "marca": "sin_cambio",
+      "motivo": "turnoCLI pasa el prompt intacto; Origen se calcula dentro de render"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "S015 habla del sello de codigo.md, no del turno"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S006.md\u003edocs/E001/F017/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "S006 usa S003 solo como ejemplo de página que no toca"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S006.md\u003einternal/turno/turno.go",
+      "marca": "sin_cambio",
+      "motivo": "el ejemplo de S006 sigue siendo cierto: S003 cambió turno.go"
+    },
+    {
+      "clave": "importa:internal/guardia/auditoria_test.go\u003einternal/turno",
+      "marca": "sin_cambio",
+      "motivo": "la prueba de la guardia solo usa la Carpeta de turnos"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/turno",
+      "marca": "sin_cambio",
+      "motivo": "la guardia protege la carpeta; no lee el contenido del turno"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "codigo.md se regenera con la función nueva Origen"
+    }
+  ],
+  "alcance": [
+    "internal/turno/**",
+    "docs/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "cmd/aquas/retrospectiva_test.go",
+      "motivo": "la integral de la feature suma el caso de S003 sobre el binario"
+    }
+  ],
+  "codigo": [
+    "internal/turno/turno.go"
+  ],
+  "relacion": "nueva",
+  "que_hace": "El gancho de turnos marca origen agente a informes y notificaciones, sin mezclarlos con el humano"
+}

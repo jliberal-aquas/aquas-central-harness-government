@@ -103,10 +103,20 @@ func cerca(s string) string {
 	return f + "text\n" + s + "\n" + f + "\n"
 }
 
+// Origen (E001/F017/S003): "agente" si el texto llega como informe de subagente o notificación de tarea; si no, "humano".
+// Solo el comienzo cuenta: un humano que cita la etiqueta a mitad de su mensaje sigue siendo humano.
+func Origen(literal string) string {
+	t := strings.TrimSpace(literal)
+	if strings.HasPrefix(t, "<agent-message") || strings.HasPrefix(t, "<task-notification") {
+		return "agente"
+	}
+	return "humano"
+}
+
 // render arma el Markdown del registro de un turno: literal del humano y respuesta.
 func render(a abierto, respuesta, cerrado string) []byte {
 	var b strings.Builder
-	fmt.Fprintf(&b, "# %s\n\n- Sesión: `%s`\n- Abierto: %s\n- Cerrado: %s\n\n", a.ID, a.Sesion, a.Abierto, cerrado)
+	fmt.Fprintf(&b, "# %s\n\n- Sesión: `%s`\n- Origen: %s\n- Abierto: %s\n- Cerrado: %s\n\n", a.ID, a.Sesion, Origen(a.Literal), a.Abierto, cerrado)
 	b.WriteString("## Literal\n\n" + cerca(a.Literal) + "\n## Respuesta\n\n")
 	if cerrado == "—" {
 		b.WriteString("—\n")

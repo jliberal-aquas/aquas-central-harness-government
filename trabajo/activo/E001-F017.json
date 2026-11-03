@@ -17,15 +17,15 @@
     }
   ],
   "rojo": {
-    "fecha": "2026-11-03T00:40:08Z",
-    "head": "ab35a1c8e468d042df4e4194afa194b8a6188f9e",
+    "fecha": "2026-11-03T02:22:38Z",
+    "head": "ba011ccbe03fd63262d6c62c9386252a18b45f48",
     "resultado": {
-      "./cmd/aquas:TestRetrospectivaSinReincidencia": "apruebo_cubierto_test.go:72: el slice de la foto sigue cubierto: el cierre debe frenar diciendo que la aprobación ya lo cubre; dio {out: err: codigo:0}"
+      "./cmd/aquas:TestRetrospectivaSinReincidencia": "retrospectiva_test.go:44: los dos turnos deben quedar con origen humano y agente, en ese orden; dio []"
     }
   },
   "verde": {
-    "fecha": "2026-11-03T02:09:02Z",
-    "head": "4c2c2d74225ae56a124086f789cc14b1bb2d9e1b",
+    "fecha": "2026-11-03T02:26:55Z",
+    "head": "ba011ccbe03fd63262d6c62c9386252a18b45f48",
     "huella": {}
   },
   "aprobacion": {
