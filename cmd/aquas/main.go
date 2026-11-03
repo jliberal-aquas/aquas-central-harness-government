@@ -211,7 +211,7 @@ func main() {
 		}
 		// E000/F010/S001 (A1.3): DESAFÍO va primero. Es la única revisión que se salta con stop_hook_active; si otra
 		// frenara antes, el turno de corrección cerraría sin DESAFÍO. Las demás corren igual en ese turno.
-		for _, m := range []string{propuesta.RevisarDesafio(e.Registro, e.Respuesta, e.Activo), propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta), propuesta.RevisarShell(e.Respuesta, en.ShellHumano), defecto.RevisarFallo(raiz, e.Respuesta)} { // S016: insight PROPUESTO exige defecto; E001/F004/S002: fallo exige defecto
+		for _, m := range []string{propuesta.RevisarDesafio(e.Registro, e.Respuesta, e.Activo), propuesta.Revisar(e.Respuesta), propuesta.RevisarInsight(e.Respuesta), propuesta.RevisarShell(e.Respuesta, en.ShellHumano), defecto.RevisarFallo(raiz, e.Respuesta), pedidoCubierto(raiz, e.Respuesta)} { // E001/F017/S002: apruebo ya cubierto; S016: insight PROPUESTO exige defecto; E001/F004/S002: fallo exige defecto
 			if m != "" {
 				_, _ = fmt.Fprintln(os.Stderr, m)
 				os.Exit(2)

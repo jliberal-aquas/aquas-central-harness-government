@@ -8,4 +8,5 @@ import "testing"
 // Verde cuando: el control de cada slice cerrado frena su caso malo y deja pasar el bueno.
 func TestRetrospectivaSinReincidencia(t *testing.T) {
 	t.Run("S001 freno atado al trabajo activo", TestFrenoSigueAlTrabajoActivo)
+	t.Run("S002 no pedir apruebo ya cubierto", TestNoPideAprueboCubierto)
 }

@@ -1,0 +1,21 @@
+{
+  "id": "E000/F007/S002",
+  "tipo": "slice",
+  "titulo": "Editar que_hace de una ficha por comando",
+  "estado": "BORRADOR",
+  "prioridad": "P3",
+  "motivo": "auditoría E001/F017/S002-A5: la tabla de F017 dice que S002 frena el dale porque que_hace no se puede editar y quedó viejo",
+  "padre": "E000/F007",
+  "bloqueado_por": [],
+  "secuencia": 165,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestEditaQueHace",
+      "intencion": "valida que backlog edit cambia que_hace",
+      "rojo_cuando": "rojo cuando edit rechaza que_hace",
+      "verde_cuando": "verde cuando edit lo cambia y la tabla de la feature lo muestra"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "aquas backlog edit acepta que_hace con motivo y la wiki se rehace"
+}

@@ -52,7 +52,7 @@ stateDiagram-v2
 | Slice | Qué entrega |
 |---|---|
 | [S001 Freno atado al trabajo activo](S001.md) | El tope de una feature deja de frenar cuando ella y sus slices cierran, y los exentos pasan siempre. |
-| [S002 No pedir apruebo ya cubierto](S002.md) | El cierre de turno frena si el agente pide un «apruebo» o un «dale» que la feature aprobada ya cubre. |
+| [S002 No pedir apruebo ya cubierto](S002.md) | El cierre de turno frena si el agente pide un «apruebo» que la feature aprobada ya cubre. |
 | [S003 Turnos separan humano de agente](S003.md) | Cada turno guardado dice si vino del humano o de un agente. |
 | [S004 Turno guarda tipo y pedido refinado](S004.md) | Cada respuesta declara el tipo del pedido y su versión refinada, y el turno los guarda. |
 | [S005 Defecto nombra la prueba que lo cubre](S005.md) | Cada defecto nuevo nombra la prueba de su control, y el gate comprueba que esa prueba existe. |
@@ -100,7 +100,7 @@ Prueba integral: `TestRetrospectivaSinReincidencia` (un caso malo y uno bueno po
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | El tope cuenta contra la feature en curso y los comandos exentos pasan siempre, con prueba propia | Hecho |
-| [S002](S002.md) | El cierre de turno frena si el agente pide apruebo o dale de un tramo con feature aprobada | Planeado |
+| [S002](S002.md) | El cierre de turno frena si el agente pide apruebo o dale de un tramo con feature aprobada | Hecho |
 | [S003](S003.md) | El gancho de turnos marca origen agente a informes y notificaciones, sin mezclarlos con el humano | Planeado |
 | [S004](S004.md) | Cada respuesta declara tipo y pedido refinado; el cierre los copia al turno o frena si faltan | Planeado |
 | [S005](S005.md) | Un defecto nuevo nombra la prueba de su control y el gate comprueba que existe | Planeado |

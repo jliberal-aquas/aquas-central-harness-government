@@ -17,32 +17,24 @@
     }
   ],
   "rojo": {
-    "fecha": "2026-11-02T22:48:31Z",
-    "head": "ffbc6aaa8f5f13e57a98c5f9b6e144a24703f325",
+    "fecha": "2026-11-03T00:40:08Z",
+    "head": "ab35a1c8e468d042df4e4194afa194b8a6188f9e",
     "resultado": {
-      "./cmd/aquas:TestRetrospectivaSinReincidencia": "freno_test.go:39: el tope de una feature CERRADO no frena; llamada 2 dio {out: err:Presupuesto: llegaste al tope de la feature E003/F001 (1 llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo E003/F001 tope N»)."
+      "./cmd/aquas:TestRetrospectivaSinReincidencia": "apruebo_cubierto_test.go:72: el slice de la foto sigue cubierto: el cierre debe frenar diciendo que la aprobación ya lo cubre; dio {out: err: codigo:0}"
     }
   },
   "verde": {
-    "fecha": "2026-11-02T23:32:01Z",
-    "head": "ffbc6aaa8f5f13e57a98c5f9b6e144a24703f325",
+    "fecha": "2026-11-03T02:09:02Z",
+    "head": "4c2c2d74225ae56a124086f789cc14b1bb2d9e1b",
     "huella": {}
   },
   "aprobacion": {
-    "fecha": "2026-11-02T22:45:46Z",
+    "fecha": "2026-11-03T00:38:28Z",
     "huella": "4bc2d61ae2e518a0aa13a44b41b5199d79ab5b0b18c5cafac922a354e2b6096c",
     "mensaje": "apruebo E001/F017 tope 350 con push",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
     "push": true,
     "foto": {
-      "E001/F017/S001": [
-        {
-          "prueba": "./cmd/aquas:TestFrenoSigueAlTrabajoActivo",
-          "intencion": "valida que el tope es el de la feature en curso",
-          "rojo_cuando": "rojo cuando una feature cerrada frena el trabajo o bloquea memory set",
-          "verde_cuando": "verde cuando el tope es el de la feature activa y los exentos pasan"
-        }
-      ],
       "E001/F017/S002": [
         {
           "prueba": "./cmd/aquas:TestNoPideAprueboCubierto",
@@ -89,6 +81,14 @@
           "intencion": "valida que una corrección del humano exige defecto",
           "rojo_cuando": "rojo cuando el humano corrige y el cierre pasa sin D000NNN",
           "verde_cuando": "verde cuando el cierre nombra el defecto o el turno no trae corrección"
+        }
+      ],
+      "E001/F017/S008": [
+        {
+          "prueba": "./internal/guardia:TestEscribirExigeLeerContrato",
+          "intencion": "valida que escribir en el alcance exige leer la página del slice",
+          "rojo_cuando": "rojo cuando se escribe sin leer la página desde el último compact",
+          "verde_cuando": "verde cuando frena sin lectura y pasa con Read, cat o biblioteca"
         }
       ]
     }

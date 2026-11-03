@@ -59,6 +59,9 @@ Busca el archivo o la función; la última columna dice qué hace.
 | Archivo | Función | Parámetros | Qué hace |
 |---|---|---|---|
 | [cmd/aquas/aprobacion.go](../../cmd/aquas/aprobacion.go) | `aprobacionCLI` | `(raiz string)` | aprobacionCLI: solo un evento UserPromptSubmit cuenta como mensaje del humano. PreToolUse, PostToolUse, |
+| [cmd/aquas/apruebo_cubierto.go](../../cmd/aquas/apruebo_cubierto.go) | `pedidoCubierto` | `(raiz, msg string) string` | pedidoCubierto (E001/F017/S002, D000069, D000084, D000099): freno del cierre si el agente pide un apruebo que la |
+| [cmd/aquas/apruebo_cubierto.go](../../cmd/aquas/apruebo_cubierto.go) | `pruebasIntactas` | `(slice backlog.Ficha, aprobadas []backlog.Prueba) bool` | pruebasIntactas: cada prueba aprobada en la foto sigue en el slice; si cambió, el arnés pide el apruebo otra vez. |
+| [cmd/aquas/apruebo_cubierto.go](../../cmd/aquas/apruebo_cubierto.go) | `todosEnFoto` | `(fs []backlog.Ficha, feature backlog.Ficha) bool` | todosEnFoto: true si cada slice activo de la feature está en la foto de su aprobación. |
 | [cmd/aquas/aviso.go](../../cmd/aquas/aviso.go) | `avisarVersion` | `(w io.Writer, comando, raiz, version string)` | avisarVersion (E002/F002/S003) escribe el aviso de versión del hijo en w, salvo en install y update. |
 | [cmd/aquas/calidad.go](../../cmd/aquas/calidad.go) | `revisarGo` | `(raiz string) []string` | revisarGo (E001/F013/S001) corre la calidad Go de la central para el gate. |
 | [cmd/aquas/ingles.go](../../cmd/aquas/ingles.go) | `traducir` | `(args []string) ([]string, []string)` | traducir devuelve los argumentos con los nombres internos y un aviso por cada nombre viejo usado. |
@@ -334,6 +337,8 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/propuesta/desafio.go](../../internal/propuesta/desafio.go) | `Operativo` | `(msg string) bool` | Operativo: «apruebo …», o 6 palabras o menos con alguna palabra operativa. Heurística: control probabilístico. |
 | [internal/propuesta/desafio.go](../../internal/propuesta/desafio.go) | `RevisarDesafio` | `(registro, respuesta string, activo bool) string` | RevisarDesafio (E000/F010/S001): si el último mensaje humano del registro es un pedido nuevo, la respuesta debe |
 | [internal/propuesta/insight.go](../../internal/propuesta/insight.go) | `RevisarInsight` | `(msg string) string` | RevisarInsight devuelve "" si pasa; si no, el motivo del freno: insight PROPUESTO sin defecto registrado (E001/F002/S016). |
+| [internal/propuesta/pedido.go](../../internal/propuesta/pedido.go) | `camposDePedido` | `(msg string) []string` | camposDePedido: el texto de cada campo «Decisión» y «¿Qué necesito de ti?», con las viñetas que lo siguen. |
+| [internal/propuesta/pedido.go](../../internal/propuesta/pedido.go) | `PedidosDeApruebo` | `(msg string) (pedidos []Pedido)` | PedidosDeApruebo devuelve cada «apruebo <id>» pedido en los campos de pedido (id en mayúsculas), sin los de |
 | [internal/propuesta/propuesta.go](../../internal/propuesta/propuesta.go) | `marca` | `(l string) (string, bool)` | marca: texto de la propuesta si la línea empieza con PROPUESTA: (admite viñeta, título, cita o negrita). |
 | [internal/propuesta/propuesta.go](../../internal/propuesta/propuesta.go) | `diagrama` | `(c string) bool` | diagrama: el texto trae algún trazo de diagrama (flechas o cajas). |
 | [internal/propuesta/propuesta.go](../../internal/propuesta/propuesta.go) | `cercaDe` | `(t string) (byte, int)` | cercaDe: el carácter y el largo de una cerca de bloque (``` o ~~~), o largo 0 si no es cerca. |
