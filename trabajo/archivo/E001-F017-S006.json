@@ -1,0 +1,388 @@
+{
+  "id": "E001/F017/S006",
+  "tipo": "slice",
+  "titulo": "Página del tramo al día con su código",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "5 correcciones por documentación vieja o sin ejemplos; el gate solo ve presencia",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 161,
+  "pruebas": [
+    {
+      "prueba": "./internal/wiki:TestPaginaAlDiaConCodigo",
+      "intencion": "valida que la página es posterior a su código",
+      "rojo_cuando": "rojo cuando el código cambia y la página no",
+      "verde_cuando": "verde cuando la página se actualiza después del código"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-03T15:37:15Z",
+    "head": "94f9a311670ba0aeff4451f73fe38e9a9838378d",
+    "resultado": {
+      "./internal/wiki:TestPaginaAlDiaConCodigo": "al_dia_test.go:100: de vuelta EN_CURSO con código sin commit: falla=true; dio []"
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-03T15:43:14Z",
+    "head": "94f9a311670ba0aeff4451f73fe38e9a9838378d",
+    "huella": {
+      "cmd/aquas/retrospectiva_test.go": "e189a80f26834f2577731fc459ffab6526b53dc7e6d57b24126b53f890ce036d",
+      "internal/backlog/codigo.go": "dae393a9f776fa43b3f695b5151589a7c3ffa6a76d40d95ff4cf943b91fe73f5",
+      "internal/wiki/al_dia.go": "d92cb42b0aeb04f2a2c0461f5829111d40ba100a59bcb12c625c089849a28cd8",
+      "internal/wiki/al_dia_test.go": "636cd685dae1d4bc6e88f6acae4712bbed292c4058a3424059350ec782c81b92",
+      "internal/wiki/arreglos_test.go": "01dff1ba0ac5efbea74f31e4ebf3c61c9573f38663e93e601a2edfe8375ce86e",
+      "internal/wiki/casos_borde.go": "e298eda3d7883dd572f7a1637b78c20bcecc7da08832ec109bed5469e3630b23",
+      "internal/wiki/casos_borde_test.go": "22798fe8c2977e0dbf0f6e330e1c7cf1af997d64c85921d1cbcbf8e18efb3714",
+      "internal/wiki/codigo.go": "7e09189db010003f985855c4818a7bf278813969eada66c004a4730bba44d299",
+      "internal/wiki/codigo_test.go": "6d5ff08ae575f696f22128e4db1f8d7665983c721534b9966be70cb60b5bda0f",
+      "internal/wiki/comandos.go": "24383b92fc40e232749fb97eaed4b40b4469f494230a3ea881a5fed9ca3983e8",
+      "internal/wiki/comandos_test.go": "664ac98c7552c49ebe006c0103883a4dce676b7e807b820beab135c2a124a9d6",
+      "internal/wiki/contrato.go": "8360b3735571a1e28fe7bcb3389271b592357d95816402eb5e51c49a27733724",
+      "internal/wiki/contrato_test.go": "400249889f4454a3b82f0bc584ee1d090ddb4154d3677ecabe31e20e7732fc66",
+      "internal/wiki/cuando_test.go": "5774d1bd40856ada4ab90be000baea4b39088a8fcf318329faa82aa0790684f2",
+      "internal/wiki/enlazar.go": "912fa7f5e15d1f3bbe7d718a3e3e9e1c738c9f55d0de50504205e0a363c5a088",
+      "internal/wiki/enlazar_test.go": "e61411e5b30d89faf1d50b18f11622fc9e804daa07f62b34352d52096455e319",
+      "internal/wiki/glosario.go": "7905d39c155185c606d4988a6cf608defd910b4146de6f3927ece29fb08e887e",
+      "internal/wiki/glosario_test.go": "6b541ec9b30ace4da56d5430223613e07fb9145950406b4df74ad10b09747f22",
+      "internal/wiki/hijos.go": "fe960b2bd189a6eca75db8571ef7e060a01ea5e7cb8f9c3b403bf97ab1ca8365",
+      "internal/wiki/hijos_test.go": "655fdd9fee88aca94f9a501d50853431d24603fca5797c64b439102f706b2c69",
+      "internal/wiki/integral_test.go": "9b931bf856b9718a46b592e3081ad6a32fd65c5aa6a43f0bef4d7fd04adf90dc",
+      "internal/wiki/legibilidad.go": "bd98b6511d47db60ae0af32267ee5d1c660ce4af0b6e41c0aa8dba3d64141bdf",
+      "internal/wiki/legibilidad_test.go": "c9fd29c6a87e142b0216ea4faa2b34fdce11d97ce63a1815b02ca920d3d225a3",
+      "internal/wiki/main_test.go": "4a3e3bced3262ddff9ac05a9092226e802c6c14782279169421af0eca88b6611",
+      "internal/wiki/mermaid.go": "2a03664cdbb9393d9ca59df2481ad8c4e2b6d85d327131ced1298b463839dcc8",
+      "internal/wiki/mermaid_test.go": "b60cfbf3b2565f27733c721b513ffa2f0ee405f92d039cbe3ca40c3bc59b9b4c",
+      "internal/wiki/portadas.go": "89987b8c78326ca7526846dfae29eed74ed35b3d9c2ba3c28744f013bec38db6",
+      "internal/wiki/portadas_test.go": "7c484fcebcc0e59c9e43447bd799901dc49a9003786ba07ab025bc72f6f844a1",
+      "internal/wiki/prevista_test.go": "3b5a8e2bd5853e07cd3a59015954d7b95f95ebeb399a65f14f752c153df82352",
+      "internal/wiki/que_hace_test.go": "0f6261944a5c28a2369a128ca7355db9477e7b34bc3fe8b5a1dc2cff0ace04a8",
+      "internal/wiki/ref_test.go": "a4edfe3ca424fc89e612988f4268c581b81cce1ac1abab222097b226e5b237b5",
+      "internal/wiki/seccioncodigo_test.go": "d922f95632cdd1efd0bb3ab6747b4abdd640ccf156395948a0122b7fdafaa261",
+      "internal/wiki/wiki.go": "aa0eccb41b2b2f26c09e76b91f8e7bce6c5e5e12c201de5c120434fb219588a6",
+      "internal/wiki/wiki_test.go": "daee894db9577083cd3c0dbc9f091d0536f9ce3785a33564d8b7ac0360ac8d6a"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-11-03T15:50:41Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/retrospectiva_test.go": "e189a80f26834f2577731fc459ffab6526b53dc7e6d57b24126b53f890ce036d",
+      "internal/backlog/codigo.go": "dae393a9f776fa43b3f695b5151589a7c3ffa6a76d40d95ff4cf943b91fe73f5",
+      "internal/wiki/al_dia.go": "d92cb42b0aeb04f2a2c0461f5829111d40ba100a59bcb12c625c089849a28cd8",
+      "internal/wiki/al_dia_test.go": "636cd685dae1d4bc6e88f6acae4712bbed292c4058a3424059350ec782c81b92",
+      "internal/wiki/arreglos_test.go": "01dff1ba0ac5efbea74f31e4ebf3c61c9573f38663e93e601a2edfe8375ce86e",
+      "internal/wiki/casos_borde.go": "e298eda3d7883dd572f7a1637b78c20bcecc7da08832ec109bed5469e3630b23",
+      "internal/wiki/casos_borde_test.go": "22798fe8c2977e0dbf0f6e330e1c7cf1af997d64c85921d1cbcbf8e18efb3714",
+      "internal/wiki/codigo.go": "7e09189db010003f985855c4818a7bf278813969eada66c004a4730bba44d299",
+      "internal/wiki/codigo_test.go": "6d5ff08ae575f696f22128e4db1f8d7665983c721534b9966be70cb60b5bda0f",
+      "internal/wiki/comandos.go": "24383b92fc40e232749fb97eaed4b40b4469f494230a3ea881a5fed9ca3983e8",
+      "internal/wiki/comandos_test.go": "664ac98c7552c49ebe006c0103883a4dce676b7e807b820beab135c2a124a9d6",
+      "internal/wiki/contrato.go": "8360b3735571a1e28fe7bcb3389271b592357d95816402eb5e51c49a27733724",
+      "internal/wiki/contrato_test.go": "400249889f4454a3b82f0bc584ee1d090ddb4154d3677ecabe31e20e7732fc66",
+      "internal/wiki/cuando_test.go": "5774d1bd40856ada4ab90be000baea4b39088a8fcf318329faa82aa0790684f2",
+      "internal/wiki/enlazar.go": "912fa7f5e15d1f3bbe7d718a3e3e9e1c738c9f55d0de50504205e0a363c5a088",
+      "internal/wiki/enlazar_test.go": "e61411e5b30d89faf1d50b18f11622fc9e804daa07f62b34352d52096455e319",
+      "internal/wiki/glosario.go": "7905d39c155185c606d4988a6cf608defd910b4146de6f3927ece29fb08e887e",
+      "internal/wiki/glosario_test.go": "6b541ec9b30ace4da56d5430223613e07fb9145950406b4df74ad10b09747f22",
+      "internal/wiki/hijos.go": "fe960b2bd189a6eca75db8571ef7e060a01ea5e7cb8f9c3b403bf97ab1ca8365",
+      "internal/wiki/hijos_test.go": "655fdd9fee88aca94f9a501d50853431d24603fca5797c64b439102f706b2c69",
+      "internal/wiki/integral_test.go": "9b931bf856b9718a46b592e3081ad6a32fd65c5aa6a43f0bef4d7fd04adf90dc",
+      "internal/wiki/legibilidad.go": "bd98b6511d47db60ae0af32267ee5d1c660ce4af0b6e41c0aa8dba3d64141bdf",
+      "internal/wiki/legibilidad_test.go": "c9fd29c6a87e142b0216ea4faa2b34fdce11d97ce63a1815b02ca920d3d225a3",
+      "internal/wiki/main_test.go": "4a3e3bced3262ddff9ac05a9092226e802c6c14782279169421af0eca88b6611",
+      "internal/wiki/mermaid.go": "2a03664cdbb9393d9ca59df2481ad8c4e2b6d85d327131ced1298b463839dcc8",
+      "internal/wiki/mermaid_test.go": "b60cfbf3b2565f27733c721b513ffa2f0ee405f92d039cbe3ca40c3bc59b9b4c",
+      "internal/wiki/portadas.go": "89987b8c78326ca7526846dfae29eed74ed35b3d9c2ba3c28744f013bec38db6",
+      "internal/wiki/portadas_test.go": "7c484fcebcc0e59c9e43447bd799901dc49a9003786ba07ab025bc72f6f844a1",
+      "internal/wiki/prevista_test.go": "3b5a8e2bd5853e07cd3a59015954d7b95f95ebeb399a65f14f752c153df82352",
+      "internal/wiki/que_hace_test.go": "0f6261944a5c28a2369a128ca7355db9477e7b34bc3fe8b5a1dc2cff0ace04a8",
+      "internal/wiki/ref_test.go": "a4edfe3ca424fc89e612988f4268c581b81cce1ac1abab222097b226e5b237b5",
+      "internal/wiki/seccioncodigo_test.go": "d922f95632cdd1efd0bb3ab6747b4abdd640ccf156395948a0122b7fdafaa261",
+      "internal/wiki/wiki.go": "aa0eccb41b2b2f26c09e76b91f8e7bce6c5e5e12c201de5c120434fb219588a6",
+      "internal/wiki/wiki_test.go": "daee894db9577083cd3c0dbc9f091d0536f9ce3785a33564d8b7ac0360ac8d6a"
+    },
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb\\subagents\\agent-a00876cf8765d4e4e.jsonl"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F017",
+      "marca": "sin_cambio",
+      "motivo": "la feature sigue en curso; S006 cambia solo su propio contrato"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa no cambia por vigilar la página del slice en curso"
+    },
+    {
+      "clave": "pagina:docs/E001/F017/S006.md",
+      "marca": "actualizado",
+      "motivo": "contrato reescrito con la opción 1 del humano y auditado"
+    },
+    {
+      "clave": "pagina:docs/E001/F017/README.md",
+      "marca": "actualizado",
+      "motivo": "el paso 4 del ejemplo de F017 dice ahora lo que S006 vigila de verdad"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la página de E001 no describe el gate de la wiki en detalle"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/aprobacion.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:cmd/aquas/apruebo_cubierto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/apruebo_cubierto.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/main.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:cmd/aquas/main.go\u003einternal/wiki",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/main.go usa wiki; RevisarAlDia se suma sin cambiar las otras revisiones"
+    },
+    {
+      "clave": "importa:cmd/aquas/presupuesto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/presupuesto.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S004.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S004.md nombra wiki.go; Revisar solo agrega la llamada a RevisarAlDia al final"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S005.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S005.md nombra wiki.go; Revisar solo agrega la llamada a RevisarAlDia al final"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/README.md cita la metodología E001 por ruta; se suma la línea Página al día, lo citado sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F001/S001.md nombra wiki.go; Revisar solo agrega la llamada a RevisarAlDia al final"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S002.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F001/S002.md nombra wiki.go; Revisar solo agrega la llamada a RevisarAlDia al final"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S003.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F001/S003.md nombra wiki.go; Revisar solo agrega la llamada a RevisarAlDia al final"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S004.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F001/S004.md nombra wiki.go; Revisar solo agrega la llamada a RevisarAlDia al final"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S010.md nombra wiki.go; Revisar solo agrega la llamada a RevisarAlDia al final"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S015.md nombra codigo.md; el índice se regenera con las funciones nuevas de S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S002.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F004/S002.md cita la metodología E001 por ruta; se suma la línea Página al día, lo citado sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S003.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F004/S003.md cita la metodología E001 por ruta; se suma la línea Página al día, lo citado sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S003.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S003.md nombra wiki.go; Revisar solo agrega la llamada a RevisarAlDia al final"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S004.md nombra codigo.md; el índice se regenera con las funciones nuevas de S006"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/wiki/wiki.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S004.md nombra wiki.go; Revisar solo agrega la llamada a RevisarAlDia al final"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S003.md\u003ecmd/aquas/retrospectiva_test.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F017/S003.md nombra cmd/aquas/retrospectiva_test.go; esa página solo recibe filas generadas"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S008.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F017/S008.md cita la metodología E001 por ruta; se suma la línea Página al día, lo citado sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/README.md cita la metodología E001 por ruta; se suma la línea Página al día, lo citado sigue vigente"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/defecto/defecto.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/defecto/prueba.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/defecto/prueba.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/defecto/reincidencia_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/defecto/reincidencia_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/carpetas_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/guardia/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/contrato.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/guardia.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/memoria/memoria.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/propuesta/desafio.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/propuesta/desafio.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/arreglos_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/casos_borde.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/casos_borde_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/codigo.go nombra codigo.md; el índice se regenera con las funciones nuevas de S006"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/codigo.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/contrato.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/contrato_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/cuando_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/integral_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/portadas.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/prevista_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/que_hace_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/que_hace_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/seccioncodigo_test.go usa backlog; S006 solo suma CodigoVivo, un envoltorio que no cambia lo existente"
+    }
+  ],
+  "alcance": [
+    "internal/wiki/**",
+    "docs/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "internal/backlog/codigo.go",
+      "motivo": "CodigoTocado exportado da el código vivo del slice, la misma fuente que congela la tabla Código"
+    },
+    {
+      "ruta": "cmd/aquas/retrospectiva_test.go",
+      "motivo": "la integral de F017 suma la subprueba de S006"
+    },
+    {
+      "ruta": "gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "motivo": "la regla del gate de página al día vive junto a las del alcance en la metodología E001"
+    },
+    {
+      "ruta": "internal/backlog/codigo.go",
+      "motivo": "CodigoVivo envuelve a codigoTocado y da el código vivo del slice, la misma fuente que congela la tabla Código"
+    }
+  ],
+  "codigo": [
+    "internal/backlog/codigo.go",
+    "internal/wiki/al_dia.go",
+    "internal/wiki/wiki.go"
+  ],
+  "relacion": "nueva",
+  "que_hace": "El gate falla si el código de un tramo cambió después de la última edición de su página"
+}

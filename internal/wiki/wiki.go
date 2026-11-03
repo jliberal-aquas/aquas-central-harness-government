@@ -174,6 +174,7 @@ func Verificar(raiz string) ([]string, error) {
 		return nil, err
 	}
 	problemas = append(problemas, codigo...)
+	problemas = append(problemas, RevisarAlDia(raiz)...) // E001/F017/S006: página del slice en curso al día con su código
 	return problemas, nil
 }
 

@@ -3,9 +3,12 @@ package main
 import (
 	"encoding/json"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/jliberal-aquas/aquas-central-harness-government/internal/wiki"
 )
 
 // TestRetrospectivaSinReincidencia (E001/F017): cada familia de la retrospectiva del 2026-11-02 tiene su control,
@@ -21,6 +24,29 @@ func TestRetrospectivaSinReincidencia(t *testing.T) {
 	t.Run("S007 corrección exige defecto", TestCorreccionExigeDefecto)
 	t.Run("S008 escribir exige leer el contrato", escribirExigeLeerContrato)
 	t.Run("S009 freno por turno cede con feature aprobada", TestFrenoTurnoCedeConFeatureAprobada)
+	t.Run("S006 página al día con su código", paginaAlDia)
+}
+
+// paginaAlDia (S006): con el slice EN_CURSO, código sin commit y su página sin tocar desde el commit, la revisión
+// de la wiki nombra la página; al editar su texto, pasa.
+func paginaAlDia(t *testing.T) {
+	raiz := t.TempDir()
+	escribir(t, raiz, "trabajo/activo/E001-F002-S001.json", `{"id": "E001/F002/S001", "tipo": "slice", "titulo": "A", "estado": "EN_CURSO", "prioridad": "P1", "motivo": "m", "padre": "E001/F002", "bloqueado_por": [], "secuencia": 1}`)
+	escribir(t, raiz, "docs/E001/F002/S001.md", "# S001\n\ncontrato v1\n")
+	escribir(t, raiz, "internal/x/x.go", "package x\n")
+	for _, a := range [][]string{{"init", "-q"}, {"add", "-A"}, {"commit", "-q", "-m", "base"}} {
+		if out, err := exec.Command("git", append([]string{"-C", raiz, "-c", "user.name=t", "-c", "user.email=t@t"}, a...)...).CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v %s", a, err, out)
+		}
+	}
+	escribir(t, raiz, "internal/x/x.go", "package x\n\nvar A = 1\n")
+	if ps := wiki.RevisarAlDia(raiz); len(ps) != 1 || !strings.Contains(ps[0], "docs/E001/F002/S001.md") {
+		t.Errorf("código cambiado y página sin tocar: la revisión nombra la página; dio %v", ps)
+	}
+	escribir(t, raiz, "docs/E001/F002/S001.md", "# S001\n\ncontrato v2\n")
+	if ps := wiki.RevisarAlDia(raiz); len(ps) != 0 {
+		t.Errorf("página editada después del código: pasa; dio %v", ps)
+	}
 }
 
 // escribirExigeLeerContrato (S008) sobre el binario: con un slice EN_CURSO, `aquas guard` frena escribir en su

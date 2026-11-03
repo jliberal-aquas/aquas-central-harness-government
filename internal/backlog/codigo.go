@@ -69,3 +69,6 @@ func Codigo(raiz, id string, commits []string) (Ficha, error) {
 	}
 	return f, escribir(raiz, dirDe(archivada), f)
 }
+
+// CodigoVivo (E001/F017/S006): código del slice ahora: commits que nombran su ID y cambios sin commit.
+func CodigoVivo(raiz, id string) ([]string, error) { return codigoTocado(raiz, id, true) }

@@ -17,15 +17,15 @@
     }
   ],
   "rojo": {
-    "fecha": "2026-11-03T14:35:58Z",
-    "head": "31df57159c81c2bac4e38e06fa0f6062c3e6e8e9",
+    "fecha": "2026-11-03T15:38:02Z",
+    "head": "94f9a311670ba0aeff4451f73fe38e9a9838378d",
     "resultado": {
-      "./cmd/aquas:TestRetrospectivaSinReincidencia": "freno_cede_test.go:64: con apruebo, la llamada 66 pasa el tope 65 de la feature; dio {out: err:Presupuesto: 66 llamadas en este turno (freno 60). No sigas: informa al humano qué hiciste y qué falta."
+      "./cmd/aquas:TestRetrospectivaSinReincidencia": "retrospectiva_test.go:44: código cambiado y página sin tocar: la revisión nombra la página; dio []"
     }
   },
   "verde": {
-    "fecha": "2026-11-03T15:05:16Z",
-    "head": "31df57159c81c2bac4e38e06fa0f6062c3e6e8e9",
+    "fecha": "2026-11-03T15:43:19Z",
+    "head": "94f9a311670ba0aeff4451f73fe38e9a9838378d",
     "huella": {}
   },
   "aprobacion": {

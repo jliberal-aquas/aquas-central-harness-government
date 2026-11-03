@@ -69,7 +69,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 1. El humano aprueba una feature con tope y el [agente](../../glosario.md#agente) trabaja sin pedir más apruebos (S001, S002).
 2. El humano corrige al agente: el turno queda con origen humano, tipo corrección y pedido refinado (S003, S004).
 3. El cierre exige el defecto, y el defecto nombra la prueba que lo vigila (S007, S005).
-4. Al cambiar el código del arreglo, el gate exige poner al día la página del slice (S006).
+4. Con un slice en curso, si su código cambia, el gate exige poner al día su página (S006). Un arreglo de un slice ya cerrado no lo exige.
 
 ## Paso a paso
 
@@ -104,7 +104,7 @@ Prueba integral: `TestRetrospectivaSinReincidencia` (un caso malo y uno bueno po
 | [S003](S003.md) | El gancho de turnos marca origen agente a informes y notificaciones, sin mezclarlos con el humano | Hecho |
 | [S004](S004.md) | Cada respuesta declara tipo y pedido refinado; el cierre los copia al turno o frena si faltan | Hecho |
 | [S005](S005.md) | Un defecto nuevo nombra la prueba de su control y el gate comprueba que existe | Hecho |
-| [S006](S006.md) | El gate falla si el código de un tramo cambió después de la última edición de su página | Planeado |
+| [S006](S006.md) | El gate falla si el código de un tramo cambió después de la última edición de su página | Hecho |
 | [S007](S007.md) | Si el turno del humano trae una corrección, el cierre frena hasta nombrar un defecto nuevo o repetido | Hecho |
 | [S008](S008.md) | El guardia frena escribir en el alcance de un slice si no leyó su página | Hecho |
 | [S009](S009.md) | con feature aprobada y tope vigente solo cuenta el tope; sin apruebo sigue el freno por mensaje | Hecho |
