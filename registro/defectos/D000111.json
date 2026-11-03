@@ -1,0 +1,11 @@
+{
+  "id": "D000111",
+  "firma": "cerrar-feature-destino-reincidencias",
+  "que": "el agente cerró E000/F007, destino fijo de los tramos de reincidencia; con ella archivada defect occur se niega a crearlos",
+  "causa": "el agente cerró la feature al terminar sus slices sin revisar que es un destino permanente; backlog state lo permitió",
+  "arreglo": "deshacer el cierre sin commit con permiso del humano; proponer que backlog state niegue cerrar FeatureReincidencias",
+  "como_me_cercioro": "E000/F007 vuelve a trabajo/activo y defect occur puede crear tramos",
+  "ocurrencias": [],
+  "relacion": "E000/F007",
+  "prueba": "./internal/defecto:TestReincidenciaCreaSlice"
+}
