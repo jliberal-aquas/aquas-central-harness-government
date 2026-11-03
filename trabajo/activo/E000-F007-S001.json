@@ -1,0 +1,21 @@
+{
+  "id": "E000/F007/S001",
+  "tipo": "slice",
+  "titulo": "Exención del freno con rutas de Git Bash y mayúsculas",
+  "estado": "BORRADOR",
+  "prioridad": "P3",
+  "motivo": "auditoría E001/F017/S001-A3, hallazgos L1 y L2: el cd compara sin distinguir mayúsculas también en Linux, y el binario entre comillas en forma /d/ no queda exento (riesgo de repetir D000101)",
+  "padre": "E000/F007",
+  "bloqueado_por": [],
+  "secuencia": 163,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestExencionRutasDelSistema",
+      "intencion": "valida que la exención compara rutas según el sistema",
+      "rojo_cuando": "rojo cuando /d/ entre comillas no exenta o en Linux otra mayúscula exenta",
+      "verde_cuando": "verde cuando ambas formas se comportan como el sistema"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "el freno compara rutas como el sistema operativo y acepta el binario en forma Git Bash"
+}

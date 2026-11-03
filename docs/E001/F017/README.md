@@ -51,7 +51,7 @@ stateDiagram-v2
 
 | Slice | Qué entrega |
 |---|---|
-| [S001 Freno atado al trabajo activo](S001.md) | El tope de llamadas cuenta contra la feature en curso, y los comandos exentos pasan siempre. |
+| [S001 Freno atado al trabajo activo](S001.md) | El tope de una feature deja de frenar cuando ella y sus slices cierran, y los exentos pasan siempre. |
 | [S002 No pedir apruebo ya cubierto](S002.md) | El cierre de turno frena si el agente pide un «apruebo» o un «dale» que la feature aprobada ya cubre. |
 | [S003 Turnos separan humano de agente](S003.md) | Cada turno guardado dice si vino del humano o de un agente. |
 | [S004 Turno guarda tipo y pedido refinado](S004.md) | Cada respuesta declara el tipo del pedido y su versión refinada, y el turno los guarda. |
