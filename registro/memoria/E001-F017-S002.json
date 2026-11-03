@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F017",
+    "slice": "S002",
+    "tarea": "E001/F017/S002 no pedir apruebo ya cubierto: A6 APROBADO"
+  },
+  "siguiente": "cerrar S002, commit y push; luego S003",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "202d0b88ac4d465fe70751fb6d298236493c6d50dfc95a5ceaaf69e1c07151d0",
+  "actualizado": "2026-11-03T02:16:14Z",
+  "sello": "271c6ff31df0e7b744c04d6dfe27803b67aa94bcae10d3f5983ced0ef64f7332"
+}
