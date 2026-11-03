@@ -16,6 +16,10 @@
       "verde_cuando": "verde cuando ambas formas se comportan como el sistema"
     }
   ],
+  "alcance": [
+    "cmd/aquas/**",
+    "docs/**"
+  ],
   "relacion": "nueva",
   "que_hace": "el freno compara rutas como el sistema operativo y acepta el binario en forma Git Bash"
 }

@@ -16,6 +16,11 @@
       "verde_cuando": "verde cuando fix guarda arreglo y prueba real y rechaza la inexistente"
     }
   ],
+  "alcance": [
+    "internal/defecto/**",
+    "cmd/aquas/**",
+    "docs/**"
+  ],
   "relacion": "nueva",
   "que_hace": "aquas defect fix D000NNN arreglo=… prueba=./paquete:TestX actualiza el arreglo con prueba real"
 }

@@ -16,6 +16,11 @@
       "verde_cuando": "verde cuando edit lo cambia y la tabla de la feature lo muestra"
     }
   ],
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/**"
+  ],
   "relacion": "nueva",
   "que_hace": "aquas backlog edit acepta que_hace con motivo y la wiki se rehace"
 }

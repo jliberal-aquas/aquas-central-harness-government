@@ -129,7 +129,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.e
 | [F004](F004/README.md) | Vueltas de pruebas y gate | Hecho |
 | [F005](F005/README.md) | Calidad de las pruebas | Hecho |
 | [F006](F006/README.md) | Correcciones de la revisión externa | Hecho |
-| F007 | agrupa los tramos que nacen cuando un defecto aparece tres veces | Planeado |
+| [F007](F007/README.md) | agrupa los tramos que nacen cuando un defecto aparece tres veces | Planeado |
 | [F008](F008/README.md) | impide que el agente lance por su cuenta las órdenes reservadas a los hooks | Hecho |
 | [F009](F009/README.md) | Impide que una prueba lea el git del repo de la central | Hecho |
 | [F010](F010/README.md) | el cierre de turno frena si un pedido nuevo no trae bloque DESAFÍO completo | Hecho |
