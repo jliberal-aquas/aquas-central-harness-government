@@ -17,6 +17,45 @@ func TestRetrospectivaSinReincidencia(t *testing.T) {
 	t.Run("S002 no pedir apruebo ya cubierto", TestNoPideAprueboCubierto)
 	t.Run("S003 turnos separan humano de agente", turnosSeparanOrigen)
 	t.Run("S004 turno guarda tipo y pedido refinado", turnoExigeRefinado)
+	t.Run("S005 defecto nombra la prueba", defectoExigePrueba)
+}
+
+// defectoExigePrueba (S005) sobre el binario: `defect new` sin prueba o con una que no existe falla; con una real pasa.
+func defectoExigePrueba(t *testing.T) {
+	raiz := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(raiz, "p"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(raiz, "p", "p_test.go"), []byte("package p\n\nimport \"testing\"\n\nfunc TestP(t *testing.T) {}\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	base := []string{"defect", "new", "firma=f", "que=q", "causa=c", "arreglo=a", "cercioro=x", "relacion=nuevo"}
+	for _, c := range []struct {
+		extra  []string
+		codigo int
+	}{
+		{nil, 1},
+		{[]string{"prueba=./p:TestNoHay"}, 1},
+		{[]string{"prueba=./p:TestP"}, 0},
+	} {
+		if s := aquas(t, raiz, "", append(append([]string{}, base...), c.extra...)...); s.codigo != c.codigo {
+			t.Errorf("defect new %v: código %d, quiere %d; %+v", c.extra, s.codigo, c.codigo, s)
+		}
+	}
+	// Gate: un defecto viejo sin campo solo avisa; la prueba nombrada que desaparece frena.
+	viejo := `{"id":"D000002","firma":"v","que":"q","causa":"c","arreglo":"a","como_me_cercioro":"x","ocurrencias":[]}`
+	if err := os.WriteFile(filepath.Join(raiz, "registro", "defectos", "D000002.json"), []byte(viejo), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if frena, aviso := gateDefectos(raiz); len(frena) != 0 || !strings.Contains(aviso, "1 defectos") {
+		t.Errorf("con la prueba presente: no frena y avisa 1 viejo; dio %v, %q", frena, aviso)
+	}
+	if err := os.Remove(filepath.Join(raiz, "p", "p_test.go")); err != nil {
+		t.Fatal(err)
+	}
+	if frena, _ := gateDefectos(raiz); len(frena) != 1 || !strings.Contains(frena[0], "D000001") {
+		t.Errorf("la prueba borrada frena el gate y nombra D000001; dio %v", frena)
+	}
 }
 
 // turnoExigeRefinado (S004) sobre el binario: el cierre de un turno humano sin «Tipo» y «Pedido refinado» frena;

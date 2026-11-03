@@ -103,7 +103,7 @@ Prueba integral: `TestRetrospectivaSinReincidencia` (un caso malo y uno bueno po
 | [S002](S002.md) | El cierre de turno frena si el agente pide apruebo o dale de un tramo con feature aprobada | Hecho |
 | [S003](S003.md) | El gancho de turnos marca origen agente a informes y notificaciones, sin mezclarlos con el humano | Hecho |
 | [S004](S004.md) | Cada respuesta declara tipo y pedido refinado; el cierre los copia al turno o frena si faltan | Hecho |
-| [S005](S005.md) | Un defecto nuevo nombra la prueba de su control y el gate comprueba que existe | Planeado |
+| [S005](S005.md) | Un defecto nuevo nombra la prueba de su control y el gate comprueba que existe | Hecho |
 | [S006](S006.md) | El gate falla si el código de un tramo cambió después de la última edición de su página | Planeado |
 | [S007](S007.md) | Si el turno del humano trae una corrección, el cierre frena hasta nombrar un defecto nuevo o repetido | Planeado |
 | [S008](S008.md) | El guardia frena escribir en el alcance de un slice si no leyó su página | Planeado |

@@ -37,6 +37,9 @@ type Registro struct {
 
 var reNombrePrueba = regexp.MustCompile(`^\./[\w.-]+(/[\w.-]+)*:Test([A-Z0-9_]\w*)?$`)
 
+// EsNombrePrueba: s tiene el formato ./paquete:TestNombre de las fichas (E001/F017/S005 lo reusa en los defectos).
+func EsNombrePrueba(s string) bool { return reNombrePrueba.MatchString(s) }
+
 const formatoPrueba = "./paquete:TestNombre=valida|rojo cuando|verde cuando"
 
 // problemaPrueba: por qué una prueba de la ficha está mal escrita ("" si está bien).

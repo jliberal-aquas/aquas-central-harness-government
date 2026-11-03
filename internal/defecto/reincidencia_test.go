@@ -38,6 +38,7 @@ func nuevaFicha(t *testing.T, raiz string, campos ...string) {
 // Verde cuando: crea un slice P1 en el umbral; debajo no crea nada.
 func TestReincidenciaCreaSlice(t *testing.T) {
 	raiz := t.TempDir()
+	semilla(t, raiz)
 	nuevaFicha(t, raiz, "id=E000", "titulo=Mantenimiento")
 
 	d, err := Nuevo(raiz, campos("json-salto-crudo"))
@@ -115,6 +116,7 @@ func TestReincidenciaCreaSlice(t *testing.T) {
 
 	// Feature archivada: se niega sin crear el hijo activo que rompería el gate (hallazgo A1.1).
 	otra := t.TempDir()
+	semilla(t, otra)
 	nuevaFicha(t, otra, "id=E000", "titulo=Mantenimiento")
 	nuevaFicha(t, otra, "id=E000/F007", "titulo=Reincidencias de defectos")
 	if _, err = backlog.Estado(otra, "E000/F007", "CANCELADO"); err != nil {

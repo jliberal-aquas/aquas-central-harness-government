@@ -11,7 +11,7 @@
 //	aquas measure runs  cuenta corridas, fallas y motivos de go test y verify en el historial de Claude Code
 //	aquas wiki link  docs/x.md…  enlaza al glosario la primera aparición de cada término
 //	aquas clean  <id>  borra .tmp/<id>/ de un encargo (E000/F006/S010-A1) y nada más
-//	aquas defect   new firma=… que=… causa=… arreglo=… cercioro=… | occur D000001 T000001 | show [D000001]
+//	aquas defect   new firma=… que=… causa=… arreglo=… cercioro=… relacion=… prueba=… | occur D000001 T000001 | show [D000001]
 package main
 
 import (
@@ -156,6 +156,12 @@ func main() {
 		if ps := herencia.Validar(raiz); len(ps) > 0 { // E003/F001/S002: cada control con su fila en herencia.json
 			listar("GATE FALLIDO · herencia:", ps)
 			calidadGo = append(calidadGo, ps...) // cuenta para el exit 1 final
+		}
+		if ps, aviso := gateDefectos(raiz); len(ps) > 0 {
+			listar("GATE FALLIDO · defectos (prueba nombrada):", ps)
+			calidadGo = append(calidadGo, ps...) // cuenta para el exit 1 final
+		} else if aviso != "" {
+			_, _ = fmt.Fprintln(os.Stderr, aviso)
 		}
 		permitidos := guardia.ValidarConfig(raiz)
 		if exe, err := os.Executable(); err == nil { // D000026: binario viejo = gate falso
@@ -737,6 +743,16 @@ func backlogCLI(raiz string, args []string) {
 	}
 }
 
+// gateDefectos (E001/F017/S005): lo que el gate dice del registro de defectos. Prueba nombrada que ya no existe
+// frena; los defectos viejos sin campo solo se cuentan en un aviso.
+func gateDefectos(raiz string) (frena []string, aviso string) {
+	ps, viejos := defecto.Revisar(raiz)
+	if viejos > 0 {
+		aviso = fmt.Sprintf("Aviso · %d defectos anteriores a E001/F017/S005 sin prueba nombrada (no frena)", viejos)
+	}
+	return ps, aviso
+}
+
 // turnoCLI: auditoría de turnos (E001/F002/S001). Lee el JSON del hook por stdin. No imprime nada
 // por stdout: en UserPromptSubmit eso entraría al contexto. Un fallo sale con exit 1, que Claude Code
 // trata como error que no bloquea: el mensaje del humano sigue y el agente ve el aviso.
@@ -766,7 +782,7 @@ func turnoCLI(raiz string, args []string) {
 
 // defectoCLI: nuevo | ocurre | ver (E001/F004/S001).
 func defectoCLI(raiz string, args []string) error {
-	uso := errors.New("uso: aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=nuevo|repite:<D>|<id de ficha> | occur D000001 T000001 | show [D000001]")
+	uso := errors.New("uso: aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=nuevo|repite:<D>|<id de ficha> prueba=./paquete:TestNombre|pendiente:<id de ficha> | occur D000001 T000001 | show [D000001]")
 	if len(args) == 0 {
 		return uso
 	}

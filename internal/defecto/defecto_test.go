@@ -9,11 +9,12 @@ import (
 )
 
 func campos(firma string) map[string]string {
-	return map[string]string{"firma": firma, "que": "qué pasó", "causa": "por qué", "arreglo": "cómo se arregló", "cercioro": "cómo me cercioro", "relacion": "nuevo"}
+	return map[string]string{"firma": firma, "que": "qué pasó", "causa": "por qué", "arreglo": "cómo se arregló", "cercioro": "cómo me cercioro", "relacion": "nuevo", "prueba": "./p:TestP"}
 }
 
 func TestRegistroDeDefectos(t *testing.T) {
 	raiz := t.TempDir()
+	semilla(t, raiz)
 
 	d, err := Nuevo(raiz, campos("hook-exit-go-run"))
 	if err != nil {

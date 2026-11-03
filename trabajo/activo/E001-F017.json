@@ -17,15 +17,15 @@
     }
   ],
   "rojo": {
-    "fecha": "2026-11-03T02:44:48Z",
-    "head": "c3ae6b33c9122c0257d6c9c14aec6b52e9c6edfd",
+    "fecha": "2026-11-03T03:14:35Z",
+    "head": "cbdddc1d5c26587c0e54dede10312d4d3a69fc24",
     "resultado": {
-      "./cmd/aquas:TestRetrospectivaSinReincidencia": "retrospectiva_test.go:50: el turno guarda tipo y refinado:"
+      "./cmd/aquas:TestRetrospectivaSinReincidencia": "retrospectiva_test.go:42: defect new [prueba=./p:TestP]: código 1, quiere 0; {out: err:aquas: campo desconocido \"prueba\": usa firma, que, causa, arreglo, cercioro, relacion"
     }
   },
   "verde": {
-    "fecha": "2026-11-03T03:06:16Z",
-    "head": "c3ae6b33c9122c0257d6c9c14aec6b52e9c6edfd",
+    "fecha": "2026-11-03T03:36:26Z",
+    "head": "cbdddc1d5c26587c0e54dede10312d4d3a69fc24",
     "huella": {}
   },
   "aprobacion": {

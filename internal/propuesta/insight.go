@@ -20,7 +20,7 @@ func RevisarInsight(msg string) string {
 			continue
 		}
 		return "Insight PROPUESTO sin defecto: un control no implementado se pierde en el chat. Regístralo con " +
-			"`aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=…` y nombra su número (D000NNN) en el campo Insights."
+			"`aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=… prueba=…` y nombra su número (D000NNN) en el campo Insights."
 	}
 	return ""
 }

@@ -1,0 +1,521 @@
+{
+  "id": "E001/F017/S005",
+  "tipo": "slice",
+  "titulo": "Defecto nombra la prueba que lo cubre",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "Los 103 defectos describen el arreglo en texto; ninguno nombra su prueba",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 160,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestDefectoNombraPrueba",
+      "intencion": "valida que el defecto apunta a una prueba real",
+      "rojo_cuando": "rojo cuando el defecto nombra una prueba inexistente o ninguna",
+      "verde_cuando": "verde cuando la prueba nombrada existe"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-03T03:14:33Z",
+    "head": "cbdddc1d5c26587c0e54dede10312d4d3a69fc24",
+    "resultado": {
+      "./internal/defecto:TestDefectoNombraPrueba": "prueba_test.go:108: la prueba borrada frena el gate y nombra su defecto; dio []"
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-03T03:36:22Z",
+    "head": "cbdddc1d5c26587c0e54dede10312d4d3a69fc24",
+    "huella": {
+      "cmd/aquas/aislamiento_test.go": "e749ee96f0d49fb529940e302e0fde9aa416150d2acd4df5e2b48af947bbd928",
+      "cmd/aquas/aprobacion.go": "1a7b822390fc94e658abe97dcaf77162e9733467509022480881c5939fce3095",
+      "cmd/aquas/aprobacion_feature_test.go": "4e3c60eed83ab428e809f2c08a815069bd931b6b019ae2d6aeadb56727f1797d",
+      "cmd/aquas/aprobacion_test.go": "1ea45fe220f315a1a19336747ae8947fdf5a7020755bf1fd8a48ecb1eb359239",
+      "cmd/aquas/apruebo_cubierto.go": "bdd4d243ab52a97c2f7219900baa45cd9149db894c9c0f0682d0b6ac65eaa89b",
+      "cmd/aquas/apruebo_cubierto_test.go": "0f4549e9de4c84cedc8dbd1d3c5115eee2941270b9f11377c1568b336e2ceff6",
+      "cmd/aquas/arranque_test.go": "7dbdd6ca5b06b689c71c0e1c9f0475e51c1fd968fbd99c37beeb36e728e1be5b",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/central_embebida_test.go": "f75ecadd8ae0128ef3c4cb03f3d63f10c2c1f9b47935b15aec92469a5a34db0b",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/defectos_integral_test.go": "26bf111a7f1bb34cb3330592201ac2e5d1b3850d6a46f082330e6e4281446403",
+      "cmd/aquas/desafio_test.go": "30ec95a2011970dfc3ff84f8447f846a2b3c12cb38d2b62896714d4aa56b12a8",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/freno_hora_test.go": "c28e22b4f913dcd588aa484a93038c0e608058050cbaba69d1d103c10bb38e2a",
+      "cmd/aquas/freno_test.go": "0ae6084576d2ea850d8e03085a75be3d1bbaec087179200c1e85eee2137f917d",
+      "cmd/aquas/frenos_propios_test.go": "3c02a408ada29b37d41244f1124e4eafbf25df8716ef4e8b950bd984efeb1287",
+      "cmd/aquas/frenos_test.go": "0a0ab0c2c90ee5fa17034521bdefe4b644694147056ba8f4048f40b0751500d8",
+      "cmd/aquas/gancho_veredicto_test.go": "de6f96c53bd61687211eb5b201b8d75f539521623d9d965bbfc35992d0fa3bfe",
+      "cmd/aquas/herencia_test.go": "09ce745d7e84bc472f8f2e4cd2f33a9e526411fc02d56735f82194088a161956",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "1e2ee7f687aa9c8029146ef428c4ce3c7785b9c3660a11a4e66ed04d07fac921",
+      "cmd/aquas/hijos_test.go": "0758969d2919a65018ed0dacfdece0a374d612bdef6bab60337300cdae575233",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles.go": "c1820ce7eaa24a83d3cbce9a3baa27e6bac3d01f73de541fb31c906b7d9d802e",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "a88007b549f3c3faaa13f4b1f19a4268ce65419655c25855701d781ac4779984",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "51887040de1e382e3408b317f20a516ccd796148b0647d5ad86a681df9c96752",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "a260b9c6c34a19c182fafe4fd88313e43f242e08d0f4e59d7461f8e02378f18a",
+      "cmd/aquas/presupuesto_test.go": "9cc2daaf876f324654944c92d4ee9bfdf0d7c5d7c045190ed58a165416c9d6b6",
+      "cmd/aquas/pruebas_aisladas_test.go": "1e54a7c00956d161ad0c16cb0eccd9b25b7c77e043ef3a0cd59f7a0ed850507a",
+      "cmd/aquas/punta_test.go": "38c457d4226e9dcc37d6562317b22998c66ced5e1c5eb8b2da89e83a0463253e",
+      "cmd/aquas/retrospectiva_test.go": "ca9dcc49ed481ee4ab281c640099abbe7a57b39b60259e53b3306b38625a47ed",
+      "cmd/aquas/rojo_test.go": "388f1575619b837a6b3134fcc20ad29c04c6ab3c522c976e3d6e2b8f6619f2dd",
+      "cmd/aquas/sello_test.go": "c208274912aea0a3fffbaecd3f40770d791da9c5b2140415a1493eecdb8778bc",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/tope_test.go": "2d7c8d0f4c981c1bcf15b338f0b88a7d6c1d85da5223ff4e3ffea7c977d7d497",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "cmd/aquas/verify_hijo_test.go": "e7e997591a450ef4655c403dee8af44d170001b5942d06ab6f2db327d0b6eb58",
+      "internal/backlog/rojo.go": "d3450ff640ec9dd59300c738859c8dee69ea7aaa007f2b57101f96714b9d4331",
+      "internal/defecto/defecto.go": "8d01a65905ef8056fa9dd7353a2701047aa56e87a7b357cfda4fe2870e2063c9",
+      "internal/defecto/defecto_test.go": "ccf0058afea0335021cc59f2c8cd263e62ed053253326b86a3a59fe54a7898ef",
+      "internal/defecto/fallo.go": "f832d01471235f946d755f3483d9e2e168f149e2bd49500d83a28d5fe664af5a",
+      "internal/defecto/fallo_test.go": "a48938a5bbc25c59d19f1fd6656dba4a0b8c460b95a4e0ec4d0a45ea878391d0",
+      "internal/defecto/main_test.go": "9e85e96fbb20c595cc7297df2e1b034f7f10616cdb6e5846e0af30608072ae10",
+      "internal/defecto/prueba.go": "2153551c0efffceba95cc0eb86105f41dd417df06eb02c293f711518d678a300",
+      "internal/defecto/prueba_test.go": "c2034d6af11d7928216383b26929db49af65b2777a3d3574b040606a892f8c60",
+      "internal/defecto/reincidencia_test.go": "aac16fa2bea4c0e349bb148f2bc7294ecbd2c571ec9a259cf2e932fd9e303359",
+      "internal/defecto/relacion_test.go": "70aa89ef96e2d84b5b9d3f3f4abc0ea392eceb132fae00c1713db7cd01cc25ea",
+      "internal/propuesta/insight.go": "6413026bfc218229f72a3a53b8508231b8819d955399311d8e03fc2752d4276b"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-11-03T09:54:56Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/aislamiento_test.go": "e749ee96f0d49fb529940e302e0fde9aa416150d2acd4df5e2b48af947bbd928",
+      "cmd/aquas/aprobacion.go": "1a7b822390fc94e658abe97dcaf77162e9733467509022480881c5939fce3095",
+      "cmd/aquas/aprobacion_feature_test.go": "4e3c60eed83ab428e809f2c08a815069bd931b6b019ae2d6aeadb56727f1797d",
+      "cmd/aquas/aprobacion_test.go": "1ea45fe220f315a1a19336747ae8947fdf5a7020755bf1fd8a48ecb1eb359239",
+      "cmd/aquas/apruebo_cubierto.go": "bdd4d243ab52a97c2f7219900baa45cd9149db894c9c0f0682d0b6ac65eaa89b",
+      "cmd/aquas/apruebo_cubierto_test.go": "0f4549e9de4c84cedc8dbd1d3c5115eee2941270b9f11377c1568b336e2ceff6",
+      "cmd/aquas/arranque_test.go": "7dbdd6ca5b06b689c71c0e1c9f0475e51c1fd968fbd99c37beeb36e728e1be5b",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/central_embebida_test.go": "f75ecadd8ae0128ef3c4cb03f3d63f10c2c1f9b47935b15aec92469a5a34db0b",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/defectos_integral_test.go": "26bf111a7f1bb34cb3330592201ac2e5d1b3850d6a46f082330e6e4281446403",
+      "cmd/aquas/desafio_test.go": "30ec95a2011970dfc3ff84f8447f846a2b3c12cb38d2b62896714d4aa56b12a8",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/freno_hora_test.go": "c28e22b4f913dcd588aa484a93038c0e608058050cbaba69d1d103c10bb38e2a",
+      "cmd/aquas/freno_test.go": "0ae6084576d2ea850d8e03085a75be3d1bbaec087179200c1e85eee2137f917d",
+      "cmd/aquas/frenos_propios_test.go": "3c02a408ada29b37d41244f1124e4eafbf25df8716ef4e8b950bd984efeb1287",
+      "cmd/aquas/frenos_test.go": "0a0ab0c2c90ee5fa17034521bdefe4b644694147056ba8f4048f40b0751500d8",
+      "cmd/aquas/gancho_veredicto_test.go": "de6f96c53bd61687211eb5b201b8d75f539521623d9d965bbfc35992d0fa3bfe",
+      "cmd/aquas/herencia_test.go": "09ce745d7e84bc472f8f2e4cd2f33a9e526411fc02d56735f82194088a161956",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "1e2ee7f687aa9c8029146ef428c4ce3c7785b9c3660a11a4e66ed04d07fac921",
+      "cmd/aquas/hijos_test.go": "0758969d2919a65018ed0dacfdece0a374d612bdef6bab60337300cdae575233",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles.go": "c1820ce7eaa24a83d3cbce9a3baa27e6bac3d01f73de541fb31c906b7d9d802e",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "a88007b549f3c3faaa13f4b1f19a4268ce65419655c25855701d781ac4779984",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "51887040de1e382e3408b317f20a516ccd796148b0647d5ad86a681df9c96752",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "a260b9c6c34a19c182fafe4fd88313e43f242e08d0f4e59d7461f8e02378f18a",
+      "cmd/aquas/presupuesto_test.go": "9cc2daaf876f324654944c92d4ee9bfdf0d7c5d7c045190ed58a165416c9d6b6",
+      "cmd/aquas/pruebas_aisladas_test.go": "1e54a7c00956d161ad0c16cb0eccd9b25b7c77e043ef3a0cd59f7a0ed850507a",
+      "cmd/aquas/punta_test.go": "38c457d4226e9dcc37d6562317b22998c66ced5e1c5eb8b2da89e83a0463253e",
+      "cmd/aquas/retrospectiva_test.go": "ca9dcc49ed481ee4ab281c640099abbe7a57b39b60259e53b3306b38625a47ed",
+      "cmd/aquas/rojo_test.go": "388f1575619b837a6b3134fcc20ad29c04c6ab3c522c976e3d6e2b8f6619f2dd",
+      "cmd/aquas/sello_test.go": "c208274912aea0a3fffbaecd3f40770d791da9c5b2140415a1493eecdb8778bc",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/tope_test.go": "2d7c8d0f4c981c1bcf15b338f0b88a7d6c1d85da5223ff4e3ffea7c977d7d497",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "cmd/aquas/verify_hijo_test.go": "e7e997591a450ef4655c403dee8af44d170001b5942d06ab6f2db327d0b6eb58",
+      "internal/backlog/rojo.go": "d3450ff640ec9dd59300c738859c8dee69ea7aaa007f2b57101f96714b9d4331",
+      "internal/defecto/defecto.go": "8d01a65905ef8056fa9dd7353a2701047aa56e87a7b357cfda4fe2870e2063c9",
+      "internal/defecto/defecto_test.go": "ccf0058afea0335021cc59f2c8cd263e62ed053253326b86a3a59fe54a7898ef",
+      "internal/defecto/fallo.go": "f832d01471235f946d755f3483d9e2e168f149e2bd49500d83a28d5fe664af5a",
+      "internal/defecto/fallo_test.go": "a48938a5bbc25c59d19f1fd6656dba4a0b8c460b95a4e0ec4d0a45ea878391d0",
+      "internal/defecto/main_test.go": "9e85e96fbb20c595cc7297df2e1b034f7f10616cdb6e5846e0af30608072ae10",
+      "internal/defecto/prueba.go": "2153551c0efffceba95cc0eb86105f41dd417df06eb02c293f711518d678a300",
+      "internal/defecto/prueba_test.go": "c2034d6af11d7928216383b26929db49af65b2777a3d3574b040606a892f8c60",
+      "internal/defecto/reincidencia_test.go": "aac16fa2bea4c0e349bb148f2bc7294ecbd2c571ec9a259cf2e932fd9e303359",
+      "internal/defecto/relacion_test.go": "70aa89ef96e2d84b5b9d3f3f4abc0ea392eceb132fae00c1713db7cd01cc25ea",
+      "internal/propuesta/insight.go": "6413026bfc218229f72a3a53b8508231b8819d955399311d8e03fc2752d4276b"
+    },
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb\\subagents\\agent-a9610e5c8db3b36ae.jsonl"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F017",
+      "marca": "sin_cambio",
+      "motivo": "la feature sigue en curso; S005 no cambia su alcance"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa no cambia por exigir prueba al defecto"
+    },
+    {
+      "clave": "pagina:docs/E001/F017/S005.md",
+      "marca": "actualizado",
+      "motivo": "contrato auditado: formato compartido, dentro del repo, gate y aviso de viejos"
+    },
+    {
+      "clave": "pagina:docs/E001/F017/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la tabla de slices ya describe S005; el estado lo regenera compile"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la página de E001 no lista los campos del defecto"
+    },
+    {
+      "clave": "nombra:.claude/agents/auditor.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": ".claude/agents/auditor.md nombra docs/E001/F003/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:.claude/agents/orchestrator.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": ".claude/agents/orchestrator.md nombra docs/E001/F003/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-haiku.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": ".claude/agents/worker-haiku.md nombra docs/E001/F003/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-sonnet.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": ".claude/agents/worker-sonnet.md nombra docs/E001/F003/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/aprobacion.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "nombra:cmd/aquas/aprobacion_test.go\u003edocs/E001/F002/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/aprobacion_test.go nombra docs/E001/F002/S003.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "importa:cmd/aquas/apruebo_cubierto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/apruebo_cubierto.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:cmd/aquas/apruebo_cubierto.go\u003einternal/propuesta",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/apruebo_cubierto.go usa propuesta para el apruebo; insight.go solo cambió el texto del comando"
+    },
+    {
+      "clave": "nombra:cmd/aquas/arranque_test.go\u003edocs/E001/F005/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/arranque_test.go nombra docs/E001/F005/S003.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/hook_cerrado_test.go cita main.go; S005 suma gateDefectos al gate y prueba= al uso, sin tocar lo citado"
+    },
+    {
+      "clave": "importa:cmd/aquas/presupuesto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/presupuesto.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "nombra:cmd/aquas/sello_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/sello_test.go nombra docs/E001/F001/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:cmd/aquas/sinviejos_test.go\u003edocs/E000/F006/S006.md",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/sinviejos_test.go nombra docs/E000/F006/S006.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:cmd/aquas/sinviejos_test.go\u003edocs/E000/F006/S012.md",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/sinviejos_test.go nombra docs/E000/F006/S012.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S003.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S003.md nombra defecto.go en un contrato viejo; Nuevo suma prueba sin cambiar lo descrito"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S004.md cita main.go; S005 suma gateDefectos al gate y prueba= al uso, sin tocar lo citado"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S008.md cita main.go; S005 suma gateDefectos al gate y prueba= al uso, sin tocar lo citado"
+    },
+    {
+      "clave": "nombra:docs/E000/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/README.md cita la metodología E001 por ruta; F004 ahora nombra el campo prueba, lo citado sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/E001/F002/S004.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S015.md nombra docs/E001/F002/S004.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S015.md habla del sello de codigo.md, no del defecto"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S003.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F004/S003.md cita la metodología E001 por ruta; F004 ahora nombra el campo prueba, lo citado sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S003.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "S003 de F004 describe la reincidencia, que S005 no toca"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S003.md\u003einternal/defecto/reincidencia_test.go",
+      "marca": "sin_cambio",
+      "motivo": "reincidencia_test solo suma la semilla de prueba; lo que S003 de F004 describe sigue igual"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S003.md\u003ecmd/aquas/retrospectiva_test.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F017/S003.md nombra la integral de F017; S005 le suma su subprueba sin tocar la de S003"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S008.md\u003edocs/E001/F017/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F017/S008.md nombra docs/E001/F017/S002.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:docs/E001/README.md\u003egobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/README.md cita la metodología E001 por ruta; F004 ahora nombra el campo prueba, lo citado sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/README.md cita main.go; S005 suma gateDefectos al gate y prueba= al uso, sin tocar lo citado"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/ref/compilador.md cita main.go; S005 suma gateDefectos al gate y prueba= al uso, sin tocar lo citado"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md nombra docs/E001/F003/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:internal/backlog/aprobacion_test.go\u003edocs/E001/F002/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/backlog/aprobacion_test.go nombra docs/E001/F002/S002.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/S004.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/backlog/sello_test.go nombra docs/E001/F002/S004.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "internal/entorno/binario_test.go cita main.go; S005 suma gateDefectos al gate y prueba= al uso, sin tocar lo citado"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/carpetas_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "nombra:internal/guardia/gancho_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/gancho_test.go cita main.go; S005 suma gateDefectos al gate y prueba= al uso, sin tocar lo citado"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/guardia.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/memoria/memoria.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/F005/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/memoria/memoria_test.go nombra docs/E001/F005/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "importa:internal/propuesta/desafio.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/propuesta/desafio.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/arreglos_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/casos_borde.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/casos_borde_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "actualizado",
+      "motivo": "codigo.md se regenera con RevisarPrueba, Revisar, EsNombrePrueba y gateDefectos"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/codigo.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/comandos_test.go cita main.go; S005 suma gateDefectos al gate y prueba= al uso, sin tocar lo citado"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/contrato.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/contrato_test.go nombra docs/E001/F001/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/contrato_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/cuando_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos_test.go nombra docs/E001/F001/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/integral_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/portadas.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/prevista_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/que_hace_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/que_hace_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/seccioncodigo_test.go usa backlog; S005 solo agrega EsNombrePrueba sin cambiar lo existente"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/wiki.go nombra docs/E001/F001/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/wiki_test.go nombra docs/E001/F001/S001.md; esa página solo recibió la fila generada de gateDefectos en su tabla de código"
+    }
+  ],
+  "alcance": [
+    "internal/defecto/**",
+    "cmd/aquas/**",
+    "docs/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "internal/propuesta/insight.go",
+      "motivo": "su aviso enseña el comando defect new y debe incluir prueba="
+    },
+    {
+      "ruta": "internal/backlog/rojo.go",
+      "motivo": "exportar el formato de prueba de las fichas para que el defecto lo reuse (A1.3)"
+    },
+    {
+      "ruta": "gobierno/canonico/metodologias/E001_GOBIERNO_DEL_TRABAJO.md",
+      "motivo": "la lista de campos del defecto debe nombrar prueba (A1.4)"
+    }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/rojo.go",
+    "internal/defecto/defecto.go",
+    "internal/defecto/fallo.go",
+    "internal/defecto/prueba.go",
+    "internal/propuesta/insight.go"
+  ],
+  "relacion": "nueva",
+  "que_hace": "Un defecto nuevo nombra la prueba de su control y el gate comprueba que existe"
+}

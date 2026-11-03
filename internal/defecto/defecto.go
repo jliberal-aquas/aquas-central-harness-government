@@ -29,10 +29,11 @@ type Defecto struct {
 	Ocurrencias []string `json:"ocurrencias"`
 	Relacion    string   `json:"relacion,omitempty"` // E001/F009/S002: nuevo o el id de una ficha
 	Slice       string   `json:"slice,omitempty"`    // E001/F004/S003: slice de reincidencia ya creado
+	Prueba      string   `json:"prueba,omitempty"`   // E001/F017/S005: ./paquete:TestNombre o pendiente:<id de ficha>
 }
 
 // Campos que pide `nuevo`, en orden.
-var Campos = []string{"firma", "que", "causa", "arreglo", "cercioro"}
+var Campos = []string{"firma", "que", "causa", "arreglo", "cercioro", "prueba"} // prueba: E001/F017/S005
 
 var (
 	kebab  = regexp.MustCompile(`^[a-z0-9]+(-[a-z0-9]+)*$`)
@@ -48,6 +49,9 @@ func Nuevo(raiz string, c map[string]string) (Defecto, error) {
 		}
 	}
 	for _, k := range Campos {
+		if k == "prueba" {
+			continue // RevisarPrueba explica qué falta
+		}
 		if strings.TrimSpace(c[k]) == "" {
 			return Defecto{}, fmt.Errorf("falta el campo %s", k)
 		}
@@ -67,10 +71,13 @@ func Nuevo(raiz string, c map[string]string) (Defecto, error) {
 	if err := revisarRelacion(raiz, c["relacion"], c["que"], todos); err != nil {
 		return Defecto{}, err
 	}
+	if err := RevisarPrueba(raiz, c["prueba"]); err != nil {
+		return Defecto{}, err
+	}
 	d := Defecto{
 		ID:       fmt.Sprintf("D%06d", len(todos)+1),
 		Relacion: c["relacion"],
-		Firma:    c["firma"], Que: c["que"], Causa: c["causa"], Arreglo: c["arreglo"], Cercioro: c["cercioro"],
+		Firma:    c["firma"], Que: c["que"], Causa: c["causa"], Arreglo: c["arreglo"], Cercioro: c["cercioro"], Prueba: strings.TrimSpace(c["prueba"]),
 		Ocurrencias: []string{},
 	}
 	return d, escribir(raiz, d)
