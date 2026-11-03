@@ -175,6 +175,7 @@ Carga permanente 01+02+03; constitución/glosario fijan nombres.
 - DECISIÓN: pide elección o input; NO concede ni restringe autoridad al agente.
 - FALLO: resultado ≠ esperado; evidencia, efecto, corrección/previsión.
 - TERMINADO: pedido, entrega, validación, límite, uso inmediato.
+- Respuesta a mensaje del humano → tras la primera línea, `Tipo: …` (petición, corrección, defecto, aprobación, confirmación, respuesta, pregunta, decisión, comando) y `Pedido refinado: …` (qué, para qué, alcance; 1–2 oraciones); hook de cierre frena si faltan (E001/F017/S004).
 - Asuntos distintos → etiquetar por bloque; no esconder preguntas al final.
 - Varias respuestas necesarias → juntas, numeradas, con recomendación.
 

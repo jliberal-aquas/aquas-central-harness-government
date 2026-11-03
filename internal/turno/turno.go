@@ -1,8 +1,8 @@
 // Package turno guarda la auditoría de turnos (E001/F002/S001). El hook UserPromptSubmit abre
-// el turno con el mensaje literal del humano; el hook Stop guarda la respuesta del agente.
-// Ninguno de los dos pasa por el agente. Cada turno es un Markdown en Carpeta/AAAA-MM/T000001.md,
-// fuera de Git (decisión del canónico). Lo pendiente por sesión vive en Estado, dentro de .aquas/.
-// Límite: el pedido refinado y la diferencia A→B no son de este slice.
+// el turno con el mensaje literal recibido (del humano o de un agente: ver Origen); el hook Stop guarda la
+// respuesta del agente. Ninguno de los dos pasa por el agente. Cada turno es un Markdown en
+// Carpeta/AAAA-MM/T000001.md, fuera de Git (decisión del canónico). Lo pendiente por sesión vive en Estado, dentro
+// de .aquas/. Tipo y pedido refinado: E001/F017/S004. Límite: la diferencia A→B no está construida.
 package turno
 
 import (
@@ -29,6 +29,9 @@ type abierto struct {
 	Ruta    string `json:"ruta"`
 	Literal string `json:"literal"`
 	Abierto string `json:"abierto"`
+	// E001/F017/S004: lo declarado en un cierre; si Stop se repite con una corrección corta, se conserva.
+	Tipo     string `json:"tipo,omitempty"`
+	Refinado string `json:"refinado,omitempty"`
 }
 
 var reID = regexp.MustCompile(`^T(\d{6})\.md$`)
@@ -113,10 +116,86 @@ func Origen(literal string) string {
 	return "humano"
 }
 
-// render arma el Markdown del registro de un turno: literal del humano y respuesta.
+// tipos: lo que puede ser un pedido del humano (contrato de E001/F017/S004).
+var tipos = map[string]bool{"petición": true, "corrección": true, "defecto": true, "aprobación": true, "confirmación": true,
+	"respuesta": true, "pregunta": true, "decisión": true, "comando": true}
+
+// reCampo: «Tipo:» o «Pedido refinado:» al comienzo de una línea, tras viñeta, cita o negrita.
+var reCampo = regexp.MustCompile(`^[ \t>*_-]*(Tipo|Pedido refinado):\**[ \t]*(.*)$`)
+
+// Refinado (E001/F017/S004): el tipo (en minúsculas, de la lista) y el pedido refinado que declara la respuesta.
+// Vacío lo que falta o no vale. Solo cuenta la primera aparición fuera de bloques de código.
+func Refinado(respuesta string) (tipo, refinado string) {
+	var visto = map[string]bool{}
+	cerca := ""
+	for _, l := range strings.Split(strings.ReplaceAll(respuesta, "\r\n", "\n"), "\n") {
+		if t := strings.TrimSpace(l); strings.HasPrefix(t, "```") || strings.HasPrefix(t, "~~~") {
+			f := t[:3]
+			if cerca == "" {
+				cerca = f
+			} else if f == cerca {
+				cerca = ""
+			}
+			continue
+		}
+		m := reCampo.FindStringSubmatch(l)
+		if cerca != "" || m == nil || visto[m[1]] {
+			continue
+		}
+		visto[m[1]] = true
+		v := strings.TrimSpace(strings.Trim(strings.TrimSpace(m[2]), "*"))
+		if m[1] == "Tipo" {
+			if t := strings.ToLower(strings.TrimRight(v, ".")); tipos[t] {
+				tipo = t
+			}
+		} else {
+			refinado = v
+		}
+	}
+	return tipo, refinado
+}
+
+// RevisarRefinado (E001/F017/S004): si el turno abierto de la sesión es de origen humano y ni la respuesta ni un
+// cierre anterior del mismo turno declararon tipo y refinado, el motivo del freno. Comprueba presencia, no calidad.
+func RevisarRefinado(raiz, sesion, respuesta string) string {
+	e, err := leerEstado(raiz)
+	a, ok := e[sesion]
+	if err != nil || !ok || Origen(a.Literal) != "humano" {
+		return ""
+	}
+	tipo, refinado := Refinado(respuesta)
+	if tipo == "" {
+		tipo = a.Tipo
+	}
+	if refinado == "" {
+		refinado = a.Refinado
+	}
+	var falta []string
+	if tipo == "" {
+		falta = append(falta, "«Tipo: …» con uno de: petición, corrección, defecto, aprobación, confirmación, respuesta, pregunta, decisión, comando")
+	}
+	if refinado == "" {
+		falta = append(falta, "«Pedido refinado: …» con qué, para qué y alcance en una o dos oraciones")
+	}
+	if len(falta) == 0 {
+		return ""
+	}
+	return "respuesta a un mensaje del humano sin " + strings.Join(falta, " ni ") + " (E001/F017/S004). Agrega las líneas al comienzo de una línea, fuera de bloques de código."
+}
+
+// guion: «—» si el valor está vacío.
+func guion(s string) string {
+	if s == "" {
+		return "—"
+	}
+	return s
+}
+
+// render arma el Markdown del registro de un turno: literal recibido (del humano o de un agente) y respuesta.
 func render(a abierto, respuesta, cerrado string) []byte {
 	var b strings.Builder
-	fmt.Fprintf(&b, "# %s\n\n- Sesión: `%s`\n- Origen: %s\n- Abierto: %s\n- Cerrado: %s\n\n", a.ID, a.Sesion, Origen(a.Literal), a.Abierto, cerrado)
+	fmt.Fprintf(&b, "# %s\n\n- Sesión: `%s`\n- Origen: %s\n- Tipo: %s\n- Pedido refinado: %s\n- Abierto: %s\n- Cerrado: %s\n\n",
+		a.ID, a.Sesion, Origen(a.Literal), guion(a.Tipo), guion(a.Refinado), a.Abierto, cerrado)
 	b.WriteString("## Literal\n\n" + cerca(a.Literal) + "\n## Respuesta\n\n")
 	if cerrado == "—" {
 		b.WriteString("—\n")
@@ -160,6 +239,19 @@ func Cerrar(raiz, sesion, respuesta string, ahora time.Time) (string, error) {
 	a, ok := e[sesion]
 	if !ok {
 		return "", nil
+	}
+	if tipo, refinado := Refinado(respuesta); tipo != "" || refinado != "" {
+		if tipo != "" {
+			a.Tipo = tipo
+		}
+		if refinado != "" {
+			a.Refinado = refinado
+		}
+		e[sesion] = a
+		b, _ := json.MarshalIndent(e, "", "  ")
+		if err := escribir(raiz, Estado, append(b, '\n')); err != nil {
+			return "", err
+		}
 	}
 	if err := escribir(raiz, a.Ruta, render(a, respuesta, ahora.UTC().Format(time.RFC3339))); err != nil {
 		return "", err

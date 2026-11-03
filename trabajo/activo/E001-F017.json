@@ -17,40 +17,24 @@
     }
   ],
   "rojo": {
-    "fecha": "2026-11-03T02:22:38Z",
-    "head": "ba011ccbe03fd63262d6c62c9386252a18b45f48",
+    "fecha": "2026-11-03T02:44:48Z",
+    "head": "c3ae6b33c9122c0257d6c9c14aec6b52e9c6edfd",
     "resultado": {
-      "./cmd/aquas:TestRetrospectivaSinReincidencia": "retrospectiva_test.go:44: los dos turnos deben quedar con origen humano y agente, en ese orden; dio []"
+      "./cmd/aquas:TestRetrospectivaSinReincidencia": "retrospectiva_test.go:50: el turno guarda tipo y refinado:"
     }
   },
   "verde": {
-    "fecha": "2026-11-03T02:26:55Z",
-    "head": "ba011ccbe03fd63262d6c62c9386252a18b45f48",
+    "fecha": "2026-11-03T03:06:16Z",
+    "head": "c3ae6b33c9122c0257d6c9c14aec6b52e9c6edfd",
     "huella": {}
   },
   "aprobacion": {
-    "fecha": "2026-11-03T00:38:28Z",
+    "fecha": "2026-11-03T03:05:08Z",
     "huella": "4bc2d61ae2e518a0aa13a44b41b5199d79ab5b0b18c5cafac922a354e2b6096c",
-    "mensaje": "apruebo E001/F017 tope 350 con push",
+    "mensaje": "apruebo E001/F017 tope 300 con push.",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
     "push": true,
     "foto": {
-      "E001/F017/S002": [
-        {
-          "prueba": "./cmd/aquas:TestNoPideAprueboCubierto",
-          "intencion": "valida que el cierre frena pedir apruebo ya cubierto",
-          "rojo_cuando": "rojo cuando el agente pide apruebo de un slice con feature aprobada",
-          "verde_cuando": "verde cuando lo pide solo si la feature no tiene apruebo vigente"
-        }
-      ],
-      "E001/F017/S003": [
-        {
-          "prueba": "./internal/turno:TestTurnoMarcaOrigen",
-          "intencion": "valida que el turno guarda su origen",
-          "rojo_cuando": "rojo cuando un informe de subagente queda como mensaje del humano",
-          "verde_cuando": "verde cuando el informe queda con origen agente y el humano con origen humano"
-        }
-      ],
       "E001/F017/S004": [
         {
           "prueba": "./internal/turno:TestTurnoGuardaRefinado",

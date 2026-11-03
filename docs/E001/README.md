@@ -97,7 +97,8 @@ Lo que hace el agente con cada mensaje tuyo:
 1. Lee tu mensaje completo.
 2. Busca dudas reales: ambigüedad, contradicción o alcance difuso.
 3. Si hay dudas, pregunta todo en una sola ronda numerada, con su recomendación.
-4. Clasifica el mensaje: pregunta, queja, información o trabajo.
+4. Clasifica el mensaje: pregunta, queja, información o trabajo. Eso decide adónde va.
+   - Además, su respuesta declara `Tipo` (petición, corrección, pregunta…) y `Pedido refinado`; el turno los guarda ([F017](F017/README.md), S004).
 5. Si es trabajo, lo ubica en iniciativa → feature → slice.
 6. Escribe la prueba del slice y comprueba que falla.
 7. Implementa hasta que la prueba pase.

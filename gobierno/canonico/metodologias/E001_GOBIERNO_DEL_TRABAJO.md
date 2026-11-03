@@ -18,13 +18,13 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 ## Flujo de un turno
 1. Hook `UserPromptSubmit` → Go guarda literal en auditoría (sin pasar por agente).
 2. Agente refina: dudas → una ronda de preguntas; sin dudas → sigue.
-3. Clasifica: pregunta · queja · información · trabajo. Solo trabajo entra a iniciativa (existente o nueva).
-4. Refinamiento (comando `turno refinar` nunca implementado; hoy lo registra el resumen del turno) registra «pediste A → acordamos B» + clasificación + vínculo.
+3. Clasifica: pregunta · queja · información · trabajo. Solo trabajo entra a iniciativa (existente o nueva). Esta clasificación decide el destino; el `Tipo` del paso 4 nombra la forma del mensaje (petición, corrección…). Son listas distintas.
+4. Refinamiento: la respuesta a cada mensaje del humano declara `Tipo: …` y `Pedido refinado: …`; el cierre los copia al turno y frena si faltan (E001/F017/S004). Comprueba presencia, no calidad. Pendiente: diferencia A→B y vínculo.
 5. Trabajo → contrato de slice por CLI → rojo → implementar → verde → sello → cierre → commit.
-6. Hook `Stop` → Go guarda respuesta del agente en auditoría (campo `last_assistant_message`: VERIFICADO 2026-10-21 en code.claude.com/docs/en/hooks; Stop se repite si otro hook frena → gana la última respuesta). Hecho en F002/S001 (`internal/turno/`; `aquas turn open|close`; estado por sesión en `.aquas/turno.json`; guardia protege `auditoria/`). Límite: UserPromptSubmit también corre con mensajes que no escribe el humano (avisos de otras sesiones); se guardan igual.
+6. Hook `Stop` → Go guarda respuesta del agente en auditoría (campo `last_assistant_message`: VERIFICADO 2026-10-21 en code.claude.com/docs/en/hooks; Stop se repite si otro hook frena → gana la última respuesta). Hecho en F002/S001 (`internal/turno/`; `aquas turn open|close`; estado por sesión en `.aquas/turno.json`; guardia protege `auditoria/`). Límite: UserPromptSubmit también corre con mensajes que no escribe el humano (avisos de otras sesiones); se guardan igual, marcados `Origen: agente` si empiezan con `<agent-message` o `<task-notification` (E001/F017/S003).
 
 ## Auditoría
-- `auditoria/turnos/AAAA-MM/T000001.md`: literal, respuesta, refinado, diferencia A→B.
+- `auditoria/turnos/AAAA-MM/T000001.md`: origen, tipo, pedido refinado, literal, respuesta; diferencia A→B pendiente.
 - Todo se guarda, sensible o no. Fuera de git (`.gitignore`); respaldo lo hace el humano. Porqué (humano, 2026-10-21): la auditoría es transaccional y operativa, como los datos de una tabla; en Git va solo lo del repositorio y el producto.
 - Turno interrumpido (sin Stop) queda con respuesta «—»: el turno siguiente no lo cierra (visto en T000001, 2026-10-21).
 

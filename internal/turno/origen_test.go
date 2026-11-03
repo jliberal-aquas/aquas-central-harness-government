@@ -29,8 +29,8 @@ func TestTurnoMarcaOrigen(t *testing.T) {
 		if _, err := Cerrar(raiz, sesion, "respuesta", octubre); err != nil {
 			t.Fatal(err)
 		}
-		if s := leer(t, raiz, rel); !strings.Contains(s, "- Origen: "+c.origen+"\n") {
-			t.Errorf("%s: el turno cerrado conserva «- Origen: %s»; dio:\n%s", c.caso, c.origen, s)
+		if s := leer(t, raiz, rel); !strings.Contains(s, "- Origen: "+c.origen+"\n") || strings.Count(s, "- Origen: ") != 1 {
+			t.Errorf("%s: el turno cerrado conserva una sola línea «- Origen: %s»; dio:\n%s", c.caso, c.origen, s)
 		}
 	}
 	if got := Origen("<task-notification>x"); got != "agente" {
