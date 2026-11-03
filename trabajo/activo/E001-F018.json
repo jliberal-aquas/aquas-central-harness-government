@@ -1,0 +1,21 @@
+{
+  "id": "E001/F018",
+  "tipo": "feature",
+  "titulo": "Retrospectiva gobernada",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "análisis skill retro de mattpocock (humano 2026-11-03)",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 176,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestRetrospectivaGobernada",
+      "intencion": "valida que el umbral pide la retro y la reincidencia cuenta por familia",
+      "rojo_cuando": "pasado el umbral next no pide retro o dos defectos de la misma familia no suman",
+      "verde_cuando": "next pide retro en el umbral y la familia acumula ocurrencias"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Retrospectiva escrita como comando, disparada por programa, con defectos agrupados por familia cerrada"
+}

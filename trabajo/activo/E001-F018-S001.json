@@ -1,0 +1,21 @@
+{
+  "id": "E001/F018/S001",
+  "tipo": "slice",
+  "titulo": "Comando /retro canónico",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "la retro no es procedimiento escrito",
+  "padre": "E001/F018",
+  "bloqueado_por": [],
+  "secuencia": 177,
+  "pruebas": [
+    {
+      "prueba": "./internal/compilador:TestSkillRetro",
+      "intencion": "valida que /retro compila con sus categorías y regla de reparto",
+      "rojo_cuando": "falta el skill o alguna categoría o la regla de reparto",
+      "verde_cuando": "compila con todas"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Skill canónico /retro con categorías, fuentes y reparto mecánico a gate, criterio a auditor, orientación a puntero"
+}

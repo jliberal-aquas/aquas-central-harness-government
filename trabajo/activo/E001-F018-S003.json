@@ -1,0 +1,21 @@
+{
+  "id": "E001/F018/S003",
+  "tipo": "slice",
+  "titulo": "Familia de defectos",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "solo 6 de 111 defectos registran repeticiones",
+  "padre": "E001/F018",
+  "bloqueado_por": [],
+  "secuencia": 179,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestReincidenciaPorFamilia",
+      "intencion": "valida familia obligatoria de lista cerrada y conteo por familia",
+      "rojo_cuando": "familia fuera de lista se acepta o dos firmas de una familia no suman",
+      "verde_cuando": "rechaza familia desconocida y suma por familia"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Cada defecto lleva familia de una lista cerrada y la reincidencia cuenta por familia"
+}

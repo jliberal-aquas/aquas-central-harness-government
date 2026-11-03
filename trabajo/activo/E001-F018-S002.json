@@ -1,0 +1,21 @@
+{
+  "id": "E001/F018/S002",
+  "tipo": "slice",
+  "titulo": "Disparador de retrospectiva",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "la retro depende de que alguien se acuerde",
+  "padre": "E001/F018",
+  "bloqueado_por": [],
+  "secuencia": 178,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestNextPideRetro",
+      "intencion": "valida que el umbral dispara el pedido de retro",
+      "rojo_cuando": "pasado el umbral next no la pide o la pide antes",
+      "verde_cuando": "la pide justo en el umbral y no antes"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "backlog next pide la retro tras N slices cerrados o N defectos nuevos desde la última"
+}
