@@ -2,7 +2,7 @@
   "id": "E001/F018",
   "tipo": "feature",
   "titulo": "Retrospectiva gobernada",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P1",
   "motivo": "análisis skill retro de mattpocock (humano 2026-11-03)",
   "padre": "E001",
@@ -16,6 +16,46 @@
       "verde_cuando": "next pide retro en el umbral y la familia acumula ocurrencias"
     }
   ],
+  "rojo": {
+    "fecha": "2026-11-03T21:02:15Z",
+    "head": "eae6a213c0643f62fc411c9b43de37be71a2e330",
+    "resultado": {
+      "./cmd/aquas:TestRetrospectivaGobernada": "retro_gobernada_test.go:46: el defecto guarda su familia; dio {"
+    }
+  },
+  "aprobacion": {
+    "fecha": "2026-11-03T20:58:38Z",
+    "huella": "25d19ebe81e71fa46ee8f14b868909167385b17bbb59cefd08285031d23ae4ee",
+    "mensaje": "apruebo E001/F018 tope 300 con push",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E001/F018/S001": [
+        {
+          "prueba": "./internal/compilador:TestSkillRetro",
+          "intencion": "valida que /retro compila con sus categorías y regla de reparto",
+          "rojo_cuando": "falta el skill o alguna categoría o la regla de reparto",
+          "verde_cuando": "compila con todas"
+        }
+      ],
+      "E001/F018/S002": [
+        {
+          "prueba": "./internal/backlog:TestNextPideRetro",
+          "intencion": "valida que el umbral dispara el pedido de retro",
+          "rojo_cuando": "pasado el umbral next no la pide o la pide antes",
+          "verde_cuando": "la pide justo en el umbral y no antes"
+        }
+      ],
+      "E001/F018/S003": [
+        {
+          "prueba": "./internal/defecto:TestReincidenciaPorFamilia",
+          "intencion": "valida familia obligatoria de lista cerrada y conteo por familia",
+          "rojo_cuando": "familia fuera de lista se acepta o dos firmas de una familia no suman",
+          "verde_cuando": "rechaza familia desconocida y suma por familia"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "Retrospectiva escrita como comando, disparada por programa, con defectos agrupados por familia cerrada"
 }

@@ -89,7 +89,7 @@ func defectoExigePrueba(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(raiz, "p", "p_test.go"), []byte("package p\n\nimport \"testing\"\n\nfunc TestP(t *testing.T) {}\n"), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	base := []string{"defect", "new", "firma=f", "que=q", "causa=c", "arreglo=a", "cercioro=x", "relacion=nuevo"}
+	base := []string{"defect", "new", "firma=f", "que=q", "causa=c", "arreglo=a", "cercioro=x", "relacion=nuevo", "familia=freno"}
 	for _, c := range []struct {
 		extra  []string
 		codigo int

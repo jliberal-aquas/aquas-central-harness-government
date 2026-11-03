@@ -11,7 +11,7 @@
 //	aquas measure runs  cuenta corridas, fallas y motivos de go test y verify en el historial de Claude Code
 //	aquas wiki link  docs/x.md…  enlaza al glosario la primera aparición de cada término
 //	aquas clean  <id>  borra .tmp/<id>/ de un encargo (E000/F006/S010-A1) y nada más
-//	aquas defect   new firma=… que=… causa=… arreglo=… cercioro=… relacion=… prueba=… | occur D000001 T000001 | show [D000001]
+//	aquas defect   new firma=… que=… causa=… arreglo=… cercioro=… relacion=… prueba=… familia=… | occur D000001 T000001 | show [D000001]
 package main
 
 import (
@@ -750,6 +750,12 @@ func gateDefectos(raiz string) (frena []string, aviso string) {
 	if viejos > 0 {
 		aviso = fmt.Sprintf("Aviso · %d defectos anteriores a E001/F017/S005 sin prueba nombrada (no frena)", viejos)
 	}
+	if n := defecto.SinFamilia(raiz); n > 0 { // E001/F018/S003
+		if aviso != "" {
+			aviso += "\n"
+		}
+		aviso += fmt.Sprintf("Aviso · %d defectos anteriores a E001/F018/S003 sin familia (no frena)", n)
+	}
 	return ps, aviso
 }
 
@@ -782,7 +788,7 @@ func turnoCLI(raiz string, args []string) {
 
 // defectoCLI: nuevo | ocurre | arreglar | ver (E001/F004/S001; arreglar: E000/F007/S003).
 func defectoCLI(raiz string, args []string) error {
-	uso := errors.New("uso: aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=nuevo|repite:<D>|<id de ficha> prueba=./paquete:TestNombre|pendiente:<id de ficha> | occur D000001 T000001 | fix D000001 arreglo=… prueba=./paquete:TestNombre | show [D000001]")
+	uso := errors.New("uso: aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=nuevo|repite:<D>|<id de ficha> prueba=./paquete:TestNombre|pendiente:<id de ficha> familia=<de la lista> | occur D000001 T000001 | fix D000001 arreglo=… prueba=./paquete:TestNombre | show [D000001]")
 	if len(args) == 0 {
 		return uso
 	}

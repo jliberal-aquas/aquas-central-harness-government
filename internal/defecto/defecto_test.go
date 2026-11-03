@@ -8,8 +8,13 @@ import (
 	"testing"
 )
 
+// familiaSiguiente: campos rota la familia para que doce defectos seguidos no sumen a una misma (E001/F018/S003).
+var familiaSiguiente int
+
 func campos(firma string) map[string]string {
-	return map[string]string{"firma": firma, "que": "qué pasó", "causa": "por qué", "arreglo": "cómo se arregló", "cercioro": "cómo me cercioro", "relacion": "nuevo", "prueba": "./p:TestP"}
+	familiaSiguiente++
+	return map[string]string{"firma": firma, "que": "qué pasó", "causa": "por qué", "arreglo": "cómo se arregló", "cercioro": "cómo me cercioro", "relacion": "nuevo", "prueba": "./p:TestP",
+		"familia": Familias[familiaSiguiente%len(Familias)]}
 }
 
 func TestRegistroDeDefectos(t *testing.T) {

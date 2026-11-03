@@ -14,7 +14,7 @@ Cada defecto que vuelve, o que una auditoría deja abierto, tiene aquí su tramo
 
 **Por qué importa.** Sin un lugar fijo, esos arreglos se pierden en el chat y el defecto vuelve.
 
-**La solución.** `aquas defect occur` crea aquí el tramo al tercer aviso (E001/F004/S003). Los huecos de auditoría también se anotan aquí.
+**La solución.** `aquas defect occur` crea aquí el tramo al tercer aviso (E001/F004/S003). Tres apariciones de una familia también crean su tramo (E001/F018/S003). Los huecos de auditoría también se anotan aquí.
 
 **Origen.** Decisión del humano del 2026-10-30 (E001/F004/S003). Los tramos S001 a S003 llegaron el 2026-11-03.
 

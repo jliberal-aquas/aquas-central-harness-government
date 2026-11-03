@@ -54,6 +54,18 @@ func existePrueba(dir, nombre string) bool {
 	return false
 }
 
+// SinFamilia (E001/F018/S003): defectos anteriores a la familia obligatoria; el gate solo avisa.
+func SinFamilia(raiz string) int {
+	todos, _ := Leer(raiz)
+	n := 0
+	for _, d := range todos {
+		if d.Familia == "" {
+			n++
+		}
+	}
+	return n
+}
+
 // Revisar (E001/F017/S005, gate): un problema por defecto cuya prueba nombrada ya no vale; los defectos viejos sin
 // campo solo se cuentan (se informan, no frenan).
 func Revisar(raiz string) (problemas []string, sinPrueba int) {

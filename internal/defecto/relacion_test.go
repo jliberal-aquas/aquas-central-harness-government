@@ -14,7 +14,7 @@ import (
 func TestDefectoNuevoExigeRelacion(t *testing.T) {
 	raiz := t.TempDir()
 	semilla(t, raiz)
-	base := map[string]string{"firma": "csv-acentos", "que": "exportar a CSV pierde acentos", "causa": "c", "arreglo": "a", "cercioro": "x", "relacion": "nuevo", "prueba": "./p:TestP"}
+	base := map[string]string{"firma": "csv-acentos", "que": "exportar a CSV pierde acentos", "causa": "c", "arreglo": "a", "cercioro": "x", "relacion": "nuevo", "prueba": "./p:TestP", "familia": "mecanica"}
 	if _, err := Nuevo(raiz, base); err != nil {
 		t.Fatalf("relacion=nuevo debió registrar: %v", err)
 	}
@@ -28,7 +28,7 @@ func TestDefectoNuevoExigeRelacion(t *testing.T) {
 		t.Fatal(err)
 	}
 	otro := func(rel string) map[string]string {
-		c := map[string]string{"firma": "csv-comas", "que": "exportar CSV rompe comas", "causa": "c", "arreglo": "a", "cercioro": "x", "prueba": "./p:TestP"}
+		c := map[string]string{"firma": "csv-comas", "que": "exportar CSV rompe comas", "causa": "c", "arreglo": "a", "cercioro": "x", "prueba": "./p:TestP", "familia": "mecanica"}
 		if rel != "" {
 			c["relacion"] = rel
 		}

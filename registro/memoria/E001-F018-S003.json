@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F018",
+    "slice": "S003",
+    "tarea": "S003 aprobado (A4) y sellado; cerrando"
+  },
+  "siguiente": "arrancar E001/F018/S001 /retro canónico",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "344d8649cb402c4a7fdcab9c04d90d0673346a4c4eb3a470ab2846d9c59050b1",
+  "actualizado": "2026-11-03T21:45:08Z",
+  "sello": "e00616e006e89740df679809a42b7aef10819b385e6b41bfd1f6a8dc3c0c1d6e"
+}

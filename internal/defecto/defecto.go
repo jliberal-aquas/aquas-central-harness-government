@@ -20,20 +20,29 @@ const Carpeta = "registro/defectos"
 
 // Defecto: un fallo con firma estable y los turnos en que ocurrió.
 type Defecto struct {
-	ID          string   `json:"id"`
-	Firma       string   `json:"firma"`
-	Que         string   `json:"que"`
-	Causa       string   `json:"causa"`
-	Arreglo     string   `json:"arreglo"`
-	Cercioro    string   `json:"como_me_cercioro"`
-	Ocurrencias []string `json:"ocurrencias"`
-	Relacion    string   `json:"relacion,omitempty"` // E001/F009/S002: nuevo o el id de una ficha
-	Slice       string   `json:"slice,omitempty"`    // E001/F004/S003: slice de reincidencia ya creado
-	Prueba      string   `json:"prueba,omitempty"`   // E001/F017/S005: ./paquete:TestNombre o pendiente:<id de ficha>
+	ID           string   `json:"id"`
+	Firma        string   `json:"firma"`
+	Que          string   `json:"que"`
+	Causa        string   `json:"causa"`
+	Arreglo      string   `json:"arreglo"`
+	Cercioro     string   `json:"como_me_cercioro"`
+	Ocurrencias  []string `json:"ocurrencias"`
+	Relacion     string   `json:"relacion,omitempty"`      // E001/F009/S002: nuevo o el id de una ficha
+	Slice        string   `json:"slice,omitempty"`         // E001/F004/S003: slice de reincidencia ya creado
+	Prueba       string   `json:"prueba,omitempty"`        // E001/F017/S005: ./paquete:TestNombre o pendiente:<id de ficha>
+	Familia      string   `json:"familia,omitempty"`       // E001/F018/S003: una de Familias
+	TramoFamilia string   `json:"tramo_familia,omitempty"` // E001/F018/S003: tramo de reincidencia de su familia
 }
 
+// Familias (E001/F018/S003): lista cerrada, tomada de la retrospectiva del 2026-11-02. Agregar una = sí del humano.
+var Familias = []string{"comunicacion", "freno", "aprobaciones", "hijos", "documentacion", "asesor", "mecanica",
+	"memoria", "herramientas", "falso-verde", "contrato", "alcance"}
+
+// TituloFamilia: título del tramo de reincidencia de una familia en Feature.
+func TituloFamilia(familia string) string { return "Reincidencia familia " + familia }
+
 // Campos que pide `nuevo`, en orden.
-var Campos = []string{"firma", "que", "causa", "arreglo", "cercioro", "prueba"} // prueba: E001/F017/S005
+var Campos = []string{"firma", "que", "causa", "arreglo", "cercioro", "prueba", "familia"} // prueba: E001/F017/S005; familia: E001/F018/S003
 
 var (
 	kebab  = regexp.MustCompile(`^[a-z0-9]+(-[a-z0-9]+)*$`)
@@ -49,12 +58,15 @@ func Nuevo(raiz string, c map[string]string) (Defecto, error) {
 		}
 	}
 	for _, k := range Campos {
-		if k == "prueba" {
-			continue // RevisarPrueba explica qué falta
+		if k == "prueba" || k == "familia" {
+			continue // RevisarPrueba y la lista de familias explican qué falta
 		}
 		if strings.TrimSpace(c[k]) == "" {
 			return Defecto{}, fmt.Errorf("falta el campo %s", k)
 		}
+	}
+	if !slices.Contains(Familias, c["familia"]) {
+		return Defecto{}, fmt.Errorf("familia %q: usa una de %s (agregar una pide el sí del humano)", c["familia"], strings.Join(Familias, ", "))
 	}
 	if !kebab.MatchString(c["firma"]) {
 		return Defecto{}, fmt.Errorf("firma %q: debe ser kebab-case, ej. hook-exit-go-run", c["firma"])
@@ -78,9 +90,12 @@ func Nuevo(raiz string, c map[string]string) (Defecto, error) {
 		ID:       fmt.Sprintf("D%06d", len(todos)+1),
 		Relacion: c["relacion"],
 		Firma:    c["firma"], Que: c["que"], Causa: c["causa"], Arreglo: c["arreglo"], Cercioro: c["cercioro"], Prueba: strings.TrimSpace(c["prueba"]),
-		Ocurrencias: []string{},
+		Ocurrencias: []string{}, Familia: c["familia"],
 	}
-	return d, escribir(raiz, d)
+	if err := escribir(raiz, d); err != nil {
+		return Defecto{}, err
+	}
+	return revisarFamilia(raiz, d)
 }
 
 // Ocurre suma un turno T000NNN al defecto; el mismo turno no se cuenta dos veces.
@@ -93,7 +108,7 @@ func Ocurre(raiz, id, turno string) (Defecto, error) {
 		return Defecto{}, err
 	}
 	// Hallazgo A1.6: con el umbral alcanzado y sin slice, repetir el mismo turno reintenta sin sumar ocurrencia.
-	pendiente := 1+len(d.Ocurrencias) >= Umbral && d.Slice == ""
+	pendiente := 1+len(d.Ocurrencias) >= Umbral && d.Slice == "" && d.TramoFamilia == "" // A2.2: el de familia también cuenta
 	if slices.Contains(d.Ocurrencias, turno) {
 		if !pendiente {
 			return Defecto{}, fmt.Errorf("%s ya tiene el turno %s", id, turno)
@@ -104,8 +119,11 @@ func Ocurre(raiz, id, turno string) (Defecto, error) {
 			return Defecto{}, err
 		}
 	}
-	if 1+len(d.Ocurrencias) < Umbral || d.Slice != "" {
+	if d.Slice != "" || d.TramoFamilia != "" { // ya lo ataca su tramo propio o el de su familia (hallazgo A1.3)
 		return d, nil
+	}
+	if 1+len(d.Ocurrencias) < Umbral {
+		return revisarFamilia(raiz, d)
 	}
 	s, err := sliceReincidencia(raiz, d)
 	if err != nil {
@@ -126,34 +144,114 @@ const Feature = backlog.FeatureReincidencias
 // Feature archivada se niega: un hijo activo de padre archivado rompe el gate (hallazgo A1.1).
 func sliceReincidencia(raiz string, d Defecto) (string, error) {
 	titulo := "Reincidencia " + d.ID + ": " + d.Firma
-	if f, archivada, err := backlog.Ver(raiz, Feature); err != nil {
-		return "", err
-	} else if archivada {
-		return "", fmt.Errorf("%s está archivada (%s): un slice activo bajo ella rompe el gate", Feature, f.Estado)
-	}
-	fs, err := backlog.Todas(raiz)
+	fs, err := hijosVivos(raiz)
 	if err != nil {
 		return "", err
 	}
-	n := 0
 	for _, f := range fs {
-		if f.Padre != Feature {
-			continue
-		}
 		if f.Titulo == titulo {
 			return f.ID, nil
 		}
-		var k int
-		if _, err := fmt.Sscanf(strings.TrimPrefix(f.ID, Feature+"/S"), "%d", &k); err == nil && k > n {
-			n = k
-		}
 	}
-	id := fmt.Sprintf("%s/S%03d", Feature, n+1)
+	id := siguienteSlice(fs)
 	_, err = backlog.Nuevo(raiz, []string{"id=" + id, "titulo=" + titulo, "prioridad=P1", "relacion=nueva",
 		fmt.Sprintf("motivo=%s apareció %d veces (E001/F004/S003)", d.ID, 1+len(d.Ocurrencias)),
 		"que_hace=ataca la causa de " + d.ID + " para que no vuelva a ocurrir",
 		"prueba=./internal/defecto:TestReincidencia" + d.ID + "=valida que " + d.ID + " no vuelve|rojo cuando " + d.Firma + " se reproduce|verde cuando el control lo impide"})
 	return id, err
+}
+
+// revisarFamilia (E001/F018/S003): si la familia de d junta Umbral apariciones entre defectos sin tramo propio ni de
+// familia, crea o reutiliza su tramo y los marca. Si el tramo no nace, nadie queda marcado.
+func revisarFamilia(raiz string, d Defecto) (Defecto, error) {
+	if d.Familia == "" || d.TramoFamilia != "" || d.Slice != "" {
+		return d, nil
+	}
+	todos, err := Leer(raiz)
+	if err != nil {
+		return Defecto{}, err
+	}
+	var cuentan []Defecto
+	n := 0
+	for _, x := range todos {
+		if x.Familia == d.Familia && x.TramoFamilia == "" && x.Slice == "" {
+			cuentan = append(cuentan, x)
+			n += 1 + len(x.Ocurrencias)
+		}
+	}
+	if n < Umbral {
+		return d, nil
+	}
+	s, err := tramoFamilia(raiz, d.Familia, n)
+	if err != nil {
+		return Defecto{}, fmt.Errorf("%s quedó guardado, pero la familia %s llegó a %d apariciones y su tramo no nació; arregla la causa y el próximo defecto de la familia lo reintenta: %w", d.ID, d.Familia, n, err)
+	}
+	for _, x := range cuentan {
+		x.TramoFamilia = s
+		if err := escribir(raiz, x); err != nil {
+			return Defecto{}, err
+		}
+		if x.ID == d.ID {
+			d = x
+		}
+	}
+	return d, nil
+}
+
+// tramoFamilia devuelve el tramo abierto de la familia o crea uno nuevo P1 en Feature; uno archivado no se reutiliza.
+func tramoFamilia(raiz, familia string, n int) (string, error) {
+	titulo := TituloFamilia(familia)
+	fs, err := hijosVivos(raiz)
+	if err != nil {
+		return "", err
+	}
+	for _, f := range fs {
+		if f.Titulo == titulo && f.Estado != "CERRADO" && f.Estado != "CANCELADO" {
+			return f.ID, nil
+		}
+	}
+	id := siguienteSlice(fs)
+	nombre := ""
+	for _, p := range strings.Split(familia, "-") {
+		nombre += strings.ToUpper(p[:1]) + p[1:]
+	}
+	_, err = backlog.Nuevo(raiz, []string{"id=" + id, "titulo=" + titulo, "prioridad=P1", "relacion=nueva",
+		fmt.Sprintf("motivo=la familia %s juntó %d apariciones (E001/F018/S003)", familia, n),
+		"que_hace=ataca la causa común de los defectos de la familia " + familia,
+		"prueba=./internal/defecto:TestReincidenciaFamilia" + nombre + "=valida que la familia " + familia + " no vuelve|rojo cuando un defecto de la familia se reproduce|verde cuando el control lo impide"})
+	return id, err
+}
+
+// hijosVivos: los slices de Feature, activos o archivados; Feature archivada se niega (hallazgo A1.1 de E001/F004/S003).
+func hijosVivos(raiz string) ([]backlog.Ficha, error) {
+	if f, archivada, err := backlog.Ver(raiz, Feature); err != nil {
+		return nil, err
+	} else if archivada {
+		return nil, fmt.Errorf("%s está archivada (%s): un slice activo bajo ella rompe el gate", Feature, f.Estado)
+	}
+	fs, err := backlog.Todas(raiz)
+	if err != nil {
+		return nil, err
+	}
+	var out []backlog.Ficha
+	for _, f := range fs {
+		if f.Padre == Feature {
+			out = append(out, f)
+		}
+	}
+	return out, nil
+}
+
+// siguienteSlice: el SNNN siguiente al mayor de Feature, no el primer hueco (hallazgo A1.4 de E001/F004/S003).
+func siguienteSlice(fs []backlog.Ficha) string {
+	n := 0
+	for _, f := range fs {
+		var k int
+		if _, err := fmt.Sscanf(strings.TrimPrefix(f.ID, Feature+"/S"), "%d", &k); err == nil && k > n {
+			n = k
+		}
+	}
+	return fmt.Sprintf("%s/S%03d", Feature, n+1)
 }
 
 // Leer devuelve todos los defectos, ordenados por ID. Sin carpeta = registro vacío.

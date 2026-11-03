@@ -34,7 +34,7 @@ func TestDefectosDePuntaAPunta(t *testing.T) {
 	}
 	// 2. Se registra; el cierre que lo cita pasa.
 	s := aquas(t, raiz, "", "defecto", "nuevo", "firma=json-salto-crudo", "que=salto crudo en JSON", "causa=comillas dobles",
-		"arreglo=backticks", "cercioro=prueba", "relacion=nuevo", "prueba=pendiente:E000/F007")
+		"arreglo=backticks", "cercioro=prueba", "relacion=nuevo", "prueba=pendiente:E000/F007", "familia=mecanica")
 	if s.codigo != 0 || !strings.Contains(s.out, "D000001") {
 		t.Fatalf("defecto nuevo: %+v", s)
 	}
