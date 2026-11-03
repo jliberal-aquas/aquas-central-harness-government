@@ -6,7 +6,9 @@
   "prioridad": "P1",
   "motivo": "la retro depende de que alguien se acuerde",
   "padre": "E001/F018",
-  "bloqueado_por": [],
+  "bloqueado_por": [
+    "E001/F018/S001"
+  ],
   "secuencia": 178,
   "pruebas": [
     {
@@ -16,6 +18,22 @@
       "verde_cuando": "la pide justo en el umbral y no antes"
     }
   ],
+  "alcance": [
+    "internal/backlog/**",
+    "internal/retro/**",
+    "cmd/aquas/**",
+    "registro/retros/**",
+    "docs/**"
+  ],
   "relacion": "nueva",
+  "ediciones": [
+    {
+      "fecha": "2026-11-03T20:47:02Z",
+      "campo": "bloqueado_por",
+      "antes": "",
+      "despues": "E001/F018/S001",
+      "motivo": "orden de trabajo: el disparador apunta a /retro"
+    }
+  ],
   "que_hace": "backlog next pide la retro tras N slices cerrados o N defectos nuevos desde la última"
 }

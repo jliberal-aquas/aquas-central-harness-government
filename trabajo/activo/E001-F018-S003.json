@@ -16,6 +16,12 @@
       "verde_cuando": "rechaza familia desconocida y suma por familia"
     }
   ],
+  "alcance": [
+    "internal/defecto/**",
+    "cmd/aquas/**",
+    "gobierno/config/**",
+    "docs/**"
+  ],
   "relacion": "nueva",
   "que_hace": "Cada defecto lleva familia de una lista cerrada y la reincidencia cuenta por familia"
 }

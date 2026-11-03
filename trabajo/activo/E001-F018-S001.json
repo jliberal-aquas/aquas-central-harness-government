@@ -6,7 +6,9 @@
   "prioridad": "P1",
   "motivo": "la retro no es procedimiento escrito",
   "padre": "E001/F018",
-  "bloqueado_por": [],
+  "bloqueado_por": [
+    "E001/F018/S003"
+  ],
   "secuencia": 177,
   "pruebas": [
     {
@@ -16,6 +18,22 @@
       "verde_cuando": "compila con todas"
     }
   ],
+  "alcance": [
+    "gobierno/canonico/skills/**",
+    "gobierno/config/**",
+    ".claude/skills/**",
+    "internal/compilador/**",
+    "docs/**"
+  ],
   "relacion": "nueva",
+  "ediciones": [
+    {
+      "fecha": "2026-11-03T20:47:02Z",
+      "campo": "bloqueado_por",
+      "antes": "",
+      "despues": "E001/F018/S003",
+      "motivo": "orden de trabajo: /retro usa las familias"
+    }
+  ],
   "que_hace": "Skill canónico /retro con categorías, fuentes y reparto mecánico a gate, criterio a auditor, orientación a puntero"
 }
