@@ -4,7 +4,6 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
-	"time"
 )
 
 // TestFrenosPropiosGobernados (integral E001/F011): el freno de este repo nunca bloquea lo que exige un cierre.
@@ -107,8 +106,8 @@ func TestFrenoDejaPasarMemoria(t *testing.T) {
 	}
 
 	// Turno desbordado: memoria fijar pasa y no cuenta en el turno.
-	time.Sleep(1100 * time.Millisecond) // la fecha de aprobación va en segundos
-	turno("apruebo E001/F002 tope 1000")
+	cerrarFeature(t, raiz, "E001/F002") // E001/F017/S009: con apruebo vigente el turno no frena; cerrada, sí
+	turno("sigue")
 	for i := range 59 {
 		if s := usar("Bash", "git status"); s.codigo != 0 {
 			t.Fatalf("dentro del freno del turno; llamada %d dio %+v", i+1, s)

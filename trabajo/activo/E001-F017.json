@@ -17,40 +17,24 @@
     }
   ],
   "rojo": {
-    "fecha": "2026-11-03T13:58:31Z",
-    "head": "50ec1bd191066d2984af0ed6846199b8eae70383",
+    "fecha": "2026-11-03T14:35:58Z",
+    "head": "31df57159c81c2bac4e38e06fa0f6062c3e6e8e9",
     "resultado": {
-      "./cmd/aquas:TestRetrospectivaSinReincidencia": "retrospectiva_test.go:51: registro {\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"tool_use\",\"name\":\"Read\",\"input\":{\"file_path\":\"x.md\"}}]}}: código 0, quiere 2; {out: err: codigo:0}"
+      "./cmd/aquas:TestRetrospectivaSinReincidencia": "freno_cede_test.go:64: con apruebo, la llamada 66 pasa el tope 65 de la feature; dio {out: err:Presupuesto: 66 llamadas en este turno (freno 60). No sigas: informa al humano qué hiciste y qué falta."
     }
   },
   "verde": {
-    "fecha": "2026-11-03T14:22:35Z",
-    "head": "50ec1bd191066d2984af0ed6846199b8eae70383",
+    "fecha": "2026-11-03T15:05:16Z",
+    "head": "31df57159c81c2bac4e38e06fa0f6062c3e6e8e9",
     "huella": {}
   },
   "aprobacion": {
-    "fecha": "2026-11-03T03:05:08Z",
+    "fecha": "2026-11-03T14:34:27Z",
     "huella": "4bc2d61ae2e518a0aa13a44b41b5199d79ab5b0b18c5cafac922a354e2b6096c",
-    "mensaje": "apruebo E001/F017 tope 300 con push.",
+    "mensaje": "apruebo E001/F017 tope 300 con push",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
     "push": true,
     "foto": {
-      "E001/F017/S004": [
-        {
-          "prueba": "./internal/turno:TestTurnoGuardaRefinado",
-          "intencion": "valida que el turno guarda tipo y refinado",
-          "rojo_cuando": "rojo cuando la respuesta no trae refinado y el cierre pasa",
-          "verde_cuando": "verde cuando el refinado queda en el turno y su falta frena"
-        }
-      ],
-      "E001/F017/S005": [
-        {
-          "prueba": "./internal/defecto:TestDefectoNombraPrueba",
-          "intencion": "valida que el defecto apunta a una prueba real",
-          "rojo_cuando": "rojo cuando el defecto nombra una prueba inexistente o ninguna",
-          "verde_cuando": "verde cuando la prueba nombrada existe"
-        }
-      ],
       "E001/F017/S006": [
         {
           "prueba": "./internal/wiki:TestPaginaAlDiaConCodigo",
@@ -59,20 +43,12 @@
           "verde_cuando": "verde cuando la página se actualiza después del código"
         }
       ],
-      "E001/F017/S007": [
+      "E001/F017/S009": [
         {
-          "prueba": "./cmd/aquas:TestCorreccionExigeDefecto",
-          "intencion": "valida que una corrección del humano exige defecto",
-          "rojo_cuando": "rojo cuando el humano corrige y el cierre pasa sin D000NNN",
-          "verde_cuando": "verde cuando el cierre nombra el defecto o el turno no trae corrección"
-        }
-      ],
-      "E001/F017/S008": [
-        {
-          "prueba": "./internal/guardia:TestEscribirExigeLeerContrato",
-          "intencion": "valida que escribir en el alcance exige leer la página del slice",
-          "rojo_cuando": "rojo cuando se escribe sin leer la página desde el último compact",
-          "verde_cuando": "verde cuando frena sin lectura y pasa con Read, cat o biblioteca"
+          "prueba": "./cmd/aquas:TestFrenoTurnoCedeConFeatureAprobada",
+          "intencion": "valida que el freno por turno no corta un slice de feature aprobada",
+          "rojo_cuando": "rojo cuando una feature aprobada con tope vigente frena a las 61 llamadas del turno",
+          "verde_cuando": "verde cuando con apruebo vigente solo frena el tope y sin apruebo frena a las 61"
         }
       ]
     }

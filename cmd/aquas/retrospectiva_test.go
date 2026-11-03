@@ -20,6 +20,7 @@ func TestRetrospectivaSinReincidencia(t *testing.T) {
 	t.Run("S005 defecto nombra la prueba", defectoExigePrueba)
 	t.Run("S007 corrección exige defecto", TestCorreccionExigeDefecto)
 	t.Run("S008 escribir exige leer el contrato", escribirExigeLeerContrato)
+	t.Run("S009 freno por turno cede con feature aprobada", TestFrenoTurnoCedeConFeatureAprobada)
 }
 
 // escribirExigeLeerContrato (S008) sobre el binario: con un slice EN_CURSO, `aquas guard` frena escribir en su

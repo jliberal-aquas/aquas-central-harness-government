@@ -107,7 +107,7 @@ Prueba integral: `TestRetrospectivaSinReincidencia` (un caso malo y uno bueno po
 | [S006](S006.md) | El gate falla si el código de un tramo cambió después de la última edición de su página | Planeado |
 | [S007](S007.md) | Si el turno del humano trae una corrección, el cierre frena hasta nombrar un defecto nuevo o repetido | Hecho |
 | [S008](S008.md) | El guardia frena escribir en el alcance de un slice si no leyó su página | Hecho |
-| [S009](S009.md) | con feature aprobada y tope vigente solo cuenta el tope; sin apruebo sigue el freno por mensaje | Planeado |
+| [S009](S009.md) | con feature aprobada y tope vigente solo cuenta el tope; sin apruebo sigue el freno por mensaje | Hecho |
 
 <!-- /GENERADO -->
 

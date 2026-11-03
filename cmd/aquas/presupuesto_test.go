@@ -79,29 +79,9 @@ func TestPresupuestoPorFeature(t *testing.T) {
 	if s := usar("a1"); s.codigo != 2 || !strings.Contains(s.err, "300") {
 		t.Errorf("sin «tope N» la llamada 301 se bloquea; dio %+v", s)
 	}
-	time.Sleep(1100 * time.Millisecond)
-	turno("apruebo E001/F002 tope 1000")
-	for i := range 60 {
-		if s := usar(""); s.codigo != 0 {
-			t.Fatalf("la aprobación nueva cuenta desde cero; llamada %d dio %+v", i+1, s)
-		}
-	}
-	if s := usar("a2"); s.codigo != 0 {
-		t.Errorf("un subagente no cuenta en el freno del turno; dio %+v", s)
-	}
-	if s := usar(""); s.codigo != 2 || !strings.Contains(s.err, "turno") {
-		t.Errorf("la llamada 61 del turno: bloqueo; dio %+v", s)
-	}
-	mensajeHumano(t, "<task-notification>agente terminó</task-notification>")
-	if s := usar(""); s.codigo != 2 {
-		t.Errorf("un aviso de agente no reinicia el turno; dio %+v", s)
-	}
+	// El freno del turno (sin apruebo, y su cesión con apruebo vigente) lo prueba TestFrenoTurnoCedeConFeatureAprobada (E001/F017/S009).
 	if s := aquas(t, raiz, "no json", "presupuesto", "herramienta"); s.codigo != 1 {
 		t.Errorf("entrada ilegible: código 1, sin bloquear; dio %+v", s)
-	}
-	turno("sigue")
-	if s := usar(""); s.codigo != 0 {
-		t.Errorf("un mensaje nuevo del humano reinicia el turno; dio %+v", s)
 	}
 }
 

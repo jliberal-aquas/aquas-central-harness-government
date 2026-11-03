@@ -111,6 +111,8 @@ func presupuestoCLI(raiz string, args []string) {
 	if err != nil {
 		frenar("Presupuesto: %v. Sin registro no hay cuenta: informa al humano.", err)
 	}
+	// E001/F017/S009 (D000109): con una feature aprobada y abierta solo cuenta su tope; el freno del turno cede.
+	msgFeature, vigente := frenoFeature(raiz, e.Transcript, sesiones)
 	turno := ""
 	if e.Agente == "" { // el freno del turno es del hilo principal
 		propia, ok := sesiones[filepath.Clean(e.Transcript)]
@@ -119,13 +121,13 @@ func presupuestoCLI(raiz string, args []string) {
 				frenar("Presupuesto: no se puede leer el registro de la sesión %s: %v.", e.Transcript, err)
 			}
 		}
-		if n := len(propia.turno); n > frenoTurno {
+		if n := len(propia.turno); n > frenoTurno && !vigente {
 			frenar("Presupuesto: %d llamadas en este turno (freno %d). No sigas: informa al humano qué hiciste y qué falta.", n, frenoTurno)
 		}
 		turno = strconv.FormatInt(propia.inicio, 10)
 	}
-	if msg := frenoFeature(raiz, e.Transcript, sesiones); msg != "" {
-		frenar("%s", msg)
+	if msgFeature != "" {
+		frenar("%s", msgFeature)
 	}
 	avisarContexto(raiz, e, turno)
 }
@@ -331,7 +333,8 @@ func featureCerrada(raiz, id string) bool {
 
 // frenoFeature: el último apruebo de feature del humano fija feature, tope y hora; se cuentan las llamadas
 // distintas desde esa hora en las sesiones y en sus subagentes. "" si puede seguir o no hay apruebo de feature.
-func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) string {
+// vigente: hay apruebo de feature y la feature sigue abierta (E001/F017/S009).
+func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, vigente bool) {
 	var ap *apruebo
 	for _, s := range sesiones {
 		if s.apruebo != nil && (ap == nil || s.apruebo.hora.After(ap.hora)) {
@@ -339,7 +342,7 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) string {
 		}
 	}
 	if ap == nil || featureCerrada(raiz, ap.feature) {
-		return ""
+		return "", false
 	}
 	ids := map[string]bool{}
 	sumar := func(e escaneo) {
@@ -359,14 +362,14 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) string {
 		}
 		e, err := escanear(raiz, sub)
 		if err != nil {
-			return fmt.Sprintf("Presupuesto: no se puede leer el registro %s: %v.", sub, err)
+			return fmt.Sprintf("Presupuesto: no se puede leer el registro %s: %v.", sub, err), true
 		}
 		sumar(e)
 	}
 	if len(ids) > ap.tope {
-		return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%d llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope N»).", ap.feature, ap.tope, ap.feature)
+		return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%d llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope N»).", ap.feature, ap.tope, ap.feature), true
 	}
-	return ""
+	return "", true
 }
 
 // contextoMedido: tokens de entrada de la última llamada del modelo en el transcript; 0 si después
