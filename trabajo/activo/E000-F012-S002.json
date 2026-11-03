@@ -1,0 +1,23 @@
+{
+  "id": "E000/F012/S002",
+  "tipo": "slice",
+  "titulo": "Freno como función pura",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "las decisiones del freno solo se prueban por el binario",
+  "padre": "E000/F012",
+  "bloqueado_por": [
+    "E000/F012/S001"
+  ],
+  "secuencia": 175,
+  "pruebas": [
+    {
+      "prueba": "./internal/freno:TestVeredictoFreno",
+      "intencion": "valida los veredictos del freno sin compilar el binario",
+      "rojo_cuando": "algún veredicto difiere del comportamiento actual",
+      "verde_cuando": "todos los casos actuales dan el mismo veredicto"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Mueve las decisiones del freno a internal/freno como función de entrada a veredicto"
+}

@@ -83,7 +83,7 @@ Prueba integral: `TestCanarioFallaYRepoPasa` (pendiente).
 |---|---|---|
 | [S001](S001.md) | Formato y análisis estático en el gate | Hecho |
 | [S002](S002.md) | Tabla de dependencias entre paquetes | Hecho |
-| S003 | Reporte de complejidad y limpieza | Planeado |
+| S003 | Reporta complejidad, duplicados y zonas calientes (cambios en git por líneas) como INFO, y arregla errores ignorados | Planeado |
 
 <!-- /GENERADO -->
 

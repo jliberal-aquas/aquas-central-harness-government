@@ -18,5 +18,15 @@
       "verde_cuando": "verde cuando sale INFO y GATE OK"
     }
   ],
-  "relacion": "nueva"
+  "relacion": "nueva",
+  "ediciones": [
+    {
+      "fecha": "2026-11-03T20:36:11Z",
+      "campo": "que_hace",
+      "antes": "",
+      "despues": "Reporta complejidad, duplicados y zonas calientes (cambios en git por líneas) como INFO, y arregla errores ignorados",
+      "motivo": "análisis improve-codebase-architecture: zonas calientes como entrada de revisión (humano 2026-11-03)"
+    }
+  ],
+  "que_hace": "Reporta complejidad, duplicados y zonas calientes (cambios en git por líneas) como INFO, y arregla errores ignorados"
 }

@@ -134,6 +134,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.e
 | [F009](F009/README.md) | Impide que una prueba lea el git del repo de la central | Hecho |
 | [F010](F010/README.md) | el cierre de turno frena si un pedido nuevo no trae bloque DESAFÍO completo | Hecho |
 | F011 | Avisa ideas repetidas o descartadas al crear fichas y exige contratos que no caducan | Planeado |
+| F012 | Un solo módulo lee el registro de sesión de Claude Code para guardia, freno, vueltas y respaldo | Planeado |
 
 <!-- /GENERADO -->
 

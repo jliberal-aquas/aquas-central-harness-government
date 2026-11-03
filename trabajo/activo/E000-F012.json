@@ -1,0 +1,21 @@
+{
+  "id": "E000/F012",
+  "tipo": "feature",
+  "titulo": "Registro de sesión único",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "análisis skill improve-codebase-architecture (humano 2026-11-03)",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 173,
+  "pruebas": [
+    {
+      "prueba": "./internal/registro:TestRegistroUnico",
+      "intencion": "valida que un registro de ejemplo da los mismos turnos, cortes y subagentes a todos los usuarios",
+      "rojo_cuando": "algún paquete lee el .jsonl por su cuenta o difiere en el corte por compactación",
+      "verde_cuando": "todos usan internal/registro y coinciden"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Un solo módulo lee el registro de sesión de Claude Code para guardia, freno, vueltas y respaldo"
+}

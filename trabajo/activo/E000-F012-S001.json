@@ -1,0 +1,21 @@
+{
+  "id": "E000/F012/S001",
+  "tipo": "slice",
+  "titulo": "Módulo internal/registro",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "el .jsonl se lee en cinco lugares",
+  "padre": "E000/F012",
+  "bloqueado_por": [],
+  "secuencia": 174,
+  "pruebas": [
+    {
+      "prueba": "./internal/registro:TestLeeRegistro",
+      "intencion": "valida lectura, corte por compactación y ruta de subagente",
+      "rojo_cuando": "un registro de ejemplo da turnos o cortes distintos a lo esperado",
+      "verde_cuando": "coincide con lo esperado en cada caso"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Crea internal/registro con lectura, corte por compactación y ruta de subagente, y migra a sus usuarios"
+}
