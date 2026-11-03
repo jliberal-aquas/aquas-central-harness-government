@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017/S009",
+  "tipo": "slice",
+  "titulo": "Freno por turno cede ante feature aprobada",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "D000109: el freno de 60 llamadas por mensaje corta los slices a la mitad aunque la feature esté aprobada con tope",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 166,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestFrenoTurnoCedeConFeatureAprobada",
+      "intencion": "valida que el freno por turno no corta un slice de feature aprobada",
+      "rojo_cuando": "rojo cuando una feature aprobada con tope vigente frena a las 61 llamadas del turno",
+      "verde_cuando": "verde cuando con apruebo vigente solo frena el tope y sin apruebo frena a las 61"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "con feature aprobada y tope vigente solo cuenta el tope; sin apruebo sigue el freno por mensaje"
+}

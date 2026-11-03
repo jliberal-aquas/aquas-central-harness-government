@@ -17,15 +17,15 @@
     }
   ],
   "rojo": {
-    "fecha": "2026-11-03T12:53:55Z",
-    "head": "4e70f5852673a4e4d30d3abf1efbdc251fcc0e15",
+    "fecha": "2026-11-03T13:58:31Z",
+    "head": "50ec1bd191066d2984af0ed6846199b8eae70383",
     "resultado": {
-      "./cmd/aquas:TestRetrospectivaSinReincidencia": "correccion_test.go:48: corrección sin el campo: código 0, quiere 2; {out: err: codigo:0}"
+      "./cmd/aquas:TestRetrospectivaSinReincidencia": "retrospectiva_test.go:51: registro {\"type\":\"assistant\",\"message\":{\"content\":[{\"type\":\"tool_use\",\"name\":\"Read\",\"input\":{\"file_path\":\"x.md\"}}]}}: código 0, quiere 2; {out: err: codigo:0}"
     }
   },
   "verde": {
-    "fecha": "2026-11-03T13:09:21Z",
-    "head": "4e70f5852673a4e4d30d3abf1efbdc251fcc0e15",
+    "fecha": "2026-11-03T14:22:35Z",
+    "head": "50ec1bd191066d2984af0ed6846199b8eae70383",
     "huella": {}
   },
   "aprobacion": {

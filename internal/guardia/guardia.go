@@ -5,6 +5,8 @@
 //   - Bash: se analizan redirecciones (>, >>, &>), cd, y los destinos de rm, mv, cp, mkdir, touch,
 //     tee, ln, chmod, sed -i, perl -i, git clone/init/worktree add, curl -o, wget -O, dd of=, unzip -d.
 //     Leer fuera está permitido. Ruta con variable desconocida = no se puede probar → se bloquea.
+//   - Contrato leído (E001/F017/S008): con un slice EN_CURSO, escribir en su alcance exige leer docs/<id>.md
+//     después del último /compact (contrato.go).
 //   - Excepciones: solo las carpetas de gobierno/config/guardia.json (permitidos.go), con motivo.
 //
 // Límite (criterio humano): un programa que escribe por su cuenta (python, go run, node…) no se
@@ -32,9 +34,11 @@ const regla = "regla de oro: solo se escribe dentro del repositorio"
 // Revisar recibe el JSON del hook PreToolUse; "" = permitido, si no, el motivo del bloqueo.
 func Revisar(raiz string, entrada []byte) string {
 	var e struct {
-		ToolName  string `json:"tool_name"`
-		Cwd       string `json:"cwd"`
-		ToolInput struct {
+		ToolName   string `json:"tool_name"`
+		Cwd        string `json:"cwd"`
+		Transcript string `json:"transcript_path"` // E001/F017/S008: registro donde se busca la lectura del contrato
+		Agente     string `json:"agent_id"`        // E001/F017/S008: un subagente lee su propio registro
+		ToolInput  struct {
 			FilePath     string `json:"file_path"`
 			NotebookPath string `json:"notebook_path"`
 			Command      string `json:"command"`
@@ -43,6 +47,8 @@ func Revisar(raiz string, entrada []byte) string {
 	if err := json.Unmarshal(entrada, &e); err != nil {
 		return "guardia: entrada del hook ilegible; se bloquea por seguridad (" + regla + ")"
 	}
+	lectura = exigirLectura(raiz, registroDe(e.Transcript, e.Agente)) // E001/F017/S008
+	defer func() { lectura = nil }()
 	switch e.ToolName {
 	case "Write", "Edit", "MultiEdit":
 		return RevisarArchivo(raiz, e.ToolInput.FilePath)
@@ -95,7 +101,10 @@ func protegida(raiz, abs, p string) string {
 	}
 	// E001/F002/S007: alcance del slice en curso; solo rutas dentro del repo.
 	if rel, err := filepath.Rel(raiz, abs); err == nil && !strings.HasPrefix(filepath.ToSlash(rel), "../") {
-		return backlog.FueraDeAlcance(raiz, filepath.ToSlash(rel))
+		if m := backlog.FueraDeAlcance(raiz, filepath.ToSlash(rel)); m != "" || lectura == nil {
+			return m
+		}
+		return lectura(filepath.ToSlash(rel)) // E001/F017/S008: dentro del alcance, el contrato se leyó
 	}
 	return ""
 }

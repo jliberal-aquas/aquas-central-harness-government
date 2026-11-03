@@ -1,0 +1,11 @@
+{
+  "id": "D000109",
+  "firma": "freno-turno-corta-slice-aprobado",
+  "que": "el freno de 60 llamadas por mensaje corta los slices a la mitad aunque la feature esté aprobada con tope",
+  "causa": "dos frenos de gasto encimados: frenoTurno=60 en presupuesto.go y el tope de la feature",
+  "arreglo": "propuesto: con feature aprobada y tope vigente solo cuenta el tope; espera decisión del humano",
+  "como_me_cercioro": "un slice completo dentro de un apruebo no se corta por el freno de turno",
+  "ocurrencias": [],
+  "relacion": "E001/F015",
+  "prueba": "pendiente:E001/F015"
+}

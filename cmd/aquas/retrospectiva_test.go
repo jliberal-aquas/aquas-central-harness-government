@@ -19,6 +19,38 @@ func TestRetrospectivaSinReincidencia(t *testing.T) {
 	t.Run("S004 turno guarda tipo y pedido refinado", turnoExigeRefinado)
 	t.Run("S005 defecto nombra la prueba", defectoExigePrueba)
 	t.Run("S007 corrección exige defecto", TestCorreccionExigeDefecto)
+	t.Run("S008 escribir exige leer el contrato", escribirExigeLeerContrato)
+}
+
+// escribirExigeLeerContrato (S008) sobre el binario: con un slice EN_CURSO, `aquas guard` frena escribir en su
+// alcance si el registro no muestra lectura de su página; con la lectura pasa.
+func escribirExigeLeerContrato(t *testing.T) {
+	raiz := repoSano(t)
+	dir := filepath.Join(raiz, "trabajo", "activo")
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	f := `{"id": "E001/F002/S007", "tipo": "slice", "titulo": "A", "estado": "EN_CURSO", "prioridad": "P1", "motivo": "m",
+  "padre": "E001/F002", "bloqueado_por": [], "secuencia": 1, "alcance": ["internal/**"]}`
+	if err := os.WriteFile(filepath.Join(dir, "E001-F002-S007.json"), []byte(f), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	for _, c := range []struct {
+		linea  string
+		codigo int
+	}{
+		{`{"type":"assistant","message":{"content":[{"type":"tool_use","name":"Read","input":{"file_path":"x.md"}}]}}`, 2},
+		{`{"type":"assistant","message":{"content":[{"type":"tool_use","name":"Bash","input":{"command":"cat docs/E001/F002/S007.md"}}]}}`, 0},
+	} {
+		reg := filepath.Join(raiz, "registro.jsonl")
+		if err := os.WriteFile(reg, []byte(c.linea+"\n"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+		b, _ := json.Marshal(map[string]any{"tool_name": "Write", "tool_input": map[string]string{"file_path": "internal/x.go"}, "transcript_path": reg, "cwd": raiz})
+		if s := aquas(t, raiz, string(b), "guard"); s.codigo != c.codigo || c.codigo == 2 && !strings.Contains(s.err, "docs/E001/F002/S007.md") {
+			t.Errorf("registro %s: código %d, quiere %d; %+v", c.linea, s.codigo, c.codigo, s)
+		}
+	}
 }
 
 // defectoExigePrueba (S005) sobre el binario: `defect new` sin prueba o con una que no existe falla; con una real pasa.

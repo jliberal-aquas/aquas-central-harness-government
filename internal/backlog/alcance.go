@@ -65,33 +65,59 @@ func cubre(patron, rel string) bool {
 	return ok
 }
 
-// FueraDeAlcance: "" si rel (relativa a la raíz) se puede tocar; si no, el motivo y cómo seguir.
-func FueraDeAlcance(raiz, rel string) string {
-	rel = limpia(rel)
+// sliceQueAplica (E001/F017/S008): ficha del slice EN_CURSO cuyo alcance rige rel; false sin slice en curso, con
+// backlog ilegible o con rel excluida o derivada (las escribe aquas). Una sola fuente para FueraDeAlcance y EnAlcance.
+func sliceQueAplica(raiz, rel string) (Ficha, bool) {
 	if excluida(rel) || derivados(raiz)[rel] {
-		return ""
+		return Ficha{}, false
 	}
 	id, hay, err := SliceEnCurso(raiz)
 	if err != nil || !hay {
-		return "" // backlog ilegible lo reporta el gate; sin slice en curso no hay alcance
+		return Ficha{}, false // backlog ilegible lo reporta el gate; sin slice en curso no hay alcance
 	}
 	f, err := activa(raiz, id)
-	if err != nil {
-		return ""
-	}
-	if len(f.Alcance) == 0 {
-		return fmt.Sprintf("%s está en curso sin alcance declarado: declara el alcance con `aquas backlog scope %s ruta…` antes de escribir %s", id, id, rel)
-	}
+	return f, err == nil
+}
+
+// cubreFicha: rel cae en el alcance declarado o en una ampliación de f.
+func cubreFicha(f Ficha, rel string) bool {
 	for _, p := range f.Alcance {
 		if cubre(p, rel) {
-			return ""
+			return true
 		}
 	}
 	for _, a := range f.Ampliaciones {
 		if cubre(a.Ruta, rel) {
-			return ""
+			return true
 		}
+	}
+	return false
+}
+
+// FueraDeAlcance: "" si rel (relativa a la raíz) se puede tocar; si no, el motivo y cómo seguir.
+func FueraDeAlcance(raiz, rel string) string {
+	rel = limpia(rel)
+	f, ok := sliceQueAplica(raiz, rel)
+	if !ok {
+		return ""
+	}
+	id := f.ID
+	if len(f.Alcance) == 0 {
+		return fmt.Sprintf("%s está en curso sin alcance declarado: declara el alcance con `aquas backlog scope %s ruta…` antes de escribir %s", id, id, rel)
+	}
+	if cubreFicha(f, rel) {
+		return ""
 	}
 	return fmt.Sprintf("%s fuera del alcance de %s (%s): si hace falta, `aquas backlog scope %s extend %s motivo=…`; si es otro trabajo, va al backlog",
 		rel, id, strings.Join(f.Alcance, ", "), id, rel)
+}
+
+// EnAlcance (E001/F017/S008): id del slice EN_CURSO cuyo alcance cubre rel; false sin slice en curso, con rel
+// excluida o derivada (las escribe aquas), o fuera del alcance.
+func EnAlcance(raiz, rel string) (string, bool) {
+	rel = limpia(rel)
+	if f, ok := sliceQueAplica(raiz, rel); ok && cubreFicha(f, rel) {
+		return f.ID, true
+	}
+	return "", false
 }

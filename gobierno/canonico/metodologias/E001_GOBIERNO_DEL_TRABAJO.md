@@ -40,6 +40,7 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Dependencias (decisión humana 2026-10-21): slice = proceso independiente, finito y testeable. Dependencia circular = un solo slice. No circular → primero el que se usa (`bloqueado_por`). Hoy acíclico por construcción: `bloqueado_por` solo se fija al crear y apunta a fichas existentes; un comando que lo cambie exige chequeo de ciclos.
 - Hallazgo fuera de alcance del slice activo → `aquas backlog defecto`; no se toca en el slice.
 - Alcance vigilado (F002/S007, decisión humana 2026-10-21: opción B): el slice declara sus rutas al arrancar; tocar otra ruta exige ampliar el alcance con motivo de una línea (queda registrado en la ficha); derivados del compilador siempre permitidos. Rechazadas: A bloqueo duro (traba con archivos imprevisibles: S001 tocó `.gitignore` y la guardia) y C solo aviso al cerrar (no previene).
+- Contrato leído (E001/F017/S008): con un slice EN_CURSO, escribir dentro de su alcance exige que el registro de Claude Code muestre, desde el último `/compact`, una lectura de `docs/<id>.md` (Read, `cat`, `sed`, `head` o `aquas library read`); el subagente usa su propio registro; su propia página, `.tmp/` y `trabajo/` no lo exigen; registro ausente o ilegible frena. Límite: prueba que se leyó, no que se entendió.
 - Ruido del sello (decisión humana 2026-10-21): los derivados del compilador (salidas en `gobierno/config/sellos.json` y ese archivo) no cuentan como tocados; ya los vigila el gate de derivados.
 
 ## Slice y feature
