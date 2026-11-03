@@ -780,9 +780,9 @@ func turnoCLI(raiz string, args []string) {
 	}
 }
 
-// defectoCLI: nuevo | ocurre | ver (E001/F004/S001).
+// defectoCLI: nuevo | ocurre | arreglar | ver (E001/F004/S001; arreglar: E000/F007/S003).
 func defectoCLI(raiz string, args []string) error {
-	uso := errors.New("uso: aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=nuevo|repite:<D>|<id de ficha> prueba=./paquete:TestNombre|pendiente:<id de ficha> | occur D000001 T000001 | show [D000001]")
+	uso := errors.New("uso: aquas defect new firma=… que=… causa=… arreglo=… cercioro=… relacion=nuevo|repite:<D>|<id de ficha> prueba=./paquete:TestNombre|pendiente:<id de ficha> | occur D000001 T000001 | fix D000001 arreglo=… prueba=./paquete:TestNombre | show [D000001]")
 	if len(args) == 0 {
 		return uso
 	}
@@ -804,6 +804,20 @@ func defectoCLI(raiz string, args []string) error {
 		ds = append(ds, d)
 	case args[0] == "ocurre" && len(args) == 3:
 		d, err := defecto.Ocurre(raiz, args[1], args[2])
+		if err != nil {
+			return err
+		}
+		ds = append(ds, d)
+	case args[0] == "arreglar" && len(args) >= 2: // E000/F007/S003: marca el defecto como arreglado
+		c := map[string]string{}
+		for _, a := range args[2:] {
+			k, v, ok := strings.Cut(a, "=")
+			if !ok || (k != "arreglo" && k != "prueba") {
+				return uso
+			}
+			c[k] = v
+		}
+		d, err := defecto.Arreglar(raiz, args[1], c["arreglo"], c["prueba"])
 		if err != nil {
 			return err
 		}

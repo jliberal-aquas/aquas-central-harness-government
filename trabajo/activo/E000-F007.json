@@ -28,6 +28,39 @@
     "head": "c5c5928943717269a7489192373abb18222bceec",
     "huella": {}
   },
+  "aprobacion": {
+    "fecha": "2026-11-03T16:34:38Z",
+    "huella": "13475c099a9e6926b38e5957fd684261ecfc2c2116286add5187143b47a1892f",
+    "mensaje": "apruebo E000/F007 tope 300 con push",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E000/F007/S001": [
+        {
+          "prueba": "./cmd/aquas:TestExencionRutasDelSistema",
+          "intencion": "valida que la exención compara rutas según el sistema",
+          "rojo_cuando": "rojo cuando /d/ entre comillas no exenta o en Linux otra mayúscula exenta",
+          "verde_cuando": "verde cuando ambas formas se comportan como el sistema"
+        }
+      ],
+      "E000/F007/S002": [
+        {
+          "prueba": "./cmd/aquas:TestEditaQueHace",
+          "intencion": "valida que backlog edit cambia que_hace",
+          "rojo_cuando": "rojo cuando edit rechaza que_hace",
+          "verde_cuando": "verde cuando edit lo cambia y la tabla de la feature lo muestra"
+        }
+      ],
+      "E000/F007/S003": [
+        {
+          "prueba": "./internal/defecto:TestDefectoArreglado",
+          "intencion": "valida que un defecto pasa a arreglado con prueba real",
+          "rojo_cuando": "rojo cuando el arreglo no se puede actualizar o acepta prueba inexistente",
+          "verde_cuando": "verde cuando fix guarda arreglo y prueba real y rechaza la inexistente"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "agrupa los tramos que nacen cuando un defecto aparece tres veces"
 }

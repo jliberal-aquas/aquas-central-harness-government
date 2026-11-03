@@ -251,3 +251,24 @@ func revisarRelacion(raiz, rel, que string, todos []Defecto) error {
 	}
 	return nil
 }
+
+// Arreglar (E000/F007/S003, D000109): marca el defecto como arreglado. Reemplaza arreglo y prueba; la prueba debe ser
+// real (./paquete:TestNombre que existe), no pendiente:. Un rechazo no toca el archivo.
+func Arreglar(raiz, id, arreglo, prueba string) (Defecto, error) {
+	d, err := leerUno(raiz, id)
+	if err != nil {
+		return Defecto{}, err
+	}
+	if strings.TrimSpace(arreglo) == "" {
+		return Defecto{}, fmt.Errorf("falta el campo arreglo: di qué control quedó implementado")
+	}
+	prueba = strings.TrimSpace(prueba)
+	if strings.HasPrefix(prueba, "pendiente:") {
+		return Defecto{}, fmt.Errorf("prueba=%s: un defecto arreglado nombra su prueba real (./paquete:TestNombre) y no una ficha pendiente", prueba)
+	}
+	if err := RevisarPrueba(raiz, prueba); err != nil {
+		return Defecto{}, err
+	}
+	d.Arreglo, d.Prueba = strings.TrimSpace(arreglo), prueba
+	return d, escribir(raiz, d)
+}

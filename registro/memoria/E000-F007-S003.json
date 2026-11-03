@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F007",
+    "slice": "S003",
+    "tarea": "S003 APROBADO; sellar y cerrar"
+  },
+  "siguiente": "cerrar y empujar S003; defect fix D000109; luego S002",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "22afa3061e75a9401baf7680517a18cafde9e2c71ad2f508c8aa417609dece32",
+  "actualizado": "2026-11-03T16:46:10Z",
+  "sello": "ee585795ce4e1a5413588d781ed108b3c15a59887d101662064f203fe34e3558"
+}

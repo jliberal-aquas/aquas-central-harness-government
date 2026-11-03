@@ -23,7 +23,7 @@ var subcomandos = map[string]map[string]string{
 	"memoria":     {"start": "inicio", "close": "cierre", "archive": "archivar", "set": "fijar", "show": "ver"},
 	"turno":       {"open": "abrir", "close": "cerrar"},
 	"presupuesto": {"tool": "herramienta"},
-	"defecto":     {"new": "nuevo", "occur": "ocurre", "show": "ver"},
+	"defecto":     {"new": "nuevo", "occur": "ocurre", "fix": "arreglar", "show": "ver"},
 	"wiki":        {"link": "enlazar"},
 	"medir":       {"runs": "vueltas"},
 	"biblioteca":  {"read": "leer"},
