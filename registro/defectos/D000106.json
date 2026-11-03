@@ -5,6 +5,8 @@
   "causa": "corregí los graves de A1 y relancé el auditor sin barrer antes huecos leves del mismo tipo",
   "arreglo": "antes de relanzar el auditor, buscar el mismo hueco en docs y pruebas vecinas",
   "como_me_cercioro": "pendiente: medir vueltas de auditor por slice en F017",
-  "ocurrencias": [],
+  "ocurrencias": [
+    "T000618"
+  ],
   "relacion": "E001/F017"
 }

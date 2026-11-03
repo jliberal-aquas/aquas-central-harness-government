@@ -1,0 +1,10 @@
+{
+  "id": "D000108",
+  "firma": "turno-inventado-en-ocurrencia",
+  "que": "anoté una repetición de defecto con el turno T000000, que no existe",
+  "causa": "no consulté .aquas/turno.json antes de anotar",
+  "arreglo": "corregido a T000618 en D000106",
+  "como_me_cercioro": "pendiente: defect occur debería rechazar un turno que no existe en auditoria/turnos",
+  "ocurrencias": [],
+  "relacion": "E001/F017"
+}
