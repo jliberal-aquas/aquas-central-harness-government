@@ -2,7 +2,7 @@
   "id": "E001/F017",
   "tipo": "feature",
   "titulo": "Controles de la retrospectiva del 2026-11-02",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "Retrospectiva de 597 turnos: 41 correcciones del humano, 19 sin defecto; 6 familias sin control determinista",
   "padre": "E001",
