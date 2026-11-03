@@ -1,0 +1,21 @@
+{
+  "id": "E000/F006/S013",
+  "tipo": "slice",
+  "titulo": "Marcar un defecto como arreglado",
+  "estado": "CANCELADO",
+  "prioridad": "P2",
+  "motivo": "D000109: aquas defect no permite marcar el arreglo como hecho; el registro queda diciendo propuesto",
+  "padre": "E000/F006",
+  "bloqueado_por": [],
+  "secuencia": 167,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestDefectoArreglado",
+      "intencion": "valida que un defecto pasa a arreglado con prueba real",
+      "rojo_cuando": "rojo cuando el arreglo no se puede actualizar o acepta prueba inexistente",
+      "verde_cuando": "verde cuando fix guarda arreglo y prueba real y rechaza la inexistente"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "aquas defect fix D000NNN arreglo=… prueba=./paquete:TestX actualiza el arreglo con prueba real"
+}

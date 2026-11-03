@@ -98,6 +98,7 @@ Prueba integral: `TestHookFallaCerrado`, en S001.
 | [S010](S010.md) | Instrucciones sin go run para verificar | Hecho |
 | [S011](S011.md) | aquas limpiar conectado: CLI y regla de encargos | Hecho |
 | [S012](S012.md) | Cambia los nombres viejos de comandos por los nuevos en wiki, canónicos, skills y mensajes de uso. | Hecho |
+| S013 | aquas defect fix D000NNN arreglo=… prueba=./paquete:TestX actualiza el arreglo con prueba real | Cancelado |
 
 <!-- /GENERADO -->
 

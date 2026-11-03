@@ -1,0 +1,11 @@
+{
+  "id": "D000110",
+  "firma": "hijo-nuevo-bajo-padre-archivado",
+  "que": "el agente creó E000/F006/S013 bajo una feature archivada leyendo la tabla vieja de /backlog; backlog new lo aceptó y el gate lo atajó",
+  "causa": "la tabla de /backlog estaba desactualizada y backlog new no revisa si el padre está archivado",
+  "arreglo": "se canceló S013 y se creó E000/F007/S003; backlog new debería negarse con padre archivado",
+  "como_me_cercioro": "el gate falla con hijo activo bajo padre archivado",
+  "ocurrencias": [],
+  "relacion": "E000/F006/S013",
+  "prueba": "./internal/backlog:TestGateDetectaHijoHuerfano"
+}
