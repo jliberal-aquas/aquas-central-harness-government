@@ -6,7 +6,7 @@
 
 ## En una frase
 
-Siete controles por programa contra las fallas que más se repitieron.
+Ocho controles por programa contra las fallas que más se repitieron.
 
 ## Para qué existe
 
@@ -58,6 +58,7 @@ stateDiagram-v2
 | [S005 Defecto nombra la prueba que lo cubre](S005.md) | Cada defecto nuevo nombra la prueba de su control, y el gate comprueba que esa prueba existe. |
 | [S006 Página del tramo al día con su código](S006.md) | El gate falla si el código de un slice cambió después de la última edición de su página. |
 | [S007 Corrección del humano exige defecto](S007.md) | Si el humano corrige al agente, el cierre del turno frena hasta nombrar un defecto. |
+| [S008 Leer el contrato antes de escribir](S008.md) | Escribir código de un slice en curso exige haber leído su página desde el último `/compact`. |
 
 ## Ejemplo de punta a punta
 
@@ -78,6 +79,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 4. Turno guarda tipo y pedido refinado (S004).
 5. Defecto nombra la prueba que lo cubre (S005).
 6. Página del tramo al día con su código (S006).
+8. Leer el contrato antes de escribir (S008).
 7. Corrección del humano exige defecto (S007).
 
 ## Cómo se usa
@@ -104,6 +106,7 @@ Prueba integral: `TestRetrospectivaSinReincidencia` (un caso malo y uno bueno po
 | [S005](S005.md) | Un defecto nuevo nombra la prueba de su control y el gate comprueba que existe | Planeado |
 | [S006](S006.md) | El gate falla si el código de un tramo cambió después de la última edición de su página | Planeado |
 | [S007](S007.md) | Si el turno del humano trae una corrección, el cierre frena hasta nombrar un defecto nuevo o repetido | Planeado |
+| [S008](S008.md) | El guardia frena escribir en el alcance de un slice si no leyó su página | Planeado |
 
 <!-- /GENERADO -->
 

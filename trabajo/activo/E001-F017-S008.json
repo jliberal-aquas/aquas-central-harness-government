@@ -1,0 +1,21 @@
+{
+  "id": "E001/F017/S008",
+  "tipo": "slice",
+  "titulo": "Leer el contrato antes de escribir",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "nada obliga al agente a leer la página del slice tras un compact; el auditor lo detecta tarde",
+  "padre": "E001/F017",
+  "bloqueado_por": [],
+  "secuencia": 164,
+  "pruebas": [
+    {
+      "prueba": "./internal/guardia:TestEscribirExigeLeerContrato",
+      "intencion": "valida que escribir en el alcance exige leer la página del slice",
+      "rojo_cuando": "rojo cuando se escribe sin leer la página desde el último compact",
+      "verde_cuando": "verde cuando frena sin lectura y pasa con Read, cat o biblioteca"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "El guardia frena escribir en el alcance de un slice si no leyó su página"
+}
