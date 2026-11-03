@@ -212,6 +212,17 @@ func Verificar(raiz string) ([]string, error) {
 			problemas = append(problemas, fmt.Sprintf("%s: excede presupuesto (%d > %d caracteres)", s.Ruta, n, s.Max))
 		}
 	}
+	// E001/F018/S001 (hallazgo A2.2): todo canónico de skill se declara; si no, viajaría al hijo sin compilarse aquí.
+	rutas := map[string]bool{}
+	for _, s := range salidas {
+		rutas[s.Ruta] = true
+	}
+	skills, _ := filepath.Glob(filepath.Join(raiz, "gobierno", "canonico", "skills", "*.md"))
+	for _, f := range skills {
+		if r := ".claude/skills/" + strings.TrimSuffix(filepath.Base(f), ".md") + "/SKILL.md"; !rutas[r] {
+			problemas = append(problemas, "gobierno/canonico/skills/"+filepath.Base(f)+": skill sin declarar en "+RutaDocumentos+" (salida "+r+")")
+		}
+	}
 	nuevo, err := sellar(raiz, salidas)
 	if err != nil {
 		return nil, err

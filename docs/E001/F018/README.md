@@ -105,7 +105,7 @@ Prueba integral: `TestRetrospectivaGobernada`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | Skill canónico /retro con categorías, fuentes y reparto mecánico a gate, criterio a auditor, orientación a puntero | Planeado |
+| [S001](S001.md) | Skill canónico /retro con categorías, fuentes y reparto mecánico a gate, criterio a auditor, orientación a puntero | Hecho |
 | [S002](S002.md) | backlog next pide la retro tras N slices cerrados o N defectos nuevos desde la última | Planeado |
 | [S003](S003.md) | Cada defecto lleva familia de una lista cerrada y la reincidencia cuenta por familia | Hecho |
 

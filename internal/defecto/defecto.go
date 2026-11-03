@@ -309,11 +309,16 @@ func escribir(raiz string, d Defecto) error {
 }
 
 // Texto: una línea por defecto para `aquas defect show`.
+// E001/F018/S001 (hallazgo A1.1): muestra la familia, que /retro usa para agrupar.
 func Texto(d Defecto) string {
-	if d.Slice != "" {
-		return fmt.Sprintf("%s · %s · %d ocurrencias · slice %s · %s\n", d.ID, d.Firma, len(d.Ocurrencias), d.Slice, d.Que)
+	fam := ""
+	if d.Familia != "" {
+		fam = " · familia " + d.Familia
 	}
-	return fmt.Sprintf("%s · %s · %d ocurrencias · %s\n", d.ID, d.Firma, len(d.Ocurrencias), d.Que)
+	if d.Slice != "" {
+		return fmt.Sprintf("%s · %s%s · %d ocurrencias · slice %s · %s\n", d.ID, d.Firma, fam, len(d.Ocurrencias), d.Slice, d.Que)
+	}
+	return fmt.Sprintf("%s · %s%s · %d ocurrencias · %s\n", d.ID, d.Firma, fam, len(d.Ocurrencias), d.Que)
 }
 
 // revisarRelacion (E001/F009/S002): relacion=nuevo o el id de una ficha; sin ella, lista defectos y fichas parecidos.

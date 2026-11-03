@@ -8,11 +8,18 @@ import (
 	"testing/fstest"
 )
 
+// Fuente y ruta de /backlog, el primer skill que viajó al hijo.
+const (
+	FuenteSkill = "gobierno/canonico/skills/backlog.md"
+	RutaSkill   = ".claude/skills/backlog/SKILL.md"
+)
+
 // TestBuildEscribeSkillBacklog (E001/F007/S003): build deja /backlog en el hijo, sacado de la central sellada y
 // apuntando al aquas instalado; update lo renueva; sin fuente no hay skill ni error.
 // Rojo cuando: build no escribe el skill, deja el comando del central o Verificar no ve un SKILL.md editado.
 // Verde cuando: el skill corre `aquas backlog table`, conserva el frontmatter y Verificar lo cuida como a CLAUDE.md.
 func TestBuildEscribeSkillBacklog(t *testing.T) {
+	t.Run("E001/F018/S001 todos los skills de la central", todosLosSkills)
 	canon, err := os.ReadFile("../../gobierno/canonico/skills/backlog.md")
 	if err != nil {
 		t.Fatal(err)

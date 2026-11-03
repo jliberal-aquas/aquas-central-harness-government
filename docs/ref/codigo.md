@@ -336,8 +336,12 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/hijo/precommit.go](../../internal/hijo/precommit.go) | `RevisarPreCommit` | `(dir string) string` | RevisarPreCommit (E003/F001/S005, hallazgos A1.2 y A1.3): problema si el hijo no tiene repo git propio, |
 | [internal/hijo/precommit.go](../../internal/hijo/precommit.go) | `AsegurarPreCommit` | `(dir string) error` | AsegurarPreCommit (E003/F001/S005) escribe .githooks/pre-commit con `aquas verify` y fija core.hooksPath. |
 | [internal/hijo/report.go](../../internal/hijo/report.go) | `Report` | `(dir, quePaso, repro string) (string, error)` | Report arma el borrador de issue para la central: firma del hijo, versión |
-| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `skillPropio` | `(dir string) error` | skillPropio (hallazgo A1.1): error si el hijo ya tiene un SKILL.md de /backlog que no generó aquas; build no lo pisa. |
-| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `armarSkill` | `(dir string) (txt string, hay bool, err error)` | armarSkill devuelve el SKILL.md del hijo. hay=false si la central sellada no trae el skill (central anterior |
+| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `fuentesSkill` | `(central fs.FS) []string` | fuentesSkill: canónicos de skills que trae la central, ordenados. |
+| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `rutaSkill` | `(fuente string) string` | rutaSkill: dónde queda en el hijo el skill de esa fuente. |
+| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `nombreSkill` | `(fuente string) string` | nombreSkill: nombre del comando del chat, sacado del archivo canónico (retro.md → retro). |
+| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `skillPropio` | `(dir, ruta string) error` | skillPropio (hallazgo A1.1): error si el hijo ya tiene en ruta un SKILL.md que no generó aquas; build no lo pisa. |
+| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `armarSkills` | `(dir string) (map[string]string, error)` | armarSkills devuelve ruta → SKILL.md del hijo por cada skill de la central sellada; vacío si no trae ninguno |
+| [internal/hijo/skill.go](../../internal/hijo/skill.go) | `rutasOrdenadas` | `(skills map[string]string) []string` | rutasOrdenadas: claves de skills en orden, para escribir y avisar siempre igual. |
 | [internal/hijo/update.go](../../internal/hijo/update.go) | `Update` | `(dest string, central fs.FS, version string) ([]string, error)` | Update reemplaza la central sellada por otra versión y reescribe el lock. |
 | [internal/hijo/update.go](../../internal/hijo/update.go) | `alterados` | `(dest string) ([]string, error)` | alterados lista los archivos sellados que ya no coinciden con el lock. |
 | [internal/memoria/archivar.go](../../internal/memoria/archivar.go) | `RutaArchivo` | `(f Foco) string` | RutaArchivo: registro/memoria/<E>-<F>-<S>.json; "" si el foco no llega a slice. |

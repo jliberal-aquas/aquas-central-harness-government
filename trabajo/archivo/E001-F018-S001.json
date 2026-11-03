@@ -1,0 +1,812 @@
+{
+  "id": "E001/F018/S001",
+  "tipo": "slice",
+  "titulo": "Comando /retro canónico",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "la retro no es procedimiento escrito",
+  "padre": "E001/F018",
+  "bloqueado_por": [
+    "E001/F018/S003"
+  ],
+  "secuencia": 177,
+  "pruebas": [
+    {
+      "prueba": "./internal/compilador:TestSkillRetro",
+      "intencion": "valida que /retro compila con sus categorías y regla de reparto",
+      "rojo_cuando": "falta el skill o alguna categoría o la regla de reparto",
+      "verde_cuando": "compila con todas"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-03T22:57:28Z",
+    "head": "f1220916fdd30052aede2fa6848236676bc3c5a0",
+    "resultado": {
+      "./internal/compilador:TestSkillRetro": "retro_test.go:26: no hay salida .claude/skills/retro/SKILL.md"
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-03T23:37:25Z",
+    "head": "f1220916fdd30052aede2fa6848236676bc3c5a0",
+    "huella": {
+      "cmd/aquas/main.go": "4777ff7ec03570dad35a6d69f3440fde43923b7363d110dcc818cbb96aa7fa68",
+      "cmd/aquas/retro_gobernada_test.go": "613ef0d030244e37b70bc026531c3d84bbbe0185e9e2968488bcefde12205137",
+      "internal/compilador/compilador.go": "7cf60d2574bf75e066a76594c04bdd1a6c591ecaa77f4487fb55b1fceae29995",
+      "internal/compilador/compilador_test.go": "5d0b2c7aa5c69da7c575e26f53cec4b46625d31456de18851667763e7decabbc",
+      "internal/compilador/dod_test.go": "4e3f951000724ca31fa9c5099ea5fc39bf6230df09a8b311f0392147edd8af75",
+      "internal/compilador/gate_feature_test.go": "2b088d3ff96d904380c2ad80725c14cbb3764d17ee1bc89cd103c06d84b87557",
+      "internal/compilador/herramientas_test.go": "ab168b152610e5ef36a3689cdecbab0d26ce2fa459b3ba49a749ad08c3503693",
+      "internal/compilador/main_test.go": "dbd8a978477f228250d10a5dc91d39af8481db78d2ec8aa05cf1fa8f884f2c95",
+      "internal/compilador/modulo_test.go": "3b4f0bcb934cb4ad92496deb53e70e9cd7d12f002baed8310fac88380860e678",
+      "internal/compilador/retro_test.go": "e1c5fa919df99b5e5a2b320c9e525c655570b6dcc88e470853ca56995488b7da",
+      "internal/compilador/skill_test.go": "57002fac03d3dc2e0fac1997ce3e41c7cd40e0c82366998cff0758ae02d05df6",
+      "internal/defecto/defecto.go": "b7863f32ebcc265cc656712b822119c63aab812cc4808600c5e2b9c4c8d0c9e9",
+      "internal/hijo/build.go": "d48c9521dde167eeea1b5abe5dc211bbd15daa7f3b0176f7571359db44a24e34",
+      "internal/hijo/hijo.go": "c9ad6b5eab28c078a21fa87b06d3dc90bac52707c5b63081d78898a7d6c5f329",
+      "internal/hijo/skill.go": "914309310e950c6310a98a10c51271dcedad00727597135fa598e98a030a414e",
+      "internal/hijo/skill_test.go": "7f7f5f03f88ec74c9b54a5a000ec9db458075c1945222020d292ed958c5f51d9",
+      "internal/hijo/skills_test.go": "5ef2a4e9b6cacbf3bc1c888b56faffaed2757a5e2bf9f0fa1f9ec9732f53e537"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-11-03T23:41:12Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/main.go": "4777ff7ec03570dad35a6d69f3440fde43923b7363d110dcc818cbb96aa7fa68",
+      "cmd/aquas/retro_gobernada_test.go": "613ef0d030244e37b70bc026531c3d84bbbe0185e9e2968488bcefde12205137",
+      "internal/compilador/compilador.go": "7cf60d2574bf75e066a76594c04bdd1a6c591ecaa77f4487fb55b1fceae29995",
+      "internal/compilador/compilador_test.go": "5d0b2c7aa5c69da7c575e26f53cec4b46625d31456de18851667763e7decabbc",
+      "internal/compilador/dod_test.go": "4e3f951000724ca31fa9c5099ea5fc39bf6230df09a8b311f0392147edd8af75",
+      "internal/compilador/gate_feature_test.go": "2b088d3ff96d904380c2ad80725c14cbb3764d17ee1bc89cd103c06d84b87557",
+      "internal/compilador/herramientas_test.go": "ab168b152610e5ef36a3689cdecbab0d26ce2fa459b3ba49a749ad08c3503693",
+      "internal/compilador/main_test.go": "dbd8a978477f228250d10a5dc91d39af8481db78d2ec8aa05cf1fa8f884f2c95",
+      "internal/compilador/modulo_test.go": "3b4f0bcb934cb4ad92496deb53e70e9cd7d12f002baed8310fac88380860e678",
+      "internal/compilador/retro_test.go": "e1c5fa919df99b5e5a2b320c9e525c655570b6dcc88e470853ca56995488b7da",
+      "internal/compilador/skill_test.go": "57002fac03d3dc2e0fac1997ce3e41c7cd40e0c82366998cff0758ae02d05df6",
+      "internal/defecto/defecto.go": "b7863f32ebcc265cc656712b822119c63aab812cc4808600c5e2b9c4c8d0c9e9",
+      "internal/hijo/build.go": "d48c9521dde167eeea1b5abe5dc211bbd15daa7f3b0176f7571359db44a24e34",
+      "internal/hijo/hijo.go": "c9ad6b5eab28c078a21fa87b06d3dc90bac52707c5b63081d78898a7d6c5f329",
+      "internal/hijo/skill.go": "914309310e950c6310a98a10c51271dcedad00727597135fa598e98a030a414e",
+      "internal/hijo/skill_test.go": "7f7f5f03f88ec74c9b54a5a000ec9db458075c1945222020d292ed958c5f51d9",
+      "internal/hijo/skills_test.go": "5ef2a4e9b6cacbf3bc1c888b56faffaed2757a5e2bf9f0fa1f9ec9732f53e537"
+    },
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb\\subagents\\agent-ae950e62a83f9eedc.jsonl"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F018",
+      "marca": "sin_cambio",
+      "motivo": "la feature sigue con S002 pendiente; S001 no cambia su alcance"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa no cambia; S001 es un tramo más de F018"
+    },
+    {
+      "clave": "ficha:E001/F018/S002",
+      "marca": "sin_cambio",
+      "motivo": "S002 ya contrata retro close y el aviso de next que /retro cita"
+    },
+    {
+      "clave": "pagina:docs/E001/F018/S001.md",
+      "marca": "actualizado",
+      "motivo": "contrato con alcance ampliado, fila Dependencia y casos borde con sus pruebas"
+    },
+    {
+      "clave": "pagina:docs/E001/F018/README.md",
+      "marca": "actualizado",
+      "motivo": "evidencia de S001 regenerada por compile"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa describe F018 en general; /retro no cambia esa descripción"
+    },
+    {
+      "clave": "nombra:.claude/skills/retro/SKILL.md\u003egobierno/config/documentos.json",
+      "marca": "sin_cambio",
+      "motivo": "se agregó la salida /retro; la ruta y el formato que cita .claude/skills/retro/SKILL.md siguen igual"
+    },
+    {
+      "clave": "nombra:.claude/skills/backlog/SKILL.md\u003egobierno/config/documentos.json",
+      "marca": "sin_cambio",
+      "motivo": "se agregó la salida /retro; la ruta y el formato que cita .claude/skills/backlog/SKILL.md siguen igual"
+    },
+    {
+      "clave": "nombra:CLAUDE.md\u003egobierno/config/documentos.json",
+      "marca": "sin_cambio",
+      "motivo": "se agregó la salida /retro; la ruta y el formato que cita CLAUDE.md siguen igual"
+    },
+    {
+      "clave": "nombra:central.go\u003egobierno/config/documentos.json",
+      "marca": "sin_cambio",
+      "motivo": "se agregó la salida /retro; la ruta y el formato que cita central.go siguen igual"
+    },
+    {
+      "clave": "importa:cmd/aquas/aviso.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "Build, Verificar e Install conservan firma y ahora cubren cada skill; lo que cita cmd/aquas/aviso.go sigue vigente"
+    },
+    {
+      "clave": "importa:cmd/aquas/aviso_test.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "Build, Verificar e Install conservan firma y ahora cubren cada skill; lo que cita cmd/aquas/aviso_test.go sigue vigente"
+    },
+    {
+      "clave": "importa:cmd/aquas/correccion_test.go\u003einternal/defecto",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa cmd/aquas/correccion_test.go no cambia"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita cmd/aquas/hook_cerrado_test.go sigue vigente"
+    },
+    {
+      "clave": "importa:cmd/aquas/hook_hijo_test.go\u003einternal/hijo",
+      "marca": "sin_cambio",
+      "motivo": "Build, Verificar e Install conservan firma y ahora cubren cada skill; lo que cita cmd/aquas/hook_hijo_test.go sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F001/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/S002.md\u003egobierno/config/documentos.json",
+      "marca": "sin_cambio",
+      "motivo": "se agregó la salida /retro; la ruta y el formato que cita docs/E000/F002/S002.md siguen igual"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F004/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F004/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F004/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F005/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F006/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S003.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa docs/E000/F006/S003.md no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F006/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F006/S006.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F006/S008.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F006/S009.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F006/S011.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S012.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F006/S012.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S012.md\u003einternal/compilador/compilador.go",
+      "marca": "sin_cambio",
+      "motivo": "Verificar suma el chequeo de skill sin declarar; firmas y uso en docs/E000/F006/S012.md no cambian"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S012.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa docs/E000/F006/S012.md no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F007/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F007/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F007/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F007/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F007/S003.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa docs/E000/F007/S003.md no cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F008/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F008/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F008/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F008/S006.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E000/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E000/F010/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F001/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S006.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S007.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S008.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S009.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S010.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S011.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "índice regenerado por compile con las funciones nuevas; docs/E001/F002/S015.md lo cita como índice"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F002/S016.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F003/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F004/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa docs/E001/F004/S001.md no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F004/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S003.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa docs/E001/F004/S003.md no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F004/S005.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F004/S006.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F005/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F005/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F005/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S001.md\u003einternal/compilador/compilador.go",
+      "marca": "sin_cambio",
+      "motivo": "Verificar suma el chequeo de skill sin declarar; firmas y uso en docs/E001/F006/S001.md no cambian"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F006/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F007/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S002.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita docs/E001/F007/S002.md siguen igual"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S002.md\u003egobierno/config/documentos.json",
+      "marca": "sin_cambio",
+      "motivo": "se agregó la salida /retro; la ruta y el formato que cita docs/E001/F007/S002.md siguen igual"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S002.md\u003einternal/compilador/compilador.go",
+      "marca": "sin_cambio",
+      "motivo": "Verificar suma el chequeo de skill sin declarar; firmas y uso en docs/E001/F007/S002.md no cambian"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F008/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F008/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "índice regenerado por compile con las funciones nuevas; docs/E001/F008/S004.md lo cita como índice"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/compilador/compilador.go",
+      "marca": "sin_cambio",
+      "motivo": "Verificar suma el chequeo de skill sin declarar; firmas y uso en docs/E001/F008/S004.md no cambian"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa docs/E001/F008/S004.md no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F008/S005.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F008/S006.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F008/S007.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F009/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F009/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa docs/E001/F009/S002.md no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F009/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F010/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F013/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F014/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F014/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F015/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F016/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F016/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F017/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F017/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F017/S005.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S005.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa docs/E001/F017/S005.md no cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F017/S007.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F018/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E001/F018/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E001/F018/S003.md\u003einternal/defecto/defecto.go",
+      "marca": "sin_cambio",
+      "motivo": "Texto agrega la familia tras la firma; lo que cita o usa docs/E001/F018/S003.md no cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E002/F001/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003einternal/hijo/hijo.go",
+      "marca": "sin_cambio",
+      "motivo": "Build, Verificar e Install conservan firma y ahora cubren cada skill; lo que cita docs/E002/F001/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E002/F001/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003einternal/hijo/build.go",
+      "marca": "sin_cambio",
+      "motivo": "Build, Verificar e Install conservan firma y ahora cubren cada skill; lo que cita docs/E002/F001/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E002/F001/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003einternal/hijo/hijo.go",
+      "marca": "sin_cambio",
+      "motivo": "Build, Verificar e Install conservan firma y ahora cubren cada skill; lo que cita docs/E002/F001/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E002/F001/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E002/F002/S001.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E002/F002/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S004.md\u003einternal/hijo/build.go",
+      "marca": "sin_cambio",
+      "motivo": "Build, Verificar e Install conservan firma y ahora cubren cada skill; lo que cita docs/E002/F002/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S005.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita docs/E002/F002/S005.md siguen igual"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E002/README.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E003/F001/S002.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E003/F001/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S003.md\u003einternal/hijo/build.go",
+      "marca": "sin_cambio",
+      "motivo": "Build, Verificar e Install conservan firma y ahora cubren cada skill; lo que cita docs/E003/F001/S003.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E003/F001/S004.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/E003/F001/S005.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/glosario.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita docs/glosario.md siguen igual"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita docs/ref/compilador.md sigue vigente"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita docs/ref/compilador.md siguen igual"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/config/documentos.json",
+      "marca": "sin_cambio",
+      "motivo": "se agregó la salida /retro; la ruta y el formato que cita docs/ref/compilador.md siguen igual"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003einternal/compilador/compilador.go",
+      "marca": "sin_cambio",
+      "motivo": "Verificar suma el chequeo de skill sin declarar; firmas y uso en docs/ref/compilador.md no cambian"
+    },
+    {
+      "clave": "nombra:docs/ref/constitucion.md\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita docs/ref/constitucion.md siguen igual"
+    },
+    {
+      "clave": "nombra:docs/ref/constitucion.md\u003egobierno/config/documentos.json",
+      "marca": "sin_cambio",
+      "motivo": "se agregó la salida /retro; la ruta y el formato que cita docs/ref/constitucion.md siguen igual"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/constitucion.md",
+      "marca": "actualizado",
+      "motivo": "sello de gobierno/canonico/constitucion.md regenerado por compile"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/skills/retro.md",
+      "marca": "actualizado",
+      "motivo": "sello de gobierno/canonico/skills/retro.md regenerado por compile"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/config/documentos.json",
+      "marca": "actualizado",
+      "motivo": "sello de gobierno/config/documentos.json regenerado por compile"
+    },
+    {
+      "clave": "importa:internal/backlog/sello.go\u003einternal/compilador",
+      "marca": "sin_cambio",
+      "motivo": "Verificar suma el chequeo de skill sin declarar; firmas y uso en internal/backlog/sello.go no cambian"
+    },
+    {
+      "clave": "nombra:internal/compilador/compilador_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/compilador/compilador_test.go siguen igual"
+    },
+    {
+      "clave": "nombra:internal/compilador/modulo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/compilador/modulo_test.go siguen igual"
+    },
+    {
+      "clave": "nombra:internal/compilador/skill_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/compilador/skill_test.go siguen igual"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita internal/entorno/binario_test.go sigue vigente"
+    },
+    {
+      "clave": "nombra:internal/guardia/gancho_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita internal/guardia/gancho_test.go sigue vigente"
+    },
+    {
+      "clave": "nombra:internal/hijo/build_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/hijo/build_test.go siguen igual"
+    },
+    {
+      "clave": "importa:internal/hijo/controles.go\u003einternal/compilador",
+      "marca": "sin_cambio",
+      "motivo": "Verificar suma el chequeo de skill sin declarar; firmas y uso en internal/hijo/controles.go no cambian"
+    },
+    {
+      "clave": "nombra:internal/hijo/gosolo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/hijo/gosolo_test.go siguen igual"
+    },
+    {
+      "clave": "nombra:internal/hijo/hijo_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/hijo/hijo_test.go siguen igual"
+    },
+    {
+      "clave": "nombra:internal/hijo/instalar_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/hijo/instalar_test.go siguen igual"
+    },
+    {
+      "clave": "nombra:internal/hijo/pendiente_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/hijo/pendiente_test.go siguen igual"
+    },
+    {
+      "clave": "nombra:internal/hijo/report_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/hijo/report_test.go siguen igual"
+    },
+    {
+      "clave": "nombra:internal/hijo/update_test.go\u003egobierno/canonico/constitucion.md",
+      "marca": "sin_cambio",
+      "motivo": "solo cambió la línea del build del hijo; la ruta o el rol que cita internal/hijo/update_test.go siguen igual"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "índice regenerado por compile con las funciones nuevas; internal/wiki/codigo.go lo cita como índice"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "de main.go solo cambió el texto del GATE OK del hijo; lo que cita internal/wiki/comandos_test.go sigue vigente"
+    }
+  ],
+  "alcance": [
+    "gobierno/canonico/skills/**",
+    "gobierno/config/**",
+    ".claude/skills/**",
+    "internal/compilador/**",
+    "docs/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "cmd/aquas/retro_gobernada_test.go",
+      "motivo": "la integral de la feature suma el caso S001"
+    },
+    {
+      "ruta": "internal/hijo/skill.go",
+      "motivo": "el contrato promete que /retro viaja al hijo; hoy solo viaja /backlog"
+    },
+    {
+      "ruta": "internal/hijo/build.go",
+      "motivo": "build y verificar del hijo arman todos los skills de la central"
+    },
+    {
+      "ruta": "internal/hijo/hijo.go",
+      "motivo": "install ve conflicto con cada skill propio, no solo /backlog"
+    },
+    {
+      "ruta": "internal/hijo/skill_test.go",
+      "motivo": "hallazgos de la auditoría A1 de S001"
+    },
+    {
+      "ruta": "gobierno/canonico/constitucion.md",
+      "motivo": "hallazgos de la auditoría A1 de S001"
+    },
+    {
+      "ruta": "internal/defecto/defecto.go",
+      "motivo": "hallazgos de la auditoría A1 de S001"
+    },
+    {
+      "ruta": "internal/hijo/skills_test.go",
+      "motivo": "hallazgo A1.3: prueba de build y verificar con varios skills"
+    },
+    {
+      "ruta": "cmd/aquas/main.go",
+      "motivo": "hallazgo A3.1: el mensaje del gate del hijo nombra cada skill, no solo /backlog"
+    }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "gobierno/config/documentos.json",
+    "internal/compilador/compilador.go",
+    "internal/defecto/defecto.go",
+    "internal/hijo/build.go",
+    "internal/hijo/hijo.go",
+    "internal/hijo/skill.go"
+  ],
+  "relacion": "nueva",
+  "ediciones": [
+    {
+      "fecha": "2026-11-03T20:47:02Z",
+      "campo": "bloqueado_por",
+      "antes": "",
+      "despues": "E001/F018/S003",
+      "motivo": "orden de trabajo: /retro usa las familias"
+    }
+  ],
+  "que_hace": "Skill canónico /retro con categorías, fuentes y reparto mecánico a gate, criterio a auditor, orientación a puntero"
+}

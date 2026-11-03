@@ -5,6 +5,8 @@
   "causa": "la lista blanca reMemoriaFijar solo acepta campo=\"valor\"",
   "arreglo": "PROPUESTO: usar siempre campo=\"valor\" o ampliar la lista blanca",
   "como_me_cercioro": "orden bloqueada por el tope el 2026-11-01 y aceptada con campo=\"valor\"",
-  "ocurrencias": [],
+  "ocurrencias": [
+    "T000683"
+  ],
   "relacion": "E000/F008/S005"
 }

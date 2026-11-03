@@ -32,12 +32,12 @@ func Build(dir string) error {
 	if err != nil {
 		return err
 	}
-	skill, hay, err := armarSkill(dir) // E001/F007/S003: todo se arma antes de escribir
+	skills, err := armarSkills(dir) // E001/F007/S003: todo se arma antes de escribir
 	if err != nil {
 		return err
 	}
-	if hay {
-		if err := skillPropio(dir); err != nil {
+	for _, ruta := range rutasOrdenadas(skills) {
+		if err := skillPropio(dir, ruta); err != nil {
 			return err
 		}
 	}
@@ -57,14 +57,16 @@ func Build(dir string) error {
 			return err
 		}
 	}
-	if !hay {
-		return nil
+	for _, ruta := range rutasOrdenadas(skills) {
+		p := filepath.Join(dir, filepath.FromSlash(ruta))
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			return err
+		}
+		if err := os.WriteFile(p, []byte(skills[ruta]), 0o644); err != nil {
+			return err
+		}
 	}
-	p := filepath.Join(dir, filepath.FromSlash(RutaSkill))
-	if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
-		return err
-	}
-	return os.WriteFile(p, []byte(skill), 0o644)
+	return nil
 }
 
 // armar devuelve el CLAUDE.md que Build escribiría, sin escribirlo.
@@ -175,16 +177,17 @@ func Verificar(dir string) []string {
 	if hay, err := os.ReadFile(filepath.Join(dir, "CLAUDE.md")); err != nil || string(hay) != quiero {
 		prob = append(prob, "CLAUDE.md desfasado o ausente: corre aquas build "+dir)
 	}
-	skill, hay, err := armarSkill(dir) // E001/F007/S003
+	skills, err := armarSkills(dir) // E001/F007/S003, E001/F018/S001: cada skill de la central
 	if err != nil {
 		return append(prob, err.Error())
 	}
-	if hay {
-		if err := skillPropio(dir); err != nil { // hallazgo A2.4: build se negaría; no pedirle build
-			return append(prob, err.Error())
+	for _, ruta := range rutasOrdenadas(skills) {
+		if err := skillPropio(dir, ruta); err != nil { // hallazgo A2.4: build se negaría; no pedirle build
+			prob = append(prob, err.Error())
+			continue
 		}
-		if b, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(RutaSkill))); err != nil || string(b) != skill {
-			prob = append(prob, RutaSkill+" desfasado o ausente: corre aquas build "+dir)
+		if b, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(ruta))); err != nil || string(b) != skills[ruta] {
+			prob = append(prob, ruta+" desfasado o ausente: corre aquas build "+dir)
 		}
 	}
 	return prob

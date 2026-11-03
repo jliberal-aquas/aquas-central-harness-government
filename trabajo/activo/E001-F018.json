@@ -24,9 +24,9 @@
     }
   },
   "aprobacion": {
-    "fecha": "2026-11-03T20:58:38Z",
+    "fecha": "2026-11-03T23:46:08Z",
     "huella": "25d19ebe81e71fa46ee8f14b868909167385b17bbb59cefd08285031d23ae4ee",
-    "mensaje": "apruebo E001/F018 tope 300 con push",
+    "mensaje": "apruebo E001/F018 tope 450 con push",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
     "push": true,
     "foto": {
@@ -44,14 +44,6 @@
           "intencion": "valida que el umbral dispara el pedido de retro",
           "rojo_cuando": "pasado el umbral next no la pide o la pide antes",
           "verde_cuando": "la pide justo en el umbral y no antes"
-        }
-      ],
-      "E001/F018/S003": [
-        {
-          "prueba": "./internal/defecto:TestReincidenciaPorFamilia",
-          "intencion": "valida familia obligatoria de lista cerrada y conteo por familia",
-          "rojo_cuando": "familia fuera de lista se acepta o dos firmas de una familia no suman",
-          "verde_cuando": "rechaza familia desconocida y suma por familia"
         }
       ]
     }

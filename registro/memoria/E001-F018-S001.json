@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F018",
+    "slice": "S001",
+    "tarea": "S001 sellado (134 claves); cerrando"
+  },
+  "siguiente": "archivar memoria, CERRADO, compile, verify, commit, push; luego S002",
+  "pendientes": [
+    "verificar con /context en sesión nueva que el CLAUDE.md global quedó excluido (.claude/settings.local.json)"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "001b88a9aa1718fa718b20fe69aaae78e0d5a4a2c1359dc8987aeccb317b1bb8",
+  "actualizado": "2026-11-03T23:49:49Z",
+  "sello": "9242b1fe4404749630cee0f133830b31c7baaf1966358d2afe0932361c500f3e"
+}

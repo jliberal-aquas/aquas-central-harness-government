@@ -133,7 +133,7 @@ func main() {
 				listar("GATE FALLIDO · hijo:", m)
 				os.Exit(1)
 			}
-			fmt.Println("GATE OK · hijo: central sellada, CLAUDE.md, /backlog y chequeos todos al día")
+			fmt.Println("GATE OK · hijo: central sellada, CLAUDE.md, cada skill de la central y chequeos todos al día")
 			return
 		}
 		calidadGo := revisarGo(raiz) // E001/F013/S001: primero, para que se vea aunque otro chequeo corte
