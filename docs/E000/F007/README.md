@@ -91,7 +91,7 @@ Prueba integral: `TestReincidenciaCreaSlice`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | el freno compara rutas como el sistema operativo y acepta el binario en forma Git Bash | Planeado |
+| [S001](S001.md) | el freno compara rutas como el sistema operativo y acepta el binario en forma Git Bash | Hecho |
 | [S002](S002.md) | aquas backlog edit acepta que_hace con motivo y la wiki se rehace | Hecho |
 | [S003](S003.md) | aquas defect fix D000NNN arreglo=… prueba=./paquete:TestX actualiza el arreglo con prueba real | Hecho |
 

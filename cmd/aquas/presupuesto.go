@@ -16,6 +16,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path"
 	"path/filepath"
 	"regexp"
 	"runtime"
@@ -60,10 +61,20 @@ var reMemoriaFijar = regexp.MustCompile(`^[ \t]*` +
 	`[ \t]+(memoria[ \t]+fijar|memory[ \t]+set|defecto[ \t]+(nuevo|ocurre)|defect[ \t]+(new|occur))` + // E000/F006/S006: nombre viejo y nuevo
 	`([ \t]+(?:[^\s"'$` + "`" + `\\;&|<>()]+|'[^']*'|"[^"$` + "`" + `\\]*")+)*[ \t]*\n?$`) // cada argumento: trozos sueltos o entre comillas, pegados
 
-// rutaComparable: la ruta limpia con «/»; en Windows, la forma de Git Bash «/d/…» pasa a «D:/…» (hallazgo A2.4).
-func rutaComparable(r string) string {
-	r = filepath.ToSlash(filepath.Clean(r))
-	if runtime.GOOS == "windows" && len(r) >= 2 && r[0] == '/' && unicode.IsLetter(rune(r[1])) && (len(r) == 2 || r[2] == '/') {
+// rutaComparableEn: la ruta limpia con «/»; en Windows la forma Git Bash «/d/…» pasa a «D:/…» (A2.4; sistema dado: E000/F007/S001).
+// Conserva la raíz de unidad «D:/» (A1.1), no confunde «D:» a secas con ella (A1.2) y mantiene la doble barra UNC (A1.3).
+func rutaComparableEn(goos, r string) string {
+	r = strings.ReplaceAll(r, `\`, "/")
+	unc := strings.HasPrefix(r, "//")
+	raizUnidad := len(r) >= 3 && r[1] == ':' && r[2] == '/'
+	r = path.Clean(r)
+	if unc {
+		r = "/" + r
+	}
+	if raizUnidad && len(r) == 2 {
+		r += "/"
+	}
+	if goos == "windows" && len(r) >= 2 && r[0] == '/' && unicode.IsLetter(rune(r[1])) && (len(r) == 2 || r[2] == '/') {
 		r = strings.ToUpper(r[1:2]) + ":" + r[2:]
 		if len(r) == 2 {
 			r += "/"
@@ -75,19 +86,33 @@ func rutaComparable(r string) string {
 // exentaDelFreno: true si el comando Bash entero es `aquas memory set …` o `aquas defect new|occur …`.
 // Puede llevar delante un `cd` a la raíz de este repo, y a ninguna otra carpeta.
 func exentaDelFreno(raiz, herramienta, comando string) bool {
+	return exentaDelFrenoEn(runtime.GOOS, raiz, herramienta, comando)
+}
+
+// rutasIguales (E000/F007/S001, hallazgos L1 y L2; no confundir con entorno.mismaRuta, que no entiende «/d/…»): misma carpeta según el sistema; mayúsculas iguales solo en Windows.
+func rutasIguales(goos, a, b string) bool {
+	a, b = rutaComparableEn(goos, a), rutaComparableEn(goos, b)
+	if goos == "windows" {
+		return strings.EqualFold(a, b)
+	}
+	return a == b
+}
+
+// exentaDelFrenoEn: exentaDelFreno para un sistema dado (E000/F007/S001).
+func exentaDelFrenoEn(goos, raiz, herramienta, comando string) bool {
 	m := reMemoriaFijar.FindStringSubmatch(comando)
 	if herramienta != "Bash" || m == nil {
 		return false
 	}
-	if m[1] != "" && !strings.EqualFold(rutaComparable(m[3]+m[4]+m[5]), rutaComparable(raiz)) {
+	if m[1] != "" && !rutasIguales(goos, m[3]+m[4]+m[5], raiz) {
 		return false
 	}
 	if !strings.HasPrefix(m[6], `"`) {
 		return true
 	}
-	ruta := filepath.ToSlash(filepath.Clean(m[10]))
+	ruta := path.Clean(strings.ReplaceAll(m[10], `\`, "/"))
 	for _, b := range []string{"aquas", "aquas.exe"} {
-		if strings.EqualFold(ruta, filepath.ToSlash(filepath.Join(raiz, ".tmp", b))) || ruta == ".tmp/"+b {
+		if rutasIguales(goos, ruta, raiz+"/.tmp/"+b) || ruta == ".tmp/"+b {
 			return true
 		}
 	}
