@@ -100,7 +100,7 @@ Prueba integral: `TestRetrospectivaSinReincidencia` (un caso malo y uno bueno po
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | El tope cuenta contra la feature en curso y los comandos exentos pasan siempre, con prueba propia | Hecho |
-| [S002](S002.md) | El cierre de turno frena si el agente pide apruebo o dale de un tramo con feature aprobada | Hecho |
+| [S002](S002.md) | El cierre frena si el agente pide apruebo de un tramo que su feature aprobada ya cubre | Hecho |
 | [S003](S003.md) | El gancho de turnos marca origen agente a informes y notificaciones, sin mezclarlos con el humano | Hecho |
 | [S004](S004.md) | Cada respuesta declara tipo y pedido refinado; el cierre los copia al turno o frena si faltan | Hecho |
 | [S005](S005.md) | Un defecto nuevo nombra la prueba de su control y el gate comprueba que existe | Hecho |

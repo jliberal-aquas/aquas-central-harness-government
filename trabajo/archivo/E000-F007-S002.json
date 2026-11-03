@@ -1,0 +1,798 @@
+{
+  "id": "E000/F007/S002",
+  "tipo": "slice",
+  "titulo": "Editar que_hace de una ficha por comando",
+  "estado": "CERRADO",
+  "prioridad": "P3",
+  "motivo": "auditoría E001/F017/S002-A5: la tabla de F017 dice que S002 frena el dale porque que_hace no se puede editar y quedó viejo",
+  "padre": "E000/F007",
+  "bloqueado_por": [],
+  "secuencia": 165,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestEditaQueHace",
+      "intencion": "valida que backlog edit cambia que_hace",
+      "rojo_cuando": "rojo cuando edit rechaza que_hace",
+      "verde_cuando": "verde cuando edit lo cambia y la tabla de la feature lo muestra"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-03T16:48:46Z",
+    "head": "7409845031ce15de4a3c4fda8245d968068e7d67",
+    "resultado": {
+      "./cmd/aquas:TestEditaQueHace": "editar_que_hace_test.go:46: slice en BORRADOR: {out: err:aquas: campo \"que_hace=marca el defecto como arreglado\" no editable: usa titulo=… o bloqueado_por=A,B, más motivo=…"
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-03T17:11:39Z",
+    "head": "7409845031ce15de4a3c4fda8245d968068e7d67",
+    "huella": {
+      "cmd/aquas/aislamiento_test.go": "e749ee96f0d49fb529940e302e0fde9aa416150d2acd4df5e2b48af947bbd928",
+      "cmd/aquas/aprobacion.go": "1a7b822390fc94e658abe97dcaf77162e9733467509022480881c5939fce3095",
+      "cmd/aquas/aprobacion_feature_test.go": "4e3c60eed83ab428e809f2c08a815069bd931b6b019ae2d6aeadb56727f1797d",
+      "cmd/aquas/aprobacion_test.go": "1ea45fe220f315a1a19336747ae8947fdf5a7020755bf1fd8a48ecb1eb359239",
+      "cmd/aquas/apruebo_cubierto.go": "bdd4d243ab52a97c2f7219900baa45cd9149db894c9c0f0682d0b6ac65eaa89b",
+      "cmd/aquas/apruebo_cubierto_test.go": "0f4549e9de4c84cedc8dbd1d3c5115eee2941270b9f11377c1568b336e2ceff6",
+      "cmd/aquas/arranque_test.go": "7dbdd6ca5b06b689c71c0e1c9f0475e51c1fd968fbd99c37beeb36e728e1be5b",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/central_embebida_test.go": "f75ecadd8ae0128ef3c4cb03f3d63f10c2c1f9b47935b15aec92469a5a34db0b",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/correccion_test.go": "411c6064b1548def9cdcf4cb942abea0b4dffc98257d710c98c37840ee5ae46d",
+      "cmd/aquas/defectos_integral_test.go": "26bf111a7f1bb34cb3330592201ac2e5d1b3850d6a46f082330e6e4281446403",
+      "cmd/aquas/desafio_test.go": "30ec95a2011970dfc3ff84f8447f846a2b3c12cb38d2b62896714d4aa56b12a8",
+      "cmd/aquas/editar_que_hace_test.go": "6a48a7c3dd6005f868157b392cf042762d43e76fc271b63c9215d93ddeb08c07",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/freno_cede_test.go": "7aa1be322d7124765433c6e29bcde26dd0ae4c5d2c1a532b5f895614371e3a5e",
+      "cmd/aquas/freno_hora_test.go": "c28e22b4f913dcd588aa484a93038c0e608058050cbaba69d1d103c10bb38e2a",
+      "cmd/aquas/freno_test.go": "0ae6084576d2ea850d8e03085a75be3d1bbaec087179200c1e85eee2137f917d",
+      "cmd/aquas/frenos_propios_test.go": "b3087e959c17f9a6115c3d86fd7168be22c248d96338f4d8e3f09132f10d8889",
+      "cmd/aquas/frenos_test.go": "0a0ab0c2c90ee5fa17034521bdefe4b644694147056ba8f4048f40b0751500d8",
+      "cmd/aquas/gancho_veredicto_test.go": "de6f96c53bd61687211eb5b201b8d75f539521623d9d965bbfc35992d0fa3bfe",
+      "cmd/aquas/herencia_test.go": "09ce745d7e84bc472f8f2e4cd2f33a9e526411fc02d56735f82194088a161956",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "1e2ee7f687aa9c8029146ef428c4ce3c7785b9c3660a11a4e66ed04d07fac921",
+      "cmd/aquas/hijos_test.go": "0758969d2919a65018ed0dacfdece0a374d612bdef6bab60337300cdae575233",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles.go": "825a32854ac2932e92c4de2dd3dfe8eb21bdd4e559e294ce010eae9800a6c8b0",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "a88007b549f3c3faaa13f4b1f19a4268ce65419655c25855701d781ac4779984",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "918797117b729249473e8e443709c8858203eeab1d6bfffd0e4364a0d850397e",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "907c826b11f45a08e6e1c6660238b2fc000f6b16c81763b8d59a076d9110ad4f",
+      "cmd/aquas/presupuesto_test.go": "570c1ee1adceebc527a65ca76d708af0cb0f9e129a9cd7820db46109d730d8e0",
+      "cmd/aquas/pruebas_aisladas_test.go": "1e54a7c00956d161ad0c16cb0eccd9b25b7c77e043ef3a0cd59f7a0ed850507a",
+      "cmd/aquas/punta_test.go": "38c457d4226e9dcc37d6562317b22998c66ced5e1c5eb8b2da89e83a0463253e",
+      "cmd/aquas/retrospectiva_test.go": "e189a80f26834f2577731fc459ffab6526b53dc7e6d57b24126b53f890ce036d",
+      "cmd/aquas/rojo_test.go": "388f1575619b837a6b3134fcc20ad29c04c6ab3c522c976e3d6e2b8f6619f2dd",
+      "cmd/aquas/sello_test.go": "c208274912aea0a3fffbaecd3f40770d791da9c5b2140415a1493eecdb8778bc",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/tope_test.go": "2d7c8d0f4c981c1bcf15b338f0b88a7d6c1d85da5223ff4e3ffea7c977d7d497",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "cmd/aquas/verify_hijo_test.go": "e7e997591a450ef4655c403dee8af44d170001b5942d06ab6f2db327d0b6eb58",
+      "internal/backlog/aislamiento_test.go": "df00b9fd3b4c3d314ceebbc491cb368cd208cb748e1ff9cb90cc0047d409a0df",
+      "internal/backlog/alcance.go": "c31fe16b3ad4f2dace0548e7ed983d2d5918568068625071cdddb36bf1a03247",
+      "internal/backlog/alcance_test.go": "ef7cf766576693d6d739b78cd51af50493ec6483b00760d3fcf263151ed72ad4",
+      "internal/backlog/aprobacion.go": "fa62e8a945aaec5ab0cdbf8f8b510959110e20155acb15d8c8010c36633f8e55",
+      "internal/backlog/aprobacion_feature_test.go": "783ed9726cc99d4066208ba82f59888abcbc4f18a834955fbb7aa15ed73354d6",
+      "internal/backlog/aprobacion_test.go": "6d090350c552f39918ac0b636fac9c321970afaac71504ace114ed2f61574db2",
+      "internal/backlog/arranque_test.go": "fd2ed5775eca23d246cd530774a96ffed5a896731ba97db355371cb217e4b3ad",
+      "internal/backlog/arreglo.go": "7db6d0ce8335b4873ffc9291de81694133424f63477c8fdafdac434c93665755",
+      "internal/backlog/arreglo_pruebas.go": "7e8a1662e1bdec781d373638a8e285be991513ca03cf188cbe6c4f1c3024107c",
+      "internal/backlog/arreglo_pruebas_test.go": "2b1ad1e979dc3c705b7432ec28b2df3483fccba4088fe15671a3f6fd851a4e64",
+      "internal/backlog/arreglo_test.go": "001b7c3bbfbb391ee2da91ab6f5932a039a62a8f8deac021ead6589d457cd0fb",
+      "internal/backlog/auditoria.go": "a18ae366ae9798180317a8223228fa78dda27ac309bfddf059c3d08f5856e859",
+      "internal/backlog/auditoria_test.go": "d954ab20294a9c465500e588281d4ffbe9027f38af926f8201db5352f2525fa4",
+      "internal/backlog/aviso_feature_test.go": "55b164c37b1ae834c6326cd12ac379e3a592a88719aadf888ef4b9337c288b77",
+      "internal/backlog/backlog.go": "f53b71f0d2aa4858815797e2db5fd3247a1d1241f1a55a9c13ac3cd935d9cc66",
+      "internal/backlog/backlog_padre_test.go": "37851c0b8fab768b21ad1dd6c14df572011d8cb07987ff424e33a3aaeee5aa6b",
+      "internal/backlog/backlog_test.go": "18b3f78e0e3532c60182ae90b8cc17104ea835f0f7da1e2a5df437dd73a7d912",
+      "internal/backlog/campos_test.go": "28dd920c59592ec5503e544d558decea351b9385234ea5073c6eb259943808bf",
+      "internal/backlog/cierre_vigente_test.go": "4eaf046855f764e70c0f53beb36c7350682c757d55e15674a0a42d1bd336fa68",
+      "internal/backlog/codigo.go": "dae393a9f776fa43b3f695b5151589a7c3ffa6a76d40d95ff4cf943b91fe73f5",
+      "internal/backlog/codigo_test.go": "3705ffe4a27e52413d7996e176ca06837c02905fcd58cd3acf0a4ca2687db098",
+      "internal/backlog/documentar.go": "863f9b6c70b834242de534881317155945617e07a876930f621a26dd46bd77ed",
+      "internal/backlog/documentar_test.go": "9336f43e2ab0536d2ecae00f27c8a4273c709a896badb9e6f3c53c59faeac7d4",
+      "internal/backlog/editar.go": "80c90b2b2e3446d0e5c035f82550b2dcdc612f0130521a2b7ad64a2ec82dd6c4",
+      "internal/backlog/editar_test.go": "400b05c84288b7c1ce5dc807a2d3441a527fc75e267c0e4ef5978c33985ae9f5",
+      "internal/backlog/huella_codigo.go": "7e95b852afb66968e99c1698dc6da5fd63460d0e49e14f9b4547b97662a14aa3",
+      "internal/backlog/main_test.go": "a70574ed91eead97f4f8c53ce7762466d45982348343cddb4e9710f9b8956d2b",
+      "internal/backlog/pruebas.go": "b7141ee23f9509980786bafd58b537fa7460e58aef25ddd0052058345b0c67af",
+      "internal/backlog/pruebas_arreglo_test.go": "16fadf22f3e520e3e9473755c0eed0ad6aeb0a60de8bcab1d66c9eaeb2e11c15",
+      "internal/backlog/pruebas_hijo_test.go": "d16ac5074a84d740385bbf060ede162cae8de0e00097e4bf8e84127c29184086",
+      "internal/backlog/que_hace_test.go": "3216577d7219c8845d5ef7e6fbe24f09562cf407993f2a8702e6c548e6943970",
+      "internal/backlog/registro_test.go": "b8dfdc074499b02c1e37cc9bf4ebff316575a2e7e85bae2ea09ace96c9291af3",
+      "internal/backlog/relacion.go": "a03ea8c1fd2b4b91e044c1cb6eea55908db06748521ad3ab46bddfd9d3aeab1e",
+      "internal/backlog/relacion_test.go": "431fe7d54f9f23b706f0ccead1004b7ef865b46e11a513453b05d61a74760f32",
+      "internal/backlog/repetidos_test.go": "8be26b48525ce377a8f108bef244b3ec1858baf984d4e163eca64d23b80c8026",
+      "internal/backlog/respaldo.go": "64e56da26ed15a7a493ed6f7dad92c824e2604670a9b262ddf4f964f5b83ad53",
+      "internal/backlog/rojo.go": "d3450ff640ec9dd59300c738859c8dee69ea7aaa007f2b57101f96714b9d4331",
+      "internal/backlog/rojo_cancelado_test.go": "77d97e9e1f768990414314355b3f5cd5646619abc83701f391673c855a95ee41",
+      "internal/backlog/rojo_heredado_test.go": "9a28dada52517f62990949bb37e2c1624dac579fda4572ae029ee422392ef8e3",
+      "internal/backlog/rojo_subtest_test.go": "74fa62b2e7c3ef7e3eaccf91d42ba71322f0e35e282a6c5b1fe909266e5e23ff",
+      "internal/backlog/rojo_test.go": "705e4015557811a822389b021d66f7986e387e95859b1d43e446494b4c3f3cdb",
+      "internal/backlog/sello.go": "0b42da1d12d685e463b555c185e5f6b19c406f20b7b2ce72e547670a476d290a",
+      "internal/backlog/sello_test.go": "0a824951e06857e072ed9a450c05cd42654b665082cb7d60416bdedf3bd0a544",
+      "internal/backlog/siguiente_test.go": "adf33dd0d25546ee66fa995d77443dff1d59d85357084b02d217989d7d974387",
+      "internal/backlog/slice_nuevo_test.go": "b05e37c9932d8822f0dbc058b2d93767d4e307e7f0e3d0d0d564e8bc317c72b3",
+      "internal/backlog/tabla.go": "643d68b64c71c2b2f3d59195295e1403d77b14e10ae59b1260019a1611276e6f",
+      "internal/backlog/tabla_test.go": "ff0d980aac364d2c193d0fcb28f31b90f9ab131598cb691a1ed9478bf5eb26b4",
+      "internal/backlog/veredicto_test.go": "275695896aaa0eda4828465ecdc45b725a836614c3dce8bbceb7436198ace073"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-11-03T17:14:49Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/aislamiento_test.go": "e749ee96f0d49fb529940e302e0fde9aa416150d2acd4df5e2b48af947bbd928",
+      "cmd/aquas/aprobacion.go": "1a7b822390fc94e658abe97dcaf77162e9733467509022480881c5939fce3095",
+      "cmd/aquas/aprobacion_feature_test.go": "4e3c60eed83ab428e809f2c08a815069bd931b6b019ae2d6aeadb56727f1797d",
+      "cmd/aquas/aprobacion_test.go": "1ea45fe220f315a1a19336747ae8947fdf5a7020755bf1fd8a48ecb1eb359239",
+      "cmd/aquas/apruebo_cubierto.go": "bdd4d243ab52a97c2f7219900baa45cd9149db894c9c0f0682d0b6ac65eaa89b",
+      "cmd/aquas/apruebo_cubierto_test.go": "0f4549e9de4c84cedc8dbd1d3c5115eee2941270b9f11377c1568b336e2ceff6",
+      "cmd/aquas/arranque_test.go": "7dbdd6ca5b06b689c71c0e1c9f0475e51c1fd968fbd99c37beeb36e728e1be5b",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/central_embebida_test.go": "f75ecadd8ae0128ef3c4cb03f3d63f10c2c1f9b47935b15aec92469a5a34db0b",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/correccion_test.go": "411c6064b1548def9cdcf4cb942abea0b4dffc98257d710c98c37840ee5ae46d",
+      "cmd/aquas/defectos_integral_test.go": "26bf111a7f1bb34cb3330592201ac2e5d1b3850d6a46f082330e6e4281446403",
+      "cmd/aquas/desafio_test.go": "30ec95a2011970dfc3ff84f8447f846a2b3c12cb38d2b62896714d4aa56b12a8",
+      "cmd/aquas/editar_que_hace_test.go": "6a48a7c3dd6005f868157b392cf042762d43e76fc271b63c9215d93ddeb08c07",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/freno_cede_test.go": "7aa1be322d7124765433c6e29bcde26dd0ae4c5d2c1a532b5f895614371e3a5e",
+      "cmd/aquas/freno_hora_test.go": "c28e22b4f913dcd588aa484a93038c0e608058050cbaba69d1d103c10bb38e2a",
+      "cmd/aquas/freno_test.go": "0ae6084576d2ea850d8e03085a75be3d1bbaec087179200c1e85eee2137f917d",
+      "cmd/aquas/frenos_propios_test.go": "b3087e959c17f9a6115c3d86fd7168be22c248d96338f4d8e3f09132f10d8889",
+      "cmd/aquas/frenos_test.go": "0a0ab0c2c90ee5fa17034521bdefe4b644694147056ba8f4048f40b0751500d8",
+      "cmd/aquas/gancho_veredicto_test.go": "de6f96c53bd61687211eb5b201b8d75f539521623d9d965bbfc35992d0fa3bfe",
+      "cmd/aquas/herencia_test.go": "09ce745d7e84bc472f8f2e4cd2f33a9e526411fc02d56735f82194088a161956",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "1e2ee7f687aa9c8029146ef428c4ce3c7785b9c3660a11a4e66ed04d07fac921",
+      "cmd/aquas/hijos_test.go": "0758969d2919a65018ed0dacfdece0a374d612bdef6bab60337300cdae575233",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles.go": "825a32854ac2932e92c4de2dd3dfe8eb21bdd4e559e294ce010eae9800a6c8b0",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "a88007b549f3c3faaa13f4b1f19a4268ce65419655c25855701d781ac4779984",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "918797117b729249473e8e443709c8858203eeab1d6bfffd0e4364a0d850397e",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "907c826b11f45a08e6e1c6660238b2fc000f6b16c81763b8d59a076d9110ad4f",
+      "cmd/aquas/presupuesto_test.go": "570c1ee1adceebc527a65ca76d708af0cb0f9e129a9cd7820db46109d730d8e0",
+      "cmd/aquas/pruebas_aisladas_test.go": "1e54a7c00956d161ad0c16cb0eccd9b25b7c77e043ef3a0cd59f7a0ed850507a",
+      "cmd/aquas/punta_test.go": "38c457d4226e9dcc37d6562317b22998c66ced5e1c5eb8b2da89e83a0463253e",
+      "cmd/aquas/retrospectiva_test.go": "e189a80f26834f2577731fc459ffab6526b53dc7e6d57b24126b53f890ce036d",
+      "cmd/aquas/rojo_test.go": "388f1575619b837a6b3134fcc20ad29c04c6ab3c522c976e3d6e2b8f6619f2dd",
+      "cmd/aquas/sello_test.go": "c208274912aea0a3fffbaecd3f40770d791da9c5b2140415a1493eecdb8778bc",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/tope_test.go": "2d7c8d0f4c981c1bcf15b338f0b88a7d6c1d85da5223ff4e3ffea7c977d7d497",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "cmd/aquas/verify_hijo_test.go": "e7e997591a450ef4655c403dee8af44d170001b5942d06ab6f2db327d0b6eb58",
+      "internal/backlog/aislamiento_test.go": "df00b9fd3b4c3d314ceebbc491cb368cd208cb748e1ff9cb90cc0047d409a0df",
+      "internal/backlog/alcance.go": "c31fe16b3ad4f2dace0548e7ed983d2d5918568068625071cdddb36bf1a03247",
+      "internal/backlog/alcance_test.go": "ef7cf766576693d6d739b78cd51af50493ec6483b00760d3fcf263151ed72ad4",
+      "internal/backlog/aprobacion.go": "fa62e8a945aaec5ab0cdbf8f8b510959110e20155acb15d8c8010c36633f8e55",
+      "internal/backlog/aprobacion_feature_test.go": "783ed9726cc99d4066208ba82f59888abcbc4f18a834955fbb7aa15ed73354d6",
+      "internal/backlog/aprobacion_test.go": "6d090350c552f39918ac0b636fac9c321970afaac71504ace114ed2f61574db2",
+      "internal/backlog/arranque_test.go": "fd2ed5775eca23d246cd530774a96ffed5a896731ba97db355371cb217e4b3ad",
+      "internal/backlog/arreglo.go": "7db6d0ce8335b4873ffc9291de81694133424f63477c8fdafdac434c93665755",
+      "internal/backlog/arreglo_pruebas.go": "7e8a1662e1bdec781d373638a8e285be991513ca03cf188cbe6c4f1c3024107c",
+      "internal/backlog/arreglo_pruebas_test.go": "2b1ad1e979dc3c705b7432ec28b2df3483fccba4088fe15671a3f6fd851a4e64",
+      "internal/backlog/arreglo_test.go": "001b7c3bbfbb391ee2da91ab6f5932a039a62a8f8deac021ead6589d457cd0fb",
+      "internal/backlog/auditoria.go": "a18ae366ae9798180317a8223228fa78dda27ac309bfddf059c3d08f5856e859",
+      "internal/backlog/auditoria_test.go": "d954ab20294a9c465500e588281d4ffbe9027f38af926f8201db5352f2525fa4",
+      "internal/backlog/aviso_feature_test.go": "55b164c37b1ae834c6326cd12ac379e3a592a88719aadf888ef4b9337c288b77",
+      "internal/backlog/backlog.go": "f53b71f0d2aa4858815797e2db5fd3247a1d1241f1a55a9c13ac3cd935d9cc66",
+      "internal/backlog/backlog_padre_test.go": "37851c0b8fab768b21ad1dd6c14df572011d8cb07987ff424e33a3aaeee5aa6b",
+      "internal/backlog/backlog_test.go": "18b3f78e0e3532c60182ae90b8cc17104ea835f0f7da1e2a5df437dd73a7d912",
+      "internal/backlog/campos_test.go": "28dd920c59592ec5503e544d558decea351b9385234ea5073c6eb259943808bf",
+      "internal/backlog/cierre_vigente_test.go": "4eaf046855f764e70c0f53beb36c7350682c757d55e15674a0a42d1bd336fa68",
+      "internal/backlog/codigo.go": "dae393a9f776fa43b3f695b5151589a7c3ffa6a76d40d95ff4cf943b91fe73f5",
+      "internal/backlog/codigo_test.go": "3705ffe4a27e52413d7996e176ca06837c02905fcd58cd3acf0a4ca2687db098",
+      "internal/backlog/documentar.go": "863f9b6c70b834242de534881317155945617e07a876930f621a26dd46bd77ed",
+      "internal/backlog/documentar_test.go": "9336f43e2ab0536d2ecae00f27c8a4273c709a896badb9e6f3c53c59faeac7d4",
+      "internal/backlog/editar.go": "80c90b2b2e3446d0e5c035f82550b2dcdc612f0130521a2b7ad64a2ec82dd6c4",
+      "internal/backlog/editar_test.go": "400b05c84288b7c1ce5dc807a2d3441a527fc75e267c0e4ef5978c33985ae9f5",
+      "internal/backlog/huella_codigo.go": "7e95b852afb66968e99c1698dc6da5fd63460d0e49e14f9b4547b97662a14aa3",
+      "internal/backlog/main_test.go": "a70574ed91eead97f4f8c53ce7762466d45982348343cddb4e9710f9b8956d2b",
+      "internal/backlog/pruebas.go": "b7141ee23f9509980786bafd58b537fa7460e58aef25ddd0052058345b0c67af",
+      "internal/backlog/pruebas_arreglo_test.go": "16fadf22f3e520e3e9473755c0eed0ad6aeb0a60de8bcab1d66c9eaeb2e11c15",
+      "internal/backlog/pruebas_hijo_test.go": "d16ac5074a84d740385bbf060ede162cae8de0e00097e4bf8e84127c29184086",
+      "internal/backlog/que_hace_test.go": "3216577d7219c8845d5ef7e6fbe24f09562cf407993f2a8702e6c548e6943970",
+      "internal/backlog/registro_test.go": "b8dfdc074499b02c1e37cc9bf4ebff316575a2e7e85bae2ea09ace96c9291af3",
+      "internal/backlog/relacion.go": "a03ea8c1fd2b4b91e044c1cb6eea55908db06748521ad3ab46bddfd9d3aeab1e",
+      "internal/backlog/relacion_test.go": "431fe7d54f9f23b706f0ccead1004b7ef865b46e11a513453b05d61a74760f32",
+      "internal/backlog/repetidos_test.go": "8be26b48525ce377a8f108bef244b3ec1858baf984d4e163eca64d23b80c8026",
+      "internal/backlog/respaldo.go": "64e56da26ed15a7a493ed6f7dad92c824e2604670a9b262ddf4f964f5b83ad53",
+      "internal/backlog/rojo.go": "d3450ff640ec9dd59300c738859c8dee69ea7aaa007f2b57101f96714b9d4331",
+      "internal/backlog/rojo_cancelado_test.go": "77d97e9e1f768990414314355b3f5cd5646619abc83701f391673c855a95ee41",
+      "internal/backlog/rojo_heredado_test.go": "9a28dada52517f62990949bb37e2c1624dac579fda4572ae029ee422392ef8e3",
+      "internal/backlog/rojo_subtest_test.go": "74fa62b2e7c3ef7e3eaccf91d42ba71322f0e35e282a6c5b1fe909266e5e23ff",
+      "internal/backlog/rojo_test.go": "705e4015557811a822389b021d66f7986e387e95859b1d43e446494b4c3f3cdb",
+      "internal/backlog/sello.go": "0b42da1d12d685e463b555c185e5f6b19c406f20b7b2ce72e547670a476d290a",
+      "internal/backlog/sello_test.go": "0a824951e06857e072ed9a450c05cd42654b665082cb7d60416bdedf3bd0a544",
+      "internal/backlog/siguiente_test.go": "adf33dd0d25546ee66fa995d77443dff1d59d85357084b02d217989d7d974387",
+      "internal/backlog/slice_nuevo_test.go": "b05e37c9932d8822f0dbc058b2d93767d4e307e7f0e3d0d0d564e8bc317c72b3",
+      "internal/backlog/tabla.go": "643d68b64c71c2b2f3d59195295e1403d77b14e10ae59b1260019a1611276e6f",
+      "internal/backlog/tabla_test.go": "ff0d980aac364d2c193d0fcb28f31b90f9ab131598cb691a1ed9478bf5eb26b4",
+      "internal/backlog/veredicto_test.go": "275695896aaa0eda4828465ecdc45b725a836614c3dce8bbceb7436198ace073"
+    },
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb\\subagents\\agent-ab3ef8a0d3652fdc6.jsonl"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F007",
+      "marca": "sin_cambio",
+      "motivo": "la feature sigue en curso con S001 abierto"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "la iniciativa no cambia por editar que_hace"
+    },
+    {
+      "clave": "pagina:docs/E000/F007/S002.md",
+      "marca": "actualizado",
+      "motivo": "contrato con el uso real de edit que_hace y su primer uso"
+    },
+    {
+      "clave": "pagina:docs/E000/F007/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la página de la feature ya describe S002; el estado lo regenera compile"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "la tabla de E000 la regenera compile"
+    },
+    {
+      "clave": "importa:cmd/aquas/aprobacion.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/aprobacion.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:cmd/aquas/apruebo_cubierto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/apruebo_cubierto.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/hook_cerrado_test.go cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "importa:cmd/aquas/presupuesto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/presupuesto.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "nombra:cmd/aquas/sinviejos_test.go\u003edocs/E000/F006/S012.md",
+      "marca": "sin_cambio",
+      "motivo": "cmd/aquas/sinviejos_test.go nombra docs/E000/F006/S012.md en un ejemplo que S002 no altera"
+    },
+    {
+      "clave": "nombra:docs/E000/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F001/S004.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F004/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F004/S003.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F004/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F004/S004.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F005/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S004.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S006.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S008.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S009.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F006/S011.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F007/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F007/S003.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F008/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F008/S003.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F008/S004.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F008/S006.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E000/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E000/F010/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F001/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S003.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S004.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S006.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S007.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S008.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S009.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S009.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S010.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S010.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S011.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S011.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S015.md nombra codigo.md; el índice se regenera con el comentario nuevo de Editar"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S016.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F002/S016.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F003/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F003/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F004/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F004/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F004/S005.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F004/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F004/S006.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F005/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F005/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F005/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F005/S003.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F006/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F006/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F007/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F007/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F007/S003.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S004.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S004.md nombra codigo.md; el índice se regenera con el comentario nuevo de Editar"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S005.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S006.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S006.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F008/S007.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F009/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F009/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F009/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F010/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F010/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F013/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F013/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F014/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F014/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F015/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F015/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F016/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F016/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F017/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F017/S004.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F017/S005.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S007.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E001/F017/S007.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F001/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F001/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F001/S003.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E002/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F001/S004.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S001.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F002/S001.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E002/F002/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/F002/S003.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E002/README.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S002.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E003/F001/S002.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S003.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E003/F001/S003.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E003/F001/S004.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S005.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/E003/F001/S005.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "docs/ref/compilador.md cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "importa:internal/defecto/defecto.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/defecto/defecto.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/defecto/prueba.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/defecto/prueba.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/defecto/reincidencia_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/defecto/reincidencia_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "internal/entorno/binario_test.go cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "importa:internal/guardia/carpetas_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/carpetas_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/guardia/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/contrato.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "nombra:internal/guardia/gancho_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/gancho_test.go cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "importa:internal/guardia/guardia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/guardia/guardia.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/memoria/memoria.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/memoria/memoria.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/propuesta/desafio.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/propuesta/desafio.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/al_dia.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/al_dia.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/arreglos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/arreglos_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/casos_borde.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/casos_borde_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/casos_borde_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/codigo.go nombra codigo.md; el índice se regenera con el comentario nuevo de Editar"
+    },
+    {
+      "clave": "importa:internal/wiki/codigo.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/codigo.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/comandos_test.go cita main.go; S002 solo suma [que_hace=…] a la ayuda de backlog edit"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/contrato.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/contrato_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/contrato_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/cuando_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/cuando_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/hijos_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/hijos_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/integral_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/integral_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/portadas.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/portadas.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/prevista_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/prevista_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/que_hace_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/que_hace_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    },
+    {
+      "clave": "importa:internal/wiki/seccioncodigo_test.go\u003einternal/backlog",
+      "marca": "sin_cambio",
+      "motivo": "internal/wiki/seccioncodigo_test.go usa backlog; Editar solo suma que_hace, título y bloqueos siguen igual"
+    }
+  ],
+  "alcance": [
+    "internal/backlog/**",
+    "cmd/aquas/**",
+    "docs/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go",
+    "internal/backlog/editar.go"
+  ],
+  "relacion": "nueva",
+  "que_hace": "aquas backlog edit acepta que_hace con motivo y la wiki se rehace"
+}

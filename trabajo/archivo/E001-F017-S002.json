@@ -565,5 +565,14 @@
     "internal/propuesta/pedido.go"
   ],
   "relacion": "nueva",
-  "que_hace": "El cierre de turno frena si el agente pide apruebo o dale de un tramo con feature aprobada"
+  "ediciones": [
+    {
+      "fecha": "2026-11-03T16:50:00Z",
+      "campo": "que_hace",
+      "antes": "El cierre de turno frena si el agente pide apruebo o dale de un tramo con feature aprobada",
+      "despues": "El cierre frena si el agente pide apruebo de un tramo que su feature aprobada ya cubre",
+      "motivo": "auditoría E001/F017/S002-A5: el texto nombraba el dale, que el humano pidió quitar"
+    }
+  ],
+  "que_hace": "El cierre frena si el agente pide apruebo de un tramo que su feature aprobada ya cubre"
 }
