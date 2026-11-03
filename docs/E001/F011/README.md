@@ -6,7 +6,7 @@ Esta [feature](../../glosario.md#feature) hace que el freno de llamadas nunca bl
 
 ## En una frase
 
-Con el freno activo, `aquas memory set` pasa y todo lo demás se frena.
+Con el freno activo, `aquas memory set` pasa y todo lo demás se frena. Desde [E001/F017/S001](../F017/S001.md) también pasan `aquas defect new` y `aquas defect occur`.
 
 ## Para qué existe
 

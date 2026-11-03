@@ -1,0 +1,10 @@
+{
+  "id": "D000106",
+  "firma": "auditoria-extra-por-leves",
+  "que": "una tercera vuelta de auditor solo para hallazgos leves gasta unos 70k tokens y agotó el freno por turno",
+  "causa": "corregí los graves de A1 y relancé el auditor sin barrer antes huecos leves del mismo tipo",
+  "arreglo": "antes de relanzar el auditor, buscar el mismo hueco en docs y pruebas vecinas",
+  "como_me_cercioro": "pendiente: medir vueltas de auditor por slice en F017",
+  "ocurrencias": [],
+  "relacion": "E001/F017"
+}

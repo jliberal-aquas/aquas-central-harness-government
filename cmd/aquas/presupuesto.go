@@ -3,8 +3,10 @@ package main
 // E001/F015/S002: hook PreToolUse («aquas budget tool»). Frena el gasto por feature (tope aprobado con la
 // feature) y por turno (bucles desbocados); avisa del contexto.
 // E000/F008/S005 (D000077, D000082): las llamadas, la feature, su tope y su hora salen del registro que escribe
-// Claude Code fuera del repo; nada sale de contadores, foco ni fichas, que el agente puede tocar. Determinista solo con el aislamiento de Bash (S003); en Windows
-// nativo es una segunda barrera, probabilística (D000079).
+// Claude Code fuera del repo; nada sale de contadores, foco ni fichas, que el agente puede tocar. Única excepción
+// (E001/F017/S001): suelta el tope una feature CERRADO con todos sus slices CERRADO, y cada uno exigió auditoría
+// APROBADO. Determinista solo con el aislamiento de Bash (S003); en Windows nativo es una segunda barrera,
+// probabilística (D000079).
 
 import (
 	"bufio"
@@ -16,9 +18,11 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
+	"unicode"
 
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
 )
@@ -47,21 +51,41 @@ type entradaPresupuesto struct {
 // Binario: `aquas`, `go run ./cmd/aquas` o el del repo en .tmp/ (con o sin comillas). Valor: sin espacios ni
 // metacaracteres de shell, entre comillas simples, o entre dobles sin dólar, acento grave, barra invertida ni comilla doble.
 // Una ruta entre comillas solo vale si es el binario de .tmp/ de este repo.
-var reMemoriaFijar = regexp.MustCompile(`^\s*` +
+// E001/F017/S001 (D000101): también `aquas defect new|occur`, argumentos sin «=» y un `cd <raíz> &&` delante;
+// el `cd` solo vale si va a la raíz de este repo.
+// Entre palabras solo espacio o tabulador: un salto de línea nunca separa (D000105, hallazgo A1.3).
+var reMemoriaFijar = regexp.MustCompile(`^[ \t]*` +
+	`(cd[ \t]+("([^"$` + "`" + `\\]*)"|'([^']*)'|([^\s"'$` + "`" + `\\;&|<>()]+))[ \t]*&&[ \t]*)?` +
 	`(aquas(\.exe)?|go run \./cmd/aquas|(\./)?\.tmp/aquas(\.exe)?|"([^"$` + "`" + `\\]*)")` +
-	`\s+(memoria\s+fijar|memory\s+set)` + // E000/F006/S006: nombre viejo y nuevo
-	`(\s+[a-z_]+=([^\s"'$` + "`" + `\\;&|<>()]*|'[^']*'|"[^"$` + "`" + `\\]*"))*\s*$`)
+	`[ \t]+(memoria[ \t]+fijar|memory[ \t]+set|defecto[ \t]+(nuevo|ocurre)|defect[ \t]+(new|occur))` + // E000/F006/S006: nombre viejo y nuevo
+	`([ \t]+(?:[^\s"'$` + "`" + `\\;&|<>()]+|'[^']*'|"[^"$` + "`" + `\\]*")+)*[ \t]*\n?$`) // cada argumento: trozos sueltos o entre comillas, pegados
 
-// exentaDelFreno: true si la herramienta es Bash y su comando entero es `aquas memory set campo=valor…`.
+// rutaComparable: la ruta limpia con «/»; en Windows, la forma de Git Bash «/d/…» pasa a «D:/…» (hallazgo A2.4).
+func rutaComparable(r string) string {
+	r = filepath.ToSlash(filepath.Clean(r))
+	if runtime.GOOS == "windows" && len(r) >= 2 && r[0] == '/' && unicode.IsLetter(rune(r[1])) && (len(r) == 2 || r[2] == '/') {
+		r = strings.ToUpper(r[1:2]) + ":" + r[2:]
+		if len(r) == 2 {
+			r += "/"
+		}
+	}
+	return r
+}
+
+// exentaDelFreno: true si el comando Bash entero es `aquas memory set …` o `aquas defect new|occur …`.
+// Puede llevar delante un `cd` a la raíz de este repo, y a ninguna otra carpeta.
 func exentaDelFreno(raiz, herramienta, comando string) bool {
 	m := reMemoriaFijar.FindStringSubmatch(comando)
 	if herramienta != "Bash" || m == nil {
 		return false
 	}
-	if !strings.HasPrefix(m[1], `"`) {
+	if m[1] != "" && !strings.EqualFold(rutaComparable(m[3]+m[4]+m[5]), rutaComparable(raiz)) {
+		return false
+	}
+	if !strings.HasPrefix(m[6], `"`) {
 		return true
 	}
-	ruta := filepath.ToSlash(filepath.Clean(m[5]))
+	ruta := filepath.ToSlash(filepath.Clean(m[10]))
 	for _, b := range []string{"aquas", "aquas.exe"} {
 		if strings.EqualFold(ruta, filepath.ToSlash(filepath.Join(raiz, ".tmp", b))) || ruta == ".tmp/"+b {
 			return true
@@ -282,6 +306,29 @@ func escanearProyecto(raiz, ruta string) (map[string]escaneo, error) {
 	return r, nil
 }
 
+// featureCerrada (E001/F017/S001, D000091): true solo si la feature y todos sus slices (al menos uno) están en CERRADO.
+// Cerrar un slice exige auditoría APROBADO; cancelar no la pide, así que un slice CANCELADO o una feature sin
+// slices no sueltan el tope (hallazgo A1.2). Activa, sin ficha o backlog ilegible: false (no se inventa salida).
+func featureCerrada(raiz, id string) bool {
+	fs, err := backlog.Todas(raiz)
+	if err != nil {
+		return false
+	}
+	feature, slices := false, 0
+	for _, f := range fs {
+		switch {
+		case f.ID == id:
+			feature = f.Estado == "CERRADO"
+		case f.Padre == id && f.Tipo == "slice":
+			if f.Estado != "CERRADO" {
+				return false
+			}
+			slices++
+		}
+	}
+	return feature && slices > 0
+}
+
 // frenoFeature: el último apruebo de feature del humano fija feature, tope y hora; se cuentan las llamadas
 // distintas desde esa hora en las sesiones y en sus subagentes. "" si puede seguir o no hay apruebo de feature.
 func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) string {
@@ -291,7 +338,7 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) string {
 			ap = s.apruebo
 		}
 	}
-	if ap == nil {
+	if ap == nil || featureCerrada(raiz, ap.feature) {
 		return ""
 	}
 	ids := map[string]bool{}

@@ -1,0 +1,10 @@
+{
+  "id": "D000105",
+  "firma": "exencion-cuela-salto-de-linea",
+  "que": "al ampliar la exención del freno, un salto de línea separaba argumentos y colaba git push como exento",
+  "causa": "el separador de argumentos del regex era \\s, que incluye salto de línea",
+  "arreglo": "separador solo espacio o tabulador",
+  "como_me_cercioro": "TestFrenoDejaPasarMemoria y TestFrenoSigueAlTrabajoActivo frenan memory set o defect occur seguidos de salto de línea y otro comando",
+  "ocurrencias": [],
+  "relacion": "E001/F017/S001"
+}

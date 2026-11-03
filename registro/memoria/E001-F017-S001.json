@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F017",
+    "slice": "S001",
+    "tarea": "E001/F017/S001 freno atado al trabajo activo: A3 APROBADO"
+  },
+  "siguiente": "cerrar S001, commit y push; luego S002",
+  "pendientes": [
+    "D000062: pre-commit debe comparar lo preparado contra sellos"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "a7c9ec16f51f44712b2b03aaf16372d4f446467c6d45963cb2f0ec6a84688adc",
+  "actualizado": "2026-11-03T00:12:08Z",
+  "sello": "c40153943d63f0d04cee686d6a6b9742c58fa6d9c6ac795b199b2187ea91dc98"
+}

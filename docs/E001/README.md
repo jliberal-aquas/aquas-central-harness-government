@@ -162,7 +162,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F014](F014/README.md) | Cierre honesto | Hecho |
 | [F015](F015/README.md) | Gate humano por feature | Hecho |
 | [F016](F016/README.md) | Shell del humano | Hecho |
-| [F017](F017/README.md) | Ata el freno al trabajo activo, frena apruebos de más, separa agentes, guarda refinado, nombra pruebas y vigila docs | Planeado |
+| [F017](F017/README.md) | Ata el freno al trabajo activo, frena apruebos de más, separa agentes, guarda refinado, nombra pruebas y vigila docs | En curso |
 
 <!-- /GENERADO -->
 

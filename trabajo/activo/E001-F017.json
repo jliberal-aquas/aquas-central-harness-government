@@ -2,7 +2,7 @@
   "id": "E001/F017",
   "tipo": "feature",
   "titulo": "Controles de la retrospectiva del 2026-11-02",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P1",
   "motivo": "Retrospectiva de 597 turnos: 41 correcciones del humano, 19 sin defecto; 6 familias sin control determinista",
   "padre": "E001",
@@ -16,6 +16,83 @@
       "verde_cuando": "verde cuando cada familia falla su caso malo y pasa su caso bueno"
     }
   ],
+  "rojo": {
+    "fecha": "2026-11-02T22:48:31Z",
+    "head": "ffbc6aaa8f5f13e57a98c5f9b6e144a24703f325",
+    "resultado": {
+      "./cmd/aquas:TestRetrospectivaSinReincidencia": "freno_test.go:39: el tope de una feature CERRADO no frena; llamada 2 dio {out: err:Presupuesto: llegaste al tope de la feature E003/F001 (1 llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo E003/F001 tope N»)."
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-02T23:32:01Z",
+    "head": "ffbc6aaa8f5f13e57a98c5f9b6e144a24703f325",
+    "huella": {}
+  },
+  "aprobacion": {
+    "fecha": "2026-11-02T22:45:46Z",
+    "huella": "4bc2d61ae2e518a0aa13a44b41b5199d79ab5b0b18c5cafac922a354e2b6096c",
+    "mensaje": "apruebo E001/F017 tope 350 con push",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E001/F017/S001": [
+        {
+          "prueba": "./cmd/aquas:TestFrenoSigueAlTrabajoActivo",
+          "intencion": "valida que el tope es el de la feature en curso",
+          "rojo_cuando": "rojo cuando una feature cerrada frena el trabajo o bloquea memory set",
+          "verde_cuando": "verde cuando el tope es el de la feature activa y los exentos pasan"
+        }
+      ],
+      "E001/F017/S002": [
+        {
+          "prueba": "./cmd/aquas:TestNoPideAprueboCubierto",
+          "intencion": "valida que el cierre frena pedir apruebo ya cubierto",
+          "rojo_cuando": "rojo cuando el agente pide apruebo de un slice con feature aprobada",
+          "verde_cuando": "verde cuando lo pide solo si la feature no tiene apruebo vigente"
+        }
+      ],
+      "E001/F017/S003": [
+        {
+          "prueba": "./internal/turno:TestTurnoMarcaOrigen",
+          "intencion": "valida que el turno guarda su origen",
+          "rojo_cuando": "rojo cuando un informe de subagente queda como mensaje del humano",
+          "verde_cuando": "verde cuando el informe queda con origen agente y el humano con origen humano"
+        }
+      ],
+      "E001/F017/S004": [
+        {
+          "prueba": "./internal/turno:TestTurnoGuardaRefinado",
+          "intencion": "valida que el turno guarda tipo y refinado",
+          "rojo_cuando": "rojo cuando la respuesta no trae refinado y el cierre pasa",
+          "verde_cuando": "verde cuando el refinado queda en el turno y su falta frena"
+        }
+      ],
+      "E001/F017/S005": [
+        {
+          "prueba": "./internal/defecto:TestDefectoNombraPrueba",
+          "intencion": "valida que el defecto apunta a una prueba real",
+          "rojo_cuando": "rojo cuando el defecto nombra una prueba inexistente o ninguna",
+          "verde_cuando": "verde cuando la prueba nombrada existe"
+        }
+      ],
+      "E001/F017/S006": [
+        {
+          "prueba": "./internal/wiki:TestPaginaAlDiaConCodigo",
+          "intencion": "valida que la página es posterior a su código",
+          "rojo_cuando": "rojo cuando el código cambia y la página no",
+          "verde_cuando": "verde cuando la página se actualiza después del código"
+        }
+      ],
+      "E001/F017/S007": [
+        {
+          "prueba": "./cmd/aquas:TestCorreccionExigeDefecto",
+          "intencion": "valida que una corrección del humano exige defecto",
+          "rojo_cuando": "rojo cuando el humano corrige y el cierre pasa sin D000NNN",
+          "verde_cuando": "verde cuando el cierre nombra el defecto o el turno no trae corrección"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "Ata el freno al trabajo activo, frena apruebos de más, separa agentes, guarda refinado, nombra pruebas y vigila docs"
 }
