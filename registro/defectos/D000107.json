@@ -1,0 +1,10 @@
+{
+  "id": "D000107",
+  "firma": "pagina-con-comando-viejo",
+  "que": "la página de S008 nombró aquas biblioteca leer, nombre viejo; quedó subida en ab35a1c con una prueba en rojo",
+  "causa": "escribí la página a mano y solo corrí el gate, que no incluye TestSinComandosViejos",
+  "arreglo": "nombre nuevo aquas library read en la página",
+  "como_me_cercioro": "go test ./... completo antes de cada commit, no solo el gate",
+  "ocurrencias": [],
+  "relacion": "E001/F017/S008"
+}
