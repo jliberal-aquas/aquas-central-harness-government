@@ -447,7 +447,21 @@ func main() {
 	}
 }
 
-// hook: exit 0 = nada que reportar; exit 2 = stderr se muestra a Claude.
+// contextoParaClaude (E000/F013/S002): aviso que el gancho PostToolUse entrega a Claude sin frenar (additionalContext, salida 0).
+func contextoParaClaude(texto string) {
+	var r struct {
+		HookSpecificOutput struct {
+			HookEventName     string `json:"hookEventName"`
+			AdditionalContext string `json:"additionalContext"`
+		} `json:"hookSpecificOutput"`
+	}
+	r.HookSpecificOutput.HookEventName = "PostToolUse"
+	r.HookSpecificOutput.AdditionalContext = texto
+	b, _ := json.Marshal(r)
+	fmt.Println(string(b))
+}
+
+// hook: exit 0 = nada que reportar o aviso en additionalContext; exit 2 = stderr se muestra a Claude como freno.
 func hook(raiz string) {
 	var entrada struct {
 		ToolInput struct {
@@ -467,20 +481,22 @@ func hook(raiz string) {
 	// E000/F004/S004: página de docs/ → enlaces al glosario que pide el gate, sin depender del agente.
 	// Error (p. ej. enlace equivocado previo) no frena aquí: el gate lo reporta.
 	if strings.HasPrefix(rel, "docs/") && strings.HasSuffix(rel, ".md") {
-		avisar := false
+		// E000/F013/S002: todo sale como aviso (additionalContext, salida 0); el gancho ya no frena.
+		var avisos []string
 		if rel != "docs/glosario.md" {
 			if n, err := wiki.Enlazar(raiz, rel); err == nil && n > 0 {
-				fmt.Fprintf(os.Stderr, "%s: %d enlaces al glosario puestos por aquas (relee el archivo antes de editarlo otra vez)\n", rel, n)
-				avisar = true
+				avisos = append(avisos, fmt.Sprintf("%s: %d enlaces al glosario puestos por aquas (relee el archivo antes de editarlo otra vez)", rel, n))
 			}
 		}
 		// E000/F006/S004: la oración larga se avisa al guardar, no recién en el gate.
 		if ps, err := wiki.OracionesLargas(raiz, rel); err == nil && len(ps) > 0 {
-			listar("Oraciones largas (el gate las rechaza): parte cada una en dos", ps)
-			avisar = true
+			avisos = append(avisos, "Oraciones largas (aviso, no frena): conviene partir cada una en dos")
+			for _, p := range ps {
+				avisos = append(avisos, "  - "+p)
+			}
 		}
-		if avisar {
-			os.Exit(2)
+		if len(avisos) > 0 {
+			contextoParaClaude(strings.Join(avisos, "\n"))
 		}
 		return
 	}

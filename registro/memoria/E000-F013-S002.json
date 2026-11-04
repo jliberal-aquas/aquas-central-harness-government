@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F013",
+    "slice": "S002",
+    "tarea": "S002 cerrado: gancho al guardar avisa sin frenar"
+  },
+  "siguiente": "S003: revisar causa real de aprobación perdida antes del rojo; luego S004",
+  "pendientes": [
+    "humano: go install …/cmd/aquas@v0.2.0 y aquas update en cada hijo"
+  ],
+  "decisiones": [
+    "congeladas las features nuevas hasta terminar la poda (humano 2026-11-04)"
+  ],
+  "huella_git": "594f2c70f378096fdddb20760b446329c1c7f7819b06873bb28589a5465864e0",
+  "actualizado": "2026-11-04T23:25:53Z",
+  "sello": "aaa6b3177641924ed9500354d55aea0264285e974e907e728db6539f588ace04"
+}

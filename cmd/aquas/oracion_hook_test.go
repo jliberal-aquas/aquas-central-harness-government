@@ -27,9 +27,10 @@ func TestHookAvisaOracionLarga(t *testing.T) {
 		"- " + larga + ".\n" // 14: ítem de lista largo
 	escribir(t, raiz, "docs/E000/F001/S001.md", pagina)
 	s := aquas(t, raiz, evento("docs/E000/F001/S001.md"), "hook")
-	if s.codigo != 2 {
-		t.Fatalf("oración larga: el hook debe salir 2 para que Claude lo vea; exit %d, stderr %q", s.codigo, s.err)
+	if s.codigo != 0 { // E000/F013/S002: avisa sin frenar
+		t.Fatalf("oración larga: el hook avisa con salida 0; exit %d, stderr %q", s.codigo, s.err)
 	}
+	s.err = contextoGancho(t, s.out)
 	for _, want := range []string{"docs/E000/F001/S001.md:11: oración de 23 palabras", "docs/E000/F001/S001.md:14: oración de 21 palabras"} {
 		if !strings.Contains(s.err, want) {
 			t.Errorf("falta %q en el aviso:\n%s", want, s.err)
@@ -44,23 +45,24 @@ func TestHookAvisaOracionLarga(t *testing.T) {
 	escribir(t, raiz, "docs/glosario.md", "# Glosario\n\n## agente\n\nQuien trabaja.\n\nEjemplo: el worker.\n")
 	escribir(t, raiz, "docs/E000/F001/S003.md", "# Título\n\nUn agente corto.\n"+larga+".\n")
 	s = aquas(t, raiz, evento("docs/E000/F001/S003.md"), "hook")
-	if s.codigo != 2 || !strings.Contains(s.err, "S003.md:4: oración de 21 palabras") || !strings.Contains(s.err, "1 enlaces al glosario") {
+	s.err = contextoGancho(t, s.out)
+	if s.codigo != 0 || !strings.Contains(s.err, "S003.md:4: oración de 21 palabras") || !strings.Contains(s.err, "1 enlaces al glosario") {
 		t.Errorf("enlace y oración larga en otra línea del párrafo: exit %d, stderr %q", s.codigo, s.err)
 	}
 	// Hallazgo A1.3: el glosario también se mide al guardarlo.
 	escribir(t, raiz, "docs/glosario.md", "# Glosario\n\n## agente\n\n"+larga+".\n")
-	if s := aquas(t, raiz, evento("docs/glosario.md"), "hook"); s.codigo != 2 || !strings.Contains(s.err, "glosario.md:5: oración de 21 palabras") {
+	if s := aquas(t, raiz, evento("docs/glosario.md"), "hook"); s.codigo != 0 || !strings.Contains(contextoGancho(t, s.out), "glosario.md:5: oración de 21 palabras") {
 		t.Errorf("glosario con oración larga: exit %d, stderr %q", s.codigo, s.err)
 	}
 
 	// Todas cortas: el hook calla.
 	escribir(t, raiz, "docs/E000/F001/S002.md", "# Título\n\nUna corta.\n\nOtra corta también.\n")
-	if s := aquas(t, raiz, evento("docs/E000/F001/S002.md"), "hook"); s.codigo != 0 || strings.Contains(s.err, "oración") {
+	if s := aquas(t, raiz, evento("docs/E000/F001/S002.md"), "hook"); s.codigo != 0 || strings.Contains(s.out+s.err, "oración") {
 		t.Errorf("todas cortas: el hook no debe avisar; exit %d, stderr %q", s.codigo, s.err)
 	}
 	// Fuera de docs/: no se mide.
 	escribir(t, raiz, "notas.md", larga+".\n")
-	if s := aquas(t, raiz, evento("notas.md"), "hook"); strings.Contains(s.err, "oración") {
+	if s := aquas(t, raiz, evento("notas.md"), "hook"); strings.Contains(s.out+s.err, "oración") {
 		t.Errorf("fuera de docs/ no se mide: %q", s.err)
 	}
 }

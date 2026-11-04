@@ -31,8 +31,8 @@ func TestHookEnlazaAlGuardar(t *testing.T) {
 	if got, want := leer("docs/E000/F001/S001.md"), "Un [agente](../../glosario.md#agente) trabaja.\n"; got != want {
 		t.Fatalf("página de docs/ sin enlazar\n got %q\nwant %q\nstderr %s", got, want, s.err)
 	}
-	if !strings.Contains(s.err, "1 enlaces al glosario") {
-		t.Errorf("el hook debe avisar lo que cambió; stderr %q", s.err)
+	if s.codigo != 0 || !strings.Contains(contextoGancho(t, s.out), "1 enlaces al glosario") { // E000/F013/S002: aviso, no freno
+		t.Errorf("el hook debe avisar lo que cambió, con salida 0; %+v", s)
 	}
 
 	aquas(t, raiz, evento("notas.md"), "hook")

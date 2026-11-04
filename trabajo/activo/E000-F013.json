@@ -29,18 +29,34 @@
     "huella": {}
   },
   "aprobacion": {
-    "fecha": "2026-11-04T20:35:14Z",
-    "huella": "23f027af417a004381b83f705ebab20cde1f7d694d0c0d32d9e35a321ff65569",
-    "mensaje": "apruebo E000/F013 con push tope 200",
+    "fecha": "2026-11-04T23:05:22Z",
+    "huella": "4c89820439fb987ad7d451209dcc16c427cfe570f16347e6db4adfb74529e5ed",
+    "mensaje": "apruebo E000/F013 con push tope 300",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
     "push": true,
     "foto": {
-      "E000/F013/S001": [
+      "E000/F013/S002": [
         {
-          "prueba": "./internal/wiki:TestOracionLargaAvisa",
-          "intencion": "valida que oración larga y enlace faltante avisan sin frenar",
-          "rojo_cuando": "rojo cuando el gate cae por ellos",
-          "verde_cuando": "verde cuando el gate pasa y lista el aviso"
+          "prueba": "./cmd/aquas:TestGanchoOracionAvisa",
+          "intencion": "valida que el gancho al guardar avisa la oración larga sin frenar",
+          "rojo_cuando": "rojo cuando sale con código 2",
+          "verde_cuando": "verde cuando sale 0 y el aviso llega al agente"
+        }
+      ],
+      "E000/F013/S003": [
+        {
+          "prueba": "./cmd/aquas:TestAprobacionCorta",
+          "intencion": "valida que una respuesta corta aprueba la línea propuesta y que la aprobación sobrevive a compact",
+          "rojo_cuando": "rojo cuando pide repetir la línea",
+          "verde_cuando": "verde cuando la ficha queda aprobada con el id y tope propuestos"
+        }
+      ],
+      "E000/F013/S004": [
+        {
+          "prueba": "./internal/backlog:TestSelloSinMenciones",
+          "intencion": "valida que el sello omite menciones desde pruebas y código Go",
+          "rojo_cuando": "rojo cuando las pide",
+          "verde_cuando": "verde cuando solo pide páginas y canónicos"
         }
       ]
     }

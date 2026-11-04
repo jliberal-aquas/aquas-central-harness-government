@@ -1,0 +1,286 @@
+{
+  "id": "E000/F013/S002",
+  "tipo": "slice",
+  "titulo": "Gancho de oración larga avisa",
+  "estado": "CERRADO",
+  "prioridad": "P0",
+  "motivo": "poda humano 2026-11-04: el gancho al guardar en docs/ frena con exit 2 por estilo",
+  "padre": "E000/F013",
+  "bloqueado_por": [],
+  "secuencia": 195,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestGanchoOracionAvisa",
+      "intencion": "valida que el gancho al guardar avisa la oración larga sin frenar",
+      "rojo_cuando": "rojo cuando sale con código 2",
+      "verde_cuando": "verde cuando sale 0 y el aviso llega al agente"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-04T23:06:51Z",
+    "head": "f14aa6106eaffc44b2ebd0bc4750bff5fd6561fc",
+    "resultado": {
+      "./cmd/aquas:TestGanchoOracionAvisa": "gancho_aviso_test.go:48: el gancho no debe frenar; exit 2, stderr \"docs/E000/F001/S001.md: 1 enlaces al glosario puestos por aquas (relee el archivo antes de editarlo otra vez)\\nOraciones largas (el gate las rechaza): parte cada una en dos\\n  - docs/E000/F001/S001.md:4: oración de 21 palabras (máx. 20): «sol sol sol sol sol sol…»\\n\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-04T23:09:16Z",
+    "head": "f14aa6106eaffc44b2ebd0bc4750bff5fd6561fc",
+    "huella": {
+      "cmd/aquas/enlazar_hook_test.go": "bec6bdcd96d4ed695628084b8b2bdcd3e41b0e725e3d8b4dd4e9372454fa9656",
+      "cmd/aquas/gancho_aviso_test.go": "249bda1c993b853c17bd58d0c2e1518d4f877cbdae55990703106f68956a6355",
+      "cmd/aquas/main.go": "f670c62865d2c1237699a45b48647ca0b5cae6446c070528b5d7b24e1eec0880",
+      "cmd/aquas/oracion_hook_test.go": "43ec755fd37597bdb024f0853f52f3803bd0187e21289cfae993f70f721b69b0"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-11-04T23:25:27Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/enlazar_hook_test.go": "bec6bdcd96d4ed695628084b8b2bdcd3e41b0e725e3d8b4dd4e9372454fa9656",
+      "cmd/aquas/gancho_aviso_test.go": "249bda1c993b853c17bd58d0c2e1518d4f877cbdae55990703106f68956a6355",
+      "cmd/aquas/main.go": "f670c62865d2c1237699a45b48647ca0b5cae6446c070528b5d7b24e1eec0880",
+      "cmd/aquas/oracion_hook_test.go": "43ec755fd37597bdb024f0853f52f3803bd0187e21289cfae993f70f721b69b0"
+    },
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb\\subagents\\agent-a896634b8813080a7.jsonl"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F013",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "pagina:docs/E000/F013/S002.md",
+      "marca": "actualizado",
+      "motivo": "fuente oficial y fila padre e hijo"
+    },
+    {
+      "clave": "pagina:docs/E000/F013/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:.claude/agents/auditor.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:.claude/agents/orchestrator.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-haiku.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-sonnet.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/aprobacion_test.go\u003edocs/E001/F002/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/arranque_test.go\u003edocs/E001/F005/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/editar_que_hace_test.go\u003edocs/E001/F002/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/hook_cerrado_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/presupuesto_vuelta_test.go\u003edocs/E001/F002/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/retrospectiva_test.go\u003edocs/E001/F002/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/retrospectiva_test.go\u003edocs/E001/F002/S007.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/sello_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/sinviejos_test.go\u003edocs/E000/F006/S006.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:cmd/aquas/sinviejos_test.go\u003edocs/E000/F006/S012.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S004.md\u003ecmd/aquas/oracion_hook_test.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:docs/E000/F013/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/E001/F002/S004.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S008.md\u003edocs/E001/F017/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/backlog/aprobacion_test.go\u003edocs/E001/F002/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/backlog/sello_test.go\u003edocs/E001/F002/S004.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/entorno/binario_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/guardia/contrato_test.go\u003edocs/E001/F002/S007.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/guardia/gancho_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "importa:internal/hijo/desfase.go\u003ecmd/aquas",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/memoria/memoria_test.go\u003edocs/E001/F005/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/wiki/al_dia_test.go\u003edocs/E001/F002/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/wiki/comandos_test.go\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/wiki/contrato_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/wiki/hijos_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    },
+    {
+      "clave": "nombra:internal/wiki/wiki_test.go\u003edocs/E001/F001/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "solo nombra o importa rutas tocadas; sigue válido con el gancho en aviso"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/main.go",
+    "cmd/aquas/gancho_aviso_test.go",
+    "cmd/aquas/oracion_hook_test.go",
+    "docs/E000",
+    "docs/ref"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "cmd/aquas/enlazar_hook_test.go",
+      "motivo": "prueba vieja del gancho que puede esperar salida 2"
+    },
+    {
+      "ruta": "docs/E000/F013/S002.md",
+      "motivo": "página del slice (D000122: el prefijo docs/E000 no la cubre)"
+    }
+  ],
+  "codigo": [
+    "cmd/aquas/main.go"
+  ],
+  "relacion": "nueva",
+  "que_hace": "al guardar en docs/, la oración larga avisa al agente sin frenarlo"
+}
