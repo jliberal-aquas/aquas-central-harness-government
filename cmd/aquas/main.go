@@ -60,7 +60,8 @@ func main() {
 		fallar(1, err)
 	}
 	// E002/F002/S003: dentro de un hijo, avisar si su lock y este ejecutable no van a la par.
-	// D000043: AQUAS_VERSION fija solo la versión que compara el aviso (las pruebas corren un binario devel).
+	// D000043: AQUAS_VERSION fija la versión que compara el aviso (las pruebas corren un binario devel).
+	// E003/F006/S002: con un binario devel también decide los controles del hijo (versionControl); con versión real, no.
 	// No toca versionBinario: update sigue sellando el lock con la versión real.
 	vAviso := os.Getenv("AQUAS_VERSION")
 	if vAviso == "" {
@@ -69,6 +70,20 @@ func main() {
 	avisarVersion(os.Stderr, os.Args[1], raiz, vAviso)
 	switch os.Args[1] {
 	case "compilar":
+		if hijo.EsHijo(raiz) { // E003/F006/X01 (D000121): el hijo no tiene la config de la central; arma lo suyo
+			if err := hijo.Build(raiz); err != nil {
+				fallar(1, err)
+			}
+			docs, err := wiki.Generar(raiz)
+			if err != nil {
+				fallar(1, err)
+			}
+			for _, d := range docs {
+				fmt.Println("Escrito: " + d)
+			}
+			fmt.Println("CLAUDE.md, /backlog y wiki del hijo al día")
+			return
+		}
 		inf, err := compilador.Compilar(raiz)
 		if err != nil {
 			fallar(1, err)
@@ -310,6 +325,9 @@ func main() {
 		if len(os.Args) != 2 {
 			fallar(1, errors.New("uso: aquas update (en la carpeta del hijo, sin ruta)"))
 		}
+		if m := hijo.BajaCentral(raiz, versionControl()); m != "" { // E003/F006/S002: un binario viejo no baja la central
+			fallar(1, errors.New("update: "+m))
+		}
 		if err := hijo.AsegurarGit(raiz); err != nil { // E003/F006/S001: update es la salida del hijo sin git
 			fallar(1, fmt.Errorf("update: %w", err))
 		}
@@ -411,6 +429,12 @@ func main() {
 		if m := entorno.Validar(raiz); m != "" && (!hijo.EsHijo(raiz) || !esUpdate(datos)) { // E003/F006/S001: la única salida del hijo
 			_, _ = fmt.Fprintln(os.Stderr, "aquas guard: entorno no verificado, se bloquea todo: "+m)
 			os.Exit(2)
+		}
+		if hijo.EsHijo(raiz) { // E003/F006/S002: hijo con la central desfasada frena todo salvo aquas update
+			if m := hijo.Desfase(raiz, gobcentral.Central, versionControl()); m != "" && !esUpdate(datos) { // update se cuida solo (BajaCentral)
+				_, _ = fmt.Fprintln(os.Stderr, "aquas guard: central desfasada, se bloquea todo: "+m)
+				os.Exit(2)
+			}
 		}
 		if m := guardia.Revisar(raiz, datos); m != "" {
 			_, _ = fmt.Fprintln(os.Stderr, "aquas guard: "+m)
@@ -890,6 +914,18 @@ func defectoCLI(raiz string, args []string) error {
 func versionBinario() string {
 	if bi, ok := debug.ReadBuildInfo(); ok && bi.Main.Version != "" && bi.Main.Version != "(devel)" {
 		return bi.Main.Version
+	}
+	return "devel"
+}
+
+// versionControl (E003/F006/S002, hallazgo A2.1): versión con la que deciden los controles del hijo.
+// AQUAS_VERSION solo cuenta en un binario devel (las pruebas): un binario con versión real no se deja fingir otra.
+func versionControl() string {
+	if v := versionBinario(); v != "devel" {
+		return v
+	}
+	if v := os.Getenv("AQUAS_VERSION"); v != "" {
+		return v
 	}
 	return "devel"
 }

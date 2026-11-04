@@ -1,0 +1,12 @@
+{
+  "id": "D000122",
+  "firma": "alcance-carpeta-no-cubre",
+  "que": "con docs/E003 en el alcance del slice, la guardia frenó Edit sobre docs/E003/F006/README.md por fuera de alcance",
+  "causa": "NO CONFIRMADA: el alcance expandido parece comparar rutas exactas y no tomar una carpeta como prefijo",
+  "arreglo": "que una carpeta del alcance cubra todo lo que cuelga de ella",
+  "como_me_cercioro": "prueba: alcance con docs/E003; Edit en docs/E003/F006/README.md pasa",
+  "ocurrencias": [],
+  "relacion": "E000/F001/S001",
+  "prueba": "pendiente:E000/F013",
+  "familia": "alcance"
+}

@@ -84,6 +84,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `retroCLI` | `(raiz string, args []string) (backlog.Retro, error)` | retroCLI (E001/F018/S002): cerrar fichas=A,B motivo=…; cada clave una vez. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `defectoCLI` | `(raiz string, args []string) error` | defectoCLI: nuevo \\| ocurre \\| arreglar \\| ver (E001/F004/S001; arreglar: E000/F007/S003). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `versionBinario` | `() string` | versionBinario: versión del módulo con que se compiló el binario (= versión del gobierno embebido). |
+| [cmd/aquas/main.go](../../cmd/aquas/main.go) | `versionControl` | `() string` | versionControl (E003/F006/S002, hallazgo A2.1): versión con la que deciden los controles del hijo. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `registrarCierre` | `(raiz, tipo, transcript, primera, resultado string)` | registrarCierre (E001/F004/S005, D000068) anota cada llamada del gancho cierre-agente en .tmp/hooks/cierre-agente.jsonl. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `esUpdate` | `(datos []byte) bool` | esUpdate (E003/F006/S001): la entrada de la guardia es una orden Bash que es exactamente `aquas update` (PowerShell lo frena la guardia siempre). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `entornoHijo` | `(raiz string)` | entornoHijo (E003/F001/S003) declara el entorno del hijo, como aquas init en la central: |
@@ -348,6 +349,8 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/hijo/controles.go](../../internal/hijo/controles.go) | `ganchosQueViajan` | `(dir string) ([]gancho, error)` | ganchosQueViajan lee la central instalada y devuelve cada gancho con fila «todos» en herencia.json, |
 | [internal/hijo/controles.go](../../internal/hijo/controles.go) | `agentes` | `(dir string) (map[string][]byte, error)` | agentes devuelve los .claude/agents/*.md compilados desde la central instalada (ruta → contenido). |
 | [internal/hijo/desfase.go](../../internal/hijo/desfase.go) | `Desfase` | `(dir string, central fs.FS, binario string) string` | Desfase (E003/F006/S002): "" si la central copiada en dir es la que lleva el binario; si no, el motivo del freno. |
+| [internal/hijo/desfase.go](../../internal/hijo/desfase.go) | `BajaCentral` | `(dir, binario string) string` | BajaCentral (E003/F006/S002, hallazgo A1.1): motivo para que aquas update no corra si el binario es más viejo |
+| [internal/hijo/desfase.go](../../internal/hijo/desfase.go) | `bajaria` | `(binario, lock string) string` | bajaria: motivo común cuando el binario es más viejo que el lock. |
 | [internal/hijo/desfase.go](../../internal/hijo/desfase.go) | `hashes` | `(central fs.FS) (map[string]string, error)` | hashes: SHA-256 de cada archivo de central, por ruta. |
 | [internal/hijo/desfase.go](../../internal/hijo/desfase.go) | `masViejo` | `(a, b string) bool` | masViejo: true solo si a es con certeza anterior a b. Una pseudo-versión vX.Y.Z-0.fecha va antes de la etiqueta vX.Y.Z. |
 | [internal/hijo/git.go](../../internal/hijo/git.go) | `AsegurarGit` | `(dir string) error` | AsegurarGit (E003/F006/S001) deja dir como raíz de un repo git: lo inicia si no está en ninguno; falla si está dentro de otro. |

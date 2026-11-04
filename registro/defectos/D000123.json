@@ -1,0 +1,12 @@
+{
+  "id": "D000123",
+  "firma": "init-falla-en-hijo",
+  "que": "en un hijo aquas init falla buscando gobierno/config/claude_settings.json después de escribir entorno.local.json",
+  "causa": "init compila los ajustes desde la config de la central, que el hijo no tiene; mismo hueco que D000121",
+  "arreglo": "en un hijo, init remite a aquas update o arma los ajustes desde la central sellada",
+  "como_me_cercioro": "prueba: aquas init en un hijo sale 0 o pide aquas update sin escribir a medias",
+  "ocurrencias": [],
+  "relacion": "E003/F006",
+  "prueba": "pendiente:E003/F006",
+  "familia": "hijos"
+}

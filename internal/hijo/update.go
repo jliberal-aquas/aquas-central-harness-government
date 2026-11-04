@@ -44,8 +44,8 @@ func alterados(dest string) ([]string, error) {
 		return nil, fmt.Errorf("update: %s no tiene gobierno instalado (usa install)", dest)
 	}
 	var l Lock
-	if err := json.Unmarshal(b, &l); err != nil {
-		return nil, err
+	if json.Unmarshal(b, &l) != nil {
+		return []string{"lock.json"}, nil // E003/F006/S002: lock ilegible = alterado; update lo reescribe
 	}
 	var out []string
 	for p, want := range l.Archivos {

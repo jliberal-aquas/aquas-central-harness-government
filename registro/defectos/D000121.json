@@ -1,0 +1,12 @@
+{
+  "id": "D000121",
+  "firma": "compile-falla-en-hijo",
+  "que": "en un hijo aquas compile falla buscando gobierno/config/agentes.json y el gate del hijo exige un bloque GENERADO que solo compile escribe: el hijo no puede hacer commit",
+  "causa": "compile solo sabe compilar la central; el gate de wiki viaja al hijo (herencia todos) pero su generador no",
+  "arreglo": "en un hijo compile arma CLAUDE.md y rehace los bloques GENERADO de la wiki",
+  "como_me_cercioro": "prueba: hijo con ficha y docs/README.md; verify pide el bloque; compile sale 0; verify ya no lo pide",
+  "ocurrencias": [],
+  "relacion": "E003/F006",
+  "prueba": "./cmd/aquas:TestCompileEnHijo",
+  "familia": "hijos"
+}

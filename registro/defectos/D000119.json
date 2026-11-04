@@ -3,7 +3,7 @@
   "firma": "guardia-cp-opcion-destino",
   "que": "la guardia deja escribir fuera del repo con cp -t DIR o --target-directory=DIR (y mv, install, ln con --target-directory=)",
   "causa": "la guardia toma como destino de cp solo el último posicional y descarta toda opción que empieza con guion, incluida la que nombra el destino",
-  "arreglo": "leer el destino de -t, -tDIR y --target-directory= en cp, mv, install y ln",
+  "arreglo": "la guardia lee -t, grupos con t y --target-directory con abreviaturas",
   "como_me_cercioro": "prueba con cp -t, --target-directory= y -tDIR hacia fuera: debe bloquear; hacia dentro: debe pasar",
   "ocurrencias": [],
   "relacion": "E000/F001/S001",

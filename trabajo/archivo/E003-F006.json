@@ -2,7 +2,7 @@
   "id": "E003/F006",
   "tipo": "feature",
   "titulo": "Hijo instalable sin trabas",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P0",
   "motivo": "humano 2026-11-04: silicon-saint-learning-platform quedó trabado al instalar sin git (D000090)",
   "padre": "E003",
@@ -29,20 +29,12 @@
     "huella": {}
   },
   "aprobacion": {
-    "fecha": "2026-11-04T17:02:52Z",
+    "fecha": "2026-11-04T19:11:43Z",
     "huella": "f5fac82ad9fc0fbeb63f0e475c4f57ec6d0a5ed9a80c8c09ccc86389c754ea8a",
-    "mensaje": "apruebo E003/F006 con push tope 300",
+    "mensaje": "apruebo E003/F006 con push tope 330",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
     "push": true,
     "foto": {
-      "E003/F006/S001": [
-        {
-          "prueba": "./cmd/aquas:TestInstallIniciaGit",
-          "intencion": "valida git init de install, el fallo dentro de otro repo y el arreglo del hijo",
-          "rojo_cuando": "rojo cuando install sin git no crea .git",
-          "verde_cuando": "verde cuando crea .git, falla anidado y la guardia nombra aquas update"
-        }
-      ],
       "E003/F006/S002": [
         {
           "prueba": "./cmd/aquas:TestHijoDesfasadoFrena",
@@ -53,6 +45,33 @@
       ]
     }
   },
+  "arreglos": [
+    {
+      "id": "E003/F006/X01",
+      "titulo": "aquas compile funciona en el hijo",
+      "motivo": "D000121: el hijo de Baquiano no podía hacer su primer commit (humano 2026-11-04)",
+      "fecha": "2026-11-04T18:41:14Z",
+      "pruebas": [
+        {
+          "prueba": "./cmd/aquas:TestCompileEnHijo",
+          "intencion": "en un hijo, compile rehace los bloques GENERADO de la wiki",
+          "rojo_cuando": "compile falla en el hijo o el gate sigue pidiendo el bloque tras compile",
+          "verde_cuando": "compile sale 0 y el gate ya no reclama el bloque"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-11-04T18:41:14Z",
+        "head": "399edfc82f22e023d78d4853a5115901ea3f151c",
+        "resultado": {
+          "./cmd/aquas:TestCompileEnHijo": "compile_hijo_test.go:23: compile en el hijo debe salir 0; dio {out: err:aquas: open C:\\Users\\jlibe\\AppData\\Local\\Temp\\TestCompileEnHijo2104533460\\001\\gobierno\\config\\agentes.json: El sistema no puede encontrar el archivo especificado."
+        }
+      },
+      "verde": {
+        "fecha": "2026-11-04T19:12:57Z",
+        "head": "399edfc82f22e023d78d4853a5115901ea3f151c"
+      }
+    }
+  ],
   "relacion": "nueva",
   "que_hace": "Un hijo nuevo queda funcionando al instalar, aunque la carpeta no tenga git."
 }

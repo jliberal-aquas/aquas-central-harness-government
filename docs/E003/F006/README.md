@@ -69,6 +69,8 @@ continúa: [EJ-E003](../README.md#EJ-E003)
 
 Prueba integral: `TestHijoSinGitQuedaFuncionando`.
 
+Arreglo X01 del feature (D000121): en un hijo, `aquas compile` arma `CLAUDE.md` y rehace los bloques GENERADO de la [wiki](../../glosario.md#wiki): `TestCompileEnHijo`.
+
 ## Navegación
 
 <!-- GENERADO por aquas desde trabajo/: no editar a mano; `aquas compile` lo rehace. -->
@@ -76,7 +78,13 @@ Prueba integral: `TestHijoSinGitQuedaFuncionando`.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | install inicia git si falta; la guardia del hijo sugiere aquas update, no el comando de la central. | Hecho |
-| [S002](S002.md) | Si la versión del lock del hijo difiere de la del binario, la guardia frena y pide aquas update. | Planeado |
+| [S002](S002.md) | Si la versión del lock del hijo difiere de la del binario, la guardia frena y pide aquas update. | Hecho |
+
+### Arreglos
+
+| Arreglo | Qué arregla | Por qué | Pruebas | Fecha | Rojo | Verde |
+|---|---|---|---|---|---|---|
+| X01 | aquas compile funciona en el hijo | D000121: el hijo de Baquiano no podía hacer su primer commit (humano 2026-11-04) | `TestCompileEnHijo` | 2026-11-04 | 2026-11-04 | 2026-11-04 |
 
 <!-- /GENERADO -->
 
