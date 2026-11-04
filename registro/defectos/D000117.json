@@ -1,0 +1,12 @@
+{
+  "id": "D000117",
+  "firma": "lista-cierre-push-ejecuta-comando",
+  "que": "la lista de cierre de S003 aceptaba git push --receive-pack o --exec, que ejecutan un comando",
+  "causa": "la lista blanca miraba metacaracteres fuera de comillas, no las opciones de git que ejecutan programas",
+  "arreglo": "push solo con opciones de una lista corta y palabras sin guion ni comillas",
+  "como_me_cercioro": "TestCierreConTopeAgotado frena --receive-pack, --rec, --exec y su forma entre comillas",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "./cmd/aquas:TestCierreConTopeAgotado",
+  "familia": "freno"
+}

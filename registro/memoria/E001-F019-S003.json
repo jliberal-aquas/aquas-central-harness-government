@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F019",
+    "slice": "S003",
+    "tarea": "S003 cerrado: órdenes de cierre pasan el tope agotado"
+  },
+  "siguiente": "S004: tope extremo por turno (1000 llamadas o 20M)",
+  "pendientes": [
+    "verificar con /context en sesión nueva que el CLAUDE.md global quedó excluido (.claude/settings.local.json)"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "402fa6a42be508f340a47d65f514027d1950273d82a5fece79689d93a8bed2f5",
+  "actualizado": "2026-11-04T08:18:31Z",
+  "sello": "ec36696e357b48337056508fa0824e4a034473cc8c6bbf08d938c74b677a9247"
+}

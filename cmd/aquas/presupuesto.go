@@ -33,6 +33,9 @@ const (
 	avisoContexto        = 200_000    // tokens: desde aquí se pide /compact
 )
 
+// avisoTopeAgotado: comienzo del freno por tope de feature agotado; solo ante él pasan las órdenes de cierre (E001/F019/S003).
+const avisoTopeAgotado = "Presupuesto: llegaste al tope de la feature "
+
 // reTope: «tope» y las dos palabras que lo siguen; leerTope decide qué valen (E001/F019/S001).
 var reTope = regexp.MustCompile(`(?i)\btope\s+(\S+)(?:\s+(\S+))?`)
 
@@ -121,11 +124,26 @@ type entradaPresupuesto struct {
 // E001/F017/S001 (D000101): también `aquas defect new|occur`, argumentos sin «=» y un `cd <raíz> &&` delante;
 // el `cd` solo vale si va a la raíz de este repo.
 // Entre palabras solo espacio o tabulador: un salto de línea nunca separa (D000105, hallazgo A1.3).
-var reMemoriaFijar = regexp.MustCompile(`^[ \t]*` +
-	`(cd[ \t]+("([^"$` + "`" + `\\]*)"|'([^']*)'|([^\s"'$` + "`" + `\\;&|<>()]+))[ \t]*&&[ \t]*)?` +
-	`(aquas(\.exe)?|go run \./cmd/aquas|(\./)?\.tmp/aquas(\.exe)?|"([^"$` + "`" + `\\]*)")` +
+var reMemoriaFijar = regexp.MustCompile(`^[ \t]*` + fragCd + fragBinario +
 	`[ \t]+(memoria[ \t]+fijar|memory[ \t]+set|defecto[ \t]+(nuevo|ocurre)|defect[ \t]+(new|occur))` + // E000/F006/S006: nombre viejo y nuevo
-	`([ \t]+(?:[^\s"'$` + "`" + `\\;&|<>()]+|'[^']*'|"[^"$` + "`" + `\\]*")+)*[ \t]*\n?$`) // cada argumento: trozos sueltos o entre comillas, pegados
+	fragArgumentos)
+
+// E001/F019/S003: órdenes de cierre que pasan el tope agotado de la feature (sí cuentan en el gasto). Misma forma
+// que reMemoriaFijar: comando entero, `cd <raíz> &&` opcional, argumentos sin metacaracteres de shell.
+// Hallazgo A1.1: `git push --receive-pack=…` (o `--exec`, o su abreviatura) corre un comando. A2.1–A2.3: llaves de
+// bash arman esa opción, una ruta local corre los hooks de otro repo y `+rama` o `:rama` fuerzan o borran. Push solo
+// acepta opciones de una lista corta, después `origin` y una rama de letras, dígitos, `_`, `.`, `/` y `-`.
+var reCierre = regexp.MustCompile(`^[ \t]*` + fragCd + `(` +
+	`git([ \t]+push)([ \t]+(-q|--quiet|-u|--set-upstream|--tags|--follow-tags))*([ \t]+origin([ \t]+[A-Za-z0-9_][A-Za-z0-9_./-]*)?)?[ \t]*\n?$|` +
+	`(git[ \t]+(add|commit)|` + fragBinario + `[ \t]+(verify|backlog[ \t]+(seal|state|green)|memory[ \t]+(set|archive)))` +
+	fragArgumentos + `)`)
+
+// Trozos comunes de las listas blancas: cd opcional a una carpeta, binario de aquas y argumentos.
+const (
+	fragCd         = `(?P<cd>cd[ \t]+("(?P<cdd>[^"$` + "`" + `\\]*)"|'(?P<cds>[^']*)'|(?P<cdl>[^\s"'$` + "`" + `\\;&|<>()]+))[ \t]*&&[ \t]*)?`
+	fragBinario    = `(?P<bin>aquas(\.exe)?|go run \./cmd/aquas|(\./)?\.tmp/aquas(\.exe)?|"(?P<binq>[^"$` + "`" + `\\]*)")`
+	fragArgumentos = `([ \t]+(?:[^\s"'$` + "`" + `\\;&|<>()]+|'[^']*'|"[^"$` + "`" + `\\]*")+)*[ \t]*\n?$` // cada argumento: trozos sueltos o entre comillas, pegados
+)
 
 // rutaComparableEn: la ruta limpia con «/»; en Windows la forma Git Bash «/d/…» pasa a «D:/…» (A2.4; sistema dado: E000/F007/S001).
 // Conserva la raíz de unidad «D:/» (A1.1), no confunde «D:» a secas con ella (A1.2) y mantiene la doble barra UNC (A1.3).
@@ -166,17 +184,29 @@ func rutasIguales(goos, a, b string) bool {
 
 // exentaDelFrenoEn: exentaDelFreno para un sistema dado (E000/F007/S001).
 func exentaDelFrenoEn(goos, raiz, herramienta, comando string) bool {
-	m := reMemoriaFijar.FindStringSubmatch(comando)
+	return ordenEnteraEn(goos, raiz, herramienta, comando, reMemoriaFijar)
+}
+
+// ordenDeCierre (E001/F019/S003): true si el comando Bash entero es una orden de cierre de reCierre.
+func ordenDeCierre(raiz, herramienta, comando string) bool {
+	return ordenEnteraEn(runtime.GOOS, raiz, herramienta, comando, reCierre)
+}
+
+// ordenEnteraEn: el comando Bash entero cumple la lista blanca re; el `cd` solo vale a la raíz y un binario entre
+// comillas solo si es el de .tmp/ de este repo.
+func ordenEnteraEn(goos, raiz, herramienta, comando string, re *regexp.Regexp) bool {
+	m := re.FindStringSubmatch(comando)
 	if herramienta != "Bash" || m == nil {
 		return false
 	}
-	if m[1] != "" && !rutasIguales(goos, m[3]+m[4]+m[5], raiz) {
+	g := func(nombre string) string { return m[re.SubexpIndex(nombre)] }
+	if g("cd") != "" && !rutasIguales(goos, g("cdd")+g("cds")+g("cdl"), raiz) {
 		return false
 	}
-	if !strings.HasPrefix(m[6], `"`) {
+	if !strings.HasPrefix(g("bin"), `"`) {
 		return true
 	}
-	ruta := path.Clean(strings.ReplaceAll(m[10], `\`, "/"))
+	ruta := path.Clean(strings.ReplaceAll(g("binq"), `\`, "/"))
 	for _, b := range []string{"aquas", "aquas.exe"} {
 		if rutasIguales(goos, ruta, raiz+"/.tmp/"+b) || ruta == ".tmp/"+b {
 			return true
@@ -205,6 +235,10 @@ func presupuestoCLI(raiz string, args []string) {
 	// E001/F019/S002: el freno de 60 llamadas por turno salió; quedan el tope de la feature y sus avisos.
 	msgFeature, cuenta := frenoFeature(raiz, e.Transcript, sesiones)
 	if msgFeature != "" {
+		// E001/F019/S003: con el tope agotado cerrar siempre se puede; un registro ilegible frena igual.
+		if strings.HasPrefix(msgFeature, avisoTopeAgotado) && ordenDeCierre(raiz, e.Tool, e.Input.Command) {
+			return
+		}
 		frenar("%s", msgFeature)
 	}
 	if e.Agente != "" { // los avisos son del hilo principal; el gasto del subagente igual cuenta
@@ -519,14 +553,14 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, c
 			veinteavos += p
 		}
 		if veinteavos > 20*ap.tokens {
-			return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%s tokens ponderados; gastados %s). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope NM»).",
+			return fmt.Sprintf(avisoTopeAgotado+"%s (%s tokens ponderados; gastados %s). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope NM»).",
 				ap.feature, millones(ap.tokens), millones(veinteavos/20), ap.feature), nil
 		}
 		return "", &cuentaFeature{ap: ap, pct: veinteavos * 100 / (20 * ap.tokens),
 			texto: fmt.Sprintf("%s de %s tokens ponderados", millones(veinteavos/20), millones(ap.tokens))}
 	}
 	if len(ids) > ap.tope {
-		return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%d llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope N»).", ap.feature, ap.tope, ap.feature), nil
+		return fmt.Sprintf(avisoTopeAgotado+"%s (%d llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope N»).", ap.feature, ap.tope, ap.feature), nil
 	}
 	return "", &cuentaFeature{ap: ap, pct: int64(len(ids)) * 100 / int64(max(ap.tope, 1)),
 		texto: fmt.Sprintf("%d de %d llamadas", len(ids), ap.tope)}
