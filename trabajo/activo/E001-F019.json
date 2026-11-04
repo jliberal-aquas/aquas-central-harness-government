@@ -2,7 +2,7 @@
   "id": "E001/F019",
   "tipo": "feature",
   "titulo": "Presupuesto por tokens",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P1",
   "motivo": "retro R0002: humano aprueba presupuesto por tokens (1 sí, 2 sí, 3 sí)",
   "padre": "E001",
@@ -16,6 +16,62 @@
       "verde_cuando": "cierre pasa, avisos salen y solo el tope extremo frena"
     }
   ],
+  "rojo": {
+    "fecha": "2026-11-04T02:57:34Z",
+    "head": "cb2994cc7fbb8f0bdc3293d721862c6ccfa3cd55",
+    "resultado": {
+      "./cmd/aquas:TestPresupuestoPorTokens": "presupuesto_tokens_test.go:62: 15M+1 pasa el tope por defecto: frena nombrando 15M tokens; dio {out: err: codigo:0}"
+    }
+  },
+  "aprobacion": {
+    "fecha": "2026-11-04T02:55:58Z",
+    "huella": "7301f68502364bfce2d89e68ec348798c688b7b07c9017f595da2aa23a8a86ea",
+    "mensaje": "apruebo E001/F019 con push tope 900",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E001/F019/S001": [
+        {
+          "prueba": "./cmd/aquas:TestTopeEnTokens",
+          "intencion": "valida que el tope suma usage del registro",
+          "rojo_cuando": "el tope cuenta llamadas",
+          "verde_cuando": "el tope suma input, cache y output de cada respuesta"
+        }
+      ],
+      "E001/F019/S002": [
+        {
+          "prueba": "./cmd/aquas:TestAvisosDeGasto",
+          "intencion": "valida avisos sin freno",
+          "rojo_cuando": "la llamada 61 se frena o no hay aviso",
+          "verde_cuando": "61 llamadas pasan y el aviso sale una vez en cada umbral"
+        }
+      ],
+      "E001/F019/S003": [
+        {
+          "prueba": "./cmd/aquas:TestCierreConTopeAgotado",
+          "intencion": "valida que cerrar no se frena",
+          "rojo_cuando": "commit o push se frenan con el tope agotado",
+          "verde_cuando": "commit, push, verify, seal, memory y state pasan; otra orden se frena"
+        }
+      ],
+      "E001/F019/S004": [
+        {
+          "prueba": "./cmd/aquas:TestTopeExtremo",
+          "intencion": "valida el freno de bucles",
+          "rojo_cuando": "el turno pasa de 1000 llamadas o 20M tokens sin freno",
+          "verde_cuando": "la llamada 1001 o el token 20M frenan"
+        }
+      ],
+      "E001/F019/S005": [
+        {
+          "prueba": "./cmd/aquas:TestTerceraVueltaAuditor",
+          "intencion": "valida el aviso de vueltas",
+          "rojo_cuando": "la tercera vuelta no avisa",
+          "verde_cuando": "A3 avisa y A1 y A2 no"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "El gasto se mide en tokens; avisa al 50 y 80 por ciento, deja cerrar siempre y frena solo bucles."
 }

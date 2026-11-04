@@ -1,0 +1,12 @@
+{
+  "id": "D000115",
+  "firma": "apruebo-con-prefijo-ignorado-en-silencio",
+  "que": "«A. apruebo E001/F019 con push tope 900» no quedo registrado y nadie aviso",
+  "causa": "IDAprobado exige apruebo al inicio de la primera linea; un prefijo o el aviso de /compact lo descartan sin mensaje",
+  "arreglo": "el hook avisa al humano cuando un mensaje contiene apruebo y no se registro",
+  "como_me_cercioro": "prueba con prefijo A. que espera el aviso",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "pendiente:E001/F019",
+  "familia": "aprobaciones"
+}

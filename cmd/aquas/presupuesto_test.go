@@ -66,7 +66,7 @@ func TestPresupuestoPorFeature(t *testing.T) {
 	turno("apruebo E001/F002\ntope 2")
 	for i := range 3 {
 		if s := usar(""); s.codigo != 0 {
-			t.Fatalf("«tope» fuera de la primera línea no cuenta: rige 300; llamada %d dio %+v", i+1, s)
+			t.Fatalf("«tope» fuera de la primera línea no cuenta: rige el por defecto; llamada %d dio %+v", i+1, s)
 		}
 	}
 	sub := filepath.Join(filepath.Dir(registroSesion(t)), "sesion", "subagents", "agent-a1.jsonl")
@@ -76,8 +76,8 @@ func TestPresupuestoPorFeature(t *testing.T) {
 	if s := usar("a1"); s.codigo != 0 {
 		t.Errorf("sin «tope N» la llamada 300 pasa; dio %+v", s)
 	}
-	if s := usar("a1"); s.codigo != 2 || !strings.Contains(s.err, "300") {
-		t.Errorf("sin «tope N» la llamada 301 se bloquea; dio %+v", s)
+	if s := usar("a1"); s.codigo != 0 { // E001/F019/S001: sin «tope» rige 15M tokens ponderados, no 300 llamadas
+		t.Errorf("sin «tope N» la llamada 301 pasa: el tope por defecto es en tokens; dio %+v", s)
 	}
 	// El freno del turno (sin apruebo, y su cesión con apruebo vigente) lo prueba TestFrenoTurnoCedeConFeatureAprobada (E001/F017/S009).
 	if s := aquas(t, raiz, "no json", "presupuesto", "herramienta"); s.codigo != 1 {

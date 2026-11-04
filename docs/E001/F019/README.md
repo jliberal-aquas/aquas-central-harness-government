@@ -100,7 +100,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 - Aprobar con el tope por defecto: «apruebo E001/F099 con push».
 - Aprobar con tope propio en tokens: «apruebo E001/F099 tope 25M».
-- «tope N» sin la M sigue contando llamadas, como antes.
+- «tope 900» sin la M cuenta llamadas, solo si va solo o seguido de «con» o «y». Con otra palabra detrás, como en «tope 400 más push», rige el de 15M.
 
 ## Contrato y evidencia
 
@@ -114,7 +114,7 @@ Prueba integral: `TestPresupuestoPorTokens`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | El tope de la feature se cuenta en tokens del registro; 15M por defecto, «tope N» en el apruebo. | Planeado |
+| [S001](S001.md) | El tope de la feature se cuenta en tokens ponderados; 15M por defecto, «tope NM» en el apruebo. | Hecho |
 | [S002](S002.md) | Sale el freno de 60 llamadas; al 50 y 80 por ciento del tope llega un aviso con el gasto. | Planeado |
 | [S003](S003.md) | Con el tope agotado siguen pasando commit, push, gate, sello, memoria y estado. | Planeado |
 | [S004](S004.md) | Un turno se frena solo al pasar 1000 llamadas o 20M tokens, contra bucles desbocados. | Planeado |

@@ -29,12 +29,79 @@ import (
 )
 
 const (
-	topeFeaturePorDefecto = 300     // sin «tope N» en el apruebo de la feature
-	frenoTurno            = 60      // llamadas del hilo principal por mensaje del humano
-	avisoContexto         = 200_000 // tokens: desde aquí se pide /compact
+	topeTokensPorDefecto = 15_000_000 // E001/F019/S001: tokens ponderados sin «tope» en el apruebo de la feature
+	frenoTurno           = 60         // llamadas del hilo principal por mensaje del humano
+	avisoContexto        = 200_000    // tokens: desde aquí se pide /compact
 )
 
-var reTope = regexp.MustCompile(`(?i)\btope\s+(\d+)\b`)
+// reTope: «tope» y las dos palabras que lo siguen; leerTope decide qué valen (E001/F019/S001).
+var reTope = regexp.MustCompile(`(?i)\btope\s+(\S+)(?:\s+(\S+))?`)
+
+var (
+	reSoloDigitos = regexp.MustCompile(`^\d+$`)
+	reMillones    = regexp.MustCompile(`(?i)^(\d+)m$`)
+)
+
+// leerTope: «tope 25M» o «tope 25 M» → tokens ponderados; «tope 900» solo, o seguido de «con» o «y» → llamadas (el viejo).
+// Hallazgos A1.1, A2.1 y A3.1: cualquier otra forma («1,5M», «25k», «25MM», «15Mtok», «25 millones», «20000000 tokens»,
+// «15 000 000», 0, desbordado) no vale y deja el de 15M; nunca cae a llamadas por adivinar. Una coma o punto final se ignora.
+func leerTope(primera string, ap *apruebo) {
+	t := reTope.FindStringSubmatch(primera)
+	if t == nil {
+		return
+	}
+	palabra := strings.TrimRight(t[1], ".,;:)")
+	siguiente := strings.ToLower(strings.TrimRight(t[2], ".,;:)"))
+	if m := reMillones.FindStringSubmatch(palabra); m != nil {
+		palabra, siguiente = m[1], "m"
+	} else if !reSoloDigitos.MatchString(palabra) {
+		return
+	}
+	n, err := strconv.Atoi(palabra)
+	switch {
+	case err != nil || n <= 0:
+	case siguiente == "m":
+		if n <= maxTopeMillones {
+			ap.tokens = int64(n) * 1_000_000
+		}
+	case siguiente == "" || siguiente == "con" || siguiente == "y": // hallazgo A3.1: llamadas solo con la gramática del apruebo
+		ap.tope, ap.tokens = n, 0
+	}
+	// Cualquier otra palabra detrás («tokens», «000 000», «k», «millones», «más»): no se adivina; rige el de 15M.
+}
+
+// maxTopeMillones (hallazgo A1.6): más que esto desborda la cuenta en veinteavos; no vale y rige el de 15M.
+const maxTopeMillones = 1_000_000
+
+// pesoVeinteavos: el usage de una respuesta ponderado por precio, en veinteavos de token para no usar decimales.
+// Pesos (tabla de precios oficial, fila Claude Opus 5.5, consultada 2026-11-03,
+// https://platform.claude.com/docs/en/about-claude/pricing): entrada 1, escritura de caché 2 (1 h),
+// lectura de caché 0,05, salida 5.
+func pesoVeinteavos(u usoRespuesta) int64 {
+	return 20*u.Entrada + 40*u.Escritura + u.Lectura + 100*u.Salida
+}
+
+// usoRespuesta: el usage de una respuesta del modelo en el registro.
+type usoRespuesta struct {
+	Entrada   int64 `json:"input_tokens"`
+	Escritura int64 `json:"cache_creation_input_tokens"`
+	Lectura   int64 `json:"cache_read_input_tokens"`
+	Salida    int64 `json:"output_tokens"`
+}
+
+// gasto: el peso de una respuesta y su hora.
+type gasto struct {
+	hora time.Time
+	peso int64
+}
+
+// millones: 15000000 → «15M»; 15000001 → «15,0M».
+func millones(n int64) string {
+	if n%1_000_000 == 0 {
+		return fmt.Sprintf("%dM", n/1_000_000)
+	}
+	return strings.Replace(fmt.Sprintf("%.1fM", float64(n)/1e6), ".", ",", 1)
+}
 
 // entradaPresupuesto: lo que el hook trae por stdin.
 type entradaPresupuesto struct {
@@ -119,7 +186,7 @@ func exentaDelFrenoEn(goos, raiz, herramienta, comando string) bool {
 	return false
 }
 
-// presupuestoCLI: «herramienta» cuenta las llamadas en el registro y bloquea con exit 2 al pasar un tope.
+// presupuestoCLI: «herramienta» cuenta el gasto en el registro (tokens ponderados o llamadas, E001/F019/S001) y bloquea con exit 2 al pasar un tope.
 func presupuestoCLI(raiz string, args []string) {
 	if strings.Join(args, " ") != "herramienta" {
 		fallar(64, fmt.Errorf("uso: aquas budget tool"))
@@ -187,7 +254,9 @@ type lineaLlamadas struct {
 	Type      string `json:"type"`
 	Timestamp string `json:"timestamp"`
 	Message   struct {
+		ID      string          `json:"id"`
 		Content json.RawMessage `json:"content"`
+		Usage   *usoRespuesta   `json:"usage"`
 	} `json:"message"`
 	Origin struct {
 		Kind string `json:"kind"`
@@ -206,7 +275,7 @@ type bloqueRegistro struct {
 }
 
 // recorrerRegistro abre un registro y entrega cada línea legible con su posición; las rotas se ignoran.
-// Solo se decodifican las líneas que traen una llamada o un mensaje humano.
+// Solo se decodifican las líneas que traen una llamada, un mensaje humano o un usage (E001/F019/S001).
 func recorrerRegistro(ruta string, f func(pos int64, l lineaLlamadas)) error {
 	fh, err := os.Open(ruta)
 	if err != nil {
@@ -217,7 +286,7 @@ func recorrerRegistro(ruta string, f func(pos int64, l lineaLlamadas)) error {
 	var pos int64
 	for {
 		b, err := rd.ReadBytes('\n')
-		if len(b) > 0 && (bytes.Contains(b, []byte(`"tool_use"`)) || bytes.Contains(b, []byte(`"human"`))) {
+		if len(b) > 0 && (bytes.Contains(b, []byte(`"tool_use"`)) || bytes.Contains(b, []byte(`"human"`)) || bytes.Contains(b, []byte(`"usage"`))) {
 			var l lineaLlamadas
 			if json.Unmarshal(b, &l) == nil {
 				f(pos, l)
@@ -252,19 +321,22 @@ func llamadas(raiz string, l lineaLlamadas) []string {
 }
 
 // apruebo: un «apruebo» de feature escrito por el humano en el registro.
+// tokens > 0: el tope es en tokens ponderados; si no, tope cuenta llamadas («tope N» viejo).
 type apruebo struct {
 	feature string
 	tope    int
+	tokens  int64
 	hora    time.Time
 }
 
-// escaneo: lo que deja un registro: cada llamada con su hora, las del turno abierto, la hora (UnixNano) en que empieza ese turno y
-// el último apruebo de feature.
+// escaneo: lo que deja un registro: cada llamada con su hora, las del turno abierto, la hora (UnixNano) en que empieza ese turno,
+// el último apruebo de feature y el gasto de cada respuesta por message.id (E001/F019/S001).
 type escaneo struct {
 	llamadas map[string]time.Time
 	turno    map[string]bool
 	inicio   int64
 	apruebo  *apruebo
+	gastos   map[string]gasto
 }
 
 var reFeature = regexp.MustCompile(`^E\d{3}/F\d{3}$`)
@@ -273,7 +345,7 @@ var reFeature = regexp.MustCompile(`^E\d{3}/F\d{3}$`)
 // Claude Code escribe a veces el mensaje humano nuevo antes de líneas más viejas. El turno son las llamadas con hora
 // igual o posterior al mensaje humano más reciente; un mensaje sin hora no abre turno.
 func escanear(raiz, ruta string) (escaneo, error) {
-	r := escaneo{llamadas: map[string]time.Time{}, turno: map[string]bool{}}
+	r := escaneo{llamadas: map[string]time.Time{}, turno: map[string]bool{}, gastos: map[string]gasto{}}
 	var desde time.Time
 	err := recorrerRegistro(ruta, func(_ int64, l lineaLlamadas) {
 		hora, _ := time.Parse(time.RFC3339, l.Timestamp)
@@ -282,14 +354,21 @@ func escanear(raiz, ruta string) (escaneo, error) {
 				desde = hora
 			}
 			if id, ok := backlog.IDAprobado(texto); ok && reFeature.MatchString(id) && !hora.IsZero() && (r.apruebo == nil || !hora.Before(r.apruebo.hora)) {
-				tope := topeFeaturePorDefecto
+				ap := apruebo{feature: id, tokens: topeTokensPorDefecto, hora: hora}
 				primera, _, _ := strings.Cut(texto, "\n")
-				if t := reTope.FindStringSubmatch(primera); t != nil {
-					tope, _ = strconv.Atoi(t[1])
-				}
-				r.apruebo = &apruebo{feature: id, tope: tope, hora: hora}
+				leerTope(primera, &ap)
+				r.apruebo = &ap
 			}
 			return
+		}
+		if u := l.Message.Usage; l.Type == "assistant" && u != nil && l.Message.ID != "" {
+			// Hallazgo A1.3: tras /compact Claude Code repite respuestas con usage en cero; gana el mayor peso del id.
+			// Hallazgo A2.2: a igual peso se queda la hora más temprana; una copia tardía no mete la respuesta en la ventana.
+			p := pesoVeinteavos(*u)
+			viejo, hay := r.gastos[l.Message.ID]
+			if !hay || p > viejo.peso || (p == viejo.peso && hora.Before(viejo.hora)) {
+				r.gastos[l.Message.ID] = gasto{hora: hora, peso: p}
+			}
 		}
 		for _, id := range llamadas(raiz, l) {
 			r.llamadas[id] = hora
@@ -356,8 +435,8 @@ func featureCerrada(raiz, id string) bool {
 	return feature && slices > 0
 }
 
-// frenoFeature: el último apruebo de feature del humano fija feature, tope y hora; se cuentan las llamadas
-// distintas desde esa hora en las sesiones y en sus subagentes. "" si puede seguir o no hay apruebo de feature.
+// frenoFeature: el último apruebo de feature del humano fija feature, tope y hora; se cuentan los tokens ponderados
+// (o las llamadas distintas, con «tope N» viejo) desde esa hora en las sesiones y en sus subagentes. "" si puede seguir o no hay apruebo de feature.
 // vigente: hay apruebo de feature y la feature sigue abierta (E001/F017/S009).
 func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, vigente bool) {
 	var ap *apruebo
@@ -370,10 +449,16 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, v
 		return "", false
 	}
 	ids := map[string]bool{}
+	pesos := map[string]int64{} // E001/F019/S001: por message.id, una vez aunque se repita en varias líneas
 	sumar := func(e escaneo) {
 		for id, hora := range e.llamadas {
 			if !hora.Before(ap.hora) {
 				ids[id] = true
+			}
+		}
+		for id, g := range e.gastos {
+			if !g.hora.Before(ap.hora) && g.peso > pesos[id] {
+				pesos[id] = g.peso
 			}
 		}
 	}
@@ -390,6 +475,17 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, v
 			return fmt.Sprintf("Presupuesto: no se puede leer el registro %s: %v.", sub, err), true
 		}
 		sumar(e)
+	}
+	if ap.tokens > 0 {
+		var veinteavos int64
+		for _, p := range pesos {
+			veinteavos += p
+		}
+		if veinteavos > 20*ap.tokens {
+			return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%s tokens ponderados; gastados %s). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope NM»).",
+				ap.feature, millones(ap.tokens), millones(veinteavos/20), ap.feature), true
+		}
+		return "", true
 	}
 	if len(ids) > ap.tope {
 		return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%d llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope N»).", ap.feature, ap.tope, ap.feature), true

@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F019",
+    "slice": "S001",
+    "tarea": "S001 cerrado tras A5 APROBADO"
+  },
+  "siguiente": "S002: quitar freno 60, avisos 50/80, orquestador.md y herencia.json",
+  "pendientes": [
+    "verificar con /context en sesión nueva que el CLAUDE.md global quedó excluido (.claude/settings.local.json)"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "a94cdef5f12f9a65c5ef78bdb383b23e3ca0ac0f120a169482d6a4ba912c1bad",
+  "actualizado": "2026-11-04T03:37:37Z",
+  "sello": "0f72ee75a307804415b797f2ad835ef8b95d18f2c0c7d7a23c52b2a6f4fb04b9"
+}
