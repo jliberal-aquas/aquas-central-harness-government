@@ -165,7 +165,7 @@ Prueba integral de la iniciativa: todavía no existe. Llega cuando F002 permita 
 | [F016](F016/README.md) | Shell del humano | Hecho |
 | [F017](F017/README.md) | Ata el freno al trabajo activo, frena apruebos de más, separa agentes, guarda refinado, nombra pruebas y vigila docs | Hecho |
 | [F018](F018/README.md) | Retrospectiva escrita como comando, disparada por programa, con defectos agrupados por familia cerrada | Hecho |
-| [F019](F019/README.md) | El gasto se mide en tokens; avisa al 50 y 80 por ciento, deja cerrar siempre y frena solo bucles. | En curso |
+| [F019](F019/README.md) | El gasto se mide en tokens; avisa al 50 y 80 por ciento, deja cerrar siempre y frena solo bucles. | Hecho |
 
 <!-- /GENERADO -->
 

@@ -280,6 +280,14 @@
     "cmd/**",
     "docs/**"
   ],
+  "arreglos": [
+    {
+      "id": "E001/F008/S004/X01",
+      "titulo": "Índice de código con el comentario completo",
+      "motivo": "auditoría E001/F019/S005-A2: unas 65 filas de docs/ref/codigo.md quedan cortadas porque internal/wiki/codigo.go toma solo la primera línea del comentario",
+      "fecha": "2026-11-04T15:43:36Z"
+    }
+  ],
   "codigo": [
     "cmd/aquas/main.go",
     "internal/backlog/alcance.go",
