@@ -1,0 +1,21 @@
+{
+  "id": "E003/F005",
+  "tipo": "feature",
+  "titulo": "Reglas globales viejas fuera del gobierno",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "humano 2026-11-03: sí a la ficha; la copia v0.2 de ~/.claude/CLAUDE.md choca con la v0.3 de la central",
+  "padre": "E003",
+  "bloqueado_por": [],
+  "secuencia": 180,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestReglasGlobalesExcluidas",
+      "intencion": "valida que central e hijo excluyen las reglas globales viejas",
+      "rojo_cuando": "el settings generado no trae claudeMdExcludes con la ruta de la máquina",
+      "verde_cuando": "init e install escriben la exclusión con la ruta real"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Excluye por máquina las reglas globales viejas en central e hijos."
+}

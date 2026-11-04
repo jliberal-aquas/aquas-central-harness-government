@@ -1,0 +1,21 @@
+{
+  "id": "E003/F005/S001",
+  "tipo": "slice",
+  "titulo": "claudeMdExcludes por máquina en central e hijo",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "la exclusión vive hoy solo en .claude/settings.local.json de esta máquina y este repo",
+  "padre": "E003/F005",
+  "bloqueado_por": [],
+  "secuencia": 181,
+  "pruebas": [
+    {
+      "prueba": "./internal/hijo:TestExcluyeReglasGlobales",
+      "intencion": "valida que el settings del hijo excluye las reglas globales con la ruta de la máquina",
+      "rojo_cuando": "falta claudeMdExcludes o la ruta es fija",
+      "verde_cuando": "trae la ruta del home real y no toca un .claude/CLAUDE.md del proyecto"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "init e install escriben claudeMdExcludes con la ruta real del CLAUDE.md global."
+}
