@@ -8,5 +8,6 @@
   "ocurrencias": [],
   "relacion": "nuevo",
   "prueba": "pendiente:E001/F019/S001",
-  "familia": "freno"
+  "familia": "freno",
+  "tramo_familia": "E000/F007/S005"
 }

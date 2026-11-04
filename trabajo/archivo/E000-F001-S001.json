@@ -33,6 +33,31 @@
         "fecha": "2026-10-23T14:57:27Z",
         "head": "410305659d0f6bb0f585e9c28d5c601b388a6072"
       }
+    },
+    {
+      "id": "E000/F001/S001/X02",
+      "titulo": "La guardia lee el destino de cp -t y --target-directory",
+      "motivo": "revisión independiente 2026-11-04: cp -t DIR escribe fuera del repo sin bloqueo",
+      "fecha": "2026-11-04T18:08:10Z",
+      "pruebas": [
+        {
+          "prueba": "./internal/guardia:TestBashDestinoPorOpcion",
+          "intencion": "cp, mv, install y ln con el destino en -t o --target-directory",
+          "rojo_cuando": "alguna orden escribe fuera sin bloqueo, o una hacia dentro se bloquea",
+          "verde_cuando": "hacia fuera se bloquean todas y hacia dentro pasan todas"
+        }
+      ],
+      "rojo": {
+        "fecha": "2026-11-04T18:09:03Z",
+        "head": "703b5684b108b9693b05a652a8af26712ece4844",
+        "resultado": {
+          "./internal/guardia:TestBashDestinoPorOpcion": "destino_opcion_test.go:35: \"cp -t .tmp ~/.claude/x.md\" escribe dentro: debe pasar; dio \"escritura fuera del repositorio bloqueada: ~/.claude/x.md (regla de oro: solo se escribe dentro del repositorio: D:\\\\Agents Factory\\\\claude-code-scaffolding\\\\.tmp\\\\TestBashDestinoPorOpcion309634950\\\\001\\\\repo)\""
+        }
+      },
+      "verde": {
+        "fecha": "2026-11-04T18:28:31Z",
+        "head": "703b5684b108b9693b05a652a8af26712ece4844"
+      }
     }
   ]
 }

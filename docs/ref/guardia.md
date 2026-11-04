@@ -17,7 +17,7 @@ Qué revisa:
 | Herramienta | Qué mira |
 |---|---|
 | Write, Edit, NotebookEdit | La ruta del archivo |
-| Bash | Redirecciones `>` y `>>`, `cd`, y los destinos de `rm`, `mv`, `cp`, `mkdir`, `touch`, `tee`, `sed -i`, `git clone`, `curl -o` y otros |
+| Bash | Redirecciones `>` y `>>`, `cd`, y los destinos de `rm`, `mv`, `cp`, `mkdir`, `touch`, `tee`, `sed -i`, `git clone`, `curl -o` y otros; también el destino dado con `-t` o `--target-directory` |
 
 Qué deja pasar: leer fuera del repo, `/dev/null` y `2>&1`.
 

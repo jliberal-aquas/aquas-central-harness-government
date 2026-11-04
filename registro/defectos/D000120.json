@@ -1,0 +1,12 @@
+{
+  "id": "D000120",
+  "firma": "guardia-orden-envuelta",
+  "que": "la guardia no ve la orden de escritura si va envuelta: command cp, env cp o cp.exe escriben fuera sin freno",
+  "causa": "la guardia compara el nombre base exacto del primer argumento; command, env y la extensión .exe lo cambian",
+  "arreglo": "quitar envoltorios conocidos (command, env, builtin, exec) y la extensión .exe antes de clasificar la orden",
+  "como_me_cercioro": "prueba con command cp, env cp y cp.exe hacia fuera: debe bloquear",
+  "ocurrencias": [],
+  "relacion": "E000/F001/S001",
+  "prueba": "pendiente:E000/F001/S001",
+  "familia": "freno"
+}

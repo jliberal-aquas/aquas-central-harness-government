@@ -463,6 +463,15 @@ func segmento(raiz string, cwd *string, cwdOK *bool, vars map[string]string, ps 
 	if len(args) > 0 {
 		cmd := filepath.Base(strings.ReplaceAll(args[0], `\`, "/"))
 		resto := args[1:]
+		switch cmd {
+		case "cp", "mv", "install", "ln": // E000/F001/S001/X02 (D000119): el destino puede venir en -t o --target-directory
+			var dirs []string
+			dirs, resto = destinoPorOpcion(cmd, resto)
+			destinos = append(destinos, dirs...)
+			if cmd == "cp" && len(dirs) > 0 {
+				resto = nil // con -t todos los posicionales son fuentes: leer fuera está permitido
+			}
+		}
 		pos := posicionales(resto)
 		switch cmd {
 		case "cd", "pushd":
@@ -530,6 +539,43 @@ func segmento(raiz string, cwd *string, cwdOK *bool, vars map[string]string, ps 
 		}
 	}
 	return ""
+}
+
+// destinoPorOpcion (E000/F001/S001/X02): carpetas destino dadas por -t DIR, -tDIR, -rtDIR, --target-directory DIR,
+// --target-directory=DIR o cualquier abreviatura GNU (--t, --targ=…); devuelve también los argumentos sin esas opciones.
+// Las letras cortas que toman valor (S en todas; m, o, g en install) cortan la lectura del grupo.
+func destinoPorOpcion(cmd string, args []string) (dirs, resto []string) {
+	conValor := "S"
+	if cmd == "install" {
+		conValor = "Smog"
+	}
+	for i := 0; i < len(args); i++ {
+		a := args[i]
+		if strings.HasPrefix(a, "--") {
+			nombre, valor, conIgual := strings.Cut(a, "=")
+			if len(nombre) >= 3 && strings.HasPrefix("--target-directory", nombre) {
+				if conIgual {
+					dirs = append(dirs, valor)
+				} else if i+1 < len(args) {
+					i++
+					dirs = append(dirs, args[i])
+				}
+				continue
+			}
+		} else if len(a) > 1 && a[0] == '-' {
+			if j := strings.IndexAny(a[1:], "t"+conValor); j >= 0 && a[1+j] == 't' {
+				if v := a[2+j:]; v != "" {
+					dirs = append(dirs, v)
+				} else if i+1 < len(args) {
+					i++
+					dirs = append(dirs, args[i])
+				}
+				continue
+			}
+		}
+		resto = append(resto, a)
+	}
+	return dirs, resto
 }
 
 // posicionales: argumentos que no son opciones (los que empiezan con «-», salvo «-» solo).

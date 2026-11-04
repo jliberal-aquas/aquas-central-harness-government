@@ -8,5 +8,6 @@
   "ocurrencias": [],
   "relacion": "nuevo",
   "prueba": "./cmd/aquas:TestCierreConTopeAgotado",
-  "familia": "freno"
+  "familia": "freno",
+  "tramo_familia": "E000/F007/S005"
 }

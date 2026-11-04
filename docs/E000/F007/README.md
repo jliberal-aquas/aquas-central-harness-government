@@ -95,6 +95,7 @@ Prueba integral: `TestReincidenciaCreaSlice`.
 | [S002](S002.md) | aquas backlog edit acepta que_hace con motivo y la wiki se rehace | Hecho |
 | [S003](S003.md) | aquas defect fix D000NNN arreglo=… prueba=./paquete:TestX actualiza el arreglo con prueba real | Hecho |
 | S004 | backlog state rechaza CERRADO o CANCELADO en E000/F007, destino fijo de los tramos de reincidencia. | Planeado |
+| S005 | ataca la causa común de los defectos de la familia freno | Planeado |
 
 <!-- /GENERADO -->
 
