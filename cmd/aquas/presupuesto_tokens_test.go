@@ -16,6 +16,7 @@ import (
 // Verde cuando: cierre pasa, avisos salen y solo el tope extremo frena.
 func TestPresupuestoPorTokens(t *testing.T) {
 	t.Run("S001 el tope por defecto son 15M tokens ponderados", topePorDefectoEnTokens)
+	t.Run("S002 sin freno de 60 y aviso al 50%", sinFrenoYAvisoAlCincuenta)
 }
 
 // lineaUso: línea de asistente con su usage, como la escribe Claude Code (una por bloque de contenido; las de

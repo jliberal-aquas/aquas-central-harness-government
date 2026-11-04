@@ -94,7 +94,7 @@ func usoComando(t *testing.T, herramienta, comando string) string {
 	return llamar(t, "", registroSesion(t), herramienta, comando)
 }
 
-// TestTopeDesdeElRegistro (E000/F008/S005, D000077): el tope de la feature y el freno del turno se cuentan en el
+// TestTopeDesdeElRegistro (E000/F008/S005, D000077): el tope de la feature y el turno se cuentan en el
 // registro de Claude Code; borrar .tmp/presupuesto-cuentas no cambia nada.
 // Rojo cuando: borrar .tmp/presupuesto-cuentas reinicia la cuenta.
 // Verde cuando: el tope y el turno salen del registro y borrar .tmp no cambia nada.
@@ -121,33 +121,39 @@ func TestTopeDesdeElRegistro(t *testing.T) {
 		return aquas(t, raiz, usoHerramienta(t, agente, reg), "budget", "tool")
 	}
 
-	// Freno del turno: 60 llamadas desde el último mensaje humano; borrar .tmp no lo reinicia.
+	// Turno: las llamadas desde el último mensaje humano salen del registro; borrar .tmp no lo reinicia.
+	// E001/F019/S002: el freno de 60 salió; la cuenta del turno queda para el tope extremo (S004).
+	turnoDe := func() int {
+		t.Helper()
+		e, err := escanear(raiz, reg)
+		if err != nil {
+			t.Fatal(err)
+		}
+		return len(e.turno)
+	}
 	humano("sigue")
-	for i := range 60 {
+	for i := range 61 {
 		if s := usar(""); s.codigo != 0 {
-			t.Fatalf("dentro del freno del turno; llamada %d dio %+v", i+1, s)
+			t.Fatalf("sin freno de 60; llamada %d dio %+v", i+1, s)
 		}
 		if i == 30 {
 			borrar()
 		}
 	}
 	borrar()
-	if s := usar(""); s.codigo != 2 || !strings.Contains(s.err, "turno") {
-		t.Errorf("borrar .tmp no reinicia el turno: la llamada 61 se bloquea; dio %+v", s)
+	if n := turnoDe(); n != 61 {
+		t.Errorf("borrar .tmp no reinicia el turno: 61 llamadas; contó %d", n)
 	}
-	if s := usar("a1"); s.codigo != 0 {
-		t.Errorf("un subagente no cuenta en el freno del turno; dio %+v", s)
-	}
-	if s := aquas(t, raiz, usoComando(t, "Bash", "aquas memory set tarea=x"), "budget", "tool"); s.codigo != 0 {
-		t.Errorf("memory set sigue exento con el turno desbordado; dio %+v", s)
+	if s := usar("a1"); s.codigo != 0 || turnoDe() != 61 {
+		t.Errorf("un subagente no cuenta en el turno del hilo; dio %+v", s)
 	}
 
 	// Quién habla: un aviso de agente o un resultado de herramienta no abren turno; el humano sí.
 	resultado, _ := json.Marshal(map[string]any{"type": "user", "origin": map[string]string{"kind": "human"},
 		"message": map[string]any{"role": "user", "content": []map[string]string{{"type": "tool_result", "content": "sigue"}}}})
 	anexar(t, reg, lineaHumana("<task-notification>agente terminó</task-notification>"), string(resultado))
-	if s := usar(""); s.codigo != 2 {
-		t.Errorf("un aviso de agente o un resultado de herramienta no reinician el turno; dio %+v", s)
+	if n := turnoDe(); n != 61 {
+		t.Errorf("un aviso de agente o un resultado de herramienta no reinician el turno; contó %d", n)
 	}
 	humano("sigue")
 
@@ -157,6 +163,9 @@ func TestTopeDesdeElRegistro(t *testing.T) {
 		anexar(t, reg, repetida)
 	}
 	anexar(t, reg, `{"type":"assistant","message":{"content":[{"type":"tool_use","id":"rota`)
+	if n := turnoDe(); n != 1 {
+		t.Errorf("una llamada repetida 70 veces cuenta una vez y la rota se ignora; contó %d", n)
+	}
 	if s := usar(""); s.codigo != 0 {
 		t.Errorf("una llamada repetida 70 veces cuenta una vez; dio %+v", s)
 	}

@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-// E001/F015/S002: aquas presupuesto, el freno de llamadas por feature y por turno, sobre el binario real.
+// E001/F015/S002: aquas presupuesto, el freno de llamadas por feature, sobre el binario real (el de turno salió en E001/F019/S002).
 // E000/F008/S005: las llamadas se cuentan en el registro de la sesión; usoHerramienta las escribe ahí.
 
 // TestPresupuestoPorFeature (E001/F015/S002).
@@ -79,7 +79,7 @@ func TestPresupuestoPorFeature(t *testing.T) {
 	if s := usar("a1"); s.codigo != 0 { // E001/F019/S001: sin «tope» rige 15M tokens ponderados, no 300 llamadas
 		t.Errorf("sin «tope N» la llamada 301 pasa: el tope por defecto es en tokens; dio %+v", s)
 	}
-	// El freno del turno (sin apruebo, y su cesión con apruebo vigente) lo prueba TestFrenoTurnoCedeConFeatureAprobada (E001/F017/S009).
+	// Sin freno de 60 por turno (E001/F019/S002): lo prueban TestFrenoTurnoCedeConFeatureAprobada y TestAvisosDeGasto.
 	if s := aquas(t, raiz, "no json", "presupuesto", "herramienta"); s.codigo != 1 {
 		t.Errorf("entrada ilegible: código 1, sin bloquear; dio %+v", s)
 	}

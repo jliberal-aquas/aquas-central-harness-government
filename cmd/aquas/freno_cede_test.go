@@ -10,9 +10,9 @@ import (
 )
 
 // TestFrenoTurnoCedeConFeatureAprobada (E001/F017/S009, D000109): con una feature aprobada y abierta solo cuenta su
-// tope; sin apruebo vigente, o con la feature cerrada, rige el freno de 60 llamadas por mensaje del humano.
+// tope. E001/F019/S002 quitó el freno de 60 llamadas por mensaje: sin apruebo, o con la feature cerrada, la 61 pasa.
 // Rojo cuando: una feature aprobada con tope vigente frena a las 61 llamadas del turno.
-// Verde cuando: con apruebo vigente solo frena el tope y sin apruebo frena a las 61.
+// Verde cuando: con apruebo vigente solo frena el tope y sin apruebo la 61 pasa.
 func TestFrenoTurnoCedeConFeatureAprobada(t *testing.T) {
 	raiz := repoFeature(t)
 	if s := aquas(t, raiz, "", "memory", "set", "iniciativa=E001", "feature=F002"); s.codigo != 0 {
@@ -37,19 +37,12 @@ func TestFrenoTurnoCedeConFeatureAprobada(t *testing.T) {
 		}
 	}
 
-	// Sin apruebo de feature (uno de slice o de iniciativa no cuenta): el freno por mensaje sigue igual.
+	// Sin apruebo de feature (uno de slice o de iniciativa no cuenta): no hay tope ni freno por mensaje.
 	mensajeHumano(t, "apruebo E001/F002/S001")
 	mensajeHumano(t, "apruebo E001") // ni uno de iniciativa (A2.1)
 	llenar("sin apruebo")
-	if s := usar("a2"); s.codigo != 0 {
-		t.Errorf("un subagente no cuenta en el freno del turno; dio %+v", s)
-	}
-	if s := usar(""); s.codigo != 2 || !strings.Contains(s.err, "turno") {
-		t.Errorf("sin apruebo, la llamada 61 del turno se bloquea; dio %+v", s)
-	}
-	mensajeHumano(t, "<task-notification>agente terminó</task-notification>")
-	if s := usar(""); s.codigo != 2 {
-		t.Errorf("un aviso de agente no reinicia el turno; dio %+v", s)
+	if s := usar(""); s.codigo != 0 {
+		t.Errorf("sin apruebo, la llamada 61 del turno pasa (E001/F019/S002); dio %+v", s)
 	}
 
 	// Apruebo vigente: el turno no corta; el tope de la feature sigue frenando.
@@ -65,12 +58,12 @@ func TestFrenoTurnoCedeConFeatureAprobada(t *testing.T) {
 		t.Errorf("con apruebo, la llamada 66 pasa el tope 65 de la feature; dio %+v", s)
 	}
 
-	// Feature cerrada: el apruebo deja de valer y vuelve el freno por mensaje.
+	// Feature cerrada: el apruebo deja de valer; sin tope, la 61 del turno pasa.
 	cerrarFeature(t, raiz, "E001/F002")
 	turno("sigue")
 	llenar("feature cerrada")
-	if s := usar(""); s.codigo != 2 || !strings.Contains(s.err, "turno") {
-		t.Errorf("con la feature cerrada, la llamada 61 del turno se bloquea; dio %+v", s)
+	if s := usar(""); s.codigo != 0 {
+		t.Errorf("con la feature cerrada, la llamada 61 del turno pasa; dio %+v", s)
 	}
 }
 

@@ -1,7 +1,7 @@
 package main
 
 // E001/F015/S002: hook PreToolUse («aquas budget tool»). Frena el gasto por feature (tope aprobado con la
-// feature) y por turno (bucles desbocados); avisa del contexto.
+// feature); avisa al 50% y al 80% del tope y del contexto (E001/F019/S002: el freno de 60 por turno salió).
 // E000/F008/S005 (D000077, D000082): las llamadas, la feature, su tope y su hora salen del registro que escribe
 // Claude Code fuera del repo; nada sale de contadores, foco ni fichas, que el agente puede tocar. Única excepción
 // (E001/F017/S001): suelta el tope una feature CERRADO con todos sus slices CERRADO, y cada uno exigió auditoría
@@ -30,7 +30,6 @@ import (
 
 const (
 	topeTokensPorDefecto = 15_000_000 // E001/F019/S001: tokens ponderados sin «tope» en el apruebo de la feature
-	frenoTurno           = 60         // llamadas del hilo principal por mensaje del humano
 	avisoContexto        = 200_000    // tokens: desde aquí se pide /compact
 )
 
@@ -203,25 +202,66 @@ func presupuestoCLI(raiz string, args []string) {
 	if err != nil {
 		frenar("Presupuesto: %v. Sin registro no hay cuenta: informa al humano.", err)
 	}
-	// E001/F017/S009 (D000109): con una feature aprobada y abierta solo cuenta su tope; el freno del turno cede.
-	msgFeature, vigente := frenoFeature(raiz, e.Transcript, sesiones)
-	turno := ""
-	if e.Agente == "" { // el freno del turno es del hilo principal
-		propia, ok := sesiones[filepath.Clean(e.Transcript)]
-		if !ok { // registro fuera de la carpeta leída: se lee aparte
-			if propia, err = escanear(raiz, e.Transcript); err != nil {
-				frenar("Presupuesto: no se puede leer el registro de la sesión %s: %v.", e.Transcript, err)
-			}
-		}
-		if n := len(propia.turno); n > frenoTurno && !vigente {
-			frenar("Presupuesto: %d llamadas en este turno (freno %d). No sigas: informa al humano qué hiciste y qué falta.", n, frenoTurno)
-		}
-		turno = strconv.FormatInt(propia.inicio, 10)
-	}
+	// E001/F019/S002: el freno de 60 llamadas por turno salió; quedan el tope de la feature y sus avisos.
+	msgFeature, cuenta := frenoFeature(raiz, e.Transcript, sesiones)
 	if msgFeature != "" {
 		frenar("%s", msgFeature)
 	}
-	avisarContexto(raiz, e, turno)
+	if e.Agente != "" { // los avisos son del hilo principal; el gasto del subagente igual cuenta
+		return
+	}
+	propia, ok := sesiones[filepath.Clean(e.Transcript)]
+	if !ok { // registro fuera de la carpeta leída: se lee aparte
+		if propia, err = escanear(raiz, e.Transcript); err != nil {
+			frenar("Presupuesto: no se puede leer el registro de la sesión %s: %v.", e.Transcript, err)
+		}
+	}
+	var avisos []string
+	for _, a := range []string{avisarGasto(raiz, cuenta), avisarContexto(raiz, e, strconv.FormatInt(propia.inicio, 10))} {
+		if a != "" {
+			avisos = append(avisos, a)
+		}
+	}
+	if len(avisos) > 0 { // un solo JSON por salida del gancho
+		b, _ := json.Marshal(map[string]any{"hookSpecificOutput": map[string]string{"hookEventName": "PreToolUse", "additionalContext": strings.Join(avisos, "\n")}})
+		fmt.Println(string(b))
+	}
+}
+
+// cuentaFeature: gasto de la feature aprobada y abierta contra su tope, para los avisos (E001/F019/S002).
+type cuentaFeature struct {
+	ap    *apruebo
+	pct   int64  // gastado en porcentaje del tope, truncado
+	texto string // «7,5M de 15M tokens ponderados» o «5 de 10 llamadas»
+}
+
+// marcaDir: carpeta de las marcas de aviso; borrarlas repite un aviso, no quita un freno.
+func marcaDir(raiz string) string { return filepath.Join(raiz, ".tmp", "presupuesto-cuentas") }
+
+// avisarGasto: aviso al cruzar el 50% o el 80% del tope, una vez por umbral y apruebo. La marca guarda la hora del
+// apruebo y el umbral avisado; sin marca legible o escribible el aviso se repite (E001/F019/S002).
+func avisarGasto(raiz string, c *cuentaFeature) string {
+	if c == nil {
+		return ""
+	}
+	umbral := int64(0)
+	for _, u := range []int64{50, 80} {
+		if c.pct >= u {
+			umbral = u
+		}
+	}
+	if umbral == 0 {
+		return ""
+	}
+	marca := filepath.Join(marcaDir(raiz), "gasto-"+strings.ReplaceAll(c.ap.feature, "/", "-"))
+	valor := fmt.Sprintf("%d:%d", c.ap.hora.UnixNano(), umbral)
+	if b, err := os.ReadFile(marca); err == nil && string(b) == valor {
+		return ""
+	}
+	_ = os.MkdirAll(marcaDir(raiz), 0o755)
+	_ = os.WriteFile(marca, []byte(valor), 0o644)
+	return fmt.Sprintf("Presupuesto: la feature %s lleva %s (%d%% del tope). Prioriza cerrar lo abierto antes de llegar al tope.",
+		c.ap.feature, c.texto, umbral)
 }
 
 // frenar escribe el motivo en stderr y bloquea la llamada.
@@ -231,22 +271,19 @@ func frenar(formato string, a ...any) {
 }
 
 // avisarContexto pide /compact una vez por turno cuando el contexto medido pasa el umbral; la marca guarda el
-// turno avisado (es solo un aviso: borrarla repite el aviso, no quita un freno).
-func avisarContexto(raiz string, e entradaPresupuesto, turno string) {
+// turno avisado (es solo un aviso: borrarla repite el aviso, no quita un freno). "" si no toca avisar.
+func avisarContexto(raiz string, e entradaPresupuesto, turno string) string {
 	t := contextoMedido(e.Transcript)
 	if t < avisoContexto {
-		return
+		return ""
 	}
-	dir := filepath.Join(raiz, ".tmp", "presupuesto-cuentas")
-	marca := filepath.Join(dir, "contexto-"+regexp.MustCompile(`[^\w-]`).ReplaceAllString(e.Sesion, "_"))
+	marca := filepath.Join(marcaDir(raiz), "contexto-"+regexp.MustCompile(`[^\w-]`).ReplaceAllString(e.Sesion, "_"))
 	if b, err := os.ReadFile(marca); err == nil && string(b) == turno {
-		return
+		return ""
 	}
-	_ = os.MkdirAll(dir, 0o755)
+	_ = os.MkdirAll(marcaDir(raiz), 0o755)
 	_ = os.WriteFile(marca, []byte(turno), 0o644)
-	msg := fmt.Sprintf("Contexto medido: %d tokens (umbral %d). Pide al humano /compact al terminar este turno.", t, avisoContexto)
-	b, _ := json.Marshal(map[string]any{"hookSpecificOutput": map[string]string{"hookEventName": "PreToolUse", "additionalContext": msg}})
-	fmt.Println(string(b))
+	return fmt.Sprintf("Contexto medido: %d tokens (umbral %d). Pide al humano /compact al terminar este turno.", t, avisoContexto)
 }
 
 // lineaLlamadas: lo que se lee de cada línea del registro (forma observada el 2026-10-31).
@@ -437,8 +474,8 @@ func featureCerrada(raiz, id string) bool {
 
 // frenoFeature: el último apruebo de feature del humano fija feature, tope y hora; se cuentan los tokens ponderados
 // (o las llamadas distintas, con «tope N» viejo) desde esa hora en las sesiones y en sus subagentes. "" si puede seguir o no hay apruebo de feature.
-// vigente: hay apruebo de feature y la feature sigue abierta (E001/F017/S009).
-func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, vigente bool) {
+// cuenta: el gasto contra el tope, para los avisos; nil sin apruebo de feature, con la feature cerrada o al frenar.
+func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, cuenta *cuentaFeature) {
 	var ap *apruebo
 	for _, s := range sesiones {
 		if s.apruebo != nil && (ap == nil || s.apruebo.hora.After(ap.hora)) {
@@ -446,7 +483,7 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, v
 		}
 	}
 	if ap == nil || featureCerrada(raiz, ap.feature) {
-		return "", false
+		return "", nil
 	}
 	ids := map[string]bool{}
 	pesos := map[string]int64{} // E001/F019/S001: por message.id, una vez aunque se repita en varias líneas
@@ -472,7 +509,7 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, v
 		}
 		e, err := escanear(raiz, sub)
 		if err != nil {
-			return fmt.Sprintf("Presupuesto: no se puede leer el registro %s: %v.", sub, err), true
+			return fmt.Sprintf("Presupuesto: no se puede leer el registro %s: %v.", sub, err), nil
 		}
 		sumar(e)
 	}
@@ -483,14 +520,16 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, v
 		}
 		if veinteavos > 20*ap.tokens {
 			return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%s tokens ponderados; gastados %s). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope NM»).",
-				ap.feature, millones(ap.tokens), millones(veinteavos/20), ap.feature), true
+				ap.feature, millones(ap.tokens), millones(veinteavos/20), ap.feature), nil
 		}
-		return "", true
+		return "", &cuentaFeature{ap: ap, pct: veinteavos * 100 / (20 * ap.tokens),
+			texto: fmt.Sprintf("%s de %s tokens ponderados", millones(veinteavos/20), millones(ap.tokens))}
 	}
 	if len(ids) > ap.tope {
-		return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%d llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope N»).", ap.feature, ap.tope, ap.feature), true
+		return fmt.Sprintf("Presupuesto: llegaste al tope de la feature %s (%d llamadas). No sigas: informa qué falta y pide un tope nuevo («apruebo %s tope N»).", ap.feature, ap.tope, ap.feature), nil
 	}
-	return "", true
+	return "", &cuentaFeature{ap: ap, pct: int64(len(ids)) * 100 / int64(max(ap.tope, 1)),
+		texto: fmt.Sprintf("%d de %d llamadas", len(ids), ap.tope)}
 }
 
 // contextoMedido: tokens de entrada de la última llamada del modelo en el transcript; 0 si después

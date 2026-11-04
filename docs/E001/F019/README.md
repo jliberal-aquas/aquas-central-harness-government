@@ -115,7 +115,7 @@ Prueba integral: `TestPresupuestoPorTokens`.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | El tope de la feature se cuenta en tokens ponderados; 15M por defecto, «tope NM» en el apruebo. | Hecho |
-| [S002](S002.md) | Sale el freno de 60 llamadas; al 50 y 80 por ciento del tope llega un aviso con el gasto. | Planeado |
+| [S002](S002.md) | Sale el freno de 60 llamadas; al 50 y 80 por ciento del tope llega un aviso con el gasto. | Hecho |
 | [S003](S003.md) | Con el tope agotado siguen pasando commit, push, gate, sello, memoria y estado. | Planeado |
 | [S004](S004.md) | Un turno se frena solo al pasar 1000 llamadas o 20M tokens, contra bucles desbocados. | Planeado |
 | [S005](S005.md) | En la tercera auditoría de un slice el gancho pide buscar el mismo hueco en todo el slice. | Planeado |

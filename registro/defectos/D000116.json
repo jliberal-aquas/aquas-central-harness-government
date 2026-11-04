@@ -1,0 +1,12 @@
+{
+  "id": "D000116",
+  "firma": "evidencia-slice-sin-suite-completa",
+  "que": "S002 declaró verde con go test ./cmd/aquas; internal/compilador quedó rojo por el texto del orquestador",
+  "causa": "la evidencia del slice corrió solo el paquete tocado; un canónico lo leen pruebas de otro paquete",
+  "arreglo": "frase restituida; evidencia de S002 con go test ./...",
+  "como_me_cercioro": "go test ./... en ok",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "pendiente:E001/F019",
+  "familia": "falso-verde"
+}

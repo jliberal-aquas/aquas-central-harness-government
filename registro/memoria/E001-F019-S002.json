@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F019",
+    "slice": "S002",
+    "tarea": "S002 cerrado: sin freno de 60, avisos al 50 y 80%"
+  },
+  "siguiente": "S003: cierres pasan con tope agotado",
+  "pendientes": [
+    "verificar con /context en sesión nueva que el CLAUDE.md global quedó excluido (.claude/settings.local.json)"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "af741d11f6a1b3eb051552b986683324f2cdcecd2ec1fb257102edec7b743196",
+  "actualizado": "2026-11-04T07:28:48Z",
+  "sello": "e1f4f3d3b780c843832c70729da4673a8009d34cd747f32c2c930dc4ec42cb95"
+}

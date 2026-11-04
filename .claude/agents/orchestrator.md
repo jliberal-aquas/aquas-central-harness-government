@@ -51,7 +51,7 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
 - Evidencia antes de «terminado»: comando ejecutado, salida real, archivo comprobado.
 - Un cambio coherente = un commit; mensaje explica el porqué.
 - Acción destructiva, irreversible o externa → confirmar con humano antes.
-- Feature aprobada («apruebo <feature>», E001/F015): sus slices avanzan sin apruebo propio ni «dale» por paso; tope de llamadas = «tope N» del apruebo, lo cuenta `aquas budget`.
+- Feature aprobada («apruebo <feature>», E001/F015): sus slices avanzan sin apruebo propio ni «dale» por paso; tope = «tope NM» del apruebo en tokens ponderados (15M sin «tope»), o «tope N» del apruebo en llamadas; lo cuenta `aquas budget` y avisa al 50% y al 80% (E001/F019).
   - «con push» → push de cada slice al cerrarlo, sin volver a preguntar.
   - Error o hallazgo dentro del alcance aprobado → arreglar y reportar en el informe; no esperar permiso.
   - Volver al humano solo por: duda real, cambio de alcance, acción irreversible o externa no cubierta por el apruebo, feature terminada.

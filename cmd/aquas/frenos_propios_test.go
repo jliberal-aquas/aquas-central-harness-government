@@ -2,34 +2,37 @@ package main
 
 import (
 	"path/filepath"
-	"strings"
 	"testing"
 )
 
 // TestFrenosPropiosGobernados (integral E001/F011): el freno de este repo nunca bloquea lo que exige un cierre.
-// Rojo cuando: memoria fijar se bloquea con el turno desbordado.
+// Rojo cuando: memoria fijar se bloquea con el tope desbordado.
 // Verde cuando: memoria fijar pasa y otro comando se frena.
+// E001/F019/S002: el freno de 60 por turno salió; el tope desbordado es el de la feature («tope 60»).
 func TestFrenosPropiosGobernados(t *testing.T) {
-	raiz := t.TempDir()
+	raiz := repoFeature(t)
+	if s := aquas(t, raiz, mensajeHumano(t, "apruebo E001/F002 tope 60"), "approval"); s.codigo != 0 {
+		t.Fatalf("approval: %+v", s)
+	}
 	usar := func(comando string) salida {
 		t.Helper()
-		return aquas(t, raiz, usoComando(t, "Bash", comando), "presupuesto", "herramienta")
+		return aquas(t, raiz, usoComando(t, "Bash", comando), "budget", "tool")
 	}
 	for i := range 60 {
 		if s := usar("git status"); s.codigo != 0 {
-			t.Fatalf("dentro del freno del turno; llamada %d dio %+v", i+1, s)
+			t.Fatalf("dentro del tope; llamada %d dio %+v", i+1, s)
 		}
 	}
 	if s := usar("aquas memoria fijar tarea=x"); s.codigo != 0 {
-		t.Errorf("con el turno desbordado, memoria fijar pasa; dio %+v", s)
+		t.Errorf("con el tope desbordado, memoria fijar pasa; dio %+v", s)
 	}
 	if s := usar("git status"); s.codigo != 2 {
-		t.Errorf("con el turno desbordado, otro comando se frena; dio %+v", s)
+		t.Errorf("con el tope desbordado, otro comando se frena; dio %+v", s)
 	}
 }
 
 // TestFrenoDejaPasarMemoria (E001/F011/S002): memoria fijar suelta pasa sin contar; encadenada u otra orden, no.
-// Rojo cuando: memoria fijar se frena con el turno o la feature desbordados.
+// Rojo cuando: memoria fijar se frena con la feature desbordada.
 // Verde cuando: memoria fijar suelta pasa y encadenada u otro comando se frena.
 func TestFrenoDejaPasarMemoria(t *testing.T) {
 	raiz := repoFeature(t)
@@ -105,28 +108,5 @@ func TestFrenoDejaPasarMemoria(t *testing.T) {
 		}
 	}
 
-	// Turno desbordado: memoria fijar pasa y no cuenta en el turno.
-	cerrarFeature(t, raiz, "E001/F002") // E001/F017/S009: con apruebo vigente el turno no frena; cerrada, sí
-	turno("sigue")
-	for i := range 59 {
-		if s := usar("Bash", "git status"); s.codigo != 0 {
-			t.Fatalf("dentro del freno del turno; llamada %d dio %+v", i+1, s)
-		}
-	}
-	for _, c := range exentas {
-		if s := usar("Bash", c); s.codigo != 0 {
-			t.Errorf("memoria fijar no cuenta en el turno: %q pasa; dio %+v", c, s)
-		}
-	}
-	if s := usar("Bash", "git status"); s.codigo != 0 {
-		t.Errorf("la llamada 60 del turno pasa: memoria fijar no contó; dio %+v", s)
-	}
-	for _, c := range exentas {
-		if s := usar("Bash", c); s.codigo != 0 {
-			t.Errorf("turno desbordado: %q pasa; dio %+v", c, s)
-		}
-	}
-	if s := usar("Bash", "git status"); s.codigo != 2 || !strings.Contains(s.err, "turno") {
-		t.Errorf("turno desbordado: otro comando se frena; dio %+v", s)
-	}
+	// E001/F019/S002: sin freno de 60 por turno; la exención ante el tope extremo del turno la prueba S004.
 }
