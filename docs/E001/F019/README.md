@@ -118,7 +118,7 @@ Prueba integral: `TestPresupuestoPorTokens`.
 | [S002](S002.md) | Sale el freno de 60 llamadas; al 50 y 80 por ciento del tope llega un aviso con el gasto. | Hecho |
 | [S003](S003.md) | Con el tope agotado siguen pasando commit, push, gate, sello, memoria y estado. | Hecho |
 | [S004](S004.md) | Un turno se frena solo al pasar 1000 llamadas o 20M tokens, contra bucles desbocados. | Hecho |
-| [S005](S005.md) | En la tercera auditoría de un slice el gancho pide buscar el mismo hueco en todo el slice. | Planeado |
+| [S005](S005.md) | En la tercera auditoría de un slice el gancho pide buscar el mismo hueco en todo el slice. | Hecho |
 
 <!-- /GENERADO -->
 

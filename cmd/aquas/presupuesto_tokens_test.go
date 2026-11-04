@@ -19,6 +19,7 @@ func TestPresupuestoPorTokens(t *testing.T) {
 	t.Run("S002 sin freno de 60 y aviso al 50%", sinFrenoYAvisoAlCincuenta)
 	t.Run("S003 commit pasa con el tope agotado", commitPasaConTopeAgotado)
 	t.Run("S004 un turno desbocado frena sin feature", turnoDesbocadoFrena)
+	t.Run("S005 la tercera vuelta de auditoría avisa", terceraVueltaAvisa)
 }
 
 // lineaUso: línea de asistente con su usage, como la escribe Claude Code (una por bloque de contenido; las de

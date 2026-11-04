@@ -116,7 +116,27 @@ type entradaPresupuesto struct {
 	Tool       string `json:"tool_name"`
 	Input      struct {
 		Command string `json:"command"`
+		Prompt  string `json:"prompt"`
 	} `json:"tool_input"`
+}
+
+// reVueltaAuditor: id «E…/F…/S…-An» en la primera línea del encargo, donde el ENCARGO lo pone (E001/F019/S005).
+var reVueltaAuditor = regexp.MustCompile(`^id:[ \t]*(E\d{3}/F\d{3}/S\d{3}-A(\d+))[ \t]*\r?(\n|$)`)
+
+// avisarVuelta: desde la vuelta 3 de auditoría de un slice, pide barrer el slice por el mismo tipo de hueco (D000106).
+func avisarVuelta(e entradaPresupuesto) string {
+	if e.Tool != "Agent" {
+		return ""
+	}
+	m := reVueltaAuditor.FindStringSubmatch(e.Input.Prompt)
+	if m == nil {
+		return ""
+	}
+	n, err := strconv.Atoi(m[2])
+	if err != nil || n < 3 {
+		return ""
+	}
+	return fmt.Sprintf("Auditoría %s, vuelta %d. Desde la tercera vuelta: busca en todo el slice el mismo tipo de hueco de las vueltas anteriores, no solo el último hallazgo (D000106).", m[1], n)
 }
 
 // E001/F011/S002 (D000029): `aquas memory set` suelta, la orden que exige el cierre, no se frena ni cuenta.
@@ -258,7 +278,7 @@ func presupuestoCLI(raiz string, args []string) {
 		}
 	}
 	var avisos []string
-	for _, a := range []string{avisarGasto(raiz, cuenta), avisarContexto(raiz, e, strconv.FormatInt(propia.inicio, 10))} {
+	for _, a := range []string{avisarGasto(raiz, cuenta), avisarContexto(raiz, e, strconv.FormatInt(propia.inicio, 10)), avisarVuelta(e)} {
 		if a != "" {
 			avisos = append(avisos, a)
 		}

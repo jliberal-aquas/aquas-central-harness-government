@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F019",
+    "slice": "S005",
+    "tarea": "S005 cerrado"
+  },
+  "siguiente": "cerrar F019: corregir F015/S002 (tope por defecto aún dice 300 llamadas), backlog green E001/F019, CERRADO, commit y push; filas cortadas de docs/ref/codigo.md al backlog",
+  "pendientes": [
+    "verificar con /context en sesión nueva que el CLAUDE.md global quedó excluido (.claude/settings.local.json)"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "b71615cb3a38d639b626ccb2268ab6918a057d06861ce3c0726700ff89406592",
+  "actualizado": "2026-11-04T13:47:53Z",
+  "sello": "fd64719cc953ed815a9251bad2a949566ac4f53c9974d3018dd3034313b70750"
+}
