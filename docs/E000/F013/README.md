@@ -17,6 +17,9 @@ Menos frenos de forma, los mismos frenos que atrapan errores reales.
 | Slice | Qué hace |
 |---|---|
 | [S001](S001.md) | estilo de la wiki pasa a aviso |
+| [S002](S002.md) | gancho de oración larga al guardar avisa |
+| [S003](S003.md) | aprobación con respuesta corta y tras compact |
+| [S004](S004.md) | sello omite menciones desde código Go |
 
 **Origen.** Pedido del humano del 2026-11-04: congelar features nuevas hasta terminar la poda.
 
@@ -74,6 +77,9 @@ Prueba integral: `TestEstiloSoloAvisa`.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | Oración de más de 20 palabras y primera mención sin enlace al glosario avisan en vez de frenar. | Hecho |
+| [S002](S002.md) | al guardar en docs/, la oración larga avisa al agente sin frenarlo | Planeado |
+| [S003](S003.md) | «sí», «dale» o «ejecútalo» aprueban la línea apruebo que el agente propuso; sobrevive a compact | Planeado |
+| [S004](S004.md) | el sello deja de pedir pruebas y código que solo nombran una ruta tocada | Planeado |
 
 <!-- /GENERADO -->
 

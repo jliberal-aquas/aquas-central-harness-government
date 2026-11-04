@@ -1,0 +1,21 @@
+{
+  "id": "E000/F013/S004",
+  "tipo": "slice",
+  "titulo": "Sello solo pide lo que puede cambiar",
+  "estado": "BORRADOR",
+  "prioridad": "P0",
+  "motivo": "poda humano 2026-11-04: S001 pidió 53 confirmaciones y 51 fueron sin cambio",
+  "padre": "E000/F013",
+  "bloqueado_por": [],
+  "secuencia": 197,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestSelloSinMenciones",
+      "intencion": "valida que el sello omite menciones desde pruebas y código Go",
+      "rojo_cuando": "rojo cuando las pide",
+      "verde_cuando": "verde cuando solo pide páginas y canónicos"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "el sello deja de pedir pruebas y código que solo nombran una ruta tocada"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "E000/F013/S002",
+  "tipo": "slice",
+  "titulo": "Gancho de oración larga avisa",
+  "estado": "BORRADOR",
+  "prioridad": "P0",
+  "motivo": "poda humano 2026-11-04: el gancho al guardar en docs/ frena con exit 2 por estilo",
+  "padre": "E000/F013",
+  "bloqueado_por": [],
+  "secuencia": 195,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestGanchoOracionAvisa",
+      "intencion": "valida que el gancho al guardar avisa la oración larga sin frenar",
+      "rojo_cuando": "rojo cuando sale con código 2",
+      "verde_cuando": "verde cuando sale 0 y el aviso llega al agente"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "al guardar en docs/, la oración larga avisa al agente sin frenarlo"
+}
