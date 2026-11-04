@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F018",
+    "slice": "S002",
+    "tarea": "S002 APROBADO (A4) y sellado; cerrando S002 y F018"
+  },
+  "siguiente": "commit y push; luego el humano escribe «apruebo retro» y registro R0001 con commit=eebfed3 (cierra D000112)",
+  "pendientes": [
+    "verificar con /context en sesión nueva que el CLAUDE.md global quedó excluido (.claude/settings.local.json)"
+  ],
+  "decisiones": [
+    "tope desde el último apruebo de feature en el registro vs. dejar el hueco documentado"
+  ],
+  "huella_git": "f68a15bfbc2e83768fa6a047c233bacf435c418a0ec6cbac36deb891980da8e8",
+  "actualizado": "2026-11-04T01:56:32Z",
+  "sello": "c5a7845fbb0aac05d087a639ec11464a51ed33446c3347269bf70fe1ae46590e"
+}

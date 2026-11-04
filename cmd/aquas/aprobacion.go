@@ -27,6 +27,12 @@ func aprobacionCLI(raiz string) {
 	if e.Evento != "UserPromptSubmit" {
 		return
 	}
+	if backlog.EsAprobacionRetro(e.Prompt) { // E001/F018/S002 (decisión 1A): «apruebo retro» autoriza un retro close
+		if err := backlog.AprobarRetro(raiz, e.Prompt, e.Registro, time.Now()); err != nil {
+			fallar(1, fmt.Errorf("aprobacion retro: %w", err))
+		}
+		return
+	}
 	id, ok := backlog.IDAprobado(e.Prompt)
 	if !ok {
 		return

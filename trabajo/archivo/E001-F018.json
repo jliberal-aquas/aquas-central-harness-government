@@ -2,7 +2,7 @@
   "id": "E001/F018",
   "tipo": "feature",
   "titulo": "Retrospectiva gobernada",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P1",
   "motivo": "análisis skill retro de mattpocock (humano 2026-11-03)",
   "padre": "E001",
@@ -22,6 +22,11 @@
     "resultado": {
       "./cmd/aquas:TestRetrospectivaGobernada": "retro_gobernada_test.go:46: el defecto guarda su familia; dio {"
     }
+  },
+  "verde": {
+    "fecha": "2026-11-04T01:56:43Z",
+    "head": "e3013fd6fa51231afee65d4b138ca9a0dea9cd34",
+    "huella": {}
   },
   "aprobacion": {
     "fecha": "2026-11-03T23:46:08Z",

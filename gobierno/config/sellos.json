@@ -50,9 +50,9 @@
       }
     },
     ".claude/skills/retro/SKILL.md": {
-      "sha256": "d3659812e744f35381ea0ee8c91201a70d6f217628be003d82e8a80951f39410",
+      "sha256": "08c6d5fcb131c6833df94bc0207b9328d2775c37611ea6366026979a36db5878",
       "fuentes": {
-        "gobierno/canonico/skills/retro.md": "7006d680172cd69a11a1a773bf2c12b3c2938de07122e372d4e715bb3d40a27c",
+        "gobierno/canonico/skills/retro.md": "a5c69296bb5a4c0a598d2ff6cda1b727cb728ca459b2481889fc15998afeaeb7",
         "gobierno/config/documentos.json": "5243f3de9e147d3ec9fed000b2143b3103786cf8027aa0c62e5953153c89b778"
       }
     },

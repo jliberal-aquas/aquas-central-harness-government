@@ -18,6 +18,7 @@ func TestCarpetasProtegidasSalenDeSusPaquetes(t *testing.T) {
 		{mem.Archivo, "archivo de memoria: "},
 		{backlog.Activo, "backlog: "},
 		{backlog.Archivo, "backlog: "},
+		{backlog.CarpetaRetros, "retros: "}, // E001/F018/S002 (hallazgo A1.5)
 	} {
 		p := c.dir + "/x.json"
 		if m := RevisarArchivo(raiz, p); !strings.Contains(m, c.motivo+p) {

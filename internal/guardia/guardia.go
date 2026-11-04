@@ -96,6 +96,9 @@ func protegida(raiz, abs, p string) string {
 	if en(turno.Carpeta) {
 		return fmt.Sprintf("auditoría: %s solo la escriben los hooks con `aquas turn open|close`", p)
 	}
+	if en(backlog.CarpetaRetros) { // E001/F018/S002
+		return fmt.Sprintf("retros: %s solo se escribe con `aquas retro close fichas=A,B motivo=…` tras «apruebo retro» del humano", p)
+	}
 	if en(path.Dir(backlog.Activo)) || en(path.Dir(backlog.Archivo)) {
 		return fmt.Sprintf("backlog: %s solo se escribe con `aquas backlog new|priority|state|tests|red|green`", p)
 	}

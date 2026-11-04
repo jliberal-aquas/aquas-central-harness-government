@@ -55,7 +55,7 @@ sequenceDiagram
     B-->>O: toca retrospectiva
     O->>O: /retro lee defectos por familia y medidas
     O->>H: candidatos con recomendación
-    H->>O: elige
+    H->>O: elige y escribe «apruebo retro»
     O->>R: aquas retro close fichas=…
 ```
 
@@ -79,7 +79,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 2. `aquas defect new` crea el tramo «Reincidencia familia freno» en E000/F007.
 3. Diez slices después, `aquas backlog next` avisa que toca retrospectiva.
 4. El [orquestador](../../glosario.md#orquestador) corre `/retro`, propone controles y el humano elige.
-5. `retro close` guarda la retro y el contador vuelve a cero.
+5. El humano escribe «apruebo retro»; `aquas retro close` guarda la retro y el contador vuelve a cero.
 
 ## Paso a paso
 
@@ -91,7 +91,7 @@ continúa: [EJ-E001](../README.md#EJ-E001)
 
 - Registrar un defecto: `aquas defect new … familia=freno`.
 - Saber si toca retro: `aquas backlog next`.
-- Hacer la retro: `/retro`; cerrarla con `retro close fichas=A,B`.
+- Hacer la retro: `/retro`; tras tu «apruebo retro», cerrarla con `aquas retro close fichas=A,B motivo=…`.
 
 ## Contrato y evidencia
 
@@ -106,7 +106,7 @@ Prueba integral: `TestRetrospectivaGobernada`.
 | Hijo | Qué es | Estado |
 |---|---|---|
 | [S001](S001.md) | Skill canónico /retro con categorías, fuentes y reparto mecánico a gate, criterio a auditor, orientación a puntero | Hecho |
-| [S002](S002.md) | backlog next pide la retro tras N slices cerrados o N defectos nuevos desde la última | Planeado |
+| [S002](S002.md) | backlog next pide la retro tras N slices cerrados o N defectos nuevos desde la última | Hecho |
 | [S003](S003.md) | Cada defecto lleva familia de una lista cerrada y la reincidencia cuenta por familia | Hecho |
 
 <!-- /GENERADO -->

@@ -1,0 +1,12 @@
+{
+  "id": "D000112",
+  "firma": "retro-registrada-con-cuenta-de-hoy",
+  "que": "R0001 se registró con la cuenta de hoy (118 slices, 111 defectos) y no con la del 2-nov (104, 103); apagó un aviso de retro que tocaba",
+  "causa": "retro close solo sabe contar el estado actual; el agente no comparó con el commit de la retro (eebfed3)",
+  "arreglo": "PROPUESTO: decisión humana 2A, re-registrar R0001 con la cuenta y el head de eebfed3",
+  "como_me_cercioro": "git ls-tree en eebfed3 da 104 slices CERRADO y 103 defectos (auditoría E001-F018-S002-A1)",
+  "ocurrencias": [],
+  "relacion": "E001/F018/S002",
+  "prueba": "pendiente:E001/F018/S002",
+  "familia": "falso-verde"
+}

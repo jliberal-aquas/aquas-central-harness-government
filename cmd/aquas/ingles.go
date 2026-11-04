@@ -7,7 +7,7 @@ package main
 var comandos = map[string]string{
 	"compile": "compilar", "init": "iniciar", "verify": "verificar", "clean": "limpiar", "measure": "medir",
 	"turn": "turno", "approval": "aprobacion", "budget": "presupuesto", "proposal": "propuesta",
-	"defect": "defecto", "memory": "memoria", "library": "biblioteca",
+	"defect": "defecto", "memory": "memoria", "library": "biblioteca", "retro": "retro",
 	"agent-close": "cierre-agente", "guard": "guardia",
 	"hook": "hook", "wiki": "wiki", "backlog": "backlog", "build": "build",
 	"report": "report", "update": "update", "install": "install",
@@ -27,6 +27,7 @@ var subcomandos = map[string]map[string]string{
 	"wiki":        {"link": "enlazar"},
 	"medir":       {"runs": "vueltas"},
 	"biblioteca":  {"read": "leer"},
+	"retro":       {"close": "cerrar"},
 }
 
 // alcanceAmpliar: la palabra en la cuarta posición de «backlog alcance <id> extend».

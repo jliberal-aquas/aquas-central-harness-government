@@ -234,6 +234,12 @@ func main() {
 		if err := defectoCLI(raiz, os.Args[2:]); err != nil {
 			fallar(1, err)
 		}
+	case "retro": // E001/F018/S002: aquas retro close fichas=A,B motivo=… registra la retro en registro/retros/
+		r, err := retroCLI(raiz, os.Args[2:])
+		if err != nil {
+			fallar(1, err)
+		}
+		fmt.Printf("%s registrada · %d slices cerrados y %d defectos · fichas %s\n", r.ID, r.SlicesCerrados, r.Defectos, strings.Join(r.Fichas, ","))
 	case "wiki": // E000/F004/S003: aquas wiki link docs/x.md… pone los enlaces al glosario que pide el gate
 		if len(os.Args) < 4 || os.Args[2] != "enlazar" {
 			fallar(64, errors.New("uso: aquas wiki link docs/x.md…"))
@@ -719,6 +725,9 @@ func backlogCLI(raiz string, args []string) {
 	case args[0] == "alcance" && len(args) > 2 && args[2] != "ampliar":
 		f, err = backlog.Alcance(raiz, args[1], args[2:])
 	case args[0] == "siguiente" && len(args) == 1:
+		if a := backlog.AvisoRetro(raiz); a != "" { // E001/F018/S002: aviso, no freno
+			fmt.Println(a)
+		}
 		var hay bool
 		f, hay, err = backlog.Siguiente(raiz)
 		if err == nil && !hay {
@@ -784,6 +793,27 @@ func turnoCLI(raiz string, args []string) {
 	if err != nil {
 		fallar(1, fmt.Errorf("turno %s: %w", args[0], err))
 	}
+}
+
+// retroCLI (E001/F018/S002): cerrar fichas=A,B motivo=…; cada clave una vez.
+func retroCLI(raiz string, args []string) (backlog.Retro, error) {
+	uso := errors.New("uso: aquas retro close fichas=A,B motivo=… [commit=<commit de una retro pasada>], tras «apruebo retro» del humano")
+	if len(args) == 0 || args[0] != "cerrar" {
+		return backlog.Retro{}, uso
+	}
+	c := map[string]string{}
+	for _, a := range args[1:] {
+		k, v, ok := strings.Cut(a, "=")
+		if _, rep := c[k]; !ok || rep || (k != "fichas" && k != "motivo" && k != "commit") {
+			return backlog.Retro{}, uso
+		}
+		c[k] = v
+	}
+	var fichas []string
+	if c["fichas"] != "" {
+		fichas = strings.Split(c["fichas"], ",")
+	}
+	return backlog.CerrarRetro(raiz, fichas, c["motivo"], c["commit"])
 }
 
 // defectoCLI: nuevo | ocurre | arreglar | ver (E001/F004/S001; arreglar: E000/F007/S003).

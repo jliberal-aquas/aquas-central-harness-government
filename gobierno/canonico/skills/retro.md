@@ -9,7 +9,7 @@ Límite: el skill no crea fichas solo. Propone; el humano elige; lo elegido entr
 
 ## Fuentes
 
-Leer solo desde la última retro, en este orden:
+Leer solo desde la última retro: su corte es la fecha y el head del último `registro/retros/R000N.json`. En este orden:
 1. Defectos agrupados por familia: `aquas defect show` muestra la familia de cada uno. Familia con varias apariciones = patrón.
 2. Corridas de agentes: `aquas measure runs`. Llamadas, vueltas y gasto por encargo.
 3. Correcciones del humano en los turnos: cada «no», «otra vez» o rehacer pedido.
@@ -43,4 +43,4 @@ En un hijo, lo que toca un canónico sellado de la central no se arregla allí: 
 
 1. Candidatos ordenados por gravedad, cada uno con fuente, categoría, reparto y recomendación.
 2. El humano elige. Cada candidato elegido entra con `aquas backlog new`.
-3. Cierre de la retro con `retro close`, nombrando las fichas creadas.
+3. El humano escribe «apruebo retro». Recién entonces, `aquas retro close fichas=A,B motivo=…` nombra las fichas creadas.
