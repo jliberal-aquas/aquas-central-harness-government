@@ -1,0 +1,21 @@
+{
+  "id": "E001/F019/S005",
+  "tipo": "slice",
+  "titulo": "Aviso en la tercera vuelta de auditor",
+  "estado": "BORRADOR",
+  "prioridad": "P2",
+  "motivo": "retro R0002: humano aprueba presupuesto por tokens (1 sí, 2 sí, 3 sí)",
+  "padre": "E001/F019",
+  "bloqueado_por": [],
+  "secuencia": 188,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestTerceraVueltaAuditor",
+      "intencion": "valida el aviso de vueltas",
+      "rojo_cuando": "la tercera vuelta no avisa",
+      "verde_cuando": "A3 avisa y A1 y A2 no"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "En la tercera auditoría de un slice el gancho pide buscar el mismo hueco en todo el slice."
+}

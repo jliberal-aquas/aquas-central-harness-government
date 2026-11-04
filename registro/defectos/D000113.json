@@ -1,0 +1,12 @@
+{
+  "id": "D000113",
+  "firma": "backlog-fix-no-crea-feature",
+  "que": "usé backlog fix E001/F015 para crear una feature nueva y solo anotó E001/F015/X02 dentro de la ficha archivada",
+  "causa": "el mensaje de backlog new sugiere backlog fix para corregir una cerrada sin decir que fix no crea ficha",
+  "arreglo": "el error de backlog new con relacion=corrige:\u003ccerrada\u003e ofrece relacion=nueva como alternativa",
+  "como_me_cercioro": "backlog new con corrige sobre una cerrada nombra relacion=nueva en su error",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "pendiente:E001/F019",
+  "familia": "herramientas"
+}

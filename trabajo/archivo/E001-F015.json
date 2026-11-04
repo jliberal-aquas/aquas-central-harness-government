@@ -97,6 +97,12 @@
         "fecha": "2026-10-30T13:23:17Z",
         "head": "f8a70cc3f07a41bb4cfae195759df65825c2ff91"
       }
+    },
+    {
+      "id": "E001/F015/X02",
+      "titulo": "Presupuesto por tokens",
+      "motivo": "retro R0002: humano aprueba presupuesto por tokens (1 sí, 2 sí, 3 sí)",
+      "fecha": "2026-11-04T02:29:51Z"
     }
   ],
   "relacion": "nueva"

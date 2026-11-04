@@ -1,0 +1,12 @@
+{
+  "id": "D000114",
+  "firma": "tope-tokens-crudos-mal-calibrado",
+  "que": "15M tokens a secas habria frenado F018 al 20 por ciento",
+  "causa": "93 por ciento del volumen es relectura de cache barata",
+  "arreglo": "S001 fija unidad y tope por defecto con la medicion de F018",
+  "como_me_cercioro": "TestTopeEnTokens con la cuenta de F018",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "pendiente:E001/F019/S001",
+  "familia": "freno"
+}

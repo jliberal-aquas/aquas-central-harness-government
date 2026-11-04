@@ -1,0 +1,23 @@
+{
+  "id": "E001/F019/S003",
+  "tipo": "slice",
+  "titulo": "Cerrar siempre se puede",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "retro R0002: humano aprueba presupuesto por tokens (1 sí, 2 sí, 3 sí)",
+  "padre": "E001/F019",
+  "bloqueado_por": [
+    "E001/F019/S001"
+  ],
+  "secuencia": 186,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestCierreConTopeAgotado",
+      "intencion": "valida que cerrar no se frena",
+      "rojo_cuando": "commit o push se frenan con el tope agotado",
+      "verde_cuando": "commit, push, verify, seal, memory y state pasan; otra orden se frena"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Con el tope agotado siguen pasando commit, push, gate, sello, memoria y estado."
+}

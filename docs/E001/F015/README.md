@@ -93,6 +93,7 @@ Arreglo X01 (D000069): `TestAvisoPideAprobarFeature`. Con dos o más [slices](..
 | Arreglo | Qué arregla | Por qué | Pruebas | Fecha | Rojo | Verde |
 |---|---|---|---|---|---|---|
 | X01 | El aviso de falta de aprobación pide aprobar la feature | D000069: el orquestador pidió apruebo por slice aunque la feature podía aprobarse una vez (humano 2026-10-30) | `TestAvisoPideAprobarFeature` | 2026-10-30 | 2026-10-30 | 2026-10-30 |
+| X02 | Presupuesto por tokens | retro R0002: humano aprueba presupuesto por tokens (1 sí, 2 sí, 3 sí) | — | 2026-11-04 | — | — |
 
 <!-- /GENERADO -->
 

@@ -5,7 +5,9 @@
   "causa": "dos frenos de gasto encimados: frenoTurno=60 en presupuesto.go y el tope de la feature",
   "arreglo": "E001/F017/S009: con una feature aprobada y abierta solo cuenta su tope; el freno por mensaje cede",
   "como_me_cercioro": "un slice completo dentro de un apruebo no se corta por el freno de turno",
-  "ocurrencias": [],
+  "ocurrencias": [
+    "T000692"
+  ],
   "relacion": "E001/F015",
   "prueba": "./cmd/aquas:TestFrenoTurnoCedeConFeatureAprobada"
 }

@@ -1,0 +1,21 @@
+{
+  "id": "E001/F019",
+  "tipo": "feature",
+  "titulo": "Presupuesto por tokens",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "retro R0002: humano aprueba presupuesto por tokens (1 sí, 2 sí, 3 sí)",
+  "padre": "E001",
+  "bloqueado_por": [],
+  "secuencia": 183,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestPresupuestoPorTokens",
+      "intencion": "valida el presupuesto de punta a punta",
+      "rojo_cuando": "un cierre con tope agotado se frena o el freno de 60 sigue",
+      "verde_cuando": "cierre pasa, avisos salen y solo el tope extremo frena"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "El gasto se mide en tokens; avisa al 50 y 80 por ciento, deja cerrar siempre y frena solo bucles."
+}

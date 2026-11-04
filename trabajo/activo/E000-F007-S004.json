@@ -1,0 +1,21 @@
+{
+  "id": "E000/F007/S004",
+  "tipo": "slice",
+  "titulo": "backlog state no cierra la feature de reincidencias",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "retro R0002 candidato 3 (D000111)",
+  "padre": "E000/F007",
+  "bloqueado_por": [],
+  "secuencia": 182,
+  "pruebas": [
+    {
+      "prueba": "./internal/backlog:TestNoCierraFeatureReincide",
+      "intencion": "valida que la feature de reincidencias no se cierra",
+      "rojo_cuando": "state CERRADO sobre E000/F007 pasa",
+      "verde_cuando": "state CERRADO sobre E000/F007 sale con error y la ficha sigue igual"
+    }
+  ],
+  "relacion": "corrige:E000/F007",
+  "que_hace": "backlog state rechaza CERRADO o CANCELADO en E000/F007, destino fijo de los tramos de reincidencia."
+}

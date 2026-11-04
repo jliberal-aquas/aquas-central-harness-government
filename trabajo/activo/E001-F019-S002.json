@@ -1,0 +1,23 @@
+{
+  "id": "E001/F019/S002",
+  "tipo": "slice",
+  "titulo": "Avisos al 50 y 80 por ciento",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "retro R0002: humano aprueba presupuesto por tokens (1 sí, 2 sí, 3 sí)",
+  "padre": "E001/F019",
+  "bloqueado_por": [
+    "E001/F019/S001"
+  ],
+  "secuencia": 185,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestAvisosDeGasto",
+      "intencion": "valida avisos sin freno",
+      "rojo_cuando": "la llamada 61 se frena o no hay aviso",
+      "verde_cuando": "61 llamadas pasan y el aviso sale una vez en cada umbral"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Sale el freno de 60 llamadas; al 50 y 80 por ciento del tope llega un aviso con el gasto."
+}

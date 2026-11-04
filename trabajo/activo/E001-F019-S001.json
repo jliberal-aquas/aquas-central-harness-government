@@ -1,0 +1,21 @@
+{
+  "id": "E001/F019/S001",
+  "tipo": "slice",
+  "titulo": "Tope de feature en tokens",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "retro R0002: humano aprueba presupuesto por tokens (1 sí, 2 sí, 3 sí)",
+  "padre": "E001/F019",
+  "bloqueado_por": [],
+  "secuencia": 184,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestTopeEnTokens",
+      "intencion": "valida que el tope suma usage del registro",
+      "rojo_cuando": "el tope cuenta llamadas",
+      "verde_cuando": "el tope suma input, cache y output de cada respuesta"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "El tope de la feature se cuenta en tokens del registro; 15M por defecto, «tope N» en el apruebo."
+}
