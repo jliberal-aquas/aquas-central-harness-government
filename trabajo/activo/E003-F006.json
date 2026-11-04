@@ -1,0 +1,21 @@
+{
+  "id": "E003/F006",
+  "tipo": "feature",
+  "titulo": "Hijo instalable sin trabas",
+  "estado": "BORRADOR",
+  "prioridad": "P0",
+  "motivo": "humano 2026-11-04: silicon-saint-learning-platform quedó trabado al instalar sin git (D000090)",
+  "padre": "E003",
+  "bloqueado_por": [],
+  "secuencia": 189,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestHijoSinGitQuedaFuncionando",
+      "intencion": "valida que install en carpeta sin git deja el hijo con entorno y guardia abierta",
+      "rojo_cuando": "rojo cuando install sin git deja la guardia cerrada",
+      "verde_cuando": "verde cuando install hace git init y la guardia deja escribir"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Un hijo nuevo queda funcionando al instalar, aunque la carpeta no tenga git."
+}
