@@ -75,7 +75,7 @@ Prueba integral: `TestHijoSinGitQuedaFuncionando`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | install inicia git si falta; la guardia del hijo sugiere aquas update, no el comando de la central. | Planeado |
+| [S001](S001.md) | install inicia git si falta; la guardia del hijo sugiere aquas update, no el comando de la central. | Hecho |
 | [S002](S002.md) | Si la versión del lock del hijo difiere de la del binario, la guardia frena y pide aquas update. | Planeado |
 
 <!-- /GENERADO -->

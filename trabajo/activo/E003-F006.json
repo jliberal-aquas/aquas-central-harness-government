@@ -2,7 +2,7 @@
   "id": "E003/F006",
   "tipo": "feature",
   "titulo": "Hijo instalable sin trabas",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P0",
   "motivo": "humano 2026-11-04: silicon-saint-learning-platform quedó trabado al instalar sin git (D000090)",
   "padre": "E003",
@@ -16,6 +16,43 @@
       "verde_cuando": "verde cuando install hace git init y la guardia deja escribir"
     }
   ],
+  "rojo": {
+    "fecha": "2026-11-04T17:04:35Z",
+    "head": "94d5985005c65972e1722ed5b21c743f05311008",
+    "resultado": {
+      "./cmd/aquas:TestHijoSinGitQuedaFuncionando": "hijo_git_test.go:42: install sin git deja .git y el entorno del hijo"
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-04T17:27:38Z",
+    "head": "94d5985005c65972e1722ed5b21c743f05311008",
+    "huella": {}
+  },
+  "aprobacion": {
+    "fecha": "2026-11-04T17:02:52Z",
+    "huella": "f5fac82ad9fc0fbeb63f0e475c4f57ec6d0a5ed9a80c8c09ccc86389c754ea8a",
+    "mensaje": "apruebo E003/F006 con push tope 300",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E003/F006/S001": [
+        {
+          "prueba": "./cmd/aquas:TestInstallIniciaGit",
+          "intencion": "valida git init de install, el fallo dentro de otro repo y el arreglo del hijo",
+          "rojo_cuando": "rojo cuando install sin git no crea .git",
+          "verde_cuando": "verde cuando crea .git, falla anidado y la guardia nombra aquas update"
+        }
+      ],
+      "E003/F006/S002": [
+        {
+          "prueba": "./cmd/aquas:TestHijoDesfasadoFrena",
+          "intencion": "valida que un hijo con lock distinto al binario frena y aquas update lo destraba",
+          "rojo_cuando": "rojo cuando el hijo desfasado escribe sin freno",
+          "verde_cuando": "verde cuando frena nombrando aquas update y tras update pasa"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "Un hijo nuevo queda funcionando al instalar, aunque la carpeta no tenga git."
 }

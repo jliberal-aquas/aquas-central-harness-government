@@ -1,0 +1,17 @@
+{
+  "id": "R0002",
+  "fecha": "2026-11-04T17:03:15Z",
+  "head": "94d5985005c65972e1722ed5b21c743f05311008",
+  "slices_cerrados": 124,
+  "defectos": 117,
+  "fichas": [
+    "E001/F019",
+    "E000/F007/S004"
+  ],
+  "motivo": "retro R0002: presupuesto por tokens (E001/F019, cerrada) y reincidencias de defectos (E000/F007/S004)",
+  "aprobacion": {
+    "fecha": "2026-11-04T17:03:07Z",
+    "mensaje": "apruebo retro",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl"
+  }
+}

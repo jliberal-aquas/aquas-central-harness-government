@@ -16,6 +16,23 @@
       "verde_cuando": "verde cuando el gate pasa y la avisa"
     }
   ],
+  "aprobacion": {
+    "fecha": "2026-11-04T17:03:05Z",
+    "huella": "23f027af417a004381b83f705ebab20cde1f7d694d0c0d32d9e35a321ff65569",
+    "mensaje": "apruebo E000/F013 con push tope 200",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E000/F013/S001": [
+        {
+          "prueba": "./internal/wiki:TestOracionLargaAvisa",
+          "intencion": "valida que oración larga y enlace faltante avisan sin frenar",
+          "rojo_cuando": "rojo cuando el gate cae por ellos",
+          "verde_cuando": "verde cuando el gate pasa y lista el aviso"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "Cada control se mide y queda como freno, aviso, autocorrección o se borra."
 }

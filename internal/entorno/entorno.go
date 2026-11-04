@@ -4,7 +4,7 @@
 //	gobierno/config/claude_settings.json canónico versionado → .claude/settings.json (local)
 //
 // La guardia bloquea todo si el entorno falta o no coincide con la realidad:
-// mover el repo de carpeta o cambiar de SO exige volver a correr `aquas init`.
+// mover el repo de carpeta o cambiar de SO exige volver a correr `aquas init` (en un hijo, `aquas update`).
 package entorno
 
 import (
@@ -52,9 +52,18 @@ func Leer(raiz string) (Entorno, error) {
 	return e, nil
 }
 
+// ArregloCentral y ArregloHijo: qué correr cuando el entorno falta o no coincide (E003/F006/S001).
+const (
+	ArregloCentral = " → corre `go run ./cmd/aquas init` en la raíz del repo"
+	ArregloHijo    = " → corre `aquas update` por Bash en la raíz del hijo (la guardia lo deja pasar)"
+)
+
 // Validar compara el entorno declarado con el real; "" = coincide, si no, el motivo del bloqueo.
 func Validar(raiz string) string {
-	const arreglo = " → corre `go run ./cmd/aquas init` en la raíz del repo"
+	arreglo := ArregloCentral
+	if _, err := os.Stat(filepath.Join(raiz, ".aquas", "lock.json")); err == nil { // E003/F006/S001: en un hijo el arreglo es update
+		arreglo = ArregloHijo
+	}
 	e, err := Leer(raiz)
 	if os.IsNotExist(err) {
 		return "falta " + RutaEntorno + arreglo

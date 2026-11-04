@@ -85,6 +85,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `defectoCLI` | `(raiz string, args []string) error` | defectoCLI: nuevo \\| ocurre \\| arreglar \\| ver (E001/F004/S001; arreglar: E000/F007/S003). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `versionBinario` | `() string` | versionBinario: versión del módulo con que se compiló el binario (= versión del gobierno embebido). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `registrarCierre` | `(raiz, tipo, transcript, primera, resultado string)` | registrarCierre (E001/F004/S005, D000068) anota cada llamada del gancho cierre-agente en .tmp/hooks/cierre-agente.jsonl. |
+| [cmd/aquas/main.go](../../cmd/aquas/main.go) | `esUpdate` | `(datos []byte) bool` | esUpdate (E003/F006/S001): la entrada de la guardia es una orden Bash que es exactamente `aquas update` (PowerShell lo frena la guardia siempre). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `entornoHijo` | `(raiz string)` | entornoHijo (E003/F001/S003) declara el entorno del hijo, como aquas init en la central: |
 | [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `leerTope` | `(primera string, ap *apruebo)` | leerTope: «tope 25M» o «tope 25 M» → tokens ponderados; «tope 900» solo, o seguido de «con» o «y» → llamadas (el viejo). |
 | [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `pesoVeinteavos` | `(u usoRespuesta) int64` | pesoVeinteavos: el usage de una respuesta ponderado por precio, en veinteavos de token para no usar decimales. |
@@ -345,6 +346,8 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/hijo/controles.go](../../internal/hijo/controles.go) | `existe` | `(central, rel string) (bool, error)` | existe dice si la central instalada trae rel; una central sin él (antigua o de prueba) no lo exige. |
 | [internal/hijo/controles.go](../../internal/hijo/controles.go) | `ganchosQueViajan` | `(dir string) ([]gancho, error)` | ganchosQueViajan lee la central instalada y devuelve cada gancho con fila «todos» en herencia.json, |
 | [internal/hijo/controles.go](../../internal/hijo/controles.go) | `agentes` | `(dir string) (map[string][]byte, error)` | agentes devuelve los .claude/agents/*.md compilados desde la central instalada (ruta → contenido). |
+| [internal/hijo/git.go](../../internal/hijo/git.go) | `AsegurarGit` | `(dir string) error` | AsegurarGit (E003/F006/S001) deja dir como raíz de un repo git: lo inicia si no está en ninguno; falla si está dentro de otro. |
+| [internal/hijo/git.go](../../internal/hijo/git.go) | `igualRuta` | `(a, b string) bool` | igualRuta compara dos rutas limpias y absolutas; en Windows sin distinguir mayúsculas. |
 | [internal/hijo/hijo.go](../../internal/hijo/hijo.go) | `Install` | `(dest string, central fs.FS, version string) error` | Install copia la central sellada en dest/.aquas/central y escribe dest/.aquas/lock.json. |
 | [internal/hijo/hijo.go](../../internal/hijo/hijo.go) | `copiarCentral` | `(dest string, central fs.FS, version string) error` | copiarCentral escribe la central como solo lectura y su lock con versión y hashes. |
 | [internal/hijo/hijo.go](../../internal/hijo/hijo.go) | `AMedias` | `(err error) error` | AMedias (E002/F002/S002): error de install cuando la central ya quedó copiada y falló lo siguiente. |

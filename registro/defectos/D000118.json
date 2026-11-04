@@ -1,0 +1,12 @@
+{
+  "id": "D000118",
+  "firma": "backlog-tests-reemplaza-lista",
+  "que": "aquas backlog tests con una prueba nueva borró la prueba aprobada de E003/F006/S001 e invalidó el apruebo del humano",
+  "causa": "tests reemplaza la lista de pruebas en vez de sumar",
+  "arreglo": "pendiente: tests suma la prueba nueva sin quitar las aprobadas",
+  "como_me_cercioro": "pendiente: prueba de tests que suma",
+  "ocurrencias": [],
+  "relacion": "E000/F013",
+  "prueba": "pendiente:E000/F013",
+  "familia": "herramientas"
+}

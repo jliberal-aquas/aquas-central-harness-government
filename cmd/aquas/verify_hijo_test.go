@@ -136,16 +136,19 @@ func TestVerifyEnElHijo(t *testing.T) {
 		t.Errorf("core.hooksPath ajeno no se pisa; quedó %q", hooksPathDe(otro))
 	}
 
-	// Sin .git: install sale 0 y no escribe pre-commit.
+	// Sin .git: install inicia git (E003/F006/S001) y escribe el pre-commit.
 	sinGit := t.TempDir()
 	if s := aquas(t, sinGit, "", "install"); s.codigo != 0 {
 		t.Errorf("install sin .git debe salir 0; dio %+v", s)
 	}
-	if _, err := os.Stat(filepath.Join(sinGit, filepath.FromSlash(preCommit))); err == nil {
-		t.Error("sin .git no hay dónde fijar core.hooksPath; no debe escribirse el pre-commit")
+	if _, err := os.Stat(filepath.Join(sinGit, filepath.FromSlash(preCommit))); err != nil {
+		t.Errorf("install inicia git y escribe el pre-commit: %v", err)
 	}
-	// Hallazgos A1.2 y A1.3: sin repo git propio, el gate del hijo no da OK; nombra el pre-commit y el entorno.
-	if s := aquas(t, sinGit, "", "verify"); s.codigo == 0 || !strings.Contains(s.out+s.err, "git:pre-commit") || !strings.Contains(s.out+s.err, "entorno") {
-		t.Errorf("verify en un hijo sin git debe fallar por el pre-commit y el entorno; dio %+v", s)
+	// Hallazgos A1.2 y A1.3: si luego se borra el repo, el gate del hijo no da OK; nombra el pre-commit y el entorno.
+	if err := os.RemoveAll(filepath.Join(sinGit, ".git")); err != nil {
+		t.Fatal(err)
+	}
+	if s := aquas(t, sinGit, "", "verify"); s.codigo == 0 || !strings.Contains(s.out+s.err, "git:pre-commit") { // el entorno ya quedó declarado por install
+		t.Errorf("verify en un hijo sin git debe fallar por el pre-commit; dio %+v", s)
 	}
 }

@@ -82,7 +82,7 @@ Prueba integral: `TestHijoCumpleLaCentral` (un hijo instalado tiene activo cada 
 | F003 | Plantilla de ganchos única, aviso al pisar un agente propio y auditor útil en el hijo. | Planeado |
 | F004 | la wiki acepta y distingue pruebas ruta:nombre de un hijo sin Go | Planeado |
 | F005 | Excluye por máquina las reglas globales viejas en central e hijos. | Planeado |
-| [F006](F006/README.md) | Un hijo nuevo queda funcionando al instalar, aunque la carpeta no tenga git. | Planeado |
+| [F006](F006/README.md) | Un hijo nuevo queda funcionando al instalar, aunque la carpeta no tenga git. | En curso |
 
 <!-- /GENERADO -->
 

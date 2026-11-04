@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E003",
+    "feature": "F006",
+    "slice": "S001",
+    "tarea": "E003/F006/S001 aprobado (A3); cerrando"
+  },
+  "siguiente": "commit y push de S001; luego cp -t y S002",
+  "pendientes": [
+    "humano: go install …/cmd/aquas@v0.2.0 y aquas update en cada hijo"
+  ],
+  "decisiones": [
+    "congeladas las features nuevas hasta terminar la poda (humano 2026-11-04)"
+  ],
+  "huella_git": "22d56751bd5a82392fc86114a26bb5974d05b45c5f22b4cf258895b8b1cbcb81",
+  "actualizado": "2026-11-04T17:57:15Z",
+  "sello": "8be328116c6640dd8ec610bb4dfee3b0084b82783dc6a764e1e075515a0a49db"
+}

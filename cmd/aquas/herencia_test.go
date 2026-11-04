@@ -61,10 +61,10 @@ func TestHerenciaDePuntaAPunta(t *testing.T) {
 			t.Errorf("S003: el agente %s debió llegar al hijo: %v", a, err)
 		}
 	}
-	// S003 (D000090): sin git, install no falla; avisa que el entorno quedó sin declarar.
+	// S003 (D000090) y E003/F006/S001: sin git, install inicia git y declara el entorno, sin aviso.
 	sinGit := t.TempDir()
-	if s := aquas(t, sinGit, "", "install"); s.codigo != 0 || !strings.Contains(s.out, "AVISO: entorno sin declarar") {
-		t.Errorf("S003: install sin git debe salir 0 y avisar del entorno; dio %+v", s)
+	if s := aquas(t, sinGit, "", "install"); s.codigo != 0 || strings.Contains(s.out, "AVISO: entorno sin declarar") || !existe(sinGit, ".git") {
+		t.Errorf("S003: install sin git sale 0, inicia git y no avisa; dio %+v", s)
 	}
 	// S003: la guardia funciona en el hijo (exige el entorno que install declara).
 	if s := aquas(t, dir, `{"tool_name":"Write","tool_input":{"file_path":"../fuera.txt"}}`, "guardia"); s.codigo != 2 || !strings.Contains(s.err, "bloqueada: ../fuera.txt") {

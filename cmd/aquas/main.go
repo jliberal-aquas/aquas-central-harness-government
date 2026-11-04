@@ -310,6 +310,9 @@ func main() {
 		if len(os.Args) != 2 {
 			fallar(1, errors.New("uso: aquas update (en la carpeta del hijo, sin ruta)"))
 		}
+		if err := hijo.AsegurarGit(raiz); err != nil { // E003/F006/S001: update es la salida del hijo sin git
+			fallar(1, fmt.Errorf("update: %w", err))
+		}
 		rest, err := hijo.Update(raiz, gobcentral.Central, versionBinario())
 		if err != nil {
 			fallar(1, err)
@@ -330,6 +333,9 @@ func main() {
 		v := "devel"
 		if bi, ok := debug.ReadBuildInfo(); ok && bi.Main.Version != "" && bi.Main.Version != "(devel)" {
 			v = bi.Main.Version
+		}
+		if err := hijo.AsegurarGit(raiz); err != nil { // E003/F006/S001: antes de copiar nada
+			fallar(1, fmt.Errorf("install: %w", err))
 		}
 		if err := hijo.Install(raiz, gobcentral.Central, v); err != nil {
 			fallar(1, err)
@@ -402,7 +408,7 @@ func main() {
 		anotar(resultado)
 	case "guardia":
 		datos, _ := io.ReadAll(os.Stdin)
-		if m := entorno.Validar(raiz); m != "" {
+		if m := entorno.Validar(raiz); m != "" && (!hijo.EsHijo(raiz) || !esUpdate(datos)) { // E003/F006/S001: la única salida del hijo
 			_, _ = fmt.Fprintln(os.Stderr, "aquas guard: entorno no verificado, se bloquea todo: "+m)
 			os.Exit(2)
 		}
@@ -909,9 +915,20 @@ func registrarCierre(raiz, tipo, transcript, primera, resultado string) {
 	_ = f.Close()
 }
 
+// esUpdate (E003/F006/S001): la entrada de la guardia es una orden Bash que es exactamente `aquas update` (PowerShell lo frena la guardia siempre).
+func esUpdate(datos []byte) bool {
+	var e struct {
+		Tool  string `json:"tool_name"`
+		Input struct {
+			Command string `json:"command"`
+		} `json:"tool_input"`
+	}
+	return json.Unmarshal(datos, &e) == nil && e.Tool == "Bash" && strings.TrimSpace(e.Input.Command) == "aquas update"
+}
+
 // entornoHijo (E003/F001/S003) declara el entorno del hijo, como aquas init en la central:
 // la guardia del hijo lo exige. Install lo escribe; update lo repone si faltaba.
-// Si no puede (carpeta sin git o que no es su raíz), no frena: avisa. La guardia falla cerrada sin entorno (D000090).
+// Install y update ya pasaron por hijo.AsegurarGit (E003/F006/S001); si aun así falla, avisa. La guardia falla cerrada sin entorno (D000090).
 func entornoHijo(raiz string) {
 	err := os.MkdirAll(filepath.Dir(filepath.Join(raiz, entorno.RutaEntorno)), 0o755)
 	if err == nil {
