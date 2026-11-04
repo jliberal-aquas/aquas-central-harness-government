@@ -81,18 +81,23 @@ type pagina struct {
 	pruebas        []string // pruebas nombradas en «Contrato y evidencia»
 }
 
-// Verificar devuelve los problemas de la wiki bajo raiz/docs; vacío = gate OK.
+// Verificar devuelve los problemas de la wiki bajo raiz/docs; vacío = gate OK. Sin los avisos de estilo.
 func Verificar(raiz string) ([]string, error) {
+	p, _, err := VerificarConAvisos(raiz)
+	return p, err
+}
+
+// VerificarConAvisos (E000/F013/S001): problemas frenan; avisos de estilo (oración larga, término sin enlace) no.
+func VerificarConAvisos(raiz string) (problemas, avisos []string, err error) {
 	if _, err := os.Stat(filepath.Join(raiz, "docs", "README.md")); errors.Is(err, fs.ErrNotExist) {
-		return []string{"falta docs/README.md (inicio de la wiki)"}, nil
+		return []string{"falta docs/README.md (inicio de la wiki)"}, nil, nil
 	}
-	var problemas []string
 	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(glosario))); errors.Is(err, fs.ErrNotExist) {
 		problemas = append(problemas, "falta "+glosario+" (glosario de términos técnicos)")
 	}
 	paginas := map[string]*pagina{}
 	var orden []string
-	err := filepath.WalkDir(filepath.Join(raiz, "docs"), func(p string, d fs.DirEntry, err error) error {
+	err = filepath.WalkDir(filepath.Join(raiz, "docs"), func(p string, d fs.DirEntry, err error) error {
 		if err != nil || d.IsDir() || !strings.HasSuffix(p, ".md") {
 			return err
 		}
@@ -110,7 +115,7 @@ func Verificar(raiz string) ([]string, error) {
 		return nil
 	})
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	sort.Strings(orden)
 
@@ -134,6 +139,7 @@ func Verificar(raiz string) ([]string, error) {
 			problemas = append(problemas, revisarGlosario(pg)...)
 			problemas = append(problemas, revisarEnlaces(raiz, pg, anclas)...)
 			problemas = append(problemas, revisarLegibilidad(pg)...)
+			avisos = append(avisos, largas(pg)...)
 			continue
 		}
 		problemas = append(problemas, revisarSecciones(pg)...)
@@ -146,36 +152,37 @@ func Verificar(raiz string) ([]string, error) {
 		problemas = append(problemas, revisarNavegacion(pg, hijos[rel])...)
 		problemas = append(problemas, revisarEnlaces(raiz, pg, anclas)...)
 		problemas = append(problemas, revisarLegibilidad(pg)...)
-		problemas = append(problemas, revisarTerminos(pg, ts)...)
+		avisos = append(avisos, largas(pg)...)
+		avisos = append(avisos, revisarTerminos(pg, ts)...)
 	}
 	problemas = append(problemas, revisarAlcance(paginas, orden)...)
 	cmds, err := RevisarComandos(raiz)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	problemas = append(problemas, cmds...)
 	traza, err := revisarTrazabilidad(raiz, paginas, orden)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	problemas = append(problemas, traza...)
 	hijosPs, err := revisarHijos(raiz, paginas, orden)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	problemas = append(problemas, hijosPs...)
 	portadas, err := revisarPortadas(raiz)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	problemas = append(problemas, portadas...)
 	codigo, err := revisarCodigo(raiz)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	problemas = append(problemas, codigo...)
 	problemas = append(problemas, RevisarAlDia(raiz)...) // E001/F017/S006: página del slice en curso al día con su código
-	return problemas, nil
+	return problemas, avisos, nil
 }
 
 // relativa: ruta de p respecto de la raíz, con barras «/».

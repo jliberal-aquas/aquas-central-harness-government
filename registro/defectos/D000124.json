@@ -1,0 +1,12 @@
+{
+  "id": "D000124",
+  "firma": "guardia-contrato-bash-python",
+  "que": "el freno de leer el contrato antes de escribir no actúa si se escribe un .go con python por Bash",
+  "causa": "la regla de E001/F017/S008 solo mira Write y Edit",
+  "arreglo": "revisar también las escrituras por Bash a rutas de código",
+  "como_me_cercioro": "las ediciones con python a wiki.go pasaron y Edit a glosario_test.go frenó (2026-11-04)",
+  "ocurrencias": [],
+  "relacion": "E001/F017/S008",
+  "prueba": "pendiente:E000/F013",
+  "familia": "freno"
+}

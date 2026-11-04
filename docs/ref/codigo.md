@@ -74,6 +74,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `listar` | `(titulo string, problemas []string)` | listar imprime en stderr un título y cada problema en su viñeta. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `lista` | `(xs []string) string` | lista une los textos con comas, o «—» si no hay ninguno. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `fallar` | `(codigo int, err error)` | fallar imprime el error en stderr y termina con el código dado. |
+| [cmd/aquas/main.go](../../cmd/aquas/main.go) | `avisarWiki` | `(avisos []string)` | avisarWiki (E000/F013/S001): imprime los avisos de estilo de la wiki; no cambian el resultado del gate. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `revisarAislamiento` | `() (fallo, aviso string)` | revisarAislamiento: fallo para el gate y aviso para el arranque (E000/F008/S003, D000079). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `memoriaCLI` | `(raiz string, args []string)` | memoriaCLI: `ver` imprime la memoria; `fijar campo=valor…` la actualiza y la sella. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `memoriaArchivada` | `(raiz, id string) error` | memoriaArchivada: CERRADO exige el archivo de memoria del slice, apunte o no la memoria a él (E001/F002/S009, X01). |
@@ -467,14 +468,15 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [internal/wiki/legibilidad.go](../../internal/wiki/legibilidad.go) | `sinAbierto` | `(s, siguiente string) string` | sinAbierto quita del final de s una etiqueta HTML o un enlace que cierra en la línea siguiente: |
 | [internal/wiki/legibilidad.go](../../internal/wiki/legibilidad.go) | `oracionesConLinea` | `(lineas []string, nums []int) ([][]string, []int)` | oracionesConLinea (E000/F006/S004): como oraciones, y además la línea donde empieza cada una, |
 | [internal/wiki/legibilidad.go](../../internal/wiki/legibilidad.go) | `Perspicuidad` | `(ors [][]string) float64` | Perspicuidad calcula el índice Szigriszt-Pazos; 0 si no hay palabras. |
-| [internal/wiki/legibilidad.go](../../internal/wiki/legibilidad.go) | `revisarLegibilidad` | `(pg *pagina) []string` | revisarLegibilidad: avisos por oraciones largas o prosa difícil de leer. |
+| [internal/wiki/legibilidad.go](../../internal/wiki/legibilidad.go) | `revisarLegibilidad` | `(pg *pagina) []string` | revisarLegibilidad: problema si la prosa es difícil de leer (INFLESZ). Las oraciones largas solo avisan (E000/F013/S001). |
 | [internal/wiki/legibilidad.go](../../internal/wiki/legibilidad.go) | `largas` | `(pg *pagina) []string` | largas: un aviso por oración de más de MaxPalabrasOracion, con la línea donde empieza. |
 | [internal/wiki/legibilidad.go](../../internal/wiki/legibilidad.go) | `OracionesLargas` | `(raiz, rel string) ([]string, error)` | OracionesLargas (E000/F006/S004): avisos de oración larga de una página de docs/, para el hook al guardar. |
 | [internal/wiki/legibilidad.go](../../internal/wiki/legibilidad.go) | `coma` | `(x float64) string` | coma formatea un número con un decimal y coma decimal. |
 | [internal/wiki/mermaid.go](../../internal/wiki/mermaid.go) | `revisarMermaid` | `(rel, c string) []string` | revisarMermaid: avisa cada «;» dentro de un bloque mermaid; Mermaid lo toma como fin de sentencia (D000021). |
 | [internal/wiki/portadas.go](../../internal/wiki/portadas.go) | `faltanIniciativas` | `(ids []string, readme, inicioWiki string) []string` | faltanIniciativas: problemas del gate si alguna iniciativa no está enlazada en una portada. |
 | [internal/wiki/portadas.go](../../internal/wiki/portadas.go) | `revisarPortadas` | `(raiz string) ([]string, error)` | revisarPortadas: lee las iniciativas del backlog y las dos portadas; solo exige las iniciativas que ya tienen página. |
-| [internal/wiki/wiki.go](../../internal/wiki/wiki.go) | `Verificar` | `(raiz string) ([]string, error)` | Verificar devuelve los problemas de la wiki bajo raiz/docs; vacío = gate OK. |
+| [internal/wiki/wiki.go](../../internal/wiki/wiki.go) | `Verificar` | `(raiz string) ([]string, error)` | Verificar devuelve los problemas de la wiki bajo raiz/docs; vacío = gate OK. Sin los avisos de estilo. |
+| [internal/wiki/wiki.go](../../internal/wiki/wiki.go) | `VerificarConAvisos` | `(raiz string) (problemas, avisos []string, err error)` | VerificarConAvisos (E000/F013/S001): problemas frenan; avisos de estilo (oración larga, término sin enlace) no. |
 | [internal/wiki/wiki.go](../../internal/wiki/wiki.go) | `relativa` | `(raiz, p string) string` | relativa: ruta de p respecto de la raíz, con barras «/». |
 | [internal/wiki/wiki.go](../../internal/wiki/wiki.go) | `clasificar` | `(rel string) *pagina` | clasificar asigna nivel, padre e id de ejemplo según la ruta; nil = fuera del árbol. |
 | [internal/wiki/wiki.go](../../internal/wiki/wiki.go) | `pagina.agregarProsa` | `(texto string, linea int)` | agregarProsa suma una entrada de prosa con su línea en el archivo (E000/F006/S004). |

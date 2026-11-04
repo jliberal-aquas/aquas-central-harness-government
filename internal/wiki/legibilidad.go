@@ -177,9 +177,9 @@ func Perspicuidad(ors [][]string) float64 {
 	return 206.835 - 62.3*float64(silabas)/w - w/float64(len(ors))
 }
 
-// revisarLegibilidad: avisos por oraciones largas o prosa difícil de leer.
+// revisarLegibilidad: problema si la prosa es difícil de leer (INFLESZ). Las oraciones largas solo avisan (E000/F013/S001).
 func revisarLegibilidad(pg *pagina) []string {
-	ps := largas(pg)
+	var ps []string
 	ors := oraciones(pg.prosa)
 	if len(ors) == 0 {
 		return ps

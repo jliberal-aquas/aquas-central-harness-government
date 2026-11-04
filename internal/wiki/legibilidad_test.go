@@ -76,7 +76,6 @@ func TestFallasLegibilidad(t *testing.T) {
 	casos := []struct {
 		nombre, nuevo, espera string
 	}{
-		{"oración larga", strings.TrimSpace(strings.Repeat("sol ", 21)) + ".", "oración de 21 palabras (máx. 20)"},
 		{"legibilidad baja", "Documentación administrativa interdepartamental extraordinariamente complicada.", "legibilidad"},
 	}
 	for _, c := range casos {
@@ -86,6 +85,13 @@ func TestFallasLegibilidad(t *testing.T) {
 			exigeProblema(t, raiz, c.espera)
 		})
 	}
+}
+
+// TestOracionLargaEsAviso (E000/F013/S001): la oración larga avisa, no frena.
+func TestOracionLargaEsAviso(t *testing.T) {
+	raiz := wikiValida(t)
+	reemplazar(t, raiz, tS001, "Se lee.", strings.TrimSpace(strings.Repeat("sol ", 21))+".")
+	exigeAviso(t, raiz, "oración de 21 palabras (máx. 20)")
 }
 
 // TestOracionesConLinea (E000/F006/S004, hallazgos A1.1 y A1.2): cada oración sabe en qué línea empieza,

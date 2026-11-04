@@ -30,17 +30,6 @@ func TestFallasGlosario(t *testing.T) {
 			}
 		},
 			"falta docs/glosario.md"},
-		{"término sin enlace", func(t *testing.T, r string) { reemplazar(t, r, tS001, "Se lee.", "La zeta manda.") },
-			"primera aparición de «zeta» sin enlace al glosario (escribe [zeta](../../glosario.md#zeta))"},
-		{"mayúsculas cuentan", func(t *testing.T, r string) { reemplazar(t, r, tE001, "Se lee.", "Zeta manda.") },
-			"docs/E001/README.md: primera aparición de «zeta»"},
-		{"variante sin enlace", func(t *testing.T, r string) {
-			reemplazar(t, r, tGlosario, "Una letra.", "Una letra.\n\nVariantes: zetas")
-			reemplazar(t, r, tS001, "Se lee.", "Las zetas mandan.")
-		}, "primera aparición de «zeta»"},
-		{"enlace a otra entrada", func(t *testing.T, r string) {
-			reemplazar(t, r, tS001, "Se lee.", "La [zeta](../../glosario.md#otra) manda.")
-		}, "primera aparición de «zeta» sin enlace"},
 		{"entrada sin ejemplo", func(t *testing.T, r string) { reemplazar(t, r, tGlosario, "Ejemplo: la zeta va al final.", "") },
 			"docs/glosario.md: entrada «zeta» sin línea «Ejemplo:»"},
 		{"entrada sin definición", func(t *testing.T, r string) { reemplazar(t, r, tGlosario, "Una letra.", "") },
@@ -54,6 +43,35 @@ func TestFallasGlosario(t *testing.T) {
 			raiz := wikiValida(t)
 			c.mutar(t, raiz)
 			exigeProblema(t, raiz, c.espera)
+		})
+	}
+}
+
+// TestAvisosGlosario (E000/F013/S001): término sin enlace avisa, no frena.
+func TestAvisosGlosario(t *testing.T) {
+	casos := []struct {
+		nombre string
+		mutar  func(t *testing.T, raiz string)
+		espera string
+	}{
+		{"término sin enlace", func(t *testing.T, r string) { reemplazar(t, r, tS001, "Se lee.", "La zeta manda.") },
+			"primera aparición de «zeta» sin enlace al glosario (escribe [zeta](../../glosario.md#zeta))"},
+		{"mayúsculas cuentan", func(t *testing.T, r string) { reemplazar(t, r, tE001, "Se lee.", "Zeta manda.") },
+			"docs/E001/README.md: primera aparición de «zeta»"},
+		{"variante sin enlace", func(t *testing.T, r string) {
+			reemplazar(t, r, tGlosario, "Una letra.", "Una letra.\n\nVariantes: zetas")
+			reemplazar(t, r, tS001, "Se lee.", "Las zetas mandan.")
+		}, "primera aparición de «zeta»"},
+		{"enlace a otra entrada", func(t *testing.T, r string) {
+			reemplazar(t, r, tGlosario, "## zeta", "## otra\n\nOtra cosa.\n\nEjemplo: otra.\n\n## zeta")
+			reemplazar(t, r, tS001, "Se lee.", "La [zeta](../../glosario.md#otra) manda.")
+		}, "primera aparición de «zeta» sin enlace"},
+	}
+	for _, c := range casos {
+		t.Run(c.nombre, func(t *testing.T) {
+			raiz := wikiValida(t)
+			c.mutar(t, raiz)
+			exigeAviso(t, raiz, c.espera)
 		})
 	}
 }

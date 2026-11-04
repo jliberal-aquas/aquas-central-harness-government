@@ -69,8 +69,9 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
 - Secciones fijas por página: En una frase (niño de 5 años) · Para qué existe (problema → solución) · Analogía (con límites) · Diagrama · Ejemplo de punta a punta · Paso a paso · Cómo se usa · Abajo / ↑ Subir.
 - Diagramas por nivel: inicio y E = flujo alto nivel; F = proceso + estados; S = datos o secuencia.
 - Ejemplos encadenados: un ejemplo hilo por iniciativa; hijo declara `continúa: EJ-<padre>` y enlaza ancla existente.
-- Gate falla si: falta página de entidad · falta sección · falta diagrama del tipo exigido · enlace roto · página inalcanzable desde inicio · ejemplo sin `continúa` válido · término del glosario sin enlace en su primera aparición por página (`docs/glosario.md`: `## término` + definición + `Ejemplo:` + `Variantes:` opcional) · legibilidad bajo piso · página de slice con ficha activa sin tabla «Casos borde» completa (E001/F012/S001).
-- Legibilidad: P = 206,835 − 62,3·sílabas/palabras − palabras/oraciones (Szigriszt-Pazos) ≥ 65 (INFLESZ «bastante fácil») por página + oraciones ≤ 20 palabras. Mide prosa; excluye código, tablas, títulos y Navegación. Fuentes en `internal/wiki/legibilidad.go`.
+- Gate falla si: falta página de entidad · falta sección · falta diagrama del tipo exigido · enlace roto · página inalcanzable desde inicio · ejemplo sin `continúa` válido · glosario sin su forma (`docs/glosario.md`: `## término` + definición + `Ejemplo:` + `Variantes:` opcional) · legibilidad bajo piso · página de slice con ficha activa sin tabla «Casos borde» completa (E001/F012/S001).
+- Legibilidad: P = 206,835 − 62,3·sílabas/palabras − palabras/oraciones (Szigriszt-Pazos) ≥ 65 (INFLESZ «bastante fácil») por página. Mide prosa; excluye código, tablas, títulos y Navegación. Fuentes en `internal/wiki/legibilidad.go`.
+- Avisos, no frenan (E000/F013/S001): oración de más de 20 palabras; término del glosario sin enlace en su primera aparición por página. `aquas verify` los imprime como «Aviso · wiki:».
 - Wiki es para humano: extensa permitida; Caveman no aplica. Claridad del ejemplo = criterio humano.
 - Manual ≠ contrato: `docs/ref/` explica cómo funciona lo existente; páginas E/F/S son contrato + evidencia de lo hecho y por hacer.
 - Sección 9 «Contrato y evidencia» (antes de Navegación) en E/F/S, con diagramas, explicación y ejemplo como el resto:

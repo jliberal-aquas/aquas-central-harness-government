@@ -73,7 +73,7 @@ Prueba integral: `TestEstiloSoloAvisa`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | Oración de más de 20 palabras y primera mención sin enlace al glosario avisan en vez de frenar. | Planeado |
+| [S001](S001.md) | Oración de más de 20 palabras y primera mención sin enlace al glosario avisan en vez de frenar. | Hecho |
 
 <!-- /GENERADO -->
 

@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F013",
+    "slice": "S001",
+    "tarea": "E000/F013/S001 cerrado: estilo de wiki avisa"
+  },
+  "siguiente": "siguiente slice de la poda E000/F013",
+  "pendientes": [
+    "humano: go install …/cmd/aquas@v0.2.0 y aquas update en cada hijo"
+  ],
+  "decisiones": [
+    "congeladas las features nuevas hasta terminar la poda (humano 2026-11-04)"
+  ],
+  "huella_git": "fcd90870ef00851f04f8d9d20ce04e11e5ab08452c58b623bd2f5975cde9bd0e",
+  "actualizado": "2026-11-04T21:03:37Z",
+  "sello": "796d9d047224b7ad02894f6612701f4815109e1c6f8ef5795b498b8fd35988c0"
+}

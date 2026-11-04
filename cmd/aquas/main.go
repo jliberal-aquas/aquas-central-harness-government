@@ -122,10 +122,11 @@ func main() {
 				switch c {
 				case "aislamiento": // ya revisado arriba
 				case "wiki": // corre siempre: un hijo sin docs/ no se libra de la wiki (D000098)
-					docs, err := wiki.Verificar(raiz)
+					docs, avisos, err := wiki.VerificarConAvisos(raiz)
 					if err != nil {
 						fallar(1, err)
 					}
+					avisarWiki(avisos) // E000/F013/S001: estilo avisa, no frena
 					for _, d := range docs {
 						m = append(m, "wiki: "+d)
 					}
@@ -159,11 +160,12 @@ func main() {
 			listar("GATE FALLIDO · aislamiento:", []string{aislamiento})
 			calidadGo = append(calidadGo, aislamiento) // cuenta para el exit 1 final
 		}
-		derivados, err := compilador.Verificar(raiz)
+		docs, avisosWiki, err := wiki.VerificarConAvisos(raiz)
 		if err != nil {
 			fallar(1, err)
 		}
-		docs, err := wiki.Verificar(raiz)
+		avisarWiki(avisosWiki) // E000/F013/S001: estilo avisa, no frena; antes de derivados, que puede cortar
+		derivados, err := compilador.Verificar(raiz)
 		if err != nil {
 			fallar(1, err)
 		}
@@ -553,6 +555,13 @@ var (
 	sistema            = runtime.GOOS
 	ajustesGestionados = entorno.ArchivosReales
 )
+
+// avisarWiki (E000/F013/S001): imprime los avisos de estilo de la wiki; no cambian el resultado del gate.
+func avisarWiki(avisos []string) {
+	for _, a := range avisos {
+		_, _ = fmt.Fprintln(os.Stderr, "Aviso · wiki: "+a)
+	}
+}
 
 // revisarAislamiento: fallo para el gate y aviso para el arranque (E000/F008/S003, D000079).
 func revisarAislamiento() (fallo, aviso string) {

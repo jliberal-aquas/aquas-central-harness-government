@@ -2,7 +2,7 @@
   "id": "E000/F013",
   "tipo": "feature",
   "titulo": "Poda del gobierno con datos",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P0",
   "motivo": "humano 2026-11-04: el gobierno frena más de lo que deja hacer; 699 de 2401 corridas del gate fallaron, sobre todo por estilo",
   "padre": "E000",
@@ -16,8 +16,20 @@
       "verde_cuando": "verde cuando el gate pasa y la avisa"
     }
   ],
+  "rojo": {
+    "fecha": "2026-11-04T19:29:10Z",
+    "head": "792359ae868bdec1a0090fa63df209dc9a1972cf",
+    "resultado": {
+      "./internal/wiki:TestEstiloSoloAvisa": "estilo_aviso_test.go:35: oración larga y término sin enlace deben salir como aviso; avisos []"
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-04T20:40:30Z",
+    "head": "792359ae868bdec1a0090fa63df209dc9a1972cf",
+    "huella": {}
+  },
   "aprobacion": {
-    "fecha": "2026-11-04T17:03:05Z",
+    "fecha": "2026-11-04T20:35:14Z",
     "huella": "23f027af417a004381b83f705ebab20cde1f7d694d0c0d32d9e35a321ff65569",
     "mensaje": "apruebo E000/F013 con push tope 200",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
