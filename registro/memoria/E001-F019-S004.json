@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E001",
+    "feature": "F019",
+    "slice": "S004",
+    "tarea": "S004 cerrado (A4 APROBADO)"
+  },
+  "siguiente": "S005: aviso desde la tercera ronda de auditoría; F015/S002 aún dice tope por defecto 300 llamadas (fuera de S004)",
+  "pendientes": [
+    "verificar con /context en sesión nueva que el CLAUDE.md global quedó excluido (.claude/settings.local.json)"
+  ],
+  "decisiones": [
+    "—"
+  ],
+  "huella_git": "90ee14ad2b203e922208961c381c77e483914a47b72fcbb0558e32d591b3c742",
+  "actualizado": "2026-11-04T13:15:19Z",
+  "sello": "ee20d8a7df3493dfb48e8db831999b5418240db4ecf2296e8510fa3411a00fd0"
+}

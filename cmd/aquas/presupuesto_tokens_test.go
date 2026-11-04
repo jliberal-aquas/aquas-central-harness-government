@@ -18,6 +18,7 @@ func TestPresupuestoPorTokens(t *testing.T) {
 	t.Run("S001 el tope por defecto son 15M tokens ponderados", topePorDefectoEnTokens)
 	t.Run("S002 sin freno de 60 y aviso al 50%", sinFrenoYAvisoAlCincuenta)
 	t.Run("S003 commit pasa con el tope agotado", commitPasaConTopeAgotado)
+	t.Run("S004 un turno desbocado frena sin feature", turnoDesbocadoFrena)
 }
 
 // lineaUso: línea de asistente con su usage, como la escribe Claude Code (una por bloque de contenido; las de
@@ -126,12 +127,14 @@ func TestTopeEnTokens(t *testing.T) {
 	// «tope 20M» del humano: cuenta desde su hora con 20M.
 	time.Sleep(10 * time.Millisecond)
 	humano("apruebo E001/F002 tope 20M")
-	anexar(t, reg, lineaUso("m5", 20_000_000, 0, 0, 0, time.Now()))
+	anexar(t, reg, lineaUso("m5", 15_000_000, 0, 0, 0, time.Now()))
+	nuevoTurno(t, humano, "sigue") // S004: un turno no pasa de 20M; el tope de la feature cruza turnos
+	anexar(t, reg, lineaUso("m5b", 5_000_000, 0, 0, 0, time.Now()))
 	if s := usar("ls"); s.codigo != 0 {
 		t.Fatalf("20M justos bajo «tope 20M»; dio %+v", s)
 	}
 	anexar(t, reg, lineaUso("m6", 1, 0, 0, 0, time.Now()))
-	if s := usar("ls"); s.codigo != 2 || !strings.Contains(s.err, "20M") {
+	if s := usar("ls"); s.codigo != 2 || !strings.Contains(s.err, "tope de la feature") || !strings.Contains(s.err, "20M") {
 		t.Errorf("20M+1 frena nombrando 20M; dio %+v", s)
 	}
 	// «tope 0M», «tope xM», decimales (A1.1) y un tope desbordado (A1.6) no valen: rige el de 15M, no un tope de llamadas.
@@ -172,15 +175,17 @@ func TestTopeEnTokens(t *testing.T) {
 	// «tope 900,» con coma final sigue siendo de llamadas.
 	time.Sleep(10 * time.Millisecond)
 	humano("apruebo E001/F002 tope 900, con push")
-	anexar(t, reg, lineaUso("m9", 30_000_000, 0, 0, 0, time.Now()))
+	anexar(t, reg, lineaUso("m9", 19_000_000, 0, 0, 0, time.Now()))
 	if s := usar("ls"); s.codigo != 0 {
 		t.Errorf("«tope 900,» cuenta llamadas, no tokens; dio %+v", s)
 	}
 	// «tope 25 M» con espacio también es en tokens.
 	time.Sleep(10 * time.Millisecond)
 	humano("apruebo E001/F002 tope 25 M")
-	anexar(t, reg, lineaUso("m7", 25_000_001, 0, 0, 0, time.Now()))
-	if s := usar("ls"); s.codigo != 2 || !strings.Contains(s.err, "25M") {
+	anexar(t, reg, lineaUso("m7", 15_000_000, 0, 0, 0, time.Now()))
+	nuevoTurno(t, humano, "sigue")
+	anexar(t, reg, lineaUso("m7b", 10_000_001, 0, 0, 0, time.Now()))
+	if s := usar("ls"); s.codigo != 2 || !strings.Contains(s.err, "tope de la feature") || !strings.Contains(s.err, "25M") {
 		t.Errorf("«tope 25 M»: frena nombrando 25M; dio %+v", s)
 	}
 	// Feature CERRADO con sus slices CERRADO suelta el tope.

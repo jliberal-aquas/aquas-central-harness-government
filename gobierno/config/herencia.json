@@ -6,7 +6,7 @@
     {"control": "gancho:memory start", "destino": "todos", "motivo": "la memoria caliente arranca cada sesión del hijo"},
     {"control": "gancho:turn open", "destino": "todos", "motivo": "la auditoría de turnos vale en cada hijo"},
     {"control": "gancho:approval", "destino": "todos", "motivo": "el apruebo del humano sella contratos en cada hijo"},
-    {"control": "gancho:budget tool", "destino": "todos", "motivo": "el tope por feature, en tokens ponderados o llamadas, y sus avisos valen en cada hijo"},
+    {"control": "gancho:budget tool", "destino": "todos", "motivo": "el tope por feature, en tokens ponderados o llamadas, sus avisos y el tope extremo por turno valen en cada hijo"},
     {"control": "gancho:turn close", "destino": "todos", "motivo": "el cierre de turno con defecto registrado vale en cada hijo"},
     {"control": "gancho:memory close", "destino": "todos", "motivo": "la memoria al día antes de cerrar vale en cada hijo"},
     {"control": "gancho:proposal", "destino": "todos", "motivo": "toda PROPUESTA lleva diagrama en cada hijo"},

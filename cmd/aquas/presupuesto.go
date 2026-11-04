@@ -2,6 +2,7 @@ package main
 
 // E001/F015/S002: hook PreToolUse («aquas budget tool»). Frena el gasto por feature (tope aprobado con la
 // feature); avisa al 50% y al 80% del tope y del contexto (E001/F019/S002: el freno de 60 por turno salió).
+// E001/F019/S004: un tope extremo por turno (1000 llamadas o 20M ponderados) frena siempre, con o sin feature.
 // E000/F008/S005 (D000077, D000082): las llamadas, la feature, su tope y su hora salen del registro que escribe
 // Claude Code fuera del repo; nada sale de contadores, foco ni fichas, que el agente puede tocar. Única excepción
 // (E001/F017/S001): suelta el tope una feature CERRADO con todos sus slices CERRADO, y cada uno exigió auditoría
@@ -31,6 +32,8 @@ import (
 const (
 	topeTokensPorDefecto = 15_000_000 // E001/F019/S001: tokens ponderados sin «tope» en el apruebo de la feature
 	avisoContexto        = 200_000    // tokens: desde aquí se pide /compact
+	topeTurnoLlamadas    = 1000       // E001/F019/S004: llamadas del turno, hilo y subagentes
+	topeTurnoTokens      = 20_000_000 // E001/F019/S004: tokens ponderados del turno, hilo y subagentes
 )
 
 // avisoTopeAgotado: comienzo del freno por tope de feature agotado; solo ante él pasan las órdenes de cierre (E001/F019/S003).
@@ -231,6 +234,10 @@ func presupuestoCLI(raiz string, args []string) {
 	sesiones, err := escanearProyecto(raiz, e.Transcript)
 	if err != nil {
 		frenar("Presupuesto: %v. Sin registro no hay cuenta: informa al humano.", err)
+	}
+	// E001/F019/S004: el tope extremo del turno va primero; rige siempre y ninguna orden de cierre lo salta.
+	if msg := frenoTurno(raiz, e.Transcript, sesiones); msg != "" {
+		frenar("%s", msg)
 	}
 	// E001/F019/S002: el freno de 60 llamadas por turno salió; quedan el tope de la feature y sus avisos.
 	msgFeature, cuenta := frenoFeature(raiz, e.Transcript, sesiones)
@@ -450,7 +457,9 @@ func escanear(raiz, ruta string) (escaneo, error) {
 			r.turno[id] = true
 		}
 	}
-	r.inicio = desde.UnixNano()
+	if !desde.IsZero() { // A1.3: UnixNano de la hora cero no está definido; 0 = sin mensaje humano
+		r.inicio = desde.UnixNano()
+	}
 	return r, err
 }
 
@@ -564,6 +573,62 @@ func frenoFeature(raiz, ruta string, sesiones map[string]escaneo) (msg string, c
 	}
 	return "", &cuentaFeature{ap: ap, pct: int64(len(ids)) * 100 / int64(max(ap.tope, 1)),
 		texto: fmt.Sprintf("%d de %d llamadas", len(ids), ap.tope)}
+}
+
+// frenoTurno (E001/F019/S004): último recurso contra bucles. Suma las llamadas distintas y los tokens ponderados del
+// turno abierto (desde el mensaje humano más reciente de la sesión) en el hilo principal y sus subagentes; frena al pasar
+// topeTurnoLlamadas o topeTurnoTokens, con o sin feature aprobada. "" si puede seguir.
+func frenoTurno(raiz, ruta string, sesiones map[string]escaneo) string {
+	principal := filepath.Clean(ruta)
+	if dir := filepath.Dir(principal); filepath.Base(dir) == "subagents" { // registro de subagente: sube al de su sesión
+		principal = filepath.Dir(dir) + ".jsonl"
+	}
+	propia, ok := sesiones[principal]
+	if !ok { // registro fuera de la carpeta leída: se lee aparte
+		var err error
+		if propia, err = escanear(raiz, principal); err != nil {
+			return fmt.Sprintf("Presupuesto: no se puede leer el registro de la sesión %s: %v.", principal, err)
+		}
+	}
+	var desde time.Time // sin mensaje humano con hora, toda la sesión es un turno
+	if propia.inicio != 0 {
+		desde = time.Unix(0, propia.inicio)
+	}
+	ids := map[string]bool{}
+	pesos := map[string]int64{}
+	sumar := func(e escaneo) {
+		for id, hora := range e.llamadas {
+			if !hora.Before(desde) {
+				ids[id] = true
+			}
+		}
+		for id, g := range e.gastos {
+			if !g.hora.Before(desde) && g.peso > pesos[id] {
+				pesos[id] = g.peso
+			}
+		}
+	}
+	sumar(propia)
+	subagentes, _ := filepath.Glob(filepath.Join(strings.TrimSuffix(principal, ".jsonl"), "subagents", "*.jsonl"))
+	for _, sub := range subagentes {
+		if st, err := os.Stat(sub); err == nil && st.ModTime().Before(desde) {
+			continue
+		}
+		e, err := escanear(raiz, sub)
+		if err != nil {
+			return fmt.Sprintf("Presupuesto: no se puede leer el registro %s: %v.", sub, err)
+		}
+		sumar(e)
+	}
+	var veinteavos int64
+	for _, p := range pesos {
+		veinteavos += p
+	}
+	if len(ids) > topeTurnoLlamadas || veinteavos > 20*topeTurnoTokens {
+		return fmt.Sprintf("Presupuesto: este turno lleva %d llamadas y %s tokens ponderados (tope extremo: %d llamadas o %s). No sigas: informa al humano y espera.",
+			len(ids), millones(veinteavos/20), topeTurnoLlamadas, millones(topeTurnoTokens))
+	}
+	return ""
 }
 
 // contextoMedido: tokens de entrada de la última llamada del modelo en el transcript; 0 si después

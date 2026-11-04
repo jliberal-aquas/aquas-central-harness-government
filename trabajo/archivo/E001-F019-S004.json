@@ -1,0 +1,310 @@
+{
+  "id": "E001/F019/S004",
+  "tipo": "slice",
+  "titulo": "Tope extremo por turno",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "retro R0002: humano aprueba presupuesto por tokens (1 sí, 2 sí, 3 sí)",
+  "padre": "E001/F019",
+  "bloqueado_por": [
+    "E001/F019/S001"
+  ],
+  "secuencia": 187,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestTopeExtremo",
+      "intencion": "valida el freno de bucles",
+      "rojo_cuando": "el turno pasa de 1000 llamadas o 20M tokens sin freno",
+      "verde_cuando": "la llamada 1001 o el token 20M frenan"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-04T12:24:45Z",
+    "head": "df999df7ed53797bda3e9a1af8421046fdd8f213",
+    "resultado": {
+      "./cmd/aquas:TestTopeExtremo": "presupuesto_turno_test.go:73: la llamada 1001 frena nombrando lo gastado; dio {out: err: codigo:0}"
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-04T12:49:01Z",
+    "head": "df999df7ed53797bda3e9a1af8421046fdd8f213",
+    "huella": {
+      "cmd/aquas/aislamiento_test.go": "e749ee96f0d49fb529940e302e0fde9aa416150d2acd4df5e2b48af947bbd928",
+      "cmd/aquas/aprobacion_feature_test.go": "4e3c60eed83ab428e809f2c08a815069bd931b6b019ae2d6aeadb56727f1797d",
+      "cmd/aquas/aprobacion_test.go": "1ea45fe220f315a1a19336747ae8947fdf5a7020755bf1fd8a48ecb1eb359239",
+      "cmd/aquas/apruebo_cubierto_test.go": "0f4549e9de4c84cedc8dbd1d3c5115eee2941270b9f11377c1568b336e2ceff6",
+      "cmd/aquas/arranque_test.go": "7dbdd6ca5b06b689c71c0e1c9f0475e51c1fd968fbd99c37beeb36e728e1be5b",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/central_embebida_test.go": "f75ecadd8ae0128ef3c4cb03f3d63f10c2c1f9b47935b15aec92469a5a34db0b",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/correccion_test.go": "411c6064b1548def9cdcf4cb942abea0b4dffc98257d710c98c37840ee5ae46d",
+      "cmd/aquas/defectos_integral_test.go": "37bb3f710fe758bb4ac9ffe1876d16a90e6341b31a6c1d1df1a9d80dd783d22a",
+      "cmd/aquas/desafio_test.go": "30ec95a2011970dfc3ff84f8447f846a2b3c12cb38d2b62896714d4aa56b12a8",
+      "cmd/aquas/editar_que_hace_test.go": "6a48a7c3dd6005f868157b392cf042762d43e76fc271b63c9215d93ddeb08c07",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/exencion_rutas_test.go": "7c05d30654b95d935498af5ecb6946170dbdc138b977b6a9aa88e81de6b96964",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/freno_cede_test.go": "3055e3bf847b9551b5615c8b7b48dbc3d8c0f1766c4421f51907fca13884d7f9",
+      "cmd/aquas/freno_hora_test.go": "c28e22b4f913dcd588aa484a93038c0e608058050cbaba69d1d103c10bb38e2a",
+      "cmd/aquas/freno_test.go": "0ae6084576d2ea850d8e03085a75be3d1bbaec087179200c1e85eee2137f917d",
+      "cmd/aquas/frenos_propios_test.go": "7613a3b766d7df1f2cf9ab504169ddd0533b12887c0bae7da0cfb943d6916895",
+      "cmd/aquas/frenos_test.go": "0a0ab0c2c90ee5fa17034521bdefe4b644694147056ba8f4048f40b0751500d8",
+      "cmd/aquas/gancho_veredicto_test.go": "de6f96c53bd61687211eb5b201b8d75f539521623d9d965bbfc35992d0fa3bfe",
+      "cmd/aquas/herencia_test.go": "09ce745d7e84bc472f8f2e4cd2f33a9e526411fc02d56735f82194088a161956",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "1e2ee7f687aa9c8029146ef428c4ce3c7785b9c3660a11a4e66ed04d07fac921",
+      "cmd/aquas/hijos_test.go": "0758969d2919a65018ed0dacfdece0a374d612bdef6bab60337300cdae575233",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "dffa650562fc6d3f127434fc2468314b19ffe22aee39a65ca3d7cb94858a6924",
+      "cmd/aquas/presupuesto_avisos_test.go": "6b8e6b31d86c456652be29ae6561a1cba2fc1a99361fcff06ffeeb467d8c37ad",
+      "cmd/aquas/presupuesto_cierre_test.go": "8a72331d8e3567b4310fc82a815ac25cb5e06fe9bde5f3eca1a6b3fa11f4398d",
+      "cmd/aquas/presupuesto_test.go": "36248967ab106597836bcb2917683e7627fe80bfe531efceade69bf887d39005",
+      "cmd/aquas/presupuesto_tokens_test.go": "7f337a89452602563f218c64050131d74f6fa508b8926e27ae2082c85f4a08cc",
+      "cmd/aquas/presupuesto_turno_test.go": "69cd471ec8c817db168f931fe6fc1ec25bbb74028633cdfe5f847797d4f08c48",
+      "cmd/aquas/pruebas_aisladas_test.go": "1e54a7c00956d161ad0c16cb0eccd9b25b7c77e043ef3a0cd59f7a0ed850507a",
+      "cmd/aquas/punta_test.go": "38c457d4226e9dcc37d6562317b22998c66ced5e1c5eb8b2da89e83a0463253e",
+      "cmd/aquas/retro_gobernada_test.go": "2f60057f462c655d6202b92f683353ae11edf6f38f2d67188c17e0119cdd0fc3",
+      "cmd/aquas/retrospectiva_test.go": "9ffdbfed185dcdc0f56ba7186bbf0a67d1cbcbf7bfa87f077628cd3317b2ad2c",
+      "cmd/aquas/rojo_test.go": "388f1575619b837a6b3134fcc20ad29c04c6ab3c522c976e3d6e2b8f6619f2dd",
+      "cmd/aquas/sello_test.go": "c208274912aea0a3fffbaecd3f40770d791da9c5b2140415a1493eecdb8778bc",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/tope_test.go": "5231faac33509f6d3e9eec6d010f65fb9ea27e0b59abf7f4e1f2e423b60e543c",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "cmd/aquas/verify_hijo_test.go": "e7e997591a450ef4655c403dee8af44d170001b5942d06ab6f2db327d0b6eb58"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-11-04T13:14:53Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/aislamiento_test.go": "e749ee96f0d49fb529940e302e0fde9aa416150d2acd4df5e2b48af947bbd928",
+      "cmd/aquas/aprobacion_feature_test.go": "4e3c60eed83ab428e809f2c08a815069bd931b6b019ae2d6aeadb56727f1797d",
+      "cmd/aquas/aprobacion_test.go": "1ea45fe220f315a1a19336747ae8947fdf5a7020755bf1fd8a48ecb1eb359239",
+      "cmd/aquas/apruebo_cubierto_test.go": "0f4549e9de4c84cedc8dbd1d3c5115eee2941270b9f11377c1568b336e2ceff6",
+      "cmd/aquas/arranque_test.go": "7dbdd6ca5b06b689c71c0e1c9f0475e51c1fd968fbd99c37beeb36e728e1be5b",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/central_embebida_test.go": "f75ecadd8ae0128ef3c4cb03f3d63f10c2c1f9b47935b15aec92469a5a34db0b",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/correccion_test.go": "411c6064b1548def9cdcf4cb942abea0b4dffc98257d710c98c37840ee5ae46d",
+      "cmd/aquas/defectos_integral_test.go": "37bb3f710fe758bb4ac9ffe1876d16a90e6341b31a6c1d1df1a9d80dd783d22a",
+      "cmd/aquas/desafio_test.go": "30ec95a2011970dfc3ff84f8447f846a2b3c12cb38d2b62896714d4aa56b12a8",
+      "cmd/aquas/editar_que_hace_test.go": "6a48a7c3dd6005f868157b392cf042762d43e76fc271b63c9215d93ddeb08c07",
+      "cmd/aquas/enlazar_hook_test.go": "c54acb785fd3438f80dad08f13832225d6b8b457645b0fb20ec2b092243b6d2a",
+      "cmd/aquas/exencion_rutas_test.go": "7c05d30654b95d935498af5ecb6946170dbdc138b977b6a9aa88e81de6b96964",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/freno_cede_test.go": "3055e3bf847b9551b5615c8b7b48dbc3d8c0f1766c4421f51907fca13884d7f9",
+      "cmd/aquas/freno_hora_test.go": "c28e22b4f913dcd588aa484a93038c0e608058050cbaba69d1d103c10bb38e2a",
+      "cmd/aquas/freno_test.go": "0ae6084576d2ea850d8e03085a75be3d1bbaec087179200c1e85eee2137f917d",
+      "cmd/aquas/frenos_propios_test.go": "7613a3b766d7df1f2cf9ab504169ddd0533b12887c0bae7da0cfb943d6916895",
+      "cmd/aquas/frenos_test.go": "0a0ab0c2c90ee5fa17034521bdefe4b644694147056ba8f4048f40b0751500d8",
+      "cmd/aquas/gancho_veredicto_test.go": "de6f96c53bd61687211eb5b201b8d75f539521623d9d965bbfc35992d0fa3bfe",
+      "cmd/aquas/herencia_test.go": "09ce745d7e84bc472f8f2e4cd2f33a9e526411fc02d56735f82194088a161956",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_integral_test.go": "1e2ee7f687aa9c8029146ef428c4ce3c7785b9c3660a11a4e66ed04d07fac921",
+      "cmd/aquas/hijos_test.go": "0758969d2919a65018ed0dacfdece0a374d612bdef6bab60337300cdae575233",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/oracion_hook_test.go": "0a17f55601668fa9f6ef977c08e2ce34c029cfaab593b47c3d15e75e4640fef6",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "dffa650562fc6d3f127434fc2468314b19ffe22aee39a65ca3d7cb94858a6924",
+      "cmd/aquas/presupuesto_avisos_test.go": "6b8e6b31d86c456652be29ae6561a1cba2fc1a99361fcff06ffeeb467d8c37ad",
+      "cmd/aquas/presupuesto_cierre_test.go": "8a72331d8e3567b4310fc82a815ac25cb5e06fe9bde5f3eca1a6b3fa11f4398d",
+      "cmd/aquas/presupuesto_test.go": "36248967ab106597836bcb2917683e7627fe80bfe531efceade69bf887d39005",
+      "cmd/aquas/presupuesto_tokens_test.go": "7f337a89452602563f218c64050131d74f6fa508b8926e27ae2082c85f4a08cc",
+      "cmd/aquas/presupuesto_turno_test.go": "69cd471ec8c817db168f931fe6fc1ec25bbb74028633cdfe5f847797d4f08c48",
+      "cmd/aquas/pruebas_aisladas_test.go": "1e54a7c00956d161ad0c16cb0eccd9b25b7c77e043ef3a0cd59f7a0ed850507a",
+      "cmd/aquas/punta_test.go": "38c457d4226e9dcc37d6562317b22998c66ced5e1c5eb8b2da89e83a0463253e",
+      "cmd/aquas/retro_gobernada_test.go": "2f60057f462c655d6202b92f683353ae11edf6f38f2d67188c17e0119cdd0fc3",
+      "cmd/aquas/retrospectiva_test.go": "9ffdbfed185dcdc0f56ba7186bbf0a67d1cbcbf7bfa87f077628cd3317b2ad2c",
+      "cmd/aquas/rojo_test.go": "388f1575619b837a6b3134fcc20ad29c04c6ab3c522c976e3d6e2b8f6619f2dd",
+      "cmd/aquas/sello_test.go": "c208274912aea0a3fffbaecd3f40770d791da9c5b2140415a1493eecdb8778bc",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/tope_test.go": "5231faac33509f6d3e9eec6d010f65fb9ea27e0b59abf7f4e1f2e423b60e543c",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "fde9ac81fd3b436b14e176e9d6af0fa77e816568fa2e5770b428a7b76f6d3ae3",
+      "cmd/aquas/verify_hijo_test.go": "e7e997591a450ef4655c403dee8af44d170001b5942d06ab6f2db327d0b6eb58"
+    },
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb\\subagents\\agent-a4b3b7d57ce78ed35.jsonl"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E001/F019",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "ficha:E001",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "pagina:docs/E001/F019/S004.md",
+      "marca": "actualizado",
+      "motivo": "evidencia, implementación y auditorías A1 a A4"
+    },
+    {
+      "clave": "pagina:docs/E001/F019/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "pagina:docs/E001/README.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:central.go\u003egobierno/config/herencia.json",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:cmd/aquas/herencia_test.go\u003egobierno/config/herencia.json",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:cmd/aquas/presupuesto_cierre_test.go\u003ecmd/aquas/presupuesto.go",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:cmd/aquas/presupuesto_cierre_test.go\u003edocs/E001/F019/S003.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:cmd/aquas/sinviejos_test.go\u003edocs/E000/F006/S006.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:cmd/aquas/sinviejos_test.go\u003edocs/E000/F006/S012.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:cmd/aquas/verify_hijo_test.go\u003egobierno/config/herencia.json",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/E000/F002/README.md\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/E001/F008/S004.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/README.md\u003egobierno/config/herencia.json",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S002.md\u003egobierno/config/herencia.json",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S003.md\u003egobierno/config/herencia.json",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/E003/F001/S005.md\u003egobierno/config/herencia.json",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/E003/README.md\u003egobierno/config/herencia.json",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/README.md\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:gobierno/config/agentes.json\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:gobierno/config/sellos.json\u003egobierno/canonico/agentes/orquestador.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:internal/herencia/herencia.go\u003egobierno/config/herencia.json",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    },
+    {
+      "clave": "nombra:internal/wiki/codigo.go\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "S004 agrega el tope extremo por turno; esto no lo describe"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/presupuesto*.go",
+    "cmd/aquas/*_test.go",
+    "docs/**"
+  ],
+  "ampliaciones": [
+    {
+      "ruta": "gobierno/config/herencia.json",
+      "motivo": "hallazgo A1.4: el texto del gancho no cuenta el tope extremo por turno"
+    },
+    {
+      "ruta": "gobierno/canonico/agentes/orquestador.md",
+      "motivo": "hallazgo A1.4: el texto del gancho no cuenta el tope extremo por turno"
+    }
+  ],
+  "codigo": [
+    "cmd/aquas/presupuesto.go",
+    "gobierno/config/herencia.json"
+  ],
+  "relacion": "nueva",
+  "que_hace": "Un turno se frena solo al pasar 1000 llamadas o 20M tokens, contra bucles desbocados."
+}

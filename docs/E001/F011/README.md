@@ -52,7 +52,7 @@ stateDiagram-v2
 
 continúa: [EJ-E001](../README.md#EJ-E001)
 
-1. El agente pasa las 60 llamadas del turno.
+1. El agente pasa el tope del turno (hoy 1000 llamadas, E001/F019/S004).
 2. El freno detiene el siguiente comando.
 3. El agente actualiza la memoria con `aquas memory set` y cierra el turno.
 
