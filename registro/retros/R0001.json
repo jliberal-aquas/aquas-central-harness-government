@@ -1,0 +1,16 @@
+{
+  "id": "R0001",
+  "fecha": "2026-11-02T22:07:54Z",
+  "head": "eebfed3865b9956b19e338d2afcb3b57fd0901db",
+  "slices_cerrados": 104,
+  "defectos": 103,
+  "fichas": [
+    "E001/F017"
+  ],
+  "motivo": "retro del 2-nov (597 turnos): sus fichas entraron en E001/F017; cuenta de su commit",
+  "aprobacion": {
+    "fecha": "2026-11-04T02:02:55Z",
+    "mensaje": "apruebo retro",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl"
+  }
+}

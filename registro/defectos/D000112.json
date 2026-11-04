@@ -3,10 +3,10 @@
   "firma": "retro-registrada-con-cuenta-de-hoy",
   "que": "R0001 se registró con la cuenta de hoy (118 slices, 111 defectos) y no con la del 2-nov (104, 103); apagó un aviso de retro que tocaba",
   "causa": "retro close solo sabe contar el estado actual; el agente no comparó con el commit de la retro (eebfed3)",
-  "arreglo": "PROPUESTO: decisión humana 2A, re-registrar R0001 con la cuenta y el head de eebfed3",
+  "arreglo": "retro close commit=\u003cc\u003e guarda la cuenta, fecha y head de ese commit; R0001 se registró con commit=eebfed3 (104 y 103)",
   "como_me_cercioro": "git ls-tree en eebfed3 da 104 slices CERRADO y 103 defectos (auditoría E001-F018-S002-A1)",
   "ocurrencias": [],
   "relacion": "E001/F018/S002",
-  "prueba": "pendiente:E001/F018/S002",
+  "prueba": "./cmd/aquas:TestRetrospectivaGobernada",
   "familia": "falso-verde"
 }
