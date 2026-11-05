@@ -1,0 +1,12 @@
+{
+  "id": "D000125",
+  "firma": "aprobacion-falla-callada-sin-pagina",
+  "que": "en el hijo silicon-saint-learning-platform el gancho approval falló con exit 1 (falta la página del contrato docs/E001/F002/S001.md) y nadie lo vio: el humano y el agente creyeron la aprobación dada; tres veces",
+  "causa": "Aprobar exige la página para la huella; el gancho UserPromptSubmit sale con exit 1, que Claude Code trata como error no bloqueante y no muestra (registro d908444b, hook_non_blocking_error 2026-11-05T01:55)",
+  "arreglo": "el gancho avisa al agente por stdout que la aprobación NO quedó y por qué; state EN_CURSO dice la causa real",
+  "como_me_cercioro": "apruebo de un slice sin página: el agente recibe el aviso y state nombra la página faltante",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "pendiente:E000/F013",
+  "familia": "aprobaciones"
+}

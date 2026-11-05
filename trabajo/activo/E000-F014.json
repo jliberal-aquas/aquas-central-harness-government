@@ -1,0 +1,21 @@
+{
+  "id": "E000/F014",
+  "tipo": "feature",
+  "titulo": "Controles sin huecos",
+  "estado": "BORRADOR",
+  "prioridad": "P0",
+  "motivo": "humano 2026-11-05: en el hijo la aprobación se perdió en silencio y el agente trabajó por fuera de aquas (D000125)",
+  "padre": "E000",
+  "bloqueado_por": [],
+  "secuencia": 198,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestControlesSinHuecos",
+      "intencion": "valida que los tres huecos del hijo quedan cerrados de punta a punta",
+      "rojo_cuando": "rojo cuando un slice nace sin página, un gancho falla mudo o un commit de código pasa sin slice en curso",
+      "verde_cuando": "verde cuando los tres casos se frenan o avisan con su causa"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "Ningún slice sin contrato, ningún gancho mudo y ningún commit de código fuera de un slice en curso."
+}
