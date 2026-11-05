@@ -56,6 +56,9 @@ func repoSello(t *testing.T) string {
 	poner(t, raiz, "cmd/x/main.go", "package main\n\nimport \"ejemplo.com/m/internal/a\"\n\nfunc main() { _ = a.A() }\n")
 	poner(t, raiz, "docs/ref.md", "# Ref\n\nEl código vive en `internal/a/a.go`.\nEl CLI en `cmd/x/main.go`.\n")
 	poner(t, raiz, "docs/otra.md", "# Otra\n\nNo nombra nada.\n")
+	poner(t, raiz, "internal/a/extra_test.go", "package a\n\n// cubre internal/a/a.go\n") // E000/F013/S004: una prueba Go que nombra
+	poner(t, raiz, "internal/c/c.go", "package c\n\n// usa internal/a/a.go\n")            // E000/F013/S004: código Go que nombra (A1.1)
+	poner(t, raiz, "gobierno/canonico/x.md", "Regla sobre `internal/a/a.go`.\n")          // E000/F013/S004: un canónico que nombra
 	poner(t, raiz, "registro/memoria/x.json", "{\"nota\": \"internal/a/a.go\"}\n")
 	git(t, raiz, "add", "-A")
 	git(t, raiz, "commit", "-q", "-m", "base")
@@ -104,9 +107,6 @@ func TestSelloArmaListaDeArchivos(t *testing.T) {
 	m := claves(t, raiz, "E001/F002/S004")
 	if it, ok := m["nombra:docs/ref.md>internal/a/a.go"]; !ok || !strings.Contains(it.Linea, "El código vive en `internal/a/a.go`.") {
 		t.Errorf("docs/ref.md nombra a un tocado: ítem con la línea relevante; dio %+v (ok=%v)", it, ok)
-	}
-	if _, ok := m["importa:cmd/x/main.go>internal/a"]; !ok {
-		t.Errorf("cmd/x/main.go importa el paquete tocado: ítem; hay %v", m)
 	}
 	for k := range m {
 		if strings.Contains(k, "registro/") || strings.Contains(k, "trabajo/") || strings.Contains(k, "docs/otra.md") || strings.Contains(k, ">cmd/x/main.go") {

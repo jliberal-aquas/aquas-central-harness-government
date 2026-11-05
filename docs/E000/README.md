@@ -135,7 +135,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.e
 | [F010](F010/README.md) | el cierre de turno frena si un pedido nuevo no trae bloque DESAFÍO completo | Hecho |
 | F011 | Avisa ideas repetidas o descartadas al crear fichas y exige contratos que no caducan | Planeado |
 | F012 | Un solo módulo lee el registro de sesión de Claude Code para guardia, freno, vueltas y respaldo | Planeado |
-| [F013](F013/README.md) | Cada control se mide y queda como freno, aviso, autocorrección o se borra. | En curso |
+| [F013](F013/README.md) | Cada control se mide y queda como freno, aviso, autocorrección o se borra. | Hecho |
 | [F014](F014/README.md) | Ningún slice sin contrato, ningún gancho mudo y ningún commit de código fuera de un slice en curso. | Hecho |
 
 <!-- /GENERADO -->

@@ -6,8 +6,9 @@ package backlog
 //   - Árbol: feature padre, iniciativa, dependientes (fichas abiertas con bloqueado_por este slice)
 //     y las páginas wiki del slice, la feature y la iniciativa. Un hermano sin dependencia no entra.
 //   - Archivos: tocados = `git diff` desde el HEAD del rojo + archivos nuevos. Por cada archivo
-//     del repo que nombra la ruta exacta de un tocado, o que importa (Go) su paquete, un ítem con
-//     la línea relevante. Se excluyen los datos: trabajo/, registro/, auditoria/, .tmp/, .aquas/.
+//     del repo que nombra la ruta exacta de un tocado, un ítem con la línea relevante. Se excluyen
+//     los datos (trabajo/, registro/, auditoria/, .tmp/, .aquas/) y los .go: a esos los vigila
+//     `go test` (E000/F013/S004).
 // La lista se arma de nuevo en cada consulta: tocar otro archivo agrega ítems sin marca.
 // Sin HEAD en el rojo (repo sin commits o sin Git) se exige el árbol y un aviso; solo se omite el nivel archivos (S013).
 // El nivel trabajo (otras iniciativas que comparten archivos o datos) es F002/S012.
@@ -18,7 +19,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -105,20 +105,6 @@ func arbol(raiz string, f Ficha) ([]Item, error) {
 	return xs, nil
 }
 
-// moduloGo: ruta del módulo declarada en go.mod, o vacío si no hay.
-func moduloGo(raiz string) string {
-	b, err := os.ReadFile(filepath.Join(raiz, "go.mod"))
-	if err != nil {
-		return ""
-	}
-	for _, l := range strings.Split(string(b), "\n") {
-		if m, ok := strings.CutPrefix(strings.TrimSpace(l), "module "); ok {
-			return strings.TrimSpace(m)
-		}
-	}
-	return ""
-}
-
 // lineaCon: primera línea de c que contiene s, recortada; sirve de evidencia en el sello.
 func lineaCon(c, s string) string {
 	for _, l := range strings.Split(c, "\n") {
@@ -152,7 +138,7 @@ func derivados(raiz string) map[string]bool {
 	return d
 }
 
-// archivos: quién nombra o importa lo tocado desde el HEAD del rojo.
+// archivos: qué archivo no Go nombra lo tocado desde el HEAD del rojo.
 func archivos(raiz, head string) ([]Item, error) {
 	cambiados, err := gitLineas(raiz, "diff", "--name-only", head)
 	if err != nil {
@@ -168,7 +154,6 @@ func archivos(raiz, head string) ([]Item, error) {
 	}
 	tocado := map[string]bool{}
 	var tocados []string
-	paquetes := map[string]bool{}
 	der := derivados(raiz)
 	for _, p := range append(cambiados, nuevos...) {
 		if excluida(p) || tocado[p] || der[p] {
@@ -176,20 +161,12 @@ func archivos(raiz, head string) ([]Item, error) {
 		}
 		tocado[p] = true
 		tocados = append(tocados, p)
-		if strings.HasSuffix(p, ".go") {
-			paquetes[path.Dir(p)] = true
-		}
 	}
 	sort.Strings(tocados)
-	var pkgs []string
-	for p := range paquetes {
-		pkgs = append(pkgs, p)
-	}
-	sort.Strings(pkgs)
-	mod := moduloGo(raiz)
 	var xs []Item
 	for _, a := range todos {
-		if excluida(a) || tocado[a] {
+		// E000/F013/S004: un .go que nombra o importa lo tocado ya lo vigilan `go test` y el compilador.
+		if excluida(a) || tocado[a] || strings.HasSuffix(a, ".go") {
 			continue
 		}
 		b, err := os.ReadFile(filepath.Join(raiz, filepath.FromSlash(a)))
@@ -200,14 +177,6 @@ func archivos(raiz, head string) ([]Item, error) {
 		for _, t := range tocados {
 			if strings.Contains(c, t) {
 				xs = append(xs, Item{Clave: "nombra:" + a + ">" + t, Linea: lineaCon(c, t)})
-			}
-		}
-		if mod != "" && strings.HasSuffix(a, ".go") {
-			for _, p := range pkgs {
-				imp := `"` + mod + "/" + p + `"`
-				if strings.Contains(c, imp) {
-					xs = append(xs, Item{Clave: "importa:" + a + ">" + p, Linea: lineaCon(c, imp)})
-				}
 			}
 		}
 	}
