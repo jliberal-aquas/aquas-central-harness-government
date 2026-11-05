@@ -2,7 +2,7 @@
   "id": "E000/F014",
   "tipo": "feature",
   "titulo": "Controles sin huecos",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P0",
   "motivo": "humano 2026-11-05: en el hijo la aprobación se perdió en silencio y el agente trabajó por fuera de aquas (D000125)",
   "padre": "E000",
@@ -23,29 +23,17 @@
       "./cmd/aquas:TestControlesSinHuecos": "controles_sin_huecos_test.go:36: hueco 1: backlog new dejó el slice sin página de contrato (err=open D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestControlesSinHuecos1567292221\\001\\docs\\E001\\F002\\S001.md: El sistema no puede encontrar la ruta especificada.)"
     }
   },
+  "verde": {
+    "fecha": "2026-11-05T05:48:12Z",
+    "head": "4ba8b3671167a395260caf9639e9859cbdcf56d6",
+    "huella": {}
+  },
   "aprobacion": {
-    "fecha": "2026-11-05T03:39:48Z",
+    "fecha": "2026-11-05T11:47:37Z",
     "huella": "ae37c66a85ef35cff0cbed8de7c359c407fee244bc137604f35f8322f9b1d226",
-    "mensaje": "apruebo E000/F014 con push tope 400",
+    "mensaje": "apruebo E000/F014 tope 60. Por otro lado, me repetiste, el resultado del turno, una, dos, tres, cuatro, cinco, seis, siete, ocho, nueve veces en la última interacción. ¿Tú crees que ese es el responsable? ¿Es posible? O sea, no puedo leer ni la mitad de las cosas que me están leyendo porque me están",
     "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
-    "push": true,
     "foto": {
-      "E000/F014/S001": [
-        {
-          "prueba": "./cmd/aquas:TestSliceNaceConContrato",
-          "intencion": "valida que todo slice nuevo tiene su página de contrato",
-          "rojo_cuando": "rojo cuando backlog new deja un slice sin página",
-          "verde_cuando": "verde cuando la página existe con Para qué existe y el apruebo se registra"
-        }
-      ],
-      "E000/F014/S002": [
-        {
-          "prueba": "./cmd/aquas:TestGanchosNuncaMudos",
-          "intencion": "valida que ningún gancho falla en silencio",
-          "rojo_cuando": "rojo cuando un gancho sale con exit 1 y solo stderr",
-          "verde_cuando": "verde cuando cada gancho con entrada rota avisa al agente o frena con exit 2"
-        }
-      ],
       "E000/F014/S003": [
         {
           "prueba": "./cmd/aquas:TestCommitExigeSliceEnCurso",

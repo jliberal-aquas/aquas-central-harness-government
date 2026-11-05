@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F014",
+    "slice": "S003",
+    "tarea": "S003 APROBADO (A4) y sellado; cerrando"
+  },
+  "siguiente": "cerrar F014, commit, push",
+  "pendientes": [
+    "humano: go install …/cmd/aquas@v0.2.0 y aquas update en cada hijo"
+  ],
+  "decisiones": [
+    "congeladas las features nuevas hasta terminar la poda (humano 2026-11-04)"
+  ],
+  "huella_git": "4e7e12b3872c0fa128976cb5097708a1be0961a678ec7f13399f3ee94655f8f2",
+  "actualizado": "2026-11-05T11:59:05Z",
+  "sello": "20443dad8aabb6e92c04fd142c1e283d6a68a502d7ae44f5a9e789b9c6aefc89"
+}

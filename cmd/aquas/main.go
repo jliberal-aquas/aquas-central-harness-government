@@ -120,6 +120,10 @@ func main() {
 			if p := hijo.RevisarPreCommit(raiz); p != "" {
 				m = append(m, p)
 			}
+			if ps := backlog.CommitSinSlice(raiz); len(ps) > 0 { // E000/F014/S003: se lista ya, antes de que la wiki corte
+				listar("GATE FALLIDO · hijo · commit sin slice EN_CURSO:", ps)
+				m = append(m, fmt.Sprintf("commit: %d archivos sin slice EN_CURSO (detalle arriba)", len(ps)))
+			}
 			for _, c := range corren {
 				switch c {
 				case "aislamiento": // ya revisado arriba
@@ -157,6 +161,10 @@ func main() {
 		calidadGo := revisarGo(raiz) // E001/F013/S001: primero, para que se vea aunque otro chequeo corte
 		if len(calidadGo) > 0 {
 			listar("GATE FALLIDO · calidad Go:", calidadGo)
+		}
+		if ps := backlog.CommitSinSlice(raiz); len(ps) > 0 { // E000/F014/S003: antes de que otro chequeo corte
+			listar("GATE FALLIDO · commit sin slice EN_CURSO:", ps)
+			calidadGo = append(calidadGo, ps...) // cuenta para el exit 1 final
 		}
 		if aislamiento != "" { // E000/F008/S003: también antes de que otro chequeo corte
 			listar("GATE FALLIDO · aislamiento:", []string{aislamiento})
