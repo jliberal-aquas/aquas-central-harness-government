@@ -33,8 +33,8 @@ func TestTurnoCLIDePuntaAPunta(t *testing.T) {
 	if c := string(mustLeer(t, filepath.Join(raiz, rel))); !strings.Contains(c, "```text\nHecho X.\n```") {
 		t.Fatalf("la respuesta queda en el turno:\n%s", c)
 	}
-	if s := aquas(t, raiz, `no es json`, "turno", "abrir"); s.codigo != 1 || !strings.Contains(s.err, "turno abrir") {
-		t.Errorf("entrada rota: exit 1 (no bloquea el mensaje) y lo dice por stderr; dio %+v", s)
+	if s := aquas(t, raiz, `no es json`, "turno", "abrir"); s.codigo != 0 || !strings.Contains(s.out, `"systemMessage"`) || !strings.Contains(s.out, "turno abrir") {
+		t.Errorf("entrada rota: exit 0 (no bloquea el mensaje) con aviso visible, nunca exit 1 mudo (E000/F014/S002); dio %+v", s)
 	}
 	out, err := exec.Command("git", "-C", raiz, "check-ignore", "-q", filepath.ToSlash(rel)).CombinedOutput()
 	if err != nil {

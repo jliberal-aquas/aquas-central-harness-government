@@ -80,8 +80,8 @@ func TestPresupuestoPorFeature(t *testing.T) {
 		t.Errorf("sin «tope N» la llamada 301 pasa: el tope por defecto es en tokens; dio %+v", s)
 	}
 	// Sin freno de 60 por turno (E001/F019/S002): lo prueban TestFrenoTurnoCedeConFeatureAprobada y TestAvisosDeGasto.
-	if s := aquas(t, raiz, "no json", "presupuesto", "herramienta"); s.codigo != 1 {
-		t.Errorf("entrada ilegible: código 1, sin bloquear; dio %+v", s)
+	if s := aquas(t, raiz, "no json", "presupuesto", "herramienta"); s.codigo != 0 || !strings.Contains(s.out, `"systemMessage"`) {
+		t.Errorf("entrada ilegible: exit 0 sin bloquear, con aviso visible; nunca exit 1 mudo (E000/F014/S002); dio %+v", s)
 	}
 }
 

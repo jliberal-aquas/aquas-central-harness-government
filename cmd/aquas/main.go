@@ -50,10 +50,12 @@ func main() {
 		os.Exit(64)
 	}
 	// E000/F006/S006: nombres en inglés → nombres internos; el nombre viejo anda pero avisa.
+	originales := append([]string(nil), os.Args[1:]...)
 	args, avisos := traducir(os.Args[1:])
+	nuncaMudo(args, originales) // E000/F014/S002: un gancho que falla avisa o frena; nunca exit 1 mudo
 	os.Args = append(os.Args[:1], args...)
 	for _, a := range avisos {
-		_, _ = fmt.Fprintf(os.Stderr, "aquas: %s; el nombre viejo dejará de existir más adelante\n", a)
+		_, _ = fmt.Fprintf(os.Stderr, "aquas: %s; %s más adelante\n", a, avisoNombreViejo)
 	}
 	raiz, err := os.Getwd()
 	if err != nil {
@@ -210,7 +212,7 @@ func main() {
 		fmt.Println("GATE OK · derivados, sello, wiki, backlog, herencia y guardia al día")
 	case "hook":
 		hook(raiz)
-	case "turno": // hooks UserPromptSubmit y Stop: nunca bloquean; fallo = exit 1 + stderr
+	case "turno": // hooks UserPromptSubmit y Stop: nunca bloquean; fallo interno = exit 1 + stderr, que nuncaMudo vuelve aviso visible
 		turnoCLI(raiz, os.Args[2:])
 	case "aprobacion": // hook UserPromptSubmit (E001/F010/S001): «apruebo <id>» del humano sella el contrato
 		aprobacionCLI(raiz)

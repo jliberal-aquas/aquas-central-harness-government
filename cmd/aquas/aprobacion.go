@@ -7,13 +7,14 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/jliberal-aquas/aquas-central-harness-government/internal/backlog"
 )
 
 // aprobacionCLI: solo un evento UserPromptSubmit cuenta como mensaje del humano. PreToolUse, PostToolUse,
-// Stop o cualquier otra entrada se ignoran. Nunca bloquea el mensaje: un fallo sale con exit 1 y stderr.
+// Stop o cualquier otra entrada se ignoran. Nunca bloquea el mensaje: un fallo sale con exit 1 y stderr, que nuncaMudo vuelve aviso visible (E000/F014/S002).
 func aprobacionCLI(raiz string) {
 	var e struct {
 		Evento   string `json:"hook_event_name"`
@@ -39,7 +40,10 @@ func aprobacionCLI(raiz string) {
 		return
 	}
 	if _, _, err := backlog.Ver(raiz, id); err != nil {
-		return // id sin ficha: no es una aprobación de nada
+		if strings.HasSuffix(err.Error(), id+" no existe") {
+			return // id sin ficha: no es una aprobación de nada
+		}
+		fallar(1, fmt.Errorf("aprobacion %s: %w", id, err)) // ficha ilegible: avisa, no calla (E000/F014/S002)
 	}
 	if _, err := backlog.Aprobar(raiz, id, prompt, e.Registro, time.Now()); err != nil {
 		fallar(1, fmt.Errorf("aprobacion %s: %w", id, err))
