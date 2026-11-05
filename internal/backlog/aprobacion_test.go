@@ -244,7 +244,7 @@ func arrancar(t *testing.T, raiz, id string) (Ficha, error) {
 func sembrarAprobacion(t *testing.T, raiz, id string) {
 	t.Helper()
 	ruta := filepath.Join(raiz, filepath.FromSlash(pagina(id)))
-	if _, err := os.Stat(ruta); err != nil {
+	if b, err := os.ReadFile(ruta); err != nil || strings.Contains(string(b), MarcaPendiente) { // E000/F014/S001
 		if err := os.MkdirAll(filepath.Dir(ruta), 0o755); err != nil {
 			t.Fatal(err)
 		}

@@ -85,7 +85,7 @@ Prueba integral: `TestControlesSinHuecos`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | backlog new de un slice crea su página de contrato si falta, con la sección Para qué existe. | Planeado |
+| [S001](S001.md) | backlog new de un slice crea su página de contrato si falta, con la sección Para qué existe. | Hecho |
 | [S002](S002.md) | Todo fallo de un gancho llega al agente con su causa; el gate prueba cada gancho. | Planeado |
 | [S003](S003.md) | El pre-commit rechaza código que no cubre el alcance de un slice en curso. | Planeado |
 

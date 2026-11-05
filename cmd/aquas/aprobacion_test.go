@@ -150,13 +150,19 @@ func TestHookIgnoraMensajeDeAgente(t *testing.T) {
 	}
 }
 
+// contratoDePrueba: escribe el contrato si la página falta o es la nacida con PENDIENTE (E000/F014/S001).
+func contratoDePrueba(t *testing.T, raiz, rel, id string) {
+	t.Helper()
+	if b, err := os.ReadFile(filepath.Join(raiz, filepath.FromSlash(rel))); err != nil || strings.Contains(string(b), "PENDIENTE:") {
+		escribir(t, raiz, rel, "# "+id+"\n\n## Para qué existe\n\nContrato de prueba.\n")
+	}
+}
+
 // aprobarCLI: deja la página del contrato y la aprobación humana del slice, como el flujo real antes de arrancar.
 func aprobarCLI(t *testing.T, raiz, id string) {
 	t.Helper()
 	rel := "docs/" + strings.Join(strings.Split(id, "/"), "/") + ".md"
-	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(rel))); err != nil {
-		escribir(t, raiz, rel, "# "+id+"\n\n## Para qué existe\n\nContrato de prueba.\n")
-	}
+	contratoDePrueba(t, raiz, rel, id)
 	if s := aquas(t, raiz, mensajeHumano(t, "apruebo "+id), "aprobacion"); s.codigo != 0 {
 		t.Fatalf("aprobacion %s: %+v", id, s)
 	}

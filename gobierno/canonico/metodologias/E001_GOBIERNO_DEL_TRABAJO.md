@@ -85,7 +85,7 @@ No compila a ningún agente hasta implementarse; luego se migra a wiki (`docs/`)
   - F: detalle completo de la feature + sus slices, cada uno con qué hace y enlace.
   - S: hoja; detalle completo del slice + sus pruebas con qué demuestran y rojo/verde.
   - Hijo cambia → padre se actualiza solo: lista de hijos y su estado (inicio, E, F) y pruebas (S) = bloque GENERADO por `aquas` desde las fichas `trabajo/`; gate falla si falta o está desfasado. Prosa y diagramas explicativos = criterio humano.
-  - Página nace cuando su ficha arranca (EN_CURSO o CERRADO); gate falla si falta. Antes: fila sin enlace en el padre.
+  - Página de slice nace con su ficha (`backlog new`, filas `PENDIENTE:`; el apruebo las rechaza) (E000/F014/S001). Página de E y F nace cuando su ficha arranca (EN_CURSO o CERRADO); gate falla si falta. Antes: fila sin enlace en el padre.
 - Cada página E/F/S: migas «Inicio › E › F › S».
 - E000 usa el mismo árbol: E000 → F → S.
 

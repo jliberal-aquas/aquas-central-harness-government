@@ -92,6 +92,7 @@ func TestNoPideAprueboCubierto(t *testing.T) {
 		"que_hace=hace algo", "prueba=./p:TestBandera=pide el arreglo|r|v"); s.codigo != 0 {
 		t.Fatalf("backlog new: %+v", s)
 	}
+	contratoDePrueba(t, raiz, "docs/E001/F002/S004.md", "E001/F002/S004") // E000/F014/S001
 	pasa("slice fuera de la foto", necesito("«apruebo E001/F002/S004»"))
 	pasa("feature con slice fuera de la foto", necesito("«apruebo E001/F002 con push»"))
 	frena("el slice de la foto sigue cubierto", necesito("«apruebo E001/F002/S003»"))

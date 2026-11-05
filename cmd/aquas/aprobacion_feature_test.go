@@ -91,6 +91,7 @@ func TestAvisoAlCrearSlice(t *testing.T) {
 		if s.codigo != 0 {
 			t.Fatalf("backlog new %s: %+v", id, s)
 		}
+		contratoDePrueba(t, raiz, "docs/"+id+".md", id) // E000/F014/S001: la feature cubre solo slices con contrato
 		return s
 	}
 	if s := crear("E001/F002/S004"); strings.Contains(s.out, "Aviso") {

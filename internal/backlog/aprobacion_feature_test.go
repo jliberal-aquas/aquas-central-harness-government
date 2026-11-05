@@ -89,6 +89,9 @@ func TestAprobacionDeFeatureCubreSusSlices(t *testing.T) {
 		t.Errorf("la aprobación propia vigente vale aunque la foto ya no cuadre; dio %v", err)
 	}
 	nuevo(t, raiz, "id=E007/F001/S003", "titulo=C", "prioridad=P1", "motivo=m")
+	if err := os.WriteFile(filepath.Join(raiz, "docs", "E007", "F001", "S003.md"), []byte("# x\n\n## Para qué existe\n\nContrato.\n"), 0o644); err != nil {
+		t.Fatal(err) // E000/F014/S001: la página nacida dice PENDIENTE; la feature cubre solo slices con contrato
+	}
 	if err := revisar("E007/F001/S003"); err == nil {
 		t.Error("un slice creado después de la aprobación no avanza")
 	}

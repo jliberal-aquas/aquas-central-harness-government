@@ -244,6 +244,9 @@ func Nuevo(raiz string, campos []string) (Ficha, error) {
 	f := Ficha{ID: id, Tipo: tipo, Titulo: v["titulo"], Estado: "BORRADOR", Prioridad: v["prioridad"],
 		Motivo: v["motivo"], Padre: padre, BloqueadoPor: bloq, Secuencia: sec + 1}
 	f.Pruebas, f.Relacion, f.QueHace = ps, v["relacion"], v["que_hace"]
+	if err := paginaNace(raiz, f); err != nil { // E000/F014/S001: sin página no nace la ficha
+		return Ficha{}, err
+	}
 	return f, escribir(raiz, Activo, f)
 }
 

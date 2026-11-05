@@ -2,7 +2,7 @@
   "id": "E000/F014",
   "tipo": "feature",
   "titulo": "Controles sin huecos",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P0",
   "motivo": "humano 2026-11-05: en el hijo la aprobación se perdió en silencio y el agente trabajó por fuera de aquas (D000125)",
   "padre": "E000",
@@ -16,6 +16,13 @@
       "verde_cuando": "verde cuando los tres casos se frenan o avisan con su causa"
     }
   ],
+  "rojo": {
+    "fecha": "2026-11-05T03:56:56Z",
+    "head": "69914f4a8cdc651caace022cceaf6a183eb8ff4c",
+    "resultado": {
+      "./cmd/aquas:TestControlesSinHuecos": "controles_sin_huecos_test.go:36: hueco 1: backlog new dejó el slice sin página de contrato (err=open D:\\Agents Factory\\claude-code-scaffolding\\.tmp\\TestControlesSinHuecos1567292221\\001\\docs\\E001\\F002\\S001.md: El sistema no puede encontrar la ruta especificada.)"
+    }
+  },
   "aprobacion": {
     "fecha": "2026-11-05T03:39:48Z",
     "huella": "ae37c66a85ef35cff0cbed8de7c359c407fee244bc137604f35f8322f9b1d226",

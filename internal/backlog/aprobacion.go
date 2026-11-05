@@ -73,6 +73,30 @@ func Huella(raiz string, f Ficha) (string, error) {
 	return hex.EncodeToString(h[:]), nil
 }
 
+// MarcaPendiente: relleno de la página nacida (E000/F014/S001); el mismo texto que internal/hijo usa en sus huecos.
+const MarcaPendiente = "PENDIENTE:"
+
+// reCeldaPendiente: celda de tabla Markdown cuyo texto empieza con la marca: una fila sin decidir.
+var reCeldaPendiente = regexp.MustCompile(`\|\s*` + MarcaPendiente)
+
+// contratoCompleto (E000/F014/S001, hallazgo A1): la página del slice existe y su «Para qué existe» no trae
+// filas PENDIENTE; si no, el humano aprobaría un contrato sin decidir.
+func contratoCompleto(raiz, id string) error {
+	rel := pagina(id)
+	b, err := os.ReadFile(filepath.Join(raiz, filepath.FromSlash(rel)))
+	if err != nil {
+		return fmt.Errorf("%s: falta la página del contrato %s", id, rel)
+	}
+	sec, ok := seccionContrato(string(b))
+	if !ok {
+		return fmt.Errorf("%s: %s no tiene la sección «## Para qué existe»", id, rel)
+	}
+	if reCeldaPendiente.MatchString(sec) { // solo una celda que empieza con la marca; mencionarla en prosa no frena (A2)
+		return fmt.Errorf("%s: el contrato de %s tiene filas %s: complétalo antes del apruebo", id, rel, MarcaPendiente)
+	}
+	return nil
+}
+
 // Aprobar registra la aprobación del contrato de un slice o de una feature (con la foto de sus slices) con la huella
 // actual. Lo llama solo el hook del mensaje del humano.
 func Aprobar(raiz, id, mensaje, registro string, ahora time.Time) (Ficha, error) {
@@ -84,6 +108,9 @@ func Aprobar(raiz, id, mensaje, registro string, ahora time.Time) (Ficha, error)
 	var foto map[string][]Prueba
 	switch f.Tipo {
 	case "slice":
+		if err := contratoCompleto(raiz, f.ID); err != nil {
+			return Ficha{}, err
+		}
 	case "feature": // E001/F015/S001: la aprobación de la feature guarda la foto de sus slices activos
 		act, _, err := todas(raiz)
 		if err != nil {
@@ -92,6 +119,9 @@ func Aprobar(raiz, id, mensaje, registro string, ahora time.Time) (Ficha, error)
 		foto = map[string][]Prueba{}
 		for _, s := range act {
 			if s.Tipo == "slice" && s.Padre == f.ID {
+				if err := contratoCompleto(raiz, s.ID); err != nil { // la feature cubre solo slices con contrato
+					return Ficha{}, err
+				}
 				foto[s.ID] = s.Pruebas
 			}
 		}

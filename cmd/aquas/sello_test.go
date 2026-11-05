@@ -55,9 +55,7 @@ func TestSelloCLIDePuntaAPunta(t *testing.T) {
 			t.Fatal(err)
 		}
 	}
-	if _, err := os.Stat(filepath.Join(raiz, "docs", "E001", "F001", "S001.md")); err != nil { // E000/F008/S002: cerrar exige aprobación con respaldo
-		escribir(t, raiz, "docs/E001/F001/S001.md", "# S001\n\n## Para qué existe\n\nContrato de prueba.\n")
-	}
+	contratoDePrueba(t, raiz, "docs/E001/F001/S001.md", "S001") // E000/F008/S002: cerrar exige aprobación con respaldo
 	if s := aquas(t, raiz, mensajeHumano(t, "apruebo E001/F001/S001"), "approval"); s.codigo != 0 {
 		t.Fatalf("aprobación: %+v", s)
 	}
