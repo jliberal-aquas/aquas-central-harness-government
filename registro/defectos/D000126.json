@@ -1,0 +1,12 @@
+{
+  "id": "D000126",
+  "firma": "cierre-repetido-turno-de-agente",
+  "que": "el orquestador mandó el cierre completo 9 veces en un solo tramo de trabajo (2026-11-05 03:42-05:51); el humano no pudo leer el resto",
+  "causa": "la regla UN cierre por turno contaba como turno cada aviso de subagente terminado; el arreglo previo solo cubría el freno del Stop",
+  "arreglo": "conducta: turnos abiertos por agente llevan una línea; gancho Stop propuesto sobre turno.Origen",
+  "como_me_cercioro": "conteo de «Resultado del turno» en el registro de la sesión: 9 entre 03:42 y 05:51",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "pendiente:E000",
+  "familia": "comunicacion"
+}
