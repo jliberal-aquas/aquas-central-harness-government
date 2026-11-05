@@ -8,5 +8,6 @@
   "ocurrencias": [],
   "relacion": "E003/F006",
   "prueba": "pendiente:E003/F006",
-  "familia": "hijos"
+  "familia": "hijos",
+  "tramo_familia": "E000/F007/S006"
 }

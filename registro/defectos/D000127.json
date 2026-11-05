@@ -1,0 +1,13 @@
+{
+  "id": "D000127",
+  "firma": "casos-borde-solo-go",
+  "que": "el gate de casos borde solo acepta nombres de prueba Go (Test…); un hijo TypeScript con Vitest no puede cumplirlo y no puede commitear (D000008 del hijo silicon-saint-learning-platform)",
+  "causa": "rePruebaNombrada en internal/wiki/contrato.go:23 exige `Test…` y enCodigo solo lee func Test de Go; la central prueba sus controles solo con hijos Go",
+  "arreglo": "aceptar los nombres de prueba de la ficha del slice en su forma ruta:nombre, sea cual sea el stack; probar en un hijo TypeScript",
+  "como_me_cercioro": "lectura de contrato.go:23 y casos_borde.go:73-90; reporte del hijo con experimento en docs/E001/F002/S001.md",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "pendiente:E000",
+  "familia": "hijos",
+  "tramo_familia": "E000/F007/S006"
+}

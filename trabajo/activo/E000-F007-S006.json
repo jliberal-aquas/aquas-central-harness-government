@@ -1,0 +1,21 @@
+{
+  "id": "E000/F007/S006",
+  "tipo": "slice",
+  "titulo": "Reincidencia familia hijos",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "la familia hijos juntó 3 apariciones (E001/F018/S003)",
+  "padre": "E000/F007",
+  "bloqueado_por": [],
+  "secuencia": 202,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestReincidenciaFamiliaHijos",
+      "intencion": "valida que la familia hijos no vuelve",
+      "rojo_cuando": "rojo cuando un defecto de la familia se reproduce",
+      "verde_cuando": "verde cuando el control lo impide"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "ataca la causa común de los defectos de la familia hijos"
+}

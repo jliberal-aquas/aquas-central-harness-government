@@ -8,5 +8,6 @@
   "ocurrencias": [],
   "relacion": "E003/F006",
   "prueba": "./cmd/aquas:TestCompileEnHijo",
-  "familia": "hijos"
+  "familia": "hijos",
+  "tramo_familia": "E000/F007/S006"
 }
