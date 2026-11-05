@@ -100,7 +100,8 @@ type lineaRegistro struct {
 	Origin struct {
 		Kind string `json:"kind"`
 	} `json:"origin"`
-	Timestamp string `json:"timestamp"`
+	Timestamp  string  `json:"timestamp"`
+	Attachment Adjunto `json:"attachment"` // E000/F013/S003: mensaje en cola
 }
 
 // UltimoMensajeHumano (E000/F010/S001): texto del mensaje que abrió el turno, si lo escribió el humano; "" si no.
@@ -162,34 +163,16 @@ func deAgente(t string) bool {
 	return false
 }
 
-// mensajeHumano: alguna línea de usuario con origen humano trae ese texto exacto; un mensaje guardado con 300
-// runas (recortado por Aprobar) se compara como prefijo. Líneas rotas y de otros se ignoran.
+// mensajeHumano: algún mensaje del humano vale ese texto exacto (Turno: línea de usuario de origen humano, mensaje
+// en cola o respuesta corta a la propuesta; E000/F013/S003); un mensaje guardado con 300 runas (recortado por
+// Aprobar) se compara como prefijo. Líneas rotas y de otros se ignoran.
 func mensajeHumano(ruta, mensaje string) (bool, error) {
-	fh, err := os.Open(ruta)
-	if err != nil {
-		return false, err
-	}
-	defer func() { _ = fh.Close() }()
 	recortado := utf8.RuneCountInString(mensaje) >= 300
-	rd := bufio.NewReader(fh)
-	for {
-		l, err := rd.ReadBytes('\n')
-		if len(l) > 0 && bytes.Contains(l, []byte(`"human"`)) {
-			var lr lineaRegistro
-			if json.Unmarshal(l, &lr) == nil && lr.Type == "user" && lr.Origin.Kind == "human" {
-				t := strings.TrimSpace(textoUsuario(lr.Message.Content))
-				if t != "" && (t == mensaje || recortado && strings.HasPrefix(t, mensaje)) {
-					return true, nil
-				}
-			}
-		}
-		if errors.Is(err, io.EOF) {
-			return false, nil
-		}
-		if err != nil {
-			return false, err
-		}
-	}
+	var ok bool
+	_, err := recorrer(ruta, func(t string) {
+		ok = ok || t != "" && (t == mensaje || recortado && strings.HasPrefix(t, mensaje))
+	})
+	return ok && err == nil, err
 }
 
 // textoUsuario: contenido como texto, o la unión de sus bloques «text»; otros bloques (tool_result) no cuentan.

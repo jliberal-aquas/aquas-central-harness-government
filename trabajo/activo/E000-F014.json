@@ -16,6 +16,39 @@
       "verde_cuando": "verde cuando los tres casos se frenan o avisan con su causa"
     }
   ],
+  "aprobacion": {
+    "fecha": "2026-11-05T03:39:48Z",
+    "huella": "ae37c66a85ef35cff0cbed8de7c359c407fee244bc137604f35f8322f9b1d226",
+    "mensaje": "apruebo E000/F014 con push tope 400",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E000/F014/S001": [
+        {
+          "prueba": "./cmd/aquas:TestSliceNaceConContrato",
+          "intencion": "valida que todo slice nuevo tiene su página de contrato",
+          "rojo_cuando": "rojo cuando backlog new deja un slice sin página",
+          "verde_cuando": "verde cuando la página existe con Para qué existe y el apruebo se registra"
+        }
+      ],
+      "E000/F014/S002": [
+        {
+          "prueba": "./cmd/aquas:TestGanchosNuncaMudos",
+          "intencion": "valida que ningún gancho falla en silencio",
+          "rojo_cuando": "rojo cuando un gancho sale con exit 1 y solo stderr",
+          "verde_cuando": "verde cuando cada gancho con entrada rota avisa al agente o frena con exit 2"
+        }
+      ],
+      "E000/F014/S003": [
+        {
+          "prueba": "./cmd/aquas:TestCommitExigeSliceEnCurso",
+          "intencion": "valida que no se commitea código fuera de un slice en curso",
+          "rojo_cuando": "rojo cuando un commit con código pasa sin slice EN_CURSO que lo cubra",
+          "verde_cuando": "verde cuando se rechaza nombrando la ruta y pasa con el alcance declarado"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "Ningún slice sin contrato, ningún gancho mudo y ningún commit de código fuera de un slice en curso."
 }

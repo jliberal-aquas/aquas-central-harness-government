@@ -33,14 +33,15 @@ func aprobacionCLI(raiz string) {
 		}
 		return
 	}
-	id, ok := backlog.IDAprobado(e.Prompt)
+	prompt := backlog.Resolver(e.Registro, e.Prompt) // E000/F013/S003: «sí» vale como la línea que el agente propuso
+	id, ok := backlog.IDAprobado(prompt)
 	if !ok {
 		return
 	}
 	if _, _, err := backlog.Ver(raiz, id); err != nil {
 		return // id sin ficha: no es una aprobación de nada
 	}
-	if _, err := backlog.Aprobar(raiz, id, e.Prompt, e.Registro, time.Now()); err != nil {
+	if _, err := backlog.Aprobar(raiz, id, prompt, e.Registro, time.Now()); err != nil {
 		fallar(1, fmt.Errorf("aprobacion %s: %w", id, err))
 	}
 }

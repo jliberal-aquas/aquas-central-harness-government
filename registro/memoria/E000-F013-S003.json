@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F013",
+    "slice": "S003",
+    "tarea": "S003 aprobado A6, sellado"
+  },
+  "siguiente": "cerrar S003 y arrancar F014",
+  "pendientes": [
+    "humano: go install …/cmd/aquas@v0.2.0 y aquas update en cada hijo"
+  ],
+  "decisiones": [
+    "congeladas las features nuevas hasta terminar la poda (humano 2026-11-04)"
+  ],
+  "huella_git": "656f1535c6a8520ed8d317df79ef0b50f3ee63f8ce2e75bdbdf87234b015f49f",
+  "actualizado": "2026-11-05T03:54:38Z",
+  "sello": "52bce1d5a4af40c4e6f6206b90493b50933ec63f25cce33ab3addf97b306787c"
+}

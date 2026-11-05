@@ -359,6 +359,7 @@ type lineaLlamadas struct {
 	Origin struct {
 		Kind string `json:"kind"`
 	} `json:"origin"`
+	Attachment backlog.Adjunto `json:"attachment"` // E000/F013/S003: mensaje en cola
 }
 
 // bloqueRegistro: un bloque del contenido de un mensaje.
@@ -445,9 +446,10 @@ var reFeature = regexp.MustCompile(`^E\d{3}/F\d{3}$`)
 func escanear(raiz, ruta string) (escaneo, error) {
 	r := escaneo{llamadas: map[string]time.Time{}, turno: map[string]bool{}, gastos: map[string]gasto{}}
 	var desde time.Time
+	var tu backlog.Turno // E000/F013/S003: «sí» a una propuesta y mensaje en cola valen como apruebo
 	err := recorrerRegistro(ruta, func(_ int64, l lineaLlamadas) {
 		hora, _ := time.Parse(time.RFC3339, l.Timestamp)
-		if texto := backlog.TextoHumano(l.Type, l.Origin.Kind, l.Message.Content); texto != "" {
+		if texto := tu.Linea(l.Type, l.Origin.Kind, l.Message.Content, l.Attachment); texto != "" {
 			if hora.After(desde) {
 				desde = hora
 			}

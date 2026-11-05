@@ -78,7 +78,7 @@ Prueba integral: `TestEstiloSoloAvisa`.
 |---|---|---|
 | [S001](S001.md) | Oración de más de 20 palabras y primera mención sin enlace al glosario avisan en vez de frenar. | Hecho |
 | [S002](S002.md) | al guardar en docs/, la oración larga avisa al agente sin frenarlo | Hecho |
-| [S003](S003.md) | «sí», «dale» o «ejecútalo» aprueban la línea apruebo que el agente propuso; sobrevive a compact | Planeado |
+| [S003](S003.md) | Una respuesta corta aprueba la línea propuesta y el apruebo escrito en cola cuenta como mensaje del humano. | Hecho |
 | [S004](S004.md) | el sello deja de pedir pruebas y código que solo nombran una ruta tocada | Planeado |
 
 <!-- /GENERADO -->

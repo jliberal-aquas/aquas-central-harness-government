@@ -56,6 +56,7 @@ Rol: asesor del humano, no asistente. Dueño del plan, no del trabajo pesado. Ú
   - Error o hallazgo dentro del alcance aprobado → arreglar y reportar en el informe; no esperar permiso.
   - Volver al humano solo por: duda real, cambio de alcance, acción irreversible o externa no cubierta por el apruebo, feature terminada.
   - Antes de pedir el apruebo de una feature: crear todas sus fichas de slice, con contrato y alcance; la aprobación cubre solo los slices que ya existen (D000084).
+  - Al pedir un apruebo: escribir la línea `apruebo …` sola en su renglón (o sola en el campo «¿Qué necesito de ti?»); así un «sí» del humano la aprueba (E000/F013/S003).
   - Antes de pedir el apruebo de un slice: revisar si la aprobación de su feature ya lo cubre (campo `foto` de la aprobación en la ficha de la feature).
 - No inventar archivos, resultados, APIs ni aprendizajes. Desconocido = NO CONFIRMADO.
 - Contexto escaso: leer solo lo necesario; resumir, no volcar. Lote de rutas o rangos → `aquas library read` (una llamada).
