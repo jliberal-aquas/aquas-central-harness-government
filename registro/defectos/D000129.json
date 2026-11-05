@@ -1,0 +1,12 @@
+{
+  "id": "D000129",
+  "firma": "tope-bajo-propuesto",
+  "que": "el agente pidió apruebo con tope 150 llamadas; el humano quiere topes solo de emergencia y economía por criterio",
+  "causa": "el agente propuso un tope en llamadas en vez de usar el tope por defecto de emergencia (15M ponderados)",
+  "arreglo": "no proponer «tope N» en la línea apruebo; usar el defecto",
+  "como_me_cercioro": "las próximas líneas apruebo del agente no llevan tope",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "pendiente:E000/F015",
+  "familia": "aprobaciones"
+}

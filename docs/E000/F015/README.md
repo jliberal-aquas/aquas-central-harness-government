@@ -83,7 +83,7 @@ Prueba integral: `TestHijoSinGoCicloCompleto`.
 
 | Hijo | Qué es | Estado |
 |---|---|---|
-| [S001](S001.md) | La tabla de casos borde acepta los nombres ruta:nombre de la ficha cuando el hijo declara pruebas.json. | Planeado |
+| [S001](S001.md) | La tabla de casos borde acepta los nombres ruta:nombre de la ficha cuando el hijo declara pruebas.json. | Hecho |
 | [S002](S002.md) | Una orden con --help o -h muestra su uso y no escribe nada. | Planeado |
 
 <!-- /GENERADO -->

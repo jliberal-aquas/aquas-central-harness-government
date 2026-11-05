@@ -1,0 +1,21 @@
+{
+  "id": "E000/F007/S007",
+  "tipo": "slice",
+  "titulo": "Reincidencia familia aprobaciones",
+  "estado": "BORRADOR",
+  "prioridad": "P1",
+  "motivo": "la familia aprobaciones juntó 3 apariciones (E001/F018/S003)",
+  "padre": "E000/F007",
+  "bloqueado_por": [],
+  "secuencia": 206,
+  "pruebas": [
+    {
+      "prueba": "./internal/defecto:TestReincidenciaFamiliaAprobaciones",
+      "intencion": "valida que la familia aprobaciones no vuelve",
+      "rojo_cuando": "rojo cuando un defecto de la familia se reproduce",
+      "verde_cuando": "verde cuando el control lo impide"
+    }
+  ],
+  "relacion": "nueva",
+  "que_hace": "ataca la causa común de los defectos de la familia aprobaciones"
+}

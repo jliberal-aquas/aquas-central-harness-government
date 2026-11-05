@@ -97,6 +97,7 @@ Prueba integral: `TestReincidenciaCreaSlice`.
 | S004 | backlog state rechaza CERRADO o CANCELADO en E000/F007, destino fijo de los tramos de reincidencia. | Planeado |
 | S005 | ataca la causa común de los defectos de la familia freno | Planeado |
 | [S006](S006.md) | ataca la causa común de los defectos de la familia hijos | Planeado |
+| [S007](S007.md) | ataca la causa común de los defectos de la familia aprobaciones | Planeado |
 
 <!-- /GENERADO -->
 

@@ -137,7 +137,7 @@ Prueba integral de la iniciativa: `go test ./...` más `go build -o .tmp/aquas.e
 | F012 | Un solo módulo lee el registro de sesión de Claude Code para guardia, freno, vueltas y respaldo | Planeado |
 | [F013](F013/README.md) | Cada control se mide y queda como freno, aviso, autocorrección o se borra. | Hecho |
 | [F014](F014/README.md) | Ningún slice sin contrato, ningún gancho mudo y ningún commit de código fuera de un slice en curso. | Hecho |
-| [F015](F015/README.md) | Un hijo con otro stack recorre el ciclo completo de aquas sin choques con supuestos de Go. | Planeado |
+| [F015](F015/README.md) | Un hijo con otro stack recorre el ciclo completo de aquas sin choques con supuestos de Go. | En curso |
 
 <!-- /GENERADO -->
 

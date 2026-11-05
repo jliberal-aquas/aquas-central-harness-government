@@ -142,7 +142,7 @@ Motivo: 5 defectos del 2026-10-23 eran previsibles; cada uno, una categoría que
   - choque con otro control;
   - quién habla: humano, agente o herramienta;
   - fallo a mitad de camino.
-- Aplica `sí` → nombrar prueba (`` `TestX` ``) que cubre el caso. `no` → por qué, sin celda vacía.
+- Aplica `sí` → nombrar prueba (`` `TestX` ``; hijo con pruebas.json: `` `ruta:nombre` `` de la ficha) que cubre el caso. `no` → por qué, sin celda vacía.
 - Integral de la feature cubre casos entre slices; pruebas del slice, los suyos.
 - Gate (`aquas verify`) exige tabla completa en página de slice con ficha activa. Archivada: no se revisa.
 - Auditor juzga calidad: caso real omitido, `no` sin razón válida, prueba que no cubre el caso → hallazgo.

@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F015",
+    "slice": "S001",
+    "tarea": "S001 cerrando: casos borde aceptan ruta:nombre de la ficha con pruebas.json"
+  },
+  "siguiente": "S002 --help: test desde .tmp, red, aplicar main_s002, green, auditar",
+  "pendientes": [
+    "humano: go install …/cmd/aquas@v0.2.0 y aquas update en cada hijo"
+  ],
+  "decisiones": [
+    "congeladas las features nuevas hasta terminar la poda (humano 2026-11-04)"
+  ],
+  "huella_git": "587101d5d9a15daba8b44db07df22217bc073185f36ecf0699fc756ab21efb90",
+  "actualizado": "2026-11-05T16:34:29Z",
+  "sello": "afeecc39d7b87c4007cb39c3bca3b3ead040037cc7f05f28fb0367389cf2dfd3"
+}

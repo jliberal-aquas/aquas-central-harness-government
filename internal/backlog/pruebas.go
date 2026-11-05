@@ -19,7 +19,10 @@ import (
 const RutaPruebas = "gobierno/config/pruebas.json"
 
 // Con plantilla, una prueba es ruta:nombre; sin espacios ni signos de shell, porque va dentro del comando.
-var reNombreLibre = regexp.MustCompile(`^[\w./-]+:[\w./:-]+$`)
+// PatronNombreLibre: el mismo patrón lo usa la wiki para reconocer la prueba citada (E000/F015/S001).
+const PatronNombreLibre = `[\w./-]+:[\w./:-]+`
+
+var reNombreLibre = regexp.MustCompile(`^` + PatronNombreLibre + `$`)
 
 const formatoLibre = "ruta:nombre=valida|rojo cuando|verde cuando"
 

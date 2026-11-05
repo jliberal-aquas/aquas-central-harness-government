@@ -2,7 +2,7 @@
   "id": "E000/F015",
   "tipo": "feature",
   "titulo": "Gobierno parejo para hijos sin Go",
-  "estado": "BORRADOR",
+  "estado": "EN_CURSO",
   "prioridad": "P0",
   "motivo": "humano 2026-11-05: el gate de casos borde bloquea al hijo TypeScript (D000127) y --help ejecuta la orden",
   "padre": "E000",
@@ -16,6 +16,38 @@
       "verde_cuando": "verde cuando el ciclo completo pasa con nombres ruta:nombre"
     }
   ],
+  "rojo": {
+    "fecha": "2026-11-05T16:08:33Z",
+    "head": "e22f9610ac11fce7ed013081d329da472e8a1aa2",
+    "resultado": {
+      "./cmd/aquas:TestHijoSinGoCicloCompleto": "hijo_sin_go_test.go:87: S001: el gate debió rechazar p.sh:inventada; dio {out: err:GATE FALLIDO · hijo:"
+    }
+  },
+  "aprobacion": {
+    "fecha": "2026-11-05T16:06:14Z",
+    "huella": "7c0abbb09e847a404ebb90d671b522f40fd21620eee11dbc1fcb9829ef950dfe",
+    "mensaje": "apruebo E000/F015 con push",
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb.jsonl",
+    "push": true,
+    "foto": {
+      "E000/F015/S001": [
+        {
+          "prueba": "./internal/wiki:TestCasosBordeSinGo",
+          "intencion": "valida que casos borde y contrato aceptan pruebas ruta:nombre de la ficha",
+          "rojo_cuando": "rojo cuando un nombre ruta:nombre de la ficha se rechaza",
+          "verde_cuando": "verde cuando se acepta y un nombre inventado se sigue rechazando"
+        }
+      ],
+      "E000/F015/S002": [
+        {
+          "prueba": "./cmd/aquas:TestAyudaNoEjecuta",
+          "intencion": "valida que --help y -h no ejecutan la orden",
+          "rojo_cuando": "rojo cuando una orden con --help escribe archivos",
+          "verde_cuando": "verde cuando solo muestra el uso y el repo queda igual"
+        }
+      ]
+    }
+  },
   "relacion": "nueva",
   "que_hace": "Un hijo con otro stack recorre el ciclo completo de aquas sin choques con supuestos de Go."
 }

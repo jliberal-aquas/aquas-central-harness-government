@@ -1,0 +1,13 @@
+{
+  "id": "D000128",
+  "firma": "continua-no-aprueba",
+  "que": "el humano dijo «continúa» tras la línea apruebo y el hook no lo tomó como sí; el agente quedó frenado",
+  "causa": "el hook solo reconoce «sí» como afirmación corta (E000/F013/S003)",
+  "arreglo": "ampliar las afirmaciones cortas que aprueban la línea apruebo pendiente",
+  "como_me_cercioro": "prueba del hook con «continúa», «dale» y «sigue»",
+  "ocurrencias": [],
+  "relacion": "nuevo",
+  "prueba": "pendiente:E000/F013",
+  "familia": "aprobaciones",
+  "tramo_familia": "E000/F007/S007"
+}

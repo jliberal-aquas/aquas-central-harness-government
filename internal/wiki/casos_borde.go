@@ -29,7 +29,39 @@ const (
 	encabezadoCasosBorde = "Categoría | Aplica | Prueba o motivo"
 )
 
-var reEnlaceMd = regexp.MustCompile(`\[([^\]]*)\]\([^)]*\)`)
+var (
+	reEnlaceMd = regexp.MustCompile(`\[([^\]]*)\]\([^)]*\)`)
+	// rePruebaLibre (E000/F015/S001, D000127): nombre ruta:nombre entre acentos graves, como lo guarda la ficha de un hijo con pruebas.json.
+	rePruebaLibre = regexp.MustCompile("`(" + backlog.PatronNombreLibre + ")`")
+)
+
+// citadas: pruebas nombradas en el texto; con pruebas.json, también los nombres ruta:nombre.
+func citadas(raiz, texto string) [][]string {
+	ns := rePruebaNombrada.FindAllStringSubmatch(texto, -1)
+	if _, err := os.Stat(filepath.Join(raiz, filepath.FromSlash(backlog.RutaPruebas))); err == nil {
+		ns = append(ns, rePruebaLibre.FindAllStringSubmatch(texto, -1)...)
+	}
+	return ns
+}
+
+// declarada (E000/F015/S001): la ficha del slice de la página rel declara la prueba n con su nombre completo.
+// Ficha ilegible o ausente: false (falla cerrado).
+func declarada(raiz, rel, n string) bool {
+	m := reS.FindStringSubmatch(rel)
+	if m == nil || !strings.Contains(n, ":") {
+		return false
+	}
+	f, _, err := backlog.Ver(raiz, m[1]+"/"+m[2]+"/"+m[3])
+	if err != nil {
+		return false
+	}
+	for _, p := range f.Pruebas {
+		if p.Nombre == n {
+			return true
+		}
+	}
+	return false
+}
 
 // revisarCasosBorde: problemas de la tabla «Casos borde» de la página rel; nada si no es un slice con ficha activa.
 // enCodigo: func Test del repo; una prueba de la tabla debe existir o estar prevista, como las del contrato.
@@ -70,7 +102,7 @@ func revisarCasosBorde(raiz, rel string, enCodigo map[string]string) []string {
 			continue
 		}
 		vista[cat] = true
-		nombres := rePruebaNombrada.FindAllStringSubmatch(texto, -1)
+		nombres := citadas(raiz, texto)
 		switch aplica {
 		case "sí":
 			if len(nombres) == 0 {
@@ -85,7 +117,7 @@ func revisarCasosBorde(raiz, rel string, enCodigo map[string]string) []string {
 			mal("«%s»: Aplica debe ser sí o no; dice «%s»", cat, aplica)
 		}
 		for _, n := range nombres {
-			if enCodigo[n[1]] == "" && !prevista(raiz, rel, n[1]) {
+			if enCodigo[n[1]] == "" && !prevista(raiz, rel, n[1]) && !declarada(raiz, rel, n[1]) {
 				ps = append(ps, fmt.Sprintf("%s: prueba nombrada no existe en el código: %s", rel, n[1]))
 			}
 		}
