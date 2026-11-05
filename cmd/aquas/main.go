@@ -49,6 +49,11 @@ func main() {
 		_, _ = fmt.Fprintln(os.Stderr, "uso: aquas init | compile | verify | hook | guard | memory | backlog | agent-close | library")
 		os.Exit(64)
 	}
+	if pideAyuda(os.Args[1:]) { // E000/F015/S002: pedir ayuda nunca ejecuta la orden
+		_, _ = fmt.Printf("uso: aquas init | compile | verify | hook | guard | memory | backlog | agent-close | library\n"+
+			"ayuda: «aquas %s» no se ejecutó; corre la orden sin --help para usarla (con un argumento inválido muestra su uso completo)\n", os.Args[1])
+		os.Exit(0)
+	}
 	// E000/F006/S006: nombres en inglés → nombres internos; el nombre viejo anda pero avisa.
 	originales := append([]string(nil), os.Args[1:]...)
 	args, avisos := traducir(os.Args[1:])
@@ -1008,4 +1013,14 @@ func entornoHijo(raiz string) {
 	if err != nil {
 		fmt.Printf("AVISO: entorno sin declarar (%v); la guardia bloqueará todo hasta que la carpeta sea la raíz de un repo git y corras aquas update\n", err)
 	}
+}
+
+// pideAyuda (E000/F015/S002): algún argumento es exactamente --help o -h; un valor como motivo=--help no cuenta.
+func pideAyuda(args []string) bool {
+	for _, a := range args {
+		if a == "--help" || a == "-h" {
+			return true
+		}
+	}
+	return false
 }

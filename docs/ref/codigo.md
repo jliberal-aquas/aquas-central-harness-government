@@ -97,6 +97,7 @@ Busca el archivo o la función; la última columna dice qué hace.
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `registrarCierre` | `(raiz, tipo, transcript, primera, resultado string)` | registrarCierre (E001/F004/S005, D000068) anota cada llamada del gancho cierre-agente en .tmp/hooks/cierre-agente.jsonl. |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `esUpdate` | `(datos []byte) bool` | esUpdate (E003/F006/S001): la entrada de la guardia es una orden Bash que es exactamente `aquas update` (PowerShell lo frena la guardia siempre). |
 | [cmd/aquas/main.go](../../cmd/aquas/main.go) | `entornoHijo` | `(raiz string)` | entornoHijo (E003/F001/S003) declara el entorno del hijo, como aquas init en la central: |
+| [cmd/aquas/main.go](../../cmd/aquas/main.go) | `pideAyuda` | `(args []string) bool` | pideAyuda (E000/F015/S002): algún argumento es exactamente --help o -h; un valor como motivo=--help no cuenta. |
 | [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `leerTope` | `(primera string, ap *apruebo)` | leerTope: «tope 25M» o «tope 25 M» → tokens ponderados; «tope 900» solo, o seguido de «con» o «y» → llamadas (el viejo). |
 | [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `pesoVeinteavos` | `(u usoRespuesta) int64` | pesoVeinteavos: el usage de una respuesta ponderado por precio, en veinteavos de token para no usar decimales. |
 | [cmd/aquas/presupuesto.go](../../cmd/aquas/presupuesto.go) | `millones` | `(n int64) string` | millones: 15000000 → «15M»; 15000001 → «15,0M». |

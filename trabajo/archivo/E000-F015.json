@@ -2,7 +2,7 @@
   "id": "E000/F015",
   "tipo": "feature",
   "titulo": "Gobierno parejo para hijos sin Go",
-  "estado": "EN_CURSO",
+  "estado": "CERRADO",
   "prioridad": "P0",
   "motivo": "humano 2026-11-05: el gate de casos borde bloquea al hijo TypeScript (D000127) y --help ejecuta la orden",
   "padre": "E000",
@@ -22,6 +22,11 @@
     "resultado": {
       "./cmd/aquas:TestHijoSinGoCicloCompleto": "hijo_sin_go_test.go:87: S001: el gate debió rechazar p.sh:inventada; dio {out: err:GATE FALLIDO · hijo:"
     }
+  },
+  "verde": {
+    "fecha": "2026-11-05T16:49:13Z",
+    "head": "26e9c33132f3162c34fbf8a46628b15055e52e53",
+    "huella": {}
   },
   "aprobacion": {
     "fecha": "2026-11-05T16:06:14Z",

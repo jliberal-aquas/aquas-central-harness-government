@@ -1,0 +1,314 @@
+{
+  "id": "E000/F015/S002",
+  "tipo": "slice",
+  "titulo": "Ayuda no ejecuta la orden",
+  "estado": "CERRADO",
+  "prioridad": "P1",
+  "motivo": "el auditor del hijo corrió aquas compile --help y compiló de verdad",
+  "padre": "E000/F015",
+  "bloqueado_por": [],
+  "secuencia": 204,
+  "pruebas": [
+    {
+      "prueba": "./cmd/aquas:TestAyudaNoEjecuta",
+      "intencion": "valida que --help y -h no ejecutan la orden",
+      "rojo_cuando": "rojo cuando una orden con --help escribe archivos",
+      "verde_cuando": "verde cuando solo muestra el uso y el repo queda igual"
+    }
+  ],
+  "rojo": {
+    "fecha": "2026-11-05T16:35:26Z",
+    "head": "26e9c33132f3162c34fbf8a46628b15055e52e53",
+    "resultado": {
+      "./cmd/aquas:TestAyudaNoEjecuta": "ayuda_test.go:36: [memory set -h -h]: debió mostrar el uso y salir 0; dio {out: err:aquas: se espera campo=valor; llegó \"-h\""
+    }
+  },
+  "verde": {
+    "fecha": "2026-11-05T16:45:26Z",
+    "head": "26e9c33132f3162c34fbf8a46628b15055e52e53",
+    "huella": {
+      "cmd/aquas/aislamiento_test.go": "e749ee96f0d49fb529940e302e0fde9aa416150d2acd4df5e2b48af947bbd928",
+      "cmd/aquas/aprobacion.go": "63ccadede2f1dd12ec192ed00e802e87ec0574c036f85af91bd2a5eded195ec2",
+      "cmd/aquas/aprobacion_corta_test.go": "2962ed39157ee46a7d8cc491bc17c778138dd3596f7af78e0cf620a42f877b14",
+      "cmd/aquas/aprobacion_feature_test.go": "bc05d10654035d0a95222fe0b36a72e0b37c2e847d11f9883215960159e783a0",
+      "cmd/aquas/aprobacion_test.go": "52d4cc4ae31c32de3e32e7122d32dd259ac29fcad6a69bc9aa09448e88cdb193",
+      "cmd/aquas/apruebo_cubierto.go": "bdd4d243ab52a97c2f7219900baa45cd9149db894c9c0f0682d0b6ac65eaa89b",
+      "cmd/aquas/apruebo_cubierto_test.go": "d460f8020cf5eb596cddfc9400ed7c4ce9c4eb3ec74e5fb071ebc5dad246e362",
+      "cmd/aquas/arranque_test.go": "7dbdd6ca5b06b689c71c0e1c9f0475e51c1fd968fbd99c37beeb36e728e1be5b",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/ayuda_test.go": "c221ee44dc6f0be024aa6b451619608ce4531e6d1908ab88529dc6e378189815",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/central_embebida_test.go": "f75ecadd8ae0128ef3c4cb03f3d63f10c2c1f9b47935b15aec92469a5a34db0b",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/commit_slice_test.go": "8584263f18175673986423237560c013b950ce3c5f9b64374cb627c8cdd1c4fb",
+      "cmd/aquas/compile_hijo_test.go": "0e032bcf7673fd597bb57a41d2732d79a870e627d48ef65b28922b1ea49d9578",
+      "cmd/aquas/controles_sin_huecos_test.go": "a6ac28abbc8f2b261a8d1919219ae6904f8c718e6b387bf57afa905652219e97",
+      "cmd/aquas/correccion_test.go": "411c6064b1548def9cdcf4cb942abea0b4dffc98257d710c98c37840ee5ae46d",
+      "cmd/aquas/defectos_integral_test.go": "37bb3f710fe758bb4ac9ffe1876d16a90e6341b31a6c1d1df1a9d80dd783d22a",
+      "cmd/aquas/desafio_test.go": "30ec95a2011970dfc3ff84f8447f846a2b3c12cb38d2b62896714d4aa56b12a8",
+      "cmd/aquas/editar_que_hace_test.go": "6a48a7c3dd6005f868157b392cf042762d43e76fc271b63c9215d93ddeb08c07",
+      "cmd/aquas/enlazar_hook_test.go": "bec6bdcd96d4ed695628084b8b2bdcd3e41b0e725e3d8b4dd4e9372454fa9656",
+      "cmd/aquas/estilo_aviso_hijo_test.go": "785a1f111f418ad1d326ff2c2c1d8c3655531fea90751c40730e4eb8c1742186",
+      "cmd/aquas/exencion_rutas_test.go": "7c05d30654b95d935498af5ecb6946170dbdc138b977b6a9aa88e81de6b96964",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/freno_cede_test.go": "3055e3bf847b9551b5615c8b7b48dbc3d8c0f1766c4421f51907fca13884d7f9",
+      "cmd/aquas/freno_hora_test.go": "c28e22b4f913dcd588aa484a93038c0e608058050cbaba69d1d103c10bb38e2a",
+      "cmd/aquas/freno_test.go": "0ae6084576d2ea850d8e03085a75be3d1bbaec087179200c1e85eee2137f917d",
+      "cmd/aquas/frenos_propios_test.go": "7613a3b766d7df1f2cf9ab504169ddd0533b12887c0bae7da0cfb943d6916895",
+      "cmd/aquas/frenos_test.go": "0a0ab0c2c90ee5fa17034521bdefe4b644694147056ba8f4048f40b0751500d8",
+      "cmd/aquas/gancho_aviso_test.go": "249bda1c993b853c17bd58d0c2e1518d4f877cbdae55990703106f68956a6355",
+      "cmd/aquas/gancho_mudo.go": "44dd0e2584dfced87cad0bd3942c23357e0222e02d323de66d084bacb2b68c35",
+      "cmd/aquas/gancho_veredicto_test.go": "de6f96c53bd61687211eb5b201b8d75f539521623d9d965bbfc35992d0fa3bfe",
+      "cmd/aquas/ganchos_nunca_mudos_test.go": "23df2ee73cd3c1ebeef09aa758094bb2d2e5b84d629fb6a41a8e0d9ccb283c5f",
+      "cmd/aquas/herencia_test.go": "94d88f9eeebf980e63424e7306f6d52ce346561f0660c68f99587f83af9abfbe",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_desfase_test.go": "c52d31442268863dd1251255e791dfb9bc0fabb3658a1e8c55e5a6ca3d18a269",
+      "cmd/aquas/hijo_git_test.go": "6c26286e59baf22a0152744626e7e0749211317ab0d7b68b30a703603277dbd3",
+      "cmd/aquas/hijo_integral_test.go": "1e2ee7f687aa9c8029146ef428c4ce3c7785b9c3660a11a4e66ed04d07fac921",
+      "cmd/aquas/hijo_sin_go_test.go": "15464796092b7ddb0124a6a9a898187d0c99892163ea82c410d0c622d15d52ea",
+      "cmd/aquas/hijos_test.go": "0758969d2919a65018ed0dacfdece0a374d612bdef6bab60337300cdae575233",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles.go": "961932d85825a5d3291f1514f2bdbcdd35b5f5c414369dfaca90abd9332e3df0",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "a88007b549f3c3faaa13f4b1f19a4268ce65419655c25855701d781ac4779984",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "47160db62a44e36af4abbab316a0a6ab4d1306ff729eb0d58be7d56171e044af",
+      "cmd/aquas/oracion_hook_test.go": "43ec755fd37597bdb024f0853f52f3803bd0187e21289cfae993f70f721b69b0",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "5a0af88a2a92d77ddc2ad3232a30ae38fbb264a610c301bb82d5b9a2e91ba4fc",
+      "cmd/aquas/presupuesto_avisos_test.go": "6b8e6b31d86c456652be29ae6561a1cba2fc1a99361fcff06ffeeb467d8c37ad",
+      "cmd/aquas/presupuesto_cierre_test.go": "8a72331d8e3567b4310fc82a815ac25cb5e06fe9bde5f3eca1a6b3fa11f4398d",
+      "cmd/aquas/presupuesto_test.go": "b18d2edd0e7d4a5255a800bb01da324f68f383c42d08e456e356fc860f3412e8",
+      "cmd/aquas/presupuesto_tokens_test.go": "21732b7a6e4675fe391771a534c19f8b406a254f28fee64112229f126bc745b0",
+      "cmd/aquas/presupuesto_turno_test.go": "69cd471ec8c817db168f931fe6fc1ec25bbb74028633cdfe5f847797d4f08c48",
+      "cmd/aquas/presupuesto_vuelta_test.go": "1c36e2cda409d267657c7d870614a49d95e20415966bd85b4b92475b4e3d9a20",
+      "cmd/aquas/pruebas_aisladas_test.go": "1e54a7c00956d161ad0c16cb0eccd9b25b7c77e043ef3a0cd59f7a0ed850507a",
+      "cmd/aquas/punta_test.go": "38c457d4226e9dcc37d6562317b22998c66ced5e1c5eb8b2da89e83a0463253e",
+      "cmd/aquas/retro_gobernada_test.go": "2f60057f462c655d6202b92f683353ae11edf6f38f2d67188c17e0119cdd0fc3",
+      "cmd/aquas/retrospectiva_test.go": "9ffdbfed185dcdc0f56ba7186bbf0a67d1cbcbf7bfa87f077628cd3317b2ad2c",
+      "cmd/aquas/rojo_test.go": "388f1575619b837a6b3134fcc20ad29c04c6ab3c522c976e3d6e2b8f6619f2dd",
+      "cmd/aquas/sello_test.go": "6003bbf76056a89be8e81cf960dfbdd3294a9b0d0441fcde3e8d785dd0d908cb",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/slice_nace_contrato_test.go": "611472324d173048c73aab0d792547b079106a1a8b1833cc8e3827639bb3cbdc",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/tope_test.go": "5231faac33509f6d3e9eec6d010f65fb9ea27e0b59abf7f4e1f2e423b60e543c",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "4000a7c518917706e3bc620262aa7dff74da74127b747662facc5d5aa56b11a1",
+      "cmd/aquas/verify_hijo_test.go": "8b72fc6e7daab04ab8b72d86e430e6c963d690cebd43288a343842fcdf415959"
+    }
+  },
+  "auditoria": {
+    "fecha": "2026-11-05T16:48:39Z",
+    "veredicto": "APROBADO",
+    "huella": {
+      "cmd/aquas/aislamiento_test.go": "e749ee96f0d49fb529940e302e0fde9aa416150d2acd4df5e2b48af947bbd928",
+      "cmd/aquas/aprobacion.go": "63ccadede2f1dd12ec192ed00e802e87ec0574c036f85af91bd2a5eded195ec2",
+      "cmd/aquas/aprobacion_corta_test.go": "2962ed39157ee46a7d8cc491bc17c778138dd3596f7af78e0cf620a42f877b14",
+      "cmd/aquas/aprobacion_feature_test.go": "bc05d10654035d0a95222fe0b36a72e0b37c2e847d11f9883215960159e783a0",
+      "cmd/aquas/aprobacion_test.go": "52d4cc4ae31c32de3e32e7122d32dd259ac29fcad6a69bc9aa09448e88cdb193",
+      "cmd/aquas/apruebo_cubierto.go": "bdd4d243ab52a97c2f7219900baa45cd9149db894c9c0f0682d0b6ac65eaa89b",
+      "cmd/aquas/apruebo_cubierto_test.go": "d460f8020cf5eb596cddfc9400ed7c4ce9c4eb3ec74e5fb071ebc5dad246e362",
+      "cmd/aquas/arranque_test.go": "7dbdd6ca5b06b689c71c0e1c9f0475e51c1fd968fbd99c37beeb36e728e1be5b",
+      "cmd/aquas/aviso.go": "b3af7291e0aebb51c7dd68a3379164a01a507a5b39b2cab7c5bf6dc8ae791ce1",
+      "cmd/aquas/aviso_test.go": "7a8ef88e256c335a5244dfdc3d0f82aa54fbd2df9ff300b31886d101770f3410",
+      "cmd/aquas/ayuda_test.go": "c221ee44dc6f0be024aa6b451619608ce4531e6d1908ab88529dc6e378189815",
+      "cmd/aquas/backlog_test.go": "bd95d9ba063593a19b2a1356eac49718a4abeb1010b4a975dbcbd92545a9349a",
+      "cmd/aquas/biblioteca_test.go": "ab73ae1855f069cd55efb33ce0581a2ad333e96e732d68071e3bf9e82fbcace7",
+      "cmd/aquas/calidad.go": "04e7979b3462ba23829d77d195998f04059db40bdb346d32244e028037c439d2",
+      "cmd/aquas/central_embebida_test.go": "f75ecadd8ae0128ef3c4cb03f3d63f10c2c1f9b47935b15aec92469a5a34db0b",
+      "cmd/aquas/ciclo_hijo_test.go": "0d463ce6fdc1bb1aa6d103b1eba3b58957c5db0e8b81f8c00d030dcc1af46a20",
+      "cmd/aquas/cierre_agente_test.go": "9d2e11864f93056bba6b27dc5703357f7a053a3da7cac9e573d4b3da3f364340",
+      "cmd/aquas/cierre_test.go": "ebe751b9b63267f9fa818ec2a8e9da497bac671243879ad02bb3ebbbcbbc7a3f",
+      "cmd/aquas/commit_slice_test.go": "8584263f18175673986423237560c013b950ce3c5f9b64374cb627c8cdd1c4fb",
+      "cmd/aquas/compile_hijo_test.go": "0e032bcf7673fd597bb57a41d2732d79a870e627d48ef65b28922b1ea49d9578",
+      "cmd/aquas/controles_sin_huecos_test.go": "a6ac28abbc8f2b261a8d1919219ae6904f8c718e6b387bf57afa905652219e97",
+      "cmd/aquas/correccion_test.go": "411c6064b1548def9cdcf4cb942abea0b4dffc98257d710c98c37840ee5ae46d",
+      "cmd/aquas/defectos_integral_test.go": "37bb3f710fe758bb4ac9ffe1876d16a90e6341b31a6c1d1df1a9d80dd783d22a",
+      "cmd/aquas/desafio_test.go": "30ec95a2011970dfc3ff84f8447f846a2b3c12cb38d2b62896714d4aa56b12a8",
+      "cmd/aquas/editar_que_hace_test.go": "6a48a7c3dd6005f868157b392cf042762d43e76fc271b63c9215d93ddeb08c07",
+      "cmd/aquas/enlazar_hook_test.go": "bec6bdcd96d4ed695628084b8b2bdcd3e41b0e725e3d8b4dd4e9372454fa9656",
+      "cmd/aquas/estilo_aviso_hijo_test.go": "785a1f111f418ad1d326ff2c2c1d8c3655531fea90751c40730e4eb8c1742186",
+      "cmd/aquas/exencion_rutas_test.go": "7c05d30654b95d935498af5ecb6946170dbdc138b977b6a9aa88e81de6b96964",
+      "cmd/aquas/fallo_defecto_test.go": "150ee430fd29d993b36d497e34f99a8a6d9dea7574359555775253b2eb3a5753",
+      "cmd/aquas/freno_cede_test.go": "3055e3bf847b9551b5615c8b7b48dbc3d8c0f1766c4421f51907fca13884d7f9",
+      "cmd/aquas/freno_hora_test.go": "c28e22b4f913dcd588aa484a93038c0e608058050cbaba69d1d103c10bb38e2a",
+      "cmd/aquas/freno_test.go": "0ae6084576d2ea850d8e03085a75be3d1bbaec087179200c1e85eee2137f917d",
+      "cmd/aquas/frenos_propios_test.go": "7613a3b766d7df1f2cf9ab504169ddd0533b12887c0bae7da0cfb943d6916895",
+      "cmd/aquas/frenos_test.go": "0a0ab0c2c90ee5fa17034521bdefe4b644694147056ba8f4048f40b0751500d8",
+      "cmd/aquas/gancho_aviso_test.go": "249bda1c993b853c17bd58d0c2e1518d4f877cbdae55990703106f68956a6355",
+      "cmd/aquas/gancho_mudo.go": "44dd0e2584dfced87cad0bd3942c23357e0222e02d323de66d084bacb2b68c35",
+      "cmd/aquas/gancho_veredicto_test.go": "de6f96c53bd61687211eb5b201b8d75f539521623d9d965bbfc35992d0fa3bfe",
+      "cmd/aquas/ganchos_nunca_mudos_test.go": "23df2ee73cd3c1ebeef09aa758094bb2d2e5b84d629fb6a41a8e0d9ccb283c5f",
+      "cmd/aquas/herencia_test.go": "94d88f9eeebf980e63424e7306f6d52ce346561f0660c68f99587f83af9abfbe",
+      "cmd/aquas/hijo_comando_test.go": "5a218cfaab31ff97ea927dc3883b7c1396eed1385e8203d9e3ca7b3c2395e949",
+      "cmd/aquas/hijo_desfase_test.go": "c52d31442268863dd1251255e791dfb9bc0fabb3658a1e8c55e5a6ca3d18a269",
+      "cmd/aquas/hijo_git_test.go": "6c26286e59baf22a0152744626e7e0749211317ab0d7b68b30a703603277dbd3",
+      "cmd/aquas/hijo_integral_test.go": "1e2ee7f687aa9c8029146ef428c4ce3c7785b9c3660a11a4e66ed04d07fac921",
+      "cmd/aquas/hijo_sin_go_test.go": "15464796092b7ddb0124a6a9a898187d0c99892163ea82c410d0c622d15d52ea",
+      "cmd/aquas/hijos_test.go": "0758969d2919a65018ed0dacfdece0a374d612bdef6bab60337300cdae575233",
+      "cmd/aquas/hook_cerrado_test.go": "1fb9705b3cd0a6995c249df643abc20e09828de9048017328b482856376efabb",
+      "cmd/aquas/hook_hijo_test.go": "3dff4088c20df2a679ac5ca4751e79d5ca1da090c71238da4835fdd481a7b81c",
+      "cmd/aquas/ingles.go": "961932d85825a5d3291f1514f2bdbcdd35b5f5c414369dfaca90abd9332e3df0",
+      "cmd/aquas/ingles_test.go": "f9a54c583914812ccffa892957c79ab8597c77fc70a120e8c3f6026b68fd0874",
+      "cmd/aquas/install_amedias_test.go": "fccb61b546b23a8670c456402c5491c3ddc6054508a8644408e0a0aff0ee3839",
+      "cmd/aquas/instrucciones_test.go": "168d6195c4d6deacd357f5bbfb92404afa7144b09fc64a3d3b56a40e91d4505c",
+      "cmd/aquas/integral_test.go": "8f26734d49c6f398190623eead0652c5a442d55802084b09fcad748227015bc7",
+      "cmd/aquas/limpiar.go": "a88007b549f3c3faaa13f4b1f19a4268ce65419655c25855701d781ac4779984",
+      "cmd/aquas/limpiar_conectado_test.go": "7acb027737bc8ac17e072fa152d1431728879d7945bc8e0cfe7fe767576df523",
+      "cmd/aquas/limpiar_test.go": "3141e36dbab43d97d8761f94b276484fb1d8f835e7102678427f09f1c3857ff6",
+      "cmd/aquas/main.go": "47160db62a44e36af4abbab316a0a6ab4d1306ff729eb0d58be7d56171e044af",
+      "cmd/aquas/oracion_hook_test.go": "43ec755fd37597bdb024f0853f52f3803bd0187e21289cfae993f70f721b69b0",
+      "cmd/aquas/precommit_test.go": "f8b4f2290ef0095eeab195337561e166b1316752fa66289c30cf6f5fe30aa7b4",
+      "cmd/aquas/presupuesto.go": "5a0af88a2a92d77ddc2ad3232a30ae38fbb264a610c301bb82d5b9a2e91ba4fc",
+      "cmd/aquas/presupuesto_avisos_test.go": "6b8e6b31d86c456652be29ae6561a1cba2fc1a99361fcff06ffeeb467d8c37ad",
+      "cmd/aquas/presupuesto_cierre_test.go": "8a72331d8e3567b4310fc82a815ac25cb5e06fe9bde5f3eca1a6b3fa11f4398d",
+      "cmd/aquas/presupuesto_test.go": "b18d2edd0e7d4a5255a800bb01da324f68f383c42d08e456e356fc860f3412e8",
+      "cmd/aquas/presupuesto_tokens_test.go": "21732b7a6e4675fe391771a534c19f8b406a254f28fee64112229f126bc745b0",
+      "cmd/aquas/presupuesto_turno_test.go": "69cd471ec8c817db168f931fe6fc1ec25bbb74028633cdfe5f847797d4f08c48",
+      "cmd/aquas/presupuesto_vuelta_test.go": "1c36e2cda409d267657c7d870614a49d95e20415966bd85b4b92475b4e3d9a20",
+      "cmd/aquas/pruebas_aisladas_test.go": "1e54a7c00956d161ad0c16cb0eccd9b25b7c77e043ef3a0cd59f7a0ed850507a",
+      "cmd/aquas/punta_test.go": "38c457d4226e9dcc37d6562317b22998c66ced5e1c5eb8b2da89e83a0463253e",
+      "cmd/aquas/retro_gobernada_test.go": "2f60057f462c655d6202b92f683353ae11edf6f38f2d67188c17e0119cdd0fc3",
+      "cmd/aquas/retrospectiva_test.go": "9ffdbfed185dcdc0f56ba7186bbf0a67d1cbcbf7bfa87f077628cd3317b2ad2c",
+      "cmd/aquas/rojo_test.go": "388f1575619b837a6b3134fcc20ad29c04c6ab3c522c976e3d6e2b8f6619f2dd",
+      "cmd/aquas/sello_test.go": "6003bbf76056a89be8e81cf960dfbdd3294a9b0d0441fcde3e8d785dd0d908cb",
+      "cmd/aquas/shell_humano_test.go": "11ac3b01ef1f88a9b75e26dfc5023e6638b5aad67d2bd5dcd0c744f73d55e689",
+      "cmd/aquas/sinviejos_test.go": "318241d3b94f31702b3a8755b8433597e234ab2b529c043fd9853a18cda32601",
+      "cmd/aquas/slice_nace_contrato_test.go": "611472324d173048c73aab0d792547b079106a1a8b1833cc8e3827639bb3cbdc",
+      "cmd/aquas/tabla_integral_test.go": "7e4e333d1f1a0376c316c7aae4f1ea0f5586b6c2d2c4653941b3272718d1328f",
+      "cmd/aquas/tope_test.go": "5231faac33509f6d3e9eec6d010f65fb9ea27e0b59abf7f4e1f2e423b60e543c",
+      "cmd/aquas/transcript.go": "ebec63f6da4daf24779bc84f5f085c6b3ca856972475dc7defcb626d35d12ab1",
+      "cmd/aquas/transcript_test.go": "a552ef73ea4ad184f3844ae7b55170c9763584ee9fad623e157f6d95a58b79a7",
+      "cmd/aquas/turno_test.go": "4000a7c518917706e3bc620262aa7dff74da74127b747662facc5d5aa56b11a1",
+      "cmd/aquas/verify_hijo_test.go": "8b72fc6e7daab04ab8b72d86e430e6c963d690cebd43288a343842fcdf415959"
+    },
+    "registro": "C:\\Users\\jlibe\\.claude\\projects\\D--Agents-Factory-claude-code-scaffolding\\b84c39b9-adf5-4d3f-b6ef-8034467a9abb\\subagents\\agent-a2b0de8120fe595ba.jsonl"
+  },
+  "sello": [
+    {
+      "clave": "ficha:E000/F015",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "ficha:E000",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/F015/S002.md",
+      "marca": "actualizado",
+      "motivo": "contrato y resumen ajustados a lo implementado"
+    },
+    {
+      "clave": "pagina:docs/E000/F015/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "pagina:docs/E000/README.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:.claude/agents/auditor.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:.claude/agents/orchestrator.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-haiku.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:.claude/agents/worker-sonnet.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F006/S008.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F013/S004.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:docs/E000/F014/S001.md\u003edocs/E001/F002/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/E001/F002/S004.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F002/S015.md\u003edocs/ref/codigo.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:docs/E001/F017/S008.md\u003edocs/E001/F017/S002.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:docs/E002/README.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:docs/ref/compilador.md\u003ecmd/aquas/main.go",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    },
+    {
+      "clave": "nombra:gobierno/canonico/reglas/02_COMUNICACION_ENTRE_AGENTES.md\u003edocs/E001/F003/S001.md",
+      "marca": "sin_cambio",
+      "motivo": "cita la ruta de forma histórica o genérica; la ayuda no la cambia"
+    }
+  ],
+  "alcance": [
+    "cmd/aquas/**",
+    "docs/**"
+  ],
+  "codigo": [
+    "cmd/aquas/main.go"
+  ],
+  "relacion": "nueva",
+  "ediciones": [
+    {
+      "fecha": "2026-11-05T16:47:19Z",
+      "campo": "que_hace",
+      "antes": "Una orden con --help o -h muestra su uso y no escribe nada.",
+      "despues": "Una orden con --help o -h muestra el uso general, avisa que no se ejecutó y no escribe nada.",
+      "motivo": "A2.1: el resumen promete lo que hace el código"
+    }
+  ],
+  "que_hace": "Una orden con --help o -h muestra el uso general, avisa que no se ejecutó y no escribe nada."
+}

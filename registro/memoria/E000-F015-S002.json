@@ -1,0 +1,18 @@
+{
+  "foco": {
+    "iniciativa": "E000",
+    "feature": "F015",
+    "slice": "S002",
+    "tarea": "S002 cerrando: --help muestra uso general y no ejecuta"
+  },
+  "siguiente": "cerrar F015 con su integral verde, commit, push",
+  "pendientes": [
+    "humano: go install …/cmd/aquas@v0.2.0 y aquas update en cada hijo"
+  ],
+  "decisiones": [
+    "congeladas las features nuevas hasta terminar la poda (humano 2026-11-04)"
+  ],
+  "huella_git": "f0cd6ffa08876644b7b3b214eab08984eae39df56c93db4a08085436c7ea7c16",
+  "actualizado": "2026-11-05T16:49:10Z",
+  "sello": "e920ecb0c9daabe720b4772f12978385f3f4420271eec0a078477470b1e1d140"
+}
